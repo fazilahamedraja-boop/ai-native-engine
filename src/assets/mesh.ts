@@ -49,28 +49,44 @@ export function isFiniteMesh(mesh: MeshData): boolean {
  * Closed-manifold test: every directed edge appears exactly once and its
  * reverse appears exactly once. Separate closed shells (a sword's blade, guard
  * and pommel) each satisfy this independently, which is what we want.
+ *
+ * Edges are paired by quantised vertex *position*, not by index, because
+ * flat-shaded geometry duplicates vertices along hard edges. Judging cracks by
+ * index would report every cube as open.
  */
 export function isWatertight(mesh: MeshData): boolean {
-  const vertexCount = mesh.positions.length / 3
-  const edges = new Map<number, number>()
-  const key = (a: number, b: number): number => a * vertexCount + b
+  const vertexIds = new Map<string, number>()
+  const ids = new Int32Array(mesh.positions.length / 3)
 
+  for (let i = 0; i < ids.length; i++) {
+    const key = `${Math.round(mesh.positions[i * 3] * 1e5)},${Math.round(mesh.positions[i * 3 + 1] * 1e5)},${Math.round(mesh.positions[i * 3 + 2] * 1e5)}`
+    let id = vertexIds.get(key)
+    if (id === undefined) {
+      id = vertexIds.size
+      vertexIds.set(key, id)
+    }
+    ids[i] = id
+  }
+
+  const edges = new Map<string, number>()
   for (let i = 0; i < mesh.indices.length; i += 3) {
-    const v0 = mesh.indices[i]
-    const v1 = mesh.indices[i + 1]
-    const v2 = mesh.indices[i + 2]
-    const triangle = [v0, v1, v2]
-    for (let e = 0; e < 3; e++) {
-      const k = key(triangle[e], triangle[(e + 1) % 3])
-      edges.set(k, (edges.get(k) ?? 0) + 1)
+    const a = ids[mesh.indices[i]]
+    const b = ids[mesh.indices[i + 1]]
+    const c = ids[mesh.indices[i + 2]]
+    for (const [from, to] of [
+      [a, b],
+      [b, c],
+      [c, a],
+    ]) {
+      const key = `${from}>${to}`
+      edges.set(key, (edges.get(key) ?? 0) + 1)
     }
   }
 
-  for (const [k, count] of edges) {
+  for (const [key, count] of edges) {
     if (count !== 1) return false
-    const a = Math.floor(k / vertexCount)
-    const b = k % vertexCount
-    if ((edges.get(key(b, a)) ?? 0) !== 1) return false
+    const [from, to] = key.split('>')
+    if ((edges.get(`${to}>${from}`) ?? 0) !== 1) return false
   }
 
   return true
@@ -117,5 +133,6 @@ export function artifactHash(asset: BuiltAsset): string {
     const socket = asset.sockets[name]
     values.push(socket[0], socket[1], socket[2])
   }
+  values.push(parseInt(asset.material.color.slice(1), 16), asset.material.roughness, asset.material.metalness)
   return hashNumbers64(values)
 }

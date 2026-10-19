@@ -30,11 +30,20 @@ export interface MeshData {
   indices: Uint32Array
 }
 
+/** Surface defaults produced by a generator or importer. */
+export interface MaterialSpec {
+  color: string
+  roughness: number
+  metalness: number
+}
+
 /** What a generator or an importer returns. */
 export interface BuiltAsset {
   geometry: MeshData
   /** Named attachment points in asset space, metres. */
   sockets: Record<string, Vec3>
+  /** Default appearance; a manifest override patches it per instance. */
+  material: MaterialSpec
 }
 
 /**

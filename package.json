@@ -1,15 +1,15 @@
-{
+﻿{
   "name": "ai-native-engine",
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "description": "AI-native game engine — lightweight, text-first, agent-verifiable",
+  "description": "AI-native game engine â€” lightweight, text-first, agent-verifiable",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "typecheck": "tsc --noEmit",
     "size": "npm run build && node scripts/size.mjs",
-    "test:assets": "node scripts/node-run.mjs src/assets/tests/contract.test.ts"
+    "test:assets": "node scripts/node-run.mjs src/assets/tests/run.ts"
   },
   "dependencies": {
     "three": "^0.186.1",

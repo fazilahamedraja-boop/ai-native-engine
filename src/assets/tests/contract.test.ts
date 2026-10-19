@@ -1,4 +1,4 @@
-﻿import { expect, expectClose, expectEqual, printSuite, runSuite } from '../../devtools/node-tests'
+﻿import { expect, expectClose, expectEqual, runSuite } from '../../devtools/node-tests'
 import type { NodeTestCase } from '../../devtools/node-tests'
 import { buildAsset } from '../build'
 import { artifactHash } from '../mesh'
@@ -33,6 +33,28 @@ function parsed(overrides: Record<string, unknown> = {}): AssetDoc {
   const result = parseAsset(swordRaw(overrides))
   if (!result.ok) throw new Error(`fixture failed to parse: ${JSON.stringify(result.errors)}`)
   return result.value
+}
+
+/**
+ * Characters are imported, never generated, so this manifest can never become
+ * buildable — it is a stable way to exercise the unknown-generator path.
+ */
+function characterRaw(): Record<string, unknown> {
+  return {
+    version: 1,
+    id: 'character-kael',
+    kind: 'character',
+    provenance: { type: 'procedural', generator: 'character', generatorVersion: 1, seed: 1 },
+    params: {},
+    contract: {
+      origin: 'feet-center',
+      scaleClass: 'character',
+      bounds: { min: [-0.4, 0, -0.25], max: [0.4, 1.8, 0.25] },
+      sockets: { head: [0, 1.7, 0], hand_l: [-0.35, 1.1, 0], hand_r: [0.35, 1.1, 0] },
+    },
+    tests: [],
+    override: {},
+  }
 }
 
 /** Anything that either failed with issues, or succeeded and has none to show. */
@@ -76,8 +98,10 @@ function fixtureCube(): MeshData {
   return { positions, normals, indices }
 }
 
+const CUBE_MATERIAL = { color: '#cccccc', roughness: 0.8, metalness: 0 }
+
 function cubeAsset(sockets: Record<string, [number, number, number]> = { grip: [0, 0, 0], tip: [0, 1, 0] }): BuiltAsset {
-  return { geometry: fixtureCube(), sockets }
+  return { geometry: fixtureCube(), sockets, material: CUBE_MATERIAL }
 }
 
 const CUBE_BOUNDS = { min: [-1, -1, -1], max: [1, 1, 1] }
@@ -251,6 +275,7 @@ const cases: NodeTestCase[] = [
       const empty: BuiltAsset = {
         geometry: { positions: new Float32Array(0), normals: new Float32Array(0), indices: new Uint32Array(0) },
         sockets: { grip: [0, 0, 0], tip: [0, 1, 0] },
+        material: CUBE_MATERIAL,
       }
       const report = validateArtifact(cubeDoc(), empty)
       const issue = expectIssue(report, 'artifact', 'assert_failed')
@@ -264,6 +289,7 @@ const cases: NodeTestCase[] = [
       const open: BuiltAsset = {
         geometry: { ...geometry, indices: geometry.indices.slice(0, geometry.indices.length - 6) },
         sockets: { grip: [0, 0, 0], tip: [0, 1, 0] },
+        material: CUBE_MATERIAL,
       }
       const report = validateArtifact(cubeDoc([{ assert: 'watertight' }]), open)
       const issue = expectIssue(report, 'tests[0]', 'assert_failed')
@@ -305,25 +331,25 @@ const cases: NodeTestCase[] = [
       const base = artifactHash(cubeAsset())
       const nudged = fixtureCube()
       nudged.positions[0] += 0.001
-      const moved = artifactHash({ geometry: nudged, sockets: { grip: [0, 0, 0], tip: [0, 1, 0] } })
+      const moved = artifactHash({ geometry: nudged, sockets: { grip: [0, 0, 0], tip: [0, 1, 0] }, material: CUBE_MATERIAL })
       expect(base !== moved, 'a 1 mm vertex move did not change the hash')
       expectEqual(base.length, 16, 'hash length')
       return `base=${base} moved=${moved}`
     },
   },
   {
-    name: 'missing generator reported',
+    name: 'unregistered generator reported',
     run: () => {
-      const outcome = buildAsset(parsed())
-      expect(!outcome.ok, 'expected build to fail without a registered generator')
+      const character = parseAsset(characterRaw())
+      expect(character.ok, `character fixture should parse: ${JSON.stringify(character.ok ? [] : character.errors)}`)
+      const outcome = buildAsset(character.value)
+      expect(!outcome.ok, 'expected build to fail without a character generator')
       expectEqual(outcome.errors[0].code, 'unknown_generator', 'code')
       return outcome.errors[0].message
     },
   },
 ]
 
-export function main(): number {
-  const suite = runSuite('asset-contract', cases)
-  printSuite(suite)
-  return suite.passed ? 0 : 1
+export function suite() {
+  return runSuite('asset-contract', cases)
 }

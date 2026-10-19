@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "id": "sword-iron-01",
+  "kind": "sword",
+  "provenance": {
+    "type": "procedural",
+    "generator": "sword",
+    "generatorVersion": 1,
+    "seed": 4821
+  },
+  "params": {
+    "length": 0.95,
+    "bladeWidth": "broad",
+    "guard": "cross",
+    "material": "iron"
+  },
+  "contract": {
+    "units": "m",
+    "origin": "grip",
+    "scaleClass": "handheld",
+    "bounds": {
+      "min": [-0.11, -0.1, -0.026],
+      "max": [0.11, 0.85, 0.026]
+    },
+    "sockets": {
+      "grip": [0, 0, 0],
+      "blade_mid": [0, 0.5, 0],
+      "tip": [0, 0.85, 0]
+    }
+  },
+  "tests": [
+    { "assert": "origin-at", "value": "grip" },
+    { "assert": "sockets-present", "value": ["grip", "blade_mid", "tip"] },
+    { "assert": "max-extent", "value": 1.4 },
+    { "assert": "triangles-max", "value": 300 },
+    { "assert": "watertight" },
+    { "assert": "area-positive" }
+  ],
+  "override": {}
+}

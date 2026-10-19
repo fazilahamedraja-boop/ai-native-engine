@@ -1,3 +1,5 @@
+// Side-effect import: registers every generator so a manifest can be built.
+import './generators/index'
 import { createRng } from './rng'
 import { getGenerator, registeredKinds } from './registry'
 import { parseAsset } from './schema'
