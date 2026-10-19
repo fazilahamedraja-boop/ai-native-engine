@@ -1,9 +1,10 @@
 import { printSuite } from '../../devtools/node-tests'
 import { suite as contractSuite } from './contract.test'
+import { suite as previewSuite } from './preview.test'
 import { suite as swordSuite } from './sword.test'
 
 export function main(): number {
-  const suites = [contractSuite(), swordSuite()]
+  const suites = [contractSuite(), swordSuite(), previewSuite()]
   suites.forEach((suite, index) => {
     if (index > 0) console.log('')
     printSuite(suite)

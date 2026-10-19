@@ -1,5 +1,6 @@
 import { Engine } from './engine'
 import { FIXED_DT } from './physics/step'
+import { bootPreview } from './preview/main'
 import { parseScene, type SceneIssue } from './schema/scene'
 
 declare global {
@@ -144,4 +145,11 @@ async function boot(): Promise<void> {
   console.info('[engine] phase 1 ready — window.__engine is the agent surface')
 }
 
-void boot()
+// Two entry modes share this page: the game (?nothing) and the asset inspector
+// (?asset=<id>). Keeping one HTML entry means one build and one capture sink.
+const params = new URLSearchParams(window.location.search)
+if (params.has('asset')) {
+  void bootPreview(appEl, errorsEl, params)
+} else {
+  void boot()
+}

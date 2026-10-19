@@ -1,4 +1,4 @@
-﻿import { expect, expectClose, expectEqual, runSuite } from '../../devtools/node-tests'
+import { expect, expectClose, expectEqual, runSuite } from '../../devtools/node-tests'
 import type { NodeTestCase } from '../../devtools/node-tests'
 import { buildAsset } from '../build'
 import { artifactHash } from '../mesh'

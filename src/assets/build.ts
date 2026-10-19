@@ -4,7 +4,8 @@ import { createRng } from './rng'
 import { getGenerator, registeredKinds } from './registry'
 import { parseAsset } from './schema'
 import type { AssetDoc } from './schema'
-import type { AssetIssue, BuiltAsset } from './types'
+import type { AssetIssue, BuiltAsset, MaterialPatch } from './types'
+import type { MaterialSpec } from './types'
 import { validateArtifact } from './validate'
 import type { ValidationReport } from './validate'
 
@@ -78,4 +79,17 @@ export function buildAssetRaw(raw: unknown): BuildOutcome {
   const parsed = parseAsset(raw)
   if (!parsed.ok) return { ok: false, errors: parsed.errors }
   return buildAsset(parsed.value)
+}
+
+/**
+ * Applies an instance's appearance override. Geometry, bounds and sockets are
+ * deliberately not reachable here: the contract stays with the asset.
+ */
+export function effectiveMaterial(asset: BuiltAsset, override?: MaterialPatch): MaterialSpec {
+  const patch = override ?? {}
+  return {
+    color: patch.color ?? asset.material.color,
+    roughness: patch.roughness ?? asset.material.roughness,
+    metalness: patch.metalness ?? asset.material.metalness,
+  }
 }

@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "ai-native-engine",
   "version": "0.0.1",
   "private": true,
@@ -9,7 +9,8 @@
     "build": "tsc --noEmit && vite build",
     "typecheck": "tsc --noEmit",
     "size": "npm run build && node scripts/size.mjs",
-    "test:assets": "node scripts/node-run.mjs src/assets/tests/run.ts"
+    "test:assets": "node scripts/node-run.mjs src/assets/tests/run.ts",
+    "assets": "node scripts/node-run.mjs src/assets/cli.ts"
   },
   "dependencies": {
     "three": "^0.186.1",

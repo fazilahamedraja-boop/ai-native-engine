@@ -156,8 +156,46 @@ Errors use the same `{path, code, message}` shape as scene errors, plus
 `expected`/`measured` where a number is involved.
 
 ```bash
-npm run test:assets    # 22 contract tests, ~17 ms, no browser
+npm run test:assets    # 33 tests across contract, sword, framing — ~30 ms, no browser
 ```
+
+### Inspection
+
+```bash
+npm run assets -- list
+npm run assets -- validate [--json] [id...]
+npm run assets -- inspect sword-iron-01
+npm run assets -- preview sword-iron-01 --view front
+npm run assets -- regen sword-iron-01 [--accept]
+```
+
+`inspect` prints one JSON object: provenance, params, declared contract, the
+measured artifact (hash, bounds, sockets, material, triangles, generation ms),
+tests, errors, warnings. The CLI and the preview page return the same shape, so
+the agent does not have to learn two.
+
+`regen` compares the artifact against the declared contract. Without `--accept`
+it reports drift and exits 1. With `--accept` it rewrites bounds and sockets —
+but refuses if any check other than `bounds-match` is failing, so a broken
+generator cannot be papered over.
+
+### Preview page
+
+`http://localhost:5173/?asset=<id>&view=<view>`, where view is `three-quarter`
+(default), `front`, `side` or `top`. `window.__preview` is the agent surface:
+
+```js
+__preview.inspect()          // CLI JSON + view + camera
+__preview.setView('side')    // re-render, URL updated in place
+__preview.capture('name')    // PNG through the same sink, returns {path, bytes}
+```
+
+All views share one camera distance, derived from the asset's bounding sphere.
+That makes two captures directly comparable and makes a size change visible. The
+cost is that `top` on a tall asset is small — it exists to read the
+cross-section. Captures are byte-identical across repeats (verified twice:
+`SHA256 5CBCB50C045C9CFF…`). Metals are lit by a baked `RoomEnvironment`, without
+which `metalness 0.7` renders as flat grey.
 
 ## Hot reload
 
@@ -280,8 +318,16 @@ src/world/world.ts        SceneDoc -> World nodes, colliders, player, camera
 src/physics/              capsule-vs-AABB primitives, fixed step
 src/camera/rigs.ts        camera state + poses (no THREE)
 src/render/renderer.ts    World -> THREE draw list, flat, rebuilt per revision
+src/render/geometry.ts    MeshData -> BufferGeometry (the only asset/renderer seam)
+src/assets/schema.ts      manifest grammar, per-kind params, ontology checks
+src/assets/kinds.ts       4 kinds: contract defaults, required sockets, params
+src/assets/generators/    pure build(params, rng) -> MeshData + sockets
+src/assets/validate.ts    declared-bounds match + assertion runner
+src/assets/cli.ts         list | validate | inspect | preview | regen
+src/preview/              standalone asset viewport + window.__preview
 src/devtools/state.ts     snapshot + state hash
 src/devtools/tests.ts     runTests()
+src/devtools/node-tests.ts Node suite runner (same report shape)
 src/engine.ts             the agent surface
 src/main.ts               boot, input, rAF loop, hot-reload listener
 vite.config.ts            /__capture sink + scene-watch
