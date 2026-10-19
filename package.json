@@ -8,7 +8,8 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "typecheck": "tsc --noEmit",
-    "size": "npm run build && node scripts/size.mjs"
+    "size": "npm run build && node scripts/size.mjs",
+    "test:assets": "node scripts/node-run.mjs src/assets/tests/contract.test.ts"
   },
   "dependencies": {
     "three": "^0.186.1",

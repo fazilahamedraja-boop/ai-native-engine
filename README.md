@@ -112,6 +112,53 @@ nodes[2].parent: parent chain contains a cycle at 'ground'
 nodes: scene must contain exactly one 'camera' node, found 2
 ```
 
+## Asset contract
+
+Phase 2. An asset is a text manifest plus a pure build function; the artifact is
+never checked in. `src/assets/schema.ts` validates the manifest, `kinds.ts` owns
+the ontology, `validate.ts` judges what was built.
+
+Six concepts, and no more:
+
+| concept | meaning | mutable by |
+|---|---|---|
+| `kind` | closed vocabulary | schema only |
+| `provenance` | generator + pinned version + seed, or file + sha256 | author |
+| `params` | semantic knobs, enums or bounded numbers | author |
+| `contract` | origin, declared bounds, declared sockets | author, then verified |
+| `tests` | extra promises the asset makes | author |
+| `override` | colour / roughness / metalness | instance |
+
+Four kinds, each with contract defaults and required sockets:
+
+| kind | origin | scaleClass | required sockets | params |
+|---|---|---|---|---|
+| `sword` | `grip` | handheld | `grip`, `tip` | length, bladeWidth, guard, material |
+| `rock` | `base-center` | prop | — | size, family, detail, moss |
+| `pine` | `base-center` | prop | `base` | height, tiers, spread, snow |
+| `character` | `feet-center` | character | `head`, `hand_l`, `hand_r` | none (imported) |
+
+Adding a kind is a params schema plus a row in `KIND_SPECS`. If it also needs a
+change in `validate.ts`, the ontology is wrong.
+
+**Bounds and sockets are declared, not derived.** A generator change that
+silently grows an asset must fail validation rather than quietly move every
+placement built on it. `artifactHash` covers geometry and sockets, so the same
+`(params, seed, generatorVersion)` must reproduce the same hash.
+
+Three checks always run and cannot be declared away: the artifact is non-empty,
+every coordinate is finite, and measured bounds match the contract within
+`1e-4 m`. `tests[]` adds `origin-at`, `sockets-present`, `max-extent`,
+`triangles-max`, `watertight`, `area-positive`. A socket outside the mesh is a
+warning, not an error — it is legal, and usually a stale coordinate.
+
+Errors use the same `{path, code, message}` shape as scene errors, plus
+`expected`/`measured` where a number is involved.
+
+```bash
+npm run test:assets    # 22 contract tests, ~17 ms, no browser
+```
+
 ## Hot reload
 
 Saving `content/scenes/*.json` pushes the text to the page over the Vite
