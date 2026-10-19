@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "id": "phase1",
+  "environment": { "background": "#0e1428" },
+  "player": { "spawn": [0, 3, 0] },
+  "nodes": [
+    {
+      "id": "sun",
+      "type": "light",
+      "kind": "directional",
+      "dir": [-0.45, -1, -0.25],
+      "intensity": 3.1,
+      "castShadow": true
+    },
+    {
+      "id": "sky",
+      "type": "light",
+      "kind": "ambient",
+      "color": "#8fa6e0",
+      "intensity": 1.5
+    },
+    {
+      "id": "ground",
+      "type": "mesh",
+      "geometry": { "shape": "box", "size": [20, 1, 20] },
+      "transform": { "pos": [0, -0.5, 0] },
+      "material": { "color": "#38445f", "roughness": 1 },
+      "collider": { "shape": "aabb" }
+    },
+    {
+      "id": "crate",
+      "type": "mesh",
+      "geometry": { "shape": "box", "size": [1, 1, 1] },
+      "transform": { "pos": [-1.6, 0.5, 0.6], "rot": [0, 18, 0] },
+      "material": { "color": "#d2603a", "roughness": 0.5 },
+      "collider": { "shape": "aabb" }
+    },
+    {
+      "id": "wall",
+      "type": "mesh",
+      "geometry": { "shape": "box", "size": [0.5, 3, 6] },
+      "transform": { "pos": [2.0, 1.5, 0] },
+      "material": { "color": "#5b6f9e" },
+      "collider": { "shape": "aabb" }
+    },
+    {
+      "id": "orb",
+      "type": "mesh",
+      "geometry": { "shape": "sphere", "radius": 0.45 },
+      "transform": { "pos": [0.55, 0.45, 2.4] },
+      "material": { "color": "#7fd4a8", "metalness": 0.1, "roughness": 0.3 },
+      "collider": { "shape": "none" }
+    },
+    {
+      "id": "cam",
+      "type": "camera",
+      "rig": "orbit",
+      "fov": 50,
+      "orbit": { "target": [0, 1, 0], "distance": 9, "yaw": -35, "pitch": 22 }
+    }
+  ]
+}

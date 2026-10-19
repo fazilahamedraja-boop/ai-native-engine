@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from 'node:fs/promises'
+import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { defineConfig, type Plugin } from 'vite'
 
@@ -6,8 +6,7 @@ import { defineConfig, type Plugin } from 'vite'
  * Accepts POSTed PNGs and writes them into .cache/captures/.
  *
  * This is the agent's eye: without a file on disk the agent can open, a
- * screenshot is just a string it cannot inspect. Keeping the sink inside the
- * dev server means no extra process and no extra dependency.
+ * screenshot is just a string it cannot inspect.
  */
 function captureSink(): Plugin {
   return {
@@ -45,7 +44,35 @@ function captureSink(): Plugin {
   }
 }
 
+/**
+ * Pushes scene text to the page instead of letting Vite reload the module.
+ * A full reload would discard simulation state, which is the thing Phase 1
+ * exists to preserve.
+ */
+function sceneWatch(): Plugin {
+  return {
+    name: 'scene-watch',
+    configureServer(server) {
+      const scenes = resolve(process.cwd(), 'content', 'scenes')
+      server.watcher.add(scenes)
+
+      const push = async (file: string): Promise<void> => {
+        if (!file.replace(/\\/g, '/').includes('/content/scenes/') || !file.endsWith('.json')) return
+        try {
+          const text = await readFile(file, 'utf8')
+          server.ws.send({ type: 'custom', event: 'scene-update', data: { file, text } })
+        } catch (error) {
+          server.config.logger.error(`[scene-watch] ${(error as Error).message}`)
+        }
+      }
+
+      server.watcher.on('change', (file) => void push(file))
+      server.watcher.on('add', (file) => void push(file))
+    },
+  }
+}
+
 export default defineConfig({
-  plugins: [captureSink()],
+  plugins: [captureSink(), sceneWatch()],
   server: { port: 5173, strictPort: true },
 })
