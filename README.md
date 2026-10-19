@@ -160,6 +160,8 @@ Measured, not asserted:
 
 ```
 scene-settle           grounded=true feetY=0.000000 supportTop=0.000000 vy=0
+player-avatar          maxTrackingError=0.00e+0 lift=0.8500m landedAt=34
+                       restingError=0.00e+0 notASceneNode=true
 jump-apex-and-landing  apex=0.8500m (model 0.8500) at step 17; landing=35
 wall-adjacency         x 0.000 -> 1.400; drift 0.00e+0; grounded=true; penetrating=[]
 determinism            identical hash 5f154676
@@ -176,6 +178,41 @@ AABBs only. No slopes, stairs, step-up, moving platforms, rotated colliders
 (enveloped by their axis-aligned bounds), CCD, friction, bounciness, or pushing
 dynamic bodies. Corner cases can pop. Horizontal velocity is reported from actual
 displacement, so a blocked player reads `0` rather than the commanded speed.
+
+## Player avatar
+
+A single cream capsule, drawn by the renderer from `world.player.pos` every
+frame. It is **render-only**:
+
+- not a `SceneDoc` node, so `inspect().nodes` never lists it
+- contributes no collider, so physics cannot see it
+- has no skeleton, no animation, no state of its own
+
+`syncPlayer(world)` is the whole link: group origin = `feet + height/2`, with the
+capsule geometry rebuilt only when `player.radius`/`player.height` change.
+`avatarFeet()` reads the position back out of the scene graph, which is why the
+`player-avatar` test can prove the derivation instead of re-asserting the input.
+
+Verified: tracking error `0` at rest, at the jump apex (`0.850 m`), at landing,
+and after settling; screen position `(400, 293.3)` unchanged before and after a
+4.5 m walk under the third-person rig, i.e. the camera follows rather than drifts.
+
+## Build budget
+
+The budget is **400 kB of gzipped JavaScript** — every `.js` file the browser
+must download to run the engine, summed, gzip level 9, kB = 1000 bytes. HTML and
+source maps are not counted. `npm run size` runs the build and measures it
+directly with `node:zlib` so the number does not move when Vite changes how it
+reports sizes.
+
+```
+index-BQ5mm_Df.js   raw 644911   gzip 164822
+gzip total 164822 B (164.8 kB) of 400 kB budget — 41.2%
+```
+
+That includes THREE, Zod and the whole devtools surface. Vite's own log reports
+166.63 kB for the same file because it uses a different gzip setting; the script
+above is authoritative.
 
 ## Cameras
 
@@ -213,7 +250,7 @@ meters · +Y up · +Z forward · floor-center origin for props · feet-center fo
 
 ## Known gaps
 
-- The player has no visual representation yet, so captures show the world but not
-  the character.
 - `inspect()` reports node world position and scale, not world rotation.
+- The avatar has no facing direction, so it reads as a capsule rather than a
+  character; that arrives with the Phase 2 character import.
 - No shadow-quality tuning, no mesh instancing, no LOD.

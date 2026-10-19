@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import { cameraPose } from '../camera/rigs'
+import type { Vec3 } from '../core/math'
 import type { CameraNode, MeshNode } from '../schema/scene'
 import type { World } from '../world/world'
 
@@ -43,6 +44,16 @@ export class Renderer {
   #revision = 0
   #objects: THREE.Object3D[] = []
 
+  /**
+   * The player avatar. Render-only: it is not a World node, contributes no
+   * collider, and its transform is derived from world.player.pos every frame.
+   * Nothing in the simulation can read it back.
+   */
+  readonly #player = new THREE.Group()
+  #playerMesh: THREE.Mesh | null = null
+  #playerRadius = -1
+  #playerHeight = -1
+
   constructor(container: HTMLElement) {
     this.gl = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true })
     this.gl.setPixelRatio(1)
@@ -56,6 +67,63 @@ export class Renderer {
 
     this.scene = new THREE.Scene()
     this.camera = new THREE.PerspectiveCamera(50, VIEW_W / VIEW_H, 0.1, 200)
+
+    this.#player.name = 'player-avatar'
+    this.scene.add(this.#player)
+  }
+
+  /**
+   * Pulls the avatar onto the physics feet position. Split out from render() so
+   * tests can assert the derivation without drawing 40 frames.
+   */
+  syncPlayer(world: World): void {
+    const { radius, height } = world.doc.player
+
+    if (radius !== this.#playerRadius || height !== this.#playerHeight) {
+      if (this.#playerMesh) {
+        this.#player.remove(this.#playerMesh)
+        this.#playerMesh.geometry.dispose()
+        const material = this.#playerMesh.material
+        if (!Array.isArray(material)) material.dispose()
+        this.#playerMesh = null
+      }
+
+      const mesh = new THREE.Mesh(
+        new THREE.CapsuleGeometry(radius, Math.max(0.001, height - radius * 2), 6, 16),
+        new THREE.MeshStandardMaterial({ color: 0xe8e3d5, roughness: 0.55, metalness: 0.05 }),
+      )
+      mesh.castShadow = true
+      mesh.receiveShadow = true
+      this.#playerMesh = mesh
+      this.#player.add(mesh)
+      this.#playerRadius = radius
+      this.#playerHeight = height
+    }
+
+    // Group origin is the capsule centre; feet sit half a height below it.
+    this.#player.position.set(world.player.pos[0], world.player.pos[1] + height / 2, world.player.pos[2])
+  }
+
+  /** Renderer-side feet position, read back out of the scene graph. */
+  avatarFeet(): Vec3 {
+    this.#player.updateWorldMatrix(true, false)
+    const p = new THREE.Vector3()
+    this.#player.getWorldPosition(p)
+    return [p.x, p.y - this.#playerHeight / 2, p.z]
+  }
+
+  /** Screen-space position of the avatar's centre, in pixels. */
+  projectAvatar(): { x: number; y: number; ndcZ: number } {
+    this.#player.updateWorldMatrix(true, false)
+    const p = new THREE.Vector3()
+    this.#player.getWorldPosition(p)
+    this.camera.updateMatrixWorld()
+    p.project(this.camera)
+    return {
+      x: Number((((p.x + 1) / 2) * VIEW_W).toFixed(2)),
+      y: Number((((1 - p.y) / 2) * VIEW_H).toFixed(2)),
+      ndcZ: Number(p.z.toFixed(4)),
+    }
   }
 
   sync(world: World): void {
@@ -126,6 +194,7 @@ export class Renderer {
 
   render(world: World): void {
     this.sync(world)
+    this.syncPlayer(world)
 
     const cameraNode = world.nodes.find((node) => node.doc.type === 'camera')?.doc as CameraNode | undefined
     if (cameraNode) {

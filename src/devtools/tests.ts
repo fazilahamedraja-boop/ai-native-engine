@@ -1,4 +1,5 @@
 import type { CameraState } from '../camera/rigs'
+import type { Vec3 } from '../core/math'
 import { capsuleFor, capsulePenetration } from '../physics/capsule-aabb'
 import { FIXED_DT, stepWorld } from '../physics/step'
 import type { SceneDoc } from '../schema/scene'
@@ -19,6 +20,14 @@ export interface TestReport {
   /** True when the live world was bit-identical to how runTests found it. */
   statePreserved: boolean
   hash: string
+}
+
+/**
+ * Renderer-side reads. The avatar is deliberately not part of World, so its
+ * linkage can only be checked from outside the simulation.
+ */
+export interface TestHooks {
+  avatarFeet?: () => Vec3
 }
 
 const IDLE: InputState = { moveX: 0, moveZ: 0, jump: false }
@@ -97,7 +106,7 @@ const fail = (detail: string): Outcome => ({ passed: false, detail })
  * Runs against the live World, restores everything afterwards, and reports
  * numbers rather than adjectives.
  */
-export function runTests(world: World): TestReport {
+export function runTests(world: World, hooks: TestHooks = {}): TestReport {
   const started = performance.now()
   const hashBefore = stateHash(world)
 
@@ -135,6 +144,57 @@ export function runTests(world: World): TestReport {
 
     const detail = `grounded=${grounded} feetY=${y.toFixed(6)} supportTop=${expected?.toFixed(6) ?? 'n/a'} vy=${world.player.vel[1]} height=${cfg.height}`
     return grounded && restOk && stillOk ? pass(detail) : fail(detail)
+  })
+
+  record('player-avatar', () => {
+    const readAvatar = hooks.avatarFeet
+    if (!readAvatar) return fail('no avatar hook wired')
+
+    const spread = (a: Vec3, b: Vec3): number =>
+      Math.max(Math.abs(a[0] - b[0]), Math.abs(a[1] - b[1]), Math.abs(a[2] - b[2]))
+
+    resetWorld(world)
+    settle(world, 120)
+
+    const avatarAtRest = readAvatar()
+    let maxError = spread(avatarAtRest, world.player.pos)
+
+    world.input = { moveX: 0, moveZ: 0, jump: true }
+    stepWorld(world)
+    world.input.jump = false
+
+    let peak = avatarAtRest[1]
+    let landedAt: number | null = null
+
+    for (let i = 1; i <= 60; i++) {
+      stepWorld(world)
+      const avatar = readAvatar()
+      maxError = Math.max(maxError, spread(avatar, world.player.pos))
+      peak = Math.max(peak, avatar[1])
+      if (world.player.grounded && i > 5) {
+        landedAt = i
+        break
+      }
+    }
+
+    const lift = peak - avatarAtRest[1]
+    const restingError = spread(readAvatar(), world.player.pos)
+    const notANode = !world.nodes.some((node) => node.id === 'player-avatar')
+
+    const ok =
+      maxError < 1e-6 &&
+      Math.abs(lift - 0.85) < 0.02 &&
+      landedAt !== null &&
+      world.player.grounded &&
+      restingError < 1e-9 &&
+      notANode
+
+    const detail =
+      `maxTrackingError=${maxError.toExponential(2)} lift=${lift.toFixed(4)}m ` +
+      `landedAt=${landedAt} grounded=${world.player.grounded} ` +
+      `restingError=${restingError.toExponential(2)} notASceneNode=${notANode}`
+
+    return ok ? pass(detail) : fail(detail)
   })
 
   record('jump-apex-and-landing', () => {

@@ -161,7 +161,14 @@ export class Engine {
 
   runTests(): TestReport {
     this.paused = true
-    const report = runTests(this.world)
+    const report = runTests(this.world, {
+      // The avatar lives in the renderer, so the hook pushes world state into it
+      // before reading back — exactly what a frame would do.
+      avatarFeet: () => {
+        this.renderer.syncPlayer(this.world)
+        return this.renderer.avatarFeet()
+      },
+    })
     this.renderer.render(this.world)
     return report
   }

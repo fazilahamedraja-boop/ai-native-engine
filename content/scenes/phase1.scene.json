@@ -31,7 +31,7 @@
       "id": "crate",
       "type": "mesh",
       "geometry": { "shape": "box", "size": [1, 1, 1] },
-      "transform": { "pos": [-1.1, 0.5, 1.6], "rot": [0, 30, 0] },
+      "transform": { "pos": [-1.6, 0.5, -1.4], "rot": [0, 30, 0] },
       "material": { "color": "#3fd2b4", "roughness": 0.35 },
       "collider": { "shape": "aabb" }
     },
