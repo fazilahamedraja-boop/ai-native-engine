@@ -72,7 +72,7 @@ export class AssetPreview {
   readonly camera: THREE.PerspectiveCamera
   readonly canvas: HTMLCanvasElement
 
-  readonly #key = new THREE.DirectionalLight(0xfff2dd, 2.4)
+  readonly #key = new THREE.DirectionalLight(0xfff2dd, 1.5)
   #mesh: THREE.Mesh | null = null
   #grid: THREE.GridHelper | null = null
   #bounds: Bounds = { min: [0, 0, 0], max: [0, 0, 0] }
@@ -84,7 +84,7 @@ export class AssetPreview {
     this.gl.setPixelRatio(1)
     this.gl.setSize(PREVIEW_W, PREVIEW_H, false)
     this.gl.toneMapping = THREE.ACESFilmicToneMapping
-    this.gl.toneMappingExposure = 1.05
+    this.gl.toneMappingExposure = 1
     this.gl.shadowMap.enabled = true
     this.gl.shadowMap.type = THREE.PCFShadowMap
     this.canvas = this.gl.domElement
@@ -98,10 +98,13 @@ export class AssetPreview {
     // 0.7 renders as flat grey mud; a studio room costs one startup bake.
     const pmrem = new THREE.PMREMGenerator(this.gl)
     this.scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture
-    this.scene.environmentIntensity = 0.55
+    this.scene.environmentIntensity = 0.5
     pmrem.dispose()
 
-    this.scene.add(new THREE.AmbientLight(0xffffff, 0.25))
+    // Calibrated so a 0.4-albedo surface renders near 0.4, not near white: the
+    // inspector has to show the authored colour, not a flattering one. Metals
+    // are mostly lit by the environment, so trimming the key costs them little.
+    this.scene.add(new THREE.AmbientLight(0xffffff, 0.12))
     this.#key.castShadow = true
     this.#key.shadow.mapSize.set(1024, 1024)
     this.#key.shadow.bias = -0.0005
@@ -135,6 +138,7 @@ export class AssetPreview {
         color: new THREE.Color(asset.material.color),
         roughness: asset.material.roughness,
         metalness: asset.material.metalness,
+        vertexColors: asset.geometry.colors !== undefined,
       }),
     )
     mesh.castShadow = true

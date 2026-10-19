@@ -28,6 +28,13 @@ export interface MeshData {
   positions: Float32Array
   normals: Float32Array
   indices: Uint32Array
+  /**
+   * Optional per-vertex RGB in sRGB [0,1], one triple per vertex. Multiplies the
+   * material colour, which is how one asset carries a brown trunk, green
+   * foliage and a snow cap without three materials. Stored as sRGB like every
+   * other colour in a manifest; the renderer converts at the boundary.
+   */
+  colors?: Float32Array
 }
 
 /** Surface defaults produced by a generator or importer. */

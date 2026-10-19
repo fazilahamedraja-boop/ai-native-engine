@@ -42,6 +42,12 @@ export function isFiniteMesh(mesh: MeshData): boolean {
   for (const value of mesh.normals) if (!Number.isFinite(value)) return false
   const vertexCount = mesh.positions.length / 3
   for (const index of mesh.indices) if (index < 0 || index >= vertexCount) return false
+
+  if (mesh.colors !== undefined) {
+    if (mesh.colors.length !== mesh.positions.length) return false
+    for (const value of mesh.colors) if (!Number.isFinite(value) || value < 0 || value > 1) return false
+  }
+
   return true
 }
 
@@ -129,6 +135,9 @@ export function artifactHash(asset: BuiltAsset): string {
   for (const value of asset.geometry.positions) values.push(value)
   for (const value of asset.geometry.normals) values.push(value)
   for (const index of asset.geometry.indices) values.push(index)
+  // Only folded in when present, so adding colour support did not change the
+  // hash of assets that never had it.
+  if (asset.geometry.colors !== undefined) for (const value of asset.geometry.colors) values.push(value)
   for (const name of Object.keys(asset.sockets).sort()) {
     const socket = asset.sockets[name]
     values.push(socket[0], socket[1], socket[2])

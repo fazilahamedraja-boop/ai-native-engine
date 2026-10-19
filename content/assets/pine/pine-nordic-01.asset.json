@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "id": "pine-nordic-01",
+  "kind": "pine",
+  "provenance": {
+    "type": "procedural",
+    "generator": "pine",
+    "generatorVersion": 1,
+    "seed": 907
+  },
+  "params": {
+    "height": 8,
+    "tiers": 5,
+    "spread": "narrow",
+    "snow": false
+  },
+  "contract": {
+    "units": "m",
+    "origin": "base-center",
+    "scaleClass": "prop",
+    "bounds": {
+      "min": [
+        -1.68,
+        0,
+        -1.68
+      ],
+      "max": [
+        1.68,
+        8,
+        1.68
+      ]
+    },
+    "sockets": {
+      "base": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "tests": [
+    {
+      "assert": "origin-at",
+      "value": "base-center"
+    },
+    {
+      "assert": "sockets-present",
+      "value": [
+        "base"
+      ]
+    },
+    {
+      "assert": "max-extent",
+      "value": 9
+    },
+    {
+      "assert": "triangles-max",
+      "value": 400
+    },
+    {
+      "assert": "watertight"
+    },
+    {
+      "assert": "area-positive"
+    }
+  ],
+  "override": {}
+}

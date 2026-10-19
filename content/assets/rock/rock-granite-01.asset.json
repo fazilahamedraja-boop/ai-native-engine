@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "id": "rock-granite-01",
+  "kind": "rock",
+  "provenance": {
+    "type": "procedural",
+    "generator": "rock",
+    "generatorVersion": 1,
+    "seed": 1181
+  },
+  "params": {
+    "size": "medium",
+    "family": "angular",
+    "detail": 2,
+    "moss": 0.25
+  },
+  "contract": {
+    "units": "m",
+    "origin": "base-center",
+    "scaleClass": "prop",
+    "bounds": {
+      "min": [
+        -0.402379,
+        0,
+        -0.427972
+      ],
+      "max": [
+        0.402379,
+        0.589888,
+        0.427972
+      ]
+    },
+    "sockets": {}
+  },
+  "tests": [
+    {
+      "assert": "origin-at",
+      "value": "base-center"
+    },
+    {
+      "assert": "max-extent",
+      "value": 2.2
+    },
+    {
+      "assert": "triangles-max",
+      "value": 1400
+    },
+    {
+      "assert": "watertight"
+    },
+    {
+      "assert": "area-positive"
+    }
+  ],
+  "override": {}
+}

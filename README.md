@@ -143,8 +143,15 @@ change in `validate.ts`, the ontology is wrong.
 
 **Bounds and sockets are declared, not derived.** A generator change that
 silently grows an asset must fail validation rather than quietly move every
-placement built on it. `artifactHash` covers geometry and sockets, so the same
-`(params, seed, generatorVersion)` must reproduce the same hash.
+placement built on it. `artifactHash` covers geometry, sockets, material and any
+vertex colours, so the same `(params, seed, generatorVersion)` must reproduce the
+same hash.
+
+**Colour can be per-vertex.** `MeshData.colors` is optional sRGB RGB, one triple
+per vertex, and the material colour multiplies it. That is how one rock carries
+stone and moss, and one pine carries bark, foliage and snow, without three
+materials. Colours fold into the hash only when present, so assets that never had
+them keep the hashes they were published with.
 
 Three checks always run and cannot be declared away: the artifact is non-empty,
 every coordinate is finite, and measured bounds match the contract within
@@ -156,7 +163,7 @@ Errors use the same `{path, code, message}` shape as scene errors, plus
 `expected`/`measured` where a number is involved.
 
 ```bash
-npm run test:assets    # 33 tests across contract, sword, framing — ~30 ms, no browser
+npm run test:assets    # 44 tests: contract, sword, rock, pine, framing — ~50 ms, no browser
 ```
 
 ### Inspection

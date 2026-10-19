@@ -4,6 +4,10 @@
  * silently producing nothing.
  */
 import { registerGenerator } from '../registry'
+import { pineGenerator } from './pine'
+import { rockGenerator } from './rock'
 import { swordGenerator } from './sword'
 
 registerGenerator(swordGenerator)
+registerGenerator(rockGenerator)
+registerGenerator(pineGenerator)
