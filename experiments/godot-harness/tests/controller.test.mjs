@@ -100,4 +100,16 @@ test('physics advance validation rejects invalid frames and input before a bridg
     () => session.advancePhysics({ frames: 1, input: { forward: 2 } }),
     /forward must be a finite number between -1 and 1/,
   )
+  await assert.rejects(
+    () => session.advancePhysics({ frames: 1, input: { actions: [] } }),
+    /actions must be an object of boolean action names/,
+  )
+  await assert.rejects(
+    () => session.advancePhysics({ frames: 1, input: { actions: { Interact: true } } }),
+    /action names must match/,
+  )
+  await assert.rejects(
+    () => session.advancePhysics({ frames: 1, input: { actions: { interact: 1 } } }),
+    /action interact must be a boolean/,
+  )
 })

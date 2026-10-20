@@ -1,0 +1,8 @@
+PASS door-initial-state locked=true open=false key_available=true prompt=APPROACH THE DOOR
+PASS door-too-far-feedback feedback=TOO FAR locked_attempts=0 distance=5.500000
+PASS door-locked-no-key feedback=LOCKED - KEY REQUIRED z=0.500116 blocked_z=0.500116 attempts=1
+PASS door-key-required-and-acquired has_key=true key_available=false key_visible=false distance=0.050000
+PASS door-unlock-open-pass feedback=UNLOCKED - DOOR OPEN locked=false open=true z=-3.499981 opens=1
+PASS door-reset fields_ok=true hash_ok=true immediate_step=0 settled_hash=03a99e65f6ba53a8b571fff64003bdf91ec908c25023ec9fd37f44551f681cd5 baseline_hash=03a99e65f6ba53a8b571fff64003bdf91ec908c25023ec9fd37f44551f681cd5
+PASS door-same-process-outcome-repeatability exact_hash_match=true outcome_hash_match=true position_delta=0.000000000 first_outcome=6cdff7cf8e61adf41e058e9aaedb150e9295249272ee3122256400e265313459 second_outcome=6cdff7cf8e61adf41e058e9aaedb150e9295249272ee3122256400e265313459
+RESULT passed=7 failed=0 exit=0 ok=true

@@ -178,7 +178,7 @@ function validateHarnessInput(input) {
   if (input === null || typeof input !== 'object' || Array.isArray(input)) {
     throw new Error('input must be an object')
   }
-  const allowed = new Set(['forward', 'strafe', 'jump', 'restart'])
+  const allowed = new Set(['forward', 'strafe', 'jump', 'restart', 'actions'])
   for (const key of Object.keys(input)) {
     if (!allowed.has(key)) throw new Error(`Unknown input key: ${key}`)
   }
@@ -190,6 +190,20 @@ function validateHarnessInput(input) {
   for (const key of ['jump', 'restart']) {
     if (key in input && typeof input[key] !== 'boolean') {
       throw new Error(`${key} must be a boolean`)
+    }
+  }
+  if ('actions' in input) {
+    const actions = input.actions
+    if (actions === null || typeof actions !== 'object' || Array.isArray(actions)) {
+      throw new Error('actions must be an object of boolean action names')
+    }
+    for (const [name, value] of Object.entries(actions)) {
+      if (!/^[a-z][a-z0-9_]{0,31}$/.test(name)) {
+        throw new Error('action names must match [a-z][a-z0-9_]{0,31}')
+      }
+      if (typeof value !== 'boolean') {
+        throw new Error(`action ${name} must be a boolean`)
+      }
     }
   }
 }

@@ -44,13 +44,17 @@ npm run test:physics     # real fixed-tick physics suite, 9 cases
 npm run test:physics-control      # live advance_physics bridge checks
 npm run test:physics-screenshot   # windowed wall/air captures
 npm run evidence:physics # five fresh-process physics repeatability record
+npm run test:door        # locked-door/key real-physics suite, 7 cases
+npm run test:door-control         # live bridge + inspect/property checks
+npm run test:door-screenshot      # windowed locked/key/open captures
+npm run test:door-repair          # failing defect -> repair -> same-test rerun
 npm run inspect          # start, inspect, stop one project, JSON result
 ```
 
 `npm test` is the normal headless gate. `test:screenshot` is separate because it
 needs a window; `test:repair` is separate because it intentionally runs a
-failing test first. The physics commands use the separate
-`fixtures/physics/` project and do not change the sentry fixture.
+failing test first. The physics and door commands use separate, self-contained
+projects and do not change the sentry fixture.
 
 ## CLI
 
@@ -114,6 +118,11 @@ try {
 }
 ```
 
+For real physics, use the same session API with `.advancePhysics({ frames,
+input })`; the selected project's bridge must implement `advance_physics` and
+the game must consume `harness_input` in `_physics_process`. The physics and
+door fixtures do this.
+
 `startProject()` waits for `HARNESS_READY`, connects to the loopback bridge,
 checks that the bridge PID equals the child PID, and waits for the game node.
 `stopProject()` asks the bridge to quit, waits for the owned child, and only
@@ -125,9 +134,14 @@ Godot processes and never kills a process it did not start.
 
 - The bridge pauses the SceneTree before a `step` loop; `reset` also leaves the
   tree paused.
-- `input` fields are `forward`, `strafe`, `jump`, and `restart`.
+- `input` fields are `forward`, `strafe`, `jump`, `restart`, and `actions`.
   `forward`/`strafe` are clamped to `[-1, 1]`; `jump`/`restart` are edges and
   are consumed by the first step.
+- `actions` is a generic map of boolean action names, for example
+  `{"interact": true}`. Names must match `[a-z][a-z0-9_]{0,31}`. The controller
+  validates the map; each fixture decides which actions it consumes and whether
+  an action is edge-triggered. The door fixture consumes `interact` once per
+  press.
 - Input persists between steps when a field is omitted. Set every field you care
   about, or use `setInput()` before a sequence.
 - `steps` is an integer from `0` to `100000`; `delta` is from `0.0001` to
@@ -153,8 +167,8 @@ It is separate from `step()`:
 - it pauses the tree again and returns the final snapshot.
 
 The fixture must implement the generic game interface and consume
-`harness_input` in `_physics_process`. The physics fixture's
-`harness_step()` deliberately errors because a paused manual step cannot
+`harness_input` in `_physics_process`. The physics and door fixtures'
+`harness_step()` deliberately error because a paused manual step cannot
 advance the physics server. The bridge command is `advance_physics`; the sentry
 bridge does not implement it, and the sentry fixture is unchanged.
 
@@ -198,8 +212,8 @@ Request:
 
 Commands: `ping`, `snapshot`, `pause`, `resume`, `set_input`, `step`,
 `advance_physics`, `reset`, `screenshot`, `scene_tree`, `property`, `logs`,
-`quit`. `advance_physics` is implemented by the physics fixture bridge copy;
-the sentry bridge remains the Phase 8 command set.
+`quit`. `advance_physics` is implemented by the physics and door fixture bridge
+copies; the sentry bridge remains the Phase 8 command set.
 
 Responses are either:
 
@@ -270,6 +284,10 @@ only use this interface on projects you intend to control.
 | Real physics bridge control | `npm run test:physics-control` | 2/2, exit 0 |
 | Real physics screenshots | `npm run test:physics-screenshot` | 1/1, two PNGs |
 | Real physics repeatability | `npm run evidence:physics` | 5 fresh runs, 9/9 each |
+| Locked-door suite | `npm run test:door` | 7/7, exit 0 |
+| Door bridge control | `npm run test:door-control` | 1/1 live scenario |
+| Door screenshots | `npm run test:door-screenshot` | 1/1, three PNGs |
+| Door defect repair | `npm run test:door-repair` | failing 6/7 -> passing 7/7 |
 
 Stage evidence is under `docs/phase8/` and `docs/phase9/`:
 
@@ -280,6 +298,9 @@ Stage evidence is under `docs/phase8/` and `docs/phase9/`:
 - `phase8-report.md` for the acceptance review
 - `stage-e-physics.md`, `stage-e-physics.json`, `stage-e-run-*.log`,
   `stage-e-failure.*`, `stage-e-wall.png`, and `stage-e-air.png` for Stage E
+- `stage-f-generalization.md`, `stage-f-suite.log`, `stage-f-control.log`,
+  `stage-f-inspect.json`, `stage-f-repair.*`, `stage-f-locked.png`,
+  `stage-f-key.png`, and `stage-f-open.png` for Stage F
 
 ## Limitations
 
@@ -291,6 +312,10 @@ Stage evidence is under `docs/phase8/` and `docs/phase9/`:
   exact in the measured suite, but the same process after repeated contact
   differed by about `1.43e-6`; the test therefore claims outcome repeatability
   and millimetre-selected-field repeatability, not bitwise same-process state.
+- The Stage F door fixture is one capsule, one rectangular door, one key, and
+  60 Hz. It proves that the generic action map, real physics, inspection, and
+  reset path can carry a second mechanic; it is not a general interaction or
+  inventory framework.
 - Screenshots require a display/windowed run and are not part of the headless
   gate.
 - The bridge uses loopback and no authentication. It is suitable for a local

@@ -1,0 +1,613 @@
+{
+  "fixture": "door",
+  "scenario": "locked-door-key-live-inspection",
+  "initial": {
+    "snapshot": {
+      "distance_to_door": 5.5,
+      "distance_to_key": 2.23662686347961,
+      "door_collision_enabled": true,
+      "door_locked": true,
+      "door_open": false,
+      "door_rotation_degrees": 0,
+      "feedback": "LOCKED - FIND THE KEY",
+      "game_ready": true,
+      "grounded": true,
+      "hash": "03a99e65f6ba53a8b571fff64003bdf91ec908c25023ec9fd37f44551f681cd5",
+      "hud": "DOOR / KEY FIXTURE\nDOOR: LOCKED | KEY: AVAILABLE\nPROMPT: APPROACH THE DOOR\nFEEDBACK: LOCKED - FIND THE KEY\nz=5.500 attempts=0 opens=0",
+      "input": {
+        "actions": {
+          "interact": false
+        },
+        "forward": 0,
+        "jump": false,
+        "restart": false,
+        "strafe": 0
+      },
+      "interaction_count": 0,
+      "key_available": true,
+      "key_visible": true,
+      "last_delta": 0.0166666666666667,
+      "locked_attempts": 0,
+      "open_count": 0,
+      "outcome_hash": "1b332f18374b5f9147b0434523a08bcaec7a24115d1e9fbfa150d0f829e56a16",
+      "paused": true,
+      "physics_frames": 9,
+      "physics_ticks_per_second": 60,
+      "player_has_key": false,
+      "player_motion": [
+        0,
+        0,
+        0
+      ],
+      "player_position": [
+        0,
+        0.850000023841858,
+        5.5
+      ],
+      "player_velocity": [
+        0,
+        0,
+        0
+      ],
+      "prompt": "APPROACH THE DOOR",
+      "step": 3,
+      "uptime_ms": 101,
+      "wall_contact": false
+    },
+    "locked_property": true,
+    "open_property": false
+  },
+  "locked": {
+    "attempt": {
+      "distance_to_door": 0.500116407871246,
+      "distance_to_key": 4.47231149673462,
+      "door_collision_enabled": true,
+      "door_locked": true,
+      "door_open": false,
+      "door_rotation_degrees": 0,
+      "feedback": "LOCKED - KEY REQUIRED",
+      "game_ready": true,
+      "grounded": true,
+      "hash": "ab4787e070712fa287e6595325c6feaef60b8a8c865effc4748ee9031215db0f",
+      "hud": "DOOR / KEY FIXTURE\nDOOR: LOCKED | KEY: AVAILABLE\nPROMPT: PRESS E TO TRY THE DOOR\nFEEDBACK: LOCKED - KEY REQUIRED\nz=0.500 attempts=1 opens=0",
+      "input": {
+        "actions": {
+          "interact": false
+        },
+        "forward": 0,
+        "jump": false,
+        "restart": false,
+        "strafe": 0
+      },
+      "interaction_count": 1,
+      "key_available": true,
+      "key_visible": true,
+      "last_delta": 0.0166666666666667,
+      "locked_attempts": 1,
+      "open_count": 0,
+      "outcome_hash": "a0099a5445e5521c7036a148de7287db84db0e828149ffb7457720de6e2b51af",
+      "paused": true,
+      "physics_frames": 111,
+      "physics_ticks_per_second": 60,
+      "player_has_key": false,
+      "player_motion": [
+        0,
+        0,
+        0
+      ],
+      "player_position": [
+        0,
+        0.850000023841858,
+        0.500116407871246
+      ],
+      "player_velocity": [
+        0,
+        0,
+        0
+      ],
+      "prompt": "PRESS E TO TRY THE DOOR",
+      "step": 104,
+      "uptime_ms": 1792,
+      "wall_contact": true
+    },
+    "blocked": {
+      "distance_to_door": 0.500116407871246,
+      "distance_to_key": 4.47231149673462,
+      "door_collision_enabled": true,
+      "door_locked": true,
+      "door_open": false,
+      "door_rotation_degrees": 0,
+      "feedback": "LOCKED - KEY REQUIRED",
+      "game_ready": true,
+      "grounded": true,
+      "hash": "8938e563dfa697ff5599a4213a3279f8ce333907aa2f2ad9d3187f24bd8391d4",
+      "hud": "DOOR / KEY FIXTURE\nDOOR: LOCKED | KEY: AVAILABLE\nPROMPT: PRESS E TO TRY THE DOOR\nFEEDBACK: LOCKED - KEY REQUIRED\nz=0.500 attempts=1 opens=0",
+      "input": {
+        "actions": {
+          "interact": false
+        },
+        "forward": 1,
+        "jump": false,
+        "restart": false,
+        "strafe": 0
+      },
+      "interaction_count": 1,
+      "key_available": true,
+      "key_visible": true,
+      "last_delta": 0.0166666666666667,
+      "locked_attempts": 1,
+      "open_count": 0,
+      "outcome_hash": "0c8d030660c7e0261abccea1caa93e8664a5549fda05b48866ecbda4fa4ee6c5",
+      "paused": true,
+      "physics_frames": 142,
+      "physics_ticks_per_second": 60,
+      "player_has_key": false,
+      "player_motion": [
+        0,
+        0,
+        0
+      ],
+      "player_position": [
+        0,
+        0.850000023841858,
+        0.500116407871246
+      ],
+      "player_velocity": [
+        0,
+        0,
+        0
+      ],
+      "prompt": "PRESS E TO TRY THE DOOR",
+      "step": 134,
+      "uptime_ms": 2309,
+      "wall_contact": true
+    },
+    "locked_property": true
+  },
+  "key": {
+    "snapshot": {
+      "distance_to_door": 4.92442989349365,
+      "distance_to_key": 0.0499999523162842,
+      "door_collision_enabled": true,
+      "door_locked": true,
+      "door_open": false,
+      "door_rotation_degrees": 0,
+      "feedback": "KEY ACQUIRED",
+      "game_ready": true,
+      "grounded": true,
+      "hash": "f22758cfb054a68abf53e6eb9a10ca54d4639826ca59add38b4118319b31682c",
+      "hud": "DOOR / KEY FIXTURE\nDOOR: LOCKED | KEY: HELD\nPROMPT: APPROACH THE DOOR\nFEEDBACK: KEY ACQUIRED\nz=4.500 attempts=0 opens=0",
+      "input": {
+        "actions": {
+          "interact": false
+        },
+        "forward": 1,
+        "jump": false,
+        "restart": false,
+        "strafe": 0
+      },
+      "interaction_count": 0,
+      "key_available": false,
+      "key_visible": false,
+      "last_delta": 0.0166666666666667,
+      "locked_attempts": 0,
+      "open_count": 0,
+      "outcome_hash": "6ecb5c025915cf7bbc591339305ea6c4d66a736bdfbdcb891945eb4e4b562f36",
+      "paused": true,
+      "physics_frames": 191,
+      "physics_ticks_per_second": 60,
+      "player_has_key": true,
+      "player_motion": [
+        0,
+        0,
+        -0.0666666030883789
+      ],
+      "player_position": [
+        2.00000071525574,
+        0.850000023841858,
+        4.50000095367432
+      ],
+      "player_velocity": [
+        0,
+        0,
+        -4
+      ],
+      "prompt": "APPROACH THE DOOR",
+      "step": 48,
+      "uptime_ms": 3123,
+      "wall_contact": false
+    },
+    "visible_property": false
+  },
+  "open": {
+    "snapshot": {
+      "distance_to_door": 3.49998068809509,
+      "distance_to_key": 8.24634456634521,
+      "door_collision_enabled": false,
+      "door_locked": false,
+      "door_open": true,
+      "door_rotation_degrees": 100.000000506024,
+      "feedback": "UNLOCKED - DOOR OPEN",
+      "game_ready": true,
+      "grounded": true,
+      "hash": "c8338aefacc9b0996954c2e2d443d12ea2feee320eb034159dd5a64053184937",
+      "hud": "DOOR / KEY FIXTURE\nDOOR: OPEN | KEY: HELD\nPROMPT: DOOR OPEN - GO THROUGH\nFEEDBACK: UNLOCKED - DOOR OPEN\nz=-3.500 attempts=0 opens=1",
+      "input": {
+        "actions": {
+          "interact": false
+        },
+        "forward": 1,
+        "jump": false,
+        "restart": false,
+        "strafe": 0
+      },
+      "interaction_count": 1,
+      "key_available": false,
+      "key_visible": false,
+      "last_delta": 0.0166666666666667,
+      "locked_attempts": 0,
+      "open_count": 1,
+      "outcome_hash": "6cdff7cf8e61adf41e058e9aaedb150e9295249272ee3122256400e265313459",
+      "paused": true,
+      "physics_frames": 383,
+      "physics_ticks_per_second": 60,
+      "player_has_key": true,
+      "player_motion": [
+        0,
+        0,
+        -0.0666666030883789
+      ],
+      "player_position": [
+        -1.49011611938477e-8,
+        0.850000023841858,
+        -3.49998068809509
+      ],
+      "player_velocity": [
+        0,
+        0,
+        -4
+      ],
+      "prompt": "DOOR OPEN - GO THROUGH",
+      "step": 239,
+      "uptime_ms": 6325,
+      "wall_contact": false
+    },
+    "open_property": true,
+    "locked_property": false,
+    "collision_disabled": true
+  },
+  "reset": {
+    "immediate": {
+      "distance_to_door": 5.5,
+      "distance_to_key": 2.23662686347961,
+      "door_collision_enabled": true,
+      "door_locked": true,
+      "door_open": false,
+      "door_rotation_degrees": 0,
+      "feedback": "LOCKED - FIND THE KEY",
+      "grounded": true,
+      "hash": "ce36b4487de842cfd71981c0a1fbe2b08523f86c7acb01836dd3304dc5e1904f",
+      "hud": "DOOR / KEY FIXTURE\nDOOR: LOCKED | KEY: AVAILABLE\nPROMPT: APPROACH THE DOOR\nFEEDBACK: LOCKED - FIND THE KEY\nz=5.500 attempts=0 opens=0",
+      "input": {
+        "actions": {
+          "interact": false
+        },
+        "forward": 0,
+        "jump": false,
+        "restart": false,
+        "strafe": 0
+      },
+      "interaction_count": 0,
+      "key_available": true,
+      "key_visible": true,
+      "last_delta": 0,
+      "locked_attempts": 0,
+      "open_count": 0,
+      "outcome_hash": "2733d7009ab2bde9288f622a6817c850faf8e51ce509fa23b1e77f1c7e4ad02f",
+      "physics_frames": 384,
+      "physics_ticks_per_second": 60,
+      "player_has_key": false,
+      "player_motion": [
+        0,
+        0,
+        0
+      ],
+      "player_position": [
+        0,
+        0.850000023841858,
+        5.5
+      ],
+      "player_velocity": [
+        0,
+        0,
+        0
+      ],
+      "prompt": "APPROACH THE DOOR",
+      "step": 0,
+      "wall_contact": false
+    },
+    "settled": {
+      "distance_to_door": 5.5,
+      "distance_to_key": 2.23662686347961,
+      "door_collision_enabled": true,
+      "door_locked": true,
+      "door_open": false,
+      "door_rotation_degrees": 0,
+      "feedback": "LOCKED - FIND THE KEY",
+      "game_ready": true,
+      "grounded": true,
+      "hash": "03a99e65f6ba53a8b571fff64003bdf91ec908c25023ec9fd37f44551f681cd5",
+      "hud": "DOOR / KEY FIXTURE\nDOOR: LOCKED | KEY: AVAILABLE\nPROMPT: APPROACH THE DOOR\nFEEDBACK: LOCKED - FIND THE KEY\nz=5.500 attempts=0 opens=0",
+      "input": {
+        "actions": {
+          "interact": false
+        },
+        "forward": 0,
+        "jump": false,
+        "restart": false,
+        "strafe": 0
+      },
+      "interaction_count": 0,
+      "key_available": true,
+      "key_visible": true,
+      "last_delta": 0.0166666666666667,
+      "locked_attempts": 0,
+      "open_count": 0,
+      "outcome_hash": "1b332f18374b5f9147b0434523a08bcaec7a24115d1e9fbfa150d0f829e56a16",
+      "paused": true,
+      "physics_frames": 387,
+      "physics_ticks_per_second": 60,
+      "player_has_key": false,
+      "player_motion": [
+        0,
+        0,
+        0
+      ],
+      "player_position": [
+        0,
+        0.850000023841858,
+        5.5
+      ],
+      "player_velocity": [
+        0,
+        0,
+        0
+      ],
+      "prompt": "APPROACH THE DOOR",
+      "step": 3,
+      "uptime_ms": 6394,
+      "wall_contact": false
+    },
+    "collision_disabled": false,
+    "key_visible": true
+  },
+  "scene_tree": {
+    "children": [
+      {
+        "children": [],
+        "class": "Node",
+        "name": "HarnessBridge",
+        "path": "/root/HarnessBridge"
+      },
+      {
+        "children": [
+          {
+            "children": [],
+            "class": "WorldEnvironment",
+            "name": "WorldEnvironment",
+            "path": "/root/Main/WorldEnvironment"
+          },
+          {
+            "children": [],
+            "class": "DirectionalLight3D",
+            "name": "Sun",
+            "path": "/root/Main/Sun"
+          },
+          {
+            "children": [
+              {
+                "children": [],
+                "class": "CollisionShape3D",
+                "name": "Collision",
+                "path": "/root/Main/Ground/Collision"
+              },
+              {
+                "children": [],
+                "class": "MeshInstance3D",
+                "name": "Mesh",
+                "path": "/root/Main/Ground/Mesh"
+              }
+            ],
+            "class": "StaticBody3D",
+            "name": "Ground",
+            "path": "/root/Main/Ground"
+          },
+          {
+            "children": [
+              {
+                "children": [],
+                "class": "CollisionShape3D",
+                "name": "Collision",
+                "path": "/root/Main/LeftWall/Collision"
+              },
+              {
+                "children": [],
+                "class": "MeshInstance3D",
+                "name": "Mesh",
+                "path": "/root/Main/LeftWall/Mesh"
+              }
+            ],
+            "class": "StaticBody3D",
+            "name": "LeftWall",
+            "path": "/root/Main/LeftWall"
+          },
+          {
+            "children": [
+              {
+                "children": [],
+                "class": "CollisionShape3D",
+                "name": "Collision",
+                "path": "/root/Main/RightWall/Collision"
+              },
+              {
+                "children": [],
+                "class": "MeshInstance3D",
+                "name": "Mesh",
+                "path": "/root/Main/RightWall/Mesh"
+              }
+            ],
+            "class": "StaticBody3D",
+            "name": "RightWall",
+            "path": "/root/Main/RightWall"
+          },
+          {
+            "children": [
+              {
+                "children": [],
+                "class": "CollisionShape3D",
+                "name": "Collision",
+                "path": "/root/Main/Lintel/Collision"
+              },
+              {
+                "children": [],
+                "class": "MeshInstance3D",
+                "name": "Mesh",
+                "path": "/root/Main/Lintel/Mesh"
+              }
+            ],
+            "class": "StaticBody3D",
+            "name": "Lintel",
+            "path": "/root/Main/Lintel"
+          },
+          {
+            "children": [
+              {
+                "children": [],
+                "class": "CollisionShape3D",
+                "name": "Collision",
+                "path": "/root/Main/BackWall/Collision"
+              },
+              {
+                "children": [],
+                "class": "MeshInstance3D",
+                "name": "Mesh",
+                "path": "/root/Main/BackWall/Mesh"
+              }
+            ],
+            "class": "StaticBody3D",
+            "name": "BackWall",
+            "path": "/root/Main/BackWall"
+          },
+          {
+            "children": [
+              {
+                "children": [],
+                "class": "CollisionShape3D",
+                "name": "Collision",
+                "path": "/root/Main/Door/Collision"
+              },
+              {
+                "children": [],
+                "class": "MeshInstance3D",
+                "name": "Panel",
+                "path": "/root/Main/Door/Panel"
+              },
+              {
+                "children": [],
+                "class": "MeshInstance3D",
+                "name": "Handle",
+                "path": "/root/Main/Door/Handle"
+              }
+            ],
+            "class": "StaticBody3D",
+            "name": "Door",
+            "path": "/root/Main/Door"
+          },
+          {
+            "children": [
+              {
+                "children": [],
+                "class": "MeshInstance3D",
+                "name": "Mesh",
+                "path": "/root/Main/Key/Mesh"
+              },
+              {
+                "children": [],
+                "class": "Label3D",
+                "name": "KeyLabel",
+                "path": "/root/Main/Key/KeyLabel"
+              }
+            ],
+            "class": "Node3D",
+            "name": "Key",
+            "path": "/root/Main/Key"
+          },
+          {
+            "children": [
+              {
+                "children": [],
+                "class": "CollisionShape3D",
+                "name": "Collision",
+                "path": "/root/Main/Player/Collision"
+              },
+              {
+                "children": [],
+                "class": "MeshInstance3D",
+                "name": "Body",
+                "path": "/root/Main/Player/Body"
+              }
+            ],
+            "class": "CharacterBody3D",
+            "name": "Player",
+            "path": "/root/Main/Player"
+          },
+          {
+            "children": [],
+            "class": "Camera3D",
+            "name": "Camera",
+            "path": "/root/Main/Camera"
+          },
+          {
+            "children": [],
+            "class": "Label3D",
+            "name": "DoorLabel",
+            "path": "/root/Main/DoorLabel"
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [],
+                        "class": "Label",
+                        "name": "Status",
+                        "path": "/root/Main/HUD/Panel/@MarginContainer@2/Status"
+                      }
+                    ],
+                    "class": "MarginContainer",
+                    "name": "@MarginContainer@2",
+                    "path": "/root/Main/HUD/Panel/@MarginContainer@2"
+                  }
+                ],
+                "class": "PanelContainer",
+                "name": "Panel",
+                "path": "/root/Main/HUD/Panel"
+              }
+            ],
+            "class": "CanvasLayer",
+            "name": "HUD",
+            "path": "/root/Main/HUD"
+          }
+        ],
+        "class": "Node3D",
+        "name": "Main",
+        "path": "/root/Main"
+      }
+    ],
+    "class": "Window",
+    "name": "root",
+    "path": "/root"
+  }
+}
