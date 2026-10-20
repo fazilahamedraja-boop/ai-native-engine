@@ -163,7 +163,7 @@ Errors use the same `{path, code, message}` shape as scene errors, plus
 `expected`/`measured` where a number is involved.
 
 ```bash
-npm run test:assets    # 44 tests: contract, sword, rock, pine, framing — ~50 ms, no browser
+npm run test:assets    # 76 tests: contract, sword, rock, pine, framing, GLB import — ~180 ms, no browser
 ```
 
 ### Inspection
@@ -203,6 +203,40 @@ cost is that `top` on a tall asset is small — it exists to read the
 cross-section. Captures are byte-identical across repeats (verified twice:
 `SHA256 5CBCB50C045C9CFF…`). Metals are lit by a baked `RoomEnvironment`, without
 which `metalness 0.7` renders as flat grey.
+
+### Character import
+
+`src/assets/import/glb.ts` indexes a GLB from its container and JSON chunk only:
+node names, transforms, skins, animations, and bounds from declared accessor
+min/max pushed through node transforms. It never decodes buffers, so it needs no
+THREE, DOM or filesystem, and a malformed file comes back as the usual
+`{path, code, message}` issues instead of an exception.
+
+```bash
+npm run assets -- index content/assets/character/placeholder-character.glb
+npm run assets -- character content/assets/character/placeholder-character.glb
+```
+
+`index` prints the whole index, including world bounds, named nodes, and the
+declared generator. `character` applies the kind contract: bounds must exist,
+triangles must be non-zero, and `head`, `hand_l` and `hand_r` must each resolve to
+exactly one node. Names are normalised to the socket grammar, so Blender's
+`Hand.L` becomes `hand_l`; two nodes claiming the same slug is an
+`ambiguous_socket`. Non-triangle primitives, accessors without min/max, parent
+cycles and dangling indices are rejected, because the index is the only evidence
+the manifest will have.
+
+`content/assets/character/placeholder-character.glb` is a **fixture**, not a
+shipped asset: six boxes, 72 triangles, no armature, no animation, feet at the
+origin, sha256 `1af652d7…`. `scripts/make-character.py` regenerates it headlessly
+and produced identical bytes on three consecutive runs. It uses boxes because
+Blender reorders a UV sphere's index buffer between exports.
+
+**It is not yet a character asset.** There is deliberately no `.asset.json` for
+it: `buildAsset` rejects `provenance.type = imported`, and imported assets have
+no validation or preview path yet. A manifest that could not be built or
+inspected would not be honest. Milestone 5 stays open until a real GLB is indexed,
+checked against a manifest, and rendered.
 
 ## Hot reload
 
@@ -352,5 +386,7 @@ meters · +Y up · +Z forward · floor-center origin for props · feet-center fo
 
 - `inspect()` reports node world position and scale, not world rotation.
 - The avatar has no facing direction, so it reads as a capsule rather than a
-  character; that arrives with the Phase 2 character import.
+  character.
+- Imported characters are indexed but not buildable or previewable; the GLB
+  indexer exists, the manifest and render path do not.
 - No shadow-quality tuning, no mesh instancing, no LOD.
