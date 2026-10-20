@@ -29,7 +29,7 @@ committed.
 
 | # | Benchmark | Prediction | Observed | Wall-clock | Content tokens | Result |
 |---|---|---|---|---|---|---|
-| B1 | Sword disc guard | 122 tri, ±0.05 x/z | pending | pending | pending | pending |
+| B1 | Sword disc guard | 122 tri, ±0.05 x/z | 122 tri, 366 v, bounds ±0.05; hash `c2324397` | 334 s (1.3 s CLI) | ~1.1k | PASS |
 | B2 | Bronze shortsword | 122 tri, 0.7 m | pending | pending | pending | pending |
 | B3 | Humanoid slate override | artifact hash unchanged | pending | pending | pending | pending |
 | B4 | Pine snow | 316 tri, bounds unchanged | pending | pending | pending | pending |
@@ -59,7 +59,23 @@ committed.
 
 ### Observed
 
-Pending.
+- `assets regen sword-iron-01` rejected the stale bounds exactly as predicted:
+  declared `[-0.110, -0.100, -0.026] .. [0.110, 0.850, 0.026]`, measured
+  `[-0.050, -0.100, -0.050] .. [0.050, 0.850, 0.050]`, exit 1.
+- `regen --accept` rewrote the bounds; `validate` passed 1/1.
+- Artifact: **122 triangles**, **366 vertices**, hash
+  `c2324397626e6ad3`; bounds `±0.05` x/z, `-0.1 .. 0.85` y.
+- Captures: before 22 ms, after 29 ms. CLI accept + validate: 1,294 ms.
+- End-to-end wall-clock to the commit command: **334 s** (5.6 min).
+- Content tokens: **~1.1k** (estimate; includes the CLI's full-file
+  formatting rewrite, see below).
+- **Finding:** `regen --accept` rewrites the whole manifest with expanded
+  2-space formatting, turning a two-value semantic change into a large diff.
+  It is correct but costly for the text-first loop. A canonical formatter or a
+  format-preserving accept is a candidate follow-up.
+- Image: `docs/phase3/b1-sword-guard.png`.
+
+Result: **PASS** (122 tri and bounds match; validation clean).
 
 ## B2 — Bronze shortsword
 
