@@ -115,7 +115,7 @@ __engine.runTests()
 
 | Capture | Step | State hash | Bytes | File |
 |---|---|---|---|---|
-| `start` | 120 | `22bd7253` | 56,190 | `docs/phase4/start.png` |
+| `phase4-start` | 120 | `22bd7253` | 56,190 | `.cache/captures/phase4-start.png` (gitignored) |
 | `phase4-collected` | 320 | `1cb027bc` | 33,331 | `.cache/captures/phase4-collected.png` (gitignored) |
 | `phase4-won` | 540 | `a31def8f` | 48,890 | `.cache/captures/phase4-won.png` (gitignored) |
 
