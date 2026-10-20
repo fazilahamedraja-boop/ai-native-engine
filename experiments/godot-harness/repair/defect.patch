@@ -1,0 +1,12 @@
+diff --git a/scripts/player.gd b/scripts/player.gd
+--- a/scripts/player.gd
++++ b/scripts/player.gd
+@@ -58,7 +58,7 @@ func step_movement(delta: float, forward := 0.0, strafe := 0.0, jump := false) -
+ 	# context. move_and_collide(motion) takes the step delta explicitly, so the
+ 	# same sequence is repeatable. The fixture has flat ground and no wall
+ 	# colliders, so splitting horizontal and vertical motion is sufficient.
+-	var direction := Vector3(strafe, 0.0, -forward)
++	var direction := Vector3(strafe, 0.0, forward)
+ 	if direction.length_squared() > 1.0:
+ 		direction = direction.normalized()
+ 

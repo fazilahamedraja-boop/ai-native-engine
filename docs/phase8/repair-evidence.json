@@ -1,0 +1,55 @@
+{
+  "operation": "repair_experiment",
+  "ok": true,
+  "source": "fixtures/sentry",
+  "working_copy": "artifacts/repair-run/sentry",
+  "defect": {
+    "file": "scripts/player.gd",
+    "change": "var direction := Vector3(strafe, 0.0, -forward) -> Vector3(strafe, 0.0, forward)",
+    "pure_logic_suite": "passed before repair (defect is in live movement)"
+  },
+  "before": {
+    "live_test_exit": 1,
+    "live_test_stdout": "✖ repair fixture: forward movement and the escape route (1523.9988ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 21141.2987\n\n✖ failing tests:\n\ntest at tests\\repair.test.mjs:7:1\n✖ repair fixture: forward movement and the escape route (1523.9988ms)\n  AssertionError [ERR_ASSERTION]: forward input moved z to 5.99999666213989, expected approximately -6\n      at TestContext.<anonymous> (file:///C:/Users/hacke/ai-native-engine-phase8/experiments/godot-harness/tests/repair.test.mjs:16:12)\n      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n      at async Test.run (node:internal/test_runner/test:1409:7)\n      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {\n    generatedMessage: false,\n    code: 'ERR_ASSERTION',\n    actual: false,\n    expected: true,\n    operator: '==',\n    diff: 'simple'\n  }\n",
+    "live_test_stderr": "",
+    "diagnosis": {
+      "operation": "diagnose_defect",
+      "phase": "active",
+      "position": [
+        0,
+        0.850000023841858,
+        5.99999666213989
+      ],
+      "expected_z": -6,
+      "seen_by": [],
+      "detection": 0,
+      "hash": "7447af2446290ad67baec163244bb1e0c22104ef84344ded2e8b351bb095e850"
+    }
+  },
+  "repair": {
+    "action": "restore the exact movement direction line only",
+    "target": "scripts/player.gd"
+  },
+  "after": {
+    "live_test_exit": 0,
+    "live_test_stdout": "✔ repair fixture: forward movement and the escape route (2127.9654ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 21016.8612\n",
+    "live_test_stderr": "",
+    "diagnosis": {
+      "operation": "diagnose_defect",
+      "phase": "active",
+      "position": [
+        0,
+        0.850000023841858,
+        -5.99999666213989
+      ],
+      "expected_z": -6,
+      "seen_by": [
+        "guard-a"
+      ],
+      "detection": 0.677777777777777,
+      "hash": "ef7c07163d8cf8aa5f68583c1d424b5e9a123d8150bcb4d36a7c6be0890f208b"
+    },
+    "pure_logic_ok": true
+  },
+  "human_intervention": "None required for the experiment: the script injects and repairs the exact one-line defect deterministically. The fix is limited to scripts/player.gd."
+}

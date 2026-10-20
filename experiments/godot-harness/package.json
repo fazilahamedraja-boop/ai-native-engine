@@ -10,6 +10,7 @@
     "test:session": "node --test tests/session.test.mjs",
     "test:gameplay": "node --test tests/gameplay.test.mjs",
     "test:screenshot": "node --test tests/screenshot.test.mjs",
+    "test:repair": "node repair/run.mjs",
     "evidence:live": "node controller/live-suite.mjs",
     "inspect": "node controller/harness.mjs inspect --project fixtures/sentry --json"
   }
