@@ -155,15 +155,16 @@ them keep the hashes they were published with.
 
 Three checks always run and cannot be declared away: the artifact is non-empty,
 every coordinate is finite, and measured bounds match the contract within
-`1e-4 m`. `tests[]` adds `origin-at`, `sockets-present`, `max-extent`,
-`triangles-max`, `watertight`, `area-positive`. A socket outside the mesh is a
-warning, not an error — it is legal, and usually a stale coordinate.
+`1e-4 m`. Every declared socket must also exist and match within `1e-4 m`; a
+socket outside the mesh is a warning, not an error — it is legal, and usually a
+stale coordinate. `tests[]` adds `origin-at`, `sockets-present`, `max-extent`,
+`triangles-max`, `watertight`, `area-positive`.
 
 Errors use the same `{path, code, message}` shape as scene errors, plus
 `expected`/`measured` where a number is involved.
 
 ```bash
-npm run test:assets    # 77 tests: contract, sword, rock, pine, framing, GLB import — ~180 ms, no browser
+npm run test:assets    # 121 tests: contract, sword, rock, pine, framing, GLB index, decode, import
 ```
 
 ### Inspection
@@ -183,8 +184,8 @@ the agent does not have to learn two.
 
 `regen` compares the artifact against the declared contract. Without `--accept`
 it reports drift and exits 1. With `--accept` it rewrites bounds and sockets —
-but refuses if any check other than `bounds-match` is failing, so a broken
-generator cannot be papered over.
+but refuses if any check other than contract drift is failing, so a broken
+generator or importer cannot be papered over.
 
 ### Preview page
 
@@ -201,42 +202,75 @@ All views share one camera distance, derived from the asset's bounding sphere.
 That makes two captures directly comparable and makes a size change visible. The
 cost is that `top` on a tall asset is small — it exists to read the
 cross-section. Captures are byte-identical across repeats (verified twice:
-`SHA256 5CBCB50C045C9CFF…`). Metals are lit by a baked `RoomEnvironment`, without
+`SHA256 5CBCB50C045C9CFF…` for a procedural asset, `5C5DB509E5E0B283…` for the
+imported character). Metals are lit by a baked `RoomEnvironment`, without
 which `metalness 0.7` renders as flat grey.
 
 ### Character import
 
-`src/assets/import/glb.ts` indexes a GLB from its container and JSON chunk only:
-node names, transforms, skins, animations, and bounds from declared accessor
-min/max pushed through node transforms. It never decodes buffers, so it needs no
-THREE, DOM or filesystem, and a malformed file comes back as the usual
-`{path, code, message}` issues instead of an exception.
+A character is the one kind that is imported rather than generated. The manifest
+pins the GLB by SHA-256, and the build path is:
+
+```
+GLB bytes -> container/JSON index -> accessor decode -> MeshData -> validate
+```
+
+`src/assets/import/glb.ts` indexes the JSON chunk first: node names, transforms,
+skins, animations, and declared bounds. That keeps malformed files and
+unsupported structures cheap to reject, and it is the evidence the manifest
+contract is checked against. Non-triangle primitives, accessors without min/max,
+parent cycles and dangling indices are rejected at this stage, because the index
+is the evidence the manifest will have. `src/assets/import/decode.ts` then reads
+the BIN chunk into the same `MeshData` every procedural asset produces.
+
+Supported: float32 VEC3 positions and normals, indexed (uint8/16/32) and
+non-indexed `TRIANGLES`, accessor and bufferView offsets, interleaved
+`byteStride`, node TRS or matrix transforms, and one material covering base
+colour, roughness, metalness and double-sided. Normals use the inverse-transpose;
+a mirroring node reverses winding. If `NORMAL` is absent the primitive is
+de-indexed and flat normals are generated, as glTF requires.
+
+Rejected explicitly, never silently dropped: skins, morph targets, textures,
+non-opaque or emissive materials, extensions, sparse accessors, external or
+data-URI buffers, multiple buffers, unsupported attributes (`COLOR_0`,
+`JOINTS_0`, `WEIGHTS_0`), mixed materials, singular transforms, out-of-range
+indices and degenerate triangles. Animation clips are indexed but warn
+(`animations_ignored`): the manifest describes the static mesh, and nothing is
+played.
 
 ```bash
 npm run assets -- index content/assets/character/placeholder-character.glb
+npm run assets -- decode content/assets/character/placeholder-character.glb
 npm run assets -- character content/assets/character/placeholder-character.glb
 ```
 
-`index` prints the whole index, including world bounds, named nodes, and the
-declared generator. `character` applies the kind contract: bounds must exist,
-triangles must be non-zero, and `head`, `hand_l` and `hand_r` must each resolve to
-exactly one node. Names are normalised to the socket grammar, so Blender's
-`Hand.L` becomes `hand_l`; two nodes claiming the same slug is an
-`ambiguous_socket`. Non-triangle primitives, accessors without min/max, parent
-cycles and dangling indices are rejected, because the index is the only evidence
-the manifest will have.
+`decode` prints decoded bounds, sockets, material, triangle count and artifact
+hash beside the declared index. `character` applies the kind contract: bounds
+must exist, triangles must be non-zero, and `head`, `hand_l` and `hand_r` must
+each resolve to exactly one node. Names are normalised (`Hand.L` -> `hand_l`),
+and two nodes claiming one slug is an `ambiguous_socket`.
 
-`content/assets/character/placeholder-character.glb` is a **fixture**, not a
-shipped asset: six boxes, 72 triangles, no armature, no animation, feet at the
-origin, sha256 `1af652d7…`. `scripts/make-character.py` regenerates it headlessly
-and produced identical bytes on three consecutive runs. It uses boxes because
-Blender reorders a UV sphere's index buffer between exports.
+`buildImportedAsset` refuses a source whose SHA-256 differs from the manifest,
+and reports an importer-version mismatch instead of guessing. The browser
+catalog fetches the bundled GLB and computes the digest with WebCrypto, so the
+preview and the CLI build the same bytes; the fixture's artifact hash is
+`4aace1dd1ecb9259` in both.
 
-**It is not yet a character asset.** There is deliberately no `.asset.json` for
-it: `buildAsset` rejects `provenance.type = imported`, and imported assets have
-no validation or preview path yet. A manifest that could not be built or
-inspected would not be honest. Milestone 5 stays open until a real GLB is indexed,
-checked against a manifest, and rendered.
+`content/assets/character/placeholder-character.asset.json` is the first
+imported manifest. It was authored with `regen --accept` (bounds and sockets
+drifted first, then were rewritten from the decoded artifact) and passes every
+test: 72 triangles, 144 vertices, bounds `[-0.25, 0, -0.115] .. [0.25, 1.63,
+0.115]`, sockets `head (0, 1.515, 0)`, `hand_l (-0.215, 0.845, 0)`,
+`hand_r (0.215, 0.845, 0)`, material `#c4c7cb`, double-sided.
+
+The GLB itself is a **fixture**, not a shipped character: six boxes, no
+armature, no animation, feet at the origin, sha256 `1af652d7…`.
+`scripts/make-character.py` regenerates it headlessly and produced identical
+bytes on three consecutive runs (boxes, because Blender reorders a UV sphere's
+index buffer between exports). It is genuinely Blender-exported, so the whole
+sequence runs on real bytes: index -> manifest -> inspect -> validate ->
+preview -> two byte-identical captures. **Milestone 5 stays open until a real
+character GLB replaces it**; no pipeline code is waiting.
 
 ## Hot reload
 
@@ -332,13 +366,13 @@ directly with `node:zlib` so the number does not move when Vite changes how it
 reports sizes.
 
 ```
-index-BQ5mm_Df.js   raw 644911   gzip 164822
-gzip total 164822 B (164.8 kB) of 400 kB budget — 41.2%
+index-CgWl5xUP.js   raw 721276   gzip 187608
+gzip total 187608 B (187.6 kB) of 400 kB budget — 46.9%
 ```
 
-That includes THREE, Zod and the whole devtools surface. Vite's own log reports
-166.63 kB for the same file because it uses a different gzip setting; the script
-above is authoritative.
+That includes THREE, Zod, the GLB decoder and the whole devtools surface. Vite's
+own log reports 189.60 kB for the same file because it uses a different gzip
+setting; the script above is authoritative.
 
 ## Cameras
 
@@ -363,8 +397,11 @@ src/render/geometry.ts    MeshData -> BufferGeometry (the only asset/renderer se
 src/assets/schema.ts      manifest grammar, per-kind params, ontology checks
 src/assets/kinds.ts       4 kinds: contract defaults, required sockets, params
 src/assets/generators/    pure build(params, rng) -> MeshData + sockets
-src/assets/validate.ts    declared-bounds match + assertion runner
-src/assets/cli.ts         list | validate | inspect | preview | regen
+src/assets/import/glb.ts  GLB container + JSON index (no geometry decode)
+src/assets/import/decode.ts accessors -> MeshData, sockets and material
+src/assets/catalog.ts     bundled manifests; fetch + hash imported GLBs
+src/assets/validate.ts    declared bounds/sockets + assertion runner
+src/assets/cli.ts         list | validate | inspect | preview | regen | index | character | decode
 src/preview/              standalone asset viewport + window.__preview
 src/devtools/state.ts     snapshot + state hash
 src/devtools/tests.ts     runTests()
@@ -387,6 +424,11 @@ meters · +Y up · +Z forward · floor-center origin for props · feet-center fo
 - `inspect()` reports node world position and scale, not world rotation.
 - The avatar has no facing direction, so it reads as a capsule rather than a
   character.
-- Imported characters are indexed but not buildable or previewable; the GLB
-  indexer exists, the manifest and render path do not.
+- Imported characters are static meshes: no skinning, animation playback, morph
+  targets, textures or advanced material graphs. One material per asset; multiple
+  primitives with different materials are rejected.
+- The preview's GLB digest uses WebCrypto, so imported assets load only from
+  localhost or HTTPS.
+- The imported character is still the Blender-exported placeholder fixture.
+  Milestone 5 stays open until a real character GLB replaces it.
 - No shadow-quality tuning, no mesh instancing, no LOD.

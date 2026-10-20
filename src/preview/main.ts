@@ -33,10 +33,18 @@ export async function bootPreview(
   const requestedView = params.get('view') ?? 'three-quarter'
   const view: ViewName = isViewName(requestedView) ? requestedView : 'three-quarter'
 
-  const entry = findAsset(requestedId)
+  const entry = await findAsset(requestedId)
   if (entry === undefined) {
-    const known = catalog().entries.map((item) => `${item.doc.id} (${item.doc.kind})`)
-    showError(errorsEl, [`asset '${requestedId}' not found`, `available: ${known.join(', ') || 'none'}`])
+    const loaded = await catalog()
+    const known = loaded.entries.map((item) => `${item.doc.id} (${item.doc.kind})`)
+    const broken = loaded.failures.map(
+      (failure) => `${failure.file}: ${failure.errors[0]?.message ?? 'failed to load'}`,
+    )
+    showError(errorsEl, [
+      `asset '${requestedId}' not found`,
+      `available: ${known.join(', ') || 'none'}`,
+      ...(broken.length === 0 ? [] : ['failed to load:', ...broken]),
+    ])
     throw new Error(`asset '${requestedId}' not found`)
   }
 

@@ -139,6 +139,7 @@ export class AssetPreview {
         roughness: asset.material.roughness,
         metalness: asset.material.metalness,
         vertexColors: asset.geometry.colors !== undefined,
+        side: asset.material.doubleSided === true ? THREE.DoubleSide : THREE.FrontSide,
       }),
     )
     mesh.castShadow = true
