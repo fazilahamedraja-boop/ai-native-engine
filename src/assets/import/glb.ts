@@ -11,8 +11,9 @@ import type { AssetIssue, Bounds, ParseResult } from '../types'
  * through node transforms, which is enough to author a manifest and to reject a
  * file that could not be placed, posed or attached to.
  *
- * "Imported" here means "indexed", not "renderable": the contract is checked
- * against this index, and turning accessors into a mesh stays a separate seam.
+ * The BIN chunk is exposed with the parsed document so the decoder can read
+ * accessors without parsing the container a second time. Indexing remains the
+ * cheap gate; turning accessors into a mesh is `import/decode.ts`.
  */
 
 export const GLB_MAGIC = 0x46546c67
@@ -231,13 +232,17 @@ function localMatrix(node: Record<string, unknown>, path: string, errors: AssetI
   return trsMatrix(translation, rotation, scale, quatLength)
 }
 
-interface Container {
-  json: Record<string, unknown>
+/** Parsed container plus the raw chunks a decoder needs. */
+export interface GlbContents {
+  doc: Record<string, unknown>
+  /** Total file size in bytes. */
+  bytes: number
   jsonBytes: number
-  binBytes: number | null
+  /** BIN chunk payload, including any 4-byte padding. */
+  bin: Uint8Array | null
 }
 
-function readContainer(bytes: Uint8Array, errors: AssetIssue[]): Container | null {
+function readContainer(bytes: Uint8Array, errors: AssetIssue[]): GlbContents | null {
   if (bytes.length < 12) {
     errors.push({
       path: '',
@@ -287,7 +292,7 @@ function readContainer(bytes: Uint8Array, errors: AssetIssue[]): Container | nul
   if (errors.length > 0) return null
 
   let json: Uint8Array | null = null
-  let binBytes: number | null = null
+  let bin: Uint8Array | null = null
   let offset = 12
   let chunkIndex = 0
 
@@ -334,10 +339,10 @@ function readContainer(bytes: Uint8Array, errors: AssetIssue[]): Container | nul
         json = bytes.subarray(dataStart, dataStart + length)
       }
     } else if (type === CHUNK_BIN) {
-      if (binBytes !== null) {
+      if (bin !== null) {
         errors.push({ path, code: 'glb_bin_chunk_duplicate', message: 'more than one BIN chunk' })
       } else {
-        binBytes = length
+        bin = bytes.subarray(dataStart, dataStart + length)
       }
     }
     // Unknown chunk types are ignored, as the glTF spec requires.
@@ -369,7 +374,7 @@ function readContainer(bytes: Uint8Array, errors: AssetIssue[]): Container | nul
     return null
   }
 
-  return { json: parsed, jsonBytes: json.length, binBytes }
+  return { doc: parsed, bytes: bytes.length, jsonBytes: json.length, bin }
 }
 
 interface PositionReading {
@@ -772,15 +777,27 @@ function readAnimations(rawAnimations: readonly unknown[], accessors: readonly u
 }
 
 /**
- * Indexes a GLB. Structural problems are reported as issues, never thrown: an
- * agent needs a machine-readable reason, not a stack trace.
+ * Parses the GLB container and JSON chunk. Structural problems are reported as
+ * issues, never thrown: an agent needs a machine-readable reason, not a stack
+ * trace. The BIN chunk is returned untouched for the accessor decoder.
  */
-export function readGlbIndex(bytes: Uint8Array): ParseResult<GlbIndex> {
+export function readGlbContents(bytes: Uint8Array): ParseResult<GlbContents> {
   const errors: AssetIssue[] = []
-  const container = readContainer(bytes, errors)
-  if (container === null) return { ok: false, errors }
+  const contents = readContainer(bytes, errors)
+  // Container errors (misaligned chunks, duplicates, header mismatch) are fatal
+  // to indexing even when the JSON chunk itself parsed.
+  if (contents === null || errors.length > 0) return { ok: false, errors }
+  return { ok: true, value: contents }
+}
 
-  const doc = container.json
+/**
+ * Indexes an already-parsed GLB. Structural problems are reported as issues,
+ * never thrown: an agent needs a machine-readable reason, not a stack trace.
+ */
+export function indexGlb(contents: GlbContents): ParseResult<GlbIndex> {
+  const errors: AssetIssue[] = []
+
+  const doc = contents.doc
   const assetRecord = isRecord(doc.asset) ? doc.asset : {}
   const assetVersion = typeof assetRecord.version === 'string' ? assetRecord.version : ''
   if (!/^2\.\d+/.test(assetVersion)) {
@@ -865,9 +882,9 @@ export function readGlbIndex(bytes: Uint8Array): ParseResult<GlbIndex> {
     ok: true,
     value: {
       asset: { version: assetVersion, generator },
-      bytes: bytes.length,
-      jsonBytes: container.jsonBytes,
-      binBytes: container.binBytes,
+      bytes: contents.bytes,
+      jsonBytes: contents.jsonBytes,
+      binBytes: contents.bin?.length ?? null,
       scene,
       nodes,
       meshes,
@@ -880,6 +897,13 @@ export function readGlbIndex(bytes: Uint8Array): ParseResult<GlbIndex> {
       duplicateSlugs: duplicates,
     },
   }
+}
+
+/** Convenience for callers that only need the index, such as the CLI gate. */
+export function readGlbIndex(bytes: Uint8Array): ParseResult<GlbIndex> {
+  const contents = readGlbContents(bytes)
+  if (!contents.ok) return contents
+  return indexGlb(contents.value)
 }
 
 /**
