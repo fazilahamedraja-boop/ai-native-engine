@@ -29,7 +29,7 @@ committed.
 
 | # | Benchmark | Prediction | Observed | Wall-clock | Content tokens | Result |
 |---|---|---|---|---|---|---|
-| B1 | Sword disc guard | 122 tri, ±0.05 x/z | 122 tri, 366 v, bounds ±0.05; hash `c2324397` | 334 s (1.3 s CLI) | ~1.1k | PASS |
+| B1 | Sword disc guard | 122 tri, ±0.05 x/z | 122 tri, 366 v, bounds ±0.05; hash `c2324397` | 334 s core / 1,312 s full | ~1.1k | PASS |
 | B2 | Bronze shortsword | 122 tri, 0.7 m | pending | pending | pending | pending |
 | B3 | Humanoid slate override | artifact hash unchanged | pending | pending | pending | pending |
 | B4 | Pine snow | 316 tri, bounds unchanged | pending | pending | pending | pending |
@@ -66,7 +66,9 @@ committed.
 - Artifact: **122 triangles**, **366 vertices**, hash
   `c2324397626e6ad3`; bounds `±0.05` x/z, `-0.1 .. 0.85` y.
 - Captures: before 22 ms, after 29 ms. CLI accept + validate: 1,294 ms.
-- End-to-end wall-clock to the commit command: **334 s** (5.6 min).
+- Core loop wall-clock (prompt -> validated preview): **334 s** (5.6 min).
+- Full checkpoint interval (through commit `fbb0154`): **1,312 s** (21.9 min);
+  the review image and doc update account for the difference.
 - Content tokens: **~1.1k** (estimate; includes the CLI's full-file
   formatting rewrite, see below).
 - **Finding:** `regen --accept` rewrites the whole manifest with expanded
