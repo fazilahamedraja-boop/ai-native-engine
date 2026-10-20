@@ -32,7 +32,7 @@ committed.
 | B1 | Sword disc guard | 122 tri, ±0.05 x/z | 122 tri, 366 v, bounds ±0.05; hash `c2324397` | 334 s core / 1,312 s full | ~1.1k | PASS |
 | B2 | Bronze shortsword | 122 tri, 0.7 m | 122 tri, 366 v, hash `521e0ca3`; 6/6 validate | 337 s core | ~0.9k | PASS |
 | B3 | Humanoid slate override | artifact hash unchanged | 264 tri, hash `24a10e9d` unchanged; override exposed; slate render | 385 s core | ~0.6k | PASS |
-| B4 | Pine snow | 316 tri, bounds unchanged | pending | pending | pending | pending |
+| B4 | Pine snow | 316 tri, bounds unchanged | 316 tri, 948 v; only apex white; reverted | 281 s core | ~0.7k | CAUGHT (visual) |
 | B5 | Deliberate socket break | `socket_mismatch` | pending | pending | pending | pending |
 
 ## B1 — Sword disc guard
@@ -182,7 +182,27 @@ merge rule.
 
 ### Observed
 
-Pending.
+- `assets regen pine-nordic-01` reported **contract matches artifact**;
+  `validate` passed **6/6**; CLI time 991 ms.
+- Geometry with snow matched exactly: **316 triangles**, **948 vertices**,
+  hash `7e8789ed89afef21`, bounds unchanged. The prediction was right.
+- Preview: **only the top apex turns white.** The six per-tier snow bands sit
+  at the top of each cone and are occluded by the tier above. The intended
+  "snow on the pine" does not read visually. Captures: before 30 ms, after
+  19 ms.
+- The loop's preview step caught the failure; snow was reverted rather than
+  shipped. Final asset: **172 triangles**, hash
+  **`62e253c437e66a18`**, validate 6/6.
+- Core loop wall-clock (including the revert): **281 s** (4.7 min).
+- Content tokens: **~0.7k** (estimate).
+- **Finding / follow-up:** the `snow` parameter is geometry-correct but
+  visually ineffective on stacked tiers. Fix the generator (a visible snow
+  band placement or a `snowline` parameter) before using it. Do not count this
+  as a successful param edit.
+- Image: `docs/phase3/b4-pine-snow.png` (the after cell is the rejected
+  attempt; the shipped asset is the before cell).
+
+Result: **CAUGHT (visual failure; reverted).**
 
 ## B5 — Deliberate socket break
 
