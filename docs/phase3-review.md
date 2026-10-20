@@ -33,7 +33,7 @@ committed.
 | B2 | Bronze shortsword | 122 tri, 0.7 m | 122 tri, 366 v, hash `521e0ca3`; 6/6 validate | 337 s core | ~0.9k | PASS |
 | B3 | Humanoid slate override | artifact hash unchanged | 264 tri, hash `24a10e9d` unchanged; override exposed; slate render | 385 s core | ~0.6k | PASS |
 | B4 | Pine snow | 316 tri, bounds unchanged | 316 tri, 948 v; only apex white; reverted | 281 s core | ~0.7k | CAUGHT (visual) |
-| B5 | Deliberate socket break | `socket_mismatch` | pending | pending | pending | pending |
+| B5 | Deliberate socket break | `socket_mismatch` | CLI + preview rejected; restored 6/6 | 152 s core | ~0.5k | PASS (caught) |
 
 ## B1 — Sword disc guard
 
@@ -226,4 +226,83 @@ Result: **CAUGHT (visual failure; reverted).**
 
 ### Observed
 
-Pending.
+- The declared head socket moved from y=1.70 to y=1.60. The GLB still
+  measures `head [0, 1.7, 0]`.
+- `assets validate humanoid-01` rejected it exactly as predicted:
+
+  ```
+  FAIL  humanoid-01  (character)
+          contract.sockets.head: socket 'head' differs from the declared position by 1.00e-1 m (tolerance 0.0001) [socket_mismatch]
+
+  0/1 valid
+  exit=1
+  ```
+
+- The preview also rejected it: `window.__preview` is `undefined`, the error
+  overlay is visible, and it reads:
+
+  ```
+  asset 'humanoid-01' failed to build:
+    contract.sockets.head: socket 'head' differs from the declared position by 1.00e-1 m (tolerance 0.0001) [socket_mismatch]
+  ```
+
+- Restored y=1.70. `assets validate` passes **6/6**; the artifact hash is
+  still `24a10e9da432a551` and the slate override is preserved.
+- Core loop wall-clock (break -> catch -> restore): **152 s** (2.5 min).
+- Content tokens: **~0.5k** (estimate).
+- No broken content was committed.
+
+Result: **PASS** (the required deliberate break was caught by both the CLI and
+the preview, then restored).
+
+## Exit assessment
+
+### Results
+
+- **B1-B3** are successful content cycles: guard param edit + contract update,
+  new bronze shortsword, and appearance-only humanoid override.
+- **B4** is a caught visual failure: the snow geometry was correct but the
+  effect was occluded, so it was reverted. This is a valid loop result, not a
+  shipped feature.
+- **B5** is the required deliberate failure: both validation and the preview
+  rejected the moved socket, and the manifest was restored.
+
+### Budget
+
+- **Mechanical path:** CLI regenerate/validate was 0.96-1.29 s per cycle;
+  captures were 19-113 ms; the whole mechanical path is under 2 s, far below
+  the 60 s target.
+- **Core loop (prompt -> validated preview):** B1 334 s, B2 337 s, B3 385 s,
+  B4 281 s, B5 152 s. These include agent reasoning and review work. The
+  60 s end-to-end target is **not met**.
+- **Content tokens:** roughly 0.5-1.1 k per cycle by the estimate above; all
+  are under the 5 k target. This excludes hidden model reasoning and images.
+- **Checkpoint intervals:** recorded from git history in the final timing
+  commit; B1's full interval was 1,312 s, B2's 353 s, B3's 415 s after the
+  inspection fix, and B4's 357 s.
+
+### Findings
+
+1. **Manifest formatting churn.** `regen --accept` rewrites the entire
+   manifest with expanded JSON, so a two-value semantic edit becomes a large
+   diff. A canonical formatter or a format-preserving accept is the clearest
+   loop-cost fix.
+2. **Pine snow is visually ineffective.** The parameter adds the predicted
+   geometry, but stacked tiers hide the snow bands. The generator needs a
+   visible band placement or a `snowline` parameter before snow ships.
+3. **The inspection surface omitted `override`.** Fixed with
+   `AssetInspection.override` and a sword test; the suite is now 123 tests.
+4. **The engine is not the bottleneck.** The mechanical loop is ~1-2 s; the
+   60 s miss is agent/review latency, including image inspection, re-captures,
+   and doc work.
+
+### Verdict
+
+- Content-token budget: **met by estimate**.
+- Deliberate break: **met** (caught by CLI and preview).
+- 60 s full-cycle budget: **not met end-to-end**; the mechanical path meets it.
+- Phase 3 is therefore **conditional**: the loop closes and catches failures,
+  but the 60 s target needs either a clarified definition (mechanical path) or
+  agent-loop optimization. Phase 4 should not be called unblocked until that
+  is accepted.
+
