@@ -174,6 +174,35 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
+function validateHarnessInput(input) {
+  if (input === null || typeof input !== 'object' || Array.isArray(input)) {
+    throw new Error('input must be an object')
+  }
+  const allowed = new Set(['forward', 'strafe', 'jump', 'restart'])
+  for (const key of Object.keys(input)) {
+    if (!allowed.has(key)) throw new Error(`Unknown input key: ${key}`)
+  }
+  for (const key of ['forward', 'strafe']) {
+    if (key in input && (!Number.isFinite(input[key]) || input[key] < -1 || input[key] > 1)) {
+      throw new Error(`${key} must be a finite number between -1 and 1`)
+    }
+  }
+  for (const key of ['jump', 'restart']) {
+    if (key in input && typeof input[key] !== 'boolean') {
+      throw new Error(`${key} must be a boolean`)
+    }
+  }
+}
+
+function isProjectResPath(value, extension) {
+  if (typeof value !== 'string' || !value.startsWith('res://')) return false
+  const segments = value.slice('res://'.length).split('/')
+  if (segments.some((segment) => segment === '..' || segment === '.' || segment === '')) {
+    return false
+  }
+  return value.endsWith(extension)
+}
+
 /**
  * One controller-owned Godot process and one loopback JSON connection.
  *
@@ -431,6 +460,44 @@ export class HarnessSession {
 
   async resume() {
     return this.send('resume')
+  }
+
+  async setInput(input) {
+    validateHarnessInput(input)
+    return this.send('set_input', input)
+  }
+
+  async step({ steps = 1, delta = 1 / 60, input = null, recordEvery = 0 } = {}) {
+    if (!Number.isInteger(steps) || steps < 0 || steps > 100000) {
+      throw new Error('steps must be an integer between 0 and 100000')
+    }
+    if (!Number.isFinite(delta) || delta < 0.0001 || delta > 0.25) {
+      throw new Error('delta must be between 0.0001 and 0.25')
+    }
+    if (input !== null) validateHarnessInput(input)
+    const args = { steps, delta }
+    if (input !== null) args.input = input
+    if (recordEvery) {
+      if (!Number.isInteger(recordEvery) || recordEvery < 0 || recordEvery > steps) {
+        throw new Error('recordEvery must be between 0 and steps')
+      }
+      args.record_every = recordEvery
+    }
+    return this.send('step', args, 120000)
+  }
+
+  async reset() {
+    return this.send('reset')
+  }
+
+  async screenshot(path = 'res://artifacts/harness.png') {
+    if (!isProjectResPath(path, '.png')) {
+      throw new Error('screenshot path must be a res:// .png path without .. segments')
+    }
+    // Give the renderer a frame after a step or camera move before reading the
+    // viewport. This is a rendering wait, not a simulation advance.
+    await sleep(120)
+    return this.send('screenshot', { path }, 10000)
   }
 
   async snapshot() {

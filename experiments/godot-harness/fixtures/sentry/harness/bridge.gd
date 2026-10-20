@@ -126,6 +126,16 @@ func _handle_line(peer: StreamPeerTCP, line: String) -> void:
 			get_tree().paused = false
 			_event("resumed")
 			_send(peer, _reply(request_id, true, _runtime_state()))
+		"set_input":
+			_send(peer, _set_input_reply(request_id, args))
+		"step":
+			_send(peer, _step_reply(request_id, args))
+		"reset":
+			get_tree().paused = true
+			_event("reset")
+			_send(peer, _reset_reply(request_id))
+		"screenshot":
+			_send(peer, _screenshot_reply(request_id, args))
 		"scene_tree":
 			_send(peer, _reply(request_id, true, {"tree": _tree_node(get_tree().root, 0)}))
 		"property":
@@ -198,6 +208,93 @@ func _property_reply(request_id: String, args: Dictionary) -> Dictionary:
 		"node_path": node_path,
 		"property": property,
 		"value": _jsonable(node.get(property)),
+	})
+
+
+func _set_input_reply(request_id: String, args: Dictionary) -> Dictionary:
+	var game = _game()
+	if game == null:
+		return _fail(request_id, "GAME_NOT_READY", "The game scene is not ready.")
+	return _reply(request_id, true, {
+		"input": game.set_harness_input(args),
+		"snapshot": _snapshot(),
+	})
+
+
+func _step_reply(request_id: String, args: Dictionary) -> Dictionary:
+	var game = _game()
+	if game == null:
+		return _fail(request_id, "GAME_NOT_READY", "The game scene is not ready.")
+	var steps := int(args.get("steps", 1))
+	var delta := float(args.get("delta", 1.0 / 60.0))
+	var record_every := int(args.get("record_every", 0))
+	if steps < 0 or steps > 100000:
+		return _fail(request_id, "VALIDATION_ERROR", "steps must be between 0 and 100000.")
+	if delta < 0.0001 or delta > 0.25:
+		return _fail(request_id, "VALIDATION_ERROR", "delta must be between 0.0001 and 0.25.")
+	if record_every < 0 or record_every > steps:
+		return _fail(request_id, "VALIDATION_ERROR", "record_every must be between 0 and steps.")
+	if args.has("input"):
+		if typeof(args["input"]) != TYPE_DICTIONARY:
+			return _fail(request_id, "VALIDATION_ERROR", "input must be an object.")
+		game.set_harness_input(args["input"])
+
+	get_tree().paused = true
+	var samples: Array = []
+	for index in range(steps):
+		var sample: Dictionary = game.harness_step(delta)
+		if record_every > 0 and (index % record_every == 0 or index == steps - 1):
+			samples.append(sample)
+	return _reply(request_id, true, {
+		"steps": steps,
+		"delta": delta,
+		"paused": true,
+		"samples": samples,
+		"final": _snapshot(),
+	})
+
+
+func _reset_reply(request_id: String) -> Dictionary:
+	var game = _game()
+	if game == null:
+		return _fail(request_id, "GAME_NOT_READY", "The game scene is not ready.")
+	return _reply(request_id, true, {
+		"paused": true,
+		"snapshot": game.harness_reset(),
+	})
+
+
+func _screenshot_reply(request_id: String, args: Dictionary) -> Dictionary:
+	if DisplayServer.get_name() == "headless":
+		return _fail(request_id, "SCREENSHOT_UNAVAILABLE_HEADLESS", "Screenshots require a windowed run.")
+	var rel_path := String(args.get("path", "res://artifacts/harness.png"))
+	if not rel_path.begins_with("res://") or not rel_path.ends_with(".png"):
+		return _fail(request_id, "VALIDATION_ERROR", "path must be a res:// .png path.")
+	var absolute_path := ProjectSettings.globalize_path(rel_path).simplify_path()
+	var project_root := ProjectSettings.globalize_path("res://").simplify_path().trim_suffix("/") + "/"
+	if not absolute_path.begins_with(project_root):
+		return _fail(request_id, "VALIDATION_ERROR", "path escapes the selected project.")
+	var directory := absolute_path.get_base_dir()
+	var dir_error := DirAccess.make_dir_recursive_absolute(directory)
+	if dir_error != OK:
+		return _fail(request_id, "WRITE_ERROR", "Could not create '%s' (error %d)." % [directory, dir_error])
+	var texture := get_viewport().get_texture()
+	if texture == null:
+		return _fail(request_id, "NO_FRAME", "The viewport has no texture.")
+	var image := texture.get_image()
+	if image == null or image.is_empty():
+		return _fail(request_id, "NO_FRAME", "The viewport has no readable image.")
+	var save_error := image.save_png(absolute_path)
+	if save_error != OK:
+		return _fail(request_id, "WRITE_ERROR", "Could not save '%s' (error %d)." % [absolute_path, save_error])
+	return _reply(request_id, true, {
+		"path": rel_path,
+		"absolute_path": absolute_path,
+		"sha256": FileAccess.get_sha256(absolute_path),
+		"bytes": FileAccess.get_file_as_bytes(absolute_path).size(),
+		"width": image.get_width(),
+		"height": image.get_height(),
+		"headless": DisplayServer.get_name() == "headless",
 	})
 
 

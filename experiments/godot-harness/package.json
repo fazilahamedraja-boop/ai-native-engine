@@ -5,9 +5,12 @@
   "type": "module",
   "description": "Minimal structured control and verification harness around Godot",
   "scripts": {
-    "test": "node --test tests/controller.test.mjs tests/session.test.mjs",
+    "test": "node --test tests/controller.test.mjs tests/session.test.mjs tests/gameplay.test.mjs",
     "test:logic": "node controller/harness.mjs test --project fixtures/sentry --json",
     "test:session": "node --test tests/session.test.mjs",
+    "test:gameplay": "node --test tests/gameplay.test.mjs",
+    "test:screenshot": "node --test tests/screenshot.test.mjs",
+    "evidence:live": "node controller/live-suite.mjs",
     "inspect": "node controller/harness.mjs inspect --project fixtures/sentry --json"
   }
 }

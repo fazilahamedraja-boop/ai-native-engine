@@ -18,7 +18,8 @@ test('start, inspect, property, pause/resume, and stop one project', async () =>
     assert.equal(state.paused, true)
     assert.equal(state.snapshot.phase, 'active')
     assert.equal(state.snapshot.paused, true)
-    assert.deepEqual(state.snapshot.player_position.slice(0, 2), [0, 0.850000023841858])
+    assert.ok(Math.abs(state.snapshot.player_position[0]) < 0.01)
+    assert.ok(Math.abs(state.snapshot.player_position[1] - 0.85) < 0.01)
     assert.equal(state.scene_tree.path, '/root')
 
     const property = await session.property('/root/Main/Player', 'global_position')

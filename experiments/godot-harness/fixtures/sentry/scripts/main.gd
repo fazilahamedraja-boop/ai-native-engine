@@ -17,6 +17,16 @@ var status_label: Label
 var hint_label: Label
 var panel_style: StyleBoxFlat
 
+# Harness-owned simulation state. Live input is still read from Input; the
+# bridge sets these values only while the game is paused.
+var harness_steps := 0
+var harness_input := {
+	"forward": 0.0,
+	"strafe": 0.0,
+	"jump": false,
+	"restart": false,
+}
+
 
 func _ready() -> void:
 	_ensure_input_actions()
@@ -40,36 +50,113 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("restart"):
+	# The live path reads Input and advances exactly once per physics tick. The
+	# harness bypasses this function while the tree is paused and calls
+	# harness_step() explicitly. Both paths share _step_simulation().
+	_step_simulation(delta, {
+		"forward": Input.get_action_strength("move_forward") - Input.get_action_strength("move_back"),
+		"strafe": Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+		"jump": Input.is_action_just_pressed("jump"),
+		"restart": Input.is_action_just_pressed("restart"),
+	})
+
+
+func _step_simulation(delta: float, frame_input: Dictionary) -> void:
+	if bool(frame_input.get("restart", false)):
 		reset_game()
 		return
+
+	harness_steps += 1
 
 	# Move first, then evaluate sight at the new position. This is the same
 	# order as the reference engine's physics-then-game update. The HUD keeps
 	# following the player after a terminal phase; only the state is frozen.
-	player.step_movement(delta)
+	player.step_movement(
+		delta,
+		clampf(float(frame_input.get("forward", 0.0)), -1.0, 1.0),
+		clampf(float(frame_input.get("strafe", 0.0)), -1.0, 1.0),
+		bool(frame_input.get("jump", false)),
+	)
 	if state.is_active():
 		state.tick(player.global_position)
+	_update_camera()
 	_update_hud()
 
 
 func reset_game() -> void:
 	state.reset()
 	player.reset_to(SPAWN)
+	harness_steps = 0
+	harness_input = {
+		"forward": 0.0,
+		"strafe": 0.0,
+		"jump": false,
+		"restart": false,
+	}
 	_update_camera()
 	_update_hud()
+
+
+## One deterministic harness tick. Caller must pause the SceneTree first; the
+## bridge does this before entering the step loop. Jump and restart are edges,
+## so they are consumed by the first tick.
+func harness_step(delta: float = 1.0 / 60.0) -> Dictionary:
+	var frame_input := harness_input.duplicate()
+	_step_simulation(delta, frame_input)
+	harness_input["jump"] = false
+	harness_input["restart"] = false
+	return snapshot()
+
+
+func set_harness_input(values: Dictionary) -> Dictionary:
+	for key in ["forward", "strafe"]:
+		if values.has(key):
+			harness_input[key] = clampf(float(values[key]), -1.0, 1.0)
+	for key in ["jump", "restart"]:
+		if values.has(key):
+			harness_input[key] = bool(values[key])
+	return harness_input.duplicate()
+
+
+func harness_reset() -> Dictionary:
+	reset_game()
+	return snapshot()
+
+
+## Stable hash over explicitly selected simulation fields. Rendering, HUD text,
+## camera transform, bridge timing, and process IDs are deliberately excluded.
+func harness_hash() -> String:
+	var live_seen: Array[String] = state.seeing_guards(player.global_position)
+	var position: Vector3 = player.global_position
+	var velocity: Vector3 = player.velocity
+	var fields: Array[String] = [
+		"step=%d" % harness_steps,
+		"phase=%s" % state.phase_name(),
+		"detection=%.9f" % state.detection,
+		"position=%.9f,%.9f,%.9f" % [position.x, position.y, position.z],
+		"velocity=%.9f,%.9f,%.9f" % [velocity.x, velocity.y, velocity.z],
+		"grounded=%s" % str(player.grounded),
+		"seen=%s" % ",".join(live_seen),
+		"exit_distance=%.9f" % state.exit_distance(position),
+	]
+	return "\n".join(fields).sha256_text()
 
 
 ## Compact, JSON-friendly state for external inspection and evidence capture.
 func snapshot() -> Dictionary:
 	var live_seen: Array[String] = state.seeing_guards(player.global_position)
 	return {
+		"step": harness_steps,
 		"player_position": [player.global_position.x, player.global_position.y, player.global_position.z],
+		"player_velocity": [player.velocity.x, player.velocity.y, player.velocity.z],
+		"grounded": player.grounded,
 		"phase": state.phase_name(),
 		"detection": state.detection,
 		"detection_percent": int(round(state.detection * 100.0)),
 		"seen_by": live_seen,
 		"exit_distance": state.exit_distance(player.global_position),
+		"hash": harness_hash(),
+		"input": harness_input.duplicate(),
 		"hud": status_label.text if status_label != null else "",
 		"hint": hint_label.text if hint_label != null else "",
 	}

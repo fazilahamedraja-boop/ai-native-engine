@@ -1,0 +1,568 @@
+{
+  "operation": "live_gameplay_suite",
+  "ok": true,
+  "project": "fixtures/sentry",
+  "godot": "4.7.2-stable.official.ed1daf0bf",
+  "rendering": "headless (screenshots captured separately in a windowed run)",
+  "hash_fields": [
+    "step",
+    "phase",
+    "detection",
+    "player position xyz",
+    "player velocity xyz",
+    "grounded",
+    "seen guard ids",
+    "exit distance"
+  ],
+  "excluded_from_hash": [
+    "camera transform",
+    "HUD text",
+    "port",
+    "PID",
+    "uptime",
+    "render frame timing"
+  ],
+  "physics_note": "The fixture uses explicit move_and_collide(Vector3 * delta) rather than CharacterBody3D.move_and_slide() for harness steps. This removes frame-derived timing from the stepped path. It does not prove that arbitrary Godot physics is deterministic.",
+  "checks": [
+    {
+      "name": "movement-forward",
+      "ok": true,
+      "detail": "z=-5.99999666213989"
+    },
+    {
+      "name": "detection-rise",
+      "ok": true,
+      "detail": "detection=0.677777777777777"
+    },
+    {
+      "name": "detection-decay",
+      "ok": true,
+      "detail": "rise=0.677777777777777 decay=0.327777777777779"
+    },
+    {
+      "name": "escape-win",
+      "ok": true,
+      "detail": "phase=won exit=0.00000763148971935209"
+    },
+    {
+      "name": "detection-loss",
+      "ok": true,
+      "detail": "phase=lost detection=1"
+    },
+    {
+      "name": "reset",
+      "ok": true,
+      "detail": "phase=active detection=0 step=0"
+    },
+    {
+      "name": "jump-and-land",
+      "ok": true,
+      "detail": "takeoff_y=0.934160172939301 air_y=1.78416037559509 land_y=0.850238144397736"
+    },
+    {
+      "name": "same-process-repeatability",
+      "ok": true,
+      "detail": "hashA=10b28fcb8890a0f8a7d4b1df880341a5ca417533c2a6beb8e2d9b1fee3bf974b hashB=10b28fcb8890a0f8a7d4b1df880341a5ca417533c2a6beb8e2d9b1fee3bf974b"
+    },
+    {
+      "name": "fresh-process-repeatability",
+      "ok": true,
+      "detail": "sameProcess=10b28fcb8890a0f8a7d4b1df880341a5ca417533c2a6beb8e2d9b1fee3bf974b freshProcess=10b28fcb8890a0f8a7d4b1df880341a5ca417533c2a6beb8e2d9b1fee3bf974b"
+    }
+  ],
+  "scenarios": {
+    "movement": {
+      "step": 80,
+      "phase": "active",
+      "detection": 0.677777777777777,
+      "detection_percent": 68,
+      "player_position": [
+        0,
+        0.850000023841858,
+        -5.99999666213989
+      ],
+      "player_velocity": [
+        0,
+        0,
+        -4.5
+      ],
+      "grounded": true,
+      "seen_by": [
+        "guard-a"
+      ],
+      "exit_distance": 12.0000033378601,
+      "hash": "ef7c07163d8cf8aa5f68583c1d424b5e9a123d8150bcb4d36a7c6be0890f208b",
+      "hud": "REACH THE BEACON\nDETECTION 68% · SEEN\nEXIT 12.0 m · Avoid the sentry cones."
+    },
+    "detection": {
+      "rise": {
+        "step": 80,
+        "phase": "active",
+        "detection": 0.677777777777777,
+        "detection_percent": 68,
+        "player_position": [
+          0,
+          0.850000023841858,
+          -5.99999666213989
+        ],
+        "player_velocity": [
+          0,
+          0,
+          -4.5
+        ],
+        "grounded": true,
+        "seen_by": [
+          "guard-a"
+        ],
+        "exit_distance": 12.0000033378601,
+        "hash": "ef7c07163d8cf8aa5f68583c1d424b5e9a123d8150bcb4d36a7c6be0890f208b",
+        "hud": "REACH THE BEACON\nDETECTION 68% · SEEN\nEXIT 12.0 m · Avoid the sentry cones."
+      },
+      "outside": {
+        "step": 110,
+        "phase": "active",
+        "detection": 0.661111111111111,
+        "detection_percent": 66,
+        "player_position": [
+          2.25000071525574,
+          0.850000023841858,
+          -5.99999666213989
+        ],
+        "player_velocity": [
+          4.5,
+          0,
+          0
+        ],
+        "grounded": true,
+        "seen_by": [],
+        "exit_distance": 12.2091188595781,
+        "hash": "8317e3a1eaafefd129285a072bdf398a1d4958a8c392e52307e752f57856da1e",
+        "hud": "REACH THE BEACON\nDETECTION 66% · HIDDEN\nEXIT 12.2 m · Avoid the sentry cones."
+      },
+      "decay": {
+        "step": 170,
+        "phase": "active",
+        "detection": 0.327777777777779,
+        "detection_percent": 33,
+        "player_position": [
+          2.25000071525574,
+          0.850000023841858,
+          -5.99999666213989
+        ],
+        "player_velocity": [
+          0,
+          0,
+          0
+        ],
+        "grounded": true,
+        "seen_by": [],
+        "exit_distance": 12.2091188595781,
+        "hash": "87484f0daf941bd5f349457f7e96806117103c4783399535f7829ad96e368798",
+        "hud": "REACH THE BEACON\nDETECTION 33% · HIDDEN\nEXIT 12.2 m · Avoid the sentry cones."
+      }
+    },
+    "escape": {
+      "right": {
+        "step": 100,
+        "phase": "active",
+        "detection": 0,
+        "detection_percent": 0,
+        "player_position": [
+          7.49999284744263,
+          0.850000023841858,
+          0
+        ],
+        "player_velocity": [
+          4.5,
+          0,
+          0
+        ],
+        "grounded": true,
+        "seen_by": [],
+        "exit_distance": 19.4999972490175,
+        "hash": "4690efa1320ec0babf20007ed38273176f6f1dbf5c062d62e99ae2f6d8cb62d8",
+        "hud": "REACH THE BEACON\nDETECTION 0% · HIDDEN\nEXIT 19.5 m · Avoid the sentry cones."
+      },
+      "forward": {
+        "step": 340,
+        "phase": "active",
+        "detection": 0,
+        "detection_percent": 0,
+        "player_position": [
+          7.49999284744263,
+          0.850000023841858,
+          -17.9999923706055
+        ],
+        "player_velocity": [
+          0,
+          0,
+          -4.5
+        ],
+        "grounded": true,
+        "seen_by": [],
+        "exit_distance": 7.49999284744651,
+        "hash": "d48274227dfd18623c2412f06a5aaa3748340129b073a735f5eb8b620623045e",
+        "hud": "REACH THE BEACON\nDETECTION 0% · HIDDEN\nEXIT 7.5 m · Avoid the sentry cones."
+      },
+      "win": {
+        "step": 440,
+        "phase": "won",
+        "detection": 0,
+        "detection_percent": 0,
+        "player_position": [
+          -1.78813934326172e-7,
+          0.850000023841858,
+          -17.9999923706055
+        ],
+        "player_velocity": [
+          -4.5,
+          0,
+          0
+        ],
+        "grounded": true,
+        "seen_by": [],
+        "exit_distance": 0.00000763148971935209,
+        "hash": "378b61046605959cec4682899faf8b1f031f81f356b8713cb3c16e496b916f7e",
+        "hud": "ESCAPED\nDETECTION 0% · HIDDEN · EXIT 0.0 m\npress R to restart."
+      }
+    },
+    "failure": {
+      "approach": {
+        "step": 80,
+        "phase": "active",
+        "detection": 0.677777777777777,
+        "detection_percent": 68,
+        "player_position": [
+          0,
+          0.850000023841858,
+          -5.99999666213989
+        ],
+        "player_velocity": [
+          0,
+          0,
+          -4.5
+        ],
+        "grounded": true,
+        "seen_by": [
+          "guard-a"
+        ],
+        "exit_distance": 12.0000033378601,
+        "hash": "ef7c07163d8cf8aa5f68583c1d424b5e9a123d8150bcb4d36a7c6be0890f208b",
+        "hud": "REACH THE BEACON\nDETECTION 68% · SEEN\nEXIT 12.0 m · Avoid the sentry cones."
+      },
+      "lost": {
+        "step": 110,
+        "phase": "lost",
+        "detection": 1,
+        "detection_percent": 100,
+        "player_position": [
+          0,
+          0.850000023841858,
+          -5.99999666213989
+        ],
+        "player_velocity": [
+          0,
+          0,
+          0
+        ],
+        "grounded": true,
+        "seen_by": [
+          "guard-a"
+        ],
+        "exit_distance": 12.0000033378601,
+        "hash": "062750c504fdb2141bb0a002f760eb9c6f0f6c151b74820a48d424aaa223e235",
+        "hud": "DETECTED\nDETECTION 100% · SEEN · EXIT 12.0 m\npress R to restart."
+      }
+    },
+    "reset": {
+      "step": 0,
+      "phase": "active",
+      "detection": 0,
+      "detection_percent": 0,
+      "player_position": [
+        0,
+        0.850000023841858,
+        0
+      ],
+      "player_velocity": [
+        0,
+        0,
+        0
+      ],
+      "grounded": true,
+      "seen_by": [],
+      "exit_distance": 18,
+      "hash": "edbe93e36f1b0bdc4a487eb0e1592b430957854e455e88556c665a800d5f1346",
+      "hud": "REACH THE BEACON\nDETECTION 0% · HIDDEN\nEXIT 18.0 m · Avoid the sentry cones."
+    },
+    "jump": {
+      "takeoff": {
+        "step": 1,
+        "phase": "active",
+        "detection": 0,
+        "detection_percent": 0,
+        "player_position": [
+          0,
+          0.934160172939301,
+          0
+        ],
+        "player_velocity": [
+          0,
+          5,
+          0
+        ],
+        "grounded": false,
+        "seen_by": [],
+        "exit_distance": 18,
+        "hash": "9d1d0023a1fe2e61a312991146b79a8fcd049baeaba594bac2f8e42dee76c0c6",
+        "hud": "REACH THE BEACON\nDETECTION 0% · HIDDEN\nEXIT 18.0 m · Avoid the sentry cones."
+      },
+      "air": {
+        "step": 21,
+        "phase": "active",
+        "detection": 0,
+        "detection_percent": 0,
+        "player_position": [
+          0,
+          1.78416037559509,
+          0
+        ],
+        "player_velocity": [
+          0,
+          0.333333998918533,
+          0
+        ],
+        "grounded": false,
+        "seen_by": [],
+        "exit_distance": 18,
+        "hash": "282ec5791e4b474de205247ac7e6168a8934f1a62536df17bb7c7f1b3211faee",
+        "hud": "REACH THE BEACON\nDETECTION 0% · HIDDEN\nEXIT 18.0 m · Avoid the sentry cones."
+      },
+      "land": {
+        "step": 101,
+        "phase": "active",
+        "detection": 0,
+        "detection_percent": 0,
+        "player_position": [
+          0,
+          0.850238144397736,
+          0
+        ],
+        "player_velocity": [
+          0,
+          0,
+          0
+        ],
+        "grounded": true,
+        "seen_by": [],
+        "exit_distance": 18,
+        "hash": "b8428e2f7d1cdc820d5b6c8595a4f8c2dc59dc30653ff92a6275694e51f5b63c",
+        "hud": "REACH THE BEACON\nDETECTION 0% · HIDDEN\nEXIT 18.0 m · Avoid the sentry cones."
+      }
+    },
+    "repeatability": {
+      "first": {
+        "first": {
+          "step": 80,
+          "phase": "active",
+          "detection": 0.677777777777777,
+          "detection_percent": 68,
+          "player_position": [
+            0,
+            0.850000023841858,
+            -5.99999666213989
+          ],
+          "player_velocity": [
+            0,
+            0,
+            -4.5
+          ],
+          "grounded": true,
+          "seen_by": [
+            "guard-a"
+          ],
+          "exit_distance": 12.0000033378601,
+          "hash": "ef7c07163d8cf8aa5f68583c1d424b5e9a123d8150bcb4d36a7c6be0890f208b",
+          "hud": "REACH THE BEACON\nDETECTION 68% · SEEN\nEXIT 12.0 m · Avoid the sentry cones."
+        },
+        "second": {
+          "step": 110,
+          "phase": "active",
+          "detection": 0.661111111111111,
+          "detection_percent": 66,
+          "player_position": [
+            2.25000071525574,
+            0.850000023841858,
+            -5.99999666213989
+          ],
+          "player_velocity": [
+            4.5,
+            0,
+            0
+          ],
+          "grounded": true,
+          "seen_by": [],
+          "exit_distance": 12.2091188595781,
+          "hash": "8317e3a1eaafefd129285a072bdf398a1d4958a8c392e52307e752f57856da1e",
+          "hud": "REACH THE BEACON\nDETECTION 66% · HIDDEN\nEXIT 12.2 m · Avoid the sentry cones."
+        },
+        "final": {
+          "step": 130,
+          "phase": "active",
+          "detection": 0.55,
+          "detection_percent": 55,
+          "player_position": [
+            2.25000071525574,
+            0.850000023841858,
+            -5.99999666213989
+          ],
+          "player_velocity": [
+            0,
+            0,
+            0
+          ],
+          "grounded": true,
+          "seen_by": [],
+          "exit_distance": 12.2091188595781,
+          "hash": "10b28fcb8890a0f8a7d4b1df880341a5ca417533c2a6beb8e2d9b1fee3bf974b",
+          "hud": "REACH THE BEACON\nDETECTION 55% · HIDDEN\nEXIT 12.2 m · Avoid the sentry cones."
+        }
+      },
+      "second": {
+        "first": {
+          "step": 80,
+          "phase": "active",
+          "detection": 0.677777777777777,
+          "detection_percent": 68,
+          "player_position": [
+            0,
+            0.850000023841858,
+            -5.99999666213989
+          ],
+          "player_velocity": [
+            0,
+            0,
+            -4.5
+          ],
+          "grounded": true,
+          "seen_by": [
+            "guard-a"
+          ],
+          "exit_distance": 12.0000033378601,
+          "hash": "ef7c07163d8cf8aa5f68583c1d424b5e9a123d8150bcb4d36a7c6be0890f208b",
+          "hud": "REACH THE BEACON\nDETECTION 68% · SEEN\nEXIT 12.0 m · Avoid the sentry cones."
+        },
+        "second": {
+          "step": 110,
+          "phase": "active",
+          "detection": 0.661111111111111,
+          "detection_percent": 66,
+          "player_position": [
+            2.25000071525574,
+            0.850000023841858,
+            -5.99999666213989
+          ],
+          "player_velocity": [
+            4.5,
+            0,
+            0
+          ],
+          "grounded": true,
+          "seen_by": [],
+          "exit_distance": 12.2091188595781,
+          "hash": "8317e3a1eaafefd129285a072bdf398a1d4958a8c392e52307e752f57856da1e",
+          "hud": "REACH THE BEACON\nDETECTION 66% · HIDDEN\nEXIT 12.2 m · Avoid the sentry cones."
+        },
+        "final": {
+          "step": 130,
+          "phase": "active",
+          "detection": 0.55,
+          "detection_percent": 55,
+          "player_position": [
+            2.25000071525574,
+            0.850000023841858,
+            -5.99999666213989
+          ],
+          "player_velocity": [
+            0,
+            0,
+            0
+          ],
+          "grounded": true,
+          "seen_by": [],
+          "exit_distance": 12.2091188595781,
+          "hash": "10b28fcb8890a0f8a7d4b1df880341a5ca417533c2a6beb8e2d9b1fee3bf974b",
+          "hud": "REACH THE BEACON\nDETECTION 55% · HIDDEN\nEXIT 12.2 m · Avoid the sentry cones."
+        }
+      }
+    }
+  },
+  "fresh_process": {
+    "first": {
+      "step": 80,
+      "phase": "active",
+      "detection": 0.677777777777777,
+      "detection_percent": 68,
+      "player_position": [
+        0,
+        0.850000023841858,
+        -5.99999666213989
+      ],
+      "player_velocity": [
+        0,
+        0,
+        -4.5
+      ],
+      "grounded": true,
+      "seen_by": [
+        "guard-a"
+      ],
+      "exit_distance": 12.0000033378601,
+      "hash": "ef7c07163d8cf8aa5f68583c1d424b5e9a123d8150bcb4d36a7c6be0890f208b",
+      "hud": "REACH THE BEACON\nDETECTION 68% · SEEN\nEXIT 12.0 m · Avoid the sentry cones."
+    },
+    "second": {
+      "step": 110,
+      "phase": "active",
+      "detection": 0.661111111111111,
+      "detection_percent": 66,
+      "player_position": [
+        2.25000071525574,
+        0.850000023841858,
+        -5.99999666213989
+      ],
+      "player_velocity": [
+        4.5,
+        0,
+        0
+      ],
+      "grounded": true,
+      "seen_by": [],
+      "exit_distance": 12.2091188595781,
+      "hash": "8317e3a1eaafefd129285a072bdf398a1d4958a8c392e52307e752f57856da1e",
+      "hud": "REACH THE BEACON\nDETECTION 66% · HIDDEN\nEXIT 12.2 m · Avoid the sentry cones."
+    },
+    "final": {
+      "step": 130,
+      "phase": "active",
+      "detection": 0.55,
+      "detection_percent": 55,
+      "player_position": [
+        2.25000071525574,
+        0.850000023841858,
+        -5.99999666213989
+      ],
+      "player_velocity": [
+        0,
+        0,
+        0
+      ],
+      "grounded": true,
+      "seen_by": [],
+      "exit_distance": 12.2091188595781,
+      "hash": "10b28fcb8890a0f8a7d4b1df880341a5ca417533c2a6beb8e2d9b1fee3bf974b",
+      "hud": "REACH THE BEACON\nDETECTION 55% · HIDDEN\nEXIT 12.2 m · Avoid the sentry cones."
+    }
+  },
+  "generated_at": "2026-10-20T18:33:01.368Z"
+}

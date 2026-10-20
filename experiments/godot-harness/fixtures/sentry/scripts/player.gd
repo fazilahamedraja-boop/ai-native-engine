@@ -6,6 +6,9 @@ extends CharacterBody3D
 const SPEED := 4.5
 const JUMP_VELOCITY := 5.0
 const GRAVITY := 14.0
+const GROUND_PROBE := 0.05
+
+var grounded := false
 
 
 func _ready() -> void:
@@ -48,30 +51,52 @@ func _build_body() -> void:
 	add_child(visor)
 
 
-func step_movement(delta: float) -> void:
-	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	var direction := Vector3(input_dir.x, 0.0, input_dir.y)
+func step_movement(delta: float, forward := 0.0, strafe := 0.0, jump := false) -> void:
+	# Use explicit motion instead of CharacterBody3D.move_and_slide(). The
+	# harness calls this while the SceneTree is paused; move_and_slide() reads
+	# frame timing internally and produced different distances per call in that
+	# context. move_and_collide(motion) takes the step delta explicitly, so the
+	# same sequence is repeatable. The fixture has flat ground and no wall
+	# colliders, so splitting horizontal and vertical motion is sufficient.
+	var direction := Vector3(strafe, 0.0, -forward)
 	if direction.length_squared() > 1.0:
 		direction = direction.normalized()
 
 	velocity.x = direction.x * SPEED
 	velocity.z = direction.z * SPEED
 
-	if not is_on_floor():
+	if not grounded:
 		velocity.y -= GRAVITY * delta
 	elif velocity.y < 0.0:
 		velocity.y = 0.0
 
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if jump and grounded:
 		velocity.y = JUMP_VELOCITY
 
 	if direction.length_squared() > 0.001:
 		rotation.y = atan2(-direction.x, -direction.z)
 
-	move_and_slide()
+	var horizontal := Vector3(velocity.x, 0.0, velocity.z) * delta
+	if horizontal.length_squared() > 0.0:
+		var horizontal_collision := move_and_collide(horizontal)
+		if horizontal_collision != null:
+			velocity.x = 0.0
+			velocity.z = 0.0
+
+	var vertical := Vector3(0.0, velocity.y * delta, 0.0)
+	grounded = false
+	if vertical.length_squared() > 0.0:
+		var vertical_collision := move_and_collide(vertical)
+		if vertical_collision != null:
+			grounded = velocity.y <= 0.0
+			velocity.y = 0.0
+
+	if not grounded:
+		grounded = test_move(global_transform, Vector3(0.0, -GROUND_PROBE, 0.0))
 
 
 func reset_to(position: Vector3) -> void:
 	global_position = position
 	velocity = Vector3.ZERO
 	rotation = Vector3.ZERO
+	grounded = true
