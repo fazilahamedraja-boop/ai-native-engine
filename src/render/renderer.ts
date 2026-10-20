@@ -2,7 +2,7 @@ import * as THREE from 'three'
 import { cameraPose } from '../camera/rigs'
 import type { MeshData, MaterialSpec } from '../assets/types'
 import type { Vec3 } from '../core/math'
-import type { GameAsset, GameVisual } from '../game/types'
+import type { EnemyRenderState, GameAsset, GameVisual } from '../game/types'
 import type { CameraNode, MeshNode } from '../schema/scene'
 import type { World } from '../world/world'
 import { bufferGeometryFrom } from './geometry'
@@ -134,9 +134,36 @@ export class Renderer {
   setGameCollected(collected: readonly string[]): void {
     const hidden = new Set(collected)
     for (const visual of this.#gameVisuals) {
-      if (!visual.collectible) continue
+      if (visual.kind !== 'collectible') continue
       const mesh = this.#gameMeshes.get(visual.id)
       if (mesh) mesh.visible = !hidden.has(visual.id)
+    }
+  }
+
+  /**
+   * Applies combat presentation only: defeated enemies are hidden and an active
+   * hit flash tints the existing per-instance material. No simulation state is
+   * read back from THREE.
+   */
+  setGameEnemies(states: readonly EnemyRenderState[]): void {
+    const byId = new Map(states.map((state) => [state.id, state]))
+
+    for (const visual of this.#gameVisuals) {
+      if (visual.kind !== 'enemy') continue
+      const mesh = this.#gameMeshes.get(visual.id)
+      if (!mesh) continue
+
+      const state = byId.get(visual.id)
+      const defeated = state?.defeated ?? false
+      const flash = !defeated && (state?.hitFlash ?? false)
+      mesh.visible = !defeated
+
+      const materials = Array.isArray(mesh.material) ? mesh.material : [mesh.material]
+      for (const material of materials) {
+        if (!(material instanceof THREE.MeshStandardMaterial)) continue
+        material.emissive.setHex(flash ? 0xff2b2b : 0x000000)
+        material.emissiveIntensity = flash ? 1.6 : 1
+      }
     }
   }
 

@@ -71,17 +71,32 @@ function syncHud(engine: Engine): void {
     return
   }
 
+  const combat = game.combat
+  const healthLine = `HP ${combat.player.health}/${combat.player.maxHealth}`
+  const enemy = combat.enemies[0]
+  const enemyLine =
+    enemy === undefined
+      ? 'NO SENTINEL'
+      : enemy.defeated
+        ? 'SENTINEL DEFEATED'
+        : `SENTINEL ${enemy.health}/${enemy.maxHealth}${enemy.hitFlash ? ' · HIT' : ''}`
+
+  if (game.phase === 'lost') {
+    hudEl.textContent = `DEFEATED\n${healthLine} · ${enemyLine}\npress R to restart.`
+    return
+  }
+
   if (game.phase === 'collecting') {
-    hudEl.textContent = `SWORDS ${game.collected.length} / ${game.total}\nWalk into the three swords.`
+    hudEl.textContent = `SWORDS ${game.collected.length} / ${game.total}\n${healthLine} · ${enemyLine}\nWalk into the three swords. F attack.`
     return
   }
 
   if (game.phase === 'return') {
-    hudEl.textContent = `ALL SWORDS FOUND\nReturn to the landing pad.`
+    hudEl.textContent = `ALL SWORDS FOUND\n${healthLine} · ${enemyLine}\nReturn to the landing pad.`
     return
   }
 
-  hudEl.textContent = `ESCAPED\n${game.total} / ${game.total} swords · press R to restart.`
+  hudEl.textContent = `ESCAPED\n${game.total} / ${game.total} swords · ${healthLine} · ${enemyLine}\npress R to restart.`
 }
 
 async function boot(): Promise<void> {
@@ -105,7 +120,7 @@ async function boot(): Promise<void> {
   window.__engine = engine
 
   if (hasGame) {
-    hintEl.textContent = 'WASD move · Space jump · R restart'
+    hintEl.textContent = 'WASD move · Space jump · F attack · R restart'
     syncHud(engine)
   } else {
     hintEl.textContent = 'WASD move · space jump · drag orbit · wheel zoom'
@@ -116,7 +131,7 @@ async function boot(): Promise<void> {
   const sync = (): void => {
     const forward = (keys.has('KeyW') ? 1 : 0) - (keys.has('KeyS') ? 1 : 0)
     const strafe = (keys.has('KeyD') ? 1 : 0) - (keys.has('KeyA') ? 1 : 0)
-    engine.setInput({ moveX: strafe, moveZ: forward, jump: keys.has('Space') })
+    engine.setInput({ moveX: strafe, moveZ: forward, jump: keys.has('Space'), attack: keys.has('KeyF') })
   }
 
   window.addEventListener('keydown', (event) => {

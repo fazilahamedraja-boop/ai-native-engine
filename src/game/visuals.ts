@@ -17,7 +17,7 @@ export function buildGameVisuals(config: GameConfig, assets: ReadonlyMap<string,
       pos: prop.pos,
       rotY: prop.rotY,
       scale: prop.scale,
-      collectible: false,
+      kind: 'prop',
     })
   }
 
@@ -31,7 +31,21 @@ export function buildGameVisuals(config: GameConfig, assets: ReadonlyMap<string,
       pos: item.pos,
       rotY: item.rotY,
       scale: item.scale,
-      collectible: true,
+      kind: 'collectible',
+    })
+  }
+
+  for (const enemy of config.enemies) {
+    const asset = assets.get(enemy.asset)
+    if (asset === undefined) continue
+    visuals.push({
+      id: enemy.id,
+      mesh: asset.artifact.geometry,
+      material: asset.material,
+      pos: enemy.pos,
+      rotY: enemy.rotY,
+      scale: enemy.scale,
+      kind: 'enemy',
     })
   }
 

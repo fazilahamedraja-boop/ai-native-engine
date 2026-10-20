@@ -1,17 +1,20 @@
 import { statsOf } from '../assets/mesh'
 import { hashNumbers } from '../core/hash'
 import type { Vec3 } from '../core/math'
-import type { GameAsset, GameConfig, GamePhase, GameSnapshot } from './types'
+import { Combat, type CombatState } from './combat'
+import type { EnemyRenderState, GameAsset, GameConfig, GamePhase, GameSnapshot } from './types'
 
 export interface CollectGameState {
   phase: GamePhase
   collected: string[]
+  combat: CombatState
 }
 
 const PHASE_VALUE: Record<GamePhase, number> = {
   collecting: 0,
   return: 1,
   won: 2,
+  lost: 3,
 }
 
 function near(a: Vec3, b: Vec3, radius: number): boolean {
@@ -27,6 +30,7 @@ export class CollectGame {
   readonly config: GameConfig
   readonly assets: ReadonlyMap<string, GameAsset>
   readonly errors: string[]
+  readonly combat: Combat
 
   #collected = new Set<string>()
   #phase: GamePhase = 'collecting'
@@ -37,6 +41,7 @@ export class CollectGame {
     this.id = id
     this.config = config
     this.assets = assets
+    this.combat = new Combat(config.combat, config.enemies)
 
     const required = new Map<string, Set<string>>()
     const require = (assetId: string, usage: string): void => {
@@ -48,6 +53,7 @@ export class CollectGame {
     require(config.avatar.asset, 'avatar')
     config.collectibles.forEach((item) => require(item.asset, `collectible '${item.id}'`))
     config.props.forEach((prop) => require(prop.asset, `prop '${prop.id}'`))
+    config.enemies.forEach((enemy) => require(enemy.asset, `enemy '${enemy.id}'`))
 
     const missing: string[] = []
     for (const [assetId, usages] of required) {
@@ -74,11 +80,21 @@ export class CollectGame {
   reset(): void {
     this.#collected.clear()
     this.#phase = 'collecting'
+    this.combat.reset()
   }
 
   /** Called once per fixed physics step, after the player has moved. */
-  update(playerPos: Vec3): void {
-    if (this.#phase === 'won') return
+  update(playerPos: Vec3, attackHeld = false): void {
+    // Both terminal phases are frozen: no combat, no collection, no win.
+    if (this.#phase === 'won' || this.#phase === 'lost') return
+
+    this.combat.update(playerPos, attackHeld)
+
+    // Lost outranks every collect/return transition on the same step.
+    if (this.combat.playerDefeated) {
+      this.#phase = 'lost'
+      return
+    }
 
     if (this.#phase === 'collecting') {
       for (const item of this.config.collectibles) {
@@ -94,6 +110,10 @@ export class CollectGame {
     }
   }
 
+  enemyRenderStates(): EnemyRenderState[] {
+    return this.combat.enemyRenderStates()
+  }
+
   snapshot(playerPos: Vec3): GameSnapshot {
     const collected = this.collected
     const distance = Math.hypot(playerPos[0] - this.config.returnZone.pos[0], playerPos[2] - this.config.returnZone.pos[2])
@@ -107,6 +127,7 @@ export class CollectGame {
       errors: [...this.errors],
       assetTriangles: { ...this.#assetTriangles },
       avatarTriangles: this.#avatarTriangles,
+      combat: this.combat.snapshot(playerPos),
       hash: hashNumbers(this.hashValues()),
     }
   }
@@ -115,16 +136,18 @@ export class CollectGame {
     return [
       PHASE_VALUE[this.#phase],
       ...this.config.collectibles.map((item) => (this.#collected.has(item.id) ? 1 : 0)),
+      ...this.combat.hashValues(),
     ]
   }
 
   exportState(): CollectGameState {
-    return { phase: this.#phase, collected: this.collected }
+    return { phase: this.#phase, collected: this.collected, combat: this.combat.exportState() }
   }
 
   restore(state: CollectGameState): void {
     const valid = new Set(this.config.collectibles.map((item) => item.id))
     this.#collected = new Set(state.collected.filter((id) => valid.has(id)))
     this.#phase = state.phase
+    this.combat.restore(state.combat)
   }
 }

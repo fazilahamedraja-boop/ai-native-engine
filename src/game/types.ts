@@ -10,7 +10,33 @@ export interface GameAsset {
   material: MaterialSpec
 }
 
-export type GamePhase = 'collecting' | 'return' | 'won'
+export type GamePhase = 'collecting' | 'return' | 'won' | 'lost'
+
+export interface EnemySnapshot {
+  id: string
+  health: number
+  maxHealth: number
+  defeated: boolean
+  /** Horizontal distance from the player to the enemy centre. */
+  distance: number
+  contactRadius: number
+  contactCooldown: number
+  hitFlash: boolean
+}
+
+export interface CombatSnapshot {
+  player: { health: number; maxHealth: number; defeated: boolean }
+  enemies: EnemySnapshot[]
+  attacks: number
+  hits: number
+  misses: number
+  damageDealt: number
+  damageTaken: number
+  attackCooldown: number
+  attackCooldownSteps: number
+  attackRange: number
+  enemiesDefeated: number
+}
 
 export interface GameSnapshot {
   id: string
@@ -23,7 +49,15 @@ export interface GameSnapshot {
   errors: string[]
   assetTriangles: Record<string, number>
   avatarTriangles: number
+  combat: CombatSnapshot
   hash: string
+}
+
+/** Per-enemy values the renderer needs without simulating anything. */
+export interface EnemyRenderState {
+  id: string
+  defeated: boolean
+  hitFlash: boolean
 }
 
 /** A render-only instance of an asset. Never part of World or collision. */
@@ -34,5 +68,5 @@ export interface GameVisual {
   pos: Vec3
   rotY: number
   scale: number
-  collectible: boolean
+  kind: 'prop' | 'collectible' | 'enemy'
 }

@@ -33,6 +33,8 @@ export interface InputState {
   moveX: number
   moveZ: number
   jump: boolean
+  /** Rising edge is consumed by the game's Combat module; holding does not repeat. */
+  attack: boolean
 }
 
 export interface ReloadReport {
@@ -198,7 +200,7 @@ export function createWorld(doc: SceneDoc): World {
     spawn,
     camera,
     cameraInit: structuredCloneCamera(camera),
-    input: { moveX: 0, moveZ: 0, jump: false },
+    input: { moveX: 0, moveZ: 0, jump: false, attack: false },
     step: 0,
     prevJump: false,
     revision: 1,
@@ -217,7 +219,7 @@ export function resetWorld(world: World): void {
   world.step = 0
   world.player = { pos: [...world.spawn.pos], vel: [0, 0, 0], grounded: false }
   world.camera = structuredCloneCamera(world.cameraInit)
-  world.input = { moveX: 0, moveZ: 0, jump: false }
+  world.input = { moveX: 0, moveZ: 0, jump: false, attack: false }
   world.prevJump = false
 }
 

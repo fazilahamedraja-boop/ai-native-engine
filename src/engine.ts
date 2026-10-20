@@ -30,7 +30,7 @@ export interface CaptureResult {
   height: number
 }
 
-const IDLE: InputState = { moveX: 0, moveZ: 0, jump: false }
+const IDLE: InputState = { moveX: 0, moveZ: 0, jump: false, attack: false }
 
 /**
  * The agent surface. Reads World, writes SceneDoc, and never exposes THREE
@@ -38,7 +38,7 @@ const IDLE: InputState = { moveX: 0, moveZ: 0, jump: false }
  * separate from inspect().
  */
 export class Engine {
-  readonly version = '0.1.0-phase4'
+  readonly version = '0.1.0-phase5'
   readonly world: World
   readonly renderer: Renderer
   paused = false
@@ -69,6 +69,7 @@ export class Engine {
     const avatar = this.#gameAssets.get(config.avatar.asset)
     this.renderer.setAvatarAsset(avatar ?? null, config.avatar.scale)
     this.renderer.setGameCollected([])
+    this.renderer.setGameEnemies(this.#game.enemyRenderStates())
   }
 
   // -- scene ---------------------------------------------------------------
@@ -103,6 +104,7 @@ export class Engine {
     this.#rawInput = { ...IDLE }
     this.#game?.reset()
     this.renderer.setGameCollected([])
+    this.renderer.setGameEnemies(this.#game?.enemyRenderStates() ?? [])
     this.renderer.render(this.world)
     return snapshot(this.world, this.#game)
   }
@@ -124,8 +126,9 @@ export class Engine {
   stepOnce(): void {
     this.world.input = this.#effectiveInput()
     stepWorld(this.world, FIXED_DT)
-    this.#game?.update(this.world.player.pos)
+    this.#game?.update(this.world.player.pos, this.world.input.attack)
     this.renderer.setGameCollected(this.#game?.collected ?? [])
+    this.renderer.setGameEnemies(this.#game?.enemyRenderStates() ?? [])
   }
 
   #effectiveInput(): InputState {
@@ -141,6 +144,7 @@ export class Engine {
       moveX: this.#rawInput.moveX * cos + this.#rawInput.moveZ * sin,
       moveZ: -this.#rawInput.moveX * sin + this.#rawInput.moveZ * cos,
       jump: this.#rawInput.jump,
+      attack: this.#rawInput.attack,
     }
   }
 
@@ -202,6 +206,7 @@ export class Engine {
         })
     this.renderer.render(this.world)
     this.renderer.setGameCollected(this.#game?.collected ?? [])
+    this.renderer.setGameEnemies(this.#game?.enemyRenderStates() ?? [])
     return report
   }
 }

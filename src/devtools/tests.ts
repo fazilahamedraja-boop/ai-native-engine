@@ -30,7 +30,7 @@ export interface TestHooks {
   avatarFeet?: () => Vec3
 }
 
-const IDLE: InputState = { moveX: 0, moveZ: 0, jump: false }
+const IDLE: InputState = { moveX: 0, moveZ: 0, jump: false, attack: false }
 
 function settle(world: World, steps = 120): void {
   world.input = { ...IDLE }
@@ -72,7 +72,7 @@ function apexGain(world: World): { gain: number; atStep: number; landingStep: nu
   const restY = world.player.pos[1]
   const before = world.step
 
-  world.input = { moveX: 0, moveZ: 0, jump: true }
+  world.input = { moveX: 0, moveZ: 0, jump: true, attack: false }
   stepWorld(world)
   world.input.jump = false
 
@@ -159,7 +159,7 @@ export function runTests(world: World, hooks: TestHooks = {}): TestReport {
     const avatarAtRest = readAvatar()
     let maxError = spread(avatarAtRest, world.player.pos)
 
-    world.input = { moveX: 0, moveZ: 0, jump: true }
+    world.input = { moveX: 0, moveZ: 0, jump: true, attack: false }
     stepWorld(world)
     world.input.jump = false
 
@@ -223,7 +223,7 @@ export function runTests(world: World, hooks: TestHooks = {}): TestReport {
     const startX = world.player.pos[0]
     const startY = world.player.pos[1]
 
-    world.input = { moveX: 1, moveZ: 0, jump: false }
+    world.input = { moveX: 1, moveZ: 0, jump: false, attack: false }
     for (let i = 0; i < 120; i++) stepWorld(world)
     const blockedX = world.player.pos[0]
     const groundedWhileBlocked = world.player.grounded
@@ -250,7 +250,7 @@ export function runTests(world: World, hooks: TestHooks = {}): TestReport {
     const sequence = (): string => {
       resetWorld(world)
       settle(world, 120)
-      world.input = { moveX: 0.3, moveZ: -0.7, jump: true }
+      world.input = { moveX: 0.3, moveZ: -0.7, jump: true, attack: false }
       stepWorld(world)
       world.input.jump = false
       for (let i = 0; i < 45; i++) stepWorld(world)
