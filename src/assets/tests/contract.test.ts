@@ -348,6 +348,33 @@ const cases: NodeTestCase[] = [
       return outcome.errors[0].message
     },
   },
+  {
+    /**
+     * The manifest schema accepts an imported character, but no build path
+     * exists yet. Pinning this keeps milestone 5 from being declared done by
+     * adding a manifest that every gate would then fail.
+     */
+    name: 'imported assets are not built',
+    run: () => {
+      const raw = characterRaw()
+      raw.provenance = {
+        type: 'imported',
+        file: 'character/placeholder-character.glb',
+        sha256: 'a'.repeat(64),
+        importer: 'glb',
+        importerVersion: 1,
+      }
+      const character = parseAsset(raw)
+      expect(character.ok, `imported character should parse: ${JSON.stringify(character.ok ? [] : character.errors)}`)
+
+      const outcome = buildAsset(character.value)
+      expect(!outcome.ok, 'expected build to reject imported provenance')
+      const issue = outcome.errors.find((candidate) => candidate.code === 'unsupported_provenance')
+      expect(issue !== undefined, `no unsupported_provenance issue; got ${outcome.errors.map((e) => e.code).join(', ')}`)
+      expectEqual(issue.path, 'provenance.type', 'path')
+      return issue.message
+    },
+  },
 ]
 
 export function suite() {
