@@ -164,7 +164,7 @@ Errors use the same `{path, code, message}` shape as scene errors, plus
 `expected`/`measured` where a number is involved.
 
 ```bash
-npm run test:assets    # 121 tests: contract, sword, rock, pine, framing, GLB index, decode, import
+npm run test:assets    # 122 tests: contract, sword, rock, pine, framing, GLB index, decode, import
 ```
 
 ### Inspection

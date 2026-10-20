@@ -1,6 +1,6 @@
 import { expect, expectEqual, runSuite } from '../../devtools/node-tests'
 import type { NodeTestCase } from '../../devtools/node-tests'
-import { buildImportedAsset } from '../build'
+import { buildImportedAsset, effectiveMaterial } from '../build'
 import type { BuildOutcome, ImportedSource } from '../build'
 import { artifactHash, statsOf } from '../mesh'
 import { parseAsset } from '../schema'
@@ -210,6 +210,29 @@ const cases: NodeTestCase[] = [
       const twoSided = artifactHash({ ...base, material: { ...base.material, doubleSided: true } })
       expect(absent !== twoSided, 'doubleSided did not change the hash')
       return `${absent} -> ${twoSided}`
+    },
+  },
+  {
+    name: 'effectiveMaterial keeps double-sided under an appearance override',
+    run: () => {
+      const geometry = {
+        positions: new Float32Array([0, 0, 0, 1, 0, 0, 0, 1, 0]),
+        normals: new Float32Array([0, 0, 1, 0, 0, 1, 0, 0, 1]),
+        indices: new Uint32Array([0, 1, 2]),
+      }
+      const asset: BuiltAsset = {
+        geometry,
+        sockets: {},
+        material: { color: '#ffffff', roughness: 0.5, metalness: 0, doubleSided: true },
+      }
+      const patched = effectiveMaterial(asset, { color: '#112233', roughness: 0.2 })
+      expectEqual(patched.color, '#112233', 'override colour')
+      expectEqual(patched.roughness, 0.2, 'override roughness')
+      expectEqual(patched.doubleSided, true, 'doubleSided preserved')
+
+      const front = effectiveMaterial({ ...asset, material: { ...asset.material, doubleSided: undefined } })
+      expectEqual(front.doubleSided, undefined, 'absent stays absent')
+      return 'colour/roughness overridden, doubleSided preserved'
     },
   },
 ]
