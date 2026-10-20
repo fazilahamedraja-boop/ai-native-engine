@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "id": "sword-bronze-01",
+  "kind": "sword",
+  "provenance": {
+    "type": "procedural",
+    "generator": "sword",
+    "generatorVersion": 1,
+    "seed": 7001
+  },
+  "params": {
+    "length": 0.7,
+    "bladeWidth": "narrow",
+    "guard": "disc",
+    "material": "bronze"
+  },
+  "contract": {
+    "units": "m",
+    "origin": "grip",
+    "scaleClass": "handheld",
+    "bounds": {
+      "min": [-0.05, -0.1, -0.05],
+      "max": [0.05, 0.6, 0.05]
+    },
+    "sockets": {
+      "grip": [0, 0, 0],
+      "blade_mid": [0, 0.375, 0],
+      "tip": [0, 0.6, 0]
+    }
+  },
+  "tests": [
+    { "assert": "origin-at", "value": "grip" },
+    { "assert": "sockets-present", "value": ["grip", "blade_mid", "tip"] },
+    { "assert": "max-extent", "value": 0.75 },
+    { "assert": "triangles-max", "value": 200 },
+    { "assert": "watertight" },
+    { "assert": "area-positive" }
+  ],
+  "override": {}
+}

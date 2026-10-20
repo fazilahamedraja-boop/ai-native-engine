@@ -30,7 +30,7 @@ committed.
 | # | Benchmark | Prediction | Observed | Wall-clock | Content tokens | Result |
 |---|---|---|---|---|---|---|
 | B1 | Sword disc guard | 122 tri, ±0.05 x/z | 122 tri, 366 v, bounds ±0.05; hash `c2324397` | 334 s core / 1,312 s full | ~1.1k | PASS |
-| B2 | Bronze shortsword | 122 tri, 0.7 m | pending | pending | pending | pending |
+| B2 | Bronze shortsword | 122 tri, 0.7 m | 122 tri, 366 v, hash `521e0ca3`; 6/6 validate | 337 s core | ~0.9k | PASS |
 | B3 | Humanoid slate override | artifact hash unchanged | pending | pending | pending | pending |
 | B4 | Pine snow | 316 tri, bounds unchanged | pending | pending | pending | pending |
 | B5 | Deliberate socket break | `socket_mismatch` | pending | pending | pending | pending |
@@ -103,7 +103,19 @@ Result: **PASS** (122 tri and bounds match; validation clean).
 
 ### Observed
 
-Pending.
+- `assets regen sword-bronze-01` reported **contract matches artifact** without
+  `--accept`; `assets validate` passed **6/6**.
+- Artifact: **122 triangles**, **366 vertices**, hash
+  `521e0ca39087700f`; bounds `[-0.05, -0.1, -0.05] .. [0.05, 0.6, 0.05]`;
+  sockets `grip`, `blade_mid [0,0.375,0]`, `tip [0,0.6,0]`; material
+  `#b18b58`, roughness 0.45, metalness 0.75.
+- Captures: four views in 113 ms total. CLI regenerate + validate: 1,171 ms.
+- Core loop wall-clock (prompt -> validated preview): **337 s** (5.6 min).
+- Content tokens: **~0.9k** (estimate; the new manifest is most of it).
+- Image: `docs/phase3/b2-bronze-shortsword.png`.
+
+Result: **PASS** (predicted topology, bounds, sockets and material all match;
+the contract needed no acceptance step).
 
 ## B3 — Humanoid slate override
 
