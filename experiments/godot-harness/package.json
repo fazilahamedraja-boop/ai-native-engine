@@ -5,7 +5,9 @@
   "type": "module",
   "description": "Minimal structured control and verification harness around Godot",
   "scripts": {
-    "test": "node --test tests/controller.test.mjs",
-    "test:logic": "node controller/harness.mjs test --project fixtures/sentry --json"
+    "test": "node --test tests/controller.test.mjs tests/session.test.mjs",
+    "test:logic": "node controller/harness.mjs test --project fixtures/sentry --json",
+    "test:session": "node --test tests/session.test.mjs",
+    "inspect": "node controller/harness.mjs inspect --project fixtures/sentry --json"
   }
 }

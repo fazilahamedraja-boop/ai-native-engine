@@ -1,0 +1,288 @@
+{
+  "operation": "inspect_project",
+  "ok": true,
+  "error": null,
+  "start": {
+    "operation": "start_project",
+    "ok": true,
+    "pid": 10464,
+    "port": 65024,
+    "project": "C:\\Users\\hacke\\ai-native-engine-phase8\\experiments\\godot-harness\\fixtures\\sentry",
+    "scene": null,
+    "headless": true,
+    "durationMs": 1140,
+    "ready": {
+      "pid": 10464,
+      "port": 65024,
+      "project": "godot-sentry",
+      "protocol": 1
+    },
+    "ping": {
+      "game_ready": true,
+      "godot": "4.7.2-stable (official)",
+      "headless": true,
+      "paused": false,
+      "pid": 10464,
+      "project": "godot-sentry",
+      "protocol": 1,
+      "uptime_ms": 95
+    },
+    "logs": {
+      "stdout": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "",
+        "HARNESS_READY {\"pid\":10464,\"port\":65024,\"project\":\"godot-sentry\",\"protocol\":1}"
+      ],
+      "stderr": []
+    }
+  },
+  "state": {
+    "operation": "inspect_state",
+    "ok": true,
+    "pid": 10464,
+    "paused": true,
+    "snapshot": {
+      "detection": 0,
+      "detection_percent": 0,
+      "exit_distance": 18,
+      "game_ready": true,
+      "hint": "WASD move · Space jump · R restart",
+      "hud": "REACH THE BEACON\nDETECTION 0% · HIDDEN\nEXIT 18.0 m · Avoid the sentry cones.",
+      "paused": true,
+      "phase": "active",
+      "player_position": [
+        0,
+        0.850000023841858,
+        0
+      ],
+      "seen_by": [],
+      "uptime_ms": 103
+    },
+    "scene_tree": {
+      "children": [
+        {
+          "children": [],
+          "class": "Node",
+          "name": "HarnessBridge",
+          "path": "/root/HarnessBridge"
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "class": "WorldEnvironment",
+              "name": "WorldEnvironment",
+              "path": "/root/Main/WorldEnvironment"
+            },
+            {
+              "children": [],
+              "class": "DirectionalLight3D",
+              "name": "Sun",
+              "path": "/root/Main/Sun"
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "class": "CollisionShape3D",
+                  "name": "Collision",
+                  "path": "/root/Main/Ground/Collision"
+                },
+                {
+                  "children": [],
+                  "class": "MeshInstance3D",
+                  "name": "Mesh",
+                  "path": "/root/Main/Ground/Mesh"
+                }
+              ],
+              "class": "StaticBody3D",
+              "name": "Ground",
+              "path": "/root/Main/Ground"
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "class": "CollisionShape3D",
+                  "name": "Collision",
+                  "path": "/root/Main/Player/Collision"
+                },
+                {
+                  "children": [],
+                  "class": "MeshInstance3D",
+                  "name": "Body",
+                  "path": "/root/Main/Player/Body"
+                },
+                {
+                  "children": [],
+                  "class": "MeshInstance3D",
+                  "name": "Visor",
+                  "path": "/root/Main/Player/Visor"
+                }
+              ],
+              "class": "CharacterBody3D",
+              "name": "Player",
+              "path": "/root/Main/Player"
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "class": "MeshInstance3D",
+                  "name": "Body",
+                  "path": "/root/Main/GuardA/Body"
+                },
+                {
+                  "children": [],
+                  "class": "MeshInstance3D",
+                  "name": "Eye",
+                  "path": "/root/Main/GuardA/Eye"
+                },
+                {
+                  "children": [],
+                  "class": "MeshInstance3D",
+                  "name": "DetectionCone",
+                  "path": "/root/Main/GuardA/DetectionCone"
+                }
+              ],
+              "class": "Node3D",
+              "name": "GuardA",
+              "path": "/root/Main/GuardA"
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "class": "MeshInstance3D",
+                  "name": "Body",
+                  "path": "/root/Main/GuardB/Body"
+                },
+                {
+                  "children": [],
+                  "class": "MeshInstance3D",
+                  "name": "Eye",
+                  "path": "/root/Main/GuardB/Eye"
+                },
+                {
+                  "children": [],
+                  "class": "MeshInstance3D",
+                  "name": "DetectionCone",
+                  "path": "/root/Main/GuardB/DetectionCone"
+                }
+              ],
+              "class": "Node3D",
+              "name": "GuardB",
+              "path": "/root/Main/GuardB"
+            },
+            {
+              "children": [],
+              "class": "MeshInstance3D",
+              "name": "Exit",
+              "path": "/root/Main/Exit"
+            },
+            {
+              "children": [],
+              "class": "OmniLight3D",
+              "name": "ExitLight",
+              "path": "/root/Main/ExitLight"
+            },
+            {
+              "children": [],
+              "class": "Camera3D",
+              "name": "Camera",
+              "path": "/root/Main/Camera"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [],
+                              "class": "Label",
+                              "name": "Status",
+                              "path": "/root/Main/HUD/Panel/@MarginContainer@2/@VBoxContainer@3/Status"
+                            },
+                            {
+                              "children": [],
+                              "class": "Label",
+                              "name": "Hint",
+                              "path": "/root/Main/HUD/Panel/@MarginContainer@2/@VBoxContainer@3/Hint"
+                            }
+                          ],
+                          "class": "VBoxContainer",
+                          "name": "@VBoxContainer@3",
+                          "path": "/root/Main/HUD/Panel/@MarginContainer@2/@VBoxContainer@3"
+                        }
+                      ],
+                      "class": "MarginContainer",
+                      "name": "@MarginContainer@2",
+                      "path": "/root/Main/HUD/Panel/@MarginContainer@2"
+                    }
+                  ],
+                  "class": "PanelContainer",
+                  "name": "Panel",
+                  "path": "/root/Main/HUD/Panel"
+                }
+              ],
+              "class": "CanvasLayer",
+              "name": "HUD",
+              "path": "/root/Main/HUD"
+            }
+          ],
+          "class": "Node3D",
+          "name": "Main",
+          "path": "/root/Main"
+        }
+      ],
+      "class": "Window",
+      "name": "root",
+      "path": "/root"
+    },
+    "bridge_logs": {
+      "events": [
+        "4 listening on 127.0.0.1:65024",
+        "94 client connected",
+        "100 paused"
+      ],
+      "started_msec": 867,
+      "uptime_ms": 110
+    },
+    "process_logs": {
+      "stdout": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "",
+        "HARNESS_READY {\"pid\":10464,\"port\":65024,\"project\":\"godot-sentry\",\"protocol\":1}"
+      ],
+      "stderr": []
+    }
+  },
+  "stop": {
+    "operation": "stop_project",
+    "ok": true,
+    "alreadyStopped": false,
+    "pid": 10464,
+    "exitCode": 0,
+    "signal": null,
+    "killed": false,
+    "logs": {
+      "stdout": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "",
+        "HARNESS_READY {\"pid\":10464,\"port\":65024,\"project\":\"godot-sentry\",\"protocol\":1}"
+      ],
+      "stderr": []
+    }
+  },
+  "logs": {
+    "stdout": [
+      "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+      "",
+      "HARNESS_READY {\"pid\":10464,\"port\":65024,\"project\":\"godot-sentry\",\"protocol\":1}"
+    ],
+    "stderr": []
+  }
+}

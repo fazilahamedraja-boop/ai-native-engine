@@ -32,6 +32,7 @@ func _ready() -> void:
 	_build_hud()
 	_update_camera()
 	_update_hud()
+	add_to_group("harness_game")
 
 
 func _process(_delta: float) -> void:
