@@ -907,25 +907,14 @@ export function readGlbIndex(bytes: Uint8Array): ParseResult<GlbIndex> {
 }
 
 /**
- * Minimal character gate: placeable, non-empty, and carrying every socket the
- * kind contract promises. Appearance and animation are deliberately not judged.
+ * Resolves required socket names against named nodes. Shared by the cheap kind
+ * gate and the decoder so both reject ambiguity identically.
  */
-export function readCharacter(index: GlbIndex): ParseResult<CharacterReading> {
+export function readSockets(index: GlbIndex, names: readonly string[]): ParseResult<Record<string, Vec3>> {
   const errors: AssetIssue[] = []
-
-  if (index.bounds === null) {
-    errors.push({
-      path: '',
-      code: 'no_drawable_geometry',
-      message: 'no node references a mesh, so the character cannot be placed',
-    })
-  }
-  if (index.triangles === 0) {
-    errors.push({ path: '', code: 'no_triangles', message: 'the character draws no triangles' })
-  }
-
   const sockets: Record<string, Vec3> = {}
-  for (const name of CHARACTER_SOCKETS) {
+
+  for (const name of names) {
     if (index.duplicateSlugs.includes(name)) {
       errors.push({
         path: `contract.sockets.${name}`,
@@ -948,13 +937,37 @@ export function readCharacter(index: GlbIndex): ParseResult<CharacterReading> {
     sockets[name] = position
   }
 
-  if (errors.length > 0 || index.bounds === null) return { ok: false, errors }
+  return errors.length > 0 ? { ok: false, errors } : { ok: true, value: sockets }
+}
+
+/**
+ * Minimal character gate: placeable, non-empty, and carrying every socket the
+ * kind contract promises. Appearance and animation are deliberately not judged.
+ */
+export function readCharacter(index: GlbIndex): ParseResult<CharacterReading> {
+  const errors: AssetIssue[] = []
+
+  if (index.bounds === null) {
+    errors.push({
+      path: '',
+      code: 'no_drawable_geometry',
+      message: 'no node references a mesh, so the character cannot be placed',
+    })
+  }
+  if (index.triangles === 0) {
+    errors.push({ path: '', code: 'no_triangles', message: 'the character draws no triangles' })
+  }
+
+  const socketResult = readSockets(index, CHARACTER_SOCKETS)
+  if (!socketResult.ok) errors.push(...socketResult.errors)
+
+  if (errors.length > 0 || index.bounds === null || !socketResult.ok) return { ok: false, errors }
 
   return {
     ok: true,
     value: {
       bounds: index.bounds,
-      sockets,
+      sockets: socketResult.value,
       triangles: index.triangles,
       meshes: index.meshes.length,
       skins: index.skins.length,

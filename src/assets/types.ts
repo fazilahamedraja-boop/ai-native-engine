@@ -42,6 +42,11 @@ export interface MaterialSpec {
   color: string
   roughness: number
   metalness: number
+  /**
+   * Render both faces. glTF's `doubleSided`; absent means front-face only, so
+   * single-sided material hashes published before this field stay stable.
+   */
+  doubleSided?: boolean
 }
 
 /** What a generator or an importer returns. */

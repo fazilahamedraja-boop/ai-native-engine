@@ -5,8 +5,9 @@ import { VIEWS, isViewName } from '../preview/views'
 import { buildAsset } from './build'
 import type { BuildOutcome } from './build'
 import { inspectAsset } from './inspect'
-import { readCharacter, readGlbIndex } from './import/glb'
-import { boundsOf } from './mesh'
+import { decodeGlb } from './import/decode'
+import { indexGlb, readCharacter, readGlbContents, readGlbIndex } from './import/glb'
+import { artifactHash, boundsOf, statsOf } from './mesh'
 import { parseAsset } from './schema'
 import type { AssetDoc } from './schema'
 import type { AssetIssue, Bounds } from './types'
@@ -23,7 +24,8 @@ const USAGE = `usage: npm run assets -- <command>
   preview <id> [--view v]      print the inspector URL (views: ${VIEWS.join(', ')})
   regen <id> [--accept]        show contract drift; --accept rewrites bounds and sockets
   index <file.glb>             JSON index of a GLB's JSON chunk (no geometry decode)
-  character <file.glb>         check a GLB against the character kind contract`
+  character <file.glb>         check a GLB against the character kind contract
+  decode <file.glb>            decode accessors to MeshData: bounds, sockets, material`
 
 interface LoadedAsset {
   file: string
@@ -428,6 +430,67 @@ async function commandCharacter(args: string[]): Promise<number> {
   return 0
 }
 
+/**
+ * The decoded artifact without a manifest: what the renderer would receive.
+ * Index and decode are reported side by side so declared accessor bounds can be
+ * compared with measured geometry before a manifest is authored.
+ */
+async function commandDecode(args: string[]): Promise<number> {
+  const file = args[0]
+  if (file === undefined) {
+    console.error(USAGE)
+    return 2
+  }
+
+  const loaded = await readGlb(file)
+  if (loaded === null) return 2
+
+  const report = { file: loaded.file, bytes: loaded.size, sha256: loaded.sha256 }
+  const contents = readGlbContents(loaded.bytes)
+  if (!contents.ok) {
+    printJson({ ...report, ok: false, errors: contents.errors })
+    return 1
+  }
+
+  const index = indexGlb(contents.value)
+  if (!index.ok) {
+    printJson({ ...report, ok: false, errors: index.errors })
+    return 1
+  }
+
+  const declared = {
+    triangles: index.value.triangles,
+    bounds: index.value.bounds === null ? null : roundBounds(index.value.bounds),
+    materials: index.value.materials,
+  }
+
+  const decoded = decodeGlb(contents.value, index.value)
+  if (!decoded.ok) {
+    printJson({ ...report, ok: false, errors: decoded.errors, declared })
+    return 1
+  }
+
+  const artifact = decoded.value.artifact
+  const stats = statsOf(artifact.geometry)
+  printJson({
+    ...report,
+    ok: true,
+    decoded: {
+      vertices: stats.vertices,
+      triangles: stats.triangles,
+      bounds: roundBounds(boundsOf(artifact.geometry)),
+      sockets: roundSockets(artifact.sockets),
+      material: artifact.material,
+      hash: artifactHash(artifact),
+      nodesDrawn: decoded.value.nodesDrawn,
+      trianglesDrawn: decoded.value.trianglesDrawn,
+    },
+    declared,
+    warnings: decoded.value.warnings,
+  })
+  return 0
+}
+
 export async function main(argv: string[]): Promise<number> {
   const [command = 'list', ...args] = argv
 
@@ -439,6 +502,7 @@ export async function main(argv: string[]): Promise<number> {
   // File commands do not need the manifest catalog.
   if (command === 'index') return commandIndex(args)
   if (command === 'character') return commandCharacter(args)
+  if (command === 'decode') return commandDecode(args)
 
   let assets: LoadedAsset[]
   try {

@@ -143,5 +143,7 @@ export function artifactHash(asset: BuiltAsset): string {
     values.push(socket[0], socket[1], socket[2])
   }
   values.push(parseInt(asset.material.color.slice(1), 16), asset.material.roughness, asset.material.metalness)
+  // Folded in only when true so existing single-sided hashes do not move.
+  if (asset.material.doubleSided === true) values.push(1)
   return hashNumbers64(values)
 }

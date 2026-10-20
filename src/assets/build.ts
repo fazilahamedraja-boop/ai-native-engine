@@ -91,5 +91,6 @@ export function effectiveMaterial(asset: BuiltAsset, override?: MaterialPatch): 
     color: patch.color ?? asset.material.color,
     roughness: patch.roughness ?? asset.material.roughness,
     metalness: patch.metalness ?? asset.material.metalness,
+    ...(asset.material.doubleSided === true ? { doubleSided: true } : {}),
   }
 }
