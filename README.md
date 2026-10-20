@@ -15,8 +15,13 @@ failure-detection targets pass; the 60 s end-to-end target does not, though the
 mechanical path is 1-2 s. Evidence: [`docs/phase3-review.md`](docs/phase3-review.md).
 **Phase 4 complete:** a playable island collect-and-return scene authored
 through the same `__engine` surface: three asset-backed swords, a humanoid
-avatar, a HUD, `R` restart, five browser game tests, and start/collected/won
-captures. Evidence: [`docs/phase4-review.md`](docs/phase4-review.md).
+avatar, a HUD, `R` restart, the original five browser game tests, and
+start/collected/won captures. Evidence:
+[`docs/phase4-review.md`](docs/phase4-review.md).
+**Phase 5 complete:** one data-driven granite sentinel, edge-triggered `F`
+attacks, player/enemy health, spawn-safe contact damage, a terminal `lost`
+phase, hit/defeat feedback, and 12 browser game tests. Evidence:
+[`docs/phase5-review.md`](docs/phase5-review.md).
 
 ## Run
 
@@ -33,7 +38,7 @@ Everything the agent needs is on `window.__engine`. The engine source is not par
 of the agent's working set.
 
 ```js
-__engine.version                       // "0.1.0-phase4"
+__engine.version                       // "0.1.0-phase5"
 __engine.scene()                       // the live, defaulted SceneDoc
 
 __engine.applyScene(rawObject)         // atomic: {ok, errors[], reload}
@@ -43,7 +48,7 @@ __engine.stats()                       // renderer counters only: {drawCalls, tr
 __engine.pause() / resume()
 __engine.reset()                       // step 0, spawn, initial camera, game reset
 __engine.step(n?)                       // advance n fixed steps, implies pause
-__engine.setInput({moveX, moveZ, jump})// world-space movement, edge-triggered jump
+__engine.setInput({moveX, moveZ, jump, attack}) // movement; edge-triggered jump/attack
 __engine.setOrbit({yaw, pitch, distance})
 
 __engine.capture(name)                 // render, POST PNG, return {path, bytes, step, hash}
@@ -68,9 +73,10 @@ what "state" means.
   world while unpaused.
 - Renderer uses `pixelRatio = 1` and a fixed 800x500 buffer.
 - State hash covers `step + player pos/vel/grounded + camera yaw/pitch/distance`
-  (or third-person yaw/distance/height), plus phase and collected flags when the
-  scene has a game block. Node transforms are configuration and are excluded — a
-  material edit must not invalidate a state hash.
+  (or third-person yaw/distance/height), plus game phase, collected flags, health,
+  attack edges/cooldowns, damage counters, and enemy state when the scene has a
+  game block. Node transforms are configuration and are excluded — a material
+  edit must not invalidate a state hash.
 - `capture()` pauses first, so a frame cannot be overwritten between render and
   `toBlob`.
 
@@ -128,7 +134,7 @@ nodes[2].parent: parent chain contains a cycle at 'ground'
 nodes: scene must contain exactly one 'camera' node, found 2
 ```
 
-## Game layer (Phase 4)
+## Game layer (Phase 5)
 
 `content/scenes/island.scene.json` adds one optional top-level `game` block. A
 scene without it is still a scene; `?scene=island` boots the playable loop.
@@ -145,29 +151,52 @@ scene without it is still a scene; `?scene=island` boots the playable loop.
   "props": [
     { "id": "pine-a", "asset": "pine-nordic-01",
       "pos": [-7, 0, 3], "rotY": 20, "scale": 0.55 }
+  ],
+  "combat": {
+    "playerHealth": 3, "attackRange": 2.0, "attackDamage": 1,
+    "attackCooldownSteps": 12, "contactCooldownSteps": 60,
+    "hitFlashSteps": 8
+  },
+  "enemies": [
+    { "id": "sentinel", "asset": "rock-granite-01", "pos": [5, 0, 10],
+      "radius": 0.9, "health": 3, "damage": 1, "rotY": 25, "scale": 1.2 }
   ]
 }
 ```
 
-- `CollectGame` is pure: horizontal distance checks, phase
-  `collecting -> return -> won`, no World or THREE access. The engine steps it
-  immediately after physics and snapshots it.
+- `CollectGame` is pure: horizontal distance checks and the phase
+  `collecting -> return -> won | lost`, with no World or THREE access. It
+  composes the pure `Combat` module and is stepped immediately after physics.
+- `Combat` owns reusable mechanics: player/enemy health, the rising-edge attack,
+  per-enemy contact cooldowns, nearest-target hit checks, counters, and
+  export/restore. `F` attacks are edge-triggered, so holding the key cannot
+  repeat; a press during the 12-step cooldown is ignored, not queued. Hits and
+  misses both consume the cooldown.
+- Contact damage uses the same 60-step window as the spawn/reset grace. A reset
+  that happens to overlap the sentinel cannot damage on step one; after the grace,
+  contact hits are one per 60 steps. `lost` outranks `won`; both are terminal
+  until `R` resets.
 - Assets are render-only. They never join World, contribute no collider, and
-  are skipped (with an error string) when the catalog is missing the id.
-  Collision stays on the scene's `collider` boxes, including four invisible
-  edge boxes that keep the player on the island.
+  are skipped (with an error string) when the catalog is missing the id. The
+  sentinel reuses `rock-granite-01`; it does not block movement. Collision stays
+  on the scene's `collider` boxes, including four invisible edge boxes that keep
+  the player on the island.
 - The humanoid replaces the capsule avatar only while a game is active; the
   renderer still derives the transform from `world.player.pos`, so the
   `player-avatar` test path is unchanged.
-- HUD: `SWORDS n / 3`, `ALL SWORDS FOUND`, `ESCAPED`, or the asset error list.
-  `R` resets the world and the game, keeps the scene, and restores the swords.
+- HUD: `SWORDS n / 3`, `HP 3/3 · SENTINEL 3/3` (plus `HIT`), `SENTINEL
+  DEFEATED`, `ESCAPED`, `DEFEATED`, or the asset error list. `R` restores the
+  swords, health, counters, cooldowns, and sentinel visibility.
 - Tests: `__engine.runTests()` at `?scene=island` returns
-  `game-assets`, `collect-all`, `return-wins`, `restart`, `determinism`
-  (5/5, ~13 ms), and restores the live world/game (`statePreserved`).
+  `game-assets`, `collect-all`, `return-wins`, `restart`, `determinism`,
+  `attack-hit`, `attack-miss-edge`, `enemy-defeat`, `contact`,
+  `combat-determinism`, `state-roundtrip`, `invalid-config` (12/12, ~26 ms), and
+  restores the live world/game (`statePreserved`).
 - Controls: `WASD` move (camera-relative in third-person), `Space` jump,
-  `R` restart; `__engine.step(n)` is the deterministic path.
+  `F` attack, `R` restart; `__engine.step(n)` is the deterministic path.
 
-Evidence and limits: [`docs/phase4-review.md`](docs/phase4-review.md).
+Evidence and limits: [`docs/phase4-review.md`](docs/phase4-review.md) and
+[`docs/phase5-review.md`](docs/phase5-review.md).
 
 ## Asset contract
 
@@ -436,12 +465,12 @@ directly with `node:zlib` so the number does not move when Vite changes how it
 reports sizes.
 
 ```
-index-Dn19LOVc.js   raw 731588   gzip 189850
-gzip total 189850 B (189.9 kB) of 400 kB budget — 47.5%
+index-DkVBMypY.js   raw 745259   gzip 193607
+gzip total 193607 B (193.6 kB) of 400 kB budget — 48.4%
 ```
 
 That includes THREE, Zod, the GLB decoder and the whole devtools surface. Vite's
-own log reports 189.87 kB for the same file because it uses a different gzip
+own log reports 195.58 kB for the same file because it uses a different gzip
 setting; the script above is authoritative.
 
 ## Cameras
@@ -477,7 +506,8 @@ src/devtools/state.ts     snapshot + state hash
 src/devtools/tests.ts     runTests()
 src/devtools/node-tests.ts Node suite runner (same report shape)
 src/game/schema.ts       optional game block grammar (Zod)
-src/game/collect.ts      pure collect/return state machine + hash/snapshot
+src/game/combat.ts       pure health/attack/contact state, hash/export/restore
+src/game/collect.ts      pure collect/return/lost state machine + combat composition
 src/game/visuals.ts      game block -> render-only asset instances
 src/game/tests.ts        runGameTests() for ?scene=island
 src/engine.ts             the agent surface
@@ -506,12 +536,17 @@ meters · +Y up · +Z forward · floor-center origin for props · feet-center fo
 - The Phase 3 60 s full-cycle target is not met end-to-end (core cycles
   152-385 s); the mechanical path is 1-2 s. Agent/review latency is the
   bottleneck.
-- The avatar has no facing direction and no animation; the humanoid is a static
-  blocky mesh, and the default avatar is a capsule.
-- Phase 4 game visuals are primitive: flat-shaded assets, a flat water plane, an
-  invisible island boundary, and no fall-in-water or terrain behavior.
+- The avatar and sentinel have no facing direction, animation, attack
+  telegraph, chase, or pathfinding. The sentinel is stationary and attacks are
+  radial within 2 m; a frontal arc needs facing state that does not exist yet.
+- Phase 4-5 game visuals are primitive: flat-shaded assets, a flat water plane,
+  an invisible island boundary, and no fall-in-water or terrain behavior. The
+  sentinel is an untinted `rock-granite-01` instance with an emissive hit flash.
 - The game suite is browser-only (`runTests()` at `?scene=island`); there is no
   CLI or CI wrapper for it.
+- Phase 5 acceptance uses fixed steps and real keyboard events; no real-time
+  frame-rate claim is made. Headless Chromium throttles rAF, so the evidence
+  uses `__engine.step(n)` and `__engine.capture()`.
 - `collect-return` is the only game mode; the `game` block is scene
   configuration, not a general gameplay authoring system.
 - Imported characters are static meshes: no skinning, animation playback, morph
