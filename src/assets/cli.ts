@@ -1,16 +1,16 @@
 import { readdir, readFile, writeFile } from 'node:fs/promises'
 import { createHash } from 'node:crypto'
-import { relative, resolve } from 'node:path'
+import { relative, resolve, sep } from 'node:path'
 import { VIEWS, isViewName } from '../preview/views'
-import { buildAsset } from './build'
-import type { BuildOutcome } from './build'
+import { buildAsset, buildImportedAsset } from './build'
+import type { BuildOutcome, ImportedSource } from './build'
 import { inspectAsset } from './inspect'
 import { decodeGlb } from './import/decode'
 import { indexGlb, readCharacter, readGlbContents, readGlbIndex } from './import/glb'
 import { artifactHash, boundsOf, statsOf } from './mesh'
 import { parseAsset } from './schema'
 import type { AssetDoc } from './schema'
-import type { AssetIssue, Bounds } from './types'
+import type { AssetIssue, Bounds, ParseResult } from './types'
 import type { Vec3 } from '../core/math'
 
 const ASSET_ROOT = 'content/assets'
@@ -86,17 +86,74 @@ async function loadAll(): Promise<LoadedAsset[]> {
       continue
     }
 
+    let outcome: BuildOutcome | null = null
+    let errors: AssetIssue[] = []
+    if (parsed.value.provenance.type === 'imported') {
+      const source = await readImportedSource(parsed.value.provenance.file)
+      if (source.ok) outcome = buildImportedAsset(parsed.value, source.value)
+      else errors = source.errors
+    } else {
+      outcome = buildAsset(parsed.value)
+    }
+
     loaded.push({
       file,
       relativeFile,
       raw: raw as Record<string, unknown>,
       doc: parsed.value,
-      outcome: buildAsset(parsed.value),
-      errors: [],
+      outcome,
+      errors,
     })
   }
 
   return loaded
+}
+
+/**
+ * Reads the GLB a manifest pins. The prefix check keeps `provenance.file` from
+ * reaching outside the asset root; the digest is computed over the exact bytes.
+ */
+async function readImportedSource(relativeFile: string): Promise<ParseResult<ImportedSource>> {
+  const root = resolve(ASSET_ROOT)
+  const absolute = resolve(root, relativeFile)
+  if (absolute === root || !absolute.startsWith(`${root}${sep}`)) {
+    return {
+      ok: false,
+      errors: [
+        {
+          path: 'provenance.file',
+          code: 'source_outside_assets',
+          message: `'${relativeFile}' resolves outside ${ASSET_ROOT}`,
+          measured: relativeFile,
+        },
+      ],
+    }
+  }
+
+  let buffer: Buffer
+  try {
+    buffer = await readFile(absolute)
+  } catch (error) {
+    return {
+      ok: false,
+      errors: [
+        {
+          path: 'provenance.file',
+          code: 'source_missing',
+          message: `cannot read '${relativeFile}': ${(error as Error).message}`,
+          measured: relativeFile,
+        },
+      ],
+    }
+  }
+
+  return {
+    ok: true,
+    value: {
+      bytes: new Uint8Array(buffer.buffer, buffer.byteOffset, buffer.byteLength),
+      sha256: createHash('sha256').update(buffer).digest('hex'),
+    },
+  }
 }
 
 function select(assets: LoadedAsset[], ids: string[]): LoadedAsset[] | null {
@@ -129,7 +186,8 @@ async function commandList(assets: LoadedAsset[]): Promise<number> {
   for (const asset of assets) {
     if (asset.doc === null || asset.outcome === null) {
       failed += 1
-      console.log(`${asset.relativeFile.padEnd(48)} parse   ${asset.errors[0]?.message ?? 'invalid'}`)
+      const label = asset.doc === null ? 'parse' : 'build'
+      console.log(`${asset.relativeFile.padEnd(48)} ${label}   ${asset.errors[0]?.message ?? 'invalid'}`)
       continue
     }
 
@@ -289,8 +347,10 @@ async function commandRegen(assets: LoadedAsset[], args: string[]): Promise<numb
 
   const doc = asset.doc
   const artifact = asset.outcome.artifact
+  // Bounds and sockets are the two measured halves of the contract, so drift in
+  // either is what --accept exists to fix; every other failure still blocks.
   const blocking = (asset.outcome.report?.errors ?? asset.outcome.errors).filter(
-    (issue) => issue.path !== 'contract.bounds',
+    (issue) => issue.path !== 'contract.bounds' && !issue.path.startsWith('contract.sockets.'),
   )
   if (blocking.length > 0) {
     console.log(`${doc.id}: refusing to accept, unrelated failures:`)

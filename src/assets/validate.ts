@@ -6,6 +6,7 @@ import type { AssetIssue, Bounds, BuiltAsset } from './types'
 /** Metres. A tenth of a millimetre is far below anything the game can show. */
 export const BOUNDS_TOLERANCE = 1e-4
 export const ORIGIN_TOLERANCE = 1e-4
+export const SOCKET_TOLERANCE = 1e-4
 
 export interface ValidationReport {
   ok: boolean
@@ -107,6 +108,31 @@ export function validateArtifact(doc: AssetDoc, artifact: BuiltAsset, generation
       expected: doc.contract.bounds,
       measured: bounds,
     })
+  }
+
+  // Declared sockets are a promise like bounds: an attachment point that moved
+  // silently would invalidate every placement built on it.
+  for (const [name, declared] of Object.entries(doc.contract.sockets)) {
+    const measured = artifact.sockets[name]
+    if (measured === undefined) {
+      errors.push({
+        path: `contract.sockets.${name}`,
+        code: 'socket_missing',
+        message: `contract declares socket '${name}' but the artifact does not provide it`,
+        expected: declared,
+      })
+      continue
+    }
+    const distance = Math.hypot(measured[0] - declared[0], measured[1] - declared[1], measured[2] - declared[2])
+    if (distance > SOCKET_TOLERANCE) {
+      errors.push({
+        path: `contract.sockets.${name}`,
+        code: 'socket_mismatch',
+        message: `socket '${name}' differs from the declared position by ${distance.toExponential(2)} m (tolerance ${SOCKET_TOLERANCE})`,
+        expected: declared,
+        measured,
+      })
+    }
   }
 
   doc.tests.forEach((assertion, index) => {

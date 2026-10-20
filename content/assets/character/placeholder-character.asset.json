@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "id": "placeholder-character",
+  "kind": "character",
+  "provenance": {
+    "type": "imported",
+    "file": "character/placeholder-character.glb",
+    "sha256": "1af652d739cd18abbde248437a245b5b89521365865ca327cd88d3f6f63c577b",
+    "importer": "glb",
+    "importerVersion": 1
+  },
+  "params": {},
+  "contract": {
+    "units": "m",
+    "origin": "feet-center",
+    "scaleClass": "character",
+    "bounds": {
+      "min": [
+        -0.25,
+        0,
+        -0.115
+      ],
+      "max": [
+        0.25,
+        1.63,
+        0.115
+      ]
+    },
+    "sockets": {
+      "hand_l": [
+        -0.215,
+        0.845,
+        0
+      ],
+      "hand_r": [
+        0.215,
+        0.845,
+        0
+      ],
+      "head": [
+        0,
+        1.515,
+        0
+      ]
+    }
+  },
+  "tests": [
+    {
+      "assert": "origin-at",
+      "value": "feet-center"
+    },
+    {
+      "assert": "sockets-present",
+      "value": [
+        "head",
+        "hand_l",
+        "hand_r"
+      ]
+    },
+    {
+      "assert": "max-extent",
+      "value": 2.2
+    },
+    {
+      "assert": "triangles-max",
+      "value": 2000
+    },
+    {
+      "assert": "watertight"
+    },
+    {
+      "assert": "area-positive"
+    }
+  ],
+  "override": {}
+}

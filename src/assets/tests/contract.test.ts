@@ -350,11 +350,12 @@ const cases: NodeTestCase[] = [
   },
   {
     /**
-     * The manifest schema accepts an imported character, but no build path
-     * exists yet. Pinning this keeps milestone 5 from being declared done by
-     * adding a manifest that every gate would then fail.
+     * `buildAsset` is the procedural path and never reads bytes, so it must keep
+     * rejecting imported provenance. Imported manifests go through
+     * `buildImportedAsset`, which requires the pinned source and is tested in
+     * import.test.ts.
      */
-    name: 'imported assets are not built',
+    name: 'procedural build rejects imported provenance',
     run: () => {
       const raw = characterRaw()
       raw.provenance = {
