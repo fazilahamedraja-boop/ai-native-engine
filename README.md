@@ -6,6 +6,8 @@ the pixels back, inspects state numerically, and self-corrects.
 **Phase 0 complete:** deterministic render + capture.
 **Phase 1 complete:** versioned scene document, world/physics layer, orbit and
 third-person cameras, hot reload that preserves simulation state.
+**Phase 2 milestone 5 complete:** GLB container -> accessor decode -> validation
+-> preview, with a generated humanoid as the first imported character.
 
 ## Run
 
@@ -201,10 +203,10 @@ __preview.capture('name')    // PNG through the same sink, returns {path, bytes}
 All views share one camera distance, derived from the asset's bounding sphere.
 That makes two captures directly comparable and makes a size change visible. The
 cost is that `top` on a tall asset is small — it exists to read the
-cross-section. Captures are byte-identical across repeats (verified twice:
-`SHA256 5CBCB50C045C9CFF…` for a procedural asset, `5C5DB509E5E0B283…` for the
-imported character). Metals are lit by a baked `RoomEnvironment`, without
-which `metalness 0.7` renders as flat grey.
+cross-section. Captures are byte-identical across repeats: `5CBCB50C…` for a
+procedural asset, `5C5DB509…` for the placeholder character, and `6719C524…`
+for `humanoid-01`. Metals are lit by a baked `RoomEnvironment`, without which
+`metalness 0.7` renders as flat grey.
 
 ### Character import
 
@@ -253,24 +255,31 @@ and two nodes claiming one slug is an `ambiguous_socket`.
 `buildImportedAsset` refuses a source whose SHA-256 differs from the manifest,
 and reports an importer-version mismatch instead of guessing. The browser
 catalog fetches the bundled GLB and computes the digest with WebCrypto, so the
-preview and the CLI build the same bytes; the fixture's artifact hash is
+preview and the CLI build the same bytes; the placeholder's artifact hash is
 `4aace1dd1ecb9259` in both.
 
-`content/assets/character/placeholder-character.asset.json` is the first
-imported manifest. It was authored with `regen --accept` (bounds and sockets
-drifted first, then were rewritten from the decoded artifact) and passes every
-test: 72 triangles, 144 vertices, bounds `[-0.25, 0, -0.115] .. [0.25, 1.63,
-0.115]`, sockets `head (0, 1.515, 0)`, `hand_l (-0.215, 0.845, 0)`,
-`hand_r (0.215, 0.845, 0)`, material `#c4c7cb`, double-sided.
+`humanoid-01` is the first character asset: a static, unrigged humanoid assembled
+from 22 boxes, 1.82 m tall, feet at the origin, facing +Z. The GLB is 33,728
+bytes, sha256 `1e5628f8…`; `scripts/make-humanoid.py` produced identical bytes on
+three consecutive headless runs. It decodes to 264 triangles / 528 vertices,
+bounds `[-0.34, 0, -0.12] .. [0.34, 1.82, 0.175]`, sockets `head (0, 1.7, 0)`,
+`hand_l (-0.295, 0.88, 0)`, `hand_r (0.295, 0.88, 0)`, and a single-sided clay
+material `#a2816c` (roughness 0.62). Artifact hash `24a10e9da432a551`;
+`assets validate` is 5/5.
 
-The GLB itself is a **fixture**, not a shipped character: six boxes, no
-armature, no animation, feet at the origin, sha256 `1af652d7…`.
+The export -> import -> preview sequence ran end to end: `character` accepted the
+GLB, `regen --accept` wrote the measured contract, `validate` passed every
+declared test including `watertight`, and the browser preview produced the same
+artifact hash as the CLI. Two three-quarter captures are byte-identical
+(SHA256 `6719C5247EC0E321…`). **Milestone 5 is complete** with this generated
+character; it is deliberately blocky and has no rig, animation or textures.
+
+`placeholder-character.glb` remains the minimal fixture: six boxes, 72
+triangles, no armature, no animation, feet at the origin, sha256 `1af652d7…`.
 `scripts/make-character.py` regenerates it headlessly and produced identical
-bytes on three consecutive runs (boxes, because Blender reorders a UV sphere's
-index buffer between exports). It is genuinely Blender-exported, so the whole
-sequence runs on real bytes: index -> manifest -> inspect -> validate ->
-preview -> two byte-identical captures. **Milestone 5 stays open until a real
-character GLB replaces it**; no pipeline code is waiting.
+bytes on three consecutive runs. It is genuinely Blender-exported and remains
+useful as the smallest real container/index/decode case; it is not the milestone
+asset.
 
 ## Hot reload
 
@@ -366,8 +375,8 @@ directly with `node:zlib` so the number does not move when Vite changes how it
 reports sizes.
 
 ```
-index-CgWl5xUP.js   raw 721276   gzip 187608
-gzip total 187608 B (187.6 kB) of 400 kB budget — 46.9%
+index-BQqs4tQC.js   raw 722056   gzip 187765
+gzip total 187765 B (187.8 kB) of 400 kB budget — 46.9%
 ```
 
 That includes THREE, Zod, the GLB decoder and the whole devtools surface. Vite's
@@ -409,6 +418,8 @@ src/devtools/node-tests.ts Node suite runner (same report shape)
 src/engine.ts             the agent surface
 src/main.ts               boot, input, rAF loop, hot-reload listener
 vite.config.ts            /__capture sink + scene-watch
+scripts/make-character.py reproducible placeholder GLB fixture
+scripts/make-humanoid.py  reproducible humanoid GLB character
 ```
 
 Renderer note: nodes are drawn as a **flat list** using precomputed world
@@ -429,6 +440,6 @@ meters · +Y up · +Z forward · floor-center origin for props · feet-center fo
   primitives with different materials are rejected.
 - The preview's GLB digest uses WebCrypto, so imported assets load only from
   localhost or HTTPS.
-- The imported character is still the Blender-exported placeholder fixture.
-  Milestone 5 stays open until a real character GLB replaces it.
+- `humanoid-01` is deliberately blocky, unrigged and untextured; it proves the
+  import path, not production character art.
 - No shadow-quality tuning, no mesh instancing, no LOD.

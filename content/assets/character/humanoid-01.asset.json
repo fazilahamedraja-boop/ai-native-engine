@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "id": "humanoid-01",
+  "kind": "character",
+  "provenance": {
+    "type": "imported",
+    "file": "character/humanoid-01.glb",
+    "sha256": "1e5628f87ef981f952dca4b8408cdb62bf09be406f28f7477632c5e0f87eae5c",
+    "importer": "glb",
+    "importerVersion": 1
+  },
+  "params": {},
+  "contract": {
+    "units": "m",
+    "origin": "feet-center",
+    "scaleClass": "character",
+    "bounds": {
+      "min": [
+        -0.34,
+        0,
+        -0.12
+      ],
+      "max": [
+        0.34,
+        1.82,
+        0.175
+      ]
+    },
+    "sockets": {
+      "hand_l": [
+        -0.295,
+        0.88,
+        0
+      ],
+      "hand_r": [
+        0.295,
+        0.88,
+        0
+      ],
+      "head": [
+        0,
+        1.7,
+        0
+      ]
+    }
+  },
+  "tests": [
+    {
+      "assert": "origin-at",
+      "value": "feet-center"
+    },
+    {
+      "assert": "sockets-present",
+      "value": [
+        "head",
+        "hand_l",
+        "hand_r"
+      ]
+    },
+    {
+      "assert": "max-extent",
+      "value": 2.2
+    },
+    {
+      "assert": "triangles-max",
+      "value": 1000
+    },
+    {
+      "assert": "watertight"
+    },
+    {
+      "assert": "area-positive"
+    }
+  ],
+  "override": {}
+}
