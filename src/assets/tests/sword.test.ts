@@ -4,6 +4,7 @@ import { expect, expectClose, expectEqual, runSuite } from '../../devtools/node-
 import type { NodeTestCase } from '../../devtools/node-tests'
 import { buildAsset } from '../build'
 import { swordGenerator } from '../generators/sword'
+import { inspectAsset } from '../inspect'
 import { SwordParams } from '../kinds'
 import { artifactHash, boundsOf, isWatertight, statsOf } from '../mesh'
 import { createRng } from '../rng'
@@ -57,7 +58,11 @@ const cases: NodeTestCase[] = [
     name: 'declared bounds match artifact',
     run: () => {
       const doc = shippedDoc()
-      const bounds = boundsOf(build().geometry)
+      const outcome = buildAsset(doc)
+      if (!outcome.ok || outcome.artifact === undefined) {
+        throw new Error(`shipped manifest failed to build: ${JSON.stringify(outcome.errors)}`)
+      }
+      const bounds = boundsOf(outcome.artifact.geometry)
       const axes = ['x', 'y', 'z'] as const
       for (let axis = 0; axis < 3; axis++) {
         expectClose(bounds.min[axis], doc.contract.bounds.min[axis], `min.${axes[axis]}`, 1e-6)
@@ -126,6 +131,23 @@ const cases: NodeTestCase[] = [
       expectEqual(steel.metalness, 0.9, 'steel metalness')
       expect(bronze.color !== iron.color && bronze.color !== steel.color, 'bronze colour is not distinct')
       return `iron=${iron.color} steel=${steel.color} bronze=${bronze.color}`
+    },
+  },
+  {
+    name: 'inspection carries the override',
+    run: () => {
+      const raw = {
+        ...manifestRaw(),
+        override: { material: { color: '#112233', roughness: 0.25 } },
+      }
+      const parsed = parseAsset(raw)
+      expect(parsed.ok, `override variant should parse: ${JSON.stringify(parsed.ok ? [] : parsed.errors)}`)
+      const outcome = buildAsset(parsed.value)
+      expect(outcome.ok, `override variant should build: ${JSON.stringify(outcome.errors)}`)
+      const inspection = inspectAsset(parsed.value, outcome, MANIFEST_PATH)
+      expectEqual(inspection.override.material?.color, '#112233', 'inspected override colour')
+      expectEqual(inspection.override.material?.roughness, 0.25, 'inspected override roughness')
+      return `override=${inspection.override.material?.color} roughness=${inspection.override.material?.roughness}`
     },
   },
 ]

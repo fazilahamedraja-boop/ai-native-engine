@@ -28,6 +28,7 @@ export interface AssetInspection {
     material: MaterialSpec
   } | null
   tests: AssetDoc['tests']
+  override: AssetDoc['override']
   errors: AssetIssue[]
   warnings: AssetIssue[]
 }
@@ -57,6 +58,7 @@ export function inspectAsset(doc: AssetDoc, outcome: BuildOutcome, file?: string
             material: artifact.material,
           },
     tests: doc.tests,
+    override: doc.override,
     errors: outcome.errors,
     warnings: outcome.report?.warnings ?? [],
   }
