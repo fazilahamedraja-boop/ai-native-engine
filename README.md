@@ -23,6 +23,14 @@ attacks, player/enemy health, spawn-safe contact damage, a terminal `lost`
 phase, hit/defeat feedback, and 12 browser game tests. Evidence:
 [`docs/phase5-review.md`](docs/phase5-review.md).
 
+**Phase 8 experiment (separate branch, not merged):** an isolated Godot
+controller with headless tests, process lifecycle, requested fixed steps,
+structured snapshots and hashes, live sentry gameplay checks, windowed
+screenshots, and a reproducible defect-repair experiment. The engine and Phase
+7 branch are unchanged. Usage:
+[`experiments/godot-harness/README.md`](experiments/godot-harness/README.md).
+Acceptance review: [`docs/phase8-report.md`](docs/phase8-report.md).
+
 **Fresh-session handoff:** [`docs/project-state.md`](docs/project-state.md) has
 the architecture map, current checkpoint, verification commands, known issues,
 next steps, and backup/restore procedure.

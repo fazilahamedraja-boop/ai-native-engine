@@ -216,6 +216,26 @@ Platform and test limits:
 6. **Keep the evidence discipline.** Criteria before code, focused commits,
    phase reviews with exact commands, and no rewriting of historical results.
 
+## Phase 8 experiment (separate branch)
+
+This section is present only on `experiment/phase8-godot-harness`. `master` and
+`spike/sentry-mode` remain unchanged; the Phase 7 fixture was not edited.
+
+The experiment adds an isolated Godot verification harness under
+`experiments/godot-harness/`. It uses a project-local autoload bridge and a
+Node controller, not an engine fork or a new MCP server. The verified surface is:
+
+- `run_tests`: headless sentry logic and live gameplay suites with exit codes;
+- `start_project` / `stop_project`: owned-process lifecycle, logs, and isolation;
+- `inspect_state`: snapshots, scene tree, properties, and bridge events;
+- pause, persistent input, requested steps, reset, stable hashes, and windowed
+  screenshots;
+- a reproducible one-line defect-repair experiment.
+
+Start with `experiments/godot-harness/README.md`. The acceptance review and
+limitations are in `docs/phase8-report.md`. The full evidence is under
+`docs/phase8/`. Do not merge this branch into `master` without a new decision.
+
 ## Backup, recovery, and security
 
 Security posture at the Phase 5 checkpoint:
