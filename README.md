@@ -23,6 +23,10 @@ attacks, player/enemy health, spawn-safe contact damage, a terminal `lost`
 phase, hit/defeat feedback, and 12 browser game tests. Evidence:
 [`docs/phase5-review.md`](docs/phase5-review.md).
 
+**Fresh-session handoff:** [`docs/project-state.md`](docs/project-state.md) has
+the architecture map, current checkpoint, verification commands, known issues,
+next steps, and backup/restore procedure.
+
 ## Run
 
 ```bash
