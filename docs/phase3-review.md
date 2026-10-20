@@ -277,9 +277,23 @@ the preview, then restored).
   60 s end-to-end target is **not met**.
 - **Content tokens:** roughly 0.5-1.1 k per cycle by the estimate above; all
   are under the 5 k target. This excludes hidden model reasoning and images.
-- **Checkpoint intervals:** recorded from git history in the final timing
-  commit; B1's full interval was 1,312 s, B2's 353 s, B3's 415 s after the
-  inspection fix, and B4's 357 s.
+- **Checkpoint intervals:** recorded from git history. The table separates the
+  content cycle from review overhead; B5's 236 s ends at its evidence commit,
+  before this final timing pass.
+
+  | Cycle | Core loop | Full checkpoint | Notes |
+  |---|---|---|---|
+  | B1 | 334 s | 1,312 s | includes review image/doc; a 155 s timing correction follows |
+  | B2 | 337 s | 353 s | |
+  | B3 | 385 s | 415 s content; 901 s total | the 486 s inspection fix is included in the total |
+  | B4 | 281 s | 357 s | rejected visual change, reverted |
+  | B5 | 152 s | 236 s | deliberate break caught and restored |
+
+  Phase total from the prediction commit to the B5 evidence commit:
+  **3,314 s** (55.2 min), including the correction and the inspection fix.
+- **Section text alone** is 1,728-2,136 characters per cycle (~432-534
+  tokens); with the manifest diff and CLI output the estimates above are
+  0.5-1.1 k. All remain under the 5 k budget.
 
 ### Findings
 

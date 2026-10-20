@@ -9,6 +9,10 @@ third-person cameras, hot reload that preserves simulation state.
 **Phase 2 complete:** asset contract, three procedural assets, imported humanoid,
 contact sheets and a predicted parameter change. Evidence:
 [`docs/phase2-exit.md`](docs/phase2-exit.md).
+**Phase 3 benchmarked:** five prompt-driven loop cycles, including a caught
+visual failure and a deliberate socket break. Content-token (estimated) and
+failure-detection targets pass; the 60 s end-to-end target does not, though the
+mechanical path is 1-2 s. Evidence: [`docs/phase3-review.md`](docs/phase3-review.md).
 
 ## Run
 
@@ -169,7 +173,7 @@ Errors use the same `{path, code, message}` shape as scene errors, plus
 `expected`/`measured` where a number is involved.
 
 ```bash
-npm run test:assets    # 122 tests: contract, sword, rock, pine, framing, GLB index, decode, import
+npm run test:assets    # 123 tests: contract, sword, rock, pine, framing, GLB index, decode, import
 ```
 
 ### Inspection
@@ -184,8 +188,8 @@ npm run assets -- regen sword-iron-01 [--accept]
 
 `inspect` prints one JSON object: provenance, params, declared contract, the
 measured artifact (hash, bounds, sockets, material, triangles, generation ms),
-tests, errors, warnings. The CLI and the preview page return the same shape, so
-the agent does not have to learn two.
+override, tests, errors, warnings. The CLI and the preview page return the same
+shape, so the agent does not have to learn two.
 
 `regen` compares the artifact against the declared contract. Without `--accept`
 it reports drift and exits 1. With `--accept` it rewrites bounds and sockets —
@@ -268,7 +272,8 @@ three consecutive headless runs. It decodes to 264 triangles / 528 vertices,
 bounds `[-0.34, 0, -0.12] .. [0.34, 1.82, 0.175]`, sockets `head (0, 1.7, 0)`,
 `hand_l (-0.295, 0.88, 0)`, `hand_r (0.295, 0.88, 0)`, and a single-sided clay
 material `#a2816c` (roughness 0.62). Artifact hash `24a10e9da432a551`;
-`assets validate` is 5/5.
+`assets validate` is 6/6. The Phase 3 manifest override renders it slate
+`#6f7f95` at roughness 0.5 without changing the artifact hash.
 
 The export -> import -> preview sequence ran end to end: `character` accepted the
 GLB, `regen --accept` wrote the measured contract, `validate` passed every
@@ -378,12 +383,12 @@ directly with `node:zlib` so the number does not move when Vite changes how it
 reports sizes.
 
 ```
-index-jCQPH5Pz.js   raw 722056   gzip 187765
-gzip total 187765 B (187.8 kB) of 400 kB budget — 46.9%
+index-BSyaA68O.js   raw 722751   gzip 187860
+gzip total 187860 B (187.9 kB) of 400 kB budget — 47.0%
 ```
 
 That includes THREE, Zod, the GLB decoder and the whole devtools surface. Vite's
-own log reports 189.60 kB for the same file because it uses a different gzip
+own log reports 189.87 kB for the same file because it uses a different gzip
 setting; the script above is authoritative.
 
 ## Cameras
@@ -436,6 +441,14 @@ meters · +Y up · +Z forward · floor-center origin for props · feet-center fo
 ## Known gaps
 
 - `inspect()` reports node world position and scale, not world rotation.
+- `regen --accept` rewrites the entire manifest in expanded JSON; a two-value
+  edit produces a large diff until a canonical formatter exists.
+- The pine `snow` parameter adds the predicted geometry, but stacked tiers hide
+  the snow bands. The shipped pine stays `snow: false` until the generator
+  places the band visibly.
+- The Phase 3 60 s full-cycle target is not met end-to-end (core cycles
+  152-385 s); the mechanical path is 1-2 s. Agent/review latency is the
+  bottleneck.
 - The avatar has no facing direction, so it reads as a capsule rather than a
   character.
 - Imported characters are static meshes: no skinning, animation playback, morph
