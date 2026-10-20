@@ -6,8 +6,9 @@ the pixels back, inspects state numerically, and self-corrects.
 **Phase 0 complete:** deterministic render + capture.
 **Phase 1 complete:** versioned scene document, world/physics layer, orbit and
 third-person cameras, hot reload that preserves simulation state.
-**Phase 2 milestone 5 complete:** GLB container -> accessor decode -> validation
--> preview, with a generated humanoid as the first imported character.
+**Phase 2 complete:** asset contract, three procedural assets, imported humanoid,
+contact sheets and a predicted parameter change. Evidence:
+[`docs/phase2-exit.md`](docs/phase2-exit.md).
 
 ## Run
 
@@ -118,7 +119,9 @@ nodes: scene must contain exactly one 'camera' node, found 2
 
 Phase 2. An asset is a text manifest plus a pure build function; the artifact is
 never checked in. `src/assets/schema.ts` validates the manifest, `kinds.ts` owns
-the ontology, `validate.ts` judges what was built.
+the ontology, `validate.ts` judges what was built. Phase 2 exit evidence,
+including four-view contact sheets and the predicted pine change, is in
+[`docs/phase2-exit.md`](docs/phase2-exit.md).
 
 Six concepts, and no more:
 
@@ -375,7 +378,7 @@ directly with `node:zlib` so the number does not move when Vite changes how it
 reports sizes.
 
 ```
-index-BQqs4tQC.js   raw 722056   gzip 187765
+index-jCQPH5Pz.js   raw 722056   gzip 187765
 gzip total 187765 B (187.8 kB) of 400 kB budget — 46.9%
 ```
 

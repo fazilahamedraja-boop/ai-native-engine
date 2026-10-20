@@ -10,7 +10,7 @@
   },
   "params": {
     "height": 8,
-    "tiers": 5,
+    "tiers": 6,
     "spread": "narrow",
     "snow": false
   },
