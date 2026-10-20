@@ -9,6 +9,10 @@ import { parseScene } from './schema/scene'
 import type { Snapshot } from './devtools/state'
 import { snapshot } from './devtools/state'
 import { runTests, type TestReport } from './devtools/tests'
+import { CollectGame } from './game/collect'
+import type { GameAsset } from './game/types'
+import { buildGameVisuals } from './game/visuals'
+import { runGameTests } from './game/tests'
 
 export interface ApplyResult {
   ok: boolean
@@ -34,17 +38,37 @@ const IDLE: InputState = { moveX: 0, moveZ: 0, jump: false }
  * separate from inspect().
  */
 export class Engine {
-  readonly version = '0.1.0-phase1'
+  readonly version = '0.1.0-phase4'
   readonly world: World
   readonly renderer: Renderer
   paused = false
 
   #rawInput: InputState = { ...IDLE }
+  #gameAssets: ReadonlyMap<string, GameAsset> | undefined
+  #game: CollectGame | undefined
 
-  constructor(container: HTMLElement, doc: SceneDoc) {
+  constructor(container: HTMLElement, doc: SceneDoc, gameAssets?: ReadonlyMap<string, GameAsset>) {
     this.world = createWorld(doc)
     this.renderer = new Renderer(container)
+    this.#gameAssets = gameAssets
+    this.#configureGame(doc)
     this.renderer.render(this.world)
+  }
+
+  #configureGame(doc: SceneDoc): void {
+    const config = doc.game
+    if (config === undefined || this.#gameAssets === undefined) {
+      this.#game = undefined
+      this.renderer.setGameVisuals([])
+      this.renderer.setAvatarAsset(null)
+      return
+    }
+
+    this.#game = new CollectGame(doc.id, config, this.#gameAssets)
+    this.renderer.setGameVisuals(buildGameVisuals(config, this.#gameAssets))
+    const avatar = this.#gameAssets.get(config.avatar.asset)
+    this.renderer.setAvatarAsset(avatar ?? null, config.avatar.scale)
+    this.renderer.setGameCollected([])
   }
 
   // -- scene ---------------------------------------------------------------
@@ -59,6 +83,7 @@ export class Engine {
     if (!parsed.ok) return { ok: false, errors: parsed.errors }
 
     const reload = rebuildWorld(this.world, parsed.doc)
+    this.#configureGame(parsed.doc)
     this.renderer.render(this.world)
     return { ok: true, errors: [], reload }
   }
@@ -76,8 +101,10 @@ export class Engine {
   reset(): Snapshot {
     resetWorld(this.world)
     this.#rawInput = { ...IDLE }
+    this.#game?.reset()
+    this.renderer.setGameCollected([])
     this.renderer.render(this.world)
-    return snapshot(this.world)
+    return snapshot(this.world, this.#game)
   }
 
   setInput(partial: Partial<InputState>): InputState {
@@ -90,13 +117,15 @@ export class Engine {
     this.paused = true
     for (let i = 0; i < count; i++) this.stepOnce()
     this.renderer.render(this.world)
-    return snapshot(this.world)
+    return snapshot(this.world, this.#game)
   }
 
   /** One step with input resolved into world space. Used by the rAF loop too. */
   stepOnce(): void {
     this.world.input = this.#effectiveInput()
     stepWorld(this.world, FIXED_DT)
+    this.#game?.update(this.world.player.pos)
+    this.renderer.setGameCollected(this.#game?.collected ?? [])
   }
 
   #effectiveInput(): InputState {
@@ -118,7 +147,7 @@ export class Engine {
   // -- inspection ----------------------------------------------------------
 
   inspect(): Snapshot {
-    return snapshot(this.world)
+    return snapshot(this.world, this.#game)
   }
 
   stats(): RenderStats {
@@ -153,7 +182,7 @@ export class Engine {
     return {
       ...saved,
       step: this.world.step,
-      hash: snapshot(this.world).hash,
+      hash: snapshot(this.world, this.#game).hash,
       width: this.renderer.canvas.width,
       height: this.renderer.canvas.height,
     }
@@ -161,15 +190,18 @@ export class Engine {
 
   runTests(): TestReport {
     this.paused = true
-    const report = runTests(this.world, {
-      // The avatar lives in the renderer, so the hook pushes world state into it
-      // before reading back — exactly what a frame would do.
-      avatarFeet: () => {
-        this.renderer.syncPlayer(this.world)
-        return this.renderer.avatarFeet()
-      },
-    })
+    const report = this.#game
+      ? runGameTests(this.world, this.#game)
+      : runTests(this.world, {
+          // The avatar lives in the renderer, so the hook pushes world state into it
+          // before reading back — exactly what a frame would do.
+          avatarFeet: () => {
+            this.renderer.syncPlayer(this.world)
+            return this.renderer.avatarFeet()
+          },
+        })
     this.renderer.render(this.world)
+    this.renderer.setGameCollected(this.#game?.collected ?? [])
     return report
   }
 }

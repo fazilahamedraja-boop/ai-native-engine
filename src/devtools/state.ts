@@ -1,6 +1,8 @@
 import { cameraPose } from '../camera/rigs'
 import { hashNumbers } from '../core/hash'
 import type { Vec3 } from '../core/math'
+import type { CollectGame } from '../game/collect'
+import type { GameSnapshot } from '../game/types'
 import type { ReloadReport, World } from '../world/world'
 
 export interface Snapshot {
@@ -19,6 +21,7 @@ export interface Snapshot {
   nodes: Array<{ id: string; type: string; worldPos: Vec3; worldScale: Vec3; visible: boolean }>
   colliders: Array<{ nodeId: string; min: Vec3; max: Vec3 }>
   reload: ReloadReport | null
+  game?: GameSnapshot
 }
 
 /**
@@ -28,7 +31,7 @@ export interface Snapshot {
  * a capture that cannot be reproduced is not evidence. Node transforms are
  * configuration, not state, and are deliberately excluded.
  */
-export function stateHash(world: World): string {
+export function stateHash(world: World, game?: Pick<CollectGame, 'hashValues'>): string {
   const flat: number[] = [world.step, ...world.player.pos, ...world.player.vel, world.player.grounded ? 1 : 0]
   const camera = world.camera
   if (camera.rig === 'orbit') {
@@ -36,17 +39,18 @@ export function stateHash(world: World): string {
   } else {
     flat.push(1, camera.yaw, camera.distance, camera.height, camera.lookHeight)
   }
+  if (game) flat.push(...game.hashValues())
   return hashNumbers(flat)
 }
 
-export function snapshot(world: World): Snapshot {
+export function snapshot(world: World, game?: CollectGame): Snapshot {
   const pose = cameraPose(world.camera, world.player.pos)
   const camera = world.camera
 
-  return {
+  const out: Snapshot = {
     step: world.step,
     t: world.step / 60,
-    hash: stateHash(world),
+    hash: stateHash(world, game),
     player: {
       pos: [...world.player.pos],
       vel: [...world.player.vel],
@@ -83,4 +87,7 @@ export function snapshot(world: World): Snapshot {
     })),
     reload: world.lastReload,
   }
+
+  if (game) out.game = game.snapshot(world.player.pos)
+  return out
 }

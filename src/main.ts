@@ -1,4 +1,7 @@
+import { catalog } from './assets/catalog'
+import { effectiveMaterial } from './assets/build'
 import { Engine } from './engine'
+import type { GameAsset } from './game/types'
 import { FIXED_DT } from './physics/step'
 import { bootPreview } from './preview/main'
 import { parseScene, type SceneIssue } from './schema/scene'
@@ -16,10 +19,14 @@ interface SceneUpdate {
 
 const container = document.getElementById('app')
 const overlay = document.getElementById('errors')
-if (!container || !overlay) throw new Error('index.html is missing #app or #errors')
+const hud = document.getElementById('hud')
+const hint = document.getElementById('hint')
+if (!container || !overlay || !hud || !hint) throw new Error('index.html is missing #app, #errors, #hud or #hint')
 
 const appEl: HTMLElement = container
 const errorsEl: HTMLElement = overlay
+const hudEl: HTMLElement = hud
+const hintEl: HTMLElement = hint
 
 function report(errors: SceneIssue[]): void {
   if (errors.length === 0) {
@@ -31,8 +38,58 @@ function report(errors: SceneIssue[]): void {
   errorsEl.textContent = ['scene rejected — last valid scene still running:', ...errors.map((issue) => `  ${issue.path || '<root>'}: ${issue.message} [${issue.code}]`)].join('\n')
 }
 
+async function loadGameAssets(): Promise<ReadonlyMap<string, GameAsset>> {
+  const loaded = await catalog()
+  const assets = new Map<string, GameAsset>()
+
+  for (const entry of loaded.entries) {
+    const outcome = entry.outcome
+    if (!outcome.ok || outcome.artifact === undefined) continue
+    assets.set(entry.doc.id, {
+      id: entry.doc.id,
+      artifact: outcome.artifact,
+      material: effectiveMaterial(outcome.artifact, entry.doc.override.material),
+    })
+  }
+
+  if (loaded.failures.length > 0) console.warn('[game] some assets failed to build', loaded.failures)
+  return assets
+}
+
+function syncHud(engine: Engine): void {
+  const game = engine.inspect().game
+  if (game === undefined) {
+    hudEl.hidden = true
+    return
+  }
+
+  hudEl.hidden = false
+  hudEl.dataset.phase = game.errors.length > 0 ? 'error' : game.phase
+
+  if (game.errors.length > 0) {
+    hudEl.textContent = `GAME ASSET ERROR\n${game.errors.join('\n')}`
+    return
+  }
+
+  if (game.phase === 'collecting') {
+    hudEl.textContent = `SWORDS ${game.collected.length} / ${game.total}\nWalk into the three swords.`
+    return
+  }
+
+  if (game.phase === 'return') {
+    hudEl.textContent = `ALL SWORDS FOUND\nReturn to the landing pad.`
+    return
+  }
+
+  hudEl.textContent = `ESCAPED\n${game.total} / ${game.total} swords · press R to restart.`
+}
+
 async function boot(): Promise<void> {
-  const response = await fetch('/content/scenes/phase1.scene.json', { cache: 'no-store' })
+  const sceneName = params.get('scene') ?? 'phase1'
+  if (!/^[a-z0-9-]+$/.test(sceneName)) throw new Error(`invalid scene name '${sceneName}'`)
+
+  const sceneFile = `/content/scenes/${sceneName}.scene.json`
+  const response = await fetch(sceneFile, { cache: 'no-store' })
   if (!response.ok) throw new Error(`cannot load scene: ${response.status}`)
 
   const raw: unknown = await response.json()
@@ -42,8 +99,18 @@ async function boot(): Promise<void> {
     throw new Error(`scene failed validation: ${parsed.errors.map((issue) => issue.path).join(', ')}`)
   }
 
-  const engine = new Engine(appEl, parsed.doc)
+  const hasGame = parsed.doc.game !== undefined
+  const assets = hasGame ? await loadGameAssets() : undefined
+  const engine = new Engine(appEl, parsed.doc, assets)
   window.__engine = engine
+
+  if (hasGame) {
+    hintEl.textContent = 'WASD move · Space jump · R restart'
+    syncHud(engine)
+  } else {
+    hintEl.textContent = 'WASD move · space jump · drag orbit · wheel zoom'
+    hudEl.hidden = true
+  }
 
   const keys = new Set<string>()
   const sync = (): void => {
@@ -54,6 +121,14 @@ async function boot(): Promise<void> {
 
   window.addEventListener('keydown', (event) => {
     if (event.code === 'Space') event.preventDefault()
+    if (event.code === 'KeyR' && hasGame) {
+      event.preventDefault()
+      engine.reset()
+      engine.resume()
+      sync()
+      syncHud(engine)
+      return
+    }
     keys.add(event.code)
     sync()
   })
@@ -99,9 +174,12 @@ async function boot(): Promise<void> {
   )
 
   // Live update: the watcher in vite.config.ts pushes validated scene text.
-  // Nothing here reloads the page, so simulation state survives.
+  // Nothing here reloads the page, so simulation state survives. Ignore files
+  // other than the scene this tab booted.
   const hot = import.meta.hot as unknown as { on(event: string, handler: (payload: SceneUpdate) => void): void } | undefined
   hot?.on('scene-update', (payload) => {
+    if (!payload.file.replaceAll('\\', '/').endsWith(sceneFile)) return
+
     let rawScene: unknown
     try {
       rawScene = JSON.parse(payload.text)
@@ -116,6 +194,7 @@ async function boot(): Promise<void> {
       return
     }
     report([])
+    syncHud(engine)
     console.info('[scene] applied', { reload: result.reload, step: engine.world.step })
   })
 
@@ -138,15 +217,17 @@ async function boot(): Promise<void> {
     }
 
     engine.renderer.render(engine.world)
+    if (hasGame) syncHud(engine)
     requestAnimationFrame(frame)
   }
 
   requestAnimationFrame(frame)
-  console.info('[engine] phase 1 ready — window.__engine is the agent surface')
+  console.info(`[engine] ${sceneName} ready — window.__engine is the agent surface`)
 }
 
-// Two entry modes share this page: the game (?nothing) and the asset inspector
-// (?asset=<id>). Keeping one HTML entry means one build and one capture sink.
+// Two entry modes share this page: the scene/game (?scene=island) and the asset
+// inspector (?asset=<id>). Keeping one HTML entry means one build and one
+// capture sink.
 const params = new URLSearchParams(window.location.search)
 if (params.has('asset')) {
   void bootPreview(appEl, errorsEl, params)

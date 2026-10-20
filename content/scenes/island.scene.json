@@ -1,0 +1,129 @@
+{
+  "version": 1,
+  "id": "island",
+  "environment": { "background": "#8fb7d9" },
+  "player": {
+    "spawn": [0, 0.5, 0],
+    "radius": 0.35,
+    "height": 1.7,
+    "speed": 4.5,
+    "jumpSpeed": 6,
+    "gravity": -20
+  },
+  "game": {
+    "mode": "collect-return",
+    "avatar": { "asset": "humanoid-01", "scale": 0.934 },
+    "collectibles": [
+      { "id": "sword-bronze", "asset": "sword-bronze-01", "pos": [1.2, 0.15, 4], "radius": 1.6, "rotY": 0, "scale": 1.6 },
+      { "id": "sword-iron", "asset": "sword-iron-01", "pos": [-1.2, 0.15, 8], "radius": 1.6, "rotY": 20, "scale": 1.6 },
+      { "id": "sword-bronze-2", "asset": "sword-bronze-01", "pos": [1.2, 0.15, 12], "radius": 1.6, "rotY": -15, "scale": 1.6 }
+    ],
+    "returnZone": { "pos": [0, 0, 0], "radius": 1.7 },
+    "props": [
+      { "id": "pine-a", "asset": "pine-nordic-01", "pos": [-7, 0, 3], "rotY": 20, "scale": 0.55 },
+      { "id": "pine-b", "asset": "pine-nordic-01", "pos": [7, 0, 10], "rotY": -35, "scale": 0.48 },
+      { "id": "pine-c", "asset": "pine-nordic-01", "pos": [-6, 0, 17], "rotY": 10, "scale": 0.6 },
+      { "id": "rock-a", "asset": "rock-granite-01", "pos": [5.5, 0, 5], "rotY": 40, "scale": 1.1 },
+      { "id": "rock-b", "asset": "rock-granite-01", "pos": [-4.5, 0, 12], "rotY": -20, "scale": 0.8 },
+      { "id": "rock-c", "asset": "rock-granite-01", "pos": [4.5, 0, 18], "rotY": 70, "scale": 1.3 }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "sun",
+      "type": "light",
+      "kind": "directional",
+      "dir": [-0.45, -1, -0.3],
+      "intensity": 3.1,
+      "castShadow": true
+    },
+    {
+      "id": "sky",
+      "type": "light",
+      "kind": "ambient",
+      "color": "#9fc3ff",
+      "intensity": 1.25
+    },
+    {
+      "id": "fill",
+      "type": "light",
+      "kind": "directional",
+      "dir": [0.2, -0.45, 1],
+      "color": "#ffd9b0",
+      "intensity": 0.9
+    },
+    {
+      "id": "water",
+      "type": "mesh",
+      "geometry": { "shape": "plane", "size": [80, 80] },
+      "transform": { "pos": [0, -0.35, 6], "rot": [-90, 0, 0] },
+      "material": { "color": "#2f6f8f", "roughness": 0.22, "metalness": 0.15 }
+    },
+    {
+      "id": "island",
+      "type": "mesh",
+      "geometry": { "shape": "box", "size": [18, 1, 28] },
+      "transform": { "pos": [0, -0.5, 6] },
+      "material": { "color": "#c9b27a", "roughness": 0.95 },
+      "collider": { "shape": "aabb" }
+    },
+    {
+      "id": "landing-pad",
+      "type": "mesh",
+      "geometry": { "shape": "box", "size": [3, 0.08, 3] },
+      "transform": { "pos": [0, 0.04, 0] },
+      "material": { "color": "#2f8f8a", "roughness": 0.4, "metalness": 0.2 },
+      "collider": { "shape": "aabb" }
+    },
+    {
+      "id": "beacon",
+      "type": "mesh",
+      "geometry": { "shape": "sphere", "radius": 0.22, "segments": 20 },
+      "transform": { "pos": [1.7, 0.8, 0] },
+      "material": { "color": "#6fe3d0", "roughness": 0.2, "metalness": 0.4 }
+    },
+    {
+      "id": "edge-west",
+      "type": "mesh",
+      "visible": false,
+      "geometry": { "shape": "box", "size": [1, 4, 29] },
+      "transform": { "pos": [-9.5, 2, 6] },
+      "material": { "color": "#8f7f5b", "roughness": 1 },
+      "collider": { "shape": "aabb" }
+    },
+    {
+      "id": "edge-east",
+      "type": "mesh",
+      "visible": false,
+      "geometry": { "shape": "box", "size": [1, 4, 29] },
+      "transform": { "pos": [9.5, 2, 6] },
+      "material": { "color": "#8f7f5b", "roughness": 1 },
+      "collider": { "shape": "aabb" }
+    },
+    {
+      "id": "edge-south",
+      "type": "mesh",
+      "visible": false,
+      "geometry": { "shape": "box", "size": [19, 4, 1] },
+      "transform": { "pos": [0, 2, -8.5] },
+      "material": { "color": "#8f7f5b", "roughness": 1 },
+      "collider": { "shape": "aabb" }
+    },
+    {
+      "id": "edge-north",
+      "type": "mesh",
+      "visible": false,
+      "geometry": { "shape": "box", "size": [19, 4, 1] },
+      "transform": { "pos": [0, 2, 20.5] },
+      "material": { "color": "#8f7f5b", "roughness": 1 },
+      "collider": { "shape": "aabb" }
+    },
+    {
+      "id": "cam",
+      "type": "camera",
+      "rig": "third-person",
+      "fov": 55,
+      "thirdPerson": { "distance": 7.5, "height": 3.8, "lookHeight": 1.3 }
+    }
+  ]
+}

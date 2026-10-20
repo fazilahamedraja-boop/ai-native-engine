@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AI-Native Engine — Phase 1</title>
+    <title>AI-Native Engine</title>
     <style>
       html,
       body {
@@ -60,11 +60,46 @@
         color: #55628a;
         user-select: none;
       }
+      #hud {
+        position: fixed;
+        left: 50%;
+        bottom: 24px;
+        transform: translateX(-50%);
+        min-width: 280px;
+        padding: 12px 18px;
+        border: 1px solid #3a5a78;
+        border-radius: 10px;
+        background: rgba(7, 17, 31, 0.88);
+        color: #dbe9ff;
+        font-size: 13px;
+        line-height: 1.55;
+        text-align: center;
+        white-space: pre-line;
+        pointer-events: none;
+        user-select: none;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+      }
+      #hud[hidden] {
+        display: none;
+      }
+      #hud[data-phase='return'] {
+        border-color: #c9a84f;
+        color: #ffe7a6;
+      }
+      #hud[data-phase='won'] {
+        border-color: #4fc98b;
+        color: #b6ffd9;
+      }
+      #hud[data-phase='error'] {
+        border-color: #b3446a;
+        color: #ffb3c8;
+      }
     </style>
   </head>
   <body>
     <div id="app"></div>
     <div id="hint">WASD move · space jump · drag orbit · wheel zoom</div>
+    <div id="hud" hidden></div>
     <div id="info"></div>
     <div id="errors"></div>
     <script type="module" src="/src/main.ts"></script>

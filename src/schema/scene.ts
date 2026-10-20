@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { GameConfigSchema } from '../game/schema'
 
 export const SCENE_VERSION = 1
 export const NODE_TYPES = ['group', 'mesh', 'light', 'camera'] as const
@@ -135,6 +136,8 @@ const SceneDoc = z
     forward: z.literal('+Z').default('+Z'),
     environment: z.strictObject({ background: Hex.default('#0b1020') }).prefault({}),
     player: Player,
+    /** Optional game rules. The scene stays a renderable scene without it. */
+    game: GameConfigSchema.optional(),
     nodes: z.array(Node).min(1),
   })
   .superRefine(validateGraph)

@@ -1,8 +1,11 @@
 import * as THREE from 'three'
 import { cameraPose } from '../camera/rigs'
+import type { MeshData, MaterialSpec } from '../assets/types'
 import type { Vec3 } from '../core/math'
+import type { GameAsset, GameVisual } from '../game/types'
 import type { CameraNode, MeshNode } from '../schema/scene'
 import type { World } from '../world/world'
+import { bufferGeometryFrom } from './geometry'
 
 export const VIEW_W = 800
 export const VIEW_H = 500
@@ -30,6 +33,24 @@ function geometryFor(node: MeshNode): THREE.BufferGeometry {
   }
 }
 
+function assetMaterial(mesh: MeshData, spec: MaterialSpec): THREE.MeshStandardMaterial {
+  return new THREE.MeshStandardMaterial({
+    color: new THREE.Color(spec.color),
+    roughness: spec.roughness,
+    metalness: spec.metalness,
+    vertexColors: mesh.colors !== undefined,
+    side: spec.doubleSided ? THREE.DoubleSide : THREE.FrontSide,
+  })
+}
+
+function disposeMaterial(material: THREE.Material | THREE.Material[]): void {
+  if (Array.isArray(material)) {
+    for (const item of material) item.dispose()
+  } else {
+    material.dispose()
+  }
+}
+
 /**
  * Consumes World and produces pixels. Holds every THREE object; owns none of
  * the simulation. Rebuilt wholesale on scene revision — cheap at this scale and
@@ -51,8 +72,16 @@ export class Renderer {
    */
   readonly #player = new THREE.Group()
   #playerMesh: THREE.Mesh | null = null
-  #playerRadius = -1
-  #playerHeight = -1
+  #playerKey = ''
+  #playerFeetOffset = 0
+  #playerCenterOffset = 0
+  #avatarAsset: GameAsset | null = null
+  #avatarScale = 1
+
+  /** Asset instances from the scene's optional game block. */
+  #gameObjects: THREE.Mesh[] = []
+  #gameMeshes = new Map<string, THREE.Mesh>()
+  #gameVisuals: GameVisual[] = []
 
   constructor(container: HTMLElement) {
     this.gl = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true })
@@ -73,35 +102,105 @@ export class Renderer {
   }
 
   /**
+   * Switches the render-only avatar to a Phase 2 asset. The collision capsule
+   * stays owned by the scene player config; only the pixels change.
+   */
+  setAvatarAsset(asset: GameAsset | null, scale = 1): void {
+    this.#avatarAsset = asset
+    this.#avatarScale = scale
+    this.#disposePlayerMesh()
+    this.#playerKey = ''
+  }
+
+  setGameVisuals(visuals: readonly GameVisual[]): void {
+    this.#clearGameVisuals()
+
+    for (const visual of visuals) {
+      const mesh = new THREE.Mesh(bufferGeometryFrom(visual.mesh), assetMaterial(visual.mesh, visual.material))
+      mesh.position.set(visual.pos[0], visual.pos[1], visual.pos[2])
+      mesh.rotation.y = (visual.rotY * Math.PI) / 180
+      mesh.scale.setScalar(visual.scale)
+      mesh.castShadow = true
+      mesh.receiveShadow = true
+      this.scene.add(mesh)
+      this.#gameObjects.push(mesh)
+      this.#gameMeshes.set(visual.id, mesh)
+    }
+
+    this.#gameVisuals = [...visuals]
+  }
+
+  /** Hides collected swords without rebuilding the scene or touching the sim. */
+  setGameCollected(collected: readonly string[]): void {
+    const hidden = new Set(collected)
+    for (const visual of this.#gameVisuals) {
+      if (!visual.collectible) continue
+      const mesh = this.#gameMeshes.get(visual.id)
+      if (mesh) mesh.visible = !hidden.has(visual.id)
+    }
+  }
+
+  #clearGameVisuals(): void {
+    for (const mesh of this.#gameObjects) {
+      this.scene.remove(mesh)
+      mesh.geometry.dispose()
+      disposeMaterial(mesh.material)
+    }
+    this.#gameObjects = []
+    this.#gameMeshes.clear()
+    this.#gameVisuals = []
+  }
+
+  #disposePlayerMesh(): void {
+    if (this.#playerMesh === null) return
+    this.#player.remove(this.#playerMesh)
+    this.#playerMesh.geometry.dispose()
+    disposeMaterial(this.#playerMesh.material)
+    this.#playerMesh = null
+  }
+
+  /**
    * Pulls the avatar onto the physics feet position. Split out from render() so
    * tests can assert the derivation without drawing 40 frames.
    */
   syncPlayer(world: World): void {
     const { radius, height } = world.doc.player
+    const asset = this.#avatarAsset
+    const key = asset
+      ? `asset:${asset.id}:${this.#avatarScale}:${height}`
+      : `capsule:${radius}:${height}`
 
-    if (radius !== this.#playerRadius || height !== this.#playerHeight) {
-      if (this.#playerMesh) {
-        this.#player.remove(this.#playerMesh)
-        this.#playerMesh.geometry.dispose()
-        const material = this.#playerMesh.material
-        if (!Array.isArray(material)) material.dispose()
-        this.#playerMesh = null
+    if (key !== this.#playerKey) {
+      this.#disposePlayerMesh()
+
+      let mesh: THREE.Mesh
+      if (asset) {
+        mesh = new THREE.Mesh(
+          bufferGeometryFrom(asset.artifact.geometry),
+          assetMaterial(asset.artifact.geometry, asset.material),
+        )
+        mesh.scale.setScalar(this.#avatarScale)
+        // Imported characters use feet-center. The group sits at the feet.
+        this.#playerFeetOffset = 0
+        this.#playerCenterOffset = height / 2
+      } else {
+        mesh = new THREE.Mesh(
+          new THREE.CapsuleGeometry(radius, Math.max(0.001, height - radius * 2), 6, 16),
+          new THREE.MeshStandardMaterial({ color: 0xe8e3d5, roughness: 0.55, metalness: 0.05 }),
+        )
+        // Capsule geometry is centered; its group origin is the centre.
+        this.#playerFeetOffset = height / 2
+        this.#playerCenterOffset = 0
       }
 
-      const mesh = new THREE.Mesh(
-        new THREE.CapsuleGeometry(radius, Math.max(0.001, height - radius * 2), 6, 16),
-        new THREE.MeshStandardMaterial({ color: 0xe8e3d5, roughness: 0.55, metalness: 0.05 }),
-      )
       mesh.castShadow = true
       mesh.receiveShadow = true
       this.#playerMesh = mesh
       this.#player.add(mesh)
-      this.#playerRadius = radius
-      this.#playerHeight = height
+      this.#playerKey = key
     }
 
-    // Group origin is the capsule centre; feet sit half a height below it.
-    this.#player.position.set(world.player.pos[0], world.player.pos[1] + height / 2, world.player.pos[2])
+    this.#player.position.set(world.player.pos[0], world.player.pos[1] + this.#playerFeetOffset, world.player.pos[2])
   }
 
   /** Renderer-side feet position, read back out of the scene graph. */
@@ -109,7 +208,7 @@ export class Renderer {
     this.#player.updateWorldMatrix(true, false)
     const p = new THREE.Vector3()
     this.#player.getWorldPosition(p)
-    return [p.x, p.y - this.#playerHeight / 2, p.z]
+    return [p.x, p.y - this.#playerFeetOffset, p.z]
   }
 
   /** Screen-space position of the avatar's centre, in pixels. */
@@ -117,6 +216,7 @@ export class Renderer {
     this.#player.updateWorldMatrix(true, false)
     const p = new THREE.Vector3()
     this.#player.getWorldPosition(p)
+    p.y += this.#playerCenterOffset
     this.camera.updateMatrixWorld()
     p.project(this.camera)
     return {
@@ -215,7 +315,7 @@ export class Renderer {
     return {
       drawCalls: this.gl.info.render.calls,
       triangles: this.gl.info.render.triangles,
-      objects: this.#objects.length,
+      objects: this.#objects.length + this.#gameObjects.length,
     }
   }
 }
