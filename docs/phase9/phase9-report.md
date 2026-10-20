@@ -80,7 +80,6 @@ Commands (from `experiments/godot-harness`):
 | Command | Result | Duration |
 | --- | --- | --- |
 | `npm run test:physics` | exit 0, 9/9 | 20,212 ms |
-| `npm run test:physics-control` | exit 0, 2/2 | 20.454 s in the final regression run |
 | `npm run test:physics-screenshot` | exit 0, 1/1 | 24,262 ms |
 | `npm run evidence:physics` | 5 fresh processes, 9/9 each | 95,888 ms |
 | `npm test` | exit 0, 19/19 | 22,662 ms |
