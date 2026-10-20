@@ -1,0 +1,11 @@
+{
+  "name": "godot-harness",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Minimal structured control and verification harness around Godot",
+  "scripts": {
+    "test": "node --test tests/controller.test.mjs",
+    "test:logic": "node controller/harness.mjs test --project fixtures/sentry --json"
+  }
+}
