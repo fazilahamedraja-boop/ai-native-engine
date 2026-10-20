@@ -13,6 +13,10 @@ contact sheets and a predicted parameter change. Evidence:
 visual failure and a deliberate socket break. Content-token (estimated) and
 failure-detection targets pass; the 60 s end-to-end target does not, though the
 mechanical path is 1-2 s. Evidence: [`docs/phase3-review.md`](docs/phase3-review.md).
+**Phase 4 complete:** a playable island collect-and-return scene authored
+through the same `__engine` surface: three asset-backed swords, a humanoid
+avatar, a HUD, `R` restart, five browser game tests, and start/collected/won
+captures. Evidence: [`docs/phase4-review.md`](docs/phase4-review.md).
 
 ## Run
 
@@ -29,22 +33,26 @@ Everything the agent needs is on `window.__engine`. The engine source is not par
 of the agent's working set.
 
 ```js
-__engine.version                       // "0.1.0-phase1"
+__engine.version                       // "0.1.0-phase4"
 __engine.scene()                       // the live, defaulted SceneDoc
 
 __engine.applyScene(rawObject)         // atomic: {ok, errors[], reload}
-__engine.inspect()                     // {step, t, hash, player, camera, nodes[], colliders[], reload}
+__engine.inspect()                     // {step, t, hash, player, camera, nodes[], colliders[], reload, game?}
 __engine.stats()                       // renderer counters only: {drawCalls, triangles, objects}
 
 __engine.pause() / resume()
-__engine.reset()                       // step 0, spawn, initial camera
+__engine.reset()                       // step 0, spawn, initial camera, game reset
 __engine.step(n?)                       // advance n fixed steps, implies pause
 __engine.setInput({moveX, moveZ, jump})// world-space movement, edge-triggered jump
 __engine.setOrbit({yaw, pitch, distance})
 
 __engine.capture(name)                 // render, POST PNG, return {path, bytes, step, hash}
-__engine.runTests()                    // {passed, results[], statePreserved, hash}
+__engine.runTests()                    // Phase 1 suite at /, game suite at ?scene=island
 ```
+
+Scene selection: `/` loads `content/scenes/phase1.scene.json`; a scene name in
+the allowlist loads `content/scenes/<name>.scene.json`, e.g.
+`http://localhost:5173/?scene=island`.
 
 `capture` writes to `.cache/captures/<name>.png` via the dev-server sink in
 `vite.config.ts`, so the agent gets a real file it can open.
@@ -60,8 +68,9 @@ what "state" means.
   world while unpaused.
 - Renderer uses `pixelRatio = 1` and a fixed 800x500 buffer.
 - State hash covers `step + player pos/vel/grounded + camera yaw/pitch/distance`
-  (or third-person yaw/distance/height). Node transforms are configuration and
-  are excluded — a material edit must not invalidate a state hash.
+  (or third-person yaw/distance/height), plus phase and collected flags when the
+  scene has a game block. Node transforms are configuration and are excluded — a
+  material edit must not invalidate a state hash.
 - `capture()` pauses first, so a frame cannot be overwritten between render and
   `toBlob`.
 
@@ -118,6 +127,47 @@ nodes[3].transform.scale[0]: Too small: expected number to be >0 [too_small]
 nodes[2].parent: parent chain contains a cycle at 'ground'
 nodes: scene must contain exactly one 'camera' node, found 2
 ```
+
+## Game layer (Phase 4)
+
+`content/scenes/island.scene.json` adds one optional top-level `game` block. A
+scene without it is still a scene; `?scene=island` boots the playable loop.
+
+```jsonc
+"game": {
+  "mode": "collect-return",
+  "avatar": { "asset": "humanoid-01", "scale": 0.934 },
+  "collectibles": [
+    { "id": "sword-bronze", "asset": "sword-bronze-01",
+      "pos": [1.2, 0.15, 4], "radius": 1.6, "rotY": 0, "scale": 1.6 }
+  ],
+  "returnZone": { "pos": [0, 0, 0], "radius": 1.7 },
+  "props": [
+    { "id": "pine-a", "asset": "pine-nordic-01",
+      "pos": [-7, 0, 3], "rotY": 20, "scale": 0.55 }
+  ]
+}
+```
+
+- `CollectGame` is pure: horizontal distance checks, phase
+  `collecting -> return -> won`, no World or THREE access. The engine steps it
+  immediately after physics and snapshots it.
+- Assets are render-only. They never join World, contribute no collider, and
+  are skipped (with an error string) when the catalog is missing the id.
+  Collision stays on the scene's `collider` boxes, including four invisible
+  edge boxes that keep the player on the island.
+- The humanoid replaces the capsule avatar only while a game is active; the
+  renderer still derives the transform from `world.player.pos`, so the
+  `player-avatar` test path is unchanged.
+- HUD: `SWORDS n / 3`, `ALL SWORDS FOUND`, `ESCAPED`, or the asset error list.
+  `R` resets the world and the game, keeps the scene, and restores the swords.
+- Tests: `__engine.runTests()` at `?scene=island` returns
+  `game-assets`, `collect-all`, `return-wins`, `restart`, `determinism`
+  (5/5, ~13 ms), and restores the live world/game (`statePreserved`).
+- Controls: `WASD` move (camera-relative in third-person), `Space` jump,
+  `R` restart; `__engine.step(n)` is the deterministic path.
+
+Evidence and limits: [`docs/phase4-review.md`](docs/phase4-review.md).
 
 ## Asset contract
 
@@ -358,17 +408,20 @@ displacement, so a blocked player reads `0` rather than the commanded speed.
 
 ## Player avatar
 
-A single cream capsule, drawn by the renderer from `world.player.pos` every
-frame. It is **render-only**:
+By default a single cream capsule; when the scene has a game block, the
+renderer swaps in the configured character asset (feet-center origin, scaled).
+Either way it is drawn from `world.player.pos` every frame and is
+**render-only**:
 
 - not a `SceneDoc` node, so `inspect().nodes` never lists it
 - contributes no collider, so physics cannot see it
 - has no skeleton, no animation, no state of its own
 
-`syncPlayer(world)` is the whole link: group origin = `feet + height/2`, with the
-capsule geometry rebuilt only when `player.radius`/`player.height` change.
-`avatarFeet()` reads the position back out of the scene graph, which is why the
-`player-avatar` test can prove the derivation instead of re-asserting the input.
+`syncPlayer(world)` is the whole link: group origin = `feet + height/2` for the
+capsule and `feet` for an asset, with geometry rebuilt only when the avatar or
+`player.radius`/`player.height` change. `avatarFeet()` reads the position back
+out of the scene graph, which is why the `player-avatar` test can prove the
+derivation instead of re-asserting the input.
 
 Verified: tracking error `0` at rest, at the jump apex (`0.850 m`), at landing,
 and after settling; screen position `(400, 293.3)` unchanged before and after a
@@ -383,8 +436,8 @@ directly with `node:zlib` so the number does not move when Vite changes how it
 reports sizes.
 
 ```
-index-BSyaA68O.js   raw 722751   gzip 187860
-gzip total 187860 B (187.9 kB) of 400 kB budget — 47.0%
+index-Dn19LOVc.js   raw 731588   gzip 189850
+gzip total 189850 B (189.9 kB) of 400 kB budget — 47.5%
 ```
 
 That includes THREE, Zod, the GLB decoder and the whole devtools surface. Vite's
@@ -423,6 +476,10 @@ src/preview/              standalone asset viewport + window.__preview
 src/devtools/state.ts     snapshot + state hash
 src/devtools/tests.ts     runTests()
 src/devtools/node-tests.ts Node suite runner (same report shape)
+src/game/schema.ts       optional game block grammar (Zod)
+src/game/collect.ts      pure collect/return state machine + hash/snapshot
+src/game/visuals.ts      game block -> render-only asset instances
+src/game/tests.ts        runGameTests() for ?scene=island
 src/engine.ts             the agent surface
 src/main.ts               boot, input, rAF loop, hot-reload listener
 vite.config.ts            /__capture sink + scene-watch
@@ -449,8 +506,14 @@ meters · +Y up · +Z forward · floor-center origin for props · feet-center fo
 - The Phase 3 60 s full-cycle target is not met end-to-end (core cycles
   152-385 s); the mechanical path is 1-2 s. Agent/review latency is the
   bottleneck.
-- The avatar has no facing direction, so it reads as a capsule rather than a
-  character.
+- The avatar has no facing direction and no animation; the humanoid is a static
+  blocky mesh, and the default avatar is a capsule.
+- Phase 4 game visuals are primitive: flat-shaded assets, a flat water plane, an
+  invisible island boundary, and no fall-in-water or terrain behavior.
+- The game suite is browser-only (`runTests()` at `?scene=island`); there is no
+  CLI or CI wrapper for it.
+- `collect-return` is the only game mode; the `game` block is scene
+  configuration, not a general gameplay authoring system.
 - Imported characters are static meshes: no skinning, animation playback, morph
   targets, textures or advanced material graphs. One material per asset; multiple
   primitives with different materials are rejected.
