@@ -486,6 +486,21 @@ export class HarnessSession {
     return this.send('step', args, 120000)
   }
 
+  /**
+   * Advance real Godot physics frames instead of calling a manual step.
+   * The selected project's bridge must implement `advance_physics`; the game
+   * node must expose `set_harness_input()` and `snapshot()`.
+   */
+  async advancePhysics({ frames = 1, input = null } = {}) {
+    if (!Number.isInteger(frames) || frames < 0 || frames > 100000) {
+      throw new Error('frames must be an integer between 0 and 100000')
+    }
+    if (input !== null) validateHarnessInput(input)
+    const args = { frames }
+    if (input !== null) args.input = input
+    return this.send('advance_physics', args, 120000)
+  }
+
   async reset() {
     return this.send('reset')
   }

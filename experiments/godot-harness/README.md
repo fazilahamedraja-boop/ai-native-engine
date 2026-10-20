@@ -8,6 +8,7 @@ give an agent or a CI job four distinct operations:
 | `start_project` | `HarnessSession.startProject()` | PID, bridge port, readiness, logs, duration |
 | `run_tests` | `runTests()` or `node controller/harness.mjs test` | per-case pass/fail, summary, exit code, stdout/stderr |
 | `inspect_state` | `HarnessSession.inspectState()` or the `inspect` CLI | snapshot, scene tree, bridge events, process logs |
+| `advance_physics` | `HarnessSession.advancePhysics()` | N real fixed physics frames, final snapshot, paused state |
 | `stop_project` | `HarnessSession.stopProject()` | exit code, signal, whether a kill was needed, log tail |
 
 The controller also exposes pause/resume, persistent input, requested fixed
@@ -39,12 +40,17 @@ npm run test:gameplay    # live movement/detection/escape/failure/reset checks
 npm run test:screenshot  # windowed screenshots copied into docs/phase8
 npm run test:repair      # failing tests/repair.test.mjs -> one-line fix -> rerun
 npm run evidence:live    # structured scenario record with hashes
+npm run test:physics     # real fixed-tick physics suite, 9 cases
+npm run test:physics-control      # live advance_physics bridge checks
+npm run test:physics-screenshot   # windowed wall/air captures
+npm run evidence:physics # five fresh-process physics repeatability record
 npm run inspect          # start, inspect, stop one project, JSON result
 ```
 
 `npm test` is the normal headless gate. `test:screenshot` is separate because it
 needs a window; `test:repair` is separate because it intentionally runs a
-failing test first.
+failing test first. The physics commands use the separate
+`fixtures/physics/` project and do not change the sentry fixture.
 
 ## CLI
 
@@ -136,6 +142,22 @@ Godot processes and never kills a process it did not start.
   arbitrary Godot physics is deterministic. See
   `docs/phase8/stage-c.md` for the measured before/after behavior.
 
+### Real physics advance
+
+`HarnessSession.advancePhysics({ frames, input })` is the real-physics path.
+It is separate from `step()`:
+
+- it unpauses the tree and waits for `frames` normal engine physics ticks;
+- it applies input through the fixture's `set_harness_input()` before unpausing;
+- it waits for the following idle frame so the last tick has completed;
+- it pauses the tree again and returns the final snapshot.
+
+The fixture must implement the generic game interface and consume
+`harness_input` in `_physics_process`. The physics fixture's
+`harness_step()` deliberately errors because a paused manual step cannot
+advance the physics server. The bridge command is `advance_physics`; the sentry
+bridge does not implement it, and the sentry fixture is unchanged.
+
 ## Snapshot and hash contract
 
 `snapshot()` returns:
@@ -174,8 +196,10 @@ Request:
 {"id":"1","cmd":"step","args":{"steps":80,"delta":0.0166666667,"input":{"forward":1,"strafe":0}}}
 ```
 
-Commands: `ping`, `snapshot`, `pause`, `resume`, `set_input`, `step`, `reset`,
-`screenshot`, `scene_tree`, `property`, `logs`, `quit`.
+Commands: `ping`, `snapshot`, `pause`, `resume`, `set_input`, `step`,
+`advance_physics`, `reset`, `screenshot`, `scene_tree`, `property`, `logs`,
+`quit`. `advance_physics` is implemented by the physics fixture bridge copy;
+the sentry bridge remains the Phase 8 command set.
 
 Responses are either:
 
@@ -216,40 +240,57 @@ and expose a node in the `harness_game` group with:
 
 ```gdscript
 func snapshot() -> Dictionary
-func harness_step(delta: float) -> Dictionary
 func set_harness_input(values: Dictionary) -> Dictionary
 func harness_reset() -> Dictionary
 func harness_hash() -> String
 ```
 
-Read-only commands work without the write methods; only use this interface on
-projects you intend to control.
+The sentry fixture additionally implements:
+
+```gdscript
+func harness_step(delta: float) -> Dictionary
+```
+
+A real-physics fixture should not implement `harness_step()` and should use
+`advance_physics` instead. Read-only commands work without the write methods;
+only use this interface on projects you intend to control.
 
 ## Tests and evidence
 
 | Layer | Command | Observed result |
 | --- | --- | --- |
 | Pure sentry logic | `npm run test:logic` | 7/7, exit 0 |
-| Controller parser and validation | `npm test` | 8/8 controller tests |
+| Controller parser and validation | `npm test` | 9/9 controller tests |
 | Lifecycle isolation | `npm test` | 2/2 session tests |
 | Live gameplay | `npm run test:gameplay` | 8/8 |
 | Structured live scenarios | `npm run evidence:live` | 9/9 checks |
 | Windowed screenshots | `npm run test:screenshot` | 1/1, two PNGs |
 | Defect repair | `npm run test:repair` | failing exit 1 -> fixed exit 0 |
+| Real physics suite | `npm run test:physics` | 9/9, exit 0 |
+| Real physics bridge control | `npm run test:physics-control` | 2/2, exit 0 |
+| Real physics screenshots | `npm run test:physics-screenshot` | 1/1, two PNGs |
+| Real physics repeatability | `npm run evidence:physics` | 5 fresh runs, 9/9 each |
 
-Stage evidence is under `docs/phase8/`:
+Stage evidence is under `docs/phase8/` and `docs/phase9/`:
 
 - `stage-a.md`, `stage-a-run.json`
 - `stage-b.md`, `stage-b-inspect.json`
 - `stage-c.md`, `stage-c-live.json`, `live-detection.png`, `live-win.png`
 - `stage-d.md`, `repair-evidence.json`, `repair-before.txt`, `repair-after.txt`
 - `phase8-report.md` for the acceptance review
+- `stage-e-physics.md`, `stage-e-physics.json`, `stage-e-run-*.log`,
+  `stage-e-failure.*`, `stage-e-wall.png`, and `stage-e-air.png` for Stage E
 
 ## Limitations
 
-- The fixture is a small flat sentry scene. The explicit horizontal/vertical
-  movement split does not slide along walls, and it is not a general physics
-  determinism claim for arbitrary Godot content.
+- The original sentry fixture is a small flat scene. Its explicit
+  horizontal/vertical movement split does not slide along walls, and it is not
+  a general physics determinism claim for arbitrary Godot content.
+- The Stage E physics fixture fixes one capsule, one ground box, one wall box,
+  and 60 Hz. It does not establish general determinism. Fresh-process runs were
+  exact in the measured suite, but the same process after repeated contact
+  differed by about `1.43e-6`; the test therefore claims outcome repeatability
+  and millimetre-selected-field repeatability, not bitwise same-process state.
 - Screenshots require a display/windowed run and are not part of the headless
   gate.
 - The bridge uses loopback and no authentication. It is suitable for a local

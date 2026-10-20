@@ -1,0 +1,428 @@
+extends Node
+
+## Project-local control bridge for the Phase 8 harness.
+##
+## It is intentionally small and opt-in: the bridge only starts when the
+## controller passes `--harness-port=<n>` after Godot's `--` separator. It binds
+## to loopback, speaks newline-delimited JSON, and exposes read/control
+## operations. It is not an MCP server and does not modify the engine.
+
+const PROTOCOL_VERSION := 1
+const MAX_LINE_BYTES := 1024 * 1024
+const MAX_TREE_DEPTH := 12
+const MAX_TREE_CHILDREN := 80
+const MAX_EVENTS := 200
+
+var _server: TCPServer
+var _clients: Array[StreamPeerTCP] = []
+var _buffers: Dictionary = {}
+var _port := 0
+var _events: Array[String] = []
+var _started_msec := 0
+var _physics_busy := false
+
+
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	_started_msec = Time.get_ticks_msec()
+
+	var requested_port := -1
+	for arg in OS.get_cmdline_user_args():
+		if arg.begins_with("--harness-port="):
+			requested_port = int(arg.get_slice("=", 1))
+	if requested_port < 0:
+		return
+
+	_server = TCPServer.new()
+	var err := _server.listen(requested_port, "127.0.0.1")
+	if err != OK:
+		push_error("Harness bridge could not listen on 127.0.0.1:%d (error %d)" % [requested_port, err])
+		get_tree().quit(2)
+		return
+
+	_port = _server.get_local_port()
+	_event("listening on 127.0.0.1:%d" % _port)
+	print("HARNESS_READY " + JSON.stringify({
+		"protocol": PROTOCOL_VERSION,
+		"port": _port,
+		"pid": OS.get_process_id(),
+		"project": String(ProjectSettings.get_setting("application/config/name", "")),
+	}))
+
+
+func _process(_delta: float) -> void:
+	if _server == null:
+		return
+
+	while _server.is_connection_available():
+		var peer := _server.take_connection()
+		if peer == null:
+			break
+		_clients.append(peer)
+		_buffers[peer.get_instance_id()] = ""
+		_event("client connected")
+
+	for raw_peer in _clients.duplicate():
+		var peer: StreamPeerTCP = raw_peer
+		peer.poll()
+		if peer.get_status() != StreamPeerTCP.STATUS_CONNECTED:
+			_drop_client(peer)
+			continue
+
+		var available: int = peer.get_available_bytes()
+		if available <= 0:
+			continue
+		var packet: Array = peer.get_data(available)
+		if packet[0] != OK:
+			_drop_client(peer)
+			continue
+		var key: int = peer.get_instance_id()
+		var buffer: String = String(_buffers.get(key, "")) + (packet[1] as PackedByteArray).get_string_from_utf8()
+		if buffer.length() > MAX_LINE_BYTES:
+			_send(peer, {"id": "", "ok": false, "error": {"code": "LINE_TOO_LONG", "message": "Command exceeds the line limit."}})
+			_drop_client(peer)
+			continue
+
+		while buffer.contains("\n"):
+			var newline := buffer.find("\n")
+			var line := buffer.substr(0, newline).strip_edges()
+			buffer = buffer.substr(newline + 1)
+			if not line.is_empty():
+				_handle_line(peer, line)
+		_buffers[key] = buffer
+
+
+func _exit_tree() -> void:
+	for peer in _clients:
+		peer.disconnect_from_host()
+	_clients.clear()
+	_buffers.clear()
+	if _server != null:
+		_server.stop()
+		_server = null
+
+
+func _handle_line(peer: StreamPeerTCP, line: String) -> void:
+	var parsed = JSON.parse_string(line)
+	if typeof(parsed) != TYPE_DICTIONARY:
+		_send(peer, {"id": "", "ok": false, "error": {"code": "BAD_JSON", "message": "Expected a JSON object."}})
+		return
+	var request: Dictionary = parsed
+	var request_id := String(request.get("id", ""))
+	var command := String(request.get("cmd", ""))
+	var args = request.get("args", {})
+	if typeof(args) != TYPE_DICTIONARY:
+		args = {}
+
+	match command:
+		"ping":
+			_send(peer, _reply(request_id, true, _ping()))
+		"snapshot":
+			_send(peer, _reply(request_id, true, _snapshot()))
+		"pause":
+			get_tree().paused = true
+			_event("paused")
+			_send(peer, _reply(request_id, true, _runtime_state()))
+		"resume":
+			get_tree().paused = false
+			_event("resumed")
+			_send(peer, _reply(request_id, true, _runtime_state()))
+		"set_input":
+			_send(peer, _set_input_reply(request_id, args))
+		"step":
+			_send(peer, _step_reply(request_id, args))
+		"advance_physics":
+			_advance_physics_reply(peer, request_id, args)
+		"reset":
+			get_tree().paused = true
+			_event("reset")
+			_send(peer, _reset_reply(request_id))
+		"screenshot":
+			_send(peer, _screenshot_reply(request_id, args))
+		"scene_tree":
+			_send(peer, _reply(request_id, true, {"tree": _tree_node(get_tree().root, 0)}))
+		"property":
+			_send(peer, _property_reply(request_id, args))
+		"logs":
+			_send(peer, _reply(request_id, true, {
+				"events": _events,
+				"started_msec": _started_msec,
+				"uptime_ms": Time.get_ticks_msec() - _started_msec,
+			}))
+		"quit":
+			_send(peer, _reply(request_id, true, {"quitting": true}))
+			_event("quit requested")
+			call_deferred("_quit_process")
+		_:
+			_send(peer, _fail(request_id, "UNKNOWN_COMMAND", "Unknown command '%s'." % command))
+
+
+func _quit_process() -> void:
+	get_tree().quit(0)
+
+
+func _ping() -> Dictionary:
+	var game = _game()
+	return {
+		"protocol": PROTOCOL_VERSION,
+		"godot": String(Engine.get_version_info().get("string", "")),
+		"project": String(ProjectSettings.get_setting("application/config/name", "")),
+		"pid": OS.get_process_id(),
+		"paused": get_tree().paused,
+		"game_ready": game != null,
+		"headless": DisplayServer.get_name() == "headless",
+		"uptime_ms": Time.get_ticks_msec() - _started_msec,
+	}
+
+
+func _snapshot() -> Dictionary:
+	var game = _game()
+	if game == null:
+		return {"game_ready": false}
+	var state: Dictionary = game.snapshot()
+	state["game_ready"] = true
+	state["paused"] = get_tree().paused
+	state["uptime_ms"] = Time.get_ticks_msec() - _started_msec
+	return state
+
+
+func _runtime_state() -> Dictionary:
+	return {"paused": get_tree().paused, "snapshot": _snapshot()}
+
+
+func _property_reply(request_id: String, args: Dictionary) -> Dictionary:
+	var node_path := String(args.get("node_path", ""))
+	var property := String(args.get("property", ""))
+	if not node_path.begins_with("/root/"):
+		return _fail(request_id, "VALIDATION_ERROR", "node_path must be an absolute /root/... path.")
+	if property.is_empty():
+		return _fail(request_id, "VALIDATION_ERROR", "property is required.")
+	var node := get_node_or_null(node_path)
+	if node == null:
+		return _fail(request_id, "NODE_NOT_FOUND", "No node at '%s'." % node_path)
+	var found := false
+	for entry in node.get_property_list():
+		if String(entry.get("name", "")) == property:
+			found = true
+			break
+	if not found:
+		return _fail(request_id, "PROPERTY_NOT_FOUND", "Node '%s' has no property '%s'." % [node_path, property])
+	return _reply(request_id, true, {
+		"node_path": node_path,
+		"property": property,
+		"value": _jsonable(node.get(property)),
+	})
+
+
+func _set_input_reply(request_id: String, args: Dictionary) -> Dictionary:
+	var game = _game()
+	if game == null:
+		return _fail(request_id, "GAME_NOT_READY", "The game scene is not ready.")
+	return _reply(request_id, true, {
+		"input": game.set_harness_input(args),
+		"snapshot": _snapshot(),
+	})
+
+
+func _step_reply(request_id: String, args: Dictionary) -> Dictionary:
+	var game = _game()
+	if game == null:
+		return _fail(request_id, "GAME_NOT_READY", "The game scene is not ready.")
+	var steps := int(args.get("steps", 1))
+	var delta := float(args.get("delta", 1.0 / 60.0))
+	var record_every := int(args.get("record_every", 0))
+	if steps < 0 or steps > 100000:
+		return _fail(request_id, "VALIDATION_ERROR", "steps must be between 0 and 100000.")
+	if delta < 0.0001 or delta > 0.25:
+		return _fail(request_id, "VALIDATION_ERROR", "delta must be between 0.0001 and 0.25.")
+	if record_every < 0 or record_every > steps:
+		return _fail(request_id, "VALIDATION_ERROR", "record_every must be between 0 and steps.")
+	if args.has("input"):
+		if typeof(args["input"]) != TYPE_DICTIONARY:
+			return _fail(request_id, "VALIDATION_ERROR", "input must be an object.")
+		game.set_harness_input(args["input"])
+
+	get_tree().paused = true
+	var samples: Array = []
+	for index in range(steps):
+		var sample: Dictionary = game.harness_step(delta)
+		if record_every > 0 and (index % record_every == 0 or index == steps - 1):
+			samples.append(sample)
+	return _reply(request_id, true, {
+		"steps": steps,
+		"delta": delta,
+		"paused": true,
+		"samples": samples,
+		"final": _snapshot(),
+	})
+
+
+func _advance_physics_reply(peer: StreamPeerTCP, request_id: String, args: Dictionary) -> void:
+	var game = _game()
+	if game == null:
+		_send(peer, _fail(request_id, "GAME_NOT_READY", "The game scene is not ready."))
+		return
+	if _physics_busy:
+		_send(peer, _fail(request_id, "BUSY", "Another physics advance is already running."))
+		return
+	var frames := int(args.get("frames", 1))
+	if frames < 0 or frames > 100000:
+		_send(peer, _fail(request_id, "VALIDATION_ERROR", "frames must be between 0 and 100000."))
+		return
+	if args.has("input") and typeof(args["input"]) != TYPE_DICTIONARY:
+		_send(peer, _fail(request_id, "VALIDATION_ERROR", "input must be an object."))
+		return
+	if args.has("input"):
+		game.set_harness_input(args["input"])
+
+	if frames == 0:
+		_send(peer, _reply(request_id, true, {
+			"frames": 0,
+			"paused": get_tree().paused,
+			"final": _snapshot(),
+		}))
+		return
+
+	_physics_busy = true
+	var started_msec := Time.get_ticks_msec()
+	var target := Engine.get_physics_frames() + frames
+	get_tree().paused = false
+	_event("advance_physics start frames=%d target=%d" % [frames, target])
+	while Engine.get_physics_frames() < target:
+		await get_tree().physics_frame
+	# physics_frame is emitted before node _physics_process. Wait for the idle
+	# frame so the final requested tick has completed before sampling.
+	await get_tree().process_frame
+	get_tree().paused = true
+	var final := _snapshot()
+	_physics_busy = false
+	_event("advance_physics done frames=%d" % frames)
+	_send(peer, _reply(request_id, true, {
+		"frames": frames,
+		"duration_ms": Time.get_ticks_msec() - started_msec,
+		"paused": true,
+		"final": final,
+	}))
+
+
+func _reset_reply(request_id: String) -> Dictionary:
+	var game = _game()
+	if game == null:
+		return _fail(request_id, "GAME_NOT_READY", "The game scene is not ready.")
+	return _reply(request_id, true, {
+		"paused": true,
+		"snapshot": game.harness_reset(),
+	})
+
+
+func _screenshot_reply(request_id: String, args: Dictionary) -> Dictionary:
+	if DisplayServer.get_name() == "headless":
+		return _fail(request_id, "SCREENSHOT_UNAVAILABLE_HEADLESS", "Screenshots require a windowed run.")
+	var rel_path := String(args.get("path", "res://artifacts/harness.png"))
+	if not rel_path.begins_with("res://") or not rel_path.ends_with(".png"):
+		return _fail(request_id, "VALIDATION_ERROR", "path must be a res:// .png path.")
+	var absolute_path := ProjectSettings.globalize_path(rel_path).simplify_path()
+	var project_root := ProjectSettings.globalize_path("res://").simplify_path().trim_suffix("/") + "/"
+	if not absolute_path.begins_with(project_root):
+		return _fail(request_id, "VALIDATION_ERROR", "path escapes the selected project.")
+	var directory := absolute_path.get_base_dir()
+	var dir_error := DirAccess.make_dir_recursive_absolute(directory)
+	if dir_error != OK:
+		return _fail(request_id, "WRITE_ERROR", "Could not create '%s' (error %d)." % [directory, dir_error])
+	var texture := get_viewport().get_texture()
+	if texture == null:
+		return _fail(request_id, "NO_FRAME", "The viewport has no texture.")
+	var image := texture.get_image()
+	if image == null or image.is_empty():
+		return _fail(request_id, "NO_FRAME", "The viewport has no readable image.")
+	var save_error := image.save_png(absolute_path)
+	if save_error != OK:
+		return _fail(request_id, "WRITE_ERROR", "Could not save '%s' (error %d)." % [absolute_path, save_error])
+	return _reply(request_id, true, {
+		"path": rel_path,
+		"absolute_path": absolute_path,
+		"sha256": FileAccess.get_sha256(absolute_path),
+		"bytes": FileAccess.get_file_as_bytes(absolute_path).size(),
+		"width": image.get_width(),
+		"height": image.get_height(),
+		"headless": DisplayServer.get_name() == "headless",
+	})
+
+
+func _tree_node(node: Node, depth: int) -> Dictionary:
+	var children: Array = []
+	if depth < MAX_TREE_DEPTH:
+		var index := 0
+		for child in node.get_children():
+			if index >= MAX_TREE_CHILDREN:
+				break
+			children.append(_tree_node(child, depth + 1))
+			index += 1
+	return {
+		"name": String(node.name),
+		"class": node.get_class(),
+		"path": String(node.get_path()),
+		"children": children,
+	}
+
+
+func _jsonable(value):
+	match typeof(value):
+		TYPE_NIL, TYPE_BOOL, TYPE_INT, TYPE_FLOAT, TYPE_STRING:
+			return value
+		TYPE_VECTOR2:
+			return [value.x, value.y]
+		TYPE_VECTOR3:
+			return [value.x, value.y, value.z]
+		TYPE_VECTOR4:
+			return [value.x, value.y, value.z, value.w]
+		TYPE_COLOR:
+			return [value.r, value.g, value.b, value.a]
+		TYPE_NODE_PATH:
+			return String(value)
+		TYPE_OBJECT:
+			if value == null:
+				return null
+			return String(value)
+		TYPE_ARRAY:
+			var result: Array = []
+			for item in value:
+				result.append(_jsonable(item))
+			return result
+		TYPE_DICTIONARY:
+			var result: Dictionary = {}
+			for key in value:
+				result[String(key)] = _jsonable(value[key])
+			return result
+		_:
+			return str(value)
+
+
+func _game():
+	return get_tree().get_first_node_in_group("harness_game")
+
+
+func _reply(request_id: String, ok: bool, data: Dictionary) -> Dictionary:
+	return {"id": request_id, "ok": ok, "data": data, "error": null}
+
+
+func _fail(request_id: String, code: String, message: String) -> Dictionary:
+	return {"id": request_id, "ok": false, "data": null, "error": {"code": code, "message": message}}
+
+
+func _send(peer: StreamPeerTCP, payload: Dictionary) -> void:
+	var bytes := (JSON.stringify(payload) + "\n").to_utf8_buffer()
+	peer.put_data(bytes)
+
+
+func _drop_client(peer: StreamPeerTCP) -> void:
+	_clients.erase(peer)
+	_buffers.erase(peer.get_instance_id())
+	peer.disconnect_from_host()
+	_event("client disconnected")
+
+
+func _event(message: String) -> void:
+	_events.append("%d %s" % [Time.get_ticks_msec() - _started_msec, message])
+	if _events.size() > MAX_EVENTS:
+		_events.pop_front()

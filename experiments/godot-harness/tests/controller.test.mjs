@@ -85,3 +85,19 @@ test('screenshot paths stay inside the selected project', async () => {
     /res:\/\/ .png path without \.\. segments/,
   )
 })
+
+test('physics advance validation rejects invalid frames and input before a bridge call', async () => {
+  const session = new HarnessSession({ project: 'fixtures/physics' })
+  await assert.rejects(
+    () => session.advancePhysics({ frames: -1 }),
+    /frames must be an integer between 0 and 100000/,
+  )
+  await assert.rejects(
+    () => session.advancePhysics({ frames: 1.5 }),
+    /frames must be an integer between 0 and 100000/,
+  )
+  await assert.rejects(
+    () => session.advancePhysics({ frames: 1, input: { forward: 2 } }),
+    /forward must be a finite number between -1 and 1/,
+  )
+})

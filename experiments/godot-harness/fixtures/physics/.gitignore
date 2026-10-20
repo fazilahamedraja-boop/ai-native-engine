@@ -1,0 +1,4 @@
+.godot/
+addons/
+project.godot.bak-*
+*.tmp

@@ -1,0 +1,1937 @@
+{
+  "operation": "stage_e_physics_repeatability",
+  "ok": true,
+  "baseline_commit": "6667ecc8b0247a63c3b2ac7e2dcfd348343d35cd",
+  "project": "fixtures/physics",
+  "script": "res://tests/run_physics.gd",
+  "command": "node controller/harness.mjs test --project fixtures/physics --script res://tests/run_physics.gd",
+  "run_count": 5,
+  "started_at": "2026-10-20T20:10:34.900Z",
+  "finished_at": "2026-10-20T20:12:10.058Z",
+  "godot": "4.7.2-stable (official)",
+  "physics_ticks_per_second": 60,
+  "execution": "fresh Godot process per run; normal fixed 60 Hz physics; no paused manual step",
+  "claims": {
+    "gameplay_outcomes_repeatable": true,
+    "selected_state_fields_repeatable_within_1mm": true,
+    "exact_state_hashes_repeatable": true,
+    "general_physics_determinism": false
+  },
+  "outcome_hashes_repeatable": {
+    "wall": true,
+    "no_pass_through": true,
+    "slide": true,
+    "jump_land": true,
+    "reset_settled": true,
+    "missing_collision": true
+  },
+  "exact_hashes_repeatable": {
+    "wall": true,
+    "no_pass_through": true,
+    "slide": true,
+    "jump_land": true,
+    "reset_settled": true,
+    "missing_collision": true
+  },
+  "position_deltas": {
+    "wall_z": 0,
+    "slide_x": 0,
+    "jump_air_y": 0,
+    "missing_wall_z": 0
+  },
+  "max_position_delta": 0,
+  "runs": [
+    {
+      "index": 1,
+      "command": "node controller/harness.mjs test --project fixtures/physics --script res://tests/run_physics.gd",
+      "ok": true,
+      "exitCode": 0,
+      "durationMs": 19018,
+      "timedOut": false,
+      "summary": {
+        "passed": 9,
+        "failed": 0
+      },
+      "errors": [],
+      "warnings": [],
+      "cases": [
+        {
+          "detail": "y=0.850000 vy=0.000000 ticks=60",
+          "name": "physics-floor-contact",
+          "ok": true
+        },
+        {
+          "detail": "x=0.000000 z=-2.000001 grounded=true",
+          "name": "physics-forward-motion",
+          "ok": true
+        },
+        {
+          "detail": "z=-3.333333 motion_z=0.000000 wall_clearance=0.016667 contact=true",
+          "name": "physics-wall-collision",
+          "ok": true
+        },
+        {
+          "detail": "z=-3.333333 wall_clearance=0.016667",
+          "name": "physics-no-pass-through",
+          "ok": true
+        },
+        {
+          "detail": "x=1.414214 z=-3.349059 motion_x=0.047140 contact=true",
+          "name": "physics-wall-slide",
+          "ok": true
+        },
+        {
+          "detail": "takeoff_y=0.934160 air_y=1.553605 land_y=0.850238 grounded=true",
+          "name": "physics-jump-land",
+          "ok": true
+        },
+        {
+          "detail": "before_step=153 immediate_step=0 settled_hash=ef7e5862fab219bbf4cc8226d08c0ed9f6bc6f677f9381e2b0dd2fe478264fd1 baseline_hash=ef7e5862fab219bbf4cc8226d08c0ed9f6bc6f677f9381e2b0dd2fe478264fd1",
+          "name": "physics-reset",
+          "ok": true
+        },
+        {
+          "detail": "exact_hash_match=false outcome_hash_match=true position_delta=0.000001431 first_outcome=7751b0d7098c5bd0f84f9760bf33c496958441e45cbbdec4dee3056625eabc76 second_outcome=7751b0d7098c5bd0f84f9760bf33c496958441e45cbbdec4dee3056625eabc76",
+          "name": "physics-same-process-outcome-repeatability",
+          "ok": true
+        },
+        {
+          "detail": "wall_enabled=false z=-7.999995 wall_clearance=-4.649995",
+          "name": "physics-missing-wall-collision-detected",
+          "ok": true
+        }
+      ],
+      "physics_ticks_per_second": 60,
+      "godot": "4.7.2-stable (official)",
+      "scenarios": {
+        "wall": {
+          "step": 120,
+          "player_position": [
+            0,
+            0.850000023841858,
+            -3.33333277702332
+          ],
+          "player_velocity": [
+            0,
+            0,
+            0
+          ],
+          "player_motion": [
+            0,
+            0,
+            0
+          ],
+          "grounded": true,
+          "wall_contact": true,
+          "wall_clearance": 0.0166672229766847,
+          "wall_collision_enabled": true,
+          "last_delta": 0.0166666666666667,
+          "exact_hash": "342ce8d00e2ef9d6e2b6e22b292f16c6f4be4cc7ea3244dfe3b33a8dcab1381a",
+          "outcome_hash": "eff6f99f221515e0523af660ee1545b06f4b3043c2a41aeee26a958125f8718f",
+          "hud": "PHYSICS FIXTURE\nON FLOOR | WALL CONTACT\nz=-3.333 wall=true"
+        },
+        "no_pass_through": {
+          "step": 240,
+          "player_position": [
+            0,
+            0.850000023841858,
+            -3.33333277702332
+          ],
+          "player_velocity": [
+            0,
+            0,
+            0
+          ],
+          "player_motion": [
+            0,
+            0,
+            0
+          ],
+          "grounded": true,
+          "wall_contact": true,
+          "wall_clearance": 0.0166672229766847,
+          "wall_collision_enabled": true,
+          "last_delta": 0.0166666666666667,
+          "exact_hash": "7a6f046e199ad08deaf8a4bca4370359729788d8ef00f7577561606e5a94ff92",
+          "outcome_hash": "63a65641a70be6ffa5bdecc5cef2c29ade73de8cbf66ff1cf23699ff1c251b67",
+          "hud": "PHYSICS FIXTURE\nON FLOOR | WALL CONTACT\nz=-3.333 wall=true"
+        },
+        "slide": {
+          "step": 150,
+          "player_position": [
+            1.41421401500702,
+            0.850940465927124,
+            -3.34905862808228
+          ],
+          "player_velocity": [
+            2.82842707633972,
+            0,
+            0
+          ],
+          "player_motion": [
+            0.0471404790878296,
+            0,
+            0
+          ],
+          "grounded": true,
+          "wall_contact": true,
+          "wall_clearance": 0.000941371917724698,
+          "wall_collision_enabled": true,
+          "last_delta": 0.0166666666666667,
+          "exact_hash": "ddb6ecd3c18fb1b113f2d07ec0c0de6d596bfac5d64ce7d03c9a842c73511b46",
+          "outcome_hash": "84a9291fc4709d8d4f76eece34e8c881c19983bd8872c38c232e2800c78744f9",
+          "hud": "PHYSICS FIXTURE\nON FLOOR | WALL CONTACT\nz=-3.349 wall=true"
+        },
+        "jump": {
+          "takeoff": {
+            "step": 4,
+            "player_position": [
+              0,
+              0.934160172939301,
+              0
+            ],
+            "player_velocity": [
+              0,
+              5,
+              0
+            ],
+            "player_motion": [
+              0,
+              0.0841601490974426,
+              0
+            ],
+            "grounded": false,
+            "wall_contact": false,
+            "wall_clearance": 3.35,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "36677ea3a1d9c64793dfdeb8e1c148b52408f3fe0eb6a9055131e2a70715a8e9",
+            "outcome_hash": "c75a72c987582e61f7ac30f02e5dc2ce9be98ef3444d77d334b39963efb61b73",
+            "hud": "PHYSICS FIXTURE\nAIRBORNE | NO WALL CONTACT\nz=0.000 wall=true"
+          },
+          "air": {
+            "step": 14,
+            "player_position": [
+              0,
+              1.5536048412323,
+              0
+            ],
+            "player_velocity": [
+              0,
+              2.66666746139526,
+              0
+            ],
+            "player_motion": [
+              0,
+              0.0444444417953491,
+              0
+            ],
+            "grounded": false,
+            "wall_contact": false,
+            "wall_clearance": 3.35,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "d4c879d0de9dabe2967e4889e035d5e77e84f01f5ee7fc0259ec8ebf3345eac9",
+            "outcome_hash": "b1c427cc29c7dc6ce6e48392d7fd71b5e1cb0fc8318eb9d50428aaeab62d6676",
+            "hud": "PHYSICS FIXTURE\nAIRBORNE | NO WALL CONTACT\nz=0.000 wall=true"
+          },
+          "land": {
+            "step": 94,
+            "player_position": [
+              0,
+              0.850238263607025,
+              0
+            ],
+            "player_velocity": [
+              0,
+              0,
+              0
+            ],
+            "player_motion": [
+              0,
+              0,
+              0
+            ],
+            "grounded": true,
+            "wall_contact": false,
+            "wall_clearance": 3.35,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "9414516e64fb10f11f0c0d3eac58f6226be4e3a95e41496e593a66a2156b63b7",
+            "outcome_hash": "e36214226ec90841fda1d1bfb2613c966528958f5211717031fe370a58aeadb1",
+            "hud": "PHYSICS FIXTURE\nON FLOOR | NO WALL CONTACT\nz=0.000 wall=true"
+          }
+        },
+        "reset": {
+          "immediate": {
+            "step": 0,
+            "player_position": [
+              0,
+              0.850000023841858,
+              0
+            ],
+            "player_velocity": [
+              0,
+              0,
+              0
+            ],
+            "player_motion": [
+              0,
+              0,
+              0
+            ],
+            "grounded": true,
+            "wall_contact": false,
+            "wall_clearance": 3.35,
+            "wall_collision_enabled": true,
+            "last_delta": 0,
+            "exact_hash": "548137390f47a7ffd542ab052f7e24463e987978364a47d494fe33f3ee2396ca",
+            "outcome_hash": "b91303f8fe10af7cc0e8eaa986e485387773409160ebb85120020463c40d9d2a",
+            "hud": "PHYSICS FIXTURE\nON FLOOR | NO WALL CONTACT\nz=0.000 wall=true"
+          },
+          "settled": {
+            "step": 3,
+            "player_position": [
+              0,
+              0.850000023841858,
+              0
+            ],
+            "player_velocity": [
+              0,
+              0,
+              0
+            ],
+            "player_motion": [
+              0,
+              0,
+              0
+            ],
+            "grounded": true,
+            "wall_contact": false,
+            "wall_clearance": 3.35,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "ef7e5862fab219bbf4cc8226d08c0ed9f6bc6f677f9381e2b0dd2fe478264fd1",
+            "outcome_hash": "c4843cb67ead00fac5bc757a2bc203cf830420fcbc961a845854d44f3d300cfa",
+            "hud": "PHYSICS FIXTURE\nON FLOOR | NO WALL CONTACT\nz=0.000 wall=true"
+          }
+        },
+        "missing_collision": {
+          "step": 123,
+          "player_position": [
+            0,
+            0.850000023841858,
+            -7.99999523162842
+          ],
+          "player_velocity": [
+            0,
+            0,
+            -4
+          ],
+          "player_motion": [
+            0,
+            0,
+            -0.0666666030883789
+          ],
+          "grounded": true,
+          "wall_contact": false,
+          "wall_clearance": -4.64999523162842,
+          "wall_collision_enabled": false,
+          "last_delta": 0.0166666666666667,
+          "exact_hash": "e4e7d11934d5643dd4a531c567e8d2b193dc3f0c2ba763235871e273c96202dd",
+          "outcome_hash": "0ad01dd355bab96a1f7c8d34c419f5e5a2f01f6a974050d549cc79dfaea460bb",
+          "hud": "PHYSICS FIXTURE\nON FLOOR | NO WALL CONTACT\nz=-8.000 wall=false"
+        },
+        "same_process_repeatability": {
+          "exact_hash_match": false,
+          "outcome_hash_match": true,
+          "position_delta": 0.00000143051147460938,
+          "first": {
+            "step": 163,
+            "player_position": [
+              1.41421401500702,
+              0.850941896438599,
+              -3.34905862808228
+            ],
+            "player_velocity": [
+              0,
+              0,
+              0
+            ],
+            "player_motion": [
+              0,
+              0,
+              0
+            ],
+            "grounded": true,
+            "wall_contact": true,
+            "wall_clearance": 0.000941371917724698,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "46ff3711acf1dd970842335f7d668a40a0243b5851e3bf502e0d8c9d3688c7f5",
+            "outcome_hash": "7751b0d7098c5bd0f84f9760bf33c496958441e45cbbdec4dee3056625eabc76",
+            "hud": "PHYSICS FIXTURE\nON FLOOR | WALL CONTACT\nz=-3.349 wall=true"
+          },
+          "second": {
+            "step": 163,
+            "player_position": [
+              1.41421401500702,
+              0.850940465927124,
+              -3.34905862808228
+            ],
+            "player_velocity": [
+              0,
+              0,
+              0
+            ],
+            "player_motion": [
+              0,
+              0,
+              0
+            ],
+            "grounded": true,
+            "wall_contact": true,
+            "wall_clearance": 0.000941371917724698,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "ebe6fea8380f2c136c497b563feaa0eb200404c567b462940f34180b54e21f3b",
+            "outcome_hash": "7751b0d7098c5bd0f84f9760bf33c496958441e45cbbdec4dee3056625eabc76",
+            "hud": "PHYSICS FIXTURE\nON FLOOR | WALL CONTACT\nz=-3.349 wall=true"
+          }
+        }
+      },
+      "outcome_hashes": {
+        "wall": "eff6f99f221515e0523af660ee1545b06f4b3043c2a41aeee26a958125f8718f",
+        "no_pass_through": "63a65641a70be6ffa5bdecc5cef2c29ade73de8cbf66ff1cf23699ff1c251b67",
+        "slide": "84a9291fc4709d8d4f76eece34e8c881c19983bd8872c38c232e2800c78744f9",
+        "jump_land": "e36214226ec90841fda1d1bfb2613c966528958f5211717031fe370a58aeadb1",
+        "reset_settled": "c4843cb67ead00fac5bc757a2bc203cf830420fcbc961a845854d44f3d300cfa",
+        "missing_collision": "0ad01dd355bab96a1f7c8d34c419f5e5a2f01f6a974050d549cc79dfaea460bb"
+      },
+      "exact_hashes": {
+        "wall": "342ce8d00e2ef9d6e2b6e22b292f16c6f4be4cc7ea3244dfe3b33a8dcab1381a",
+        "no_pass_through": "7a6f046e199ad08deaf8a4bca4370359729788d8ef00f7577561606e5a94ff92",
+        "slide": "ddb6ecd3c18fb1b113f2d07ec0c0de6d596bfac5d64ce7d03c9a842c73511b46",
+        "jump_land": "9414516e64fb10f11f0c0d3eac58f6226be4e3a95e41496e593a66a2156b63b7",
+        "reset_settled": "ef7e5862fab219bbf4cc8226d08c0ed9f6bc6f677f9381e2b0dd2fe478264fd1",
+        "missing_collision": "e4e7d11934d5643dd4a531c567e8d2b193dc3f0c2ba763235871e273c96202dd"
+      },
+      "log": "docs\\phase9\\stage-e-run-1.log"
+    },
+    {
+      "index": 2,
+      "command": "node controller/harness.mjs test --project fixtures/physics --script res://tests/run_physics.gd",
+      "ok": true,
+      "exitCode": 0,
+      "durationMs": 19024,
+      "timedOut": false,
+      "summary": {
+        "passed": 9,
+        "failed": 0
+      },
+      "errors": [],
+      "warnings": [],
+      "cases": [
+        {
+          "detail": "y=0.850000 vy=0.000000 ticks=60",
+          "name": "physics-floor-contact",
+          "ok": true
+        },
+        {
+          "detail": "x=0.000000 z=-2.000001 grounded=true",
+          "name": "physics-forward-motion",
+          "ok": true
+        },
+        {
+          "detail": "z=-3.333333 motion_z=0.000000 wall_clearance=0.016667 contact=true",
+          "name": "physics-wall-collision",
+          "ok": true
+        },
+        {
+          "detail": "z=-3.333333 wall_clearance=0.016667",
+          "name": "physics-no-pass-through",
+          "ok": true
+        },
+        {
+          "detail": "x=1.414214 z=-3.349059 motion_x=0.047140 contact=true",
+          "name": "physics-wall-slide",
+          "ok": true
+        },
+        {
+          "detail": "takeoff_y=0.934160 air_y=1.553605 land_y=0.850238 grounded=true",
+          "name": "physics-jump-land",
+          "ok": true
+        },
+        {
+          "detail": "before_step=153 immediate_step=0 settled_hash=ef7e5862fab219bbf4cc8226d08c0ed9f6bc6f677f9381e2b0dd2fe478264fd1 baseline_hash=ef7e5862fab219bbf4cc8226d08c0ed9f6bc6f677f9381e2b0dd2fe478264fd1",
+          "name": "physics-reset",
+          "ok": true
+        },
+        {
+          "detail": "exact_hash_match=false outcome_hash_match=true position_delta=0.000001431 first_outcome=7751b0d7098c5bd0f84f9760bf33c496958441e45cbbdec4dee3056625eabc76 second_outcome=7751b0d7098c5bd0f84f9760bf33c496958441e45cbbdec4dee3056625eabc76",
+          "name": "physics-same-process-outcome-repeatability",
+          "ok": true
+        },
+        {
+          "detail": "wall_enabled=false z=-7.999995 wall_clearance=-4.649995",
+          "name": "physics-missing-wall-collision-detected",
+          "ok": true
+        }
+      ],
+      "physics_ticks_per_second": 60,
+      "godot": "4.7.2-stable (official)",
+      "scenarios": {
+        "wall": {
+          "step": 120,
+          "player_position": [
+            0,
+            0.850000023841858,
+            -3.33333277702332
+          ],
+          "player_velocity": [
+            0,
+            0,
+            0
+          ],
+          "player_motion": [
+            0,
+            0,
+            0
+          ],
+          "grounded": true,
+          "wall_contact": true,
+          "wall_clearance": 0.0166672229766847,
+          "wall_collision_enabled": true,
+          "last_delta": 0.0166666666666667,
+          "exact_hash": "342ce8d00e2ef9d6e2b6e22b292f16c6f4be4cc7ea3244dfe3b33a8dcab1381a",
+          "outcome_hash": "eff6f99f221515e0523af660ee1545b06f4b3043c2a41aeee26a958125f8718f",
+          "hud": "PHYSICS FIXTURE\nON FLOOR | WALL CONTACT\nz=-3.333 wall=true"
+        },
+        "no_pass_through": {
+          "step": 240,
+          "player_position": [
+            0,
+            0.850000023841858,
+            -3.33333277702332
+          ],
+          "player_velocity": [
+            0,
+            0,
+            0
+          ],
+          "player_motion": [
+            0,
+            0,
+            0
+          ],
+          "grounded": true,
+          "wall_contact": true,
+          "wall_clearance": 0.0166672229766847,
+          "wall_collision_enabled": true,
+          "last_delta": 0.0166666666666667,
+          "exact_hash": "7a6f046e199ad08deaf8a4bca4370359729788d8ef00f7577561606e5a94ff92",
+          "outcome_hash": "63a65641a70be6ffa5bdecc5cef2c29ade73de8cbf66ff1cf23699ff1c251b67",
+          "hud": "PHYSICS FIXTURE\nON FLOOR | WALL CONTACT\nz=-3.333 wall=true"
+        },
+        "slide": {
+          "step": 150,
+          "player_position": [
+            1.41421401500702,
+            0.850940465927124,
+            -3.34905862808228
+          ],
+          "player_velocity": [
+            2.82842707633972,
+            0,
+            0
+          ],
+          "player_motion": [
+            0.0471404790878296,
+            0,
+            0
+          ],
+          "grounded": true,
+          "wall_contact": true,
+          "wall_clearance": 0.000941371917724698,
+          "wall_collision_enabled": true,
+          "last_delta": 0.0166666666666667,
+          "exact_hash": "ddb6ecd3c18fb1b113f2d07ec0c0de6d596bfac5d64ce7d03c9a842c73511b46",
+          "outcome_hash": "84a9291fc4709d8d4f76eece34e8c881c19983bd8872c38c232e2800c78744f9",
+          "hud": "PHYSICS FIXTURE\nON FLOOR | WALL CONTACT\nz=-3.349 wall=true"
+        },
+        "jump": {
+          "takeoff": {
+            "step": 4,
+            "player_position": [
+              0,
+              0.934160172939301,
+              0
+            ],
+            "player_velocity": [
+              0,
+              5,
+              0
+            ],
+            "player_motion": [
+              0,
+              0.0841601490974426,
+              0
+            ],
+            "grounded": false,
+            "wall_contact": false,
+            "wall_clearance": 3.35,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "36677ea3a1d9c64793dfdeb8e1c148b52408f3fe0eb6a9055131e2a70715a8e9",
+            "outcome_hash": "c75a72c987582e61f7ac30f02e5dc2ce9be98ef3444d77d334b39963efb61b73",
+            "hud": "PHYSICS FIXTURE\nAIRBORNE | NO WALL CONTACT\nz=0.000 wall=true"
+          },
+          "air": {
+            "step": 14,
+            "player_position": [
+              0,
+              1.5536048412323,
+              0
+            ],
+            "player_velocity": [
+              0,
+              2.66666746139526,
+              0
+            ],
+            "player_motion": [
+              0,
+              0.0444444417953491,
+              0
+            ],
+            "grounded": false,
+            "wall_contact": false,
+            "wall_clearance": 3.35,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "d4c879d0de9dabe2967e4889e035d5e77e84f01f5ee7fc0259ec8ebf3345eac9",
+            "outcome_hash": "b1c427cc29c7dc6ce6e48392d7fd71b5e1cb0fc8318eb9d50428aaeab62d6676",
+            "hud": "PHYSICS FIXTURE\nAIRBORNE | NO WALL CONTACT\nz=0.000 wall=true"
+          },
+          "land": {
+            "step": 94,
+            "player_position": [
+              0,
+              0.850238263607025,
+              0
+            ],
+            "player_velocity": [
+              0,
+              0,
+              0
+            ],
+            "player_motion": [
+              0,
+              0,
+              0
+            ],
+            "grounded": true,
+            "wall_contact": false,
+            "wall_clearance": 3.35,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "9414516e64fb10f11f0c0d3eac58f6226be4e3a95e41496e593a66a2156b63b7",
+            "outcome_hash": "e36214226ec90841fda1d1bfb2613c966528958f5211717031fe370a58aeadb1",
+            "hud": "PHYSICS FIXTURE\nON FLOOR | NO WALL CONTACT\nz=0.000 wall=true"
+          }
+        },
+        "reset": {
+          "immediate": {
+            "step": 0,
+            "player_position": [
+              0,
+              0.850000023841858,
+              0
+            ],
+            "player_velocity": [
+              0,
+              0,
+              0
+            ],
+            "player_motion": [
+              0,
+              0,
+              0
+            ],
+            "grounded": true,
+            "wall_contact": false,
+            "wall_clearance": 3.35,
+            "wall_collision_enabled": true,
+            "last_delta": 0,
+            "exact_hash": "548137390f47a7ffd542ab052f7e24463e987978364a47d494fe33f3ee2396ca",
+            "outcome_hash": "b91303f8fe10af7cc0e8eaa986e485387773409160ebb85120020463c40d9d2a",
+            "hud": "PHYSICS FIXTURE\nON FLOOR | NO WALL CONTACT\nz=0.000 wall=true"
+          },
+          "settled": {
+            "step": 3,
+            "player_position": [
+              0,
+              0.850000023841858,
+              0
+            ],
+            "player_velocity": [
+              0,
+              0,
+              0
+            ],
+            "player_motion": [
+              0,
+              0,
+              0
+            ],
+            "grounded": true,
+            "wall_contact": false,
+            "wall_clearance": 3.35,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "ef7e5862fab219bbf4cc8226d08c0ed9f6bc6f677f9381e2b0dd2fe478264fd1",
+            "outcome_hash": "c4843cb67ead00fac5bc757a2bc203cf830420fcbc961a845854d44f3d300cfa",
+            "hud": "PHYSICS FIXTURE\nON FLOOR | NO WALL CONTACT\nz=0.000 wall=true"
+          }
+        },
+        "missing_collision": {
+          "step": 123,
+          "player_position": [
+            0,
+            0.850000023841858,
+            -7.99999523162842
+          ],
+          "player_velocity": [
+            0,
+            0,
+            -4
+          ],
+          "player_motion": [
+            0,
+            0,
+            -0.0666666030883789
+          ],
+          "grounded": true,
+          "wall_contact": false,
+          "wall_clearance": -4.64999523162842,
+          "wall_collision_enabled": false,
+          "last_delta": 0.0166666666666667,
+          "exact_hash": "e4e7d11934d5643dd4a531c567e8d2b193dc3f0c2ba763235871e273c96202dd",
+          "outcome_hash": "0ad01dd355bab96a1f7c8d34c419f5e5a2f01f6a974050d549cc79dfaea460bb",
+          "hud": "PHYSICS FIXTURE\nON FLOOR | NO WALL CONTACT\nz=-8.000 wall=false"
+        },
+        "same_process_repeatability": {
+          "exact_hash_match": false,
+          "outcome_hash_match": true,
+          "position_delta": 0.00000143051147460938,
+          "first": {
+            "step": 163,
+            "player_position": [
+              1.41421401500702,
+              0.850941896438599,
+              -3.34905862808228
+            ],
+            "player_velocity": [
+              0,
+              0,
+              0
+            ],
+            "player_motion": [
+              0,
+              0,
+              0
+            ],
+            "grounded": true,
+            "wall_contact": true,
+            "wall_clearance": 0.000941371917724698,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "46ff3711acf1dd970842335f7d668a40a0243b5851e3bf502e0d8c9d3688c7f5",
+            "outcome_hash": "7751b0d7098c5bd0f84f9760bf33c496958441e45cbbdec4dee3056625eabc76",
+            "hud": "PHYSICS FIXTURE\nON FLOOR | WALL CONTACT\nz=-3.349 wall=true"
+          },
+          "second": {
+            "step": 163,
+            "player_position": [
+              1.41421401500702,
+              0.850940465927124,
+              -3.34905862808228
+            ],
+            "player_velocity": [
+              0,
+              0,
+              0
+            ],
+            "player_motion": [
+              0,
+              0,
+              0
+            ],
+            "grounded": true,
+            "wall_contact": true,
+            "wall_clearance": 0.000941371917724698,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "ebe6fea8380f2c136c497b563feaa0eb200404c567b462940f34180b54e21f3b",
+            "outcome_hash": "7751b0d7098c5bd0f84f9760bf33c496958441e45cbbdec4dee3056625eabc76",
+            "hud": "PHYSICS FIXTURE\nON FLOOR | WALL CONTACT\nz=-3.349 wall=true"
+          }
+        }
+      },
+      "outcome_hashes": {
+        "wall": "eff6f99f221515e0523af660ee1545b06f4b3043c2a41aeee26a958125f8718f",
+        "no_pass_through": "63a65641a70be6ffa5bdecc5cef2c29ade73de8cbf66ff1cf23699ff1c251b67",
+        "slide": "84a9291fc4709d8d4f76eece34e8c881c19983bd8872c38c232e2800c78744f9",
+        "jump_land": "e36214226ec90841fda1d1bfb2613c966528958f5211717031fe370a58aeadb1",
+        "reset_settled": "c4843cb67ead00fac5bc757a2bc203cf830420fcbc961a845854d44f3d300cfa",
+        "missing_collision": "0ad01dd355bab96a1f7c8d34c419f5e5a2f01f6a974050d549cc79dfaea460bb"
+      },
+      "exact_hashes": {
+        "wall": "342ce8d00e2ef9d6e2b6e22b292f16c6f4be4cc7ea3244dfe3b33a8dcab1381a",
+        "no_pass_through": "7a6f046e199ad08deaf8a4bca4370359729788d8ef00f7577561606e5a94ff92",
+        "slide": "ddb6ecd3c18fb1b113f2d07ec0c0de6d596bfac5d64ce7d03c9a842c73511b46",
+        "jump_land": "9414516e64fb10f11f0c0d3eac58f6226be4e3a95e41496e593a66a2156b63b7",
+        "reset_settled": "ef7e5862fab219bbf4cc8226d08c0ed9f6bc6f677f9381e2b0dd2fe478264fd1",
+        "missing_collision": "e4e7d11934d5643dd4a531c567e8d2b193dc3f0c2ba763235871e273c96202dd"
+      },
+      "log": "docs\\phase9\\stage-e-run-2.log"
+    },
+    {
+      "index": 3,
+      "command": "node controller/harness.mjs test --project fixtures/physics --script res://tests/run_physics.gd",
+      "ok": true,
+      "exitCode": 0,
+      "durationMs": 19024,
+      "timedOut": false,
+      "summary": {
+        "passed": 9,
+        "failed": 0
+      },
+      "errors": [],
+      "warnings": [],
+      "cases": [
+        {
+          "detail": "y=0.850000 vy=0.000000 ticks=60",
+          "name": "physics-floor-contact",
+          "ok": true
+        },
+        {
+          "detail": "x=0.000000 z=-2.000001 grounded=true",
+          "name": "physics-forward-motion",
+          "ok": true
+        },
+        {
+          "detail": "z=-3.333333 motion_z=0.000000 wall_clearance=0.016667 contact=true",
+          "name": "physics-wall-collision",
+          "ok": true
+        },
+        {
+          "detail": "z=-3.333333 wall_clearance=0.016667",
+          "name": "physics-no-pass-through",
+          "ok": true
+        },
+        {
+          "detail": "x=1.414214 z=-3.349059 motion_x=0.047140 contact=true",
+          "name": "physics-wall-slide",
+          "ok": true
+        },
+        {
+          "detail": "takeoff_y=0.934160 air_y=1.553605 land_y=0.850238 grounded=true",
+          "name": "physics-jump-land",
+          "ok": true
+        },
+        {
+          "detail": "before_step=153 immediate_step=0 settled_hash=ef7e5862fab219bbf4cc8226d08c0ed9f6bc6f677f9381e2b0dd2fe478264fd1 baseline_hash=ef7e5862fab219bbf4cc8226d08c0ed9f6bc6f677f9381e2b0dd2fe478264fd1",
+          "name": "physics-reset",
+          "ok": true
+        },
+        {
+          "detail": "exact_hash_match=false outcome_hash_match=true position_delta=0.000001431 first_outcome=7751b0d7098c5bd0f84f9760bf33c496958441e45cbbdec4dee3056625eabc76 second_outcome=7751b0d7098c5bd0f84f9760bf33c496958441e45cbbdec4dee3056625eabc76",
+          "name": "physics-same-process-outcome-repeatability",
+          "ok": true
+        },
+        {
+          "detail": "wall_enabled=false z=-7.999995 wall_clearance=-4.649995",
+          "name": "physics-missing-wall-collision-detected",
+          "ok": true
+        }
+      ],
+      "physics_ticks_per_second": 60,
+      "godot": "4.7.2-stable (official)",
+      "scenarios": {
+        "wall": {
+          "step": 120,
+          "player_position": [
+            0,
+            0.850000023841858,
+            -3.33333277702332
+          ],
+          "player_velocity": [
+            0,
+            0,
+            0
+          ],
+          "player_motion": [
+            0,
+            0,
+            0
+          ],
+          "grounded": true,
+          "wall_contact": true,
+          "wall_clearance": 0.0166672229766847,
+          "wall_collision_enabled": true,
+          "last_delta": 0.0166666666666667,
+          "exact_hash": "342ce8d00e2ef9d6e2b6e22b292f16c6f4be4cc7ea3244dfe3b33a8dcab1381a",
+          "outcome_hash": "eff6f99f221515e0523af660ee1545b06f4b3043c2a41aeee26a958125f8718f",
+          "hud": "PHYSICS FIXTURE\nON FLOOR | WALL CONTACT\nz=-3.333 wall=true"
+        },
+        "no_pass_through": {
+          "step": 240,
+          "player_position": [
+            0,
+            0.850000023841858,
+            -3.33333277702332
+          ],
+          "player_velocity": [
+            0,
+            0,
+            0
+          ],
+          "player_motion": [
+            0,
+            0,
+            0
+          ],
+          "grounded": true,
+          "wall_contact": true,
+          "wall_clearance": 0.0166672229766847,
+          "wall_collision_enabled": true,
+          "last_delta": 0.0166666666666667,
+          "exact_hash": "7a6f046e199ad08deaf8a4bca4370359729788d8ef00f7577561606e5a94ff92",
+          "outcome_hash": "63a65641a70be6ffa5bdecc5cef2c29ade73de8cbf66ff1cf23699ff1c251b67",
+          "hud": "PHYSICS FIXTURE\nON FLOOR | WALL CONTACT\nz=-3.333 wall=true"
+        },
+        "slide": {
+          "step": 150,
+          "player_position": [
+            1.41421401500702,
+            0.850940465927124,
+            -3.34905862808228
+          ],
+          "player_velocity": [
+            2.82842707633972,
+            0,
+            0
+          ],
+          "player_motion": [
+            0.0471404790878296,
+            0,
+            0
+          ],
+          "grounded": true,
+          "wall_contact": true,
+          "wall_clearance": 0.000941371917724698,
+          "wall_collision_enabled": true,
+          "last_delta": 0.0166666666666667,
+          "exact_hash": "ddb6ecd3c18fb1b113f2d07ec0c0de6d596bfac5d64ce7d03c9a842c73511b46",
+          "outcome_hash": "84a9291fc4709d8d4f76eece34e8c881c19983bd8872c38c232e2800c78744f9",
+          "hud": "PHYSICS FIXTURE\nON FLOOR | WALL CONTACT\nz=-3.349 wall=true"
+        },
+        "jump": {
+          "takeoff": {
+            "step": 4,
+            "player_position": [
+              0,
+              0.934160172939301,
+              0
+            ],
+            "player_velocity": [
+              0,
+              5,
+              0
+            ],
+            "player_motion": [
+              0,
+              0.0841601490974426,
+              0
+            ],
+            "grounded": false,
+            "wall_contact": false,
+            "wall_clearance": 3.35,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "36677ea3a1d9c64793dfdeb8e1c148b52408f3fe0eb6a9055131e2a70715a8e9",
+            "outcome_hash": "c75a72c987582e61f7ac30f02e5dc2ce9be98ef3444d77d334b39963efb61b73",
+            "hud": "PHYSICS FIXTURE\nAIRBORNE | NO WALL CONTACT\nz=0.000 wall=true"
+          },
+          "air": {
+            "step": 14,
+            "player_position": [
+              0,
+              1.5536048412323,
+              0
+            ],
+            "player_velocity": [
+              0,
+              2.66666746139526,
+              0
+            ],
+            "player_motion": [
+              0,
+              0.0444444417953491,
+              0
+            ],
+            "grounded": false,
+            "wall_contact": false,
+            "wall_clearance": 3.35,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "d4c879d0de9dabe2967e4889e035d5e77e84f01f5ee7fc0259ec8ebf3345eac9",
+            "outcome_hash": "b1c427cc29c7dc6ce6e48392d7fd71b5e1cb0fc8318eb9d50428aaeab62d6676",
+            "hud": "PHYSICS FIXTURE\nAIRBORNE | NO WALL CONTACT\nz=0.000 wall=true"
+          },
+          "land": {
+            "step": 94,
+            "player_position": [
+              0,
+              0.850238263607025,
+              0
+            ],
+            "player_velocity": [
+              0,
+              0,
+              0
+            ],
+            "player_motion": [
+              0,
+              0,
+              0
+            ],
+            "grounded": true,
+            "wall_contact": false,
+            "wall_clearance": 3.35,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "9414516e64fb10f11f0c0d3eac58f6226be4e3a95e41496e593a66a2156b63b7",
+            "outcome_hash": "e36214226ec90841fda1d1bfb2613c966528958f5211717031fe370a58aeadb1",
+            "hud": "PHYSICS FIXTURE\nON FLOOR | NO WALL CONTACT\nz=0.000 wall=true"
+          }
+        },
+        "reset": {
+          "immediate": {
+            "step": 0,
+            "player_position": [
+              0,
+              0.850000023841858,
+              0
+            ],
+            "player_velocity": [
+              0,
+              0,
+              0
+            ],
+            "player_motion": [
+              0,
+              0,
+              0
+            ],
+            "grounded": true,
+            "wall_contact": false,
+            "wall_clearance": 3.35,
+            "wall_collision_enabled": true,
+            "last_delta": 0,
+            "exact_hash": "548137390f47a7ffd542ab052f7e24463e987978364a47d494fe33f3ee2396ca",
+            "outcome_hash": "b91303f8fe10af7cc0e8eaa986e485387773409160ebb85120020463c40d9d2a",
+            "hud": "PHYSICS FIXTURE\nON FLOOR | NO WALL CONTACT\nz=0.000 wall=true"
+          },
+          "settled": {
+            "step": 3,
+            "player_position": [
+              0,
+              0.850000023841858,
+              0
+            ],
+            "player_velocity": [
+              0,
+              0,
+              0
+            ],
+            "player_motion": [
+              0,
+              0,
+              0
+            ],
+            "grounded": true,
+            "wall_contact": false,
+            "wall_clearance": 3.35,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "ef7e5862fab219bbf4cc8226d08c0ed9f6bc6f677f9381e2b0dd2fe478264fd1",
+            "outcome_hash": "c4843cb67ead00fac5bc757a2bc203cf830420fcbc961a845854d44f3d300cfa",
+            "hud": "PHYSICS FIXTURE\nON FLOOR | NO WALL CONTACT\nz=0.000 wall=true"
+          }
+        },
+        "missing_collision": {
+          "step": 123,
+          "player_position": [
+            0,
+            0.850000023841858,
+            -7.99999523162842
+          ],
+          "player_velocity": [
+            0,
+            0,
+            -4
+          ],
+          "player_motion": [
+            0,
+            0,
+            -0.0666666030883789
+          ],
+          "grounded": true,
+          "wall_contact": false,
+          "wall_clearance": -4.64999523162842,
+          "wall_collision_enabled": false,
+          "last_delta": 0.0166666666666667,
+          "exact_hash": "e4e7d11934d5643dd4a531c567e8d2b193dc3f0c2ba763235871e273c96202dd",
+          "outcome_hash": "0ad01dd355bab96a1f7c8d34c419f5e5a2f01f6a974050d549cc79dfaea460bb",
+          "hud": "PHYSICS FIXTURE\nON FLOOR | NO WALL CONTACT\nz=-8.000 wall=false"
+        },
+        "same_process_repeatability": {
+          "exact_hash_match": false,
+          "outcome_hash_match": true,
+          "position_delta": 0.00000143051147460938,
+          "first": {
+            "step": 163,
+            "player_position": [
+              1.41421401500702,
+              0.850941896438599,
+              -3.34905862808228
+            ],
+            "player_velocity": [
+              0,
+              0,
+              0
+            ],
+            "player_motion": [
+              0,
+              0,
+              0
+            ],
+            "grounded": true,
+            "wall_contact": true,
+            "wall_clearance": 0.000941371917724698,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "46ff3711acf1dd970842335f7d668a40a0243b5851e3bf502e0d8c9d3688c7f5",
+            "outcome_hash": "7751b0d7098c5bd0f84f9760bf33c496958441e45cbbdec4dee3056625eabc76",
+            "hud": "PHYSICS FIXTURE\nON FLOOR | WALL CONTACT\nz=-3.349 wall=true"
+          },
+          "second": {
+            "step": 163,
+            "player_position": [
+              1.41421401500702,
+              0.850940465927124,
+              -3.34905862808228
+            ],
+            "player_velocity": [
+              0,
+              0,
+              0
+            ],
+            "player_motion": [
+              0,
+              0,
+              0
+            ],
+            "grounded": true,
+            "wall_contact": true,
+            "wall_clearance": 0.000941371917724698,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "ebe6fea8380f2c136c497b563feaa0eb200404c567b462940f34180b54e21f3b",
+            "outcome_hash": "7751b0d7098c5bd0f84f9760bf33c496958441e45cbbdec4dee3056625eabc76",
+            "hud": "PHYSICS FIXTURE\nON FLOOR | WALL CONTACT\nz=-3.349 wall=true"
+          }
+        }
+      },
+      "outcome_hashes": {
+        "wall": "eff6f99f221515e0523af660ee1545b06f4b3043c2a41aeee26a958125f8718f",
+        "no_pass_through": "63a65641a70be6ffa5bdecc5cef2c29ade73de8cbf66ff1cf23699ff1c251b67",
+        "slide": "84a9291fc4709d8d4f76eece34e8c881c19983bd8872c38c232e2800c78744f9",
+        "jump_land": "e36214226ec90841fda1d1bfb2613c966528958f5211717031fe370a58aeadb1",
+        "reset_settled": "c4843cb67ead00fac5bc757a2bc203cf830420fcbc961a845854d44f3d300cfa",
+        "missing_collision": "0ad01dd355bab96a1f7c8d34c419f5e5a2f01f6a974050d549cc79dfaea460bb"
+      },
+      "exact_hashes": {
+        "wall": "342ce8d00e2ef9d6e2b6e22b292f16c6f4be4cc7ea3244dfe3b33a8dcab1381a",
+        "no_pass_through": "7a6f046e199ad08deaf8a4bca4370359729788d8ef00f7577561606e5a94ff92",
+        "slide": "ddb6ecd3c18fb1b113f2d07ec0c0de6d596bfac5d64ce7d03c9a842c73511b46",
+        "jump_land": "9414516e64fb10f11f0c0d3eac58f6226be4e3a95e41496e593a66a2156b63b7",
+        "reset_settled": "ef7e5862fab219bbf4cc8226d08c0ed9f6bc6f677f9381e2b0dd2fe478264fd1",
+        "missing_collision": "e4e7d11934d5643dd4a531c567e8d2b193dc3f0c2ba763235871e273c96202dd"
+      },
+      "log": "docs\\phase9\\stage-e-run-3.log"
+    },
+    {
+      "index": 4,
+      "command": "node controller/harness.mjs test --project fixtures/physics --script res://tests/run_physics.gd",
+      "ok": true,
+      "exitCode": 0,
+      "durationMs": 19014,
+      "timedOut": false,
+      "summary": {
+        "passed": 9,
+        "failed": 0
+      },
+      "errors": [],
+      "warnings": [],
+      "cases": [
+        {
+          "detail": "y=0.850000 vy=0.000000 ticks=60",
+          "name": "physics-floor-contact",
+          "ok": true
+        },
+        {
+          "detail": "x=0.000000 z=-2.000001 grounded=true",
+          "name": "physics-forward-motion",
+          "ok": true
+        },
+        {
+          "detail": "z=-3.333333 motion_z=0.000000 wall_clearance=0.016667 contact=true",
+          "name": "physics-wall-collision",
+          "ok": true
+        },
+        {
+          "detail": "z=-3.333333 wall_clearance=0.016667",
+          "name": "physics-no-pass-through",
+          "ok": true
+        },
+        {
+          "detail": "x=1.414214 z=-3.349059 motion_x=0.047140 contact=true",
+          "name": "physics-wall-slide",
+          "ok": true
+        },
+        {
+          "detail": "takeoff_y=0.934160 air_y=1.553605 land_y=0.850238 grounded=true",
+          "name": "physics-jump-land",
+          "ok": true
+        },
+        {
+          "detail": "before_step=153 immediate_step=0 settled_hash=ef7e5862fab219bbf4cc8226d08c0ed9f6bc6f677f9381e2b0dd2fe478264fd1 baseline_hash=ef7e5862fab219bbf4cc8226d08c0ed9f6bc6f677f9381e2b0dd2fe478264fd1",
+          "name": "physics-reset",
+          "ok": true
+        },
+        {
+          "detail": "exact_hash_match=false outcome_hash_match=true position_delta=0.000001431 first_outcome=7751b0d7098c5bd0f84f9760bf33c496958441e45cbbdec4dee3056625eabc76 second_outcome=7751b0d7098c5bd0f84f9760bf33c496958441e45cbbdec4dee3056625eabc76",
+          "name": "physics-same-process-outcome-repeatability",
+          "ok": true
+        },
+        {
+          "detail": "wall_enabled=false z=-7.999995 wall_clearance=-4.649995",
+          "name": "physics-missing-wall-collision-detected",
+          "ok": true
+        }
+      ],
+      "physics_ticks_per_second": 60,
+      "godot": "4.7.2-stable (official)",
+      "scenarios": {
+        "wall": {
+          "step": 120,
+          "player_position": [
+            0,
+            0.850000023841858,
+            -3.33333277702332
+          ],
+          "player_velocity": [
+            0,
+            0,
+            0
+          ],
+          "player_motion": [
+            0,
+            0,
+            0
+          ],
+          "grounded": true,
+          "wall_contact": true,
+          "wall_clearance": 0.0166672229766847,
+          "wall_collision_enabled": true,
+          "last_delta": 0.0166666666666667,
+          "exact_hash": "342ce8d00e2ef9d6e2b6e22b292f16c6f4be4cc7ea3244dfe3b33a8dcab1381a",
+          "outcome_hash": "eff6f99f221515e0523af660ee1545b06f4b3043c2a41aeee26a958125f8718f",
+          "hud": "PHYSICS FIXTURE\nON FLOOR | WALL CONTACT\nz=-3.333 wall=true"
+        },
+        "no_pass_through": {
+          "step": 240,
+          "player_position": [
+            0,
+            0.850000023841858,
+            -3.33333277702332
+          ],
+          "player_velocity": [
+            0,
+            0,
+            0
+          ],
+          "player_motion": [
+            0,
+            0,
+            0
+          ],
+          "grounded": true,
+          "wall_contact": true,
+          "wall_clearance": 0.0166672229766847,
+          "wall_collision_enabled": true,
+          "last_delta": 0.0166666666666667,
+          "exact_hash": "7a6f046e199ad08deaf8a4bca4370359729788d8ef00f7577561606e5a94ff92",
+          "outcome_hash": "63a65641a70be6ffa5bdecc5cef2c29ade73de8cbf66ff1cf23699ff1c251b67",
+          "hud": "PHYSICS FIXTURE\nON FLOOR | WALL CONTACT\nz=-3.333 wall=true"
+        },
+        "slide": {
+          "step": 150,
+          "player_position": [
+            1.41421401500702,
+            0.850940465927124,
+            -3.34905862808228
+          ],
+          "player_velocity": [
+            2.82842707633972,
+            0,
+            0
+          ],
+          "player_motion": [
+            0.0471404790878296,
+            0,
+            0
+          ],
+          "grounded": true,
+          "wall_contact": true,
+          "wall_clearance": 0.000941371917724698,
+          "wall_collision_enabled": true,
+          "last_delta": 0.0166666666666667,
+          "exact_hash": "ddb6ecd3c18fb1b113f2d07ec0c0de6d596bfac5d64ce7d03c9a842c73511b46",
+          "outcome_hash": "84a9291fc4709d8d4f76eece34e8c881c19983bd8872c38c232e2800c78744f9",
+          "hud": "PHYSICS FIXTURE\nON FLOOR | WALL CONTACT\nz=-3.349 wall=true"
+        },
+        "jump": {
+          "takeoff": {
+            "step": 4,
+            "player_position": [
+              0,
+              0.934160172939301,
+              0
+            ],
+            "player_velocity": [
+              0,
+              5,
+              0
+            ],
+            "player_motion": [
+              0,
+              0.0841601490974426,
+              0
+            ],
+            "grounded": false,
+            "wall_contact": false,
+            "wall_clearance": 3.35,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "36677ea3a1d9c64793dfdeb8e1c148b52408f3fe0eb6a9055131e2a70715a8e9",
+            "outcome_hash": "c75a72c987582e61f7ac30f02e5dc2ce9be98ef3444d77d334b39963efb61b73",
+            "hud": "PHYSICS FIXTURE\nAIRBORNE | NO WALL CONTACT\nz=0.000 wall=true"
+          },
+          "air": {
+            "step": 14,
+            "player_position": [
+              0,
+              1.5536048412323,
+              0
+            ],
+            "player_velocity": [
+              0,
+              2.66666746139526,
+              0
+            ],
+            "player_motion": [
+              0,
+              0.0444444417953491,
+              0
+            ],
+            "grounded": false,
+            "wall_contact": false,
+            "wall_clearance": 3.35,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "d4c879d0de9dabe2967e4889e035d5e77e84f01f5ee7fc0259ec8ebf3345eac9",
+            "outcome_hash": "b1c427cc29c7dc6ce6e48392d7fd71b5e1cb0fc8318eb9d50428aaeab62d6676",
+            "hud": "PHYSICS FIXTURE\nAIRBORNE | NO WALL CONTACT\nz=0.000 wall=true"
+          },
+          "land": {
+            "step": 94,
+            "player_position": [
+              0,
+              0.850238263607025,
+              0
+            ],
+            "player_velocity": [
+              0,
+              0,
+              0
+            ],
+            "player_motion": [
+              0,
+              0,
+              0
+            ],
+            "grounded": true,
+            "wall_contact": false,
+            "wall_clearance": 3.35,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "9414516e64fb10f11f0c0d3eac58f6226be4e3a95e41496e593a66a2156b63b7",
+            "outcome_hash": "e36214226ec90841fda1d1bfb2613c966528958f5211717031fe370a58aeadb1",
+            "hud": "PHYSICS FIXTURE\nON FLOOR | NO WALL CONTACT\nz=0.000 wall=true"
+          }
+        },
+        "reset": {
+          "immediate": {
+            "step": 0,
+            "player_position": [
+              0,
+              0.850000023841858,
+              0
+            ],
+            "player_velocity": [
+              0,
+              0,
+              0
+            ],
+            "player_motion": [
+              0,
+              0,
+              0
+            ],
+            "grounded": true,
+            "wall_contact": false,
+            "wall_clearance": 3.35,
+            "wall_collision_enabled": true,
+            "last_delta": 0,
+            "exact_hash": "548137390f47a7ffd542ab052f7e24463e987978364a47d494fe33f3ee2396ca",
+            "outcome_hash": "b91303f8fe10af7cc0e8eaa986e485387773409160ebb85120020463c40d9d2a",
+            "hud": "PHYSICS FIXTURE\nON FLOOR | NO WALL CONTACT\nz=0.000 wall=true"
+          },
+          "settled": {
+            "step": 3,
+            "player_position": [
+              0,
+              0.850000023841858,
+              0
+            ],
+            "player_velocity": [
+              0,
+              0,
+              0
+            ],
+            "player_motion": [
+              0,
+              0,
+              0
+            ],
+            "grounded": true,
+            "wall_contact": false,
+            "wall_clearance": 3.35,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "ef7e5862fab219bbf4cc8226d08c0ed9f6bc6f677f9381e2b0dd2fe478264fd1",
+            "outcome_hash": "c4843cb67ead00fac5bc757a2bc203cf830420fcbc961a845854d44f3d300cfa",
+            "hud": "PHYSICS FIXTURE\nON FLOOR | NO WALL CONTACT\nz=0.000 wall=true"
+          }
+        },
+        "missing_collision": {
+          "step": 123,
+          "player_position": [
+            0,
+            0.850000023841858,
+            -7.99999523162842
+          ],
+          "player_velocity": [
+            0,
+            0,
+            -4
+          ],
+          "player_motion": [
+            0,
+            0,
+            -0.0666666030883789
+          ],
+          "grounded": true,
+          "wall_contact": false,
+          "wall_clearance": -4.64999523162842,
+          "wall_collision_enabled": false,
+          "last_delta": 0.0166666666666667,
+          "exact_hash": "e4e7d11934d5643dd4a531c567e8d2b193dc3f0c2ba763235871e273c96202dd",
+          "outcome_hash": "0ad01dd355bab96a1f7c8d34c419f5e5a2f01f6a974050d549cc79dfaea460bb",
+          "hud": "PHYSICS FIXTURE\nON FLOOR | NO WALL CONTACT\nz=-8.000 wall=false"
+        },
+        "same_process_repeatability": {
+          "exact_hash_match": false,
+          "outcome_hash_match": true,
+          "position_delta": 0.00000143051147460938,
+          "first": {
+            "step": 163,
+            "player_position": [
+              1.41421401500702,
+              0.850941896438599,
+              -3.34905862808228
+            ],
+            "player_velocity": [
+              0,
+              0,
+              0
+            ],
+            "player_motion": [
+              0,
+              0,
+              0
+            ],
+            "grounded": true,
+            "wall_contact": true,
+            "wall_clearance": 0.000941371917724698,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "46ff3711acf1dd970842335f7d668a40a0243b5851e3bf502e0d8c9d3688c7f5",
+            "outcome_hash": "7751b0d7098c5bd0f84f9760bf33c496958441e45cbbdec4dee3056625eabc76",
+            "hud": "PHYSICS FIXTURE\nON FLOOR | WALL CONTACT\nz=-3.349 wall=true"
+          },
+          "second": {
+            "step": 163,
+            "player_position": [
+              1.41421401500702,
+              0.850940465927124,
+              -3.34905862808228
+            ],
+            "player_velocity": [
+              0,
+              0,
+              0
+            ],
+            "player_motion": [
+              0,
+              0,
+              0
+            ],
+            "grounded": true,
+            "wall_contact": true,
+            "wall_clearance": 0.000941371917724698,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "ebe6fea8380f2c136c497b563feaa0eb200404c567b462940f34180b54e21f3b",
+            "outcome_hash": "7751b0d7098c5bd0f84f9760bf33c496958441e45cbbdec4dee3056625eabc76",
+            "hud": "PHYSICS FIXTURE\nON FLOOR | WALL CONTACT\nz=-3.349 wall=true"
+          }
+        }
+      },
+      "outcome_hashes": {
+        "wall": "eff6f99f221515e0523af660ee1545b06f4b3043c2a41aeee26a958125f8718f",
+        "no_pass_through": "63a65641a70be6ffa5bdecc5cef2c29ade73de8cbf66ff1cf23699ff1c251b67",
+        "slide": "84a9291fc4709d8d4f76eece34e8c881c19983bd8872c38c232e2800c78744f9",
+        "jump_land": "e36214226ec90841fda1d1bfb2613c966528958f5211717031fe370a58aeadb1",
+        "reset_settled": "c4843cb67ead00fac5bc757a2bc203cf830420fcbc961a845854d44f3d300cfa",
+        "missing_collision": "0ad01dd355bab96a1f7c8d34c419f5e5a2f01f6a974050d549cc79dfaea460bb"
+      },
+      "exact_hashes": {
+        "wall": "342ce8d00e2ef9d6e2b6e22b292f16c6f4be4cc7ea3244dfe3b33a8dcab1381a",
+        "no_pass_through": "7a6f046e199ad08deaf8a4bca4370359729788d8ef00f7577561606e5a94ff92",
+        "slide": "ddb6ecd3c18fb1b113f2d07ec0c0de6d596bfac5d64ce7d03c9a842c73511b46",
+        "jump_land": "9414516e64fb10f11f0c0d3eac58f6226be4e3a95e41496e593a66a2156b63b7",
+        "reset_settled": "ef7e5862fab219bbf4cc8226d08c0ed9f6bc6f677f9381e2b0dd2fe478264fd1",
+        "missing_collision": "e4e7d11934d5643dd4a531c567e8d2b193dc3f0c2ba763235871e273c96202dd"
+      },
+      "log": "docs\\phase9\\stage-e-run-4.log"
+    },
+    {
+      "index": 5,
+      "command": "node controller/harness.mjs test --project fixtures/physics --script res://tests/run_physics.gd",
+      "ok": true,
+      "exitCode": 0,
+      "durationMs": 19024,
+      "timedOut": false,
+      "summary": {
+        "passed": 9,
+        "failed": 0
+      },
+      "errors": [],
+      "warnings": [],
+      "cases": [
+        {
+          "detail": "y=0.850000 vy=0.000000 ticks=60",
+          "name": "physics-floor-contact",
+          "ok": true
+        },
+        {
+          "detail": "x=0.000000 z=-2.000001 grounded=true",
+          "name": "physics-forward-motion",
+          "ok": true
+        },
+        {
+          "detail": "z=-3.333333 motion_z=0.000000 wall_clearance=0.016667 contact=true",
+          "name": "physics-wall-collision",
+          "ok": true
+        },
+        {
+          "detail": "z=-3.333333 wall_clearance=0.016667",
+          "name": "physics-no-pass-through",
+          "ok": true
+        },
+        {
+          "detail": "x=1.414214 z=-3.349059 motion_x=0.047140 contact=true",
+          "name": "physics-wall-slide",
+          "ok": true
+        },
+        {
+          "detail": "takeoff_y=0.934160 air_y=1.553605 land_y=0.850238 grounded=true",
+          "name": "physics-jump-land",
+          "ok": true
+        },
+        {
+          "detail": "before_step=153 immediate_step=0 settled_hash=ef7e5862fab219bbf4cc8226d08c0ed9f6bc6f677f9381e2b0dd2fe478264fd1 baseline_hash=ef7e5862fab219bbf4cc8226d08c0ed9f6bc6f677f9381e2b0dd2fe478264fd1",
+          "name": "physics-reset",
+          "ok": true
+        },
+        {
+          "detail": "exact_hash_match=false outcome_hash_match=true position_delta=0.000001431 first_outcome=7751b0d7098c5bd0f84f9760bf33c496958441e45cbbdec4dee3056625eabc76 second_outcome=7751b0d7098c5bd0f84f9760bf33c496958441e45cbbdec4dee3056625eabc76",
+          "name": "physics-same-process-outcome-repeatability",
+          "ok": true
+        },
+        {
+          "detail": "wall_enabled=false z=-7.999995 wall_clearance=-4.649995",
+          "name": "physics-missing-wall-collision-detected",
+          "ok": true
+        }
+      ],
+      "physics_ticks_per_second": 60,
+      "godot": "4.7.2-stable (official)",
+      "scenarios": {
+        "wall": {
+          "step": 120,
+          "player_position": [
+            0,
+            0.850000023841858,
+            -3.33333277702332
+          ],
+          "player_velocity": [
+            0,
+            0,
+            0
+          ],
+          "player_motion": [
+            0,
+            0,
+            0
+          ],
+          "grounded": true,
+          "wall_contact": true,
+          "wall_clearance": 0.0166672229766847,
+          "wall_collision_enabled": true,
+          "last_delta": 0.0166666666666667,
+          "exact_hash": "342ce8d00e2ef9d6e2b6e22b292f16c6f4be4cc7ea3244dfe3b33a8dcab1381a",
+          "outcome_hash": "eff6f99f221515e0523af660ee1545b06f4b3043c2a41aeee26a958125f8718f",
+          "hud": "PHYSICS FIXTURE\nON FLOOR | WALL CONTACT\nz=-3.333 wall=true"
+        },
+        "no_pass_through": {
+          "step": 240,
+          "player_position": [
+            0,
+            0.850000023841858,
+            -3.33333277702332
+          ],
+          "player_velocity": [
+            0,
+            0,
+            0
+          ],
+          "player_motion": [
+            0,
+            0,
+            0
+          ],
+          "grounded": true,
+          "wall_contact": true,
+          "wall_clearance": 0.0166672229766847,
+          "wall_collision_enabled": true,
+          "last_delta": 0.0166666666666667,
+          "exact_hash": "7a6f046e199ad08deaf8a4bca4370359729788d8ef00f7577561606e5a94ff92",
+          "outcome_hash": "63a65641a70be6ffa5bdecc5cef2c29ade73de8cbf66ff1cf23699ff1c251b67",
+          "hud": "PHYSICS FIXTURE\nON FLOOR | WALL CONTACT\nz=-3.333 wall=true"
+        },
+        "slide": {
+          "step": 150,
+          "player_position": [
+            1.41421401500702,
+            0.850940465927124,
+            -3.34905862808228
+          ],
+          "player_velocity": [
+            2.82842707633972,
+            0,
+            0
+          ],
+          "player_motion": [
+            0.0471404790878296,
+            0,
+            0
+          ],
+          "grounded": true,
+          "wall_contact": true,
+          "wall_clearance": 0.000941371917724698,
+          "wall_collision_enabled": true,
+          "last_delta": 0.0166666666666667,
+          "exact_hash": "ddb6ecd3c18fb1b113f2d07ec0c0de6d596bfac5d64ce7d03c9a842c73511b46",
+          "outcome_hash": "84a9291fc4709d8d4f76eece34e8c881c19983bd8872c38c232e2800c78744f9",
+          "hud": "PHYSICS FIXTURE\nON FLOOR | WALL CONTACT\nz=-3.349 wall=true"
+        },
+        "jump": {
+          "takeoff": {
+            "step": 4,
+            "player_position": [
+              0,
+              0.934160172939301,
+              0
+            ],
+            "player_velocity": [
+              0,
+              5,
+              0
+            ],
+            "player_motion": [
+              0,
+              0.0841601490974426,
+              0
+            ],
+            "grounded": false,
+            "wall_contact": false,
+            "wall_clearance": 3.35,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "36677ea3a1d9c64793dfdeb8e1c148b52408f3fe0eb6a9055131e2a70715a8e9",
+            "outcome_hash": "c75a72c987582e61f7ac30f02e5dc2ce9be98ef3444d77d334b39963efb61b73",
+            "hud": "PHYSICS FIXTURE\nAIRBORNE | NO WALL CONTACT\nz=0.000 wall=true"
+          },
+          "air": {
+            "step": 14,
+            "player_position": [
+              0,
+              1.5536048412323,
+              0
+            ],
+            "player_velocity": [
+              0,
+              2.66666746139526,
+              0
+            ],
+            "player_motion": [
+              0,
+              0.0444444417953491,
+              0
+            ],
+            "grounded": false,
+            "wall_contact": false,
+            "wall_clearance": 3.35,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "d4c879d0de9dabe2967e4889e035d5e77e84f01f5ee7fc0259ec8ebf3345eac9",
+            "outcome_hash": "b1c427cc29c7dc6ce6e48392d7fd71b5e1cb0fc8318eb9d50428aaeab62d6676",
+            "hud": "PHYSICS FIXTURE\nAIRBORNE | NO WALL CONTACT\nz=0.000 wall=true"
+          },
+          "land": {
+            "step": 94,
+            "player_position": [
+              0,
+              0.850238263607025,
+              0
+            ],
+            "player_velocity": [
+              0,
+              0,
+              0
+            ],
+            "player_motion": [
+              0,
+              0,
+              0
+            ],
+            "grounded": true,
+            "wall_contact": false,
+            "wall_clearance": 3.35,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "9414516e64fb10f11f0c0d3eac58f6226be4e3a95e41496e593a66a2156b63b7",
+            "outcome_hash": "e36214226ec90841fda1d1bfb2613c966528958f5211717031fe370a58aeadb1",
+            "hud": "PHYSICS FIXTURE\nON FLOOR | NO WALL CONTACT\nz=0.000 wall=true"
+          }
+        },
+        "reset": {
+          "immediate": {
+            "step": 0,
+            "player_position": [
+              0,
+              0.850000023841858,
+              0
+            ],
+            "player_velocity": [
+              0,
+              0,
+              0
+            ],
+            "player_motion": [
+              0,
+              0,
+              0
+            ],
+            "grounded": true,
+            "wall_contact": false,
+            "wall_clearance": 3.35,
+            "wall_collision_enabled": true,
+            "last_delta": 0,
+            "exact_hash": "548137390f47a7ffd542ab052f7e24463e987978364a47d494fe33f3ee2396ca",
+            "outcome_hash": "b91303f8fe10af7cc0e8eaa986e485387773409160ebb85120020463c40d9d2a",
+            "hud": "PHYSICS FIXTURE\nON FLOOR | NO WALL CONTACT\nz=0.000 wall=true"
+          },
+          "settled": {
+            "step": 3,
+            "player_position": [
+              0,
+              0.850000023841858,
+              0
+            ],
+            "player_velocity": [
+              0,
+              0,
+              0
+            ],
+            "player_motion": [
+              0,
+              0,
+              0
+            ],
+            "grounded": true,
+            "wall_contact": false,
+            "wall_clearance": 3.35,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "ef7e5862fab219bbf4cc8226d08c0ed9f6bc6f677f9381e2b0dd2fe478264fd1",
+            "outcome_hash": "c4843cb67ead00fac5bc757a2bc203cf830420fcbc961a845854d44f3d300cfa",
+            "hud": "PHYSICS FIXTURE\nON FLOOR | NO WALL CONTACT\nz=0.000 wall=true"
+          }
+        },
+        "missing_collision": {
+          "step": 123,
+          "player_position": [
+            0,
+            0.850000023841858,
+            -7.99999523162842
+          ],
+          "player_velocity": [
+            0,
+            0,
+            -4
+          ],
+          "player_motion": [
+            0,
+            0,
+            -0.0666666030883789
+          ],
+          "grounded": true,
+          "wall_contact": false,
+          "wall_clearance": -4.64999523162842,
+          "wall_collision_enabled": false,
+          "last_delta": 0.0166666666666667,
+          "exact_hash": "e4e7d11934d5643dd4a531c567e8d2b193dc3f0c2ba763235871e273c96202dd",
+          "outcome_hash": "0ad01dd355bab96a1f7c8d34c419f5e5a2f01f6a974050d549cc79dfaea460bb",
+          "hud": "PHYSICS FIXTURE\nON FLOOR | NO WALL CONTACT\nz=-8.000 wall=false"
+        },
+        "same_process_repeatability": {
+          "exact_hash_match": false,
+          "outcome_hash_match": true,
+          "position_delta": 0.00000143051147460938,
+          "first": {
+            "step": 163,
+            "player_position": [
+              1.41421401500702,
+              0.850941896438599,
+              -3.34905862808228
+            ],
+            "player_velocity": [
+              0,
+              0,
+              0
+            ],
+            "player_motion": [
+              0,
+              0,
+              0
+            ],
+            "grounded": true,
+            "wall_contact": true,
+            "wall_clearance": 0.000941371917724698,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "46ff3711acf1dd970842335f7d668a40a0243b5851e3bf502e0d8c9d3688c7f5",
+            "outcome_hash": "7751b0d7098c5bd0f84f9760bf33c496958441e45cbbdec4dee3056625eabc76",
+            "hud": "PHYSICS FIXTURE\nON FLOOR | WALL CONTACT\nz=-3.349 wall=true"
+          },
+          "second": {
+            "step": 163,
+            "player_position": [
+              1.41421401500702,
+              0.850940465927124,
+              -3.34905862808228
+            ],
+            "player_velocity": [
+              0,
+              0,
+              0
+            ],
+            "player_motion": [
+              0,
+              0,
+              0
+            ],
+            "grounded": true,
+            "wall_contact": true,
+            "wall_clearance": 0.000941371917724698,
+            "wall_collision_enabled": true,
+            "last_delta": 0.0166666666666667,
+            "exact_hash": "ebe6fea8380f2c136c497b563feaa0eb200404c567b462940f34180b54e21f3b",
+            "outcome_hash": "7751b0d7098c5bd0f84f9760bf33c496958441e45cbbdec4dee3056625eabc76",
+            "hud": "PHYSICS FIXTURE\nON FLOOR | WALL CONTACT\nz=-3.349 wall=true"
+          }
+        }
+      },
+      "outcome_hashes": {
+        "wall": "eff6f99f221515e0523af660ee1545b06f4b3043c2a41aeee26a958125f8718f",
+        "no_pass_through": "63a65641a70be6ffa5bdecc5cef2c29ade73de8cbf66ff1cf23699ff1c251b67",
+        "slide": "84a9291fc4709d8d4f76eece34e8c881c19983bd8872c38c232e2800c78744f9",
+        "jump_land": "e36214226ec90841fda1d1bfb2613c966528958f5211717031fe370a58aeadb1",
+        "reset_settled": "c4843cb67ead00fac5bc757a2bc203cf830420fcbc961a845854d44f3d300cfa",
+        "missing_collision": "0ad01dd355bab96a1f7c8d34c419f5e5a2f01f6a974050d549cc79dfaea460bb"
+      },
+      "exact_hashes": {
+        "wall": "342ce8d00e2ef9d6e2b6e22b292f16c6f4be4cc7ea3244dfe3b33a8dcab1381a",
+        "no_pass_through": "7a6f046e199ad08deaf8a4bca4370359729788d8ef00f7577561606e5a94ff92",
+        "slide": "ddb6ecd3c18fb1b113f2d07ec0c0de6d596bfac5d64ce7d03c9a842c73511b46",
+        "jump_land": "9414516e64fb10f11f0c0d3eac58f6226be4e3a95e41496e593a66a2156b63b7",
+        "reset_settled": "ef7e5862fab219bbf4cc8226d08c0ed9f6bc6f677f9381e2b0dd2fe478264fd1",
+        "missing_collision": "e4e7d11934d5643dd4a531c567e8d2b193dc3f0c2ba763235871e273c96202dd"
+      },
+      "log": "docs\\phase9\\stage-e-run-5.log"
+    }
+  ],
+  "limitations": [
+    "The fixture exercises one capsule CharacterBody3D, one flat ground box, one wall box, and move_and_slide() at the engine default 60 Hz.",
+    "Exact floating-point state hashes are recorded as diagnostics and are not the repeatability claim. Outcome hashes quantize positions and velocities to 0.001.",
+    "This does not establish general Godot physics determinism, other collision shapes, moving platforms, multiple bodies, or different tick rates.",
+    "The bridge remains a loopback, unauthenticated local control surface.",
+    "Real physics advance waits for engine ticks and therefore runs in wall-clock time; elapsed time is not a performance benchmark."
+  ]
+}
