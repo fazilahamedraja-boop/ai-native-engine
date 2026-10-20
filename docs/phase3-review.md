@@ -31,7 +31,7 @@ committed.
 |---|---|---|---|---|---|---|
 | B1 | Sword disc guard | 122 tri, ±0.05 x/z | 122 tri, 366 v, bounds ±0.05; hash `c2324397` | 334 s core / 1,312 s full | ~1.1k | PASS |
 | B2 | Bronze shortsword | 122 tri, 0.7 m | 122 tri, 366 v, hash `521e0ca3`; 6/6 validate | 337 s core | ~0.9k | PASS |
-| B3 | Humanoid slate override | artifact hash unchanged | pending | pending | pending | pending |
+| B3 | Humanoid slate override | artifact hash unchanged | 264 tri, hash `24a10e9d` unchanged; override exposed; slate render | 385 s core | ~0.6k | PASS |
 | B4 | Pine snow | 316 tri, bounds unchanged | pending | pending | pending | pending |
 | B5 | Deliberate socket break | `socket_mismatch` | pending | pending | pending | pending |
 
@@ -136,7 +136,28 @@ the contract needed no acceptance step).
 
 ### Observed
 
-Pending.
+- `assets regen humanoid-01` reported **contract matches artifact**; `validate`
+  passed **6/6**; CLI time 962 ms.
+- Artifact is untouched: **264 triangles**, hash
+  **`24a10e9da432a551`**, bounds and sockets unchanged, baked material still
+  `#a2816c` / roughness `0.6200000047683716` / metalness `0`.
+- **Inspection gap found and fixed:** `inspectAsset` omitted `override`, the
+  sixth asset concept. `AssetInspection.override` was added with a test, and
+  the preview now returns
+  `{ material: { color: "#6f7f95", roughness: 0.5 } }` while leaving the
+  artifact hash untouched (commit `1c88d34`; 123 asset tests).
+- Render: slate blue, identical silhouette and camera. The before/after camera
+  frames are both `pos [1.6234, 1.8841, 2.1921]`, distance **2.8757**;
+  captures were 20-32 ms. A controlled re-capture confirmed byte-identical
+  frames for each side, so the comparison isolates material only.
+- Core loop wall-clock (including the controlled re-capture): **385 s**
+  (6.4 min).
+- Content tokens: **~0.6k** (estimate).
+- Image: `docs/phase3/b3-humanoid-override.png`.
+
+Result: **PASS** (appearance changes; artifact hash, geometry and bounds do
+not). The `effectiveMaterial` double-sided/override test already covers the
+merge rule.
 
 ## B4 — Pine snow
 

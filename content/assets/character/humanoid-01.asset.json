@@ -72,5 +72,10 @@
       "assert": "area-positive"
     }
   ],
-  "override": {}
+  "override": {
+    "material": {
+      "color": "#6f7f95",
+      "roughness": 0.5
+    }
+  }
 }
