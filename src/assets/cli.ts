@@ -1,9 +1,11 @@
 import { readdir, readFile, writeFile } from 'node:fs/promises'
+import { createHash } from 'node:crypto'
 import { relative, resolve } from 'node:path'
 import { VIEWS, isViewName } from '../preview/views'
 import { buildAsset } from './build'
 import type { BuildOutcome } from './build'
 import { inspectAsset } from './inspect'
+import { readCharacter, readGlbIndex } from './import/glb'
 import { boundsOf } from './mesh'
 import { parseAsset } from './schema'
 import type { AssetDoc } from './schema'
@@ -19,7 +21,9 @@ const USAGE = `usage: npm run assets -- <command>
   validate [id...] [--json]    build and check every asset (default: all)
   inspect <id>                 full JSON report for one asset
   preview <id> [--view v]      print the inspector URL (views: ${VIEWS.join(', ')})
-  regen <id> [--accept]        show contract drift; --accept rewrites bounds and sockets`
+  regen <id> [--accept]        show contract drift; --accept rewrites bounds and sockets
+  index <file.glb>             JSON index of a GLB's JSON chunk (no geometry decode)
+  character <file.glb>         check a GLB against the character kind contract`
 
 interface LoadedAsset {
   file: string
@@ -324,6 +328,106 @@ async function commandRegen(assets: LoadedAsset[], args: string[]): Promise<numb
   return 0
 }
 
+interface LoadedGlb {
+  bytes: Uint8Array
+  file: string
+  size: number
+  sha256: string
+}
+
+async function readGlb(file: string): Promise<LoadedGlb | null> {
+  const absolute = resolve(file)
+  let buffer: Buffer
+  try {
+    buffer = await readFile(absolute)
+  } catch (error) {
+    console.error(`cannot read ${file}: ${(error as Error).message}`)
+    return null
+  }
+  return {
+    bytes: new Uint8Array(buffer.buffer, buffer.byteOffset, buffer.byteLength),
+    file: relative(process.cwd(), absolute).replaceAll('\\', '/'),
+    size: buffer.length,
+    sha256: createHash('sha256').update(buffer).digest('hex'),
+  }
+}
+
+function printJson(value: unknown): void {
+  console.log(JSON.stringify(value, null, 2))
+}
+
+/**
+ * The raw index: what the container says, without judging whether it can become
+ * a character. Useful for any GLB, including ones that fail the kind contract.
+ */
+async function commandIndex(args: string[]): Promise<number> {
+  const file = args[0]
+  if (file === undefined) {
+    console.error(USAGE)
+    return 2
+  }
+
+  const loaded = await readGlb(file)
+  if (loaded === null) return 2
+
+  const result = readGlbIndex(loaded.bytes)
+  const report = { file: loaded.file, bytes: loaded.size, sha256: loaded.sha256 }
+  if (!result.ok) {
+    printJson({ ...report, ok: false, errors: result.errors })
+    return 1
+  }
+
+  printJson({ ...report, ok: true, index: result.value })
+  return 0
+}
+
+/**
+ * The kind gate: placeable, non-empty, required sockets present. This is what a
+ * character manifest's contract must agree with, so it prints the measured
+ * sockets and bounds in the same shape `regen --accept` would write.
+ */
+async function commandCharacter(args: string[]): Promise<number> {
+  const file = args[0]
+  if (file === undefined) {
+    console.error(USAGE)
+    return 2
+  }
+
+  const loaded = await readGlb(file)
+  if (loaded === null) return 2
+
+  const report = { file: loaded.file, bytes: loaded.size, sha256: loaded.sha256 }
+  const result = readGlbIndex(loaded.bytes)
+  if (!result.ok) {
+    printJson({ ...report, ok: false, errors: result.errors })
+    return 1
+  }
+
+  const summary = {
+    generator: result.value.asset.generator,
+    nodes: result.value.nodes.length,
+    meshes: result.value.meshes.length,
+    triangles: result.value.triangles,
+    skins: result.value.skins.length,
+    animations: result.value.animations.length,
+  }
+
+  const reading = readCharacter(result.value)
+  if (!reading.ok) {
+    printJson({ ...report, ok: false, errors: reading.errors, index: summary })
+    return 1
+  }
+
+  printJson({
+    ...report,
+    ok: true,
+    bounds: roundBounds(reading.value.bounds),
+    sockets: roundSockets(reading.value.sockets),
+    index: summary,
+  })
+  return 0
+}
+
 export async function main(argv: string[]): Promise<number> {
   const [command = 'list', ...args] = argv
 
@@ -331,6 +435,10 @@ export async function main(argv: string[]): Promise<number> {
     console.log(USAGE)
     return 0
   }
+
+  // File commands do not need the manifest catalog.
+  if (command === 'index') return commandIndex(args)
+  if (command === 'character') return commandCharacter(args)
 
   let assets: LoadedAsset[]
   try {
