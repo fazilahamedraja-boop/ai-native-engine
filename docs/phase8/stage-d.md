@@ -17,8 +17,7 @@ copy at `artifacts/repair-run/sentry` (ignored by Git).
 
 ## Defect
 
-The committed injection is in `repair/defect.mjs` and is documented as a diff in
-`repair/defect.patch`:
+The committed injection is the exact string replacement in `repair/defect.mjs`:
 
 ```gdscript
 # clean

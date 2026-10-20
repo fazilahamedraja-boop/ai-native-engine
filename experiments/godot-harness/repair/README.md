@@ -18,8 +18,8 @@ directory.
    `docs/phase8/repair-evidence.json` and the before/after text logs.
 
 The defect is intentionally not committed as a broken copy of the fixture. It is
-represented by `defect.mjs` and `defect.patch`; this keeps the baseline clean and
-the injection deterministic.
+represented by the exact string replacement in `defect.mjs`; this keeps the
+baseline clean and the injection deterministic.
 
 No manual edit is needed to reproduce the experiment. The operator only runs the
 command and reviews the captured evidence.
