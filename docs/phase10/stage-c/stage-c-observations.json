@@ -1,0 +1,500 @@
+{
+  "operation": "stage_c_observation_evidence",
+  "ok": true,
+  "run_id": "stage-c-80ab61ff-55d4-4c55-92c0-008b39819b28",
+  "project": "fixtures/observation",
+  "headless": false,
+  "started_at": "2026-10-21T14:44:32.814Z",
+  "finished_at": "2026-10-21T14:44:37.362Z",
+  "requirements": {
+    "windowed": true,
+    "structured_observation": "generic observe command through the project bridge",
+    "timeline": "fixed physics advances with bounded samples and de-duplicated events",
+    "distinction": "measured values, derived values, and unavailable event sources are explicit"
+  },
+  "godot": "4.7.2-stable (official)",
+  "captures": {
+    "initial": {
+      "capture": {
+        "run_id": "stage-c-80ab61ff-55d4-4c55-92c0-008b39819b28",
+        "scenario": "observation fixture closed gate before approach",
+        "captured_at": "2026-10-21T14:44:34.157Z",
+        "tick": 21,
+        "sim_time_seconds": 0.35,
+        "screenshot": {
+          "absolute_path": "C:/Users/hacke/ai-native-engine-phase10/experiments/godot-harness/fixtures/observation/artifacts/stage-c-initial.png",
+          "bytes": 54597,
+          "captured_at": "2026-10-21T14:44:34Z",
+          "headless": false,
+          "height": 720,
+          "path": "res://artifacts/stage-c-initial.png",
+          "paused": true,
+          "physics_ticks_per_second": 60,
+          "sha256": "10d70530660e61bec3f5ef7385dd0b4ba8fb624a91dfe7d8c6a1f9d414e916d8",
+          "sim_time_seconds": 0.483333333333333,
+          "source": "measured",
+          "tick": 29,
+          "width": 1280
+        },
+        "state": {
+          "step": 0,
+          "physics_frames": 21,
+          "physics_ticks_per_second": 60,
+          "player_position": [
+            0,
+            0.850000023841858,
+            5.5
+          ],
+          "player_velocity": [
+            0,
+            0,
+            0
+          ],
+          "grounded": true,
+          "plate_pressed": false,
+          "gate_open": false,
+          "gate_collision_enabled": true,
+          "beacon_state": "red",
+          "goal_reached": false,
+          "crate_position": [
+            4.19999980926514,
+            3,
+            2.5
+          ],
+          "crate_sleeping": false,
+          "feedback": "PLATE CLEAR - GATE CLOSED",
+          "prompt": "WALK ONTO THE PLATE",
+          "humanoid_mesh_count": 22,
+          "events_count": 1,
+          "last_event_type": "reset",
+          "hash": "a7934e7944b1023eeaafc406eb4e196f37c634db01f1468bc3d7f46da1ecf113"
+        }
+      },
+      "evidence": {
+        "path": "stage-c-initial.png",
+        "bytes": 54597,
+        "sha256": "10d70530660e61bec3f5ef7385dd0b4ba8fb624a91dfe7d8c6a1f9d414e916d8"
+      }
+    },
+    "open": {
+      "capture": {
+        "run_id": "stage-c-80ab61ff-55d4-4c55-92c0-008b39819b28",
+        "scenario": "observation fixture plate pressed and gate open",
+        "captured_at": "2026-10-21T14:44:36.085Z",
+        "tick": 137,
+        "sim_time_seconds": 2.283333333333333,
+        "screenshot": {
+          "absolute_path": "C:/Users/hacke/ai-native-engine-phase10/experiments/godot-harness/fixtures/observation/artifacts/stage-c-open.png",
+          "bytes": 64299,
+          "captured_at": "2026-10-21T14:44:36Z",
+          "headless": false,
+          "height": 720,
+          "path": "res://artifacts/stage-c-open.png",
+          "paused": true,
+          "physics_ticks_per_second": 60,
+          "sha256": "3a82d43cfe2590102c89ecd53344362b780466938ac837476959b1700b76621a",
+          "sim_time_seconds": 2.41666666666667,
+          "source": "measured",
+          "tick": 145,
+          "width": 1280
+        },
+        "state": {
+          "step": 90,
+          "physics_frames": 137,
+          "physics_ticks_per_second": 60,
+          "player_position": [
+            0,
+            0.850000023841858,
+            -0.499997466802597
+          ],
+          "player_velocity": [
+            0,
+            0,
+            -4
+          ],
+          "grounded": true,
+          "plate_pressed": true,
+          "gate_open": true,
+          "gate_collision_enabled": false,
+          "beacon_state": "green",
+          "goal_reached": false,
+          "crate_position": [
+            4.20000553131104,
+            0.347224950790405,
+            2.50000500679016
+          ],
+          "crate_sleeping": true,
+          "feedback": "PLATE PRESSED",
+          "prompt": "GATE OPEN - GO THROUGH",
+          "humanoid_mesh_count": 22,
+          "events_count": 5,
+          "last_event_type": "gate_open",
+          "hash": "24fca830b20e87c196b82ce32078054a556c99f045671213ade3b8146d25ce79"
+        }
+      },
+      "evidence": {
+        "path": "stage-c-open.png",
+        "bytes": 64299,
+        "sha256": "3a82d43cfe2590102c89ecd53344362b780466938ac837476959b1700b76621a"
+      }
+    }
+  },
+  "observations": {
+    "initial": {
+      "path": "stage-c-initial.json",
+      "bytes": 83148,
+      "sha256": "9eb676058c165c01c8371931784896abf29b020b048fae283cbb7cf5591d65eb",
+      "state": {
+        "step": 0,
+        "physics_frames": 21,
+        "physics_ticks_per_second": 60,
+        "player_position": [
+          0,
+          0.850000023841858,
+          5.5
+        ],
+        "player_velocity": [
+          0,
+          0,
+          0
+        ],
+        "grounded": true,
+        "plate_pressed": false,
+        "gate_open": false,
+        "gate_collision_enabled": true,
+        "beacon_state": "red",
+        "goal_reached": false,
+        "crate_position": [
+          4.19999980926514,
+          3,
+          2.5
+        ],
+        "crate_sleeping": false,
+        "feedback": "PLATE CLEAR - GATE CLOSED",
+        "prompt": "WALK ONTO THE PLATE",
+        "humanoid_mesh_count": 22,
+        "events_count": 1,
+        "last_event_type": "reset",
+        "hash": "a7934e7944b1023eeaafc406eb4e196f37c634db01f1468bc3d7f46da1ecf113"
+      },
+      "state_match": {
+        "plate_pressed": true,
+        "gate_open": true,
+        "gate_collision_enabled": true,
+        "beacon_state": true,
+        "simulation_step": 0,
+        "engine_tick_at_state": 21,
+        "engine_tick_at_observation": 19,
+        "engine_tick_delta": -2,
+        "screenshot_tick_delta": 8,
+        "note": "Paused state comparison; engine ticks can advance during sampling and screenshot rendering without changing the paused simulation step."
+      },
+      "node_count": 8,
+      "event_count": 1
+    },
+    "open": {
+      "path": "stage-c-open.json",
+      "bytes": 86423,
+      "sha256": "fff841b0084344bbb3abb3b22d4fceebfdef803b4c0a5369ec3fc09eb93ffe16",
+      "state": {
+        "step": 90,
+        "physics_frames": 137,
+        "physics_ticks_per_second": 60,
+        "player_position": [
+          0,
+          0.850000023841858,
+          -0.499997466802597
+        ],
+        "player_velocity": [
+          0,
+          0,
+          -4
+        ],
+        "grounded": true,
+        "plate_pressed": true,
+        "gate_open": true,
+        "gate_collision_enabled": false,
+        "beacon_state": "green",
+        "goal_reached": false,
+        "crate_position": [
+          4.20000553131104,
+          0.347224950790405,
+          2.50000500679016
+        ],
+        "crate_sleeping": true,
+        "feedback": "PLATE PRESSED",
+        "prompt": "GATE OPEN - GO THROUGH",
+        "humanoid_mesh_count": 22,
+        "events_count": 5,
+        "last_event_type": "gate_open",
+        "hash": "24fca830b20e87c196b82ce32078054a556c99f045671213ade3b8146d25ce79"
+      },
+      "state_match": {
+        "plate_pressed": true,
+        "gate_open": true,
+        "gate_collision_enabled": true,
+        "beacon_state": true,
+        "simulation_step": 90,
+        "engine_tick_at_state": 137,
+        "engine_tick_at_observation": 150,
+        "engine_tick_delta": 13,
+        "screenshot_tick_delta": 8,
+        "note": "Paused state comparison; engine ticks can advance during sampling and screenshot rendering without changing the paused simulation step."
+      },
+      "node_count": 8,
+      "event_count": 5
+    }
+  },
+  "timeline": {
+    "evidence": {
+      "path": "stage-c-timeline.json",
+      "bytes": 31794,
+      "sha256": "59ced2a616faee7bdcc4d5f875b01d101d002554842e6b433d5b4c61faabd83f"
+    },
+    "run_id": "stage-c-80ab61ff-55d4-4c55-92c0-008b39819b28-timeline",
+    "scenario": "approach the pressure plate for ninety fixed physics ticks",
+    "frames": 90,
+    "every_frames": 30,
+    "sample_count": 4,
+    "event_count": 5,
+    "event_types": [
+      "reset",
+      "player_collision_start",
+      "crate_collision_start",
+      "plate_entered",
+      "gate_open"
+    ],
+    "event_timing": [
+      {
+        "sequence": 1,
+        "type": "reset",
+        "engine_tick": 37,
+        "simulation_step": 0,
+        "simulation_time_seconds": 0,
+        "engine_time_seconds": 0.616666666666667
+      },
+      {
+        "sequence": 2,
+        "type": "player_collision_start",
+        "engine_tick": 41,
+        "simulation_step": 1,
+        "simulation_time_seconds": 0.0166666666666667,
+        "engine_time_seconds": 0.683333333333333
+      },
+      {
+        "sequence": 3,
+        "type": "crate_collision_start",
+        "engine_tick": 89,
+        "simulation_step": 46,
+        "simulation_time_seconds": 0.766666666666667,
+        "engine_time_seconds": 1.48333333333333
+      },
+      {
+        "sequence": 4,
+        "type": "plate_entered",
+        "engine_tick": 124,
+        "simulation_step": 79,
+        "simulation_time_seconds": 1.31666666666667,
+        "engine_time_seconds": 2.06666666666667
+      },
+      {
+        "sequence": 5,
+        "type": "gate_open",
+        "engine_tick": 124,
+        "simulation_step": 79,
+        "simulation_time_seconds": 1.31666666666667,
+        "engine_time_seconds": 2.06666666666667
+      }
+    ],
+    "timing": {
+      "engine_tick": "Engine.get_physics_frames(); rendering/pause overhead can advance it between samples",
+      "simulation_step": "fixture snapshot step after each fixed advance when the game exposes a numeric step",
+      "simulation_time_seconds": "derived from simulation_step / fixture physics_ticks_per_second",
+      "event_ticks": "fixture-recorded; this fixture records engine tick and simulation step in each event"
+    },
+    "samples": [
+      {
+        "index": 0,
+        "tick": 39,
+        "engine_tick": 39,
+        "sim_time_seconds": 0.65,
+        "simulation_step": null,
+        "simulation_time_seconds": null,
+        "frames_advanced": 0,
+        "state": {
+          "beacon_state": "red",
+          "gate_collision_enabled": true,
+          "gate_open": false,
+          "plate_pressed": false
+        }
+      },
+      {
+        "index": 1,
+        "tick": 71,
+        "engine_tick": 71,
+        "sim_time_seconds": 1.18333333333333,
+        "simulation_step": 30,
+        "simulation_time_seconds": 0.5,
+        "frames_advanced": 30,
+        "state": {
+          "beacon_state": "red",
+          "gate_collision_enabled": true,
+          "gate_open": false,
+          "plate_pressed": false
+        }
+      },
+      {
+        "index": 2,
+        "tick": 103,
+        "engine_tick": 103,
+        "sim_time_seconds": 1.71666666666667,
+        "simulation_step": 60,
+        "simulation_time_seconds": 1,
+        "frames_advanced": 30,
+        "state": {
+          "beacon_state": "red",
+          "gate_collision_enabled": true,
+          "gate_open": false,
+          "plate_pressed": false
+        }
+      },
+      {
+        "index": 3,
+        "tick": 135,
+        "engine_tick": 135,
+        "sim_time_seconds": 2.25,
+        "simulation_step": 90,
+        "simulation_time_seconds": 1.5,
+        "frames_advanced": 30,
+        "state": {
+          "beacon_state": "green",
+          "gate_collision_enabled": false,
+          "gate_open": true,
+          "plate_pressed": true
+        }
+      }
+    ]
+  },
+  "humanoid": {
+    "evidence": {
+      "path": "stage-c-humanoid.json",
+      "bytes": 86591,
+      "sha256": "900d7addac110a0125fac75eb7199f40bdbb09f5522e0d06e2e410997d26f8d4"
+    },
+    "summary": {
+      "model_path": "/root/Main/Humanoid",
+      "model_part_count": 25,
+      "mesh_instance_count": 22,
+      "probe_marker_present": true,
+      "skeleton": {
+        "path": "/root/Main/Humanoid/ProbeSkeleton",
+        "bone_count": 4,
+        "bones": [
+          "root",
+          "spine",
+          "chest",
+          "head"
+        ],
+        "global_transform": {
+          "origin": [
+            -3.20000004768372,
+            0,
+            1
+          ],
+          "quaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "rotation_degrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "source": "measured",
+          "space": "world"
+        },
+        "bone_source": "measured",
+        "bone_space": "skeleton",
+        "derived_world_source": "derived"
+      }
+    }
+  },
+  "door_reuse": {
+    "evidence": {
+      "path": "stage-c-door-reuse.json",
+      "bytes": 5520,
+      "sha256": "6ca189fb073f14968c53ccf6a5d7e71cb244e1b27042a282aebf7865a66024a1"
+    },
+    "summary": {
+      "key_available": true,
+      "door_locked": true,
+      "door_open": false,
+      "player_on_floor": true,
+      "unchanged": {
+        "scene": true,
+        "world": true,
+        "player": true
+      }
+    }
+  },
+  "scenario": {
+    "description": "reset; capture closed state; inspect humanoid; reset; sample 90 fixed ticks forward; capture plate/gate open state; reuse observe on a copied door scene",
+    "steps": [
+      {
+        "type": "reset",
+        "snapshot_step": 0
+      },
+      {
+        "type": "capture_frame",
+        "run_id": "stage-c-80ab61ff-55d4-4c55-92c0-008b39819b28",
+        "tick": 21,
+        "checkpoint": "initial"
+      },
+      {
+        "type": "reset",
+        "snapshot_step": 0
+      },
+      {
+        "type": "observe_timeline",
+        "run_id": "stage-c-80ab61ff-55d4-4c55-92c0-008b39819b28-timeline",
+        "frames": 90,
+        "every_frames": 30,
+        "sample_count": 4
+      },
+      {
+        "type": "capture_frame",
+        "run_id": "stage-c-80ab61ff-55d4-4c55-92c0-008b39819b28",
+        "tick": 137,
+        "checkpoint": "plate-open"
+      }
+    ]
+  },
+  "stop": {
+    "operation": "stop_project",
+    "ok": true,
+    "alreadyStopped": false,
+    "pid": 5016,
+    "exitCode": 0,
+    "signal": null,
+    "killed": false,
+    "logs": {
+      "stdout": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "Vulkan 1.3.215 - Forward+ - Using Device #0: Intel - Intel(R) UHD Graphics",
+        "",
+        "HARNESS_READY {\"pid\":5016,\"port\":52704,\"project\":\"godot-observation-fixture\",\"protocol\":1}"
+      ],
+      "stderr": []
+    }
+  },
+  "error": null,
+  "pid": 5016,
+  "port": 52704
+}

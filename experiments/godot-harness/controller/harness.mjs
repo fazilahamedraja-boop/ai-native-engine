@@ -218,6 +218,16 @@ function isProjectResPath(value, extension) {
   return value.endsWith(extension)
 }
 
+function isRootNodePath(value) {
+  if (typeof value !== 'string' || !value.startsWith('/root/') || value.includes(':')) {
+    return false
+  }
+  return value
+    .slice(1)
+    .split('/')
+    .every((segment) => segment.length > 0 && segment !== '.' && segment !== '..')
+}
+
 function validateRunId(runId) {
   if (typeof runId !== 'string' || !/^[A-Za-z0-9._:-]{1,128}$/.test(runId)) {
     throw new Error('runId must match [A-Za-z0-9._:-]{1,128}')
@@ -687,6 +697,199 @@ export class HarnessSession {
       frames,
       note:
         'Frames are captured after real fixed physics ticks and are not a real-time video claim.',
+    }
+  }
+
+  /**
+   * Read a bounded set of node observations through the bridge's generic
+   * `observe` contract. This is a read-only runtime inspection operation.
+   */
+  async observe({ targets = [], properties = [], descendants = 0, sinceTick = 0 } = {}) {
+    if (!Array.isArray(targets)) throw new Error('targets must be an array')
+    if (targets.length > 32) throw new Error('targets must contain at most 32 node paths')
+    for (const target of targets) {
+      if (!isRootNodePath(target)) {
+        throw new Error(`targets must be absolute /root/... node paths: ${String(target)}`)
+      }
+    }
+    if (!Array.isArray(properties)) throw new Error('properties must be an array')
+    if (properties.length > 32) throw new Error('properties must contain at most 32 names')
+    for (const property of properties) {
+      if (typeof property !== 'string' || !/^[A-Za-z_][A-Za-z0-9_]*$/.test(property)) {
+        throw new Error(`properties must contain simple identifiers: ${String(property)}`)
+      }
+    }
+    if (!Number.isInteger(descendants) || descendants < 0 || descendants > 3) {
+      throw new Error('descendants must be an integer between 0 and 3')
+    }
+    if (!Number.isInteger(sinceTick) || sinceTick < 0) {
+      throw new Error('sinceTick must be a non-negative integer')
+    }
+    return this.send(
+      'observe',
+      { targets, properties, descendants, since_tick: sinceTick },
+      15000,
+    )
+  }
+
+  /**
+   * Sample structured observations across real fixed-physics advances. Each
+   * sample is bounded; events are de-duplicated by the fixture sequence number.
+   */
+  async observeTimeline({
+    frames = 1,
+    everyFrames = 10,
+    input = null,
+    targets = [],
+    properties = [],
+    descendants = 0,
+    sinceTick = 0,
+    scenario = 'observation timeline',
+    runId = null,
+  } = {}) {
+    if (!Number.isInteger(frames) || frames < 0 || frames > 100000) {
+      throw new Error('frames must be an integer between 0 and 100000')
+    }
+    if (!Number.isInteger(everyFrames) || everyFrames < 1 || everyFrames > 10000) {
+      throw new Error('everyFrames must be an integer between 1 and 10000')
+    }
+    const sampleCount = frames === 0 ? 1 : Math.ceil(frames / everyFrames) + 1
+    if (sampleCount > 60) {
+      throw new Error('timeline would produce more than 60 samples; increase everyFrames')
+    }
+    if (input !== null) validateHarnessInput(input)
+    if (!Array.isArray(targets) || targets.length > 32) {
+      throw new Error('targets must be an array of at most 32 node paths')
+    }
+    for (const target of targets) {
+      if (!isRootNodePath(target)) {
+        throw new Error(`targets must be absolute /root/... node paths: ${String(target)}`)
+      }
+    }
+    if (!Array.isArray(properties) || properties.length > 32) {
+      throw new Error('properties must be an array of at most 32 names')
+    }
+    for (const property of properties) {
+      if (typeof property !== 'string' || !/^[A-Za-z_][A-Za-z0-9_]*$/.test(property)) {
+        throw new Error(`properties must contain simple identifiers: ${String(property)}`)
+      }
+    }
+    if (!Number.isInteger(descendants) || descendants < 0 || descendants > 3) {
+      throw new Error('descendants must be an integer between 0 and 3')
+    }
+    if (!Number.isInteger(sinceTick) || sinceTick < 0) {
+      throw new Error('sinceTick must be a non-negative integer')
+    }
+    const resolvedScenario = validateScenario(scenario)
+    const resolvedRunId = validateRunId(runId ?? crypto.randomUUID())
+    const startedAt = new Date()
+    const wallStarted = Date.now()
+
+    await this.pause()
+    const observeArgs = { targets, properties, descendants, sinceTick }
+    const samples = []
+    const events = []
+    const eventKeys = new Set()
+    const collectEvents = (observation) => {
+      const items = observation?.events?.items
+      if (!Array.isArray(items)) return
+      for (const event of items) {
+        const key =
+          event && Number.isInteger(event.sequence)
+            ? `sequence:${event.sequence}`
+            : JSON.stringify(event)
+        if (eventKeys.has(key)) continue
+        eventKeys.add(key)
+        events.push(event)
+      }
+    }
+
+    const first = await this.observe(observeArgs)
+    collectEvents(first)
+    samples.push({
+      index: 0,
+      frames_advanced: 0,
+      tick: first?.runtime?.tick ?? null,
+      engine_tick: first?.runtime?.tick ?? null,
+      sim_time_seconds: first?.runtime?.sim_time_seconds ?? null,
+      engine_time_seconds: first?.runtime?.sim_time_seconds ?? null,
+      simulation_step: null,
+      simulation_time_seconds: null,
+      observation: first,
+    })
+
+    let remaining = frames
+    let index = 0
+    while (remaining > 0) {
+      const chunk = Math.min(everyFrames, remaining)
+      const advance = await this.advancePhysics({ frames: chunk, input })
+      const observation = await this.observe(observeArgs)
+      collectEvents(observation)
+      index += 1
+      const simulationStep = Number.isFinite(advance?.final?.step)
+        ? advance.final.step
+        : null
+      const ticksPerSecond = Number.isFinite(advance?.final?.physics_ticks_per_second)
+        ? advance.final.physics_ticks_per_second
+        : null
+      samples.push({
+        index,
+        frames_advanced: chunk,
+        tick: observation?.runtime?.tick ?? null,
+        engine_tick: observation?.runtime?.tick ?? null,
+        sim_time_seconds: observation?.runtime?.sim_time_seconds ?? null,
+        engine_time_seconds: observation?.runtime?.sim_time_seconds ?? null,
+        simulation_step: simulationStep,
+        simulation_time_seconds:
+          simulationStep !== null && ticksPerSecond !== null
+            ? simulationStep / ticksPerSecond
+            : null,
+        advance: {
+          frames: advance.frames,
+          duration_ms: advance.duration_ms,
+          final: advance.final,
+        },
+        observation,
+      })
+      remaining -= chunk
+    }
+
+    await this.pause()
+    const final = samples[samples.length - 1].observation
+    return {
+      operation: 'observe_timeline',
+      ok: true,
+      run_id: resolvedRunId,
+      scenario: resolvedScenario,
+      project: this.project,
+      headless: this.headless,
+      started_at: startedAt.toISOString(),
+      finished_at: new Date().toISOString(),
+      duration_ms: Date.now() - wallStarted,
+      frames,
+      every_frames: everyFrames,
+      sample_count: samples.length,
+      input,
+      targets,
+      properties,
+      descendants,
+      since_tick: sinceTick,
+      samples,
+      events,
+      event_count: events.length,
+      final,
+      timing: {
+        engine_tick:
+          'Engine.get_physics_frames(); rendering/pause overhead can advance it between samples',
+        simulation_step:
+          'fixture snapshot step after each fixed advance when the game exposes a numeric step',
+        simulation_time_seconds:
+          'derived from simulation_step / fixture physics_ticks_per_second',
+        event_ticks:
+          'fixture-recorded; this fixture records engine tick and simulation step in each event',
+      },
+      note:
+        'Each sample is a read-only observe after real fixed physics frames; it is not a video claim.',
     }
   }
 

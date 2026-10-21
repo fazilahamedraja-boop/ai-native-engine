@@ -1,0 +1,3028 @@
+{
+  "run_id": "stage-c-80ab61ff-55d4-4c55-92c0-008b39819b28-humanoid",
+  "humanoid": {
+    "events": {
+      "available": true,
+      "count": 1,
+      "items": [
+        {
+          "label": "harness_reset",
+          "sequence": 1,
+          "sim_time_seconds": 0.283333333333333,
+          "simulation_step": 0,
+          "simulation_time_seconds": 0,
+          "source": "fixture_recorded",
+          "tick": 17,
+          "tick_domain": "engine_physics_frames",
+          "type": "reset",
+          "wall_time_ms": 1044
+        }
+      ],
+      "since_tick": 0,
+      "source": "fixture_recorded",
+      "truncated": false
+    },
+    "nodes": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "class": "MeshInstance3D",
+                    "global_transform": {
+                      "origin": [
+                        3.20000004768372,
+                        1.13999998569489,
+                        1
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "world"
+                    },
+                    "is_inside_tree": true,
+                    "local_transform": {
+                      "origin": [
+                        0,
+                        1.13999998569489,
+                        0
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "parent"
+                    },
+                    "name": "abdomen",
+                    "path": "/root/Main/Humanoid/Model/character_root/abdomen",
+                    "process_mode": 0,
+                    "source": "measured",
+                    "visible": true
+                  },
+                  {
+                    "class": "MeshInstance3D",
+                    "global_transform": {
+                      "origin": [
+                        3.20000004768372,
+                        1,
+                        1
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "world"
+                    },
+                    "is_inside_tree": true,
+                    "local_transform": {
+                      "origin": [
+                        0,
+                        1,
+                        0
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "parent"
+                    },
+                    "name": "belt",
+                    "path": "/root/Main/Humanoid/Model/character_root/belt",
+                    "process_mode": 0,
+                    "source": "measured",
+                    "visible": true
+                  },
+                  {
+                    "class": "MeshInstance3D",
+                    "global_transform": {
+                      "origin": [
+                        3.20000004768372,
+                        1.37999999523163,
+                        1
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "world"
+                    },
+                    "is_inside_tree": true,
+                    "local_transform": {
+                      "origin": [
+                        0,
+                        1.37999999523163,
+                        0
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "parent"
+                    },
+                    "name": "chest",
+                    "path": "/root/Main/Humanoid/Model/character_root/chest",
+                    "process_mode": 0,
+                    "source": "measured",
+                    "visible": true
+                  },
+                  {
+                    "class": "MeshInstance3D",
+                    "global_transform": {
+                      "origin": [
+                        3.08000016212463,
+                        1.70000004768372,
+                        1
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "world"
+                    },
+                    "is_inside_tree": true,
+                    "local_transform": {
+                      "origin": [
+                        -0.119999997317791,
+                        1.70000004768372,
+                        0
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "parent"
+                    },
+                    "name": "ear_l",
+                    "path": "/root/Main/Humanoid/Model/character_root/ear_l",
+                    "process_mode": 0,
+                    "source": "measured",
+                    "visible": true
+                  },
+                  {
+                    "class": "MeshInstance3D",
+                    "global_transform": {
+                      "origin": [
+                        3.3199999332428,
+                        1.70000004768372,
+                        1
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "world"
+                    },
+                    "is_inside_tree": true,
+                    "local_transform": {
+                      "origin": [
+                        0.119999997317791,
+                        1.70000004768372,
+                        0
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "parent"
+                    },
+                    "name": "ear_r",
+                    "path": "/root/Main/Humanoid/Model/character_root/ear_r",
+                    "process_mode": 0,
+                    "source": "measured",
+                    "visible": true
+                  },
+                  {
+                    "class": "MeshInstance3D",
+                    "global_transform": {
+                      "origin": [
+                        3.09500002861023,
+                        0.0399999991059303,
+                        1.04499995708466
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "world"
+                    },
+                    "is_inside_tree": true,
+                    "local_transform": {
+                      "origin": [
+                        -0.104999996721745,
+                        0.0399999991059303,
+                        0.0450000017881393
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "parent"
+                    },
+                    "name": "foot_l",
+                    "path": "/root/Main/Humanoid/Model/character_root/foot_l",
+                    "process_mode": 0,
+                    "source": "measured",
+                    "visible": true
+                  },
+                  {
+                    "class": "MeshInstance3D",
+                    "global_transform": {
+                      "origin": [
+                        3.3050000667572,
+                        0.0399999991059303,
+                        1.04499995708466
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "world"
+                    },
+                    "is_inside_tree": true,
+                    "local_transform": {
+                      "origin": [
+                        0.104999996721745,
+                        0.0399999991059303,
+                        0.0450000017881393
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "parent"
+                    },
+                    "name": "foot_r",
+                    "path": "/root/Main/Humanoid/Model/character_root/foot_r",
+                    "process_mode": 0,
+                    "source": "measured",
+                    "visible": true
+                  },
+                  {
+                    "class": "MeshInstance3D",
+                    "global_transform": {
+                      "origin": [
+                        2.91000008583069,
+                        1.01999998092651,
+                        1
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "world"
+                    },
+                    "is_inside_tree": true,
+                    "local_transform": {
+                      "origin": [
+                        -0.28999999165535,
+                        1.01999998092651,
+                        0
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "parent"
+                    },
+                    "name": "forearm_l",
+                    "path": "/root/Main/Humanoid/Model/character_root/forearm_l",
+                    "process_mode": 0,
+                    "source": "measured",
+                    "visible": true
+                  },
+                  {
+                    "class": "MeshInstance3D",
+                    "global_transform": {
+                      "origin": [
+                        3.49000000953674,
+                        1.01999998092651,
+                        1
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "world"
+                    },
+                    "is_inside_tree": true,
+                    "local_transform": {
+                      "origin": [
+                        0.28999999165535,
+                        1.01999998092651,
+                        0
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "parent"
+                    },
+                    "name": "forearm_r",
+                    "path": "/root/Main/Humanoid/Model/character_root/forearm_r",
+                    "process_mode": 0,
+                    "source": "measured",
+                    "visible": true
+                  },
+                  {
+                    "class": "MeshInstance3D",
+                    "global_transform": {
+                      "origin": [
+                        2.90499997138977,
+                        0.810000002384186,
+                        1.00999999046326
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "world"
+                    },
+                    "is_inside_tree": true,
+                    "local_transform": {
+                      "origin": [
+                        -0.294999986886978,
+                        0.810000002384186,
+                        0.00999999977648258
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "parent"
+                    },
+                    "name": "hand_geom_l",
+                    "path": "/root/Main/Humanoid/Model/character_root/hand_geom_l",
+                    "process_mode": 0,
+                    "source": "measured",
+                    "visible": true
+                  },
+                  {
+                    "class": "MeshInstance3D",
+                    "global_transform": {
+                      "origin": [
+                        3.49500012397766,
+                        0.810000002384186,
+                        1.00999999046326
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "world"
+                    },
+                    "is_inside_tree": true,
+                    "local_transform": {
+                      "origin": [
+                        0.294999986886978,
+                        0.810000002384186,
+                        0.00999999977648258
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "parent"
+                    },
+                    "name": "hand_geom_r",
+                    "path": "/root/Main/Humanoid/Model/character_root/hand_geom_r",
+                    "process_mode": 0,
+                    "source": "measured",
+                    "visible": true
+                  },
+                  {
+                    "class": "Node3D",
+                    "global_transform": {
+                      "origin": [
+                        2.90499997138977,
+                        0.879999995231628,
+                        1
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "world"
+                    },
+                    "is_inside_tree": true,
+                    "local_transform": {
+                      "origin": [
+                        -0.294999986886978,
+                        0.879999995231628,
+                        0
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "parent"
+                    },
+                    "name": "hand_l",
+                    "path": "/root/Main/Humanoid/Model/character_root/hand_l",
+                    "process_mode": 0,
+                    "source": "measured",
+                    "visible": true
+                  },
+                  {
+                    "class": "Node3D",
+                    "global_transform": {
+                      "origin": [
+                        3.49500012397766,
+                        0.879999995231628,
+                        1
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "world"
+                    },
+                    "is_inside_tree": true,
+                    "local_transform": {
+                      "origin": [
+                        0.294999986886978,
+                        0.879999995231628,
+                        0
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "parent"
+                    },
+                    "name": "hand_r",
+                    "path": "/root/Main/Humanoid/Model/character_root/hand_r",
+                    "process_mode": 0,
+                    "source": "measured",
+                    "visible": true
+                  },
+                  {
+                    "class": "Node3D",
+                    "global_transform": {
+                      "origin": [
+                        3.20000004768372,
+                        1.70000004768372,
+                        1
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "world"
+                    },
+                    "is_inside_tree": true,
+                    "local_transform": {
+                      "origin": [
+                        0,
+                        1.70000004768372,
+                        0
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "parent"
+                    },
+                    "name": "head",
+                    "path": "/root/Main/Humanoid/Model/character_root/head",
+                    "process_mode": 0,
+                    "source": "measured",
+                    "visible": true
+                  },
+                  {
+                    "class": "MeshInstance3D",
+                    "global_transform": {
+                      "origin": [
+                        3.20000004768372,
+                        1.70000004768372,
+                        1.00999999046326
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "world"
+                    },
+                    "is_inside_tree": true,
+                    "local_transform": {
+                      "origin": [
+                        0,
+                        1.70000004768372,
+                        0.00999999977648258
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "parent"
+                    },
+                    "name": "head_geom",
+                    "path": "/root/Main/Humanoid/Model/character_root/head_geom",
+                    "process_mode": 0,
+                    "source": "measured",
+                    "visible": true
+                  },
+                  {
+                    "class": "MeshInstance3D",
+                    "global_transform": {
+                      "origin": [
+                        3.20000004768372,
+                        1.53999996185303,
+                        1
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "world"
+                    },
+                    "is_inside_tree": true,
+                    "local_transform": {
+                      "origin": [
+                        0,
+                        1.53999996185303,
+                        0
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "parent"
+                    },
+                    "name": "neck",
+                    "path": "/root/Main/Humanoid/Model/character_root/neck",
+                    "process_mode": 0,
+                    "source": "measured",
+                    "visible": true
+                  },
+                  {
+                    "class": "MeshInstance3D",
+                    "global_transform": {
+                      "origin": [
+                        3.20000004768372,
+                        1.69000005722046,
+                        1.13999998569489
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "world"
+                    },
+                    "is_inside_tree": true,
+                    "local_transform": {
+                      "origin": [
+                        0,
+                        1.69000005722046,
+                        0.140000000596046
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "parent"
+                    },
+                    "name": "nose",
+                    "path": "/root/Main/Humanoid/Model/character_root/nose",
+                    "process_mode": 0,
+                    "source": "measured",
+                    "visible": true
+                  },
+                  {
+                    "class": "MeshInstance3D",
+                    "global_transform": {
+                      "origin": [
+                        3.20000004768372,
+                        0.899999976158142,
+                        1
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "world"
+                    },
+                    "is_inside_tree": true,
+                    "local_transform": {
+                      "origin": [
+                        0,
+                        0.899999976158142,
+                        0
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "parent"
+                    },
+                    "name": "pelvis",
+                    "path": "/root/Main/Humanoid/Model/character_root/pelvis",
+                    "process_mode": 0,
+                    "source": "measured",
+                    "visible": true
+                  },
+                  {
+                    "class": "MeshInstance3D",
+                    "global_transform": {
+                      "origin": [
+                        3.10000014305115,
+                        0.310000002384186,
+                        1
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "world"
+                    },
+                    "is_inside_tree": true,
+                    "local_transform": {
+                      "origin": [
+                        -0.100000001490116,
+                        0.310000002384186,
+                        0
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "parent"
+                    },
+                    "name": "shin_l",
+                    "path": "/root/Main/Humanoid/Model/character_root/shin_l",
+                    "process_mode": 0,
+                    "source": "measured",
+                    "visible": true
+                  },
+                  {
+                    "class": "MeshInstance3D",
+                    "global_transform": {
+                      "origin": [
+                        3.29999995231628,
+                        0.310000002384186,
+                        1
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "world"
+                    },
+                    "is_inside_tree": true,
+                    "local_transform": {
+                      "origin": [
+                        0.100000001490116,
+                        0.310000002384186,
+                        0
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "parent"
+                    },
+                    "name": "shin_r",
+                    "path": "/root/Main/Humanoid/Model/character_root/shin_r",
+                    "process_mode": 0,
+                    "source": "measured",
+                    "visible": true
+                  },
+                  {
+                    "class": "MeshInstance3D",
+                    "global_transform": {
+                      "origin": [
+                        3.20000004768372,
+                        1.47000002861023,
+                        1
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "world"
+                    },
+                    "is_inside_tree": true,
+                    "local_transform": {
+                      "origin": [
+                        0,
+                        1.47000002861023,
+                        0
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "parent"
+                    },
+                    "name": "shoulders",
+                    "path": "/root/Main/Humanoid/Model/character_root/shoulders",
+                    "process_mode": 0,
+                    "source": "measured",
+                    "visible": true
+                  },
+                  {
+                    "class": "MeshInstance3D",
+                    "global_transform": {
+                      "origin": [
+                        3.10000014305115,
+                        0.670000016689301,
+                        1
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "world"
+                    },
+                    "is_inside_tree": true,
+                    "local_transform": {
+                      "origin": [
+                        -0.100000001490116,
+                        0.670000016689301,
+                        0
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "parent"
+                    },
+                    "name": "thigh_l",
+                    "path": "/root/Main/Humanoid/Model/character_root/thigh_l",
+                    "process_mode": 0,
+                    "source": "measured",
+                    "visible": true
+                  },
+                  {
+                    "class": "MeshInstance3D",
+                    "global_transform": {
+                      "origin": [
+                        3.29999995231628,
+                        0.670000016689301,
+                        1
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "world"
+                    },
+                    "is_inside_tree": true,
+                    "local_transform": {
+                      "origin": [
+                        0.100000001490116,
+                        0.670000016689301,
+                        0
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "parent"
+                    },
+                    "name": "thigh_r",
+                    "path": "/root/Main/Humanoid/Model/character_root/thigh_r",
+                    "process_mode": 0,
+                    "source": "measured",
+                    "visible": true
+                  },
+                  {
+                    "class": "MeshInstance3D",
+                    "global_transform": {
+                      "origin": [
+                        2.92000007629395,
+                        1.30999994277954,
+                        1
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "world"
+                    },
+                    "is_inside_tree": true,
+                    "local_transform": {
+                      "origin": [
+                        -0.280000001192093,
+                        1.30999994277954,
+                        0
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "parent"
+                    },
+                    "name": "upper_arm_l",
+                    "path": "/root/Main/Humanoid/Model/character_root/upper_arm_l",
+                    "process_mode": 0,
+                    "source": "measured",
+                    "visible": true
+                  },
+                  {
+                    "class": "MeshInstance3D",
+                    "global_transform": {
+                      "origin": [
+                        3.48000001907349,
+                        1.30999994277954,
+                        1
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "world"
+                    },
+                    "is_inside_tree": true,
+                    "local_transform": {
+                      "origin": [
+                        0.280000001192093,
+                        1.30999994277954,
+                        0
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "parent"
+                    },
+                    "name": "upper_arm_r",
+                    "path": "/root/Main/Humanoid/Model/character_root/upper_arm_r",
+                    "process_mode": 0,
+                    "source": "measured",
+                    "visible": true
+                  }
+                ],
+                "class": "Node3D",
+                "global_transform": {
+                  "origin": [
+                    3.20000004768372,
+                    0,
+                    1
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "measured",
+                  "space": "world"
+                },
+                "is_inside_tree": true,
+                "local_transform": {
+                  "origin": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "measured",
+                  "space": "parent"
+                },
+                "name": "character_root",
+                "path": "/root/Main/Humanoid/Model/character_root",
+                "process_mode": 0,
+                "source": "measured",
+                "visible": true
+              }
+            ],
+            "class": "Node3D",
+            "global_transform": {
+              "origin": [
+                3.20000004768372,
+                0,
+                1
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "Model",
+            "path": "/root/Main/Humanoid/Model",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "class": "MeshInstance3D",
+                    "global_transform": {
+                      "origin": [
+                        -3.20000004768372,
+                        1.09999990463257,
+                        1
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "world"
+                    },
+                    "is_inside_tree": true,
+                    "local_transform": {
+                      "origin": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "quaternion": [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      "rotation_degrees": [
+                        0,
+                        0,
+                        0
+                      ],
+                      "scale": [
+                        1,
+                        1,
+                        1
+                      ],
+                      "source": "measured",
+                      "space": "parent"
+                    },
+                    "name": "Marker",
+                    "path": "/root/Main/Humanoid/ProbeSkeleton/HeadMarker/Marker",
+                    "process_mode": 0,
+                    "source": "measured",
+                    "visible": true
+                  }
+                ],
+                "class": "BoneAttachment3D",
+                "global_transform": {
+                  "origin": [
+                    -3.20000004768372,
+                    1.09999990463257,
+                    1
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "measured",
+                  "space": "world"
+                },
+                "is_inside_tree": true,
+                "local_transform": {
+                  "origin": [
+                    0,
+                    1.09999990463257,
+                    0
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "measured",
+                  "space": "parent"
+                },
+                "name": "HeadMarker",
+                "path": "/root/Main/Humanoid/ProbeSkeleton/HeadMarker",
+                "process_mode": 0,
+                "source": "measured",
+                "visible": true
+              }
+            ],
+            "class": "Skeleton3D",
+            "global_transform": {
+              "origin": [
+                -3.20000004768372,
+                0,
+                1
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                -6.40000009536743,
+                0,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "ProbeSkeleton",
+            "path": "/root/Main/Humanoid/ProbeSkeleton",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "children": [],
+            "class": "Label3D",
+            "global_transform": {
+              "origin": [
+                3.20000004768372,
+                2.15000009536743,
+                1
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                2.15000009536743,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "ProbeLabel",
+            "path": "/root/Main/Humanoid/ProbeLabel",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          }
+        ],
+        "class": "Node3D",
+        "descendant_limit": 256,
+        "descendant_truncated": false,
+        "global_transform": {
+          "origin": [
+            3.20000004768372,
+            0,
+            1
+          ],
+          "quaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "rotation_degrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "source": "measured",
+          "space": "world"
+        },
+        "is_inside_tree": true,
+        "local_transform": {
+          "origin": [
+            3.20000004768372,
+            0,
+            1
+          ],
+          "quaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "rotation_degrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "source": "measured",
+          "space": "parent"
+        },
+        "name": "Humanoid",
+        "path": "/root/Main/Humanoid",
+        "process_mode": 0,
+        "skeletons": [
+          {
+            "bone_count": 4,
+            "bones": [
+              {
+                "derived_world_pose": {
+                  "origin": [
+                    -3.20000004768372,
+                    0,
+                    1
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "derived",
+                  "space": "world"
+                },
+                "enabled": true,
+                "global_pose": {
+                  "origin": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "measured",
+                  "space": "skeleton"
+                },
+                "index": 0,
+                "name": "root",
+                "parent": -1,
+                "pose": {
+                  "origin": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "measured",
+                  "space": "bone_parent"
+                },
+                "rest": {
+                  "origin": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "measured",
+                  "space": "bone_parent"
+                },
+                "source": "measured"
+              },
+              {
+                "derived_world_pose": {
+                  "origin": [
+                    -3.20000004768372,
+                    0.449999988079071,
+                    1
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "derived",
+                  "space": "world"
+                },
+                "enabled": true,
+                "global_pose": {
+                  "origin": [
+                    0,
+                    0.449999988079071,
+                    0
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "measured",
+                  "space": "skeleton"
+                },
+                "index": 1,
+                "name": "spine",
+                "parent": 0,
+                "pose": {
+                  "origin": [
+                    0,
+                    0.449999988079071,
+                    0
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "measured",
+                  "space": "bone_parent"
+                },
+                "rest": {
+                  "origin": [
+                    0,
+                    0.449999988079071,
+                    0
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "measured",
+                  "space": "bone_parent"
+                },
+                "source": "measured"
+              },
+              {
+                "derived_world_pose": {
+                  "origin": [
+                    -3.20000004768372,
+                    0.799999952316284,
+                    1
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "derived",
+                  "space": "world"
+                },
+                "enabled": true,
+                "global_pose": {
+                  "origin": [
+                    0,
+                    0.799999952316284,
+                    0
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "measured",
+                  "space": "skeleton"
+                },
+                "index": 2,
+                "name": "chest",
+                "parent": 1,
+                "pose": {
+                  "origin": [
+                    0,
+                    0.349999994039536,
+                    0
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "measured",
+                  "space": "bone_parent"
+                },
+                "rest": {
+                  "origin": [
+                    0,
+                    0.349999994039536,
+                    0
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "measured",
+                  "space": "bone_parent"
+                },
+                "source": "measured"
+              },
+              {
+                "derived_world_pose": {
+                  "origin": [
+                    -3.20000004768372,
+                    1.09999990463257,
+                    1
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "derived",
+                  "space": "world"
+                },
+                "enabled": true,
+                "global_pose": {
+                  "origin": [
+                    0,
+                    1.09999990463257,
+                    0
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "measured",
+                  "space": "skeleton"
+                },
+                "index": 3,
+                "name": "head",
+                "parent": 2,
+                "pose": {
+                  "origin": [
+                    0,
+                    0.300000011920929,
+                    0
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "measured",
+                  "space": "bone_parent"
+                },
+                "rest": {
+                  "origin": [
+                    0,
+                    0.300000011920929,
+                    0
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "measured",
+                  "space": "bone_parent"
+                },
+                "source": "measured"
+              }
+            ],
+            "global_transform": {
+              "origin": [
+                -3.20000004768372,
+                0,
+                1
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "node_path": "/root/Main/Humanoid/ProbeSkeleton",
+            "source": "measured",
+            "truncated": false
+          }
+        ],
+        "source": "measured",
+        "visible": true
+      }
+    ],
+    "runtime": {
+      "captured_at": "2026-10-21T14:44:34Z",
+      "godot": "4.7.2-stable (official)",
+      "paused": true,
+      "physics_frames": 34,
+      "physics_ticks_per_second": 60,
+      "sim_time_seconds": 0.566666666666667,
+      "sim_time_seconds_source": "derived",
+      "source": "measured",
+      "spaces": {
+        "global": "world",
+        "local": "parent"
+      },
+      "tick": 34,
+      "units": {
+        "position": "m",
+        "rotation": "deg",
+        "time": "s",
+        "velocity": "m/s"
+      },
+      "unix_time": 1792593874.177,
+      "uptime_ms": 488
+    }
+  },
+  "skeleton": {
+    "events": {
+      "available": true,
+      "count": 1,
+      "items": [
+        {
+          "label": "harness_reset",
+          "sequence": 1,
+          "sim_time_seconds": 0.283333333333333,
+          "simulation_step": 0,
+          "simulation_time_seconds": 0,
+          "source": "fixture_recorded",
+          "tick": 17,
+          "tick_domain": "engine_physics_frames",
+          "type": "reset",
+          "wall_time_ms": 1044
+        }
+      ],
+      "since_tick": 0,
+      "source": "fixture_recorded",
+      "truncated": false
+    },
+    "nodes": [
+      {
+        "class": "Skeleton3D",
+        "global_transform": {
+          "origin": [
+            -3.20000004768372,
+            0,
+            1
+          ],
+          "quaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "rotation_degrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "source": "measured",
+          "space": "world"
+        },
+        "is_inside_tree": true,
+        "local_transform": {
+          "origin": [
+            -6.40000009536743,
+            0,
+            0
+          ],
+          "quaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "rotation_degrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "source": "measured",
+          "space": "parent"
+        },
+        "name": "ProbeSkeleton",
+        "path": "/root/Main/Humanoid/ProbeSkeleton",
+        "process_mode": 0,
+        "skeleton": {
+          "bone_count": 4,
+          "bones": [
+            {
+              "derived_world_pose": {
+                "origin": [
+                  -3.20000004768372,
+                  0,
+                  1
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "derived",
+                "space": "world"
+              },
+              "enabled": true,
+              "global_pose": {
+                "origin": [
+                  0,
+                  0,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "skeleton"
+              },
+              "index": 0,
+              "name": "root",
+              "parent": -1,
+              "pose": {
+                "origin": [
+                  0,
+                  0,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "bone_parent"
+              },
+              "rest": {
+                "origin": [
+                  0,
+                  0,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "bone_parent"
+              },
+              "source": "measured"
+            },
+            {
+              "derived_world_pose": {
+                "origin": [
+                  -3.20000004768372,
+                  0.449999988079071,
+                  1
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "derived",
+                "space": "world"
+              },
+              "enabled": true,
+              "global_pose": {
+                "origin": [
+                  0,
+                  0.449999988079071,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "skeleton"
+              },
+              "index": 1,
+              "name": "spine",
+              "parent": 0,
+              "pose": {
+                "origin": [
+                  0,
+                  0.449999988079071,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "bone_parent"
+              },
+              "rest": {
+                "origin": [
+                  0,
+                  0.449999988079071,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "bone_parent"
+              },
+              "source": "measured"
+            },
+            {
+              "derived_world_pose": {
+                "origin": [
+                  -3.20000004768372,
+                  0.799999952316284,
+                  1
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "derived",
+                "space": "world"
+              },
+              "enabled": true,
+              "global_pose": {
+                "origin": [
+                  0,
+                  0.799999952316284,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "skeleton"
+              },
+              "index": 2,
+              "name": "chest",
+              "parent": 1,
+              "pose": {
+                "origin": [
+                  0,
+                  0.349999994039536,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "bone_parent"
+              },
+              "rest": {
+                "origin": [
+                  0,
+                  0.349999994039536,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "bone_parent"
+              },
+              "source": "measured"
+            },
+            {
+              "derived_world_pose": {
+                "origin": [
+                  -3.20000004768372,
+                  1.09999990463257,
+                  1
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "derived",
+                "space": "world"
+              },
+              "enabled": true,
+              "global_pose": {
+                "origin": [
+                  0,
+                  1.09999990463257,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "skeleton"
+              },
+              "index": 3,
+              "name": "head",
+              "parent": 2,
+              "pose": {
+                "origin": [
+                  0,
+                  0.300000011920929,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "bone_parent"
+              },
+              "rest": {
+                "origin": [
+                  0,
+                  0.300000011920929,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "bone_parent"
+              },
+              "source": "measured"
+            }
+          ],
+          "global_transform": {
+            "origin": [
+              -3.20000004768372,
+              0,
+              1
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "node_path": "/root/Main/Humanoid/ProbeSkeleton",
+          "source": "measured",
+          "truncated": false
+        },
+        "source": "measured",
+        "visible": true
+      }
+    ],
+    "runtime": {
+      "captured_at": "2026-10-21T14:44:34Z",
+      "godot": "4.7.2-stable (official)",
+      "paused": true,
+      "physics_frames": 36,
+      "physics_ticks_per_second": 60,
+      "sim_time_seconds": 0.6,
+      "sim_time_seconds_source": "derived",
+      "source": "measured",
+      "spaces": {
+        "global": "world",
+        "local": "parent"
+      },
+      "tick": 36,
+      "units": {
+        "position": "m",
+        "rotation": "deg",
+        "time": "s",
+        "velocity": "m/s"
+      },
+      "unix_time": 1792593874.196,
+      "uptime_ms": 507
+    }
+  },
+  "summary": {
+    "model_path": "/root/Main/Humanoid",
+    "model_part_count": 25,
+    "mesh_instance_count": 22,
+    "probe_marker_present": true,
+    "skeleton": {
+      "path": "/root/Main/Humanoid/ProbeSkeleton",
+      "bone_count": 4,
+      "bones": [
+        "root",
+        "spine",
+        "chest",
+        "head"
+      ],
+      "global_transform": {
+        "origin": [
+          -3.20000004768372,
+          0,
+          1
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "rotation_degrees": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "source": "measured",
+        "space": "world"
+      },
+      "bone_source": "measured",
+      "bone_space": "skeleton",
+      "derived_world_source": "derived"
+    }
+  },
+  "note": "glTF meshes are inspected separately from the fixture probe skeleton; the imported glTF did not expose a Skeleton3D in this fixture."
+}

@@ -1,0 +1,289 @@
+{
+  "run_id": "stage-c-80ab61ff-55d4-4c55-92c0-008b39819b28-door-reuse",
+  "project_source": "fixtures/door",
+  "bridge_source": "fixtures/observation/harness/bridge.gd",
+  "bridge_replaced_in_temporary_copy_only": true,
+  "temporary_project": true,
+  "source_file_sha256": {
+    "scene": "f63dd2e2839a0591f2eda48d870b76a1cd5c91020481e31c43a2899cb000a62a",
+    "world": "4e3d7a2611445c9882842e5d0bcfa6b75026a08352f3e2073f63f2a8777d6ccb",
+    "player": "3c16cb8ffa9ff4b75f8dd54345163e309cc3ca9578bd7688998b7fc7f2b10c5b"
+  },
+  "unchanged": {
+    "scene": true,
+    "world": true,
+    "player": true
+  },
+  "scene": {
+    "properties": {
+      "missing": [],
+      "source": "measured",
+      "values": {
+        "feedback": "LOCKED - FIND THE KEY",
+        "key_available": true
+      }
+    },
+    "global_transform": {
+      "origin": [
+        0,
+        0,
+        0
+      ],
+      "quaternion": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "source": "measured",
+      "space": "world"
+    }
+  },
+  "door": {
+    "properties": {
+      "missing": [],
+      "source": "measured",
+      "values": {
+        "collision_enabled": true,
+        "locked": true,
+        "open": false,
+        "open_count": 0
+      }
+    },
+    "global_transform": {
+      "origin": [
+        -0.800000011920929,
+        0,
+        0
+      ],
+      "quaternion": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "source": "measured",
+      "space": "world"
+    },
+    "collision_shapes": [
+      {
+        "class": "CollisionShape3D",
+        "disabled": false,
+        "global_transform": {
+          "origin": [
+            0,
+            1.10000002384186,
+            0
+          ],
+          "quaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "rotation_degrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "source": "measured",
+          "space": "world"
+        },
+        "name": "Collision",
+        "path": "/root/Main/Door/Collision",
+        "shape": {
+          "size": [
+            1.60000002384186,
+            2.20000004768372,
+            0.200000002980232
+          ]
+        },
+        "shape_class": "BoxShape3D",
+        "source": "measured",
+        "transform": {
+          "origin": [
+            0.800000011920929,
+            1.10000002384186,
+            0
+          ],
+          "quaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "rotation_degrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "source": "measured",
+          "space": "parent"
+        }
+      }
+    ]
+  },
+  "player": {
+    "character": {
+      "derived": {
+        "horizontal_speed": 0,
+        "speed": 0
+      },
+      "floor_normal": [
+        0,
+        1,
+        0
+      ],
+      "is_on_ceiling": false,
+      "is_on_floor": true,
+      "is_on_wall": false,
+      "slide_collision_count": 1,
+      "slide_collisions": [
+        {
+          "collider": "/root/Main/Ground",
+          "normal": [
+            0,
+            1,
+            0
+          ],
+          "position": [
+            0,
+            0,
+            5.5
+          ]
+        }
+      ],
+      "source": "measured",
+      "velocity": [
+        0,
+        0,
+        0
+      ],
+      "wall_normal": [
+        0,
+        0,
+        0
+      ]
+    },
+    "global_transform": {
+      "origin": [
+        0,
+        0.850000023841858,
+        5.5
+      ],
+      "quaternion": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "source": "measured",
+      "space": "world"
+    },
+    "collision_shapes": [
+      {
+        "class": "CollisionShape3D",
+        "disabled": false,
+        "global_transform": {
+          "origin": [
+            0,
+            0.850000023841858,
+            5.5
+          ],
+          "quaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "rotation_degrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "source": "measured",
+          "space": "world"
+        },
+        "name": "Collision",
+        "path": "/root/Main/Player/Collision",
+        "shape": {
+          "height": 1.70000004768372,
+          "radius": 0.400000005960464
+        },
+        "shape_class": "CapsuleShape3D",
+        "source": "measured",
+        "transform": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "quaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "rotation_degrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "source": "measured",
+          "space": "parent"
+        }
+      }
+    ]
+  },
+  "note": "The door scene and scripts were copied unchanged; only the temporary copy bridge implemented observe."
+}

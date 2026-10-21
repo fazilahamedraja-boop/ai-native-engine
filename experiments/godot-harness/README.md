@@ -9,6 +9,8 @@ give an agent or a CI job a set of distinct operations:
 | `run_tests` | `runTests()` or `node controller/harness.mjs test` | per-case pass/fail, summary, exit code, stdout/stderr |
 | `inspect_state` | `HarnessSession.inspectState()` or the `inspect` CLI | snapshot, scene tree, bridge events, process logs |
 | `advance_physics` | `HarnessSession.advancePhysics()` | N real fixed physics frames, final snapshot, paused state |
+| `observe` | `HarnessSession.observe()` | bounded runtime, node, physics, animation, skeleton, and event observations |
+| `observe_timeline` | `HarnessSession.observeTimeline()` | bounded fixed-advance samples plus de-duplicated events |
 | `capture_frame` | `HarnessSession.captureFrame()` | one actual frame plus run id, tick, timing, hashes, paused state |
 | `capture_sequence` | `HarnessSession.captureSequence()` | bounded actual frames sampled after real fixed physics ticks |
 | `stop_project` | `HarnessSession.stopProject()` | exit code, signal, whether a kill was needed, log tail |
@@ -51,6 +53,8 @@ npm run test:door-control         # live bridge + inspect/property checks
 npm run test:door-screenshot      # windowed locked/key/open captures
 npm run test:door-repair          # failing defect -> repair -> same-test rerun
 npm run evidence:visual           # windowed door captures + sampled approach sequence
+npm run test:observation          # controller observation, timeline, and door-reuse tests
+npm run evidence:observation      # windowed structured observations + captures + timeline
 npm run inspect          # start, inspect, stop one project, JSON result
 ```
 
@@ -201,6 +205,46 @@ Windowed capture is separate from headless tests because Godot's headless
 display has no readable viewport texture. `npm test` remains the headless gate;
 `npm run evidence:visual` is the Phase 10 windowed capture experiment.
 
+## Structured observation
+
+`HarnessSession.observe({ targets, properties, descendants, sinceTick })` reads a
+bounded snapshot of the live scene without executing game-specific inspection
+code. Targets are absolute `/root/...` node paths; at most 32 targets, 32
+properties, 3 descendant levels (256 nodes), 128 bones, and 200 events are
+returned. The project bridge must implement `observe`.
+
+Each target includes identity (`path`, `name`, `class`), process mode,
+visibility, and a measured world transform. Common node types add:
+
+- `CharacterBody3D`: measured velocity, grounded/wall/ceiling flags, normals,
+  and slide collisions; derived speed values;
+- `RigidBody3D`: measured linear/angular velocity, mass, sleeping, and gravity
+  scale; a derived speed;
+- collision children: shape class, disabled state, parent/world transforms, and
+  common dimensions (box size, sphere radius, capsule radius/height);
+- `AnimationPlayer`: current/assigned animation, position, playing, and speed;
+- `Skeleton3D`: parent-relative rest/pose, skeleton-space global pose, and a
+  separately labelled derived world pose for each bone.
+
+Requested property reads return `values` and a `missing` list. The event stream
+uses an optional fixture `harness_events(since_tick)` method and is marked
+`fixture_recorded`; the observation fixture records both engine tick and
+simulation step in each event. When the method is absent the result is marked
+`unavailable` instead of invented.
+
+`observeTimeline({ frames, everyFrames, input, ... })` takes read-only
+observations around bounded real `advancePhysics()` chunks. It reports both
+`engine_tick` (Godot's physics-frame counter, which can advance during paused
+sampling and screenshot rendering) and `simulation_step`
+(fixture snapshot step after a fixed advance, when exposed). Event ticks belong
+to the fixture's event domain. This is sampled state, not live video
+understanding.
+
+The reusable observation bridge lives in
+`fixtures/observation/harness/bridge.gd`; copying only that bridge into a
+temporary copy of the door fixture demonstrates reuse without changing the door
+scene or scripts.
+
 ## Snapshot and hash contract
 
 `snapshot()` returns:
@@ -240,9 +284,10 @@ Request:
 ```
 
 Commands: `ping`, `snapshot`, `pause`, `resume`, `set_input`, `step`,
-`advance_physics`, `reset`, `screenshot`, `scene_tree`, `property`, `logs`,
-`quit`. `advance_physics` is implemented by the physics and door fixture bridge
-copies; the sentry bridge remains the Phase 8 command set.
+`advance_physics`, `observe`, `reset`, `screenshot`, `scene_tree`, `property`,
+`logs`, `quit`. `advance_physics` is implemented by the physics and door fixture
+bridge copies; `observe` is implemented by the observation bridge. The sentry
+bridge remains the Phase 8 command set.
 
 Responses are either:
 
@@ -317,8 +362,12 @@ only use this interface on projects you intend to control.
 | Door bridge control | `npm run test:door-control` | 1/1 live scenario |
 | Door screenshots | `npm run test:door-screenshot` | 1/1, three PNGs |
 | Door defect repair | `npm run test:door-repair` | failing 6/7 -> passing 7/7 |
+| Observation suite | `node controller/harness.mjs test --project fixtures/observation --script res://tests/run_observation.gd` | 8/8, exit 0 |
+| Observation controller | `npm run test:observation` | 5/5, exit 0 |
+| Structured observation evidence | `npm run evidence:observation` | exit 0, two windowed PNGs + JSON |
 
-Stage evidence is under `docs/phase8/` and `docs/phase9/`:
+Phase 10 Stage C evidence is under `docs/phase10/stage-c/`. Earlier stage
+evidence is under `docs/phase8/` and `docs/phase9/`:
 
 - `stage-a.md`, `stage-a-run.json`
 - `stage-b.md`, `stage-b-inspect.json`
@@ -347,6 +396,15 @@ Stage evidence is under `docs/phase8/` and `docs/phase9/`:
   inventory framework.
 - Screenshots require a display/windowed run and are not part of the headless
   gate.
+- Structured observation is bounded and read-only. It observes engine-exposed
+  values and optional fixture events; it cannot prove that unexposed gameplay
+  state was captured, and it does not provide live video understanding.
+- Engine physics-frame ticks and fixture simulation steps are different clocks.
+  Paused sampling and screenshot rendering can advance the former without
+  advancing the latter.
+- The imported humanoid GLB has 22 rigid mesh instances and no skin or bone
+  hierarchy. The four-bone `ProbeSkeleton` is a separate interface probe, not a
+  generated or skinned character rig.
 - The bridge uses loopback and no authentication. It is suitable for a local
   development machine or isolated CI runner, not a shared host.
 - The repair experiment proves detection/localization/rerun for one injected
