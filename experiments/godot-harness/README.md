@@ -56,6 +56,9 @@ npm run evidence:visual           # windowed door captures + sampled approach se
 npm run test:observation          # controller observation, timeline, and door-reuse tests
 npm run evidence:observation      # windowed structured observations + captures + timeline
 npm run evidence:defect           # controlled gate defect -> failing suite -> repair -> same suite
+npm run evidence:live-observe     # phase 13: live frames + structured state while the game runs
+npm run evidence:diagnosis        # phase 13: evidence-driven diagnosis benchmark
+npm run test:evidence-output      # phase 13: evidence output-path safety
 npm run inspect          # start, inspect, stop one project, JSON result
 ```
 
@@ -373,6 +376,9 @@ only use this interface on projects you intend to control.
 | Observation controller | `npm run test:observation` | 5/5, exit 0 |
 | Structured observation evidence | `npm run evidence:observation` | exit 0, two windowed PNGs + JSON |
 | Controlled defect replay | `npm run evidence:defect` | failing 6/8 -> passing 8/8, four windowed PNGs |
+| Evidence output-path safety | `npm run test:evidence-output` | 12/12, exit 0 |
+| Phase 13 live observation and action | `npm run evidence:live-observe` | 4 distinct frames, 0 stale, move verified at ratio 1.0 |
+| Phase 13 diagnosis benchmark | `npm run evidence:diagnosis` | failing 6/8 -> passing 8/8, evidence bundle with no source |
 
 Phase 10 Stage C evidence is under `docs/phase10/stage-c/`. Stage D evidence is
 under `docs/phase10/stage-d/`: the manifest, four captures, full observations,
@@ -390,6 +396,33 @@ before/after test results, and the diagnosis are in
 - `stage-f-generalization.md`, `stage-f-suite.log`, `stage-f-control.log`,
   `stage-f-inspect.json`, `stage-f-repair.*`, `stage-f-locked.png`,
   `stage-f-key.png`, and `stage-f-open.png` for Stage F
+
+## Evidence output directories
+
+Every Phase 8-12 runner writes to a hard-coded directory under `docs/`. That is convenient for a
+one-shot evidence record and unsafe for a runner that can be re-executed: re-running one of them
+**overwrites the committed evidence of an earlier phase**. This actually happened during Phase
+12B — `controller/combat-defect.mjs` rewrote `docs/phase11/stage-c/` and the damage had to be
+reverted with `git checkout -- docs/phase11/`.
+
+Phase 13 runners use `controller/evidence-output.mjs` instead:
+
+```js
+import { resolveOutputDir, writeJsonFile, copyCaptureFile } from './evidence-output.mjs'
+
+const outDir = resolveOutputDir({ outDir: options.outDir, runner: 'live-observe' })
+```
+
+- `resolveOutputDir` honours an explicit `--out-dir`, and otherwise creates a unique directory
+  under `docs/phase13/artifacts/<runner>/<timestamp>`.
+- It **refuses** any directory inside a protected evidence directory — `phase8`, `phase9`,
+  `phase10`, `phase11`, `phase12`, `phase12-verification` and the older phase directories — and
+  it refuses a path that only reaches one by traversal.
+- It refuses a directory outside the repository and one inside the harness source tree.
+- `copyCaptureFile` re-hashes the copied PNG and compares it with the hash the bridge reported, so
+  a truncated or substituted file raises instead of being recorded.
+
+`npm run test:evidence-output` covers all of this in 12 cases.
 
 ## Limitations
 
