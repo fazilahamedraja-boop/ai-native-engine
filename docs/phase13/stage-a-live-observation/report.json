@@ -1,0 +1,235 @@
+{
+  "operation": "phase13_live_observation_and_action",
+  "ok": true,
+  "run_id": "phase13-b81a1830-d8cd-4f01-a811-0becdefdccc9",
+  "project": "fixtures/observation",
+  "windowed": true,
+  "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase13\\docs\\phase13\\stage-a-live-observation",
+  "started_at": "2026-10-21T20:27:45.478Z",
+  "finished_at": "2026-10-21T20:27:52.182Z",
+  "options": {
+    "observations": 4,
+    "interval": 45
+  },
+  "godot": "4.7.2-stable (official)",
+  "stage_a": {
+    "observations": 4,
+    "freshness": {
+      "unique_screenshot_hashes": 4,
+      "total_frames": 4,
+      "all_frames_distinct": true,
+      "stale_suspects": []
+    },
+    "first_state": {
+      "step": 45,
+      "physics_frames": 80,
+      "player_position": [
+        0,
+        0.850000023841858,
+        5.5
+      ],
+      "player_velocity": [
+        0,
+        0,
+        0
+      ],
+      "grounded": true,
+      "plate_pressed": false,
+      "gate_open": false,
+      "gate_collision_enabled": true,
+      "beacon_state": "red",
+      "goal_reached": false,
+      "feedback": "PLATE CLEAR - GATE CLOSED",
+      "prompt": "WALK ONTO THE PLATE",
+      "interaction_count": 0,
+      "hash": "54812f51dbe78519db0b89da83beee3ad1df1013ec635f7ee2531468009df1bc",
+      "outcome_hash": "38c23e5c4a3685bebfa178873a7574cd68d06dc08067cf21814c80e4bbdc2e0c"
+    },
+    "last_state": {
+      "step": 180,
+      "physics_frames": 269,
+      "player_position": [
+        0,
+        0.850934088230133,
+        -3.85085034370422
+      ],
+      "player_velocity": [
+        0,
+        0,
+        -4
+      ],
+      "grounded": true,
+      "plate_pressed": false,
+      "gate_open": false,
+      "gate_collision_enabled": true,
+      "beacon_state": "red",
+      "goal_reached": false,
+      "feedback": "PLATE CLEAR - GATE CLOSED",
+      "prompt": "WALK ONTO THE PLATE",
+      "interaction_count": 0,
+      "hash": "d62eb17ab220ad9f6bc2674bd89488f70a716c456356b44974716d4d4013f5d7",
+      "outcome_hash": "dbde50cf47ebcc1725329d37264c6411806241f994a730ce36a4614e29bac9d5"
+    },
+    "player_travelled_metres": 9.350850390356463,
+    "runtime_change_observed": true,
+    "events_seen": [
+      "reset",
+      "player_collision_start",
+      "crate_collision_start",
+      "plate_entered",
+      "gate_open",
+      "plate_exited",
+      "gate_close",
+      "player_collision_end"
+    ]
+  },
+  "stage_b": {
+    "action_1_move_forward": {
+      "input": {
+        "forward": 1
+      },
+      "frames": 45,
+      "advance_duration_ms": 705,
+      "before": {
+        "state": {
+          "step": 3,
+          "physics_frames": 278,
+          "player_position": [
+            0,
+            0.850000023841858,
+            5.5
+          ],
+          "player_velocity": [
+            0,
+            0,
+            0
+          ],
+          "grounded": true,
+          "plate_pressed": false,
+          "gate_open": false,
+          "gate_collision_enabled": true,
+          "beacon_state": "red",
+          "goal_reached": false,
+          "feedback": "PLATE CLEAR - GATE CLOSED",
+          "prompt": "WALK ONTO THE PLATE",
+          "interaction_count": 0,
+          "hash": "8aa9f8bc5a9b7c3884b18ebb021d648d92e0b912cf12bc31c6a8cfb64c1598a9",
+          "outcome_hash": "1690a09a384d947e932f4af523e0b03abb4f3e59ed1def02104f2f074e23d181"
+        },
+        "screenshot": {
+          "path": "action-before.png",
+          "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase13\\docs\\phase13\\stage-a-live-observation\\action-before.png",
+          "bytes": 55408,
+          "sha256": "fa4ca704e26a4ddd2d43ec3f2d73420ffb45a60aaadc59532c6789468db1f583",
+          "width": 1280,
+          "height": 720
+        },
+        "captured_at": "2026-10-21T20:27:51.110Z",
+        "engine_tick": 279
+      },
+      "after": {
+        "state": {
+          "step": 48,
+          "physics_frames": 338,
+          "player_position": [
+            0,
+            0.850000023841858,
+            2.50000286102295
+          ],
+          "player_velocity": [
+            0,
+            0,
+            -4
+          ],
+          "grounded": true,
+          "plate_pressed": false,
+          "gate_open": false,
+          "gate_collision_enabled": true,
+          "beacon_state": "red",
+          "goal_reached": false,
+          "feedback": "PLATE CLEAR - GATE CLOSED",
+          "prompt": "WALK ONTO THE PLATE",
+          "interaction_count": 0,
+          "hash": "f7cf241e2714bc24c13c64c6487a3b6415b1c6c998346ea2b3b7feb8e06c001c",
+          "outcome_hash": "b4cad678eac0a16a1e786c27f17e1ff843ca5ea3ee6766acdfdb7cede23bc272"
+        },
+        "screenshot": {
+          "path": "action-after.png",
+          "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase13\\docs\\phase13\\stage-a-live-observation\\action-after.png",
+          "bytes": 57968,
+          "sha256": "e74ee404d686841d6621b3c9815d45cf45956b04a1293e88164b7901c50241bb",
+          "width": 1280,
+          "height": 720
+        },
+        "captured_at": "2026-10-21T20:27:52.081Z",
+        "engine_tick": 339
+      },
+      "expected_distance_metres": 3,
+      "actual_distance_metres": 2.99999713897705,
+      "distance_ratio": 0.9999990463256833,
+      "moved_towards_negative_z": true,
+      "verified_by_state": true
+    },
+    "action_2_interact": {
+      "input": {
+        "actions": {
+          "interact": true
+        }
+      },
+      "interaction_count_before": 0,
+      "interaction_count_after": 1,
+      "verified_by_state": true
+    }
+  },
+  "stop": {
+    "operation": "stop_project",
+    "ok": true,
+    "alreadyStopped": false,
+    "pid": 29308,
+    "exitCode": 0,
+    "signal": null,
+    "killed": false,
+    "logs": {
+      "stdout": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "Vulkan 1.3.215 - Forward+ - Using Device #0: Intel - Intel(R) UHD Graphics",
+        "",
+        "HARNESS_READY {\"pid\":29308,\"port\":62632,\"project\":\"godot-observation-fixture\",\"protocol\":1}"
+      ],
+      "stderr": []
+    }
+  },
+  "error": null,
+  "pid": 29308,
+  "bridge_port": 62632,
+  "renderer": "Vulkan 1.3.215 - Forward+ - Using Device #0: Intel - Intel(R) UHD Graphics",
+  "bridge_events": [
+    "1 listening on 127.0.0.1:62632",
+    "117 client connected",
+    "157 paused",
+    "200 reset",
+    "225 advance_physics start frames=45 target=64",
+    "991 advance_physics done frames=45",
+    "1006 paused",
+    "1282 advance_physics start frames=45 target=127",
+    "2040 advance_physics done frames=45",
+    "2055 paused",
+    "2320 advance_physics start frames=45 target=190",
+    "3090 advance_physics done frames=45",
+    "3103 paused",
+    "3354 advance_physics start frames=45 target=252",
+    "4105 advance_physics done frames=45",
+    "4119 paused",
+    "4414 paused",
+    "4427 reset",
+    "4438 advance_physics start frames=3 target=276",
+    "4477 advance_physics done frames=3",
+    "4490 paused",
+    "4750 advance_physics start frames=45 target=336",
+    "5455 advance_physics done frames=45",
+    "5470 paused",
+    "5709 advance_physics start frames=2 target=351",
+    "5740 advance_physics done frames=2",
+    "5750 paused"
+  ]
+}

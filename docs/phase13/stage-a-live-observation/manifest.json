@@ -1,0 +1,148 @@
+{
+  "run_id": "phase13-b81a1830-d8cd-4f01-a811-0becdefdccc9",
+  "project": "fixtures/observation",
+  "windowed": true,
+  "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase13\\docs\\phase13\\stage-a-live-observation",
+  "started_at": "2026-10-21T20:27:45.478Z",
+  "finished_at": "2026-10-21T20:27:52.160Z",
+  "frames": [
+    {
+      "index": 0,
+      "file": "frames/frame-000.png",
+      "sha256": "7d2ec22c9dc008dc041faf9cd9cc99c28aaeedc98bd42207c36056864a13ce57",
+      "captured_at": "2026-10-21T20:27:47.608Z",
+      "engine_tick": 66,
+      "simulation_step": 45,
+      "physics_frames_before": 66,
+      "physics_frames_after": 78,
+      "sim_time_seconds": 1.1,
+      "player_position": [
+        0,
+        0.850000023841858,
+        5.5
+      ],
+      "plate_pressed": false,
+      "gate_open": false,
+      "beacon_state": "red",
+      "feedback": "PLATE CLEAR - GATE CLOSED",
+      "state_hash": "54812f51dbe78519db0b89da83beee3ad1df1013ec635f7ee2531468009df1bc",
+      "event_count": 2,
+      "event_types": [
+        "reset",
+        "player_collision_start"
+      ]
+    },
+    {
+      "index": 1,
+      "file": "frames/frame-001.png",
+      "sha256": "0dd312e939d248b6c07506847d099db2315cdd5733e6ffb9549a35212ff1b608",
+      "captured_at": "2026-10-21T20:27:48.666Z",
+      "engine_tick": 129,
+      "simulation_step": 90,
+      "physics_frames_before": 129,
+      "physics_frames_after": 141,
+      "sim_time_seconds": 2.15,
+      "player_position": [
+        0,
+        0.850000023841858,
+        2.50000286102295
+      ],
+      "plate_pressed": false,
+      "gate_open": false,
+      "beacon_state": "red",
+      "feedback": "PLATE CLEAR - GATE CLOSED",
+      "state_hash": "15b25320f78f22eb2d8a496e78f7b43e405338f25bc388126dc3a8fcc216aa52",
+      "event_count": 3,
+      "event_types": [
+        "reset",
+        "player_collision_start",
+        "crate_collision_start"
+      ]
+    },
+    {
+      "index": 2,
+      "file": "frames/frame-002.png",
+      "sha256": "cc1bb5542dd3530d98b3884b78dbbcb81856e51705b4065f3f97b18d22f58f60",
+      "captured_at": "2026-10-21T20:27:49.698Z",
+      "engine_tick": 192,
+      "simulation_step": 135,
+      "physics_frames_before": 192,
+      "physics_frames_after": 203,
+      "sim_time_seconds": 3.2,
+      "player_position": [
+        0,
+        0.850000023841858,
+        -0.499997466802597
+      ],
+      "plate_pressed": true,
+      "gate_open": true,
+      "beacon_state": "green",
+      "feedback": "PLATE PRESSED",
+      "state_hash": "eb0ca7d3ec2560e92797e38de38e7844cdce1336c7fa74b679f39d5c8fdf0390",
+      "event_count": 5,
+      "event_types": [
+        "reset",
+        "player_collision_start",
+        "crate_collision_start",
+        "plate_entered",
+        "gate_open"
+      ]
+    },
+    {
+      "index": 3,
+      "file": "frames/frame-003.png",
+      "sha256": "e6d9911108dc343428189c76412ec902ed64b79fb4aa81d5d2b251827fb9209a",
+      "captured_at": "2026-10-21T20:27:50.741Z",
+      "engine_tick": 254,
+      "simulation_step": 180,
+      "physics_frames_before": 254,
+      "physics_frames_after": 266,
+      "sim_time_seconds": 4.233333333333333,
+      "player_position": [
+        0,
+        0.850934088230133,
+        -3.85085034370422
+      ],
+      "plate_pressed": false,
+      "gate_open": false,
+      "beacon_state": "red",
+      "feedback": "PLATE CLEAR - GATE CLOSED",
+      "state_hash": "d62eb17ab220ad9f6bc2674bd89488f70a716c456356b44974716d4d4013f5d7",
+      "event_count": 9,
+      "event_types": [
+        "reset",
+        "player_collision_start",
+        "crate_collision_start",
+        "plate_entered",
+        "gate_open",
+        "plate_exited",
+        "gate_close",
+        "player_collision_end"
+      ]
+    }
+  ],
+  "action_frames": {
+    "before": {
+      "file": "action-before.png",
+      "sha256": "fa4ca704e26a4ddd2d43ec3f2d73420ffb45a60aaadc59532c6789468db1f583",
+      "captured_at": "2026-10-21T20:27:51.110Z",
+      "engine_tick": 279,
+      "player_position": [
+        0,
+        0.850000023841858,
+        5.5
+      ]
+    },
+    "after": {
+      "file": "action-after.png",
+      "sha256": "e74ee404d686841d6621b3c9815d45cf45956b04a1293e88164b7901c50241bb",
+      "captured_at": "2026-10-21T20:27:52.081Z",
+      "engine_tick": 339,
+      "player_position": [
+        0,
+        0.850000023841858,
+        2.50000286102295
+      ]
+    }
+  }
+}

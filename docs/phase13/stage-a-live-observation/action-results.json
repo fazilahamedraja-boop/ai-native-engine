@@ -1,0 +1,98 @@
+{
+  "action_1_move_forward": {
+    "input": {
+      "forward": 1
+    },
+    "frames": 45,
+    "advance_duration_ms": 705,
+    "before": {
+      "state": {
+        "step": 3,
+        "physics_frames": 278,
+        "player_position": [
+          0,
+          0.850000023841858,
+          5.5
+        ],
+        "player_velocity": [
+          0,
+          0,
+          0
+        ],
+        "grounded": true,
+        "plate_pressed": false,
+        "gate_open": false,
+        "gate_collision_enabled": true,
+        "beacon_state": "red",
+        "goal_reached": false,
+        "feedback": "PLATE CLEAR - GATE CLOSED",
+        "prompt": "WALK ONTO THE PLATE",
+        "interaction_count": 0,
+        "hash": "8aa9f8bc5a9b7c3884b18ebb021d648d92e0b912cf12bc31c6a8cfb64c1598a9",
+        "outcome_hash": "1690a09a384d947e932f4af523e0b03abb4f3e59ed1def02104f2f074e23d181"
+      },
+      "screenshot": {
+        "path": "action-before.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase13\\docs\\phase13\\stage-a-live-observation\\action-before.png",
+        "bytes": 55408,
+        "sha256": "fa4ca704e26a4ddd2d43ec3f2d73420ffb45a60aaadc59532c6789468db1f583",
+        "width": 1280,
+        "height": 720
+      },
+      "captured_at": "2026-10-21T20:27:51.110Z",
+      "engine_tick": 279
+    },
+    "after": {
+      "state": {
+        "step": 48,
+        "physics_frames": 338,
+        "player_position": [
+          0,
+          0.850000023841858,
+          2.50000286102295
+        ],
+        "player_velocity": [
+          0,
+          0,
+          -4
+        ],
+        "grounded": true,
+        "plate_pressed": false,
+        "gate_open": false,
+        "gate_collision_enabled": true,
+        "beacon_state": "red",
+        "goal_reached": false,
+        "feedback": "PLATE CLEAR - GATE CLOSED",
+        "prompt": "WALK ONTO THE PLATE",
+        "interaction_count": 0,
+        "hash": "f7cf241e2714bc24c13c64c6487a3b6415b1c6c998346ea2b3b7feb8e06c001c",
+        "outcome_hash": "b4cad678eac0a16a1e786c27f17e1ff843ca5ea3ee6766acdfdb7cede23bc272"
+      },
+      "screenshot": {
+        "path": "action-after.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase13\\docs\\phase13\\stage-a-live-observation\\action-after.png",
+        "bytes": 57968,
+        "sha256": "e74ee404d686841d6621b3c9815d45cf45956b04a1293e88164b7901c50241bb",
+        "width": 1280,
+        "height": 720
+      },
+      "captured_at": "2026-10-21T20:27:52.081Z",
+      "engine_tick": 339
+    },
+    "expected_distance_metres": 3,
+    "actual_distance_metres": 2.99999713897705,
+    "distance_ratio": 0.9999990463256833,
+    "moved_towards_negative_z": true,
+    "verified_by_state": true
+  },
+  "action_2_interact": {
+    "input": {
+      "actions": {
+        "interact": true
+      }
+    },
+    "interaction_count_before": 0,
+    "interaction_count_after": 1,
+    "verified_by_state": true
+  }
+}

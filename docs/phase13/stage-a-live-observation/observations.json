@@ -1,0 +1,292 @@
+[
+  {
+    "index": 0,
+    "captured_at": "2026-10-21T20:27:47.608Z",
+    "capture_duration_ms": 197,
+    "engine_tick": 66,
+    "simulation_step": 45,
+    "physics_frames_before": 66,
+    "physics_frames_after": 78,
+    "sim_time_seconds": 1.1,
+    "paused_during_capture": true,
+    "advance": {
+      "frames": 45,
+      "duration_ms": 766
+    },
+    "screenshot": {
+      "path": "frames/frame-000.png",
+      "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase13\\docs\\phase13\\stage-a-live-observation\\frames\\frame-000.png",
+      "bytes": 54926,
+      "sha256": "7d2ec22c9dc008dc041faf9cd9cc99c28aaeedc98bd42207c36056864a13ce57",
+      "width": 1280,
+      "height": 720
+    },
+    "state": {
+      "step": 45,
+      "physics_frames": 80,
+      "player_position": [
+        0,
+        0.850000023841858,
+        5.5
+      ],
+      "player_velocity": [
+        0,
+        0,
+        0
+      ],
+      "grounded": true,
+      "plate_pressed": false,
+      "gate_open": false,
+      "gate_collision_enabled": true,
+      "beacon_state": "red",
+      "goal_reached": false,
+      "feedback": "PLATE CLEAR - GATE CLOSED",
+      "prompt": "WALK ONTO THE PLATE",
+      "interaction_count": 0,
+      "hash": "54812f51dbe78519db0b89da83beee3ad1df1013ec635f7ee2531468009df1bc",
+      "outcome_hash": "38c23e5c4a3685bebfa178873a7574cd68d06dc08067cf21814c80e4bbdc2e0c"
+    },
+    "observation": {
+      "engine_tick": 79,
+      "node_count": 5,
+      "event_count": 2,
+      "event_types": [
+        "reset",
+        "player_collision_start"
+      ],
+      "player_world_origin": [
+        0,
+        0.850000023841858,
+        5.5
+      ],
+      "main_properties": {
+        "beacon_state": "red",
+        "feedback": "PLATE CLEAR - GATE CLOSED",
+        "gate_collision_enabled": true,
+        "gate_open": false,
+        "goal_reached": false,
+        "plate_pressed": false
+      }
+    }
+  },
+  {
+    "index": 1,
+    "captured_at": "2026-10-21T20:27:48.666Z",
+    "capture_duration_ms": 201,
+    "engine_tick": 129,
+    "simulation_step": 90,
+    "physics_frames_before": 129,
+    "physics_frames_after": 141,
+    "sim_time_seconds": 2.15,
+    "paused_during_capture": true,
+    "advance": {
+      "frames": 45,
+      "duration_ms": 759
+    },
+    "screenshot": {
+      "path": "frames/frame-001.png",
+      "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase13\\docs\\phase13\\stage-a-live-observation\\frames\\frame-001.png",
+      "bytes": 57998,
+      "sha256": "0dd312e939d248b6c07506847d099db2315cdd5733e6ffb9549a35212ff1b608",
+      "width": 1280,
+      "height": 720
+    },
+    "state": {
+      "step": 90,
+      "physics_frames": 144,
+      "player_position": [
+        0,
+        0.850000023841858,
+        2.50000286102295
+      ],
+      "player_velocity": [
+        0,
+        0,
+        -4
+      ],
+      "grounded": true,
+      "plate_pressed": false,
+      "gate_open": false,
+      "gate_collision_enabled": true,
+      "beacon_state": "red",
+      "goal_reached": false,
+      "feedback": "PLATE CLEAR - GATE CLOSED",
+      "prompt": "WALK ONTO THE PLATE",
+      "interaction_count": 0,
+      "hash": "15b25320f78f22eb2d8a496e78f7b43e405338f25bc388126dc3a8fcc216aa52",
+      "outcome_hash": "51bd1f5976a024c08e7a7fc1f7795cefeced9ce9068f6cccb06950846591d795"
+    },
+    "observation": {
+      "engine_tick": 143,
+      "node_count": 5,
+      "event_count": 3,
+      "event_types": [
+        "reset",
+        "player_collision_start",
+        "crate_collision_start"
+      ],
+      "player_world_origin": [
+        0,
+        0.850000023841858,
+        2.50000286102295
+      ],
+      "main_properties": {
+        "beacon_state": "red",
+        "feedback": "PLATE CLEAR - GATE CLOSED",
+        "gate_collision_enabled": true,
+        "gate_open": false,
+        "goal_reached": false,
+        "plate_pressed": false
+      }
+    }
+  },
+  {
+    "index": 2,
+    "captured_at": "2026-10-21T20:27:49.698Z",
+    "capture_duration_ms": 189,
+    "engine_tick": 192,
+    "simulation_step": 135,
+    "physics_frames_before": 192,
+    "physics_frames_after": 203,
+    "sim_time_seconds": 3.2,
+    "paused_during_capture": true,
+    "advance": {
+      "frames": 45,
+      "duration_ms": 770
+    },
+    "screenshot": {
+      "path": "frames/frame-002.png",
+      "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase13\\docs\\phase13\\stage-a-live-observation\\frames\\frame-002.png",
+      "bytes": 64007,
+      "sha256": "cc1bb5542dd3530d98b3884b78dbbcb81856e51705b4065f3f97b18d22f58f60",
+      "width": 1280,
+      "height": 720
+    },
+    "state": {
+      "step": 135,
+      "physics_frames": 206,
+      "player_position": [
+        0,
+        0.850000023841858,
+        -0.499997466802597
+      ],
+      "player_velocity": [
+        0,
+        0,
+        -4
+      ],
+      "grounded": true,
+      "plate_pressed": true,
+      "gate_open": true,
+      "gate_collision_enabled": false,
+      "beacon_state": "green",
+      "goal_reached": false,
+      "feedback": "PLATE PRESSED",
+      "prompt": "GATE OPEN - GO THROUGH",
+      "interaction_count": 0,
+      "hash": "eb0ca7d3ec2560e92797e38de38e7844cdce1336c7fa74b679f39d5c8fdf0390",
+      "outcome_hash": "2a6bd5fdb1d4d3265e674b33bb6470e9255afd31b5d6eb37eee1423ab6fb19c9"
+    },
+    "observation": {
+      "engine_tick": 205,
+      "node_count": 5,
+      "event_count": 5,
+      "event_types": [
+        "reset",
+        "player_collision_start",
+        "crate_collision_start",
+        "plate_entered",
+        "gate_open"
+      ],
+      "player_world_origin": [
+        0,
+        0.850000023841858,
+        -0.499997466802597
+      ],
+      "main_properties": {
+        "beacon_state": "green",
+        "feedback": "PLATE PRESSED",
+        "gate_collision_enabled": false,
+        "gate_open": true,
+        "goal_reached": false,
+        "plate_pressed": true
+      }
+    }
+  },
+  {
+    "index": 3,
+    "captured_at": "2026-10-21T20:27:50.741Z",
+    "capture_duration_ms": 214,
+    "engine_tick": 254,
+    "simulation_step": 180,
+    "physics_frames_before": 254,
+    "physics_frames_after": 266,
+    "sim_time_seconds": 4.233333333333333,
+    "paused_during_capture": true,
+    "advance": {
+      "frames": 45,
+      "duration_ms": 751
+    },
+    "screenshot": {
+      "path": "frames/frame-003.png",
+      "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase13\\docs\\phase13\\stage-a-live-observation\\frames\\frame-003.png",
+      "bytes": 71301,
+      "sha256": "e6d9911108dc343428189c76412ec902ed64b79fb4aa81d5d2b251827fb9209a",
+      "width": 1280,
+      "height": 720
+    },
+    "state": {
+      "step": 180,
+      "physics_frames": 269,
+      "player_position": [
+        0,
+        0.850934088230133,
+        -3.85085034370422
+      ],
+      "player_velocity": [
+        0,
+        0,
+        -4
+      ],
+      "grounded": true,
+      "plate_pressed": false,
+      "gate_open": false,
+      "gate_collision_enabled": true,
+      "beacon_state": "red",
+      "goal_reached": false,
+      "feedback": "PLATE CLEAR - GATE CLOSED",
+      "prompt": "WALK ONTO THE PLATE",
+      "interaction_count": 0,
+      "hash": "d62eb17ab220ad9f6bc2674bd89488f70a716c456356b44974716d4d4013f5d7",
+      "outcome_hash": "dbde50cf47ebcc1725329d37264c6411806241f994a730ce36a4614e29bac9d5"
+    },
+    "observation": {
+      "engine_tick": 268,
+      "node_count": 5,
+      "event_count": 9,
+      "event_types": [
+        "reset",
+        "player_collision_start",
+        "crate_collision_start",
+        "plate_entered",
+        "gate_open",
+        "plate_exited",
+        "gate_close",
+        "player_collision_end"
+      ],
+      "player_world_origin": [
+        0,
+        0.850934088230133,
+        -3.85085034370422
+      ],
+      "main_properties": {
+        "beacon_state": "red",
+        "feedback": "PLATE CLEAR - GATE CLOSED",
+        "gate_collision_enabled": true,
+        "gate_open": false,
+        "goal_reached": false,
+        "plate_pressed": false
+      }
+    }
+  }
+]
