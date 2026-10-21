@@ -1,0 +1,2728 @@
+{
+  "project_source": "fixtures/observation",
+  "temporary_copy": true,
+  "observation": {
+    "events": {
+      "available": true,
+      "count": 5,
+      "items": [
+        {
+          "label": "harness_reset",
+          "sequence": 1,
+          "sim_time_seconds": 0.283333333333333,
+          "simulation_step": 0,
+          "simulation_time_seconds": 0,
+          "source": "fixture_recorded",
+          "tick": 17,
+          "tick_domain": "engine_physics_frames",
+          "type": "reset",
+          "wall_time_ms": 1024
+        },
+        {
+          "collider": "/root/Main/Ground",
+          "normal": [
+            0,
+            1,
+            0
+          ],
+          "position": [
+            0,
+            0,
+            5.5
+          ],
+          "sequence": 2,
+          "sim_time_seconds": 0.316666666666667,
+          "simulation_step": 1,
+          "simulation_time_seconds": 0.0166666666666667,
+          "source": "fixture_recorded",
+          "tick": 19,
+          "tick_domain": "engine_physics_frames",
+          "type": "player_collision_start",
+          "wall_time_ms": 1061
+        },
+        {
+          "body": "/root/Main/Ground",
+          "crate_position": [
+            4.19999933242798,
+            0.347229689359665,
+            2.50000166893005
+          ],
+          "sequence": 3,
+          "sim_time_seconds": 1.1,
+          "simulation_step": 46,
+          "simulation_time_seconds": 0.766666666666667,
+          "source": "fixture_recorded",
+          "tick": 66,
+          "tick_domain": "engine_physics_frames",
+          "type": "crate_collision_start",
+          "wall_time_ms": 1848
+        },
+        {
+          "body": "/root/Main/Player",
+          "sequence": 4,
+          "sim_time_seconds": 1.7,
+          "simulation_step": 82,
+          "simulation_time_seconds": 1.36666666666667,
+          "source": "fixture_recorded",
+          "tick": 102,
+          "tick_domain": "engine_physics_frames",
+          "type": "plate_entered",
+          "wall_time_ms": 2447
+        },
+        {
+          "collision_enabled": false,
+          "plate_pressed": true,
+          "sequence": 5,
+          "sim_time_seconds": 1.7,
+          "simulation_step": 82,
+          "simulation_time_seconds": 1.36666666666667,
+          "source": "fixture_recorded",
+          "tick": 102,
+          "tick_domain": "engine_physics_frames",
+          "type": "gate_open",
+          "wall_time_ms": 2447
+        }
+      ],
+      "since_tick": 0,
+      "source": "fixture_recorded",
+      "truncated": false
+    },
+    "nodes": [
+      {
+        "children": [
+          {
+            "class": "WorldEnvironment",
+            "is_inside_tree": true,
+            "name": "WorldEnvironment",
+            "path": "/root/Main/WorldEnvironment",
+            "process_mode": 0,
+            "source": "measured"
+          },
+          {
+            "class": "DirectionalLight3D",
+            "global_transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                -0.390980362892151,
+                -0.251807242631912,
+                -0.112111814320087,
+                0.878156244754791
+              ],
+              "rotation_degrees": [
+                -48.0000047508163,
+                -31.9999997521163,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                -0.390980362892151,
+                -0.251807272434235,
+                -0.112111814320087,
+                0.878156244754791
+              ],
+              "rotation_degrees": [
+                -48.0000047508163,
+                -31.9999997521163,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                0.999999940395355
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "Sun",
+            "path": "/root/Main/Sun",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "class": "StaticBody3D",
+            "global_transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "Ground",
+            "path": "/root/Main/Ground",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "class": "StaticBody3D",
+            "global_transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "LeftWall",
+            "path": "/root/Main/LeftWall",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "class": "StaticBody3D",
+            "global_transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "RightWall",
+            "path": "/root/Main/RightWall",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "class": "StaticBody3D",
+            "global_transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "LeftPost",
+            "path": "/root/Main/LeftPost",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "class": "StaticBody3D",
+            "global_transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "RightPost",
+            "path": "/root/Main/RightPost",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "class": "StaticBody3D",
+            "global_transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "Lintel",
+            "path": "/root/Main/Lintel",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "class": "Area3D",
+            "global_transform": {
+              "origin": [
+                0,
+                0.100000001490116,
+                -1.10000002384186
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                0.100000001490116,
+                -1.10000002384186
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "Plate",
+            "path": "/root/Main/Plate",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "class": "StaticBody3D",
+            "global_transform": {
+              "origin": [
+                0,
+                4.30000019073486,
+                -2.5
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                4.30000019073486,
+                -2.5
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "Gate",
+            "path": "/root/Main/Gate",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "class": "Node3D",
+            "global_transform": {
+              "origin": [
+                2.79999995231628,
+                0,
+                -1
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                2.79999995231628,
+                0,
+                -1
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "Beacon",
+            "path": "/root/Main/Beacon",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "class": "Node3D",
+            "global_transform": {
+              "origin": [
+                0,
+                0,
+                -4.59999990463257
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                0,
+                -4.59999990463257
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "Goal",
+            "path": "/root/Main/Goal",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "class": "CharacterBody3D",
+            "global_transform": {
+              "origin": [
+                0,
+                0.850000023841858,
+                -0.166664153337479
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                0.850000023841858,
+                -0.166664153337479
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "Player",
+            "path": "/root/Main/Player",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "class": "RigidBody3D",
+            "global_transform": {
+              "origin": [
+                4.20000553131104,
+                0.347224950790405,
+                2.50000500679016
+              ],
+              "quaternion": [
+                5.52103983864072e-7,
+                -0.00000229544002650073,
+                -0.00000612804296906688,
+                1
+              ],
+              "rotation_degrees": [
+                0.0000632648473528715,
+                -0.000263038442114338,
+                -0.000702222153935325
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                4.20000553131104,
+                0.347224950790405,
+                2.50000500679016
+              ],
+              "quaternion": [
+                5.52103983864072e-7,
+                -0.00000229544002650073,
+                -0.00000612804296906688,
+                1
+              ],
+              "rotation_degrees": [
+                0.0000632648473528715,
+                -0.000263038442114338,
+                -0.000702222153935325
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "Crate",
+            "path": "/root/Main/Crate",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "class": "Node3D",
+            "global_transform": {
+              "origin": [
+                3.20000004768372,
+                0,
+                1
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                3.20000004768372,
+                0,
+                1
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "Humanoid",
+            "path": "/root/Main/Humanoid",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "class": "Camera3D",
+            "global_transform": {
+              "origin": [
+                0,
+                5.84999990463257,
+                8.33333587646484
+              ],
+              "quaternion": [
+                -0.170400887727737,
+                0,
+                0,
+                0.985374808311462
+              ],
+              "rotation_degrees": [
+                -19.6222558061383,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                5.84999990463257,
+                8.33333587646484
+              ],
+              "quaternion": [
+                -0.170400887727737,
+                0,
+                0,
+                0.985374808311462
+              ],
+              "rotation_degrees": [
+                -19.6222558061383,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "Camera",
+            "path": "/root/Main/Camera",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "class": "CanvasLayer",
+            "is_inside_tree": true,
+            "name": "HUD",
+            "path": "/root/Main/HUD",
+            "process_mode": 0,
+            "source": "measured"
+          }
+        ],
+        "class": "Node3D",
+        "descendant_limit": 256,
+        "descendant_truncated": false,
+        "global_transform": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "quaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "rotation_degrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "source": "measured",
+          "space": "world"
+        },
+        "is_inside_tree": true,
+        "local_transform": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "quaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "rotation_degrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "source": "measured",
+          "space": "parent"
+        },
+        "name": "Main",
+        "path": "/root/Main",
+        "process_mode": 0,
+        "properties": {
+          "missing": [],
+          "source": "measured",
+          "values": {
+            "beacon_state": "green",
+            "gate_collision_enabled": false,
+            "gate_open": true,
+            "plate_pressed": true
+          }
+        },
+        "source": "measured",
+        "visible": true
+      },
+      {
+        "character": {
+          "derived": {
+            "horizontal_speed": 4,
+            "speed": 4
+          },
+          "floor_normal": [
+            0,
+            1,
+            0
+          ],
+          "is_on_ceiling": false,
+          "is_on_floor": true,
+          "is_on_wall": false,
+          "slide_collision_count": 1,
+          "slide_collisions": [
+            {
+              "collider": "/root/Main/Ground",
+              "normal": [
+                0,
+                1,
+                0
+              ],
+              "position": [
+                0,
+                0,
+                -0.166664153337479
+              ]
+            }
+          ],
+          "source": "measured",
+          "velocity": [
+            0,
+            0,
+            -4
+          ],
+          "wall_normal": [
+            0,
+            0,
+            0
+          ]
+        },
+        "children": [
+          {
+            "class": "CollisionShape3D",
+            "global_transform": {
+              "origin": [
+                0,
+                0.850000023841858,
+                -0.166664153337479
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "Collision",
+            "path": "/root/Main/Player/Collision",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "class": "MeshInstance3D",
+            "global_transform": {
+              "origin": [
+                0,
+                0.850000023841858,
+                -0.166664153337479
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "Body",
+            "path": "/root/Main/Player/Body",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "class": "MeshInstance3D",
+            "global_transform": {
+              "origin": [
+                0,
+                1.33000004291534,
+                -0.536664128303528
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                0.479999989271164,
+                -0.370000004768372
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "Visor",
+            "path": "/root/Main/Player/Visor",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          }
+        ],
+        "class": "CharacterBody3D",
+        "collision_shapes": [
+          {
+            "class": "CollisionShape3D",
+            "disabled": false,
+            "global_transform": {
+              "origin": [
+                0,
+                0.850000023841858,
+                -0.166664153337479
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "name": "Collision",
+            "path": "/root/Main/Player/Collision",
+            "shape": {
+              "height": 1.70000004768372,
+              "radius": 0.400000005960464
+            },
+            "shape_class": "CapsuleShape3D",
+            "source": "measured",
+            "transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            }
+          }
+        ],
+        "descendant_limit": 256,
+        "descendant_truncated": false,
+        "global_transform": {
+          "origin": [
+            0,
+            0.850000023841858,
+            -0.166664153337479
+          ],
+          "quaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "rotation_degrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "source": "measured",
+          "space": "world"
+        },
+        "is_inside_tree": true,
+        "local_transform": {
+          "origin": [
+            0,
+            0.850000023841858,
+            -0.166664153337479
+          ],
+          "quaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "rotation_degrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "source": "measured",
+          "space": "parent"
+        },
+        "name": "Player",
+        "path": "/root/Main/Player",
+        "process_mode": 0,
+        "properties": {
+          "missing": [
+            "plate_pressed",
+            "gate_open",
+            "gate_collision_enabled",
+            "beacon_state"
+          ],
+          "source": "measured",
+          "values": {}
+        },
+        "source": "measured",
+        "visible": true
+      },
+      {
+        "children": [
+          {
+            "class": "CollisionShape3D",
+            "global_transform": {
+              "origin": [
+                0,
+                0.100000001490116,
+                -1.10000002384186
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "Collision",
+            "path": "/root/Main/Plate/Collision",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "class": "MeshInstance3D",
+            "global_transform": {
+              "origin": [
+                0,
+                0.100000001490116,
+                -1.10000002384186
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "Mesh",
+            "path": "/root/Main/Plate/Mesh",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "class": "Label3D",
+            "global_transform": {
+              "origin": [
+                0,
+                0.449999988079071,
+                -1.10000002384186
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                0.349999994039536,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "PlateLabel",
+            "path": "/root/Main/Plate/PlateLabel",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          }
+        ],
+        "class": "Area3D",
+        "collision_shapes": [
+          {
+            "class": "CollisionShape3D",
+            "disabled": false,
+            "global_transform": {
+              "origin": [
+                0,
+                0.100000001490116,
+                -1.10000002384186
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "name": "Collision",
+            "path": "/root/Main/Plate/Collision",
+            "shape": {
+              "size": [
+                1.79999995231628,
+                0.200000002980232,
+                2.20000004768372
+              ]
+            },
+            "shape_class": "BoxShape3D",
+            "source": "measured",
+            "transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            }
+          }
+        ],
+        "descendant_limit": 256,
+        "descendant_truncated": false,
+        "global_transform": {
+          "origin": [
+            0,
+            0.100000001490116,
+            -1.10000002384186
+          ],
+          "quaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "rotation_degrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "source": "measured",
+          "space": "world"
+        },
+        "is_inside_tree": true,
+        "local_transform": {
+          "origin": [
+            0,
+            0.100000001490116,
+            -1.10000002384186
+          ],
+          "quaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "rotation_degrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "source": "measured",
+          "space": "parent"
+        },
+        "name": "Plate",
+        "path": "/root/Main/Plate",
+        "process_mode": 0,
+        "properties": {
+          "missing": [
+            "plate_pressed",
+            "gate_open",
+            "gate_collision_enabled",
+            "beacon_state"
+          ],
+          "source": "measured",
+          "values": {}
+        },
+        "source": "measured",
+        "visible": true
+      },
+      {
+        "children": [
+          {
+            "class": "CollisionShape3D",
+            "global_transform": {
+              "origin": [
+                0,
+                4.30000019073486,
+                -2.5
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "Collision",
+            "path": "/root/Main/Gate/Collision",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "class": "MeshInstance3D",
+            "global_transform": {
+              "origin": [
+                0,
+                4.30000019073486,
+                -2.5
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "Mesh",
+            "path": "/root/Main/Gate/Mesh",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "class": "Label3D",
+            "global_transform": {
+              "origin": [
+                0,
+                4.30000019073486,
+                -2.25
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                0,
+                0.25
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "GateLabel",
+            "path": "/root/Main/Gate/GateLabel",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          }
+        ],
+        "class": "StaticBody3D",
+        "collision_shapes": [
+          {
+            "class": "CollisionShape3D",
+            "disabled": true,
+            "global_transform": {
+              "origin": [
+                0,
+                4.30000019073486,
+                -2.5
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "name": "Collision",
+            "path": "/root/Main/Gate/Collision",
+            "shape": {
+              "size": [
+                4,
+                2.59999990463257,
+                0.300000011920929
+              ]
+            },
+            "shape_class": "BoxShape3D",
+            "source": "measured",
+            "transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            }
+          }
+        ],
+        "descendant_limit": 256,
+        "descendant_truncated": false,
+        "global_transform": {
+          "origin": [
+            0,
+            4.30000019073486,
+            -2.5
+          ],
+          "quaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "rotation_degrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "source": "measured",
+          "space": "world"
+        },
+        "is_inside_tree": true,
+        "local_transform": {
+          "origin": [
+            0,
+            4.30000019073486,
+            -2.5
+          ],
+          "quaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "rotation_degrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "source": "measured",
+          "space": "parent"
+        },
+        "name": "Gate",
+        "path": "/root/Main/Gate",
+        "process_mode": 0,
+        "properties": {
+          "missing": [
+            "plate_pressed",
+            "gate_open",
+            "gate_collision_enabled",
+            "beacon_state"
+          ],
+          "source": "measured",
+          "values": {}
+        },
+        "source": "measured",
+        "visible": true
+      },
+      {
+        "animations": [
+          {
+            "assigned_animation": "pulse",
+            "current_animation": "pulse",
+            "current_animation_position": 1.45772733333333,
+            "is_playing": true,
+            "name": "Pulse",
+            "path": "/root/Main/Beacon/Pulse",
+            "source": "measured",
+            "speed_scale": 1
+          }
+        ],
+        "children": [
+          {
+            "class": "MeshInstance3D",
+            "global_transform": {
+              "origin": [
+                2.79999995231628,
+                0.649999976158142,
+                -1
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                0.649999976158142,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "Pole",
+            "path": "/root/Main/Beacon/Pole",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "class": "MeshInstance3D",
+            "global_transform": {
+              "origin": [
+                2.79999995231628,
+                1.5,
+                -1
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1.13556814193726,
+                1.13556814193726,
+                1.13556814193726
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                1.5,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1.13556814193726,
+                1.13556814193726,
+                1.13556814193726
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "Orb",
+            "path": "/root/Main/Beacon/Orb",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "class": "Label3D",
+            "global_transform": {
+              "origin": [
+                2.79999995231628,
+                2.04999995231628,
+                -1
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                2.04999995231628,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "BeaconLabel",
+            "path": "/root/Main/Beacon/BeaconLabel",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "class": "AnimationPlayer",
+            "is_inside_tree": true,
+            "name": "Pulse",
+            "path": "/root/Main/Beacon/Pulse",
+            "process_mode": 0,
+            "source": "measured"
+          }
+        ],
+        "class": "Node3D",
+        "descendant_limit": 256,
+        "descendant_truncated": false,
+        "global_transform": {
+          "origin": [
+            2.79999995231628,
+            0,
+            -1
+          ],
+          "quaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "rotation_degrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "source": "measured",
+          "space": "world"
+        },
+        "is_inside_tree": true,
+        "local_transform": {
+          "origin": [
+            2.79999995231628,
+            0,
+            -1
+          ],
+          "quaternion": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "rotation_degrees": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "source": "measured",
+          "space": "parent"
+        },
+        "name": "Beacon",
+        "path": "/root/Main/Beacon",
+        "process_mode": 0,
+        "properties": {
+          "missing": [
+            "plate_pressed",
+            "gate_open",
+            "gate_collision_enabled",
+            "beacon_state"
+          ],
+          "source": "measured",
+          "values": {}
+        },
+        "source": "measured",
+        "visible": true
+      },
+      {
+        "children": [
+          {
+            "class": "CollisionShape3D",
+            "global_transform": {
+              "origin": [
+                4.20000553131104,
+                0.347224950790405,
+                2.50000500679016
+              ],
+              "quaternion": [
+                5.52103983864072e-7,
+                -0.00000229544002650073,
+                -0.00000612804296906688,
+                1
+              ],
+              "rotation_degrees": [
+                0.0000632648473528715,
+                -0.000263038442114338,
+                -0.000702222153935325
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "Collision",
+            "path": "/root/Main/Crate/Collision",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          },
+          {
+            "class": "MeshInstance3D",
+            "global_transform": {
+              "origin": [
+                4.20000553131104,
+                0.347224950790405,
+                2.50000500679016
+              ],
+              "quaternion": [
+                5.52103983864072e-7,
+                -0.00000229544002650073,
+                -0.00000612804296906688,
+                1
+              ],
+              "rotation_degrees": [
+                0.0000632648473528715,
+                -0.000263038442114338,
+                -0.000702222153935325
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "is_inside_tree": true,
+            "local_transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            },
+            "name": "Mesh",
+            "path": "/root/Main/Crate/Mesh",
+            "process_mode": 0,
+            "source": "measured",
+            "visible": true
+          }
+        ],
+        "class": "RigidBody3D",
+        "collision_shapes": [
+          {
+            "class": "CollisionShape3D",
+            "disabled": false,
+            "global_transform": {
+              "origin": [
+                4.20000553131104,
+                0.347224950790405,
+                2.50000500679016
+              ],
+              "quaternion": [
+                5.52103983864072e-7,
+                -0.00000229544002650073,
+                -0.00000612804296906688,
+                1
+              ],
+              "rotation_degrees": [
+                0.0000632648473528715,
+                -0.000263038442114338,
+                -0.000702222153935325
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "world"
+            },
+            "name": "Collision",
+            "path": "/root/Main/Crate/Collision",
+            "shape": {
+              "size": [
+                0.699999988079071,
+                0.699999988079071,
+                0.699999988079071
+              ]
+            },
+            "shape_class": "BoxShape3D",
+            "source": "measured",
+            "transform": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "quaternion": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "rotation_degrees": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "source": "measured",
+              "space": "parent"
+            }
+          }
+        ],
+        "descendant_limit": 256,
+        "descendant_truncated": false,
+        "global_transform": {
+          "origin": [
+            4.20000553131104,
+            0.347224950790405,
+            2.50000500679016
+          ],
+          "quaternion": [
+            5.52103983864072e-7,
+            -0.00000229544002650073,
+            -0.00000612804296906688,
+            1
+          ],
+          "rotation_degrees": [
+            0.0000632648473528715,
+            -0.000263038442114338,
+            -0.000702222153935325
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "source": "measured",
+          "space": "world"
+        },
+        "is_inside_tree": true,
+        "local_transform": {
+          "origin": [
+            4.20000553131104,
+            0.347224950790405,
+            2.50000500679016
+          ],
+          "quaternion": [
+            5.52103983864072e-7,
+            -0.00000229544002650073,
+            -0.00000612804296906688,
+            1
+          ],
+          "rotation_degrees": [
+            0.0000632648473528715,
+            -0.000263038442114338,
+            -0.000702222153935325
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "source": "measured",
+          "space": "parent"
+        },
+        "name": "Crate",
+        "path": "/root/Main/Crate",
+        "process_mode": 0,
+        "properties": {
+          "missing": [
+            "plate_pressed",
+            "gate_open",
+            "gate_collision_enabled",
+            "beacon_state"
+          ],
+          "source": "measured",
+          "values": {}
+        },
+        "rigid_body": {
+          "angular_velocity": [
+            -0.000140938165714033,
+            -0.0000748834718251601,
+            0.0000062943872762844
+          ],
+          "can_sleep": true,
+          "derived": {
+            "speed": 0.0000215464697248535
+          },
+          "gravity_scale": 1,
+          "linear_velocity": [
+            -0.000019928440451622,
+            0.00000133737921714783,
+            -0.00000808201730251312
+          ],
+          "mass": 1,
+          "sleeping": true,
+          "source": "measured"
+        },
+        "source": "measured",
+        "visible": true
+      }
+    ],
+    "runtime": {
+      "captured_at": "2026-10-21T14:51:43Z",
+      "godot": "4.7.2-stable (official)",
+      "paused": true,
+      "physics_frames": 121,
+      "physics_ticks_per_second": 60,
+      "sim_time_seconds": 2.01666666666667,
+      "sim_time_seconds_source": "derived",
+      "source": "measured",
+      "spaces": {
+        "global": "world",
+        "local": "parent"
+      },
+      "tick": 121,
+      "units": {
+        "position": "m",
+        "rotation": "deg",
+        "time": "s",
+        "velocity": "m/s"
+      },
+      "unix_time": 1792594303.412,
+      "uptime_ms": 1942
+    }
+  },
+  "capture": {
+    "run_id": "stage-d-446a3f3a-d958-47e4-b977-f1fa6d41e865-repaired-plate",
+    "scenario": "repaired: player on pressure plate, gate open",
+    "captured_at": "2026-10-21T14:51:43.385Z",
+    "tick": 108,
+    "simulation_step": 88,
+    "screenshot": {
+      "width": 1280,
+      "height": 720,
+      "bytes": 64133,
+      "sha256": "82fb0d4959739a10737864097a1dc2d0fe6a5fc6b9b79300d8ab323c28bf75f1",
+      "tick": 116,
+      "headless": false
+    },
+    "stored_screenshot": {
+      "path": "stage-d-repaired-plate.png",
+      "bytes": 64133,
+      "sha256": "82fb0d4959739a10737864097a1dc2d0fe6a5fc6b9b79300d8ab323c28bf75f1"
+    },
+    "state": {
+      "beacon_state": "green",
+      "crate_linear_velocity": [
+        -0.000019928440451622,
+        0.00000133737921714783,
+        -0.00000808201730251312
+      ],
+      "crate_position": [
+        4.20000553131104,
+        0.347224950790405,
+        2.50000500679016
+      ],
+      "crate_sleeping": true,
+      "events_count": 5,
+      "feedback": "PLATE PRESSED",
+      "game_ready": true,
+      "gate_collision_enabled": false,
+      "gate_open": true,
+      "goal_reached": false,
+      "grounded": true,
+      "hash": "4d9ba8e9f9b492e779ca0b0fb75bf7c35e2f6b029c4f8f5bcf9777232ee44ca2",
+      "hud": "OBSERVATION FIXTURE\nPLATE: PRESSED   GATE: OPEN\nBEACON: GREEN   CRATE: 0.35 m\nPLAYER z=-0.17   STEP: 88   TICK: 107\nEVENTS: 5   FEEDBACK: PLATE PRESSED",
+      "humanoid_bones": [
+        "root",
+        "spine",
+        "chest",
+        "head"
+      ],
+      "humanoid_mesh_count": 22,
+      "input": {
+        "actions": {
+          "interact": false
+        },
+        "forward": 1,
+        "jump": false,
+        "restart": false,
+        "strafe": 0
+      },
+      "interaction_count": 0,
+      "last_event_sequence": 5,
+      "last_event_type": "gate_open",
+      "outcome_hash": "3640413193083bbe8c6018bd52081f0188a35065edf08e5b1ef00c50d6b32462",
+      "paused": true,
+      "physics_frames": 108,
+      "physics_ticks_per_second": 60,
+      "plate_pressed": true,
+      "player_colliders": [
+        "/root/Main/Ground"
+      ],
+      "player_motion": [
+        0,
+        0,
+        -0.0666666626930237
+      ],
+      "player_position": [
+        0,
+        0.850000023841858,
+        -0.166664153337479
+      ],
+      "player_velocity": [
+        0,
+        0,
+        -4
+      ],
+      "prompt": "GATE OPEN - GO THROUGH",
+      "step": 88,
+      "uptime_ms": 1720,
+      "wall_contact": false
+    }
+  },
+  "state_match": {
+    "plate_pressed": true,
+    "gate_open": true,
+    "gate_collision_enabled": true,
+    "beacon_state": true,
+    "simulation_step": 88,
+    "engine_tick_at_state": 108,
+    "engine_tick_at_observation": 121,
+    "engine_tick_delta": 13,
+    "screenshot_tick_delta": 8,
+    "note": "Paused state comparison; rendering can advance engine ticks without changing the fixture simulation step."
+  }
+}

@@ -1,0 +1,1961 @@
+{
+  "operation": "stage_d_defect_repair_evidence",
+  "stage": "phase10-d",
+  "run_id": "stage-d-446a3f3a-d958-47e4-b977-f1fa6d41e865",
+  "started_at": "2026-10-21T14:51:13.985Z",
+  "finished_at": "2026-10-21T14:51:45.640Z",
+  "project_source": "fixtures/observation",
+  "temporary_copy": true,
+  "defect": {
+    "id": "inverted-gate-condition",
+    "file": "scripts/observation_world.gd",
+    "correct_line": "\tif plate_pressed == gate_open:",
+    "defect_line": "\tif plate_pressed != gate_open:",
+    "replacement_count": 1,
+    "source_sha256": "97ca10f4673ea0a6b293207865f5c9506a430d25043c25e21c6ff32539331bdb",
+    "defect_sha256": "b8d33dcc8968d4b5be22f6950cd1cd149dd588da35855f0360afa1b0925c77ec",
+    "repaired_sha256": "97ca10f4673ea0a6b293207865f5c9506a430d25043c25e21c6ff32539331bdb",
+    "repaired_matches_source": true
+  },
+  "test": {
+    "script": "res://tests/run_observation.gd",
+    "script_sha256": "abf91c78a6444f7203845311dd08223acbd12ab8fdabbfff55b4ae207b09413d",
+    "same_script_before_and_after": true,
+    "before": {
+      "path": "stage-d-test-before.json",
+      "bytes": 1685,
+      "sha256": "77cbb6e30a1ec6aa4efa9b2deb8c963a85e73de605abf177492fcc8ea7a0993a",
+      "ok": false,
+      "exitCode": 1,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 10788,
+      "reason": "test cases failed",
+      "summary": {
+        "passed": 6,
+        "failed": 2
+      },
+      "results": [
+        {
+          "name": "observation-initial-state",
+          "passed": true,
+          "detail": "plate=false gate=false collision=true beacon=red grounded=true position=[0.0, 0.85000002384186, 5.5]"
+        },
+        {
+          "name": "observation-plate-opens-gate",
+          "passed": false,
+          "detail": "plate=true gate=false collision=true beacon=red events=[\"reset\", \"player_collision_start\", \"crate_collision_start\", \"plate_entered\"]"
+        },
+        {
+          "name": "observation-gate-passable-after-plate",
+          "passed": false,
+          "detail": "goal=false z=-1.950 events=[\"reset\", \"player_collision_start\", \"crate_collision_start\", \"plate_entered\", \"player_collision_start\", \"player_collision_end\"]"
+        },
+        {
+          "name": "observation-closed-gate-blocks",
+          "passed": true,
+          "detail": "plate=false gate=false z=-1.950 gate_collision_seen=true"
+        },
+        {
+          "name": "observation-event-stream",
+          "passed": true,
+          "detail": "count=4 ordered=true fields_ok=true"
+        },
+        {
+          "name": "observation-reset",
+          "passed": true,
+          "detail": "step=0 plate=false gate=false beacon=red crate_y=2.992 last_event=reset"
+        },
+        {
+          "name": "observation-humanoid-probe",
+          "passed": true,
+          "detail": "mesh_count=22 bones=[\"root\", \"spine\", \"chest\", \"head\"]"
+        },
+        {
+          "name": "observation-crate-falls",
+          "passed": true,
+          "detail": "crate_y=0.347 ground_collision=true sleeping=true"
+        }
+      ],
+      "errors": []
+    },
+    "after": {
+      "path": "stage-d-test-after.json",
+      "bytes": 1760,
+      "sha256": "36033983bc1916bf4ffbfbae937cd03570a1a8e1a8a9baf69765de6aa2107a31",
+      "ok": true,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "durationMs": 10700,
+      "reason": "tests passed",
+      "summary": {
+        "passed": 8,
+        "failed": 0
+      },
+      "results": [
+        {
+          "name": "observation-initial-state",
+          "passed": true,
+          "detail": "plate=false gate=false collision=true beacon=red grounded=true position=[0.0, 0.85000002384186, 5.5]"
+        },
+        {
+          "name": "observation-plate-opens-gate",
+          "passed": true,
+          "detail": "plate=true gate=true collision=false beacon=green events=[\"reset\", \"player_collision_start\", \"crate_collision_start\", \"plate_entered\", \"gate_open\"]"
+        },
+        {
+          "name": "observation-gate-passable-after-plate",
+          "passed": true,
+          "detail": "goal=true z=-7.184 events=[\"reset\", \"player_collision_start\", \"crate_collision_start\", \"plate_entered\", \"gate_open\", \"plate_exited\", \"gate_close\", \"player_collision_start\", \"player_collision_end\", \"goal_reached\"]"
+        },
+        {
+          "name": "observation-closed-gate-blocks",
+          "passed": true,
+          "detail": "plate=false gate=false z=-1.950 gate_collision_seen=true"
+        },
+        {
+          "name": "observation-event-stream",
+          "passed": true,
+          "detail": "count=5 ordered=true fields_ok=true"
+        },
+        {
+          "name": "observation-reset",
+          "passed": true,
+          "detail": "step=0 plate=false gate=false beacon=red crate_y=2.992 last_event=reset"
+        },
+        {
+          "name": "observation-humanoid-probe",
+          "passed": true,
+          "detail": "mesh_count=22 bones=[\"root\", \"spine\", \"chest\", \"head\"]"
+        },
+        {
+          "name": "observation-crate-falls",
+          "passed": true,
+          "detail": "crate_y=0.347 ground_collision=true sleeping=true"
+        }
+      ],
+      "errors": []
+    }
+  },
+  "scenarios": {
+    "defect": {
+      "pid": 26080,
+      "port": 54097,
+      "log": [
+        {
+          "type": "start_project",
+          "pid": 26080,
+          "port": 54097
+        },
+        {
+          "type": "reset",
+          "step": 0
+        },
+        {
+          "type": "advance_physics",
+          "frames": 85,
+          "input": "forward=1",
+          "checkpoint": "plate"
+        },
+        {
+          "type": "advance_physics",
+          "frames": 100,
+          "input": "forward=1",
+          "checkpoint": "exit"
+        },
+        {
+          "type": "stop_project",
+          "operation": "stop_project",
+          "ok": true,
+          "alreadyStopped": false,
+          "pid": 26080,
+          "exitCode": 0,
+          "signal": null,
+          "killed": false,
+          "logs": {
+            "stdout": [
+              "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+              "Vulkan 1.3.215 - Forward+ - Using Device #0: Intel - Intel(R) UHD Graphics",
+              "",
+              "HARNESS_READY {\"pid\":26080,\"port\":54097,\"project\":\"godot-observation-fixture\",\"protocol\":1}"
+            ],
+            "stderr": []
+          }
+        }
+      ],
+      "plate": {
+        "capture": {
+          "run_id": "stage-d-446a3f3a-d958-47e4-b977-f1fa6d41e865-defect-plate",
+          "scenario": "defect: player on pressure plate, gate remains closed",
+          "captured_at": "2026-10-21T14:51:27.655Z",
+          "tick": 110,
+          "simulation_step": 89,
+          "sim_time_seconds": 1.8333333333333333,
+          "screenshot": {
+            "width": 1280,
+            "height": 720,
+            "bytes": 61144,
+            "sha256": "42d0f40a0389818f6eb21832f37d658b10db0658f345ef8287c8feaa5a0f6def",
+            "tick": 118,
+            "headless": false
+          },
+          "stored": {
+            "path": "stage-d-defect-plate.png",
+            "bytes": 61144,
+            "sha256": "42d0f40a0389818f6eb21832f37d658b10db0658f345ef8287c8feaa5a0f6def"
+          }
+        },
+        "observation": {
+          "path": "stage-d-defect-plate-observation.json",
+          "bytes": 64990,
+          "sha256": "37e9da752547b57e424e242a325fb02428ca1900c404404c24474c0897e76d9d",
+          "summary": {
+            "runtime": {
+              "captured_at": "2026-10-21T14:51:27Z",
+              "godot": "4.7.2-stable (official)",
+              "paused": true,
+              "physics_frames": 125,
+              "physics_ticks_per_second": 60,
+              "sim_time_seconds": 2.08333333333333,
+              "sim_time_seconds_source": "derived",
+              "source": "measured",
+              "spaces": {
+                "global": "world",
+                "local": "parent"
+              },
+              "tick": 125,
+              "units": {
+                "position": "m",
+                "rotation": "deg",
+                "time": "s",
+                "velocity": "m/s"
+              },
+              "unix_time": 1792594287.681,
+              "uptime_ms": 1998
+            },
+            "state": {
+              "beacon_state": "red",
+              "gate_collision_enabled": true,
+              "gate_open": false,
+              "plate_pressed": true
+            },
+            "player": {
+              "position": [
+                0,
+                0.850000023841858,
+                -0.166664153337479
+              ],
+              "velocity": [
+                0,
+                0,
+                -4
+              ],
+              "is_on_floor": true,
+              "is_on_wall": false,
+              "slide_collision_count": 1
+            },
+            "gate": {
+              "position": [
+                0,
+                1.29999995231628,
+                -2.5
+              ],
+              "collision_shapes": [
+                {
+                  "class": "CollisionShape3D",
+                  "disabled": false,
+                  "global_transform": {
+                    "origin": [
+                      0,
+                      1.29999995231628,
+                      -2.5
+                    ],
+                    "quaternion": [
+                      0,
+                      0,
+                      0,
+                      1
+                    ],
+                    "rotation_degrees": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "scale": [
+                      1,
+                      1,
+                      1
+                    ],
+                    "source": "measured",
+                    "space": "world"
+                  },
+                  "name": "Collision",
+                  "path": "/root/Main/Gate/Collision",
+                  "shape": {
+                    "size": [
+                      4,
+                      2.59999990463257,
+                      0.300000011920929
+                    ]
+                  },
+                  "shape_class": "BoxShape3D",
+                  "source": "measured",
+                  "transform": {
+                    "origin": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "quaternion": [
+                      0,
+                      0,
+                      0,
+                      1
+                    ],
+                    "rotation_degrees": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "scale": [
+                      1,
+                      1,
+                      1
+                    ],
+                    "source": "measured",
+                    "space": "parent"
+                  }
+                }
+              ]
+            },
+            "event_count": 4,
+            "event_types": [
+              "reset",
+              "player_collision_start",
+              "crate_collision_start",
+              "plate_entered"
+            ],
+            "gate_events": [
+              {
+                "body": "/root/Main/Player",
+                "sequence": 4,
+                "sim_time_seconds": 1.73333333333333,
+                "simulation_step": 83,
+                "simulation_time_seconds": 1.38333333333333,
+                "source": "fixture_recorded",
+                "tick": 104,
+                "tick_domain": "engine_physics_frames",
+                "type": "plate_entered",
+                "wall_time_ms": 2500
+              }
+            ]
+          },
+          "state_match": {
+            "plate_pressed": true,
+            "gate_open": true,
+            "gate_collision_enabled": true,
+            "beacon_state": true,
+            "simulation_step": 89,
+            "engine_tick_at_state": 110,
+            "engine_tick_at_observation": 125,
+            "engine_tick_delta": 15,
+            "screenshot_tick_delta": 8,
+            "note": "Paused state comparison; rendering can advance engine ticks without changing the fixture simulation step."
+          }
+        },
+        "state": {
+          "step": 89,
+          "physics_frames": 110,
+          "physics_ticks_per_second": 60,
+          "player_position": [
+            0,
+            0.850000023841858,
+            -0.166664153337479
+          ],
+          "player_velocity": [
+            0,
+            0,
+            -4
+          ],
+          "grounded": true,
+          "plate_pressed": true,
+          "gate_open": false,
+          "gate_collision_enabled": true,
+          "beacon_state": "red",
+          "goal_reached": false,
+          "crate_position": [
+            4.20000553131104,
+            0.347224950790405,
+            2.50000500679016
+          ],
+          "crate_sleeping": true,
+          "feedback": "PLATE PRESSED",
+          "prompt": "GATE STUCK - WAIT",
+          "hash": "de466b2eb0346f1f0be83f8a87657ef59324662902fb62b4da0d45217010137b"
+        },
+        "match": {
+          "plate_pressed": true,
+          "gate_open": true,
+          "gate_collision_enabled": true,
+          "beacon_state": true,
+          "simulation_step": 89,
+          "engine_tick_at_state": 110,
+          "engine_tick_at_observation": 125,
+          "engine_tick_delta": 15,
+          "screenshot_tick_delta": 8,
+          "note": "Paused state comparison; rendering can advance engine ticks without changing the fixture simulation step."
+        },
+        "summary": {
+          "runtime": {
+            "captured_at": "2026-10-21T14:51:27Z",
+            "godot": "4.7.2-stable (official)",
+            "paused": true,
+            "physics_frames": 125,
+            "physics_ticks_per_second": 60,
+            "sim_time_seconds": 2.08333333333333,
+            "sim_time_seconds_source": "derived",
+            "source": "measured",
+            "spaces": {
+              "global": "world",
+              "local": "parent"
+            },
+            "tick": 125,
+            "units": {
+              "position": "m",
+              "rotation": "deg",
+              "time": "s",
+              "velocity": "m/s"
+            },
+            "unix_time": 1792594287.681,
+            "uptime_ms": 1998
+          },
+          "state": {
+            "beacon_state": "red",
+            "gate_collision_enabled": true,
+            "gate_open": false,
+            "plate_pressed": true
+          },
+          "player": {
+            "position": [
+              0,
+              0.850000023841858,
+              -0.166664153337479
+            ],
+            "velocity": [
+              0,
+              0,
+              -4
+            ],
+            "is_on_floor": true,
+            "is_on_wall": false,
+            "slide_collision_count": 1
+          },
+          "gate": {
+            "position": [
+              0,
+              1.29999995231628,
+              -2.5
+            ],
+            "collision_shapes": [
+              {
+                "class": "CollisionShape3D",
+                "disabled": false,
+                "global_transform": {
+                  "origin": [
+                    0,
+                    1.29999995231628,
+                    -2.5
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "measured",
+                  "space": "world"
+                },
+                "name": "Collision",
+                "path": "/root/Main/Gate/Collision",
+                "shape": {
+                  "size": [
+                    4,
+                    2.59999990463257,
+                    0.300000011920929
+                  ]
+                },
+                "shape_class": "BoxShape3D",
+                "source": "measured",
+                "transform": {
+                  "origin": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "measured",
+                  "space": "parent"
+                }
+              }
+            ]
+          },
+          "event_count": 4,
+          "event_types": [
+            "reset",
+            "player_collision_start",
+            "crate_collision_start",
+            "plate_entered"
+          ],
+          "gate_events": [
+            {
+              "body": "/root/Main/Player",
+              "sequence": 4,
+              "sim_time_seconds": 1.73333333333333,
+              "simulation_step": 83,
+              "simulation_time_seconds": 1.38333333333333,
+              "source": "fixture_recorded",
+              "tick": 104,
+              "tick_domain": "engine_physics_frames",
+              "type": "plate_entered",
+              "wall_time_ms": 2500
+            }
+          ]
+        }
+      },
+      "exit": {
+        "capture": {
+          "run_id": "stage-d-446a3f3a-d958-47e4-b977-f1fa6d41e865-defect-exit",
+          "scenario": "defect: player blocked by closed gate while plate is pressed",
+          "captured_at": "2026-10-21T14:51:29.608Z",
+          "tick": 228,
+          "simulation_step": 189,
+          "sim_time_seconds": 3.8,
+          "screenshot": {
+            "width": 1280,
+            "height": 720,
+            "bytes": 65365,
+            "sha256": "ac00d0cc4af3c94c38125bbf2fb335c5a45fd652db4c89f9651861dfc00a4c91",
+            "tick": 236,
+            "headless": false
+          },
+          "stored": {
+            "path": "stage-d-defect-exit.png",
+            "bytes": 65365,
+            "sha256": "ac00d0cc4af3c94c38125bbf2fb335c5a45fd652db4c89f9651861dfc00a4c91"
+          }
+        },
+        "observation": {
+          "path": "stage-d-defect-exit-observation.json",
+          "bytes": 65990,
+          "sha256": "b2c3cd0aa3cf8821520b847efe2065bbcf1ff42a7b466d20559604632e410968",
+          "summary": {
+            "runtime": {
+              "captured_at": "2026-10-21T14:51:29Z",
+              "godot": "4.7.2-stable (official)",
+              "paused": true,
+              "physics_frames": 242,
+              "physics_ticks_per_second": 60,
+              "sim_time_seconds": 4.03333333333333,
+              "sim_time_seconds_source": "derived",
+              "source": "measured",
+              "spaces": {
+                "global": "world",
+                "local": "parent"
+              },
+              "tick": 242,
+              "units": {
+                "position": "m",
+                "rotation": "deg",
+                "time": "s",
+                "velocity": "m/s"
+              },
+              "unix_time": 1792594289.635,
+              "uptime_ms": 3951
+            },
+            "state": {
+              "beacon_state": "red",
+              "gate_collision_enabled": true,
+              "gate_open": false,
+              "plate_pressed": true
+            },
+            "player": {
+              "position": [
+                0,
+                0.850000023841858,
+                -1.9497377872467
+              ],
+              "velocity": [
+                0,
+                0,
+                0
+              ],
+              "is_on_floor": true,
+              "is_on_wall": true,
+              "slide_collision_count": 1
+            },
+            "gate": {
+              "position": [
+                0,
+                1.29999995231628,
+                -2.5
+              ],
+              "collision_shapes": [
+                {
+                  "class": "CollisionShape3D",
+                  "disabled": false,
+                  "global_transform": {
+                    "origin": [
+                      0,
+                      1.29999995231628,
+                      -2.5
+                    ],
+                    "quaternion": [
+                      0,
+                      0,
+                      0,
+                      1
+                    ],
+                    "rotation_degrees": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "scale": [
+                      1,
+                      1,
+                      1
+                    ],
+                    "source": "measured",
+                    "space": "world"
+                  },
+                  "name": "Collision",
+                  "path": "/root/Main/Gate/Collision",
+                  "shape": {
+                    "size": [
+                      4,
+                      2.59999990463257,
+                      0.300000011920929
+                    ]
+                  },
+                  "shape_class": "BoxShape3D",
+                  "source": "measured",
+                  "transform": {
+                    "origin": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "quaternion": [
+                      0,
+                      0,
+                      0,
+                      1
+                    ],
+                    "rotation_degrees": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "scale": [
+                      1,
+                      1,
+                      1
+                    ],
+                    "source": "measured",
+                    "space": "parent"
+                  }
+                }
+              ]
+            },
+            "event_count": 6,
+            "event_types": [
+              "reset",
+              "player_collision_start",
+              "crate_collision_start",
+              "plate_entered",
+              "player_collision_start",
+              "player_collision_end"
+            ],
+            "gate_events": [
+              {
+                "body": "/root/Main/Player",
+                "sequence": 4,
+                "sim_time_seconds": 1.73333333333333,
+                "simulation_step": 83,
+                "simulation_time_seconds": 1.38333333333333,
+                "source": "fixture_recorded",
+                "tick": 104,
+                "tick_domain": "engine_physics_frames",
+                "type": "plate_entered",
+                "wall_time_ms": 2500
+              },
+              {
+                "collider": "/root/Main/Gate",
+                "normal": [
+                  0,
+                  0,
+                  1
+                ],
+                "position": [
+                  0,
+                  1.3008269071579,
+                  -2.34999990463257
+                ],
+                "sequence": 5,
+                "sim_time_seconds": 2.56666666666667,
+                "simulation_step": 116,
+                "simulation_time_seconds": 1.93333333333333,
+                "source": "fixture_recorded",
+                "tick": 154,
+                "tick_domain": "engine_physics_frames",
+                "type": "player_collision_start",
+                "wall_time_ms": 3333
+              }
+            ]
+          },
+          "state_match": {
+            "plate_pressed": true,
+            "gate_open": true,
+            "gate_collision_enabled": true,
+            "beacon_state": true,
+            "simulation_step": 189,
+            "engine_tick_at_state": 228,
+            "engine_tick_at_observation": 242,
+            "engine_tick_delta": 14,
+            "screenshot_tick_delta": 8,
+            "note": "Paused state comparison; rendering can advance engine ticks without changing the fixture simulation step."
+          }
+        },
+        "state": {
+          "step": 189,
+          "physics_frames": 228,
+          "physics_ticks_per_second": 60,
+          "player_position": [
+            0,
+            0.850000023841858,
+            -1.9497377872467
+          ],
+          "player_velocity": [
+            0,
+            0,
+            0
+          ],
+          "grounded": true,
+          "plate_pressed": true,
+          "gate_open": false,
+          "gate_collision_enabled": true,
+          "beacon_state": "red",
+          "goal_reached": false,
+          "crate_position": [
+            4.20000553131104,
+            0.347224950790405,
+            2.50000500679016
+          ],
+          "crate_sleeping": true,
+          "feedback": "PLATE PRESSED",
+          "prompt": "GATE STUCK - WAIT",
+          "hash": "c3952c0e00335c11eb018da3de1a950ad2c8a9062d410bd6f54ce806e3be5519"
+        },
+        "match": {
+          "plate_pressed": true,
+          "gate_open": true,
+          "gate_collision_enabled": true,
+          "beacon_state": true,
+          "simulation_step": 189,
+          "engine_tick_at_state": 228,
+          "engine_tick_at_observation": 242,
+          "engine_tick_delta": 14,
+          "screenshot_tick_delta": 8,
+          "note": "Paused state comparison; rendering can advance engine ticks without changing the fixture simulation step."
+        },
+        "summary": {
+          "runtime": {
+            "captured_at": "2026-10-21T14:51:29Z",
+            "godot": "4.7.2-stable (official)",
+            "paused": true,
+            "physics_frames": 242,
+            "physics_ticks_per_second": 60,
+            "sim_time_seconds": 4.03333333333333,
+            "sim_time_seconds_source": "derived",
+            "source": "measured",
+            "spaces": {
+              "global": "world",
+              "local": "parent"
+            },
+            "tick": 242,
+            "units": {
+              "position": "m",
+              "rotation": "deg",
+              "time": "s",
+              "velocity": "m/s"
+            },
+            "unix_time": 1792594289.635,
+            "uptime_ms": 3951
+          },
+          "state": {
+            "beacon_state": "red",
+            "gate_collision_enabled": true,
+            "gate_open": false,
+            "plate_pressed": true
+          },
+          "player": {
+            "position": [
+              0,
+              0.850000023841858,
+              -1.9497377872467
+            ],
+            "velocity": [
+              0,
+              0,
+              0
+            ],
+            "is_on_floor": true,
+            "is_on_wall": true,
+            "slide_collision_count": 1
+          },
+          "gate": {
+            "position": [
+              0,
+              1.29999995231628,
+              -2.5
+            ],
+            "collision_shapes": [
+              {
+                "class": "CollisionShape3D",
+                "disabled": false,
+                "global_transform": {
+                  "origin": [
+                    0,
+                    1.29999995231628,
+                    -2.5
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "measured",
+                  "space": "world"
+                },
+                "name": "Collision",
+                "path": "/root/Main/Gate/Collision",
+                "shape": {
+                  "size": [
+                    4,
+                    2.59999990463257,
+                    0.300000011920929
+                  ]
+                },
+                "shape_class": "BoxShape3D",
+                "source": "measured",
+                "transform": {
+                  "origin": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "measured",
+                  "space": "parent"
+                }
+              }
+            ]
+          },
+          "event_count": 6,
+          "event_types": [
+            "reset",
+            "player_collision_start",
+            "crate_collision_start",
+            "plate_entered",
+            "player_collision_start",
+            "player_collision_end"
+          ],
+          "gate_events": [
+            {
+              "body": "/root/Main/Player",
+              "sequence": 4,
+              "sim_time_seconds": 1.73333333333333,
+              "simulation_step": 83,
+              "simulation_time_seconds": 1.38333333333333,
+              "source": "fixture_recorded",
+              "tick": 104,
+              "tick_domain": "engine_physics_frames",
+              "type": "plate_entered",
+              "wall_time_ms": 2500
+            },
+            {
+              "collider": "/root/Main/Gate",
+              "normal": [
+                0,
+                0,
+                1
+              ],
+              "position": [
+                0,
+                1.3008269071579,
+                -2.34999990463257
+              ],
+              "sequence": 5,
+              "sim_time_seconds": 2.56666666666667,
+              "simulation_step": 116,
+              "simulation_time_seconds": 1.93333333333333,
+              "source": "fixture_recorded",
+              "tick": 154,
+              "tick_domain": "engine_physics_frames",
+              "type": "player_collision_start",
+              "wall_time_ms": 3333
+            }
+          ]
+        }
+      },
+      "stop": {
+        "operation": "stop_project",
+        "ok": true,
+        "alreadyStopped": false,
+        "pid": 26080,
+        "exitCode": 0,
+        "signal": null,
+        "killed": false,
+        "logs": {
+          "stdout": [
+            "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+            "Vulkan 1.3.215 - Forward+ - Using Device #0: Intel - Intel(R) UHD Graphics",
+            "",
+            "HARNESS_READY {\"pid\":26080,\"port\":54097,\"project\":\"godot-observation-fixture\",\"protocol\":1}"
+          ],
+          "stderr": []
+        }
+      }
+    },
+    "repaired": {
+      "pid": 18508,
+      "port": 54099,
+      "log": [
+        {
+          "type": "start_project",
+          "pid": 18508,
+          "port": 54099
+        },
+        {
+          "type": "reset",
+          "step": 0
+        },
+        {
+          "type": "advance_physics",
+          "frames": 85,
+          "input": "forward=1",
+          "checkpoint": "plate"
+        },
+        {
+          "type": "advance_physics",
+          "frames": 100,
+          "input": "forward=1",
+          "checkpoint": "exit"
+        },
+        {
+          "type": "stop_project",
+          "operation": "stop_project",
+          "ok": true,
+          "alreadyStopped": false,
+          "pid": 18508,
+          "exitCode": 0,
+          "signal": null,
+          "killed": false,
+          "logs": {
+            "stdout": [
+              "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+              "Vulkan 1.3.215 - Forward+ - Using Device #0: Intel - Intel(R) UHD Graphics",
+              "",
+              "HARNESS_READY {\"pid\":18508,\"port\":54099,\"project\":\"godot-observation-fixture\",\"protocol\":1}"
+            ],
+            "stderr": []
+          }
+        }
+      ],
+      "plate": {
+        "capture": {
+          "run_id": "stage-d-446a3f3a-d958-47e4-b977-f1fa6d41e865-repaired-plate",
+          "scenario": "repaired: player on pressure plate, gate open",
+          "captured_at": "2026-10-21T14:51:43.385Z",
+          "tick": 108,
+          "simulation_step": 88,
+          "sim_time_seconds": 1.8,
+          "screenshot": {
+            "width": 1280,
+            "height": 720,
+            "bytes": 64133,
+            "sha256": "82fb0d4959739a10737864097a1dc2d0fe6a5fc6b9b79300d8ab323c28bf75f1",
+            "tick": 116,
+            "headless": false
+          },
+          "stored": {
+            "path": "stage-d-repaired-plate.png",
+            "bytes": 64133,
+            "sha256": "82fb0d4959739a10737864097a1dc2d0fe6a5fc6b9b79300d8ab323c28bf75f1"
+          }
+        },
+        "observation": {
+          "path": "stage-d-repaired-plate-observation.json",
+          "bytes": 65393,
+          "sha256": "4ed0aeb02ab7e196196f30656b47ba7b932c378e376e095263f53d8a075fc9bf",
+          "summary": {
+            "runtime": {
+              "captured_at": "2026-10-21T14:51:43Z",
+              "godot": "4.7.2-stable (official)",
+              "paused": true,
+              "physics_frames": 121,
+              "physics_ticks_per_second": 60,
+              "sim_time_seconds": 2.01666666666667,
+              "sim_time_seconds_source": "derived",
+              "source": "measured",
+              "spaces": {
+                "global": "world",
+                "local": "parent"
+              },
+              "tick": 121,
+              "units": {
+                "position": "m",
+                "rotation": "deg",
+                "time": "s",
+                "velocity": "m/s"
+              },
+              "unix_time": 1792594303.412,
+              "uptime_ms": 1942
+            },
+            "state": {
+              "beacon_state": "green",
+              "gate_collision_enabled": false,
+              "gate_open": true,
+              "plate_pressed": true
+            },
+            "player": {
+              "position": [
+                0,
+                0.850000023841858,
+                -0.166664153337479
+              ],
+              "velocity": [
+                0,
+                0,
+                -4
+              ],
+              "is_on_floor": true,
+              "is_on_wall": false,
+              "slide_collision_count": 1
+            },
+            "gate": {
+              "position": [
+                0,
+                4.30000019073486,
+                -2.5
+              ],
+              "collision_shapes": [
+                {
+                  "class": "CollisionShape3D",
+                  "disabled": true,
+                  "global_transform": {
+                    "origin": [
+                      0,
+                      4.30000019073486,
+                      -2.5
+                    ],
+                    "quaternion": [
+                      0,
+                      0,
+                      0,
+                      1
+                    ],
+                    "rotation_degrees": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "scale": [
+                      1,
+                      1,
+                      1
+                    ],
+                    "source": "measured",
+                    "space": "world"
+                  },
+                  "name": "Collision",
+                  "path": "/root/Main/Gate/Collision",
+                  "shape": {
+                    "size": [
+                      4,
+                      2.59999990463257,
+                      0.300000011920929
+                    ]
+                  },
+                  "shape_class": "BoxShape3D",
+                  "source": "measured",
+                  "transform": {
+                    "origin": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "quaternion": [
+                      0,
+                      0,
+                      0,
+                      1
+                    ],
+                    "rotation_degrees": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "scale": [
+                      1,
+                      1,
+                      1
+                    ],
+                    "source": "measured",
+                    "space": "parent"
+                  }
+                }
+              ]
+            },
+            "event_count": 5,
+            "event_types": [
+              "reset",
+              "player_collision_start",
+              "crate_collision_start",
+              "plate_entered",
+              "gate_open"
+            ],
+            "gate_events": [
+              {
+                "body": "/root/Main/Player",
+                "sequence": 4,
+                "sim_time_seconds": 1.7,
+                "simulation_step": 82,
+                "simulation_time_seconds": 1.36666666666667,
+                "source": "fixture_recorded",
+                "tick": 102,
+                "tick_domain": "engine_physics_frames",
+                "type": "plate_entered",
+                "wall_time_ms": 2447
+              },
+              {
+                "collision_enabled": false,
+                "plate_pressed": true,
+                "sequence": 5,
+                "sim_time_seconds": 1.7,
+                "simulation_step": 82,
+                "simulation_time_seconds": 1.36666666666667,
+                "source": "fixture_recorded",
+                "tick": 102,
+                "tick_domain": "engine_physics_frames",
+                "type": "gate_open",
+                "wall_time_ms": 2447
+              }
+            ]
+          },
+          "state_match": {
+            "plate_pressed": true,
+            "gate_open": true,
+            "gate_collision_enabled": true,
+            "beacon_state": true,
+            "simulation_step": 88,
+            "engine_tick_at_state": 108,
+            "engine_tick_at_observation": 121,
+            "engine_tick_delta": 13,
+            "screenshot_tick_delta": 8,
+            "note": "Paused state comparison; rendering can advance engine ticks without changing the fixture simulation step."
+          }
+        },
+        "state": {
+          "step": 88,
+          "physics_frames": 108,
+          "physics_ticks_per_second": 60,
+          "player_position": [
+            0,
+            0.850000023841858,
+            -0.166664153337479
+          ],
+          "player_velocity": [
+            0,
+            0,
+            -4
+          ],
+          "grounded": true,
+          "plate_pressed": true,
+          "gate_open": true,
+          "gate_collision_enabled": false,
+          "beacon_state": "green",
+          "goal_reached": false,
+          "crate_position": [
+            4.20000553131104,
+            0.347224950790405,
+            2.50000500679016
+          ],
+          "crate_sleeping": true,
+          "feedback": "PLATE PRESSED",
+          "prompt": "GATE OPEN - GO THROUGH",
+          "hash": "4d9ba8e9f9b492e779ca0b0fb75bf7c35e2f6b029c4f8f5bcf9777232ee44ca2"
+        },
+        "match": {
+          "plate_pressed": true,
+          "gate_open": true,
+          "gate_collision_enabled": true,
+          "beacon_state": true,
+          "simulation_step": 88,
+          "engine_tick_at_state": 108,
+          "engine_tick_at_observation": 121,
+          "engine_tick_delta": 13,
+          "screenshot_tick_delta": 8,
+          "note": "Paused state comparison; rendering can advance engine ticks without changing the fixture simulation step."
+        },
+        "summary": {
+          "runtime": {
+            "captured_at": "2026-10-21T14:51:43Z",
+            "godot": "4.7.2-stable (official)",
+            "paused": true,
+            "physics_frames": 121,
+            "physics_ticks_per_second": 60,
+            "sim_time_seconds": 2.01666666666667,
+            "sim_time_seconds_source": "derived",
+            "source": "measured",
+            "spaces": {
+              "global": "world",
+              "local": "parent"
+            },
+            "tick": 121,
+            "units": {
+              "position": "m",
+              "rotation": "deg",
+              "time": "s",
+              "velocity": "m/s"
+            },
+            "unix_time": 1792594303.412,
+            "uptime_ms": 1942
+          },
+          "state": {
+            "beacon_state": "green",
+            "gate_collision_enabled": false,
+            "gate_open": true,
+            "plate_pressed": true
+          },
+          "player": {
+            "position": [
+              0,
+              0.850000023841858,
+              -0.166664153337479
+            ],
+            "velocity": [
+              0,
+              0,
+              -4
+            ],
+            "is_on_floor": true,
+            "is_on_wall": false,
+            "slide_collision_count": 1
+          },
+          "gate": {
+            "position": [
+              0,
+              4.30000019073486,
+              -2.5
+            ],
+            "collision_shapes": [
+              {
+                "class": "CollisionShape3D",
+                "disabled": true,
+                "global_transform": {
+                  "origin": [
+                    0,
+                    4.30000019073486,
+                    -2.5
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "measured",
+                  "space": "world"
+                },
+                "name": "Collision",
+                "path": "/root/Main/Gate/Collision",
+                "shape": {
+                  "size": [
+                    4,
+                    2.59999990463257,
+                    0.300000011920929
+                  ]
+                },
+                "shape_class": "BoxShape3D",
+                "source": "measured",
+                "transform": {
+                  "origin": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "measured",
+                  "space": "parent"
+                }
+              }
+            ]
+          },
+          "event_count": 5,
+          "event_types": [
+            "reset",
+            "player_collision_start",
+            "crate_collision_start",
+            "plate_entered",
+            "gate_open"
+          ],
+          "gate_events": [
+            {
+              "body": "/root/Main/Player",
+              "sequence": 4,
+              "sim_time_seconds": 1.7,
+              "simulation_step": 82,
+              "simulation_time_seconds": 1.36666666666667,
+              "source": "fixture_recorded",
+              "tick": 102,
+              "tick_domain": "engine_physics_frames",
+              "type": "plate_entered",
+              "wall_time_ms": 2447
+            },
+            {
+              "collision_enabled": false,
+              "plate_pressed": true,
+              "sequence": 5,
+              "sim_time_seconds": 1.7,
+              "simulation_step": 82,
+              "simulation_time_seconds": 1.36666666666667,
+              "source": "fixture_recorded",
+              "tick": 102,
+              "tick_domain": "engine_physics_frames",
+              "type": "gate_open",
+              "wall_time_ms": 2447
+            }
+          ]
+        }
+      },
+      "exit": {
+        "capture": {
+          "run_id": "stage-d-446a3f3a-d958-47e4-b977-f1fa6d41e865-repaired-exit",
+          "scenario": "repaired: player passes the gate and reaches the goal",
+          "captured_at": "2026-10-21T14:51:45.316Z",
+          "tick": 224,
+          "simulation_step": 188,
+          "sim_time_seconds": 3.7333333333333334,
+          "screenshot": {
+            "width": 1280,
+            "height": 720,
+            "bytes": 57051,
+            "sha256": "b909d4df7f111b0d646b067544f2062c28e832c2d6e4cfa860ad3d49dba52a33",
+            "tick": 232,
+            "headless": false
+          },
+          "stored": {
+            "path": "stage-d-repaired-exit.png",
+            "bytes": 57051,
+            "sha256": "b909d4df7f111b0d646b067544f2062c28e832c2d6e4cfa860ad3d49dba52a33"
+          }
+        },
+        "observation": {
+          "path": "stage-d-repaired-exit-observation.json",
+          "bytes": 67585,
+          "sha256": "27cc2a2dbe579daafae697f551774d04441be28dc0fc58263fcd4da2dc9c2f7b",
+          "summary": {
+            "runtime": {
+              "captured_at": "2026-10-21T14:51:45Z",
+              "godot": "4.7.2-stable (official)",
+              "paused": true,
+              "physics_frames": 237,
+              "physics_ticks_per_second": 60,
+              "sim_time_seconds": 3.95,
+              "sim_time_seconds_source": "derived",
+              "source": "measured",
+              "spaces": {
+                "global": "world",
+                "local": "parent"
+              },
+              "tick": 237,
+              "units": {
+                "position": "m",
+                "rotation": "deg",
+                "time": "s",
+                "velocity": "m/s"
+              },
+              "unix_time": 1792594305.344,
+              "uptime_ms": 3874
+            },
+            "state": {
+              "beacon_state": "red",
+              "gate_collision_enabled": true,
+              "gate_open": false,
+              "plate_pressed": false
+            },
+            "player": {
+              "position": [
+                0,
+                0.850934088230133,
+                -7.18418073654175
+              ],
+              "velocity": [
+                0,
+                0,
+                -4
+              ],
+              "is_on_floor": true,
+              "is_on_wall": false,
+              "slide_collision_count": 1
+            },
+            "gate": {
+              "position": [
+                0,
+                1.29999995231628,
+                -2.5
+              ],
+              "collision_shapes": [
+                {
+                  "class": "CollisionShape3D",
+                  "disabled": false,
+                  "global_transform": {
+                    "origin": [
+                      0,
+                      1.29999995231628,
+                      -2.5
+                    ],
+                    "quaternion": [
+                      0,
+                      0,
+                      0,
+                      1
+                    ],
+                    "rotation_degrees": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "scale": [
+                      1,
+                      1,
+                      1
+                    ],
+                    "source": "measured",
+                    "space": "world"
+                  },
+                  "name": "Collision",
+                  "path": "/root/Main/Gate/Collision",
+                  "shape": {
+                    "size": [
+                      4,
+                      2.59999990463257,
+                      0.300000011920929
+                    ]
+                  },
+                  "shape_class": "BoxShape3D",
+                  "source": "measured",
+                  "transform": {
+                    "origin": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "quaternion": [
+                      0,
+                      0,
+                      0,
+                      1
+                    ],
+                    "rotation_degrees": [
+                      0,
+                      0,
+                      0
+                    ],
+                    "scale": [
+                      1,
+                      1,
+                      1
+                    ],
+                    "source": "measured",
+                    "space": "parent"
+                  }
+                }
+              ]
+            },
+            "event_count": 10,
+            "event_types": [
+              "reset",
+              "player_collision_start",
+              "crate_collision_start",
+              "plate_entered",
+              "gate_open",
+              "plate_exited",
+              "gate_close",
+              "player_collision_start",
+              "player_collision_end",
+              "goal_reached"
+            ],
+            "gate_events": [
+              {
+                "body": "/root/Main/Player",
+                "sequence": 4,
+                "sim_time_seconds": 1.7,
+                "simulation_step": 82,
+                "simulation_time_seconds": 1.36666666666667,
+                "source": "fixture_recorded",
+                "tick": 102,
+                "tick_domain": "engine_physics_frames",
+                "type": "plate_entered",
+                "wall_time_ms": 2447
+              },
+              {
+                "collision_enabled": false,
+                "plate_pressed": true,
+                "sequence": 5,
+                "sim_time_seconds": 1.7,
+                "simulation_step": 82,
+                "simulation_time_seconds": 1.36666666666667,
+                "source": "fixture_recorded",
+                "tick": 102,
+                "tick_domain": "engine_physics_frames",
+                "type": "gate_open",
+                "wall_time_ms": 2447
+              },
+              {
+                "body": "/root/Main/Player",
+                "sequence": 6,
+                "sim_time_seconds": 2.68333333333333,
+                "simulation_step": 125,
+                "simulation_time_seconds": 2.08333333333333,
+                "source": "fixture_recorded",
+                "tick": 161,
+                "tick_domain": "engine_physics_frames",
+                "type": "plate_exited",
+                "wall_time_ms": 3431
+              },
+              {
+                "collision_enabled": true,
+                "plate_pressed": false,
+                "sequence": 7,
+                "sim_time_seconds": 2.68333333333333,
+                "simulation_step": 125,
+                "simulation_time_seconds": 2.08333333333333,
+                "source": "fixture_recorded",
+                "tick": 161,
+                "tick_domain": "engine_physics_frames",
+                "type": "gate_close",
+                "wall_time_ms": 3431
+              },
+              {
+                "collider": "/root/Main/Gate",
+                "normal": [
+                  0,
+                  0,
+                  -1
+                ],
+                "position": [
+                  0,
+                  1.3008269071579,
+                  -2.65000009536743
+                ],
+                "sequence": 8,
+                "sim_time_seconds": 2.7,
+                "simulation_step": 127,
+                "simulation_time_seconds": 2.11666666666667,
+                "source": "fixture_recorded",
+                "tick": 162,
+                "tick_domain": "engine_physics_frames",
+                "type": "player_collision_start",
+                "wall_time_ms": 3447
+              }
+            ]
+          },
+          "state_match": {
+            "plate_pressed": true,
+            "gate_open": true,
+            "gate_collision_enabled": true,
+            "beacon_state": true,
+            "simulation_step": 188,
+            "engine_tick_at_state": 224,
+            "engine_tick_at_observation": 237,
+            "engine_tick_delta": 13,
+            "screenshot_tick_delta": 8,
+            "note": "Paused state comparison; rendering can advance engine ticks without changing the fixture simulation step."
+          }
+        },
+        "state": {
+          "step": 188,
+          "physics_frames": 224,
+          "physics_ticks_per_second": 60,
+          "player_position": [
+            0,
+            0.850934088230133,
+            -7.18418073654175
+          ],
+          "player_velocity": [
+            0,
+            0,
+            -4
+          ],
+          "grounded": true,
+          "plate_pressed": false,
+          "gate_open": false,
+          "gate_collision_enabled": true,
+          "beacon_state": "red",
+          "goal_reached": true,
+          "crate_position": [
+            4.20000553131104,
+            0.347224950790405,
+            2.50000500679016
+          ],
+          "crate_sleeping": true,
+          "feedback": "GOAL REACHED",
+          "prompt": "GOAL REACHED",
+          "hash": "820781c26793921e8bd40221dc255c963d9bd4aaf7a92e3b150941f7f584c8a4"
+        },
+        "match": {
+          "plate_pressed": true,
+          "gate_open": true,
+          "gate_collision_enabled": true,
+          "beacon_state": true,
+          "simulation_step": 188,
+          "engine_tick_at_state": 224,
+          "engine_tick_at_observation": 237,
+          "engine_tick_delta": 13,
+          "screenshot_tick_delta": 8,
+          "note": "Paused state comparison; rendering can advance engine ticks without changing the fixture simulation step."
+        },
+        "summary": {
+          "runtime": {
+            "captured_at": "2026-10-21T14:51:45Z",
+            "godot": "4.7.2-stable (official)",
+            "paused": true,
+            "physics_frames": 237,
+            "physics_ticks_per_second": 60,
+            "sim_time_seconds": 3.95,
+            "sim_time_seconds_source": "derived",
+            "source": "measured",
+            "spaces": {
+              "global": "world",
+              "local": "parent"
+            },
+            "tick": 237,
+            "units": {
+              "position": "m",
+              "rotation": "deg",
+              "time": "s",
+              "velocity": "m/s"
+            },
+            "unix_time": 1792594305.344,
+            "uptime_ms": 3874
+          },
+          "state": {
+            "beacon_state": "red",
+            "gate_collision_enabled": true,
+            "gate_open": false,
+            "plate_pressed": false
+          },
+          "player": {
+            "position": [
+              0,
+              0.850934088230133,
+              -7.18418073654175
+            ],
+            "velocity": [
+              0,
+              0,
+              -4
+            ],
+            "is_on_floor": true,
+            "is_on_wall": false,
+            "slide_collision_count": 1
+          },
+          "gate": {
+            "position": [
+              0,
+              1.29999995231628,
+              -2.5
+            ],
+            "collision_shapes": [
+              {
+                "class": "CollisionShape3D",
+                "disabled": false,
+                "global_transform": {
+                  "origin": [
+                    0,
+                    1.29999995231628,
+                    -2.5
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "measured",
+                  "space": "world"
+                },
+                "name": "Collision",
+                "path": "/root/Main/Gate/Collision",
+                "shape": {
+                  "size": [
+                    4,
+                    2.59999990463257,
+                    0.300000011920929
+                  ]
+                },
+                "shape_class": "BoxShape3D",
+                "source": "measured",
+                "transform": {
+                  "origin": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "quaternion": [
+                    0,
+                    0,
+                    0,
+                    1
+                  ],
+                  "rotation_degrees": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "scale": [
+                    1,
+                    1,
+                    1
+                  ],
+                  "source": "measured",
+                  "space": "parent"
+                }
+              }
+            ]
+          },
+          "event_count": 10,
+          "event_types": [
+            "reset",
+            "player_collision_start",
+            "crate_collision_start",
+            "plate_entered",
+            "gate_open",
+            "plate_exited",
+            "gate_close",
+            "player_collision_start",
+            "player_collision_end",
+            "goal_reached"
+          ],
+          "gate_events": [
+            {
+              "body": "/root/Main/Player",
+              "sequence": 4,
+              "sim_time_seconds": 1.7,
+              "simulation_step": 82,
+              "simulation_time_seconds": 1.36666666666667,
+              "source": "fixture_recorded",
+              "tick": 102,
+              "tick_domain": "engine_physics_frames",
+              "type": "plate_entered",
+              "wall_time_ms": 2447
+            },
+            {
+              "collision_enabled": false,
+              "plate_pressed": true,
+              "sequence": 5,
+              "sim_time_seconds": 1.7,
+              "simulation_step": 82,
+              "simulation_time_seconds": 1.36666666666667,
+              "source": "fixture_recorded",
+              "tick": 102,
+              "tick_domain": "engine_physics_frames",
+              "type": "gate_open",
+              "wall_time_ms": 2447
+            },
+            {
+              "body": "/root/Main/Player",
+              "sequence": 6,
+              "sim_time_seconds": 2.68333333333333,
+              "simulation_step": 125,
+              "simulation_time_seconds": 2.08333333333333,
+              "source": "fixture_recorded",
+              "tick": 161,
+              "tick_domain": "engine_physics_frames",
+              "type": "plate_exited",
+              "wall_time_ms": 3431
+            },
+            {
+              "collision_enabled": true,
+              "plate_pressed": false,
+              "sequence": 7,
+              "sim_time_seconds": 2.68333333333333,
+              "simulation_step": 125,
+              "simulation_time_seconds": 2.08333333333333,
+              "source": "fixture_recorded",
+              "tick": 161,
+              "tick_domain": "engine_physics_frames",
+              "type": "gate_close",
+              "wall_time_ms": 3431
+            },
+            {
+              "collider": "/root/Main/Gate",
+              "normal": [
+                0,
+                0,
+                -1
+              ],
+              "position": [
+                0,
+                1.3008269071579,
+                -2.65000009536743
+              ],
+              "sequence": 8,
+              "sim_time_seconds": 2.7,
+              "simulation_step": 127,
+              "simulation_time_seconds": 2.11666666666667,
+              "source": "fixture_recorded",
+              "tick": 162,
+              "tick_domain": "engine_physics_frames",
+              "type": "player_collision_start",
+              "wall_time_ms": 3447
+            }
+          ]
+        }
+      },
+      "stop": {
+        "operation": "stop_project",
+        "ok": true,
+        "alreadyStopped": false,
+        "pid": 18508,
+        "exitCode": 0,
+        "signal": null,
+        "killed": false,
+        "logs": {
+          "stdout": [
+            "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+            "Vulkan 1.3.215 - Forward+ - Using Device #0: Intel - Intel(R) UHD Graphics",
+            "",
+            "HARNESS_READY {\"pid\":18508,\"port\":54099,\"project\":\"godot-observation-fixture\",\"protocol\":1}"
+          ],
+          "stderr": []
+        }
+      }
+    }
+  },
+  "ok": true,
+  "comparison": {
+    "same_checkpoint": "player on plate after 85 forward physics frames",
+    "defect": {
+      "plate_pressed": true,
+      "gate_open": false,
+      "gate_collision_enabled": true,
+      "beacon_state": "red",
+      "goal_reached": false,
+      "gate_collision_event": true
+    },
+    "repaired": {
+      "plate_pressed": true,
+      "gate_open": true,
+      "gate_collision_enabled": false,
+      "beacon_state": "green",
+      "goal_reached": true
+    }
+  },
+  "diagnosis": {
+    "observation": "The plate reports pressed, but the gate remains closed, collision remains enabled, the beacon stays red, and the player is blocked at the gate.",
+    "hypothesis": "The gate state update is skipped when the plate and gate differ, so the gate never follows the plate.",
+    "testable_prediction": "Reversing the single inverted relation should make the gate open, disable its collision, turn the beacon green, and allow the unchanged acceptance suite to pass.",
+    "repair": "Replace the single inverted relation with the correct equality relation; no observer or test logic changes.",
+    "verification": "The repaired copy has the same source hash as the original fixture; the identical acceptance script reports 8/8."
+  }
+}

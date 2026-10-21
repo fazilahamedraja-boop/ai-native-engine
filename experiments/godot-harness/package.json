@@ -23,6 +23,7 @@
     "evidence:live": "node controller/live-suite.mjs",
     "evidence:visual": "node controller/visual-suite.mjs",
     "evidence:observation": "node controller/observation-suite.mjs",
+    "evidence:defect": "node controller/defect-suite.mjs",
     "inspect": "node controller/harness.mjs inspect --project fixtures/sentry --json"
   }
 }

@@ -55,6 +55,7 @@ npm run test:door-repair          # failing defect -> repair -> same-test rerun
 npm run evidence:visual           # windowed door captures + sampled approach sequence
 npm run test:observation          # controller observation, timeline, and door-reuse tests
 npm run evidence:observation      # windowed structured observations + captures + timeline
+npm run evidence:defect           # controlled gate defect -> failing suite -> repair -> same suite
 npm run inspect          # start, inspect, stop one project, JSON result
 ```
 
@@ -245,6 +246,12 @@ The reusable observation bridge lives in
 temporary copy of the door fixture demonstrates reuse without changing the door
 scene or scripts.
 
+Stage D uses the same surface without adding defect-specific observer commands.
+`npm run evidence:defect` copies the observation fixture to a temporary
+directory, applies one controlled gate-condition inversion, captures the defect,
+restores the one line, and reruns the unchanged acceptance suite. The diagnosis
+and evidence are in `../../docs/phase10/stage-d-defect-repair.md`.
+
 ## Snapshot and hash contract
 
 `snapshot()` returns:
@@ -365,9 +372,13 @@ only use this interface on projects you intend to control.
 | Observation suite | `node controller/harness.mjs test --project fixtures/observation --script res://tests/run_observation.gd` | 8/8, exit 0 |
 | Observation controller | `npm run test:observation` | 5/5, exit 0 |
 | Structured observation evidence | `npm run evidence:observation` | exit 0, two windowed PNGs + JSON |
+| Controlled defect replay | `npm run evidence:defect` | failing 6/8 -> passing 8/8, four windowed PNGs |
 
-Phase 10 Stage C evidence is under `docs/phase10/stage-c/`. Earlier stage
-evidence is under `docs/phase8/` and `docs/phase9/`:
+Phase 10 Stage C evidence is under `docs/phase10/stage-c/`. Stage D evidence is
+under `docs/phase10/stage-d/`: the manifest, four captures, full observations,
+before/after test results, and the diagnosis are in
+`docs/phase10/stage-d-defect-repair.md`. Earlier stage evidence is under
+`docs/phase8/` and `docs/phase9/`:
 
 - `stage-a.md`, `stage-a-run.json`
 - `stage-b.md`, `stage-b-inspect.json`
@@ -409,4 +420,7 @@ evidence is under `docs/phase8/` and `docs/phase9/`:
   development machine or isolated CI runner, not a shared host.
 - The repair experiment proves detection/localization/rerun for one injected
   movement defect. It does not claim general autonomous repair.
+- The Stage D defect is a controlled one-line inversion in a temporary copy of
+  the observation fixture. It proves the observation/diagnosis/repair loop for
+  that case, not general defect diagnosis.
 - No engine source, addon, or new third-party dependency is required.
