@@ -60,8 +60,9 @@ supports:
 The Godot MCP server is editor-session based and exposes scene playback,
 simulated input, screenshots, scene-tree reads, and property monitors through
 `EngineDebugger`. It has no headless CLI lifecycle or project-local fixed-tick
-control. It is not exposed as a tool in this Phase 10 session, so Phase 10 does
-not depend on it. The Phase 8 capability review remains the reference:
+control. A read-only Phase 10 inspection found the server reachable but its
+editor bridge offline; see <stage-a-godot-mcp.md>. Phase 10 does not depend on
+it. The Phase 8 capability review remains the reference:
 <../phase8/stage-a.md> and <../phase8/stage-b.md>.
 
 ## 3. What is missing
