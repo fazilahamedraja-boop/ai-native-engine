@@ -533,6 +533,39 @@ export class HarnessSession {
   }
 
   /**
+   * Read-only physics space query through the bridge.
+   * Runs PhysicsDirectSpaceState3D.intersect_shape / intersect_ray
+   * at a supplied world transform and returns collider information.
+   */
+  async physicsQuery({ shape_type, transform, size, radius, height } = {}) {
+    if (typeof shape_type !== 'string') {
+      throw new Error('shape_type must be a string')
+    }
+    if (!shape_type) {
+      throw new Error('shape_type is required')
+    }
+    const validShapes = ['box', 'sphere', 'capsule', 'ray']
+    if (!validShapes.includes(shape_type)) {
+      throw new Error('shape_type must be one of: ' + validShapes.join(', ') + '')
+    }
+    // Build the query arguments for the bridge
+    const args = { shape_type }
+    if (shape_type === 'box' && size) {
+      args.size = size
+    }
+    if (shape_type === 'sphere' && radius !== undefined) {
+      args.radius = radius
+    }
+    if (shape_type === 'capsule' && radius !== undefined && height !== undefined) {
+      args.radius = radius
+      args.height = height
+    }
+    if (transform) {
+      args.transform = transform
+    }
+    return this.send('physics_query', args, 10000)
+  }
+  /**
    * Advance real Godot physics frames instead of calling a manual step.
    * The selected project's bridge must implement `advance_physics`; the game
    * node must expose `set_harness_input()` and `snapshot()`.

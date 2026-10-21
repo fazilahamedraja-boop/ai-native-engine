@@ -159,6 +159,8 @@ func _handle_line(peer: StreamPeerTCP, line: String) -> void:
 			_send(peer, _reply(request_id, true, {"quitting": true}))
 			_event("quit requested")
 			call_deferred("_quit_process")
+		"physics_query":
+			_send(peer, _physics_query_reply(request_id, args))
 		_:
 			_send(peer, _fail(request_id, "UNKNOWN_COMMAND", "Unknown command '%s'." % command))
 
@@ -359,6 +361,107 @@ func _screenshot_reply(request_id: String, args: Dictionary) -> Dictionary:
 		"source": "measured",
 		"headless": DisplayServer.get_name() == "headless",
 	})
+
+
+
+
+func _physics_query_reply(request_id: String, args: Dictionary) -> Dictionary:
+	var shape_type := String(args.get("shape_type", ""))
+	var transform := Transform3D(args.get("transform", Transform3D.IDENTITY))
+	var size := _vec3(args.get("size", Vector3(1.0, 1.0, 1.0)))
+	var radius := args.get("radius", 0.0)
+	var height := args.get("height", 0.0)
+
+	if shape_type.is_empty():
+		return _fail(request_id, "VALIDATION_ERROR", "shape_type is required (box, sphere, capsule, ray).")
+
+	var space = get_world_3d().direct_space_state
+	var results: Array = []
+
+	match shape_type:
+		"box":
+			if size.length() < 3:
+				return _fail(request_id, "VALIDATION_ERROR", "box size must have 3 components.")
+			var query := PhysicsShapeQueryParameters3D.new()
+			query.shape = BoxShape3D.new()
+			(query.shape as BoxShape3D).size = size
+			query.transform = transform
+			query.collision_mask := 1
+			var hits := space.intersect_shape(query, 8)
+			for hit in hits:
+				var collider := hit.get("collider")
+				var shape_idx := hit.get("shape")
+				results.append({
+					"collider": String(collider.get_path()) if collider != null else null,
+					"collider_type": String(collider.get_class()) if collider != null else null,
+					"shape_index": shape_idx,
+					"source": "derived",
+				})
+		"sphere":
+			if radius <= 0:
+				return _fail(request_id, "VALIDATION_ERROR", "sphere radius must be positive.")
+			var query := PhysicsShapeQueryParameters3D.new()
+			query.shape = SphereShape3D.new()
+			(query.shape as SphereShape3D).radius = radius
+			query.transform = transform
+			query.collision_mask := 1
+			var hits := space.intersect_shape(query, 8)
+			for hit in hits:
+				var collider := hit.get("collider")
+				var shape_idx := hit.get("shape")
+				results.append({
+					"collider": String(collider.get_path()) if collider != null else null,
+					"collider_type": String(collider.get_class()) if collider != null else null,
+					"shape_index": shape_idx,
+					"source": "derived",
+				})
+		"capsule":
+			if radius <= 0 or height <= 0:
+				return _fail(request_id, "VALIDATION_ERROR", "capsule radius and height must be positive.")
+			var query := PhysicsShapeQueryParameters3D.new()
+			query.shape = CapsuleShape3D.new()
+			(query.shape as CapsuleShape3D).radius = radius
+			(query.shape as CapsuleShape3D).height = height
+			query.transform = transform
+			query.collision_mask := 1
+			var hits := space.intersect_shape(query, 8)
+			for hit in hits:
+				var collider := hit.get("collider")
+				var shape_idx := hit.get("shape")
+				results.append({
+					"collider": String(collider.get_path()) if collider != null else null,
+					"collider_type": String(collider.get_class()) if collider != null else null,
+					"shape_index": shape_idx,
+					"source": "derived",
+				})
+		"ray":
+			var from := transform.origin
+			var to := transform.origin + transform.basis.z * 100.0
+			var query := PhysicsShapeQueryParameters3D.new()
+			query.shape := null
+			query.transform := Transform3D(Basis(), from)
+			query.to := to
+			query.collision_mask := 1
+			var hits := space.intersect_ray(query, 8)
+			for hit in hits:
+				var collider := hit.get("collider")
+				results.append({
+					"collider": String(collider.get_path()) if collider != null else null,
+					"collider_type": String(collider.get_class()) if collider != null else null,
+					"hit_point": _vec3(hit.get("position")),
+					"hit_normal": _vec3(hit.get("normal")),
+					"source": "derived",
+				})
+		_:
+			return _fail(request_id, "VALIDATION_ERROR", "Unknown shape_type: '%s'. Use box, sphere, capsule, or ray." % shape_type)
+
+	return _reply(request_id, true, {
+		"results": results,
+		"shape_type": shape_type,
+		"transform": _transform(transform),
+		"source": "derived",
+	})
+
 
 
 func _observe_reply(request_id: String, args: Dictionary) -> Dictionary:
