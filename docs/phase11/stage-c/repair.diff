@@ -1,0 +1,5 @@
+--- a/experiments/godot-harness/fixtures/combat/scripts/combat_world.gd
++++ b/experiments/godot-harness/fixtures/combat/scripts/combat_world.gd
+@@
+-const HITBOX_CENTER_LOCAL := Vector3(0.0, 0.0, 0.18)
++const HITBOX_CENTER_LOCAL := Vector3(0.0, 0.0, 0.60)

@@ -1,0 +1,4142 @@
+{
+  "events": {
+    "available": true,
+    "count": 14,
+    "items": [
+      {
+        "label": "combat_fixture_reset",
+        "sequence": 1,
+        "simulation_step": 0,
+        "source": "fixture_recorded",
+        "tick": 14,
+        "type": "reset"
+      },
+      {
+        "attack_index": 1,
+        "blade_center_local_z": 0.6,
+        "blade_global_origin": [
+          -0.196491271257401,
+          0.879999995231628,
+          0.344145894050598
+        ],
+        "hitbox_center_local": [
+          0,
+          0,
+          0.600000023841858
+        ],
+        "hitbox_global_origin": [
+          -0.196491271257401,
+          0.879999995231628,
+          0.344145894050598
+        ],
+        "sequence": 2,
+        "simulation_step": 1,
+        "source": "fixture_recorded",
+        "tick": 46,
+        "type": "attack_start"
+      },
+      {
+        "attack_index": 1,
+        "hitbox_global_origin": [
+          -0.095111072063446,
+          0.879999995231628,
+          0.455865532159805
+        ],
+        "hitbox_overlap_count": 0,
+        "sequence": 3,
+        "simulation_step": 4,
+        "source": "fixture_recorded",
+        "target_in_hitbox": false,
+        "target_origin": [
+          0,
+          0,
+          1.20000004768372
+        ],
+        "tick": 63,
+        "type": "attack_active"
+      },
+      {
+        "attack_index": 1,
+        "hitbox_global_origin": [
+          -0.0656242072582245,
+          0.879999995231628,
+          0.47953125834465
+        ],
+        "hitbox_overlap_count": 0,
+        "sequence": 4,
+        "simulation_step": 5,
+        "source": "fixture_recorded",
+        "target_in_hitbox": false,
+        "target_origin": [
+          0,
+          0,
+          1.20000004768372
+        ],
+        "tick": 64,
+        "type": "attack_active"
+      },
+      {
+        "hitbox_global_origin": [
+          -0.0656242072582245,
+          0.879999995231628,
+          0.47953125834465
+        ],
+        "sequence": 5,
+        "simulation_step": 5,
+        "source": "fixture_recorded",
+        "target_health": 3,
+        "tick": 65,
+        "type": "hitbox_body_entered"
+      },
+      {
+        "attack_index": 1,
+        "damage": 1,
+        "hitbox_global_origin": [
+          -0.0347053706645966,
+          0.879999995231628,
+          0.501292705535889
+        ],
+        "hitbox_overlap_count": 1,
+        "hitbox_target_distance": 1.12418699264526,
+        "sequence": 6,
+        "simulation_step": 6,
+        "source": "fixture_recorded",
+        "target_health": 2,
+        "target_max_health": 3,
+        "target_origin": [
+          0,
+          0,
+          1.20000004768372
+        ],
+        "tick": 65,
+        "type": "hit"
+      },
+      {
+        "attack_index": 1,
+        "hitbox_global_origin": [
+          -0.00247734785079956,
+          0.879999995231628,
+          0.521063625812531
+        ],
+        "hitbox_overlap_count": 1,
+        "sequence": 7,
+        "simulation_step": 7,
+        "source": "fixture_recorded",
+        "target_in_hitbox": true,
+        "target_origin": [
+          0,
+          0,
+          1.20000004768372
+        ],
+        "tick": 81,
+        "type": "attack_active"
+      },
+      {
+        "attack_index": 1,
+        "hitbox_global_origin": [
+          0.0309320092201233,
+          0.879999995231628,
+          0.538765370845795
+        ],
+        "hitbox_overlap_count": 1,
+        "sequence": 8,
+        "simulation_step": 8,
+        "source": "fixture_recorded",
+        "target_in_hitbox": true,
+        "target_origin": [
+          0,
+          0,
+          1.20000004768372
+        ],
+        "tick": 82,
+        "type": "attack_active"
+      },
+      {
+        "attack_index": 1,
+        "hitbox_global_origin": [
+          0.0653899013996124,
+          0.879999995231628,
+          0.554327726364136
+        ],
+        "hitbox_overlap_count": 1,
+        "sequence": 9,
+        "simulation_step": 9,
+        "source": "fixture_recorded",
+        "target_in_hitbox": true,
+        "target_origin": [
+          0,
+          0,
+          1.20000004768372
+        ],
+        "tick": 83,
+        "type": "attack_active"
+      },
+      {
+        "attack_index": 1,
+        "hitbox_global_origin": [
+          0.100759610533714,
+          0.879999995231628,
+          0.567688941955566
+        ],
+        "hitbox_overlap_count": 1,
+        "sequence": 10,
+        "simulation_step": 10,
+        "source": "fixture_recorded",
+        "target_in_hitbox": true,
+        "target_origin": [
+          0,
+          0,
+          1.20000004768372
+        ],
+        "tick": 98,
+        "type": "attack_active"
+      },
+      {
+        "attack_index": 1,
+        "hitbox_global_origin": [
+          0.136900618672371,
+          0.879999995231628,
+          0.578795850276947
+        ],
+        "hitbox_overlap_count": 1,
+        "sequence": 11,
+        "simulation_step": 11,
+        "source": "fixture_recorded",
+        "target_in_hitbox": true,
+        "target_origin": [
+          0,
+          0,
+          1.20000004768372
+        ],
+        "tick": 99,
+        "type": "attack_active"
+      },
+      {
+        "attack_index": 1,
+        "hitbox_global_origin": [
+          0.173669442534447,
+          0.879999995231628,
+          0.587604403495789
+        ],
+        "hitbox_overlap_count": 1,
+        "sequence": 12,
+        "simulation_step": 12,
+        "source": "fixture_recorded",
+        "target_in_hitbox": true,
+        "target_origin": [
+          0,
+          0,
+          1.20000004768372
+        ],
+        "tick": 100,
+        "type": "attack_active"
+      },
+      {
+        "attack_index": 1,
+        "hitbox_global_origin": [
+          0.210920050740242,
+          0.879999995231628,
+          0.594079613685608
+        ],
+        "hitbox_overlap_count": 1,
+        "sequence": 13,
+        "simulation_step": 13,
+        "source": "fixture_recorded",
+        "target_in_hitbox": true,
+        "target_origin": [
+          0,
+          0,
+          1.20000004768372
+        ],
+        "tick": 115,
+        "type": "attack_active"
+      },
+      {
+        "attack_index": 1,
+        "sequence": 14,
+        "simulation_step": 18,
+        "source": "fixture_recorded",
+        "tick": 135,
+        "type": "attack_end"
+      }
+    ],
+    "since_tick": 0,
+    "source": "fixture_recorded",
+    "truncated": false
+  },
+  "nodes": [
+    {
+      "children": [
+        {
+          "children": [],
+          "class": "WorldEnvironment",
+          "is_inside_tree": true,
+          "name": "WorldEnvironment",
+          "path": "/root/Main/WorldEnvironment",
+          "process_mode": 0,
+          "source": "measured"
+        },
+        {
+          "children": [],
+          "class": "DirectionalLight3D",
+          "global_transform": {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              -0.39287742972374,
+              -0.23644295334816,
+              -0.105271190404892,
+              0.882417142391205
+            ],
+            "rotation_degrees": [
+              -48.0000047508163,
+              -30.0000008348261,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "is_inside_tree": true,
+          "local_transform": {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              -0.39287742972374,
+              -0.23644295334816,
+              -0.105271190404892,
+              0.882417142391205
+            ],
+            "rotation_degrees": [
+              -48.0000047508163,
+              -30.0000008348261,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          },
+          "name": "Sun",
+          "path": "/root/Main/Sun",
+          "process_mode": 0,
+          "source": "measured",
+          "visible": true
+        },
+        {
+          "children": [
+            {
+              "class": "CollisionShape3D",
+              "global_transform": {
+                "origin": [
+                  0,
+                  -0.25,
+                  1
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  0,
+                  -0.25,
+                  1
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "Collision",
+              "path": "/root/Main/Ground/Collision",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "MeshInstance3D",
+              "global_transform": {
+                "origin": [
+                  0,
+                  -0.25,
+                  1
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  0,
+                  -0.25,
+                  1
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "Mesh",
+              "path": "/root/Main/Ground/Mesh",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            }
+          ],
+          "class": "StaticBody3D",
+          "global_transform": {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "is_inside_tree": true,
+          "local_transform": {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          },
+          "name": "Ground",
+          "path": "/root/Main/Ground",
+          "process_mode": 0,
+          "source": "measured",
+          "visible": true
+        },
+        {
+          "children": [
+            {
+              "class": "CollisionShape3D",
+              "global_transform": {
+                "origin": [
+                  0,
+                  0.850000023841858,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  0,
+                  0.850000023841858,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "Collision",
+              "path": "/root/Main/Player/Collision",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "Node3D",
+              "global_transform": {
+                "origin": [
+                  0,
+                  0,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  0,
+                  0,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "Humanoid",
+              "path": "/root/Main/Player/Humanoid",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            }
+          ],
+          "class": "CharacterBody3D",
+          "global_transform": {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "is_inside_tree": true,
+          "local_transform": {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          },
+          "name": "Player",
+          "path": "/root/Main/Player",
+          "process_mode": 0,
+          "source": "measured",
+          "visible": true
+        },
+        {
+          "children": [
+            {
+              "class": "CollisionShape3D",
+              "global_transform": {
+                "origin": [
+                  0,
+                  0.75,
+                  1.20000004768372
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  0,
+                  0.75,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "Collision",
+              "path": "/root/Main/Target/Collision",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "MeshInstance3D",
+              "global_transform": {
+                "origin": [
+                  0,
+                  0.75,
+                  1.20000004768372
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  0,
+                  0.75,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "Mesh",
+              "path": "/root/Main/Target/Mesh",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "Label3D",
+              "global_transform": {
+                "origin": [
+                  0,
+                  1.85000002384186,
+                  1.20000004768372
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  0,
+                  1.85000002384186,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "TargetLabel",
+              "path": "/root/Main/Target/TargetLabel",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            }
+          ],
+          "class": "StaticBody3D",
+          "global_transform": {
+            "origin": [
+              0,
+              0,
+              1.20000004768372
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "is_inside_tree": true,
+          "local_transform": {
+            "origin": [
+              0,
+              0,
+              1.20000004768372
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          },
+          "name": "Target",
+          "path": "/root/Main/Target",
+          "process_mode": 0,
+          "source": "measured",
+          "visible": true
+        },
+        {
+          "children": [],
+          "class": "Camera3D",
+          "global_transform": {
+            "origin": [
+              3.09999990463257,
+              2.15000009536743,
+              3.79999995231628
+            ],
+            "quaternion": [
+              -0.121874131262302,
+              0.37351593375206,
+              0.0495748966932297,
+              0.918245553970337
+            ],
+            "rotation_degrees": [
+              -15.1207871902428,
+              44.2701613884774,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "is_inside_tree": true,
+          "local_transform": {
+            "origin": [
+              3.09999990463257,
+              2.15000009536743,
+              3.79999995231628
+            ],
+            "quaternion": [
+              -0.121874131262302,
+              0.37351593375206,
+              0.0495748966932297,
+              0.918245553970337
+            ],
+            "rotation_degrees": [
+              -15.1207871902428,
+              44.2701613884774,
+              0
+            ],
+            "scale": [
+              0.999999940395355,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          },
+          "name": "Camera",
+          "path": "/root/Main/Camera",
+          "process_mode": 0,
+          "source": "measured",
+          "visible": true
+        },
+        {
+          "children": [
+            {
+              "class": "PanelContainer",
+              "is_inside_tree": true,
+              "name": "Panel",
+              "path": "/root/Main/HUD/Panel",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            }
+          ],
+          "class": "CanvasLayer",
+          "is_inside_tree": true,
+          "name": "HUD",
+          "path": "/root/Main/HUD",
+          "process_mode": 0,
+          "source": "measured"
+        }
+      ],
+      "class": "Node3D",
+      "descendant_limit": 256,
+      "descendant_truncated": false,
+      "global_transform": {
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "rotation_degrees": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "source": "measured",
+        "space": "world"
+      },
+      "is_inside_tree": true,
+      "local_transform": {
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "rotation_degrees": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "source": "measured",
+        "space": "parent"
+      },
+      "name": "Main",
+      "path": "/root/Main",
+      "process_mode": 0,
+      "source": "measured",
+      "visible": true
+    },
+    {
+      "character": {
+        "derived": {
+          "horizontal_speed": 0,
+          "speed": 0
+        },
+        "floor_normal": [
+          0,
+          0,
+          0
+        ],
+        "is_on_ceiling": false,
+        "is_on_floor": false,
+        "is_on_wall": false,
+        "slide_collision_count": 0,
+        "slide_collisions": [],
+        "source": "measured",
+        "velocity": [
+          0,
+          0,
+          0
+        ],
+        "wall_normal": [
+          0,
+          0,
+          0
+        ]
+      },
+      "children": [
+        {
+          "children": [],
+          "class": "CollisionShape3D",
+          "global_transform": {
+            "origin": [
+              0,
+              0.850000023841858,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "is_inside_tree": true,
+          "local_transform": {
+            "origin": [
+              0,
+              0.850000023841858,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          },
+          "name": "Collision",
+          "path": "/root/Main/Player/Collision",
+          "process_mode": 0,
+          "source": "measured",
+          "visible": true
+        },
+        {
+          "children": [
+            {
+              "class": "Node3D",
+              "global_transform": {
+                "origin": [
+                  0,
+                  0,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  0,
+                  0,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "character_root",
+              "path": "/root/Main/Player/Humanoid/character_root",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            }
+          ],
+          "class": "Node3D",
+          "global_transform": {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "is_inside_tree": true,
+          "local_transform": {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          },
+          "name": "Humanoid",
+          "path": "/root/Main/Player/Humanoid",
+          "process_mode": 0,
+          "source": "measured",
+          "visible": true
+        }
+      ],
+      "class": "CharacterBody3D",
+      "collision_shapes": [
+        {
+          "class": "CollisionShape3D",
+          "disabled": false,
+          "global_transform": {
+            "origin": [
+              0,
+              0.850000023841858,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "name": "Collision",
+          "path": "/root/Main/Player/Collision",
+          "shape": {
+            "height": 1.70000004768372,
+            "radius": 0.330000013113022
+          },
+          "shape_class": "CapsuleShape3D",
+          "source": "measured",
+          "transform": {
+            "origin": [
+              0,
+              0.850000023841858,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          }
+        }
+      ],
+      "descendant_limit": 256,
+      "descendant_truncated": false,
+      "global_transform": {
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "rotation_degrees": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "source": "measured",
+        "space": "world"
+      },
+      "is_inside_tree": true,
+      "local_transform": {
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "rotation_degrees": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "source": "measured",
+        "space": "parent"
+      },
+      "name": "Player",
+      "path": "/root/Main/Player",
+      "process_mode": 0,
+      "source": "measured",
+      "visible": true
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "class": "MeshInstance3D",
+              "global_transform": {
+                "origin": [
+                  0,
+                  1.13999998569489,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  0,
+                  1.13999998569489,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "abdomen",
+              "path": "/root/Main/Player/Humanoid/character_root/abdomen",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "MeshInstance3D",
+              "global_transform": {
+                "origin": [
+                  0,
+                  1,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  0,
+                  1,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "belt",
+              "path": "/root/Main/Player/Humanoid/character_root/belt",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "MeshInstance3D",
+              "global_transform": {
+                "origin": [
+                  0,
+                  1.37999999523163,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  0,
+                  1.37999999523163,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "chest",
+              "path": "/root/Main/Player/Humanoid/character_root/chest",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "MeshInstance3D",
+              "global_transform": {
+                "origin": [
+                  -0.119999997317791,
+                  1.70000004768372,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  -0.119999997317791,
+                  1.70000004768372,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "ear_l",
+              "path": "/root/Main/Player/Humanoid/character_root/ear_l",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "MeshInstance3D",
+              "global_transform": {
+                "origin": [
+                  0.119999997317791,
+                  1.70000004768372,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  0.119999997317791,
+                  1.70000004768372,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "ear_r",
+              "path": "/root/Main/Player/Humanoid/character_root/ear_r",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "MeshInstance3D",
+              "global_transform": {
+                "origin": [
+                  -0.104999996721745,
+                  0.0399999991059303,
+                  0.0450000017881393
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  -0.104999996721745,
+                  0.0399999991059303,
+                  0.0450000017881393
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "foot_l",
+              "path": "/root/Main/Player/Humanoid/character_root/foot_l",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "MeshInstance3D",
+              "global_transform": {
+                "origin": [
+                  0.104999996721745,
+                  0.0399999991059303,
+                  0.0450000017881393
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  0.104999996721745,
+                  0.0399999991059303,
+                  0.0450000017881393
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "foot_r",
+              "path": "/root/Main/Player/Humanoid/character_root/foot_r",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "MeshInstance3D",
+              "global_transform": {
+                "origin": [
+                  -0.28999999165535,
+                  1.01999998092651,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  -0.28999999165535,
+                  1.01999998092651,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "forearm_l",
+              "path": "/root/Main/Player/Humanoid/character_root/forearm_l",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "MeshInstance3D",
+              "global_transform": {
+                "origin": [
+                  0.28999999165535,
+                  1.01999998092651,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  0.28999999165535,
+                  1.01999998092651,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "forearm_r",
+              "path": "/root/Main/Player/Humanoid/character_root/forearm_r",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "MeshInstance3D",
+              "global_transform": {
+                "origin": [
+                  -0.294999986886978,
+                  0.810000002384186,
+                  0.00999999977648258
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  -0.294999986886978,
+                  0.810000002384186,
+                  0.00999999977648258
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "hand_geom_l",
+              "path": "/root/Main/Player/Humanoid/character_root/hand_geom_l",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "MeshInstance3D",
+              "global_transform": {
+                "origin": [
+                  0.294999986886978,
+                  0.810000002384186,
+                  0.00999999977648258
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  0.294999986886978,
+                  0.810000002384186,
+                  0.00999999977648258
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "hand_geom_r",
+              "path": "/root/Main/Player/Humanoid/character_root/hand_geom_r",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "Node3D",
+              "global_transform": {
+                "origin": [
+                  -0.294999986886978,
+                  0.879999995231628,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  -0.294999986886978,
+                  0.879999995231628,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "hand_l",
+              "path": "/root/Main/Player/Humanoid/character_root/hand_l",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "Node3D",
+              "global_transform": {
+                "origin": [
+                  0.294999986886978,
+                  0.879999995231628,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  0.294999986886978,
+                  0.879999995231628,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "hand_r",
+              "path": "/root/Main/Player/Humanoid/character_root/hand_r",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "Node3D",
+              "global_transform": {
+                "origin": [
+                  0,
+                  1.70000004768372,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  0,
+                  1.70000004768372,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "head",
+              "path": "/root/Main/Player/Humanoid/character_root/head",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "MeshInstance3D",
+              "global_transform": {
+                "origin": [
+                  0,
+                  1.70000004768372,
+                  0.00999999977648258
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  0,
+                  1.70000004768372,
+                  0.00999999977648258
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "head_geom",
+              "path": "/root/Main/Player/Humanoid/character_root/head_geom",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "MeshInstance3D",
+              "global_transform": {
+                "origin": [
+                  0,
+                  1.53999996185303,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  0,
+                  1.53999996185303,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "neck",
+              "path": "/root/Main/Player/Humanoid/character_root/neck",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "MeshInstance3D",
+              "global_transform": {
+                "origin": [
+                  0,
+                  1.69000005722046,
+                  0.140000000596046
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  0,
+                  1.69000005722046,
+                  0.140000000596046
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "nose",
+              "path": "/root/Main/Player/Humanoid/character_root/nose",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "MeshInstance3D",
+              "global_transform": {
+                "origin": [
+                  0,
+                  0.899999976158142,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  0,
+                  0.899999976158142,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "pelvis",
+              "path": "/root/Main/Player/Humanoid/character_root/pelvis",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "MeshInstance3D",
+              "global_transform": {
+                "origin": [
+                  -0.100000001490116,
+                  0.310000002384186,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  -0.100000001490116,
+                  0.310000002384186,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "shin_l",
+              "path": "/root/Main/Player/Humanoid/character_root/shin_l",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "MeshInstance3D",
+              "global_transform": {
+                "origin": [
+                  0.100000001490116,
+                  0.310000002384186,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  0.100000001490116,
+                  0.310000002384186,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "shin_r",
+              "path": "/root/Main/Player/Humanoid/character_root/shin_r",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "MeshInstance3D",
+              "global_transform": {
+                "origin": [
+                  0,
+                  1.47000002861023,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  0,
+                  1.47000002861023,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "shoulders",
+              "path": "/root/Main/Player/Humanoid/character_root/shoulders",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "MeshInstance3D",
+              "global_transform": {
+                "origin": [
+                  -0.100000001490116,
+                  0.670000016689301,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  -0.100000001490116,
+                  0.670000016689301,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "thigh_l",
+              "path": "/root/Main/Player/Humanoid/character_root/thigh_l",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "MeshInstance3D",
+              "global_transform": {
+                "origin": [
+                  0.100000001490116,
+                  0.670000016689301,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  0.100000001490116,
+                  0.670000016689301,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "thigh_r",
+              "path": "/root/Main/Player/Humanoid/character_root/thigh_r",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "MeshInstance3D",
+              "global_transform": {
+                "origin": [
+                  -0.280000001192093,
+                  1.30999994277954,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  -0.280000001192093,
+                  1.30999994277954,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "upper_arm_l",
+              "path": "/root/Main/Player/Humanoid/character_root/upper_arm_l",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            },
+            {
+              "class": "MeshInstance3D",
+              "global_transform": {
+                "origin": [
+                  0.280000001192093,
+                  1.30999994277954,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  0.280000001192093,
+                  1.30999994277954,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "upper_arm_r",
+              "path": "/root/Main/Player/Humanoid/character_root/upper_arm_r",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            }
+          ],
+          "class": "Node3D",
+          "global_transform": {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "is_inside_tree": true,
+          "local_transform": {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          },
+          "name": "character_root",
+          "path": "/root/Main/Player/Humanoid/character_root",
+          "process_mode": 0,
+          "source": "measured",
+          "visible": true
+        }
+      ],
+      "class": "Node3D",
+      "descendant_limit": 256,
+      "descendant_truncated": false,
+      "global_transform": {
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "rotation_degrees": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "source": "measured",
+        "space": "world"
+      },
+      "is_inside_tree": true,
+      "local_transform": {
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "rotation_degrees": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "source": "measured",
+        "space": "parent"
+      },
+      "name": "Humanoid",
+      "path": "/root/Main/Player/Humanoid",
+      "process_mode": 0,
+      "source": "measured",
+      "visible": true
+    },
+    {
+      "children": [
+        {
+          "children": [],
+          "class": "MeshInstance3D",
+          "global_transform": {
+            "origin": [
+              0.399188905954361,
+              0.879999995231628,
+              0.590884685516357
+            ],
+            "quaternion": [
+              0,
+              0.0871557518839836,
+              0,
+              0.99619472026825
+            ],
+            "rotation_degrees": [
+              0,
+              10.0000005628666,
+              0
+            ],
+            "scale": [
+              0.999999940395355,
+              1,
+              0.999999940395355
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "is_inside_tree": true,
+          "local_transform": {
+            "origin": [
+              0,
+              0,
+              0.600000023841858
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          },
+          "name": "Blade",
+          "path": "/root/Main/Player/Humanoid/character_root/hand_r/WeaponPivot/Blade",
+          "process_mode": 0,
+          "source": "measured",
+          "visible": true
+        },
+        {
+          "children": [],
+          "class": "MeshInstance3D",
+          "global_transform": {
+            "origin": [
+              0.301945924758911,
+              0.879999995231628,
+              0.0393923074007034
+            ],
+            "quaternion": [
+              0,
+              0.0871557518839836,
+              0,
+              0.99619472026825
+            ],
+            "rotation_degrees": [
+              0,
+              10.0000005628666,
+              0
+            ],
+            "scale": [
+              0.999999940395355,
+              1,
+              0.999999940395355
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "is_inside_tree": true,
+          "local_transform": {
+            "origin": [
+              0,
+              0,
+              0.0399999991059303
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          },
+          "name": "Guard",
+          "path": "/root/Main/Player/Humanoid/character_root/hand_r/WeaponPivot/Guard",
+          "process_mode": 0,
+          "source": "measured",
+          "visible": true
+        },
+        {
+          "children": [
+            {
+              "class": "CollisionShape3D",
+              "global_transform": {
+                "origin": [
+                  0.399188905954361,
+                  0.879999995231628,
+                  0.590884685516357
+                ],
+                "quaternion": [
+                  0,
+                  0.0871557518839836,
+                  0,
+                  0.99619472026825
+                ],
+                "rotation_degrees": [
+                  0,
+                  10.0000005628666,
+                  0
+                ],
+                "scale": [
+                  0.999999940395355,
+                  1,
+                  0.999999940395355
+                ],
+                "source": "measured",
+                "space": "world"
+              },
+              "is_inside_tree": true,
+              "local_transform": {
+                "origin": [
+                  0,
+                  0,
+                  0
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "rotation_degrees": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ],
+                "source": "measured",
+                "space": "parent"
+              },
+              "name": "Collision",
+              "path": "/root/Main/Player/Humanoid/character_root/hand_r/WeaponPivot/WeaponHitbox/Collision",
+              "process_mode": 0,
+              "source": "measured",
+              "visible": true
+            }
+          ],
+          "class": "Area3D",
+          "global_transform": {
+            "origin": [
+              0.399188905954361,
+              0.879999995231628,
+              0.590884685516357
+            ],
+            "quaternion": [
+              0,
+              0.0871557518839836,
+              0,
+              0.99619472026825
+            ],
+            "rotation_degrees": [
+              0,
+              10.0000005628666,
+              0
+            ],
+            "scale": [
+              0.999999940395355,
+              1,
+              0.999999940395355
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "is_inside_tree": true,
+          "local_transform": {
+            "origin": [
+              0,
+              0,
+              0.600000023841858
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          },
+          "name": "WeaponHitbox",
+          "path": "/root/Main/Player/Humanoid/character_root/hand_r/WeaponPivot/WeaponHitbox",
+          "process_mode": 0,
+          "source": "measured",
+          "visible": true
+        },
+        {
+          "children": [],
+          "class": "MeshInstance3D",
+          "global_transform": {
+            "origin": [
+              0.399188905954361,
+              0.879999995231628,
+              0.590884685516357
+            ],
+            "quaternion": [
+              0,
+              0.0871557518839836,
+              0,
+              0.99619472026825
+            ],
+            "rotation_degrees": [
+              0,
+              10.0000005628666,
+              0
+            ],
+            "scale": [
+              0.999999940395355,
+              1,
+              0.999999940395355
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "is_inside_tree": true,
+          "local_transform": {
+            "origin": [
+              0,
+              0,
+              0.600000023841858
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          },
+          "name": "HitboxDebug",
+          "path": "/root/Main/Player/Humanoid/character_root/hand_r/WeaponPivot/HitboxDebug",
+          "process_mode": 0,
+          "source": "measured",
+          "visible": true
+        }
+      ],
+      "class": "Node3D",
+      "descendant_limit": 256,
+      "descendant_truncated": false,
+      "global_transform": {
+        "origin": [
+          0.294999986886978,
+          0.879999995231628,
+          0
+        ],
+        "quaternion": [
+          0,
+          0.0871557518839836,
+          0,
+          0.99619472026825
+        ],
+        "rotation_degrees": [
+          0,
+          10.0000005628666,
+          0
+        ],
+        "scale": [
+          0.999999940395355,
+          1,
+          0.999999940395355
+        ],
+        "source": "measured",
+        "space": "world"
+      },
+      "is_inside_tree": true,
+      "local_transform": {
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "quaternion": [
+          0,
+          0.0871557518839836,
+          0,
+          0.99619472026825
+        ],
+        "rotation_degrees": [
+          0,
+          10.0000005628666,
+          0
+        ],
+        "scale": [
+          0.999999940395355,
+          1,
+          0.999999940395355
+        ],
+        "source": "measured",
+        "space": "parent"
+      },
+      "name": "WeaponPivot",
+      "path": "/root/Main/Player/Humanoid/character_root/hand_r/WeaponPivot",
+      "process_mode": 0,
+      "source": "measured",
+      "visible": true
+    },
+    {
+      "children": [
+        {
+          "children": [],
+          "class": "CollisionShape3D",
+          "global_transform": {
+            "origin": [
+              0.399188905954361,
+              0.879999995231628,
+              0.590884685516357
+            ],
+            "quaternion": [
+              0,
+              0.0871557518839836,
+              0,
+              0.99619472026825
+            ],
+            "rotation_degrees": [
+              0,
+              10.0000005628666,
+              0
+            ],
+            "scale": [
+              0.999999940395355,
+              1,
+              0.999999940395355
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "is_inside_tree": true,
+          "local_transform": {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          },
+          "name": "Collision",
+          "path": "/root/Main/Player/Humanoid/character_root/hand_r/WeaponPivot/WeaponHitbox/Collision",
+          "process_mode": 0,
+          "source": "measured",
+          "visible": true
+        }
+      ],
+      "class": "Area3D",
+      "collision_shapes": [
+        {
+          "class": "CollisionShape3D",
+          "disabled": false,
+          "global_transform": {
+            "origin": [
+              0.399188905954361,
+              0.879999995231628,
+              0.590884685516357
+            ],
+            "quaternion": [
+              0,
+              0.0871557518839836,
+              0,
+              0.99619472026825
+            ],
+            "rotation_degrees": [
+              0,
+              10.0000005628666,
+              0
+            ],
+            "scale": [
+              0.999999940395355,
+              1,
+              0.999999940395355
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "name": "Collision",
+          "path": "/root/Main/Player/Humanoid/character_root/hand_r/WeaponPivot/WeaponHitbox/Collision",
+          "shape": {
+            "size": [
+              0.449999988079071,
+              0.25,
+              1
+            ]
+          },
+          "shape_class": "BoxShape3D",
+          "source": "measured",
+          "transform": {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          }
+        }
+      ],
+      "descendant_limit": 256,
+      "descendant_truncated": false,
+      "global_transform": {
+        "origin": [
+          0.399188905954361,
+          0.879999995231628,
+          0.590884685516357
+        ],
+        "quaternion": [
+          0,
+          0.0871557518839836,
+          0,
+          0.99619472026825
+        ],
+        "rotation_degrees": [
+          0,
+          10.0000005628666,
+          0
+        ],
+        "scale": [
+          0.999999940395355,
+          1,
+          0.999999940395355
+        ],
+        "source": "measured",
+        "space": "world"
+      },
+      "is_inside_tree": true,
+      "local_transform": {
+        "origin": [
+          0,
+          0,
+          0.600000023841858
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "rotation_degrees": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "source": "measured",
+        "space": "parent"
+      },
+      "name": "WeaponHitbox",
+      "path": "/root/Main/Player/Humanoid/character_root/hand_r/WeaponPivot/WeaponHitbox",
+      "process_mode": 0,
+      "source": "measured",
+      "visible": true
+    },
+    {
+      "children": [
+        {
+          "children": [],
+          "class": "CollisionShape3D",
+          "global_transform": {
+            "origin": [
+              0,
+              0.75,
+              1.20000004768372
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "is_inside_tree": true,
+          "local_transform": {
+            "origin": [
+              0,
+              0.75,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          },
+          "name": "Collision",
+          "path": "/root/Main/Target/Collision",
+          "process_mode": 0,
+          "source": "measured",
+          "visible": true
+        },
+        {
+          "children": [],
+          "class": "MeshInstance3D",
+          "global_transform": {
+            "origin": [
+              0,
+              0.75,
+              1.20000004768372
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "is_inside_tree": true,
+          "local_transform": {
+            "origin": [
+              0,
+              0.75,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          },
+          "name": "Mesh",
+          "path": "/root/Main/Target/Mesh",
+          "process_mode": 0,
+          "source": "measured",
+          "visible": true
+        },
+        {
+          "children": [],
+          "class": "Label3D",
+          "global_transform": {
+            "origin": [
+              0,
+              1.85000002384186,
+              1.20000004768372
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "is_inside_tree": true,
+          "local_transform": {
+            "origin": [
+              0,
+              1.85000002384186,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          },
+          "name": "TargetLabel",
+          "path": "/root/Main/Target/TargetLabel",
+          "process_mode": 0,
+          "source": "measured",
+          "visible": true
+        }
+      ],
+      "class": "StaticBody3D",
+      "collision_shapes": [
+        {
+          "class": "CollisionShape3D",
+          "disabled": false,
+          "global_transform": {
+            "origin": [
+              0,
+              0.75,
+              1.20000004768372
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "name": "Collision",
+          "path": "/root/Main/Target/Collision",
+          "shape": {
+            "height": 1.5,
+            "radius": 0.319999992847443
+          },
+          "shape_class": "CapsuleShape3D",
+          "source": "measured",
+          "transform": {
+            "origin": [
+              0,
+              0.75,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          }
+        }
+      ],
+      "descendant_limit": 256,
+      "descendant_truncated": false,
+      "global_transform": {
+        "origin": [
+          0,
+          0,
+          1.20000004768372
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "rotation_degrees": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "source": "measured",
+        "space": "world"
+      },
+      "is_inside_tree": true,
+      "local_transform": {
+        "origin": [
+          0,
+          0,
+          1.20000004768372
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "rotation_degrees": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "source": "measured",
+        "space": "parent"
+      },
+      "name": "Target",
+      "path": "/root/Main/Target",
+      "process_mode": 0,
+      "source": "measured",
+      "visible": true
+    },
+    {
+      "children": [
+        {
+          "children": [],
+          "class": "CollisionShape3D",
+          "global_transform": {
+            "origin": [
+              0,
+              -0.25,
+              1
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "is_inside_tree": true,
+          "local_transform": {
+            "origin": [
+              0,
+              -0.25,
+              1
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          },
+          "name": "Collision",
+          "path": "/root/Main/Ground/Collision",
+          "process_mode": 0,
+          "source": "measured",
+          "visible": true
+        },
+        {
+          "children": [],
+          "class": "MeshInstance3D",
+          "global_transform": {
+            "origin": [
+              0,
+              -0.25,
+              1
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "is_inside_tree": true,
+          "local_transform": {
+            "origin": [
+              0,
+              -0.25,
+              1
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          },
+          "name": "Mesh",
+          "path": "/root/Main/Ground/Mesh",
+          "process_mode": 0,
+          "source": "measured",
+          "visible": true
+        }
+      ],
+      "class": "StaticBody3D",
+      "collision_shapes": [
+        {
+          "class": "CollisionShape3D",
+          "disabled": false,
+          "global_transform": {
+            "origin": [
+              0,
+              -0.25,
+              1
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "name": "Collision",
+          "path": "/root/Main/Ground/Collision",
+          "shape": {
+            "size": [
+              14,
+              0.5,
+              10
+            ]
+          },
+          "shape_class": "BoxShape3D",
+          "source": "measured",
+          "transform": {
+            "origin": [
+              0,
+              -0.25,
+              1
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          }
+        }
+      ],
+      "descendant_limit": 256,
+      "descendant_truncated": false,
+      "global_transform": {
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "rotation_degrees": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "source": "measured",
+        "space": "world"
+      },
+      "is_inside_tree": true,
+      "local_transform": {
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "rotation_degrees": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "source": "measured",
+        "space": "parent"
+      },
+      "name": "Ground",
+      "path": "/root/Main/Ground",
+      "process_mode": 0,
+      "source": "measured",
+      "visible": true
+    }
+  ],
+  "runtime": {
+    "captured_at": "2026-10-21T15:33:09Z",
+    "godot": "4.7.2-stable (official)",
+    "paused": true,
+    "physics_frames": 168,
+    "physics_ticks_per_second": 60,
+    "sim_time_seconds": 2.8,
+    "sim_time_seconds_source": "derived",
+    "source": "measured",
+    "spaces": {
+      "global": "world",
+      "local": "parent"
+    },
+    "tick": 168,
+    "units": {
+      "position": "m",
+      "rotation": "deg",
+      "time": "s",
+      "velocity": "m/s"
+    },
+    "unix_time": 1792596789.346,
+    "uptime_ms": 2755
+  }
+}

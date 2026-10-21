@@ -1,0 +1,126 @@
+{
+  "combat": {
+    "attack_cooldown": 12,
+    "attack_state": "idle",
+    "attack_timer": 18,
+    "attacks": 1,
+    "hits": 0,
+    "last_hit_distance": -1,
+    "last_hitbox_origin": [
+      0.26977601647377,
+      0.879999995231628,
+      0.178223878145218
+    ],
+    "target_health": 3,
+    "target_max_health": 3
+  },
+  "event_count": 13,
+  "game_ready": true,
+  "hash": "054175fcb99212371400cd216c3a61fa308faf5f34f634a5cb83a6463f644535",
+  "paused": true,
+  "physics_frames": 167,
+  "physics_ticks_per_second": 60,
+  "player": {
+    "path": "/root/Main/Player",
+    "position": [
+      0,
+      0,
+      0
+    ],
+    "rotation_degrees": [
+      0,
+      0,
+      0
+    ]
+  },
+  "step": 18,
+  "target": {
+    "center": [
+      0,
+      0.75,
+      1.20000004768372
+    ],
+    "collision_shape": [
+      0.319999992847443,
+      1.5
+    ],
+    "health": 3,
+    "max_health": 3,
+    "origin": [
+      0,
+      0,
+      1.20000004768372
+    ],
+    "path": "/root/Main/Target"
+  },
+  "uptime_ms": 2715,
+  "weapon": {
+    "blade_center_local_z": 0.6,
+    "blade_center_world": [
+      0.399188905954361,
+      0.879999995231628,
+      0.590884685516357
+    ],
+    "blade_path": "/root/Main/Player/Humanoid/character_root/hand_r/WeaponPivot/Blade",
+    "blade_tip_world": [
+      0.503377795219421,
+      0.879999995231628,
+      1.18176937103271
+    ],
+    "hitbox_center_local": [
+      0,
+      0,
+      0.180000007152557
+    ],
+    "hitbox_center_world": [
+      0.326256662607193,
+      0.879999995231628,
+      0.177265405654907
+    ],
+    "hitbox_global_transform": {
+      "origin": [
+        0.326256662607193,
+        0.879999995231628,
+        0.177265405654907
+      ],
+      "quaternion": [
+        0,
+        0.0871557518839836,
+        0,
+        0.99619472026825
+      ],
+      "rotation_degrees": [
+        0,
+        10.0000009536743,
+        0
+      ]
+    },
+    "hitbox_overlaps": [],
+    "hitbox_path": "/root/Main/Player/Humanoid/character_root/hand_r/WeaponPivot/WeaponHitbox",
+    "hitbox_shape_size": [
+      0.449999988079071,
+      0.25,
+      1
+    ],
+    "pivot_global_transform": {
+      "origin": [
+        0.294999986886978,
+        0.879999995231628,
+        0
+      ],
+      "quaternion": [
+        0,
+        0.0871557518839836,
+        0,
+        0.99619472026825
+      ],
+      "rotation_degrees": [
+        0,
+        10.0000009536743,
+        0
+      ]
+    },
+    "pivot_path": "/root/Main/Player/Humanoid/character_root/hand_r/WeaponPivot",
+    "target_in_hitbox": false
+  }
+}
