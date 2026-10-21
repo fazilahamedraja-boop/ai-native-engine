@@ -1,0 +1,22 @@
+{
+  "step": 88,
+  "physics_frames": 112,
+  "player_position": [
+    0,
+    0.850000023841858,
+    -0.166664153337479
+  ],
+  "plate_pressed": true,
+  "gate_open": true,
+  "gate_collision_enabled": false,
+  "beacon_state": "green",
+  "goal_reached": false,
+  "feedback": "PLATE PRESSED",
+  "prompt": "GATE OPEN - GO THROUGH",
+  "event_count": 5,
+  "event_types": [
+    "gate_open"
+  ],
+  "hash": "4d9ba8e9f9b492e779ca0b0fb75bf7c35e2f6b029c4f8f5bcf9777232ee44ca2",
+  "outcome_hash": "3640413193083bbe8c6018bd52081f0188a35065edf08e5b1ef00c50d6b32462"
+}

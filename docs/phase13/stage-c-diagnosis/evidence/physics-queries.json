@@ -1,0 +1,58 @@
+{
+  "plate_volume": {
+    "description": "box query covering the pressure plate volume at (0, 0.10, -1.1)",
+    "shape_type": "box",
+    "collision_mask": 1,
+    "results": [
+      {
+        "collider": "/root/Main/Ground",
+        "collider_type": "StaticBody3D",
+        "shape_index": 0,
+        "source": "derived"
+      },
+      {
+        "collider": "/root/Main/Player",
+        "collider_type": "CharacterBody3D",
+        "shape_index": 0,
+        "source": "derived"
+      }
+    ]
+  },
+  "gate_volume": {
+    "description": "box query covering the closed gate at (0, 1.30, -2.5)",
+    "shape_type": "box",
+    "collision_mask": 1,
+    "results": [
+      {
+        "collider": "/root/Main/RightPost",
+        "collider_type": "StaticBody3D",
+        "shape_index": 0,
+        "source": "derived"
+      },
+      {
+        "collider": "/root/Main/RightWall",
+        "collider_type": "StaticBody3D",
+        "shape_index": 0,
+        "source": "derived"
+      },
+      {
+        "collider": "/root/Main/LeftWall",
+        "collider_type": "StaticBody3D",
+        "shape_index": 0,
+        "source": "derived"
+      },
+      {
+        "collider": "/root/Main/Ground",
+        "collider_type": "StaticBody3D",
+        "shape_index": 0,
+        "source": "derived"
+      },
+      {
+        "collider": "/root/Main/LeftPost",
+        "collider_type": "StaticBody3D",
+        "shape_index": 0,
+        "source": "derived"
+      }
+    ]
+  }
+}

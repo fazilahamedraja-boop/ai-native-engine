@@ -1,0 +1,295 @@
+{
+  "operation": "phase13_diagnosis_verify",
+  "mode": "verify",
+  "ok": true,
+  "run_id": "phase13-f2b29c92-3761-486d-9744-ace84846f892",
+  "project": "fixtures/phase13-defect",
+  "test_script": "res://tests/run_observation.gd",
+  "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase13\\docs\\phase13\\stage-c-diagnosis",
+  "started_at": "2026-10-21T20:47:41.270Z",
+  "finished_at": "2026-10-21T20:47:55.176Z",
+  "test": {
+    "exit_code": 0,
+    "ok": true,
+    "summary": {
+      "passed": 8,
+      "failed": 0
+    },
+    "results": [
+      {
+        "name": "observation-initial-state",
+        "passed": true,
+        "detail": "plate=false gate=false collision=true beacon=red grounded=true position=[0.0, 0.85000002384186, 5.5]"
+      },
+      {
+        "name": "observation-plate-opens-gate",
+        "passed": true,
+        "detail": "plate=true gate=true collision=false beacon=green events=[\"reset\", \"player_collision_start\", \"crate_collision_start\", \"plate_entered\", \"gate_open\"]"
+      },
+      {
+        "name": "observation-gate-passable-after-plate",
+        "passed": true,
+        "detail": "goal=true z=-7.184 events=[\"reset\", \"player_collision_start\", \"crate_collision_start\", \"plate_entered\", \"gate_open\", \"plate_exited\", \"gate_close\", \"player_collision_start\", \"player_collision_end\", \"goal_reached\"]"
+      },
+      {
+        "name": "observation-closed-gate-blocks",
+        "passed": true,
+        "detail": "plate=false gate=false z=-1.950 gate_collision_seen=true"
+      },
+      {
+        "name": "observation-event-stream",
+        "passed": true,
+        "detail": "count=5 ordered=true fields_ok=true"
+      },
+      {
+        "name": "observation-reset",
+        "passed": true,
+        "detail": "step=0 plate=false gate=false beacon=red crate_y=2.992 last_event=reset"
+      },
+      {
+        "name": "observation-humanoid-probe",
+        "passed": true,
+        "detail": "mesh_count=22 bones=[\"root\", \"spine\", \"chest\", \"head\"]"
+      },
+      {
+        "name": "observation-crate-falls",
+        "passed": true,
+        "detail": "crate_y=0.347 ground_collision=true sleeping=true"
+      }
+    ],
+    "reason": "tests passed"
+  },
+  "live": {
+    "label": "frame-after-repair",
+    "captured_at": "2026-10-21T20:47:55.122Z",
+    "engine_tick": 114,
+    "simulation_step": 88,
+    "screenshot": {
+      "path": "frame-after-repair.png",
+      "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase13\\docs\\phase13\\stage-c-diagnosis\\evidence\\frame-after-repair.png",
+      "bytes": 63760,
+      "sha256": "406008741ecb6cf2f9f33abf1beb74c43cce1dbdff23c0b195bab71876a20b1e",
+      "width": 1280,
+      "height": 720
+    },
+    "state": {
+      "step": 88,
+      "physics_frames": 112,
+      "player_position": [
+        0,
+        0.850000023841858,
+        -0.166664153337479
+      ],
+      "plate_pressed": true,
+      "gate_open": true,
+      "gate_collision_enabled": false,
+      "beacon_state": "green",
+      "goal_reached": false,
+      "feedback": "PLATE PRESSED",
+      "prompt": "GATE OPEN - GO THROUGH",
+      "event_count": 5,
+      "event_types": [
+        "gate_open"
+      ],
+      "hash": "4d9ba8e9f9b492e779ca0b0fb75bf7c35e2f6b029c4f8f5bcf9777232ee44ca2",
+      "outcome_hash": "3640413193083bbe8c6018bd52081f0188a35065edf08e5b1ef00c50d6b32462"
+    },
+    "observation": {
+      "engine_tick": 113,
+      "node_count": 4,
+      "event_count": 5,
+      "event_types": [
+        "reset",
+        "player_collision_start",
+        "crate_collision_start",
+        "plate_entered",
+        "gate_open"
+      ],
+      "event_items": [
+        {
+          "label": "harness_reset",
+          "sequence": 1,
+          "sim_time_seconds": 0.316666666666667,
+          "simulation_step": 0,
+          "simulation_time_seconds": 0,
+          "source": "fixture_recorded",
+          "tick": 19,
+          "tick_domain": "engine_physics_frames",
+          "type": "reset",
+          "wall_time_ms": 1311
+        },
+        {
+          "collider": "/root/Main/Ground",
+          "normal": [
+            0,
+            1,
+            0
+          ],
+          "position": [
+            0,
+            0,
+            5.5
+          ],
+          "sequence": 2,
+          "sim_time_seconds": 0.35,
+          "simulation_step": 1,
+          "simulation_time_seconds": 0.0166666666666667,
+          "source": "fixture_recorded",
+          "tick": 21,
+          "tick_domain": "engine_physics_frames",
+          "type": "player_collision_start",
+          "wall_time_ms": 1348
+        },
+        {
+          "body": "/root/Main/Ground",
+          "crate_position": [
+            4.19999933242798,
+            0.347229689359665,
+            2.50000166893005
+          ],
+          "sequence": 3,
+          "sim_time_seconds": 1.15,
+          "simulation_step": 46,
+          "simulation_time_seconds": 0.766666666666667,
+          "source": "fixture_recorded",
+          "tick": 69,
+          "tick_domain": "engine_physics_frames",
+          "type": "crate_collision_start",
+          "wall_time_ms": 2157
+        },
+        {
+          "body": "/root/Main/Player",
+          "sequence": 4,
+          "sim_time_seconds": 1.75,
+          "simulation_step": 82,
+          "simulation_time_seconds": 1.36666666666667,
+          "source": "fixture_recorded",
+          "tick": 105,
+          "tick_domain": "engine_physics_frames",
+          "type": "plate_entered",
+          "wall_time_ms": 2756
+        },
+        {
+          "collision_enabled": false,
+          "plate_pressed": true,
+          "sequence": 5,
+          "sim_time_seconds": 1.75,
+          "simulation_step": 82,
+          "simulation_time_seconds": 1.36666666666667,
+          "source": "fixture_recorded",
+          "tick": 105,
+          "tick_domain": "engine_physics_frames",
+          "type": "gate_open",
+          "wall_time_ms": 2757
+        }
+      ],
+      "player_world_origin": [
+        0,
+        0.850000023841858,
+        -0.166664153337479
+      ],
+      "player_colliders": [
+        "CapsuleShape3D"
+      ],
+      "main_properties": {
+        "beacon_state": "green",
+        "feedback": "PLATE PRESSED",
+        "gate_collision_enabled": false,
+        "gate_open": true,
+        "goal_reached": false,
+        "plate_pressed": true
+      },
+      "plate_collision": {
+        "collision_layer": 1,
+        "collision_mask": 1,
+        "monitorable": true,
+        "monitoring": true,
+        "source": "measured"
+      },
+      "gate_collision": {
+        "collision_layer": 1,
+        "collision_mask": 1,
+        "source": "measured"
+      }
+    },
+    "physics_queries": {
+      "plate_volume": {
+        "description": "box query covering the pressure plate volume at (0, 0.10, -1.1)",
+        "shape_type": "box",
+        "collision_mask": 1,
+        "results": [
+          {
+            "collider": "/root/Main/Ground",
+            "collider_type": "StaticBody3D",
+            "shape_index": 0,
+            "source": "derived"
+          },
+          {
+            "collider": "/root/Main/Player",
+            "collider_type": "CharacterBody3D",
+            "shape_index": 0,
+            "source": "derived"
+          }
+        ]
+      },
+      "gate_volume": {
+        "description": "box query covering the closed gate at (0, 1.30, -2.5)",
+        "shape_type": "box",
+        "collision_mask": 1,
+        "results": [
+          {
+            "collider": "/root/Main/RightPost",
+            "collider_type": "StaticBody3D",
+            "shape_index": 0,
+            "source": "derived"
+          },
+          {
+            "collider": "/root/Main/RightWall",
+            "collider_type": "StaticBody3D",
+            "shape_index": 0,
+            "source": "derived"
+          },
+          {
+            "collider": "/root/Main/LeftWall",
+            "collider_type": "StaticBody3D",
+            "shape_index": 0,
+            "source": "derived"
+          },
+          {
+            "collider": "/root/Main/Ground",
+            "collider_type": "StaticBody3D",
+            "shape_index": 0,
+            "source": "derived"
+          },
+          {
+            "collider": "/root/Main/LeftPost",
+            "collider_type": "StaticBody3D",
+            "shape_index": 0,
+            "source": "derived"
+          }
+        ]
+      }
+    }
+  },
+  "stop": {
+    "operation": "stop_project",
+    "ok": true,
+    "alreadyStopped": false,
+    "pid": 23620,
+    "exitCode": 0,
+    "signal": null,
+    "killed": false,
+    "logs": {
+      "stdout": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "Vulkan 1.3.215 - Forward+ - Using Device #0: Intel - Intel(R) UHD Graphics",
+        "",
+        "HARNESS_READY {\"pid\":23620,\"port\":60519,\"project\":\"godot-phase13-defect-fixture\",\"protocol\":1}"
+      ],
+      "stderr": []
+    }
+  },
+  "error": null,
+  "godot": "4.7.2-stable (official)",
+  "pid": 23620
+}
