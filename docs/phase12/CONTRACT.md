@@ -1,16 +1,26 @@
 # Phase 12 — Read-Only Physics Space Query
 
+> **Corrected in Phase 12B.** The first version of this document specified a
+> `Transform3D` for the `transform` input and a `Vector3` for `size`. Neither can cross the
+> bridge's newline-delimited JSON protocol, and the implementation as first written did not
+> compile. The verified contract is below. See
+> [`../phase12-verification/verification-report.md`](../phase12-verification/verification-report.md).
+
 ## Contract
 
 ### Query inputs
 
-| Parameter | Type | Description | Required | Default |
+| Parameter | JSON type | Description | Required | Default |
 |---|---|---|---|---|
-| `shape_type` | `string` | One of: `"box"`, `"sphere"`, `"capsule"`, `"ray"` | Yes | — |
-| `transform` | `Transform3D` | World transform at which to query | No | `Transform3D.IDENTITY` |
-| `size` | `Vector3` | Box half-extents (x, y, z) | No (for box) | `Vector3(1.0, 1.0, 1.0)` |
-| `radius` | `float` | Sphere radius / capsule radius | No (for sphere/capsule) | `0.0` |
-| `height` | `float` | Capsule height | No (for capsule) | `0.0` |
+| `shape_type` | string | One of `"box"`, `"sphere"`, `"capsule"`, `"ray"` | Yes | — |
+| `transform` | object | `{ origin: [x, y, z], rotation_degrees: [x, y, z] }` | No | identity |
+| `size` | `[x, y, z]` | Box **full** extents | For `box` | `[1, 1, 1]` |
+| `radius` | number | Sphere or capsule radius | For `sphere` / `capsule` | — |
+| `height` | number | Capsule height | For `capsule` | — |
+| `collision_mask` | integer | Collision layers the query may hit | No | `1` |
+
+`transform.origin` and `transform.rotation_degrees` are optional; the Euler rotation is applied in
+degrees about X, Y, Z in that order.
 
 ### Output schema
 
@@ -18,90 +28,103 @@
 {
   "results": Array,           // zero or more collider hits
   "shape_type": string,      // the shape type that was queried
-  "transform": Transform,    // the world transform that was queried
-  "source": "derived"        // disciplined as "measured" vs "derived"
+  "transform": Object,       // the world transform that was queried
+  "collision_mask": integer, // the mask the query used
+  "source": "derived"        // derived from engine state, not a directly measured property
 }
 ```
 
-Each item in `results` has:
+Each entry in `results`:
 
 | Field | Type | Description |
 |---|---|---|
-| `collider` | `string` | Path of the collider node (e.g. `"/root/Main/Target"`) |
-| `collider_type` | `string` | Godot class name (e.g. `"StaticBody3D"`) |
-| `hit_point` | `Vector3` | Point of intersection (ray only) |
-| `hit_normal` | `Vector3` | Normal at intersection point (ray only) |
-| `shape_index` | `int` | Index of the shape within the collider (box/sphere/capsule) |
+| `collider` | string \| null | Path of the collider node, e.g. `"/root/Main/Gate"` |
+| `collider_type` | string \| null | Godot class name, e.g. `"StaticBody3D"` |
+| `shape_index` | integer \| null | Index of the shape within the collider |
+| `hit_point` | `[x, y, z]` \| null | Contact point — **ray only** |
+| `hit_normal` | `[x, y, z]` \| null | Contact normal — **ray only** |
+| `source` | string | Always `"derived"` |
+
+`transform` uses the bridge's existing transform shape: `{ space, origin, rotation_degrees,
+quaternion, scale, source }`.
 
 ### Error handling
 
-- Missing or empty `shape_type` → `VALIDATION_ERROR` with message `"shape_type is required (box, sphere, capsule, ray)"`
-- Invalid `shape_type` → `VALIDATION_ERROR` with message `"shape_type must be one of: box, sphere, capsule, ray"`
-- Invalid `size` for box (less than 3 components) → `VALIDATION_ERROR`
-- Invalid `radius` / `height` for sphere/capsule (non-positive) → `VALIDATION_ERROR`
-- No colliders found → empty `results` array (not an error)
+| Condition | Result |
+|---|---|
+| `shape_type` missing or empty | `VALIDATION_ERROR` — `shape_type is required (box, sphere, capsule, ray).` |
+| `shape_type` unknown | `VALIDATION_ERROR` — `Unknown shape_type: '…'.` |
+| `size` not a 3-number array | `VALIDATION_ERROR` — `size must be an array of three numbers.` |
+| `size` component ≤ 0 | `VALIDATION_ERROR` — `size components must be greater than zero.` |
+| `radius` missing or ≤ 0 | `VALIDATION_ERROR` — `radius must be a number greater than zero.` |
+| `height` missing or ≤ 0 | `VALIDATION_ERROR` — `height must be a number greater than zero.` |
+| No colliders found | **Not an error** — `results` is `[]` |
 
-### Godot API used
+The controller validates `shape_type`, `transform`, `size`, `radius`, `height` and
+`collisionMask` **before** any bridge call and throws a descriptive `Error`, matching the style
+of `observe` and `advancePhysics`. The bridge validates again, so the contract holds for a caller
+that speaks the protocol directly.
 
-- `PhysicsDirectSpaceState3D.intersect_shape()` with `PhysicsShapeQueryParameters3D`
-- `PhysicsDirectSpaceState3D.intersect_ray()` with `PhysicsShapeQueryParameters3D`
-- Collision masks set to `1` (default project layer)
+### Godot APIs used
+
+Probed from the installed build (`ClassDB.class_get_method_list`), not assumed:
+
+| API | Signature | Returns |
+|---|---|---|
+| `PhysicsDirectSpaceState3D.intersect_shape` | `(PhysicsShapeQueryParameters3D, int)` | `Array` |
+| `PhysicsDirectSpaceState3D.intersect_ray` | `(PhysicsRayQueryParameters3D)` | `Dictionary` (one hit, empty on a miss) |
+
+Godot 4.7 changed the ray query relative to earlier assumptions: it takes
+`PhysicsRayQueryParameters3D`, not `PhysicsShapeQueryParameters3D`, and returns a single
+`Dictionary`, not an `Array`. The bridge normalises that single hit into the `results` array.
 
 ### Read-only guarantee
 
-- The operation only reads from `get_world_3d().direct_space_state`
-- No scene mutations, no property writes, no physics changes
-- The `source: "derived"` tag in the output disciplines the result as computed from engine state rather than a directly measured property
+- The operation only reads `get_tree().root.get_world_3d().direct_space_state`.
+- It creates no nodes, sets no properties, and mutates no physics state.
+- Verified by a test that compares `snapshot.step`, `snapshot.hash`,
+  `snapshot.outcome_hash`, every observed `global_transform`, and every observed `collision`
+  block before and after two queries.
 
-## Bridge implementation (`bridge.gd`)
+## Bridge implementation
 
-Added function `_physics_query_reply(request_id: String, args: Dictionary) -> Dictionary` at line ~368.
+`fixtures/observation/harness/bridge.gd`:
 
-The function:
+- `_physics_query_reply(request_id, args)` — the command handler.
+- `_query_transform(value)` — rebuilds a world `Transform3D` from the JSON wire form.
+- `_query_vec3(value)`, `_query_number(value)` — typed JSON scalar parsing.
+- `_query_mask(value)` — the optional collision mask, defaulting to `1`.
+- `_query_hits(hits)` — normalises `intersect_shape` results.
+- `_query_ray_hit(hit)` — normalises the single `intersect_ray` result.
 
-1. Validates `shape_type` is one of `box`, `sphere`, `capsule`, `ray`
-2. Builds the appropriate `PhysicsShapeQueryParameters3D` (or `PhysicsShapeQueryParameters3D` for ray)
-3. Runs `space.intersect_shape()` or `space.intersect_ray()` against `get_world_3d().direct_space_state`
-4. Returns an array of hit results with collider paths, types, and shape indices
-5. Tags all results with `source: "derived"`
-6. Returns structured output including `results`, `shape_type`, `transform`, and `source`
+The operation is also exposed through `observe`: every observed collision object now publishes a
+`collision` block with `collision_layer`, `collision_mask`, and — for `Area3D` — `monitoring` and
+`monitorable`. This closes the Stage 11 blind spot where a layer/mask mismatch could not be ruled
+in or out from a capture.
 
-Each shape type is handled in a `match` block:
+## Controller implementation
 
-- **box**: `BoxShape3D` with `size`, `intersect_shape`
-- **sphere**: `SphereShape3D` with `radius`, `intersect_shape`
-- **capsule**: `CapsuleShape3D` with `radius` and `height`, `intersect_shape`
-- **ray**: `intersect_ray` from `transform.origin` along `transform.basis.z` for 100m
+`controller/harness.mjs`:
 
-## Controller implementation (`harness.mjs`)
+- `physicsQuery({ shape_type, transform, size, radius, height, collisionMask })`
+- `validatePhysicsTransform(transform)`
 
-Added method `physicsQuery({ shape_type, transform, size, radius, height } = {})` at line ~746 of `harness.mjs`.
+## Test
 
-The method:
+`tests/physics-query.test.mjs` — eight focused checks: input validation, box hit/miss, sphere
+hit/miss, capsule hit/miss, ray hit with contact point and normal plus a miss, collision-mask
+behaviour, read-only behaviour, and the published collision layer/mask.
 
-1. Validates `shape_type` is a non-empty string and one of the four valid values
-2. Builds a arguments object for the bridge, conditionally including `size`, `radius`, `height`, and `transform`
-3. Sends the `physics_query` command to the bridge with a 10-second timeout
-4. Returns the raw bridge response (structured as per the contract)
-
-Input validation errors throw descriptive `Error` objects following the same pattern as other harness methods (e.g., `observe`, `advancePhysics`).
-
-## Test patterns
-
-The existing test suite (`tests/controller.test.mjs`, `tests/observation.test.mjs`, etc.) should remain unchanged. A focused test for the new operation would:
-
-1. Start a Godot project with the bridge
-2. Send a `physicsQuery` request with `shape_type: "box"` and a transform at the target position
-3. Assert the response contains `results: []` (empty, since no colliders are in the test scene by default)
-4. Send a `physicsQuery` request with `shape_type: "sphere"` and a transform at the known target — assert `results` contains the target collider path
-5. Assert an empty query is handled gracefully (no crash, empty results)
-6. Assert invalid `shape_type` throws a descriptive error
-
-No gameplay code, combat fixtures, character assets, physics behavior, or existing observation semantics are modified.
+```powershell
+npm run test:physics-query
+```
 
 ## Known limitations
 
-- The query uses a fixed collision mask of `1`; scenes with colliders on other layers won't be detected without modifying the bridge
-- The ray query travels along the +Z axis for 100 units; scenes requiring longer ranges need bridge extension
-- No `intersect_point` operation is included (could be added later as a separate minimal change)
-- The operation is scoped to `direct_space_state`; indirect space queries (e.g., with `PhysicsServer3D`) are not supported
+- Only the observation fixture's bridge implements the command. The other fixtures keep their own
+  smaller bridges, as they always have.
+- The default collision mask is `1`; a caller must pass `collisionMask` to select another layer.
+- The ray length is fixed at `QUERY_RAY_LENGTH = 100.0`.
+- `intersect_ray` reports only the nearest hit — this engine version has no multi-hit ray.
+- `intersect_point` is not implemented.
+- The query reflects the most recent flushed physics state, not a sub-tick snapshot.

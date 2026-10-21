@@ -1,0 +1,15 @@
+﻿Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+godot.cmd : SCRIPT ERROR: Parse Error: Expected end of statement after expression, found ":" instead.
+At line:1 char:132
++ ... rce; $out = & $godot --headless --path (Resolve-Path 'experiments\god ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (SCRIPT ERROR: P...nd ":" instead.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+   at: GDScript::reload (res://harness/bridge.gd:389)
+ERROR: Failed to load script "res://harness/bridge.gd" with error "Parse error".
+   at: load (modules/gdscript/gdscript_resource_format.cpp:46)
+ERROR: Failed to instantiate an autoload, script 'res://harness/bridge.gd' does not inherit from 'Node'.
+   at: start (main/main.cpp:4539)
+

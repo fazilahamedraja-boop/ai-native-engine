@@ -1,0 +1,17 @@
+﻿Γ£ö physics query validation rejects invalid input before a bridge call (2.6865ms)
+Γ£ö a box query finds the known gate collider and misses empty space (407.9167ms)
+Γ£ö a sphere query finds the known gate collider and misses empty space (433.0629ms)
+Γ£ö a capsule query finds the known gate collider and misses empty space (404.9582ms)
+Γ£ö a ray query reports the contact point and normal on the known gate (395.0011ms)
+Γ£ö a physics query honours the collision mask (410.6579ms)
+Γ£ö a physics query does not mutate scene state (494.4614ms)
+Γ£ö observe publishes the collision layer and mask for collision objects (406.3838ms)
+Γä╣ tests 8
+Γä╣ suites 0
+Γä╣ pass 8
+Γä╣ fail 0
+Γä╣ cancelled 0
+Γä╣ skipped 0
+Γä╣ todo 0
+Γä╣ duration_ms 22801.2647
+

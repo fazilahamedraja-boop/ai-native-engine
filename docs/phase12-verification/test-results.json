@@ -1,0 +1,136 @@
+{
+  "operation": "phase12b_verification",
+  "generated_at": "2026-10-22T01:22:33",
+  "godot": "4.7.2-stable (official)",
+  "worktree": "C:\\Users\\hacke\\ai-native-engine-phase12-verify",
+  "branch": "experiment/phase12-verify",
+  "baseline_commit": "9f35683",
+  "stages": {
+    "four_tests_individually": {
+      "command": "node --test --test-name-pattern=\"<test name>\" tests/observation.test.mjs",
+      "results": [
+        {
+          "test": "observe reports measured runtime, character, collision, animation, and event data",
+          "exit_code": 0,
+          "tests": 1,
+          "passed": 1,
+          "failed": 0,
+          "duration_ms": 20401
+        },
+        {
+          "test": "observe inspects the humanoid model and skeleton with explicit transform spaces",
+          "exit_code": 0,
+          "tests": 1,
+          "passed": 1,
+          "failed": 0,
+          "duration_ms": 20261
+        },
+        {
+          "test": "observeTimeline samples fixed physics advances and de-duplicates events",
+          "exit_code": 0,
+          "tests": 1,
+          "passed": 1,
+          "failed": 0,
+          "duration_ms": 20350
+        },
+        {
+          "test": "observe reuses an unmodified door scene through the generic observation bridge",
+          "exit_code": 0,
+          "tests": 1,
+          "passed": 1,
+          "failed": 0,
+          "duration_ms": 20354
+        }
+      ],
+      "all_passed": true
+    },
+    "four_tests_together": {
+      "command": "node --test tests/observation.test.mjs",
+      "exit_code": 0,
+      "tests": 5,
+      "passed": 5,
+      "failed": 0,
+      "duration_ms": 25528
+    },
+    "physics_query_suite_repeated": {
+      "command": "node --test tests/physics-query.test.mjs",
+      "runs": [
+        {
+          "exit_code": 0,
+          "tests": 8,
+          "passed": 8,
+          "failed": 0,
+          "duration_ms": 22564
+        },
+        {
+          "exit_code": 0,
+          "tests": 8,
+          "passed": 8,
+          "failed": 0,
+          "duration_ms": 22553
+        },
+        {
+          "exit_code": 0,
+          "tests": 8,
+          "passed": 8,
+          "failed": 0,
+          "duration_ms": 22680
+        }
+      ],
+      "all_passed": true
+    },
+    "full_suite_repeated": {
+      "command": "npm test",
+      "runs": [
+        {
+          "exit_code": 0,
+          "tests": 35,
+          "passed": 35,
+          "failed": 0,
+          "duration_ms": 24835
+        },
+        {
+          "exit_code": 0,
+          "tests": 35,
+          "passed": 35,
+          "failed": 0,
+          "duration_ms": 24992
+        },
+        {
+          "exit_code": 0,
+          "tests": 35,
+          "passed": 35,
+          "failed": 0,
+          "duration_ms": 24753
+        }
+      ],
+      "all_passed": true
+    },
+    "character_audit": {
+      "command": "node controller/harness.mjs test --project fixtures/character-audit --script res://tests/run_character_audit.gd --json",
+      "exit_code": 0,
+      "passed": 4,
+      "failed": 0,
+      "ok": true,
+      "expected_total": 4
+    },
+    "combat": {
+      "command": "node controller/harness.mjs test --project fixtures/combat --script res://tests/run_combat.gd --json",
+      "exit_code": 0,
+      "passed": 3,
+      "failed": 0,
+      "ok": true,
+      "expected_total": 3
+    }
+  },
+  "protected_phase11_evidence_sha256": {
+    "docs/phase11/stage-c/repair.diff": "353ef041aff1b71c7ee33d0924448b048a54d281f3bab86946690dff6f193ec5",
+    "docs/phase11/stage-c/stage-c-report.json": "6dad3180c995cc933d1a7af05f23298051bbe6e7e5f985679b6a43fde60898dd",
+    "docs/phase11/stage-c/before/test.json": "d981591943d258756b6ceb555956e02792414d13ba757d80edca0995c299bc06",
+    "docs/phase11/stage-c/after/test.json": "e6d3079d17d12afb56f55bc61bc9332b7c7f2f65e9368bb84843d823d8dc0b5d",
+    "docs/phase11/stage-c/blind-diagnosis.md": "c182ceeed5b6c7538ed66051e79f5855985e1afb32b9a5cae7fc84d6de4a6e63",
+    "docs/phase11/stage-b/stage-b-manifest.json": "16eb614dbfd6fe0bc4b13c769e8a88f2f0a82a3101013f67de688c654fae07cf",
+    "docs/phase11/stage-a/stage-a-audit.json": "6a4b04fd78dee64fcb34d80311b43329b72627d7f76a93a3563c6e1d30e9e922"
+  },
+  "protected_phase11_git_clean": true
+}
