@@ -1,0 +1,205 @@
+{
+  "operation": "phase13_safety_checks",
+  "ok": true,
+  "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase13\\docs\\phase13\\artifacts\\safety-checks\\2026-10-21T21-23-23-200Z",
+  "generated_at": "2026-10-21T21:24:59.677Z",
+  "godot": "4.7.2-stable (official)",
+  "checks": [
+    {
+      "name": "windowed startup and shutdown are reliable",
+      "cycles": [
+        {
+          "index": 0,
+          "started_ok": true,
+          "start_error": null,
+          "exit_code": 0,
+          "killed": false,
+          "already_stopped": false,
+          "bridge_port": 58769
+        },
+        {
+          "index": 1,
+          "started_ok": true,
+          "start_error": null,
+          "exit_code": 0,
+          "killed": false,
+          "already_stopped": false,
+          "bridge_port": 58771
+        },
+        {
+          "index": 2,
+          "started_ok": true,
+          "start_error": null,
+          "exit_code": 0,
+          "killed": false,
+          "already_stopped": false,
+          "bridge_port": 58773
+        }
+      ],
+      "all_started": true,
+      "all_exited_cleanly": true,
+      "godot_processes_before": 0,
+      "godot_processes_after": 0,
+      "no_leaked_processes": true,
+      "ok": true
+    },
+    {
+      "name": "a failed startup is detected, bounded, and does not hang",
+      "rejected": true,
+      "error_message": "Timed out waiting for HARNESS_READY after 20000 ms",
+      "elapsed_ms": 25038,
+      "bounded": true,
+      "underlying_parse_error_visible_in_logs": true,
+      "underlying_autoload_error_visible_in_logs": true,
+      "stdout_lines": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org"
+      ],
+      "stderr_lines": [
+        "SCRIPT ERROR: Parse Error: Expected parameter name.",
+        "   at: GDScript::reload (res://harness/bridge.gd:1036)",
+        "ERROR: Failed to load script \"res://harness/bridge.gd\" with error \"Parse error\".",
+        "   at: load (modules/gdscript/gdscript_resource_format.cpp:46)",
+        "ERROR: Failed to instantiate an autoload, script 'res://harness/bridge.gd' does not inherit from 'Node'.",
+        "   at: start (main/main.cpp:4539)"
+      ],
+      "note": "The session API surfaces the failure as a HARNESS_READY timeout. The underlying Godot error is present in the process logs but is not attached to the thrown error, so a caller must read session.logTail() to see the real cause.",
+      "ok": true
+    },
+    {
+      "name": "an unknown bridge command is rejected within its timeout",
+      "rejected": true,
+      "error_message": "Unknown command 'this_command_does_not_exist'.",
+      "elapsed_ms": 397,
+      "bounded": true,
+      "ok": true
+    },
+    {
+      "name": "a failed capture is reported and never returns a stale frame",
+      "first_sha256": "af6ad83942802cb875cd53ef4cb9a1679fdf377f247a69616eb0afc206954481",
+      "second_sha256": "c24870be22a72f49e7dd04bd9c4ea4ea40638f5a35e8cd140d7480b228d12b8d",
+      "failed_capture_rejected": true,
+      "failed_capture_message": "captureFrame requires a paused tree; call pause() before capture",
+      "frames_distinct": true,
+      "ok": true
+    },
+    {
+      "name": "repeated observations and actions reproduce the same measured state",
+      "runs": [
+        {
+          "index": 0,
+          "hash": "d4a66238307840b4dc6e13d977641f8462eac592802e93e5baefdb43ce600813",
+          "outcome_hash": "54f4dfa8f99662512acbfbb4b83c4bd353bffe9f7b7ba737c9633a6f317cdfdf",
+          "player_position": [
+            0,
+            0.850000023841858,
+            1.50000286102295
+          ],
+          "plate_pressed": false,
+          "gate_open": false,
+          "step": 63
+        },
+        {
+          "index": 1,
+          "hash": "d4a66238307840b4dc6e13d977641f8462eac592802e93e5baefdb43ce600813",
+          "outcome_hash": "54f4dfa8f99662512acbfbb4b83c4bd353bffe9f7b7ba737c9633a6f317cdfdf",
+          "player_position": [
+            0,
+            0.850000023841858,
+            1.50000286102295
+          ],
+          "plate_pressed": false,
+          "gate_open": false,
+          "step": 63
+        }
+      ],
+      "state_hash_equal": true,
+      "outcome_hash_equal": true,
+      "position_equal": true,
+      "ok": true,
+      "note": "This is a repeatability result for this fixture and this fixed input sequence on one machine and one Godot build. It is not a general Godot physics determinism claim."
+    },
+    {
+      "name": "all Phase 8-13 fixture suites pass unchanged",
+      "suites": [
+        {
+          "name": "character-audit",
+          "project": "fixtures/character-audit",
+          "script": "res://tests/run_character_audit.gd",
+          "exit_code": 0,
+          "ok": true,
+          "passed": 4,
+          "failed": 0,
+          "expected_total": 4,
+          "matches_expectation": true
+        },
+        {
+          "name": "combat",
+          "project": "fixtures/combat",
+          "script": "res://tests/run_combat.gd",
+          "exit_code": 0,
+          "ok": true,
+          "passed": 3,
+          "failed": 0,
+          "expected_total": 3,
+          "matches_expectation": true
+        },
+        {
+          "name": "observation",
+          "project": "fixtures/observation",
+          "script": "res://tests/run_observation.gd",
+          "exit_code": 0,
+          "ok": true,
+          "passed": 8,
+          "failed": 0,
+          "expected_total": 8,
+          "matches_expectation": true
+        },
+        {
+          "name": "door",
+          "project": "fixtures/door",
+          "script": "res://tests/run_door.gd",
+          "exit_code": 0,
+          "ok": true,
+          "passed": 7,
+          "failed": 0,
+          "expected_total": 7,
+          "matches_expectation": true
+        },
+        {
+          "name": "physics",
+          "project": "fixtures/physics",
+          "script": "res://tests/run_physics.gd",
+          "exit_code": 0,
+          "ok": true,
+          "passed": 9,
+          "failed": 0,
+          "expected_total": 9,
+          "matches_expectation": true
+        },
+        {
+          "name": "sentry",
+          "project": "fixtures/sentry",
+          "script": "res://tests/run_tests.gd",
+          "exit_code": 0,
+          "ok": true,
+          "passed": 7,
+          "failed": 0,
+          "expected_total": 7,
+          "matches_expectation": true
+        },
+        {
+          "name": "phase13-defect",
+          "project": "fixtures/phase13-defect",
+          "script": "res://tests/run_observation.gd",
+          "exit_code": 0,
+          "ok": true,
+          "passed": 8,
+          "failed": 0,
+          "expected_total": 8,
+          "matches_expectation": true
+        }
+      ],
+      "ok": true
+    }
+  ]
+}

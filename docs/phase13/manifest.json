@@ -1,0 +1,308 @@
+{
+  "operation": "phase13_manifest",
+  "phase": 13,
+  "branch": "experiment/phase13-live-observation",
+  "baseline_commit": "5da4987",
+  "godot": "4.7.2-stable (official)",
+  "renderer": "Vulkan 1.3.215 - Forward+ - Using Device #0: Intel - Intel(R) UHD Graphics",
+  "generated_at": "2026-10-21T20:27:52.182Z",
+  "live_observation_frames": [
+    {
+      "index": 0,
+      "file": "frames/frame-000.png",
+      "sha256": "7d2ec22c9dc008dc041faf9cd9cc99c28aaeedc98bd42207c36056864a13ce57",
+      "captured_at": "2026-10-21T20:27:47.608Z",
+      "engine_tick": 66,
+      "simulation_step": 45,
+      "physics_frames_before": 66,
+      "physics_frames_after": 78,
+      "sim_time_seconds": 1.1,
+      "player_position": [
+        0,
+        0.850000023841858,
+        5.5
+      ],
+      "plate_pressed": false,
+      "gate_open": false,
+      "beacon_state": "red",
+      "feedback": "PLATE CLEAR - GATE CLOSED",
+      "state_hash": "54812f51dbe78519db0b89da83beee3ad1df1013ec635f7ee2531468009df1bc",
+      "event_count": 2,
+      "event_types": [
+        "reset",
+        "player_collision_start"
+      ]
+    },
+    {
+      "index": 1,
+      "file": "frames/frame-001.png",
+      "sha256": "0dd312e939d248b6c07506847d099db2315cdd5733e6ffb9549a35212ff1b608",
+      "captured_at": "2026-10-21T20:27:48.666Z",
+      "engine_tick": 129,
+      "simulation_step": 90,
+      "physics_frames_before": 129,
+      "physics_frames_after": 141,
+      "sim_time_seconds": 2.15,
+      "player_position": [
+        0,
+        0.850000023841858,
+        2.50000286102295
+      ],
+      "plate_pressed": false,
+      "gate_open": false,
+      "beacon_state": "red",
+      "feedback": "PLATE CLEAR - GATE CLOSED",
+      "state_hash": "15b25320f78f22eb2d8a496e78f7b43e405338f25bc388126dc3a8fcc216aa52",
+      "event_count": 3,
+      "event_types": [
+        "reset",
+        "player_collision_start",
+        "crate_collision_start"
+      ]
+    },
+    {
+      "index": 2,
+      "file": "frames/frame-002.png",
+      "sha256": "cc1bb5542dd3530d98b3884b78dbbcb81856e51705b4065f3f97b18d22f58f60",
+      "captured_at": "2026-10-21T20:27:49.698Z",
+      "engine_tick": 192,
+      "simulation_step": 135,
+      "physics_frames_before": 192,
+      "physics_frames_after": 203,
+      "sim_time_seconds": 3.2,
+      "player_position": [
+        0,
+        0.850000023841858,
+        -0.499997466802597
+      ],
+      "plate_pressed": true,
+      "gate_open": true,
+      "beacon_state": "green",
+      "feedback": "PLATE PRESSED",
+      "state_hash": "eb0ca7d3ec2560e92797e38de38e7844cdce1336c7fa74b679f39d5c8fdf0390",
+      "event_count": 5,
+      "event_types": [
+        "reset",
+        "player_collision_start",
+        "crate_collision_start",
+        "plate_entered",
+        "gate_open"
+      ]
+    },
+    {
+      "index": 3,
+      "file": "frames/frame-003.png",
+      "sha256": "e6d9911108dc343428189c76412ec902ed64b79fb4aa81d5d2b251827fb9209a",
+      "captured_at": "2026-10-21T20:27:50.741Z",
+      "engine_tick": 254,
+      "simulation_step": 180,
+      "physics_frames_before": 254,
+      "physics_frames_after": 266,
+      "sim_time_seconds": 4.233333333333333,
+      "player_position": [
+        0,
+        0.850934088230133,
+        -3.85085034370422
+      ],
+      "plate_pressed": false,
+      "gate_open": false,
+      "beacon_state": "red",
+      "feedback": "PLATE CLEAR - GATE CLOSED",
+      "state_hash": "d62eb17ab220ad9f6bc2674bd89488f70a716c456356b44974716d4d4013f5d7",
+      "event_count": 9,
+      "event_types": [
+        "reset",
+        "player_collision_start",
+        "crate_collision_start",
+        "plate_entered",
+        "gate_open",
+        "plate_exited",
+        "gate_close",
+        "player_collision_end"
+      ]
+    }
+  ],
+  "action_frames": {
+    "before": {
+      "file": "action-before.png",
+      "sha256": "fa4ca704e26a4ddd2d43ec3f2d73420ffb45a60aaadc59532c6789468db1f583",
+      "captured_at": "2026-10-21T20:27:51.110Z",
+      "engine_tick": 279,
+      "player_position": [
+        0,
+        0.850000023841858,
+        5.5
+      ]
+    },
+    "after": {
+      "file": "action-after.png",
+      "sha256": "e74ee404d686841d6621b3c9815d45cf45956b04a1293e88164b7901c50241bb",
+      "captured_at": "2026-10-21T20:27:52.081Z",
+      "engine_tick": 339,
+      "player_position": [
+        0,
+        0.850000023841858,
+        2.50000286102295
+      ]
+    }
+  },
+  "diagnosis_frames": {
+    "before_repair": {
+      "file": "docs/phase13/stage-c-diagnosis/evidence/frame-on-plate.png",
+      "sha256": "116ffebff145bfd2f18ad8d3f50f8f03d4f1aecc1e0a96715834c3ee1a182fd5",
+      "captured_at": "2026-10-21T20:31:35.168Z",
+      "engine_tick": 114,
+      "simulation_step": 88,
+      "plate_pressed": false,
+      "gate_open": false,
+      "beacon_state": "red",
+      "event_types": [
+        "reset",
+        "player_collision_start",
+        "crate_collision_start"
+      ],
+      "plate_volume_colliders": [
+        "/root/Main/Ground",
+        "/root/Main/Player"
+      ]
+    },
+    "after_repair": {
+      "file": "docs/phase13/stage-c-diagnosis/evidence/frame-after-repair.png",
+      "sha256": "406008741ecb6cf2f9f33abf1beb74c43cce1dbdff23c0b195bab71876a20b1e",
+      "captured_at": "2026-10-21T20:47:55.122Z",
+      "engine_tick": 114,
+      "simulation_step": 88,
+      "plate_pressed": true,
+      "gate_open": true,
+      "beacon_state": "green",
+      "event_types": [
+        "reset",
+        "player_collision_start",
+        "crate_collision_start",
+        "plate_entered",
+        "gate_open"
+      ],
+      "plate_volume_colliders": [
+        "/root/Main/Ground",
+        "/root/Main/Player"
+      ]
+    }
+  },
+  "artifacts": [
+    {
+      "path": "docs/phase13/artifacts/safety-checks/2026-10-21T21-23-23-200Z/safety-report.json",
+      "bytes": 6723,
+      "sha256": "8f36828bb3a7b44db516ac5da6fe50a4581da336989315b4e9d02fe21787a75e"
+    },
+    {
+      "path": "docs/phase13/stage-a-live-observation/action-after.png",
+      "bytes": 57968,
+      "sha256": "e74ee404d686841d6621b3c9815d45cf45956b04a1293e88164b7901c50241bb"
+    },
+    {
+      "path": "docs/phase13/stage-a-live-observation/action-before.png",
+      "bytes": 55408,
+      "sha256": "fa4ca704e26a4ddd2d43ec3f2d73420ffb45a60aaadc59532c6789468db1f583"
+    },
+    {
+      "path": "docs/phase13/stage-a-live-observation/action-results.json",
+      "bytes": 2908,
+      "sha256": "bab93bdc744bb7607d872d9a3e344971b04110fb9570d3e2f5df35b555d59171"
+    },
+    {
+      "path": "docs/phase13/stage-a-live-observation/frames/frame-000.png",
+      "bytes": 54926,
+      "sha256": "7d2ec22c9dc008dc041faf9cd9cc99c28aaeedc98bd42207c36056864a13ce57"
+    },
+    {
+      "path": "docs/phase13/stage-a-live-observation/frames/frame-001.png",
+      "bytes": 57998,
+      "sha256": "0dd312e939d248b6c07506847d099db2315cdd5733e6ffb9549a35212ff1b608"
+    },
+    {
+      "path": "docs/phase13/stage-a-live-observation/frames/frame-002.png",
+      "bytes": 64007,
+      "sha256": "cc1bb5542dd3530d98b3884b78dbbcb81856e51705b4065f3f97b18d22f58f60"
+    },
+    {
+      "path": "docs/phase13/stage-a-live-observation/frames/frame-003.png",
+      "bytes": 71301,
+      "sha256": "e6d9911108dc343428189c76412ec902ed64b79fb4aa81d5d2b251827fb9209a"
+    },
+    {
+      "path": "docs/phase13/stage-a-live-observation/manifest.json",
+      "bytes": 4363,
+      "sha256": "69fe2a629c0a62575fd40830a53d39da1cc6e99cc65ad83a79b1f0a977cfeb22"
+    },
+    {
+      "path": "docs/phase13/stage-a-live-observation/observations.json",
+      "bytes": 7966,
+      "sha256": "144841c95bd9591f9d45f69e83eba8a97bb6930b46a4095764c710a20cf5a494"
+    },
+    {
+      "path": "docs/phase13/stage-a-live-observation/report.json",
+      "bytes": 7148,
+      "sha256": "d89f1e64b0a3168fa4bf6e6d464a6df215ff3aab7f9540dfb50c29f3d43b0696"
+    },
+    {
+      "path": "docs/phase13/stage-c-diagnosis/diagnosis.md",
+      "bytes": 8710,
+      "sha256": "656ef7b09085129702a9e0dc6c67c0e42330a47b3c8d575fcff6a7654d21956a"
+    },
+    {
+      "path": "docs/phase13/stage-c-diagnosis/evidence/frame-after-repair.png",
+      "bytes": 63760,
+      "sha256": "406008741ecb6cf2f9f33abf1beb74c43cce1dbdff23c0b195bab71876a20b1e"
+    },
+    {
+      "path": "docs/phase13/stage-c-diagnosis/evidence/frame-on-plate.png",
+      "bytes": 61327,
+      "sha256": "116ffebff145bfd2f18ad8d3f50f8f03d4f1aecc1e0a96715834c3ee1a182fd5"
+    },
+    {
+      "path": "docs/phase13/stage-c-diagnosis/evidence/observation.json",
+      "bytes": 2779,
+      "sha256": "e6e69855a679b5bc7651e6f9bb8e030e241dce02ebb8615d2d9033c162295139"
+    },
+    {
+      "path": "docs/phase13/stage-c-diagnosis/evidence/physics-queries.json",
+      "bytes": 1442,
+      "sha256": "ae754401c1e5abb4d2f3d6c15d2c5c15a58c50e5352d7a9472fe10c2dac3a4e3"
+    },
+    {
+      "path": "docs/phase13/stage-c-diagnosis/evidence/state.json",
+      "bytes": 549,
+      "sha256": "08b0ee4b284428d192593f8d3594873cb1b14c413f7fdc2def25c2d5ee202fcb"
+    },
+    {
+      "path": "docs/phase13/stage-c-diagnosis/evidence/test-output.txt",
+      "bytes": 15367,
+      "sha256": "c319c8afc04d53afb3bce403ab7b1db4e321782ab6e17a663913e58e8d5bc1b7"
+    },
+    {
+      "path": "docs/phase13/stage-c-diagnosis/evidence/test-result.json",
+      "bytes": 1683,
+      "sha256": "62ab2fb2c63c919522eed2c9ce2739f299dc2885be2381a81f5c7bf547783cf8"
+    },
+    {
+      "path": "docs/phase13/stage-c-diagnosis/prepare-report.json",
+      "bytes": 8168,
+      "sha256": "ba4754019df0b84a95d66997e3459faee94c8fff1eb3c03630070fcf61519450"
+    },
+    {
+      "path": "docs/phase13/stage-c-diagnosis/repair.md",
+      "bytes": 6322,
+      "sha256": "034d654508ee91d6ea29904c8a4ad002af2756ee14936ee0143274738425fae9"
+    },
+    {
+      "path": "docs/phase13/stage-c-diagnosis/task.md",
+      "bytes": 2621,
+      "sha256": "aa90e18b5d4c159d9b6eb25bf435cd4e79f8df9ba1cdb51ab6f26bec3d4f8f07"
+    },
+    {
+      "path": "docs/phase13/stage-c-diagnosis/verify-report.json",
+      "bytes": 8924,
+      "sha256": "8ca2ddda6ebc2b409143a9f964f878388b4722652f4514ad217e161365f6b358"
+    }
+  ]
+}
