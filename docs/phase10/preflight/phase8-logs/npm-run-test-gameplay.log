@@ -1,0 +1,20 @@
+
+> godot-harness@0.1.0 test:gameplay
+> node --test tests/gameplay.test.mjs
+
+Γ£ö movement advances the live scene with fixed input (348.4041ms)
+Γ£ö detection rises inside a cone and decays after leaving it (72.2833ms)
+Γ£ö leaving the cones and reaching the beacon wins (145.9257ms)
+Γ£ö standing in a cone reaches a terminal loss (60.3111ms)
+Γ£ö reset returns every selected simulation field to the baseline (76.7518ms)
+Γ£ö jump is edge-triggered and the player returns to the ground (51.594ms)
+Γ£ö the same fixed sequence has the same hash after reset (118.0924ms)
+Γ£ö a fresh process reproduces the same scenario hash (485.5276ms)
+Γä╣ tests 8
+Γä╣ suites 0
+Γä╣ pass 8
+Γä╣ fail 0
+Γä╣ cancelled 0
+Γä╣ skipped 0
+Γä╣ todo 0
+Γä╣ duration_ms 21223.437

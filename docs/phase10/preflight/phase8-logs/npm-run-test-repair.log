@@ -1,0 +1,20 @@
+
+> godot-harness@0.1.0 test:repair
+> node repair/run.mjs
+
+{
+  "ok": true,
+  "before_live_exit": 1,
+  "before_position": [
+    0,
+    0.850000023841858,
+    5.99999666213989
+  ],
+  "after_live_exit": 0,
+  "after_position": [
+    0,
+    0.850000023841858,
+    -5.99999666213989
+  ],
+  "evidence": "C:\\Users\\hacke\\AppData\\Local\\Temp\\opencode\\phase10-phase8-baseline\\docs\\phase8\\repair-evidence.json"
+}

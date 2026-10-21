@@ -1,0 +1,60 @@
+
+> godot-harness@0.1.0 test:logic
+> node controller/harness.mjs test --project fixtures/sentry --json
+
+{
+  "operation": "run_tests",
+  "project": "C:\\Users\\hacke\\AppData\\Local\\Temp\\opencode\\phase10-phase8-baseline\\experiments\\godot-harness\\fixtures\\sentry",
+  "script": "res://tests/run_tests.gd",
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 462,
+  "ok": true,
+  "results": [
+    {
+      "name": "sentry-initial",
+      "passed": true,
+      "detail": "phase=active detection=0.000000 seen=[]"
+    },
+    {
+      "name": "sentry-detection-rise",
+      "passed": true,
+      "detail": "phase=active detection=0.666667 percent=67 seen=[\"guard-a\"]"
+    },
+    {
+      "name": "sentry-detection-decay",
+      "passed": true,
+      "detail": "phase=active detection=0.333333 percent=33 seen=[]"
+    },
+    {
+      "name": "sentry-loss-precedence",
+      "passed": true,
+      "detail": "lost=lost/1.000000 terminal=lost/1.000000 simultaneous=lost/1.000000"
+    },
+    {
+      "name": "sentry-exit-win",
+      "passed": true,
+      "detail": "won=won/0.000000 exit=0.000 terminal=won/0.000000"
+    },
+    {
+      "name": "sentry-reset-determinism",
+      "passed": true,
+      "detail": "lost=lost reset=active/0.000000 seen=[] runA=phase=active detection=0.888889 seen=guard-a runB=phase=active detection=0.888889 seen=guard-a"
+    },
+    {
+      "name": "sentry-outside-cones",
+      "passed": true,
+      "detail": "phase=active detection=0.000000 seen=[]"
+    }
+  ],
+  "summary": {
+    "passed": 7,
+    "failed": 0
+  },
+  "errors": [],
+  "warnings": [],
+  "reason": "tests passed",
+  "stdout": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\r\n\r\nPASS sentry-initial phase=active detection=0.000000 seen=[]\r\nPASS sentry-detection-rise phase=active detection=0.666667 percent=67 seen=[\"guard-a\"]\r\nPASS sentry-detection-decay phase=active detection=0.333333 percent=33 seen=[]\r\nPASS sentry-loss-precedence lost=lost/1.000000 terminal=lost/1.000000 simultaneous=lost/1.000000\r\nPASS sentry-exit-win won=won/0.000000 exit=0.000 terminal=won/0.000000\r\nPASS sentry-reset-determinism lost=lost reset=active/0.000000 seen=[] runA=phase=active detection=0.888889 seen=guard-a runB=phase=active detection=0.888889 seen=guard-a\r\nPASS sentry-outside-cones phase=active detection=0.000000 seen=[]\r\nRESULT passed=7 failed=0\r\n",
+  "stderr": ""
+}

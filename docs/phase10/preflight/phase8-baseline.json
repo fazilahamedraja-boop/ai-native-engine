@@ -1,0 +1,66 @@
+{
+  "operation": "phase10_preflight_phase8_acceptance",
+  "ok": true,
+  "source_worktree": "C:\\Users\\hacke\\ai-native-engine-phase8",
+  "source_head": "6667ecc8b0247a63c3b2ac7e2dcfd348343d35cd",
+  "source_status": "clean",
+  "execution": "clean copy; source fixtures and evidence were not modified",
+  "clean_copy": "%TEMP%\\opencode\\phase10-phase8-baseline",
+  "godot": "4.7.2.stable.official.ed1daf0bf",
+  "commands": [
+    {
+      "command": "npm test",
+      "exit_code": 0,
+      "duration_ms": 22182,
+      "result": "18/18 tests passed",
+      "log": "docs/phase10/preflight/phase8-logs/npm-test.log"
+    },
+    {
+      "command": "npm run test:logic",
+      "exit_code": 0,
+      "duration_ms": 1573,
+      "result": "7/7 cases passed",
+      "log": "docs/phase10/preflight/phase8-logs/npm-run-test-logic.log"
+    },
+    {
+      "command": "npm run test:gameplay",
+      "exit_code": 0,
+      "duration_ms": 22072,
+      "result": "8/8 tests passed",
+      "log": "docs/phase10/preflight/phase8-logs/npm-run-test-gameplay.log"
+    },
+    {
+      "command": "npm run evidence:live",
+      "exit_code": 0,
+      "duration_ms": 21359,
+      "result": "9/9 checks passed",
+      "log": "docs/phase10/preflight/phase8-logs/npm-run-evidence-live.log"
+    },
+    {
+      "command": "npm run test:screenshot",
+      "exit_code": 0,
+      "duration_ms": 20763,
+      "result": "1/1 windowed test passed",
+      "log": "docs/phase10/preflight/phase8-logs/npm-run-test-screenshot.log"
+    },
+    {
+      "command": "npm run test:repair",
+      "exit_code": 0,
+      "duration_ms": 62288,
+      "result": "before live exit 1; after live exit 0",
+      "log": "docs/phase10/preflight/phase8-logs/npm-run-test-repair.log"
+    }
+  ],
+  "protected_refs": {
+    "master": "2c28ee23dd2a6a7d14f598bdd2ff4acf4daf094e",
+    "spike/sentry-mode": "df973aafaa96847aa6f962337d8f1020f7e7d2b5",
+    "experiment/phase7-godot": "ebbb21d5edc3680dc6f0e06b55d9e0ca3767f265",
+    "experiment/phase8-godot-harness": "6667ecc8b0247a63c3b2ac7e2dcfd348343d35cd",
+    "experiment/phase9-generalization": "edff0effec5fe8c082c88e853a43dfe9bcbc96ee"
+  },
+  "limitations": [
+    "The clean-copy run used the same installed Godot and Node versions as the phase worktrees.",
+    "Wall times are single observations, not performance benchmarks.",
+    "The clean copy was temporary; the preserved logs are the durable evidence."
+  ]
+}

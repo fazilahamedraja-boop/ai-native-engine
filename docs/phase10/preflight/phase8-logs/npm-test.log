@@ -1,0 +1,30 @@
+
+> godot-harness@0.1.0 test
+> node --test tests/controller.test.mjs tests/session.test.mjs tests/gameplay.test.mjs
+
+Γ£ö parses a passing suite (4.8033ms)
+Γ£ö a failing case makes the result fail (0.4053ms)
+Γ£ö a summary mismatch is not accepted (0.4082ms)
+Γ£ö a missing RESULT line is not accepted (0.3071ms)
+Γ£ö Godot ERROR lines fail an otherwise matching suite (0.3796ms)
+Γ£ö project selection rejects paths outside the harness root (1.683ms)
+Γ£ö step and input validation rejects invalid values before a bridge call (1.8806ms)
+Γ£ö screenshot paths stay inside the selected project (1.1962ms)
+Γ£ö movement advances the live scene with fixed input (406.7775ms)
+Γ£ö detection rises inside a cone and decays after leaving it (58.3135ms)
+Γ£ö leaving the cones and reaching the beacon wins (146.2892ms)
+Γ£ö standing in a cone reaches a terminal loss (47.7678ms)
+Γ£ö reset returns every selected simulation field to the baseline (84.6529ms)
+Γ£ö jump is edge-triggered and the player returns to the ground (45.5049ms)
+Γ£ö the same fixed sequence has the same hash after reset (120.2182ms)
+Γ£ö a fresh process reproduces the same scenario hash (487.7395ms)
+Γ£ö start, inspect, property, pause/resume, and stop one project (584.6871ms)
+Γ£ö stopping one session does not terminate another session it did not start (784.1435ms)
+Γä╣ tests 18
+Γä╣ suites 0
+Γä╣ pass 18
+Γä╣ fail 0
+Γä╣ cancelled 0
+Γä╣ skipped 0
+Γä╣ todo 0
+Γä╣ duration_ms 21347.1922

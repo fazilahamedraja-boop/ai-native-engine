@@ -1,0 +1,55 @@
+
+> godot-harness@0.1.0 evidence:live
+> node controller/live-suite.mjs
+
+{
+  "ok": true,
+  "evidence": "C:\\Users\\hacke\\AppData\\Local\\Temp\\opencode\\phase10-phase8-baseline\\docs\\phase8\\stage-c-live.json",
+  "checks": [
+    {
+      "name": "movement-forward",
+      "ok": true,
+      "detail": "z=-5.99999666213989"
+    },
+    {
+      "name": "detection-rise",
+      "ok": true,
+      "detail": "detection=0.677777777777777"
+    },
+    {
+      "name": "detection-decay",
+      "ok": true,
+      "detail": "rise=0.677777777777777 decay=0.327777777777779"
+    },
+    {
+      "name": "escape-win",
+      "ok": true,
+      "detail": "phase=won exit=0.00000763148971935209"
+    },
+    {
+      "name": "detection-loss",
+      "ok": true,
+      "detail": "phase=lost detection=1"
+    },
+    {
+      "name": "reset",
+      "ok": true,
+      "detail": "phase=active detection=0 step=0"
+    },
+    {
+      "name": "jump-and-land",
+      "ok": true,
+      "detail": "takeoff_y=0.934160172939301 air_y=1.78416037559509 land_y=0.850238144397736"
+    },
+    {
+      "name": "same-process-repeatability",
+      "ok": true,
+      "detail": "hashA=10b28fcb8890a0f8a7d4b1df880341a5ca417533c2a6beb8e2d9b1fee3bf974b hashB=10b28fcb8890a0f8a7d4b1df880341a5ca417533c2a6beb8e2d9b1fee3bf974b"
+    },
+    {
+      "name": "fresh-process-repeatability",
+      "ok": true,
+      "detail": "sameProcess=10b28fcb8890a0f8a7d4b1df880341a5ca417533c2a6beb8e2d9b1fee3bf974b freshProcess=10b28fcb8890a0f8a7d4b1df880341a5ca417533c2a6beb8e2d9b1fee3bf974b"
+    }
+  ]
+}
