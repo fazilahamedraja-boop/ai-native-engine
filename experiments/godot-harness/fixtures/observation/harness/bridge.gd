@@ -16,6 +16,7 @@ const MAX_OBSERVE_TARGETS := 32
 const MAX_OBSERVE_PROPERTIES := 32
 const MAX_OBSERVE_DESCENDANTS := 256
 const MAX_OBSERVE_BONES := 128
+const QUERY_RAY_LENGTH := 100.0
 
 var _server: TCPServer
 var _clients: Array[StreamPeerTCP] = []
@@ -367,101 +368,183 @@ func _screenshot_reply(request_id: String, args: Dictionary) -> Dictionary:
 
 func _physics_query_reply(request_id: String, args: Dictionary) -> Dictionary:
 	var shape_type := String(args.get("shape_type", ""))
-	var transform := Transform3D(args.get("transform", Transform3D.IDENTITY))
-	var size := _vec3(args.get("size", Vector3(1.0, 1.0, 1.0)))
-	var radius := args.get("radius", 0.0)
-	var height := args.get("height", 0.0)
-
 	if shape_type.is_empty():
 		return _fail(request_id, "VALIDATION_ERROR", "shape_type is required (box, sphere, capsule, ray).")
+	if not ["box", "sphere", "capsule", "ray"].has(shape_type):
+		return _fail(request_id, "VALIDATION_ERROR", "Unknown shape_type: '%s'. Use box, sphere, capsule, or ray." % shape_type)
 
-	var space = get_world_3d().direct_space_state
+	var transform := _query_transform(args.get("transform", null))
+	var space := get_tree().root.get_world_3d().direct_space_state
+	var collision_mask := _query_mask(args.get("collision_mask", null))
 	var results: Array = []
 
 	match shape_type:
 		"box":
-			if size.length() < 3:
-				return _fail(request_id, "VALIDATION_ERROR", "box size must have 3 components.")
+			var size_value = _query_vec3(args.get("size", null))
+			if size_value == null:
+				return _fail(request_id, "VALIDATION_ERROR", "size must be an array of three numbers.")
+			var size: Vector3 = size_value
+			if size.x <= 0.0 or size.y <= 0.0 or size.z <= 0.0:
+				return _fail(request_id, "VALIDATION_ERROR", "size components must be greater than zero.")
 			var query := PhysicsShapeQueryParameters3D.new()
-			query.shape = BoxShape3D.new()
-			(query.shape as BoxShape3D).size = size
+			var box := BoxShape3D.new()
+			box.size = size
+			query.shape = box
 			query.transform = transform
-			query.collision_mask := 1
-			var hits := space.intersect_shape(query, 8)
-			for hit in hits:
-				var collider := hit.get("collider")
-				var shape_idx := hit.get("shape")
-				results.append({
-					"collider": String(collider.get_path()) if collider != null else null,
-					"collider_type": String(collider.get_class()) if collider != null else null,
-					"shape_index": shape_idx,
-					"source": "derived",
-				})
+			query.collision_mask = collision_mask
+			results = _query_hits(space.intersect_shape(query, 8))
 		"sphere":
-			if radius <= 0:
-				return _fail(request_id, "VALIDATION_ERROR", "sphere radius must be positive.")
+			var radius_value = _query_number(args.get("radius", null))
+			if radius_value == null or radius_value <= 0.0:
+				return _fail(request_id, "VALIDATION_ERROR", "radius must be a number greater than zero.")
+			var radius: float = radius_value
 			var query := PhysicsShapeQueryParameters3D.new()
-			query.shape = SphereShape3D.new()
-			(query.shape as SphereShape3D).radius = radius
+			var sphere := SphereShape3D.new()
+			sphere.radius = radius
+			query.shape = sphere
 			query.transform = transform
-			query.collision_mask := 1
-			var hits := space.intersect_shape(query, 8)
-			for hit in hits:
-				var collider := hit.get("collider")
-				var shape_idx := hit.get("shape")
-				results.append({
-					"collider": String(collider.get_path()) if collider != null else null,
-					"collider_type": String(collider.get_class()) if collider != null else null,
-					"shape_index": shape_idx,
-					"source": "derived",
-				})
+			query.collision_mask = collision_mask
+			results = _query_hits(space.intersect_shape(query, 8))
 		"capsule":
-			if radius <= 0 or height <= 0:
-				return _fail(request_id, "VALIDATION_ERROR", "capsule radius and height must be positive.")
+			var radius_value = _query_number(args.get("radius", null))
+			var height_value = _query_number(args.get("height", null))
+			if radius_value == null or radius_value <= 0.0:
+				return _fail(request_id, "VALIDATION_ERROR", "radius must be a number greater than zero.")
+			if height_value == null or height_value <= 0.0:
+				return _fail(request_id, "VALIDATION_ERROR", "height must be a number greater than zero.")
+			var radius: float = radius_value
+			var height: float = height_value
 			var query := PhysicsShapeQueryParameters3D.new()
-			query.shape = CapsuleShape3D.new()
-			(query.shape as CapsuleShape3D).radius = radius
-			(query.shape as CapsuleShape3D).height = height
+			var capsule := CapsuleShape3D.new()
+			capsule.radius = radius
+			capsule.height = height
+			query.shape = capsule
 			query.transform = transform
-			query.collision_mask := 1
-			var hits := space.intersect_shape(query, 8)
-			for hit in hits:
-				var collider := hit.get("collider")
-				var shape_idx := hit.get("shape")
-				results.append({
-					"collider": String(collider.get_path()) if collider != null else null,
-					"collider_type": String(collider.get_class()) if collider != null else null,
-					"shape_index": shape_idx,
-					"source": "derived",
-				})
+			query.collision_mask = collision_mask
+			results = _query_hits(space.intersect_shape(query, 8))
 		"ray":
 			var from := transform.origin
-			var to := transform.origin + transform.basis.z * 100.0
-			var query := PhysicsShapeQueryParameters3D.new()
-			query.shape := null
-			query.transform := Transform3D(Basis(), from)
-			query.to := to
-			query.collision_mask := 1
-			var hits := space.intersect_ray(query, 8)
-			for hit in hits:
-				var collider := hit.get("collider")
-				results.append({
-					"collider": String(collider.get_path()) if collider != null else null,
-					"collider_type": String(collider.get_class()) if collider != null else null,
-					"hit_point": _vec3(hit.get("position")),
-					"hit_normal": _vec3(hit.get("normal")),
-					"source": "derived",
-				})
+			var to := from + transform.basis.z * QUERY_RAY_LENGTH
+			var query := PhysicsRayQueryParameters3D.new()
+			query.from = from
+			query.to = to
+			query.collision_mask = collision_mask
+			results = _query_ray_hit(space.intersect_ray(query))
 		_:
 			return _fail(request_id, "VALIDATION_ERROR", "Unknown shape_type: '%s'. Use box, sphere, capsule, or ray." % shape_type)
 
 	return _reply(request_id, true, {
 		"results": results,
 		"shape_type": shape_type,
-		"transform": _transform(transform),
+		"transform": _transform_state(transform, "world"),
+		"collision_mask": collision_mask,
 		"source": "derived",
 	})
 
+
+## Rebuild a world Transform3D from the plain numbers the JSON bridge carries.
+## `transform` is an object with an optional `origin` array [x, y, z] and an
+## optional `rotation_degrees` array [x, y, z].
+func _query_transform(value) -> Transform3D:
+	if typeof(value) != TYPE_DICTIONARY:
+		return Transform3D.IDENTITY
+	var data: Dictionary = value
+	var origin := Vector3.ZERO
+	var raw_origin = data.get("origin", null)
+	if typeof(raw_origin) == TYPE_ARRAY and (raw_origin as Array).size() >= 3:
+		var origin_array: Array = raw_origin
+		origin = Vector3(
+			float(origin_array[0]),
+			float(origin_array[1]),
+			float(origin_array[2])
+		)
+	var rotation := Vector3.ZERO
+	var raw_rotation = data.get("rotation_degrees", null)
+	if typeof(raw_rotation) == TYPE_ARRAY and (raw_rotation as Array).size() >= 3:
+		var rotation_array: Array = raw_rotation
+		rotation = Vector3(
+			float(rotation_array[0]),
+			float(rotation_array[1]),
+			float(rotation_array[2])
+		)
+	return Transform3D(Basis.from_euler(rotation * (PI / 180.0)), origin)
+
+
+## Parse a JSON array of three numbers into a Vector3, or null when invalid.
+func _query_vec3(value):
+	if typeof(value) != TYPE_ARRAY:
+		return null
+	var array: Array = value
+	if array.size() < 3:
+		return null
+	for entry in array:
+		if typeof(entry) != TYPE_INT and typeof(entry) != TYPE_FLOAT:
+			return null
+	return Vector3(float(array[0]), float(array[1]), float(array[2]))
+
+
+## Parse a JSON number, or null when the value is absent or not numeric.
+func _query_number(value):
+	if typeof(value) != TYPE_INT and typeof(value) != TYPE_FLOAT:
+		return null
+	return float(value)
+
+
+## Parse the optional collision mask. The default is layer 1, matching the
+## engine default. A caller must pass the mask explicitly to see colliders on
+## another layer.
+func _query_mask(value) -> int:
+	if value == null:
+		return 1
+	if typeof(value) != TYPE_INT and typeof(value) != TYPE_FLOAT:
+		return 1
+	var mask := int(value)
+	if mask < 0:
+		return 1
+	return mask
+
+
+## Convert intersect_shape hits into the documented result schema.
+func _query_hits(hits: Array) -> Array:
+	var results: Array = []
+	for hit in hits:
+		var entry: Dictionary = hit
+		var collider = entry.get("collider", null)
+		var collider_path: Variant = null
+		var collider_type: Variant = null
+		if collider is Node:
+			collider_path = String((collider as Node).get_path())
+			collider_type = String((collider as Node).get_class())
+		results.append({
+			"collider": collider_path,
+			"collider_type": collider_type,
+			"shape_index": entry.get("shape", null),
+			"source": "derived",
+		})
+	return results
+
+
+## Convert a single intersect_ray hit into the documented result schema.
+## `intersect_ray` returns one Dictionary, or an empty Dictionary on a miss.
+func _query_ray_hit(hit: Dictionary) -> Array:
+	if hit.is_empty():
+		return []
+	var collider = hit.get("collider", null)
+	var collider_path: Variant = null
+	var collider_type: Variant = null
+	if collider is Node:
+		collider_path = String((collider as Node).get_path())
+		collider_type = String((collider as Node).get_class())
+	var position = hit.get("position", null)
+	var normal = hit.get("normal", null)
+	return [{
+		"collider": collider_path,
+		"collider_type": collider_type,
+		"shape_index": hit.get("shape", null),
+		"hit_point": _vec3(position) if position is Vector3 else null,
+		"hit_normal": _vec3(normal) if normal is Vector3 else null,
+		"source": "derived",
+	}]
 
 
 func _observe_reply(request_id: String, args: Dictionary) -> Dictionary:
@@ -549,6 +632,7 @@ func _observe_node(
 		data["rigid_body"] = _rigid_body_state(node)
 	if node is CollisionObject3D:
 		data["collision_shapes"] = _collision_shapes(node)
+		data["collision"] = _collision_state(node)
 	var animations := _animation_states(node)
 	if not animations.is_empty():
 		data["animations"] = animations
@@ -621,6 +705,18 @@ func _rigid_body_state(node: RigidBody3D) -> Dictionary:
 		"derived": {"speed": node.linear_velocity.length()},
 		"source": "measured",
 	}
+
+
+func _collision_state(node: CollisionObject3D) -> Dictionary:
+	var state := {
+		"collision_layer": node.collision_layer,
+		"collision_mask": node.collision_mask,
+		"source": "measured",
+	}
+	if node is Area3D:
+		state["monitoring"] = (node as Area3D).monitoring
+		state["monitorable"] = (node as Area3D).monitorable
+	return state
 
 
 func _collision_shapes(node: CollisionObject3D) -> Array:

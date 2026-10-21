@@ -228,6 +228,35 @@ function isRootNodePath(value) {
     .every((segment) => segment.length > 0 && segment !== '.' && segment !== '..')
 }
 
+/**
+ * Validate the JSON-serialisable world transform accepted by `physicsQuery`.
+ * The bridge protocol is newline-delimited JSON, so a Transform3D cannot be
+ * sent directly. The wire form is `{ origin: [x, y, z], rotation_degrees: [x, y, z] }`.
+ */
+function validatePhysicsTransform(transform) {
+  if (transform === null || typeof transform !== 'object' || Array.isArray(transform)) {
+    throw new Error('transform must be an object')
+  }
+  for (const key of ['origin', 'rotation_degrees']) {
+    if (transform[key] === undefined) continue
+    const value = transform[key]
+    if (!Array.isArray(value) || value.length !== 3) {
+      throw new Error(`transform.${key} must be an array of three numbers`)
+    }
+    for (const component of value) {
+      if (!Number.isFinite(component)) {
+        throw new Error(`transform.${key} components must be finite numbers`)
+      }
+    }
+  }
+  const known = new Set(['origin', 'rotation_degrees'])
+  for (const key of Object.keys(transform)) {
+    if (!known.has(key)) {
+      throw new Error(`Unknown transform key: ${key}`)
+    }
+  }
+}
+
 function validateRunId(runId) {
   if (typeof runId !== 'string' || !/^[A-Za-z0-9._:-]{1,128}$/.test(runId)) {
     throw new Error('runId must match [A-Za-z0-9._:-]{1,128}')
@@ -537,7 +566,14 @@ export class HarnessSession {
    * Runs PhysicsDirectSpaceState3D.intersect_shape / intersect_ray
    * at a supplied world transform and returns collider information.
    */
-  async physicsQuery({ shape_type, transform, size, radius, height } = {}) {
+  async physicsQuery({
+    shape_type,
+    transform = null,
+    size = null,
+    radius = null,
+    height = null,
+    collisionMask = null,
+  } = {}) {
     if (typeof shape_type !== 'string') {
       throw new Error('shape_type must be a string')
     }
@@ -546,25 +582,40 @@ export class HarnessSession {
     }
     const validShapes = ['box', 'sphere', 'capsule', 'ray']
     if (!validShapes.includes(shape_type)) {
-      throw new Error('shape_type must be one of: ' + validShapes.join(', ') + '')
+      throw new Error(`shape_type must be one of: ${validShapes.join(', ')}`)
     }
-    // Build the query arguments for the bridge
+    if (transform !== null) {
+      validatePhysicsTransform(transform)
+    }
+    if (size !== null) {
+      if (!Array.isArray(size) || size.length !== 3) {
+        throw new Error('size must be an array of three numbers')
+      }
+      for (const component of size) {
+        if (!Number.isFinite(component) || component <= 0) {
+          throw new Error('size components must be finite numbers greater than zero')
+        }
+      }
+    }
+    if (radius !== null && (!Number.isFinite(radius) || radius <= 0)) {
+      throw new Error('radius must be a finite number greater than zero')
+    }
+    if (height !== null && (!Number.isFinite(height) || height <= 0)) {
+      throw new Error('height must be a finite number greater than zero')
+    }
+    if (collisionMask !== null && (!Number.isInteger(collisionMask) || collisionMask < 0)) {
+      throw new Error('collisionMask must be a non-negative integer')
+    }
+
     const args = { shape_type }
-    if (shape_type === 'box' && size) {
-      args.size = size
-    }
-    if (shape_type === 'sphere' && radius !== undefined) {
-      args.radius = radius
-    }
-    if (shape_type === 'capsule' && radius !== undefined && height !== undefined) {
-      args.radius = radius
-      args.height = height
-    }
-    if (transform) {
-      args.transform = transform
-    }
+    if (size !== null) args.size = size
+    if (radius !== null) args.radius = radius
+    if (height !== null) args.height = height
+    if (transform !== null) args.transform = transform
+    if (collisionMask !== null) args.collision_mask = collisionMask
     return this.send('physics_query', args, 10000)
   }
+
   /**
    * Advance real Godot physics frames instead of calling a manual step.
    * The selected project's bridge must implement `advance_physics`; the game
