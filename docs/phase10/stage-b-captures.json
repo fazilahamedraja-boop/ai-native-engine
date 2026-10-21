@@ -1,0 +1,746 @@
+{
+  "operation": "stage_b_visual_observation",
+  "ok": true,
+  "run_id": "stage-b-7ed07076-2cbd-492a-940c-d904ca476ef5",
+  "project": "fixtures/door",
+  "headless": false,
+  "started_at": "2026-10-21T14:01:06.579Z",
+  "finished_at": "2026-10-21T14:01:20.422Z",
+  "requirements": {
+    "windowed": true,
+    "screenshots": "actual viewport captures through the project bridge",
+    "recording": "bounded sequence sampled after real fixed physics ticks; optional offline mp4 encoding"
+  },
+  "godot": "4.7.2-stable (official)",
+  "captures": {
+    "locked": {
+      "capture": {
+        "operation": "capture_frame",
+        "run_id": "stage-b-7ed07076-2cbd-492a-940c-d904ca476ef5",
+        "scenario": "door locked after approach and interact",
+        "captured_at": "2026-10-21T14:01:09.678Z",
+        "duration_ms": 189,
+        "tick": 120,
+        "sim_time_seconds": 2,
+        "paused": true,
+        "screenshot": {
+          "absolute_path": "C:/Users/hacke/ai-native-engine-phase10/experiments/godot-harness/fixtures/door/artifacts/stage-b-locked.png",
+          "bytes": 49708,
+          "headless": false,
+          "height": 720,
+          "path": "res://artifacts/stage-b-locked.png",
+          "sha256": "3aa83792a9cfe4d761c038e9698e1aa89605093546ab480ed25588cca6331968",
+          "width": 1280
+        },
+        "state": {
+          "step": 101,
+          "physics_frames": 120,
+          "physics_ticks_per_second": 60,
+          "player_position": [
+            0,
+            0.850000023841858,
+            0.500116407871246
+          ],
+          "player_velocity": [
+            0,
+            0,
+            0
+          ],
+          "grounded": true,
+          "door_locked": true,
+          "door_open": false,
+          "player_has_key": false,
+          "key_available": true,
+          "key_visible": true,
+          "feedback": "LOCKED - KEY REQUIRED",
+          "prompt": "PRESS E TO TRY THE DOOR",
+          "locked_attempts": 1,
+          "open_count": 0,
+          "interaction_count": 1,
+          "input": {
+            "actions": {
+              "interact": false
+            },
+            "forward": 0,
+            "jump": false,
+            "restart": false,
+            "strafe": 0
+          },
+          "hash": "81f86126b43b1fc065eb962a5ced93db4e5de7d06bca09a6071655fdd8ca0577",
+          "outcome_hash": "756a08b28dc97723b8f0b79729c70a1ba6d107e57f823072ec32c86de790d852"
+        },
+        "state_after_tick": 132,
+        "metadata": {
+          "fixture": "door",
+          "stage": "phase10-b",
+          "state": "locked"
+        }
+      },
+      "evidence": {
+        "path": "stage-b-locked.png",
+        "bytes": 49708,
+        "sha256": "3aa83792a9cfe4d761c038e9698e1aa89605093546ab480ed25588cca6331968"
+      }
+    },
+    "key": {
+      "capture": {
+        "operation": "capture_frame",
+        "run_id": "stage-b-7ed07076-2cbd-492a-940c-d904ca476ef5",
+        "scenario": "door key acquired",
+        "captured_at": "2026-10-21T14:01:10.726Z",
+        "duration_ms": 221,
+        "tick": 181,
+        "sim_time_seconds": 3.0166666666666666,
+        "paused": true,
+        "screenshot": {
+          "absolute_path": "C:/Users/hacke/ai-native-engine-phase10/experiments/godot-harness/fixtures/door/artifacts/stage-b-key.png",
+          "bytes": 43404,
+          "headless": false,
+          "height": 720,
+          "path": "res://artifacts/stage-b-key.png",
+          "sha256": "4b6e38a8dbf8eab0aa96e7a94146cb2b1be50841cb28c3c744313e94f987d472",
+          "width": 1280
+        },
+        "state": {
+          "step": 45,
+          "physics_frames": 181,
+          "physics_ticks_per_second": 60,
+          "player_position": [
+            2.00000071525574,
+            0.850000023841858,
+            4.50000095367432
+          ],
+          "player_velocity": [
+            0,
+            0,
+            -4
+          ],
+          "grounded": true,
+          "door_locked": true,
+          "door_open": false,
+          "player_has_key": true,
+          "key_available": false,
+          "key_visible": false,
+          "feedback": "KEY ACQUIRED",
+          "prompt": "APPROACH THE DOOR",
+          "locked_attempts": 0,
+          "open_count": 0,
+          "interaction_count": 0,
+          "input": {
+            "actions": {
+              "interact": false
+            },
+            "forward": 1,
+            "jump": false,
+            "restart": false,
+            "strafe": 0
+          },
+          "hash": "2a5abc0f9bb11c3b7388ba1e1eebb05001fe742fd673c77de820927c0df333d8",
+          "outcome_hash": "4857277be9b9c3c47951cdd3a55abcdf07d5b943fb38e775355f5fa08b3b8e83"
+        },
+        "state_after_tick": 194,
+        "metadata": {
+          "fixture": "door",
+          "stage": "phase10-b",
+          "state": "key"
+        }
+      },
+      "evidence": {
+        "path": "stage-b-key.png",
+        "bytes": 43404,
+        "sha256": "4b6e38a8dbf8eab0aa96e7a94146cb2b1be50841cb28c3c744313e94f987d472"
+      }
+    },
+    "open": {
+      "capture": {
+        "operation": "capture_frame",
+        "run_id": "stage-b-7ed07076-2cbd-492a-940c-d904ca476ef5",
+        "scenario": "door opened after key use",
+        "captured_at": "2026-10-21T14:01:13.194Z",
+        "duration_ms": 207,
+        "tick": 330,
+        "sim_time_seconds": 5.5,
+        "paused": true,
+        "screenshot": {
+          "absolute_path": "C:/Users/hacke/ai-native-engine-phase10/experiments/godot-harness/fixtures/door/artifacts/stage-b-open.png",
+          "bytes": 45370,
+          "headless": false,
+          "height": 720,
+          "path": "res://artifacts/stage-b-open.png",
+          "sha256": "772b050c274f5c2d4b0403534224305158e4fcedead716075c18d62476dcd3c2",
+          "width": 1280
+        },
+        "state": {
+          "step": 176,
+          "physics_frames": 330,
+          "physics_ticks_per_second": 60,
+          "player_position": [
+            -1.49011611938477e-8,
+            0.850000023841858,
+            0.500018775463104
+          ],
+          "player_velocity": [
+            0,
+            0,
+            0
+          ],
+          "grounded": true,
+          "door_locked": false,
+          "door_open": true,
+          "player_has_key": true,
+          "key_available": false,
+          "key_visible": false,
+          "feedback": "UNLOCKED - DOOR OPEN",
+          "prompt": "DOOR OPEN - GO THROUGH",
+          "locked_attempts": 0,
+          "open_count": 1,
+          "interaction_count": 1,
+          "input": {
+            "actions": {
+              "interact": false
+            },
+            "forward": 0,
+            "jump": false,
+            "restart": false,
+            "strafe": 0
+          },
+          "hash": "a68b810054b7521e64bad55fb27bf383b80954e867b07d4199c9de1a6ba9ef83",
+          "outcome_hash": "82ab2798b4362f9d41feda730dc0b52c600c86c7bd3dd455bfae9abd9cca1006"
+        },
+        "state_after_tick": 342,
+        "metadata": {
+          "fixture": "door",
+          "stage": "phase10-b",
+          "state": "open"
+        }
+      },
+      "evidence": {
+        "path": "stage-b-open.png",
+        "bytes": 45370,
+        "sha256": "772b050c274f5c2d4b0403534224305158e4fcedead716075c18d62476dcd3c2"
+      }
+    }
+  },
+  "scenario": {
+    "description": "locked approach and attempt; reset; key pickup; return; unlock; reset; sampled approach",
+    "steps": [
+      {
+        "type": "reset",
+        "snapshot_step": 0
+      },
+      {
+        "type": "advance_physics",
+        "frames": 100,
+        "input": {
+          "forward": 1,
+          "strafe": 0,
+          "jump": false,
+          "restart": false,
+          "actions": {
+            "interact": false
+          }
+        },
+        "final_step": 100,
+        "final_tick": 117
+      },
+      {
+        "type": "advance_physics",
+        "frames": 1,
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "jump": false,
+          "restart": false,
+          "actions": {
+            "interact": true
+          }
+        },
+        "final_step": 101,
+        "final_tick": 119
+      },
+      {
+        "type": "reset",
+        "snapshot_step": 0
+      },
+      {
+        "type": "advance_physics",
+        "frames": 30,
+        "input": {
+          "forward": 0,
+          "strafe": 1,
+          "jump": false,
+          "restart": false,
+          "actions": {
+            "interact": false
+          }
+        },
+        "final_step": 30,
+        "final_tick": 164
+      },
+      {
+        "type": "advance_physics",
+        "frames": 15,
+        "input": {
+          "forward": 1,
+          "strafe": 0,
+          "jump": false,
+          "restart": false,
+          "actions": {
+            "interact": false
+          }
+        },
+        "final_step": 45,
+        "final_tick": 180
+      },
+      {
+        "type": "advance_physics",
+        "frames": 30,
+        "input": {
+          "forward": 0,
+          "strafe": -1,
+          "jump": false,
+          "restart": false,
+          "actions": {
+            "interact": false
+          }
+        },
+        "final_step": 75,
+        "final_tick": 226
+      },
+      {
+        "type": "advance_physics",
+        "frames": 100,
+        "input": {
+          "forward": 1,
+          "strafe": 0,
+          "jump": false,
+          "restart": false,
+          "actions": {
+            "interact": false
+          }
+        },
+        "final_step": 175,
+        "final_tick": 327
+      },
+      {
+        "type": "advance_physics",
+        "frames": 1,
+        "input": {
+          "forward": 0,
+          "strafe": 0,
+          "jump": false,
+          "restart": false,
+          "actions": {
+            "interact": true
+          }
+        },
+        "final_step": 176,
+        "final_tick": 329
+      },
+      {
+        "type": "reset",
+        "snapshot_step": 0
+      },
+      {
+        "type": "capture_sequence",
+        "run_id": "stage-b-7ed07076-2cbd-492a-940c-d904ca476ef5-sequence",
+        "scenario": "approach the locked door from spawn",
+        "frame_count": 7,
+        "every_frames": 20,
+        "input": {
+          "forward": 1,
+          "strafe": 0,
+          "jump": false,
+          "restart": false,
+          "actions": {
+            "interact": false
+          }
+        }
+      }
+    ]
+  },
+  "sequence": {
+    "run_id": "stage-b-7ed07076-2cbd-492a-940c-d904ca476ef5-sequence",
+    "scenario": "approach the locked door from spawn",
+    "duration_ms": 3966,
+    "frame_count": 7,
+    "every_frames": 20,
+    "input": {
+      "forward": 1,
+      "strafe": 0,
+      "jump": false,
+      "restart": false,
+      "actions": {
+        "interact": false
+      }
+    },
+    "frames": [
+      {
+        "frame_index": 0,
+        "tick": 348,
+        "sim_time_seconds": 5.8,
+        "captured_at": "2026-10-21T14:01:13.506Z",
+        "state": {
+          "step": 0,
+          "physics_frames": 348,
+          "physics_ticks_per_second": 60,
+          "player_position": [
+            0,
+            0.850000023841858,
+            5.5
+          ],
+          "player_velocity": [
+            0,
+            0,
+            0
+          ],
+          "grounded": true,
+          "door_locked": true,
+          "door_open": false,
+          "player_has_key": false,
+          "key_available": true,
+          "key_visible": true,
+          "feedback": "LOCKED - FIND THE KEY",
+          "prompt": "APPROACH THE DOOR",
+          "locked_attempts": 0,
+          "open_count": 0,
+          "interaction_count": 0,
+          "input": {
+            "actions": {
+              "interact": false
+            },
+            "forward": 1,
+            "jump": false,
+            "restart": false,
+            "strafe": 0
+          },
+          "hash": "ce36b4487de842cfd71981c0a1fbe2b08523f86c7acb01836dd3304dc5e1904f",
+          "outcome_hash": "2733d7009ab2bde9288f622a6817c850faf8e51ce509fa23b1e77f1c7e4ad02f"
+        },
+        "evidence": {
+          "path": "stage-b-frames/stage-b-approach-000.png",
+          "bytes": 46271,
+          "sha256": "9c2e69f7db27388073d916729cd44fe9590ed892ac245e7a3d72622f34e57903"
+        }
+      },
+      {
+        "frame_index": 1,
+        "tick": 384,
+        "sim_time_seconds": 6.4,
+        "captured_at": "2026-10-21T14:01:14.101Z",
+        "state": {
+          "step": 20,
+          "physics_frames": 384,
+          "physics_ticks_per_second": 60,
+          "player_position": [
+            0,
+            0.850000023841858,
+            4.16666793823242
+          ],
+          "player_velocity": [
+            0,
+            0,
+            -4
+          ],
+          "grounded": true,
+          "door_locked": true,
+          "door_open": false,
+          "player_has_key": false,
+          "key_available": true,
+          "key_visible": true,
+          "feedback": "LOCKED - FIND THE KEY",
+          "prompt": "APPROACH THE DOOR",
+          "locked_attempts": 0,
+          "open_count": 0,
+          "interaction_count": 0,
+          "input": {
+            "actions": {
+              "interact": false
+            },
+            "forward": 1,
+            "jump": false,
+            "restart": false,
+            "strafe": 0
+          },
+          "hash": "72b073bd70cf39ab9ef2ad3861d77167fcdf6ee45160773fdd05116e851b79ec",
+          "outcome_hash": "6fa9c3cff5f6ec8d5ff70fd2704defee8074a3b25ebd75b5db24082936b4274e"
+        },
+        "evidence": {
+          "path": "stage-b-frames/stage-b-approach-001.png",
+          "bytes": 47171,
+          "sha256": "374c1167347d769097da017d7210ab77302e04a7501996e914e89015a85245a3"
+        }
+      },
+      {
+        "frame_index": 2,
+        "tick": 420,
+        "sim_time_seconds": 7,
+        "captured_at": "2026-10-21T14:01:14.711Z",
+        "state": {
+          "step": 40,
+          "physics_frames": 420,
+          "physics_ticks_per_second": 60,
+          "player_position": [
+            0,
+            0.850000023841858,
+            2.83333587646484
+          ],
+          "player_velocity": [
+            0,
+            0,
+            -4
+          ],
+          "grounded": true,
+          "door_locked": true,
+          "door_open": false,
+          "player_has_key": false,
+          "key_available": true,
+          "key_visible": true,
+          "feedback": "LOCKED - FIND THE KEY",
+          "prompt": "APPROACH THE DOOR",
+          "locked_attempts": 0,
+          "open_count": 0,
+          "interaction_count": 0,
+          "input": {
+            "actions": {
+              "interact": false
+            },
+            "forward": 1,
+            "jump": false,
+            "restart": false,
+            "strafe": 0
+          },
+          "hash": "dd661112476cab11a8d93c410c4a9fbcd93b5b9a5e2515b02db1d1128dcebeef",
+          "outcome_hash": "f5f99ac39ccde54f6d88a05c5ae328132780da65ab3a1ec12eaec1007a9265b9"
+        },
+        "evidence": {
+          "path": "stage-b-frames/stage-b-approach-002.png",
+          "bytes": 47559,
+          "sha256": "2df77b44f6f98d1b16e995775497d4cf3eb57e6fdfd75480a62181a68e9dec10"
+        }
+      },
+      {
+        "frame_index": 3,
+        "tick": 457,
+        "sim_time_seconds": 7.616666666666666,
+        "captured_at": "2026-10-21T14:01:15.313Z",
+        "state": {
+          "step": 60,
+          "physics_frames": 457,
+          "physics_ticks_per_second": 60,
+          "player_position": [
+            0,
+            0.850000023841858,
+            1.50000286102295
+          ],
+          "player_velocity": [
+            0,
+            0,
+            -4
+          ],
+          "grounded": true,
+          "door_locked": true,
+          "door_open": false,
+          "player_has_key": false,
+          "key_available": true,
+          "key_visible": true,
+          "feedback": "LOCKED - FIND THE KEY",
+          "prompt": "PRESS E TO TRY THE DOOR",
+          "locked_attempts": 0,
+          "open_count": 0,
+          "interaction_count": 0,
+          "input": {
+            "actions": {
+              "interact": false
+            },
+            "forward": 1,
+            "jump": false,
+            "restart": false,
+            "strafe": 0
+          },
+          "hash": "1fb21b9cd151dad51693c677ebafda1cc15abb77671a37536fd6176c3399b78a",
+          "outcome_hash": "c1e373611d420d046c1b20e4db9ef9976dd3e119dbeb2de51562ab07b55a7766"
+        },
+        "evidence": {
+          "path": "stage-b-frames/stage-b-approach-003.png",
+          "bytes": 48628,
+          "sha256": "3865cf3310c12ec01d2a38dda978e56b24cb12fff24a5139280d27437819c706"
+        }
+      },
+      {
+        "frame_index": 4,
+        "tick": 493,
+        "sim_time_seconds": 8.216666666666667,
+        "captured_at": "2026-10-21T14:01:15.909Z",
+        "state": {
+          "step": 80,
+          "physics_frames": 493,
+          "physics_ticks_per_second": 60,
+          "player_position": [
+            0,
+            0.850000023841858,
+            0.500116407871246
+          ],
+          "player_velocity": [
+            0,
+            0,
+            0
+          ],
+          "grounded": true,
+          "door_locked": true,
+          "door_open": false,
+          "player_has_key": false,
+          "key_available": true,
+          "key_visible": true,
+          "feedback": "LOCKED - FIND THE KEY",
+          "prompt": "PRESS E TO TRY THE DOOR",
+          "locked_attempts": 0,
+          "open_count": 0,
+          "interaction_count": 0,
+          "input": {
+            "actions": {
+              "interact": false
+            },
+            "forward": 1,
+            "jump": false,
+            "restart": false,
+            "strafe": 0
+          },
+          "hash": "d14327b70829ba88453431f911040ca5e450ce760f488365e0b96f80fb097602",
+          "outcome_hash": "91f7185d51ba5b0e92c966236234ef9ced437e1a4d47d8ef20d487c8fb59c0d9"
+        },
+        "evidence": {
+          "path": "stage-b-frames/stage-b-approach-004.png",
+          "bytes": 49450,
+          "sha256": "58db931e32e219bb98872ecede0171df2a9f40b5f481d875826028eea02fb9d9"
+        }
+      },
+      {
+        "frame_index": 5,
+        "tick": 528,
+        "sim_time_seconds": 8.8,
+        "captured_at": "2026-10-21T14:01:16.551Z",
+        "state": {
+          "step": 100,
+          "physics_frames": 528,
+          "physics_ticks_per_second": 60,
+          "player_position": [
+            0,
+            0.850000023841858,
+            0.500116407871246
+          ],
+          "player_velocity": [
+            0,
+            0,
+            0
+          ],
+          "grounded": true,
+          "door_locked": true,
+          "door_open": false,
+          "player_has_key": false,
+          "key_available": true,
+          "key_visible": true,
+          "feedback": "LOCKED - FIND THE KEY",
+          "prompt": "PRESS E TO TRY THE DOOR",
+          "locked_attempts": 0,
+          "open_count": 0,
+          "interaction_count": 0,
+          "input": {
+            "actions": {
+              "interact": false
+            },
+            "forward": 1,
+            "jump": false,
+            "restart": false,
+            "strafe": 0
+          },
+          "hash": "96d0bfe44248f794f25b08a34f97e6c7b742d0516b710c95d5b2b5cfe16bbc93",
+          "outcome_hash": "e17ddd84a65aa6951438c59eaedfe3299bc4cd1108b1afade0ef12d189c0ed69"
+        },
+        "evidence": {
+          "path": "stage-b-frames/stage-b-approach-005.png",
+          "bytes": 49450,
+          "sha256": "58db931e32e219bb98872ecede0171df2a9f40b5f481d875826028eea02fb9d9"
+        }
+      },
+      {
+        "frame_index": 6,
+        "tick": 567,
+        "sim_time_seconds": 9.45,
+        "captured_at": "2026-10-21T14:01:17.222Z",
+        "state": {
+          "step": 120,
+          "physics_frames": 567,
+          "physics_ticks_per_second": 60,
+          "player_position": [
+            0,
+            0.850000023841858,
+            0.500116407871246
+          ],
+          "player_velocity": [
+            0,
+            0,
+            0
+          ],
+          "grounded": true,
+          "door_locked": true,
+          "door_open": false,
+          "player_has_key": false,
+          "key_available": true,
+          "key_visible": true,
+          "feedback": "LOCKED - FIND THE KEY",
+          "prompt": "PRESS E TO TRY THE DOOR",
+          "locked_attempts": 0,
+          "open_count": 0,
+          "interaction_count": 0,
+          "input": {
+            "actions": {
+              "interact": false
+            },
+            "forward": 1,
+            "jump": false,
+            "restart": false,
+            "strafe": 0
+          },
+          "hash": "3b3eb7b7cd59b817f4ebebb66d15a28e5d5074e756615a098e4b279e6dcec506",
+          "outcome_hash": "97db4512f62130f6d3071e9e065a6fa4ed0d81aee01b6916672c52f4ecbbc1e8"
+        },
+        "evidence": {
+          "path": "stage-b-frames/stage-b-approach-006.png",
+          "bytes": 49450,
+          "sha256": "58db931e32e219bb98872ecede0171df2a9f40b5f481d875826028eea02fb9d9"
+        }
+      }
+    ],
+    "note": "Frames are captured after real fixed physics ticks and are not a real-time video claim."
+  },
+  "video": {
+    "available": true,
+    "path": "stage-b-approach.mp4",
+    "bytes": 34008,
+    "sha256": "bc3db4b4f2b301c3fd887f38f0dfa52462feaca7e6bf01c67858e0bf64482324",
+    "command": "ffmpeg -y -loglevel error -framerate 5 -start_number 0 -i C:\\Users\\hacke\\ai-native-engine-phase10\\docs\\phase10\\stage-b-frames\\stage-b-approach-%03d.png -c:v libx264 -pix_fmt yuv420p -movflags +faststart C:\\Users\\hacke\\ai-native-engine-phase10\\docs\\phase10\\stage-b-approach.mp4",
+    "note": "Offline encoding of sampled PNG frames at 5 fps; not a real-time capture and not used as live video understanding."
+  },
+  "stop": {
+    "operation": "stop_project",
+    "ok": true,
+    "alreadyStopped": false,
+    "pid": 26160,
+    "exitCode": 0,
+    "signal": null,
+    "killed": false,
+    "logs": {
+      "stdout": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "Vulkan 1.3.215 - Forward+ - Using Device #0: Intel - Intel(R) UHD Graphics",
+        "",
+        "HARNESS_READY {\"pid\":26160,\"port\":62024,\"project\":\"godot-door-fixture\",\"protocol\":1}"
+      ],
+      "stderr": []
+    }
+  },
+  "error": null,
+  "pid": 26160,
+  "port": 62024
+}

@@ -1,4 +1,5 @@
 import { spawn, spawnSync } from 'node:child_process'
+import crypto from 'node:crypto'
 import fs from 'node:fs'
 import net from 'node:net'
 import path from 'node:path'
@@ -215,6 +216,27 @@ function isProjectResPath(value, extension) {
     return false
   }
   return value.endsWith(extension)
+}
+
+function validateRunId(runId) {
+  if (typeof runId !== 'string' || !/^[A-Za-z0-9._:-]{1,128}$/.test(runId)) {
+    throw new Error('runId must match [A-Za-z0-9._:-]{1,128}')
+  }
+  return runId
+}
+
+function validateScenario(scenario) {
+  if (typeof scenario !== 'string' || scenario.trim().length === 0 || scenario.length > 256) {
+    throw new Error('scenario must be a non-empty string of at most 256 characters')
+  }
+  return scenario.trim()
+}
+
+function validateMetadata(metadata) {
+  if (metadata === null || typeof metadata !== 'object' || Array.isArray(metadata)) {
+    throw new Error('metadata must be an object')
+  }
+  return metadata
 }
 
 /**
@@ -527,6 +549,145 @@ export class HarnessSession {
     // viewport. This is a rendering wait, not a simulation advance.
     await sleep(120)
     return this.send('screenshot', { path }, 10000)
+  }
+
+  /**
+   * Capture one actual windowed frame together with the paused runtime state.
+   * The caller owns persistence; this method returns a manifest-ready record.
+   */
+  async captureFrame({
+    path = 'res://artifacts/harness.png',
+    scenario = 'frame',
+    runId = null,
+    metadata = {},
+  } = {}) {
+    if (!isProjectResPath(path, '.png')) {
+      throw new Error('capture path must be a res:// .png path without .. segments')
+    }
+    const resolvedScenario = validateScenario(scenario)
+    const resolvedRunId = validateRunId(runId ?? crypto.randomUUID())
+    const resolvedMetadata = validateMetadata(metadata)
+    if (this.headless) {
+      throw new Error('captureFrame requires a windowed session; run without --headless')
+    }
+    if (!this.socket || this.socket.destroyed) throw new Error('Session is not connected')
+
+    const before = await this.snapshot()
+    if (!before.paused) {
+      throw new Error('captureFrame requires a paused tree; call pause() before capture')
+    }
+    const startedAt = new Date()
+    const captureStarted = Date.now()
+    const screenshot = await this.screenshot(path)
+    const captureDurationMs = Date.now() - captureStarted
+    const after = await this.snapshot()
+
+    const beforeStep = before.step
+    const afterStep = after.step
+    if (beforeStep !== undefined && afterStep !== undefined && beforeStep !== afterStep) {
+      throw new Error(
+        `capture advanced fixture simulation state (${beforeStep} -> ${afterStep}); keep the tree paused`,
+      )
+    }
+
+    return {
+      operation: 'capture_frame',
+      ok: true,
+      run_id: resolvedRunId,
+      scenario: resolvedScenario,
+      project: this.project,
+      headless: this.headless,
+      pid: this.pid,
+      captured_at: new Date().toISOString(),
+      capture_started_at: startedAt.toISOString(),
+      duration_ms: captureDurationMs,
+      tick: before.physics_frames ?? beforeStep ?? null,
+      simulation_step: beforeStep ?? null,
+      physics_frames_before: before.physics_frames ?? null,
+      physics_frames_after: after.physics_frames ?? null,
+      sim_time_seconds:
+        before.physics_ticks_per_second && before.physics_frames !== undefined
+          ? before.physics_frames / before.physics_ticks_per_second
+          : null,
+      paused: before.paused,
+      screenshot,
+      state_before: before,
+      state_after: after,
+      metadata: resolvedMetadata,
+    }
+  }
+
+  /**
+   * Capture a bounded sequence of actual frames. Frame 0 is the current paused
+   * state; later frames are separated by real fixed physics ticks. This is a
+   * sampled frame sequence, not a real-time video capture.
+   */
+  async captureSequence({
+    scenario = 'sequence',
+    prefix = 'sequence',
+    frameCount = 6,
+    everyFrames = 10,
+    input = null,
+    runId = null,
+    metadata = {},
+  } = {}) {
+    const resolvedScenario = validateScenario(scenario)
+    const resolvedRunId = validateRunId(runId ?? crypto.randomUUID())
+    const resolvedMetadata = validateMetadata(metadata)
+    if (typeof prefix !== 'string' || !/^[A-Za-z0-9._-]{1,80}$/.test(prefix)) {
+      throw new Error('prefix must match [A-Za-z0-9._-]{1,80}')
+    }
+    if (!Number.isInteger(frameCount) || frameCount < 1 || frameCount > 60) {
+      throw new Error('frameCount must be an integer between 1 and 60')
+    }
+    if (!Number.isInteger(everyFrames) || everyFrames < 1 || everyFrames > 10000) {
+      throw new Error('everyFrames must be an integer between 1 and 10000')
+    }
+    if (input !== null) validateHarnessInput(input)
+    if (this.headless) {
+      throw new Error('captureSequence requires a windowed session; run without --headless')
+    }
+    if (!this.socket || this.socket.destroyed) throw new Error('Session is not connected')
+
+    await this.pause()
+    if (input !== null) await this.setInput(input)
+
+    const startedAt = new Date()
+    const wallStarted = Date.now()
+    const frames = []
+    for (let index = 0; index < frameCount; index++) {
+      if (index > 0) await this.advancePhysics({ frames: everyFrames, input })
+      frames.push(
+        await this.captureFrame({
+          path: `res://artifacts/${prefix}-${String(index).padStart(3, '0')}.png`,
+          scenario: `${resolvedScenario} frame ${index}`,
+          runId: resolvedRunId,
+          metadata: {
+            ...resolvedMetadata,
+            frame_index: index,
+            every_frames: everyFrames,
+          },
+        }),
+      )
+    }
+
+    return {
+      operation: 'capture_sequence',
+      ok: true,
+      run_id: resolvedRunId,
+      scenario: resolvedScenario,
+      project: this.project,
+      headless: this.headless,
+      started_at: startedAt.toISOString(),
+      finished_at: new Date().toISOString(),
+      duration_ms: Date.now() - wallStarted,
+      frame_count: frameCount,
+      every_frames: everyFrames,
+      input,
+      frames,
+      note:
+        'Frames are captured after real fixed physics ticks and are not a real-time video claim.',
+    }
   }
 
   async snapshot() {

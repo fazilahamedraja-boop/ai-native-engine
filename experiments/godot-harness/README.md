@@ -1,7 +1,7 @@
 # Godot verification harness
 
 A small, project-local control and verification layer around Godot. It exists to
-give an agent or a CI job four distinct operations:
+give an agent or a CI job a set of distinct operations:
 
 | Operation | Entry point | Result |
 | --- | --- | --- |
@@ -9,6 +9,8 @@ give an agent or a CI job four distinct operations:
 | `run_tests` | `runTests()` or `node controller/harness.mjs test` | per-case pass/fail, summary, exit code, stdout/stderr |
 | `inspect_state` | `HarnessSession.inspectState()` or the `inspect` CLI | snapshot, scene tree, bridge events, process logs |
 | `advance_physics` | `HarnessSession.advancePhysics()` | N real fixed physics frames, final snapshot, paused state |
+| `capture_frame` | `HarnessSession.captureFrame()` | one actual frame plus run id, tick, timing, hashes, paused state |
+| `capture_sequence` | `HarnessSession.captureSequence()` | bounded actual frames sampled after real fixed physics ticks |
 | `stop_project` | `HarnessSession.stopProject()` | exit code, signal, whether a kill was needed, log tail |
 
 The controller also exposes pause/resume, persistent input, requested fixed
@@ -48,6 +50,7 @@ npm run test:door        # locked-door/key real-physics suite, 7 cases
 npm run test:door-control         # live bridge + inspect/property checks
 npm run test:door-screenshot      # windowed locked/key/open captures
 npm run test:door-repair          # failing defect -> repair -> same-test rerun
+npm run evidence:visual           # windowed door captures + sampled approach sequence
 npm run inspect          # start, inspect, stop one project, JSON result
 ```
 
@@ -171,6 +174,32 @@ The fixture must implement the generic game interface and consume
 `harness_step()` deliberately error because a paused manual step cannot
 advance the physics server. The bridge command is `advance_physics`; the sentry
 bridge does not implement it, and the sentry fixture is unchanged.
+
+## Visual capture and sampled sequences
+
+`captureFrame()` requires a windowed, connected session with a paused tree. It
+reads the actual viewport through the existing `screenshot` bridge command,
+then returns a manifest-ready record with:
+
+- a caller-supplied run id (or a random UUID), scenario, and metadata;
+- capture timestamps and elapsed wall time;
+- the engine tick, fixture simulation step, physics-frame counters, paused
+  state, viewport size, PNG bytes, and SHA-256;
+- the snapshot before and after the capture.
+
+It does not advance the fixture simulation. The bridge may still increment
+Godot's physics-frame counter while the tree is paused, so the record keeps both
+before/after counters and checks the fixture `step` for a simulation change.
+
+`captureSequence()` captures frame 0 at the current paused state, then advances
+real fixed physics ticks between frames. It is a bounded sampled frame sequence,
+not a real-time video capture. An evidence runner may encode the PNGs offline
+with ffmpeg; that artifact must be described as an offline sampled-frame
+encoding, not live video understanding.
+
+Windowed capture is separate from headless tests because Godot's headless
+display has no readable viewport texture. `npm test` remains the headless gate;
+`npm run evidence:visual` is the Phase 10 windowed capture experiment.
 
 ## Snapshot and hash contract
 
