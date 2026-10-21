@@ -1,0 +1,504 @@
+{
+  "operation": "phase11_stage_a_capability_audit",
+  "ok": true,
+  "run_id": "stage-a-3d3bab46-ebbf-4fe4-841a-c35433525f14",
+  "project": "fixtures/character-audit",
+  "started_at": "2026-10-21T15:13:30.279Z",
+  "finished_at": "2026-10-21T15:13:32.251Z",
+  "godot": "4.7.2-stable (official)",
+  "capabilities": {
+    "scene_tree": {
+      "source": "verified runtime: HarnessSession.inspectState() -> bridge scene_tree",
+      "node_count": 48,
+      "max_depth": 7,
+      "root": "root",
+      "root_class": "Window"
+    },
+    "property": {
+      "source": "verified runtime: bridge property command over get_property_list/get",
+      "main_name": {
+        "node_path": "/root/Main",
+        "property": "name",
+        "value": "Main"
+      },
+      "animation_current_animation": {
+        "node_path": "/root/Main/CesiumMan/AnimationPlayer",
+        "property": "current_animation",
+        "value": "Animation"
+      }
+    },
+    "structured_observe": {
+      "source": "verified runtime: bridge observe command",
+      "targets": [
+        "/root/Main",
+        "/root/Main/CesiumMan",
+        "/root/Main/CesiumMan/Z_UP/Armature/Skeleton3D",
+        "/root/Main/CesiumMan/AnimationPlayer",
+        "/root/Main/Humanoid",
+        "/root/Main/Ground"
+      ],
+      "skeleton": {
+        "bone_count": 19,
+        "source": "measured",
+        "first_bone": {
+          "derived_world_pose": {
+            "origin": [
+              -0.0270001478493214,
+              0.869396150112152,
+              2.54330103643952e-8
+            ],
+            "quaternion": [
+              -0.481324791908264,
+              -0.481352597475052,
+              -0.517951428890228,
+              0.518027484416962
+            ],
+            "rotation_degrees": [
+              -90.0000025044782,
+              -89.9970177118109,
+              0
+            ],
+            "scale": [
+              1.35000002384186,
+              1.35000002384186,
+              1.35000002384186
+            ],
+            "source": "derived",
+            "space": "world"
+          },
+          "enabled": true,
+          "global_pose": {
+            "origin": [
+              1.97135001656079e-8,
+              -0.020000109449029,
+              0.643997132778168
+            ],
+            "quaternion": [
+              0.0000519421482749749,
+              0.036650761961937,
+              0.0000241409452428343,
+              0.999328136444092
+            ],
+            "rotation_degrees": [
+              0.00584674364865674,
+              4.20080881127338,
+              0.00298264009882759
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "skeleton"
+          },
+          "index": 0,
+          "name": "Skeleton_torso_joint_1",
+          "parent": -1,
+          "pose": {
+            "origin": [
+              1.97135001656079e-8,
+              -0.020000109449029,
+              0.643997132778168
+            ],
+            "quaternion": [
+              0.0000519421482749749,
+              0.036650761961937,
+              0.0000241409452428343,
+              0.999328136444092
+            ],
+            "rotation_degrees": [
+              0.00584674364865674,
+              4.20080881127338,
+              0.00298264009882759
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "bone_parent"
+          },
+          "rest": {
+            "origin": [
+              1.57554005397742e-8,
+              0.00499983690679073,
+              0.678999900817871
+            ],
+            "quaternion": [
+              0,
+              0.0378035306930542,
+              0,
+              0.999285221099854
+            ],
+            "rotation_degrees": [
+              0,
+              4.33299815803569,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "bone_parent"
+          },
+          "source": "measured"
+        }
+      },
+      "humanoid": {
+        "mesh_instance_count": 22,
+        "skeleton_count": 0,
+        "animation_player_count": 0
+      }
+    },
+    "timeline": {
+      "source": "verified runtime: observeTimeline with real advance_physics",
+      "frames": 24,
+      "every_frames": 8,
+      "sample_count": 4,
+      "samples": [
+        {
+          "index": 0,
+          "frames_advanced": 0,
+          "engine_tick": 13,
+          "simulation_step": null,
+          "simulation_time_seconds": null,
+          "animation_position": 0,
+          "animation_playing": true,
+          "bone_count": 19,
+          "first_bone_global_pose": {
+            "origin": [
+              1.97135001656079e-8,
+              -0.020000109449029,
+              0.643997132778168
+            ],
+            "quaternion": [
+              0.0000519421482749749,
+              0.036650761961937,
+              0.0000241409452428343,
+              0.999328136444092
+            ],
+            "rotation_degrees": [
+              0.00584674364865674,
+              4.20080881127338,
+              0.00298264009882759
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "skeleton"
+          },
+          "first_bone_world_pose": {
+            "origin": [
+              -0.0270001478493214,
+              0.869396150112152,
+              2.54330103643952e-8
+            ],
+            "quaternion": [
+              -0.481324791908264,
+              -0.481352597475052,
+              -0.517951428890228,
+              0.518027484416962
+            ],
+            "rotation_degrees": [
+              -90.0000025044782,
+              -89.9970177118109,
+              0
+            ],
+            "scale": [
+              1.35000002384186,
+              1.35000002384186,
+              1.35000002384186
+            ],
+            "source": "derived",
+            "space": "world"
+          }
+        },
+        {
+          "index": 1,
+          "frames_advanced": 8,
+          "engine_tick": 22,
+          "simulation_step": 8,
+          "simulation_time_seconds": 0.13333333333333333,
+          "animation_position": 0.131096,
+          "animation_playing": true,
+          "bone_count": 19,
+          "first_bone_global_pose": {
+            "origin": [
+              2.22921787695896e-8,
+              -0.0200001113116741,
+              0.669012844562531
+            ],
+            "quaternion": [
+              0.00159141723997891,
+              0.034297201782465,
+              0.000147030979860574,
+              0.999410390853882
+            ],
+            "rotation_degrees": [
+              0.181677909280462,
+              3.93098261499885,
+              0.0230932331046234
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "skeleton"
+          },
+          "first_bone_world_pose": {
+            "origin": [
+              -0.0270001515746117,
+              0.903167366981506,
+              2.89142256804098e-8
+            ],
+            "quaternion": [
+              -0.481834352016449,
+              -0.483278810977936,
+              -0.515984535217285,
+              0.517723023891449
+            ],
+            "rotation_degrees": [
+              -90.0000025044782,
+              -89.9769096348944,
+              0
+            ],
+            "scale": [
+              1.35000002384186,
+              1.35000002384186,
+              1.35000002384186
+            ],
+            "source": "derived",
+            "space": "world"
+          }
+        },
+        {
+          "index": 2,
+          "frames_advanced": 8,
+          "engine_tick": 31,
+          "simulation_step": 16,
+          "simulation_time_seconds": 0.26666666666666666,
+          "animation_position": 0.264892,
+          "animation_playing": true,
+          "bone_count": 19,
+          "first_bone_global_pose": {
+            "origin": [
+              2.82154246633581e-8,
+              -0.0200373847037554,
+              0.694827198982239
+            ],
+            "quaternion": [
+              0.00549699133262038,
+              0.0285446587949991,
+              0.000538111024070531,
+              0.999577283859253
+            ],
+            "rotation_degrees": [
+              0.627894968170188,
+              3.2719077799067,
+              0.0796222632387625
+            ],
+            "scale": [
+              1,
+              0.999999940395355,
+              1
+            ],
+            "source": "measured",
+            "space": "skeleton"
+          },
+          "first_bone_world_pose": {
+            "origin": [
+              -0.027050469070673,
+              0.938016712665558,
+              3.69084105500406e-8
+            ],
+            "quaternion": [
+              -0.48303684592247,
+              -0.487995773553848,
+              -0.511043429374695,
+              0.517078518867493
+            ],
+            "rotation_degrees": [
+              -90.0000025044782,
+              -89.9203829893233,
+              0
+            ],
+            "scale": [
+              1.35000002384186,
+              1.35000002384186,
+              1.35000002384186
+            ],
+            "source": "derived",
+            "space": "world"
+          }
+        },
+        {
+          "index": 3,
+          "frames_advanced": 8,
+          "engine_tick": 40,
+          "simulation_step": 24,
+          "simulation_time_seconds": 0.4,
+          "animation_position": 0.392559666666666,
+          "animation_playing": true,
+          "bone_count": 19,
+          "first_bone_global_pose": {
+            "origin": [
+              2.53744634193254e-8,
+              -0.0210030544549227,
+              0.688876807689667
+            ],
+            "quaternion": [
+              0.00937441550195217,
+              0.0233793705701828,
+              0.00107930006925017,
+              0.999682128429413
+            ],
+            "rotation_degrees": [
+              1.07105829217068,
+              2.6808326006439,
+              0.148780316483308
+            ],
+            "scale": [
+              0.999999940395355,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "skeleton"
+          },
+          "first_bone_world_pose": {
+            "origin": [
+              -0.0283541232347488,
+              0.929983735084534,
+              3.30161249451066e-8
+            ],
+            "quaternion": [
+              -0.484003812074661,
+              -0.49229896068573,
+              -0.50630384683609,
+              0.516757607460022
+            ],
+            "rotation_degrees": [
+              -90.0000025044782,
+              -89.8512204937878,
+              0
+            ],
+            "scale": [
+              1.34999990463257,
+              1.35000002384186,
+              1.35000014305115
+            ],
+            "source": "derived",
+            "space": "world"
+          }
+        }
+      ],
+      "timing": {
+        "engine_tick": "Engine.get_physics_frames(); rendering/pause overhead can advance it between samples",
+        "simulation_step": "fixture snapshot step after each fixed advance when the game exposes a numeric step",
+        "simulation_time_seconds": "derived from simulation_step / fixture physics_ticks_per_second",
+        "event_ticks": "fixture-recorded; this fixture records engine tick and simulation step in each event"
+      }
+    },
+    "capture": {
+      "source": "Phase 10 captureFrame/captureSequence plus Phase 11 Stage B windowed evidence",
+      "headless_available": false,
+      "windowed_note": "Godot headless has a dummy renderer; screenshot requires a window."
+    },
+    "physics_and_collision": {
+      "source": "Phase 10 observation fixture and Stage C combat fixture; native API presence checked by ClassDB",
+      "observed_nodes": [
+        "CharacterBody3D",
+        "StaticBody3D",
+        "Area3D",
+        "RigidBody3D",
+        "CollisionShape3D"
+      ]
+    },
+    "animation_tree": {
+      "source": "ClassDB only; no AnimationTree in the existing fixtures and no bridge state path",
+      "native_class_exists": true,
+      "harness_exposed": false
+    },
+    "debug_overlay": {
+      "source": "ClassDB only; SceneTree.debug_collisions_hint exists, bridge has no setter",
+      "native_property": "SceneTree.debug_collisions_hint",
+      "harness_exposed": false
+    },
+    "native_input": {
+      "source": "ClassDB only; harness uses fixture-defined harness_input, not Input event injection",
+      "native_method": "Input.parse_input_event",
+      "harness_event_history": false
+    },
+    "movie_writer": {
+      "source": "ClassDB only; not used by the harness",
+      "native_class_exists": true,
+      "harness_recording": "sampled PNG frames only, with optional offline encoding"
+    }
+  },
+  "tests": {
+    "ok": true,
+    "exitCode": 0,
+    "durationMs": 909,
+    "reason": "tests passed",
+    "summary": {
+      "passed": 4,
+      "failed": 0
+    },
+    "results": [
+      {
+        "name": "character-rigid-humanoid",
+        "passed": true,
+        "detail": "meshes=22 root=/root/Main/Humanoid skeleton=<null> animation=<null>"
+      },
+      {
+        "name": "character-skinned-skeleton",
+        "passed": true,
+        "detail": "bones=19 names=[\"Skeleton_torso_joint_1\", \"leg_joint_R_1\", \"leg_joint_R_2\", \"leg_joint_R_3\"] parent_indices_valid=true animation=Animation playing=true"
+      },
+      {
+        "name": "character-animation-advances",
+        "passed": true,
+        "detail": "position=0.000000->0.411825 changed=true playing=true"
+      },
+      {
+        "name": "character-bone-spaces",
+        "passed": true,
+        "detail": "head_rest=[-0.00000236603, 0.00000241398993, 0.06483621150255] head_global=[0.048290155828, -0.02200808748603, 1.14369082450867] head_world=[-0.02971092239022, 1.54398262500763, 0.06519170850515]"
+      }
+    ],
+    "errors": []
+  },
+  "stop": {
+    "operation": "stop_project",
+    "ok": true,
+    "alreadyStopped": false,
+    "pid": 18996,
+    "exitCode": 0,
+    "signal": null,
+    "killed": false,
+    "logs": {
+      "stdout": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "",
+        "HARNESS_READY {\"pid\":18996,\"port\":59182,\"project\":\"godot-character-audit-fixture\",\"protocol\":1}"
+      ],
+      "stderr": []
+    }
+  },
+  "error": null,
+  "pid": 18996,
+  "runtime_evidence": {
+    "path": "stage-a-runtime.json",
+    "bytes": 15222,
+    "sha256": "8fe668d059677ff3df383fb5ad5730c562ae07822547972deed355dfc82a988f"
+  }
+}
