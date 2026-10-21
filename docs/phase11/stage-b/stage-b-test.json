@@ -1,0 +1,41 @@
+﻿{
+  "operation": "run_tests",
+  "project": "C:\\Users\\hacke\\ai-native-engine-phase11\\experiments\\godot-harness\\fixtures\\character-audit",
+  "script": "res://tests/run_character_audit.gd",
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 920,
+  "ok": true,
+  "results": [
+    {
+      "name": "character-rigid-humanoid",
+      "passed": true,
+      "detail": "meshes=22 root=/root/Main/Humanoid skeleton=<null> animation=<null>"
+    },
+    {
+      "name": "character-skinned-skeleton",
+      "passed": true,
+      "detail": "bones=19 names=[\"Skeleton_torso_joint_1\", \"leg_joint_R_1\", \"leg_joint_R_2\", \"leg_joint_R_3\"] parent_indices_valid=true animation=Animation playing=true"
+    },
+    {
+      "name": "character-animation-advances",
+      "passed": true,
+      "detail": "position=0.008502->0.415357 changed=true playing=true"
+    },
+    {
+      "name": "character-bone-spaces",
+      "passed": true,
+      "detail": "head_rest=[-0.00000236603, 0.00000241398993, 0.06483621150255] head_global=[0.04812886938453, -0.02204020507634, 1.14336395263672] head_world=[-0.02975428104401, 1.54354131221771, 0.06497397273779]"
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0
+  },
+  "errors": [],
+  "warnings": [],
+  "reason": "tests passed",
+  "stdout": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\r\n\r\nPASS character-rigid-humanoid meshes=22 root=/root/Main/Humanoid skeleton=<null> animation=<null>\r\nPASS character-skinned-skeleton bones=19 names=[\"Skeleton_torso_joint_1\", \"leg_joint_R_1\", \"leg_joint_R_2\", \"leg_joint_R_3\"] parent_indices_valid=true animation=Animation playing=true\r\nPASS character-animation-advances position=0.008502->0.415357 changed=true playing=true\r\nPASS character-bone-spaces head_rest=[-0.00000236603, 0.00000241398993, 0.06483621150255] head_global=[0.04812886938453, -0.02204020507634, 1.14336395263672] head_world=[-0.02975428104401, 1.54354131221771, 0.06497397273779]\r\nCHARACTER_AUDIT_SUMMARY {\"cases\":[{\"detail\":\"meshes=22 root=/root/Main/Humanoid skeleton=<null> animation=<null>\",\"name\":\"character-rigid-humanoid\",\"ok\":true},{\"detail\":\"bones=19 names=[\\\"Skeleton_torso_joint_1\\\", \\\"leg_joint_R_1\\\", \\\"leg_joint_R_2\\\", \\\"leg_joint_R_3\\\"] parent_indices_valid=true animation=Animation playing=true\",\"name\":\"character-skinned-skeleton\",\"ok\":true},{\"detail\":\"position=0.008502->0.415357 changed=true playing=true\",\"name\":\"character-animation-advances\",\"ok\":true},{\"detail\":\"head_rest=[-0.00000236603, 0.00000241398993, 0.06483621150255] head_global=[0.04812886938453, -0.02204020507634, 1.14336395263672] head_world=[-0.02975428104401, 1.54354131221771, 0.06497397273779]\",\"name\":\"character-bone-spaces\",\"ok\":true}],\"fixture\":\"character-audit\",\"godot\":\"4.7.2-stable (official)\",\"trace\":{\"animation_advance\":{\"after_position\":0.415357,\"after_signature\":\"80c07065222d57dcc0e6a1d4fda365b33ba8f2a91f157ac8a4c863d895fd9c6e\",\"before_position\":0.008502,\"before_signature\":\"6fc66061a9420261cd194cf51fe41ce205de5755e7270c0443262a3552ceef4c\",\"changed\":true},\"initial\":{\"cesium_animation\":\"/root/Main/CesiumMan/AnimationPlayer\",\"cesium_animation_name\":\"Animation\",\"cesium_animation_names\":[\"Animation\"],\"cesium_animation_playing\":true,\"cesium_animation_position\":0.0,\"cesium_bone_count\":19,\"cesium_bones\":[\"Skeleton_torso_joint_1\",\"leg_joint_R_1\",\"leg_joint_R_2\",\"leg_joint_R_3\",\"leg_joint_R_5\",\"leg_joint_L_1\",\"leg_joint_L_2\",\"leg_joint_L_3\",\"leg_joint_L_5\",\"Skeleton_torso_joint_2\",\"torso_joint_3\",\"Skeleton_arm_joint_R\",\"Skeleton_arm_joint_R__2_\",\"Skeleton_arm_joint_R__3_\",\"Skeleton_arm_joint_L__4_\",\"Skeleton_arm_joint_L__3_\",\"Skeleton_arm_joint_L__2_\",\"Skeleton_neck_joint_1\",\"Skeleton_neck_joint_2\"],\"cesium_root\":\"/root/Main/CesiumMan\",\"cesium_skeleton\":\"/root/Main/CesiumMan/Z_UP/Armature/Skeleton3D\",\"hash\":\"944699a98e14a9ce3b148a11b50467406b691fc5bc5afa6de16ad4d19c531c63\",\"hud\":\"CHARACTER AUDIT\\nCesiumMan skinned rig + humanoid-01 rigid meshes\\nSTEP: 8   TICK: 8\",\"humanoid_animation\":null,\"humanoid_mesh_count\":22,\"humanoid_root\":\"/root/Main/Humanoid\",\"humanoid_skeleton\":null,\"physics_frames\":8,\"physics_ticks_per_second\":60,\"step\":8},\"rigid_humanoid\":{\"animation\":null,\"mesh_count\":22,\"root\":\"/root/Main/Humanoid\",\"skeleton\":null},\"skinned_skeleton\":{\"animation_name\":\"Animation\",\"animation_path\":\"/root/Main/CesiumMan/AnimationPlayer\",\"animation_playing\":true,\"bone_count\":19,\"bone_names\":[\"Skeleton_torso_joint_1\",\"leg_joint_R_1\",\"leg_joint_R_2\",\"leg_joint_R_3\",\"leg_joint_R_5\",\"leg_joint_L_1\",\"leg_joint_L_2\",\"leg_joint_L_3\",\"leg_joint_L_5\",\"Skeleton_torso_joint_2\",\"torso_joint_3\",\"Skeleton_arm_joint_R\",\"Skeleton_arm_joint_R__2_\",\"Skeleton_arm_joint_R__3_\",\"Skeleton_arm_joint_L__4_\",\"Skeleton_arm_joint_L__3_\",\"Skeleton_arm_joint_L__2_\",\"Skeleton_neck_joint_1\",\"Skeleton_neck_joint_2\"],\"parent_indices_valid\":true,\"path\":\"/root/Main/CesiumMan/Z_UP/Armature/Skeleton3D\"},\"spaces\":{\"derived_world_source\":\"skeleton.global_transform * get_bone_global_pose(index)\",\"global_pose_space\":\"skeleton\",\"head_global_origin\":[0.0481288693845272,-0.0220402050763369,1.14336395263672],\"head_rest_origin\":[-0.00000236603000303148,0.00000241398993239272,0.064836211502552],\"head_world_origin\":[-0.0297542810440063,1.54354131221771,0.0649739727377892],\"pose_space\":\"bone_parent\",\"rest_space\":\"bone_parent\",\"skeleton_global_origin\":[0.0,0.0,0.0]}}}\r\nRESULT passed=4 failed=0\r\n",
+  "stderr": ""
+}
