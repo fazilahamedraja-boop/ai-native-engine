@@ -1,0 +1,652 @@
+{
+  "phase": 17,
+  "run_id": "phase17-live-2026-10-22T19-54-02-835Z",
+  "created_at": "2026-10-22T19:54:08.755Z",
+  "project": "game",
+  "mode": "windowed-dodge",
+  "session": {
+    "headless": false,
+    "pid": 20504,
+    "project_path": "C:\\Users\\hacke\\ai-native-engine-phase17\\experiments\\godot-harness\\game"
+  },
+  "captures": [
+    {
+      "name": "01-before-dodge",
+      "scenario": "before dodge: ready at spawn",
+      "screenshot": {
+        "path": "01-before-dodge.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase17\\docs\\phase17\\evidence\\live\\windowed-dodge\\01-before-dodge.png",
+        "bytes": 68616,
+        "sha256": "b3cc7ba00dc829f179379012a4b6c61c26e94b2b4991a842a521b0ef92c5ad34",
+        "width": 1280,
+        "height": 720
+      },
+      "captured_at": "2026-10-22T19:54:05.285Z",
+      "engine_tick": 0,
+      "simulation_step": 0,
+      "paused": true,
+      "state": {
+        "step": 0,
+        "sim_time_seconds": 0,
+        "player_position": [
+          0,
+          0.0199999995529652,
+          4.40000009536743
+        ],
+        "player_health": 4,
+        "player_attack_phase": "idle",
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "none",
+        "dodge_phase": "idle",
+        "dodge_tick": 0,
+        "dodge_cooldown": 0,
+        "dodge_invulnerable": false,
+        "dodge_direction": [
+          0,
+          0,
+          0
+        ],
+        "dodge_available": true,
+        "enemy_position": [
+          0,
+          0.0199999995529652,
+          0.800000011920929
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "idle",
+        "enemy_phase_tick": 0,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "outcome": "playing",
+        "camera_position": [
+          1.10000002384186,
+          2.72000002861023,
+          9.10000038146973
+        ],
+        "camera_distance": 5.06976366043091,
+        "grounded": true,
+        "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   duel\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart",
+        "last_event_type": "reset",
+        "hash": "a45c5991b6b84648adaf0c4f0da9a4559fd750b960c710799ab3e3121302fa60"
+      },
+      "event_types": [
+        "reset"
+      ],
+      "events": {
+        "available": true,
+        "count": 1,
+        "items": [
+          {
+            "sequence": 1,
+            "sim_time_seconds": 0,
+            "tick": 0,
+            "type": "reset"
+          }
+        ]
+      }
+    },
+    {
+      "name": "02-initiation",
+      "scenario": "dodge start: directional burst",
+      "screenshot": {
+        "path": "02-initiation.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase17\\docs\\phase17\\evidence\\live\\windowed-dodge\\02-initiation.png",
+        "bytes": 73680,
+        "sha256": "6860f2c43aae4e280e92a5af4e7e09e9d52df746278eb42270ea1cbe9a0f4a63",
+        "width": 1280,
+        "height": 720
+      },
+      "captured_at": "2026-10-22T19:54:05.692Z",
+      "engine_tick": 1,
+      "simulation_step": 1,
+      "paused": true,
+      "state": {
+        "step": 1,
+        "sim_time_seconds": 0.0166666666666667,
+        "player_position": [
+          0.150000005960464,
+          0.000546873547136784,
+          4.40000009536743
+        ],
+        "player_health": 4,
+        "player_attack_phase": "idle",
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "none",
+        "dodge_phase": "active",
+        "dodge_tick": 0,
+        "dodge_cooldown": 45,
+        "dodge_invulnerable": false,
+        "dodge_direction": [
+          1,
+          0,
+          0
+        ],
+        "dodge_available": false,
+        "enemy_position": [
+          0,
+          0.000546873547136784,
+          0.800000011920929
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "idle",
+        "enemy_phase_tick": 0,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "outcome": "playing",
+        "camera_position": [
+          1.1525000333786,
+          2.71319150924683,
+          9.10000038146973
+        ],
+        "camera_distance": 5.05340147018433,
+        "grounded": true,
+        "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   dodging\nDODGE   ACTIVE\nJ attack    K deflect    SPACE dodge    R restart",
+        "last_event_type": "dodge_started",
+        "hash": "7393d48f3d9dfbd95a5b259a7c4b75275e31c69b3d34fa110beb82187bf629a8"
+      },
+      "event_types": [
+        "reset",
+        "dodge_started"
+      ],
+      "events": {
+        "available": true,
+        "count": 2,
+        "items": [
+          {
+            "sequence": 1,
+            "sim_time_seconds": 0,
+            "tick": 0,
+            "type": "reset"
+          },
+          {
+            "cooldown": 45,
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "dodge_cooldown": 45,
+            "dodge_direction": [
+              1,
+              0,
+              0
+            ],
+            "sequence": 2,
+            "sim_time_seconds": 0.0166666666666667,
+            "tick": 1,
+            "type": "dodge_started"
+          }
+        ]
+      }
+    },
+    {
+      "name": "03-mid-dodge",
+      "scenario": "mid-dodge: active i-frame window",
+      "screenshot": {
+        "path": "03-mid-dodge.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase17\\docs\\phase17\\evidence\\live\\windowed-dodge\\03-mid-dodge.png",
+        "bytes": 73999,
+        "sha256": "a55537a38175768b40d75346d20ebcbf50a52104b6226baf74dae73b4072bb73",
+        "width": 1280,
+        "height": 720
+      },
+      "captured_at": "2026-10-22T19:54:06.085Z",
+      "engine_tick": 5,
+      "simulation_step": 5,
+      "paused": true,
+      "state": {
+        "step": 5,
+        "sim_time_seconds": 0.0833333333333333,
+        "player_position": [
+          0.75,
+          0.000837114173918962,
+          4.40000009536743
+        ],
+        "player_health": 4,
+        "player_attack_phase": "idle",
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "none",
+        "dodge_phase": "active",
+        "dodge_tick": 4,
+        "dodge_cooldown": 41,
+        "dodge_invulnerable": true,
+        "dodge_direction": [
+          1,
+          0,
+          0
+        ],
+        "dodge_available": false,
+        "enemy_position": [
+          0,
+          0.000546873547136784,
+          0.800000011920929
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "idle",
+        "enemy_phase_tick": 0,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "outcome": "playing",
+        "camera_position": [
+          1.60375094413757,
+          2.70304274559021,
+          9.10000038146973
+        ],
+        "camera_distance": 5.02277183532715,
+        "grounded": true,
+        "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   dodging\nDODGE   ACTIVE\nJ attack    K deflect    SPACE dodge    R restart",
+        "last_event_type": "dodge_started",
+        "hash": "b16bbf5f1ba7827a2025d8bba238ee2b2665b0a0347beb87484766468b483b91"
+      },
+      "event_types": [
+        "reset",
+        "dodge_started"
+      ],
+      "events": {
+        "available": true,
+        "count": 2,
+        "items": [
+          {
+            "sequence": 1,
+            "sim_time_seconds": 0,
+            "tick": 0,
+            "type": "reset"
+          },
+          {
+            "cooldown": 45,
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "dodge_cooldown": 45,
+            "dodge_direction": [
+              1,
+              0,
+              0
+            ],
+            "sequence": 2,
+            "sim_time_seconds": 0.0166666666666667,
+            "tick": 1,
+            "type": "dodge_started"
+          }
+        ]
+      }
+    },
+    {
+      "name": "04-recovery",
+      "scenario": "recovery: vulnerable, control returning",
+      "screenshot": {
+        "path": "04-recovery.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase17\\docs\\phase17\\evidence\\live\\windowed-dodge\\04-recovery.png",
+        "bytes": 73733,
+        "sha256": "d377241edd234756f751661c8d3ab49ed10d0a3fbb64668c069830c241760759",
+        "width": 1280,
+        "height": 720
+      },
+      "captured_at": "2026-10-22T19:54:06.869Z",
+      "engine_tick": 19,
+      "simulation_step": 19,
+      "paused": true,
+      "state": {
+        "step": 19,
+        "sim_time_seconds": 0.316666666666667,
+        "player_position": [
+          2.70000028610229,
+          0.000837172789033502,
+          4.40000009536743
+        ],
+        "player_health": 4,
+        "player_attack_phase": "idle",
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "none",
+        "dodge_phase": "recovery",
+        "dodge_tick": 0,
+        "dodge_cooldown": 27,
+        "dodge_invulnerable": false,
+        "dodge_direction": [
+          1,
+          0,
+          0
+        ],
+        "dodge_available": false,
+        "enemy_position": [
+          0,
+          0.000546873547136784,
+          0.800000011920929
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "idle",
+        "enemy_phase_tick": 0,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "outcome": "playing",
+        "camera_position": [
+          3.61900663375854,
+          2.70084285736084,
+          9.10000038146973
+        ],
+        "camera_distance": 5.03359651565552,
+        "grounded": true,
+        "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   dodging\nDODGE   RECOVERY\nJ attack    K deflect    SPACE dodge    R restart",
+        "last_event_type": "dodge_recovery",
+        "hash": "1f8271c0371f0dbfe163596694efae7d0acc244115a7bd616eff3fc80365f2f7"
+      },
+      "event_types": [
+        "reset",
+        "dodge_started",
+        "dodge_recovery"
+      ],
+      "events": {
+        "available": true,
+        "count": 3,
+        "items": [
+          {
+            "sequence": 1,
+            "sim_time_seconds": 0,
+            "tick": 0,
+            "type": "reset"
+          },
+          {
+            "cooldown": 45,
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "dodge_cooldown": 45,
+            "dodge_direction": [
+              1,
+              0,
+              0
+            ],
+            "sequence": 2,
+            "sim_time_seconds": 0.0166666666666667,
+            "tick": 1,
+            "type": "dodge_started"
+          },
+          {
+            "sequence": 3,
+            "sim_time_seconds": 0.316666666666667,
+            "tick": 19,
+            "type": "dodge_recovery"
+          }
+        ]
+      }
+    },
+    {
+      "name": "05-cooldown",
+      "scenario": "cooldown: second dodge rejected",
+      "screenshot": {
+        "path": "05-cooldown.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase17\\docs\\phase17\\evidence\\live\\windowed-dodge\\05-cooldown.png",
+        "bytes": 68791,
+        "sha256": "f1b921524a591dcaec156fdaeec999adb1629c1f9bcfeeaba9199523ff9740c5",
+        "width": 1280,
+        "height": 720
+      },
+      "captured_at": "2026-10-22T19:54:07.589Z",
+      "engine_tick": 30,
+      "simulation_step": 30,
+      "paused": true,
+      "state": {
+        "step": 30,
+        "sim_time_seconds": 0.5,
+        "player_position": [
+          2.70000028610229,
+          0.000837172789033502,
+          4.40000009536743
+        ],
+        "player_health": 4,
+        "player_attack_phase": "idle",
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "none",
+        "dodge_phase": "idle",
+        "dodge_tick": 0,
+        "dodge_cooldown": 16,
+        "dodge_invulnerable": false,
+        "dodge_direction": [
+          0,
+          0,
+          0
+        ],
+        "dodge_available": false,
+        "enemy_position": [
+          0,
+          0.000546873547136784,
+          0.800000011920929
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "idle",
+        "enemy_phase_tick": 0,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "outcome": "playing",
+        "camera_position": [
+          3.79841637611389,
+          2.70083737373352,
+          9.10000038146973
+        ],
+        "camera_distance": 5.069420337677,
+        "grounded": true,
+        "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   duel\nDODGE   COOLDOWN 0.27s\nJ attack    K deflect    SPACE dodge    R restart",
+        "last_event_type": "dodge_rejected",
+        "hash": "32c862007da26d1624282b1160b9c138a2cea968edae289aa2f5148e9590baff"
+      },
+      "event_types": [
+        "reset",
+        "dodge_started",
+        "dodge_recovery",
+        "dodge_finished",
+        "dodge_rejected"
+      ],
+      "events": {
+        "available": true,
+        "count": 5,
+        "items": [
+          {
+            "sequence": 1,
+            "sim_time_seconds": 0,
+            "tick": 0,
+            "type": "reset"
+          },
+          {
+            "cooldown": 45,
+            "direction": [
+              1,
+              0,
+              0
+            ],
+            "dodge_cooldown": 45,
+            "dodge_direction": [
+              1,
+              0,
+              0
+            ],
+            "sequence": 2,
+            "sim_time_seconds": 0.0166666666666667,
+            "tick": 1,
+            "type": "dodge_started"
+          },
+          {
+            "sequence": 3,
+            "sim_time_seconds": 0.316666666666667,
+            "tick": 19,
+            "type": "dodge_recovery"
+          },
+          {
+            "sequence": 4,
+            "sim_time_seconds": 0.483333333333333,
+            "tick": 29,
+            "type": "dodge_finished"
+          },
+          {
+            "reason": "cooldown",
+            "sequence": 5,
+            "sim_time_seconds": 0.5,
+            "tick": 30,
+            "type": "dodge_rejected"
+          }
+        ]
+      }
+    },
+    {
+      "name": "06-after-restart",
+      "scenario": "restart: dodge state cleared and rearmed",
+      "screenshot": {
+        "path": "06-after-restart.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase17\\docs\\phase17\\evidence\\live\\windowed-dodge\\06-after-restart.png",
+        "bytes": 68614,
+        "sha256": "f7f08e36850d490abe1e2752a5e2801707ee77e90bec217f1ba92284f5e95cd3",
+        "width": 1280,
+        "height": 720
+      },
+      "captured_at": "2026-10-22T19:54:08.430Z",
+      "engine_tick": 0,
+      "simulation_step": 0,
+      "paused": true,
+      "state": {
+        "step": 0,
+        "sim_time_seconds": 0,
+        "player_position": [
+          0,
+          0.0199999995529652,
+          4.40000009536743
+        ],
+        "player_health": 4,
+        "player_attack_phase": "idle",
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "none",
+        "dodge_phase": "idle",
+        "dodge_tick": 0,
+        "dodge_cooldown": 0,
+        "dodge_invulnerable": false,
+        "dodge_direction": [
+          0,
+          0,
+          0
+        ],
+        "dodge_available": true,
+        "enemy_position": [
+          0,
+          0.0199999995529652,
+          0.800000011920929
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "idle",
+        "enemy_phase_tick": 0,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "outcome": "playing",
+        "camera_position": [
+          1.09999990463257,
+          2.72000002861023,
+          9.10000038146973
+        ],
+        "camera_distance": 5.06976366043091,
+        "grounded": true,
+        "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   duel\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart",
+        "last_event_type": "reset",
+        "hash": "a45c5991b6b84648adaf0c4f0da9a4559fd750b960c710799ab3e3121302fa60"
+      },
+      "event_types": [
+        "reset"
+      ],
+      "events": {
+        "available": true,
+        "count": 1,
+        "items": [
+          {
+            "sequence": 1,
+            "sim_time_seconds": 0,
+            "tick": 0,
+            "type": "reset"
+          }
+        ]
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "windowed-session",
+      "ok": true,
+      "detail": "headless=false"
+    },
+    {
+      "name": "spawn-dodge-ready",
+      "ok": true,
+      "detail": "step=0 phase=idle cooldown=0"
+    },
+    {
+      "name": "dodge-initiated",
+      "ok": true,
+      "detail": "phase=active tick=0 cooldown=45 dx=1"
+    },
+    {
+      "name": "dodge-mid-iframes",
+      "ok": true,
+      "detail": "phase=active tick=4 invulnerable=true"
+    },
+    {
+      "name": "dodge-recovery",
+      "ok": true,
+      "detail": "phase=recovery tick=0 invulnerable=false"
+    },
+    {
+      "name": "dodge-cooldown-blocks",
+      "ok": true,
+      "detail": "phase=idle cooldown=16 before=17 rejected=true"
+    },
+    {
+      "name": "dodge-ready-after-cooldown",
+      "ok": true,
+      "detail": "cooldown=0 available=true"
+    },
+    {
+      "name": "restart-clears-dodge",
+      "ok": true,
+      "detail": "step=0 phase=idle cooldown=0 available=true"
+    },
+    {
+      "name": "no-engine-errors",
+      "ok": true,
+      "detail": "errors=0"
+    }
+  ],
+  "summary": {
+    "passed": 9,
+    "failed": 0,
+    "complete": true
+  },
+  "failure": null,
+  "engine_output": {
+    "stdout_lines": 4,
+    "stderr_lines": 0,
+    "stdout_file": "engine-stdout.log",
+    "stderr_file": "engine-stderr.log"
+  }
+}

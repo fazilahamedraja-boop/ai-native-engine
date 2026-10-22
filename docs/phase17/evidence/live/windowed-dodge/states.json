@@ -1,0 +1,326 @@
+[
+  {
+    "name": "01-before-dodge",
+    "captured_at": "2026-10-22T19:54:05.285Z",
+    "engine_tick": 0,
+    "simulation_step": 0,
+    "state": {
+      "step": 0,
+      "sim_time_seconds": 0,
+      "player_position": [
+        0,
+        0.0199999995529652,
+        4.40000009536743
+      ],
+      "player_health": 4,
+      "player_attack_phase": "idle",
+      "hitbox_active": false,
+      "last_hitbox_query_step": -1,
+      "parry_ticks": 0,
+      "parry_result": "none",
+      "dodge_phase": "idle",
+      "dodge_tick": 0,
+      "dodge_cooldown": 0,
+      "dodge_invulnerable": false,
+      "dodge_direction": [
+        0,
+        0,
+        0
+      ],
+      "dodge_available": true,
+      "enemy_position": [
+        0,
+        0.0199999995529652,
+        0.800000011920929
+      ],
+      "enemy_health": 5,
+      "enemy_posture": 0,
+      "enemy_phase": "idle",
+      "enemy_phase_tick": 0,
+      "enemy_staggered": false,
+      "enemy_stagger_ticks": 0,
+      "enemy_defeated": false,
+      "outcome": "playing",
+      "camera_position": [
+        1.10000002384186,
+        2.72000002861023,
+        9.10000038146973
+      ],
+      "camera_distance": 5.06976366043091,
+      "grounded": true,
+      "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   duel\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart",
+      "last_event_type": "reset",
+      "hash": "a45c5991b6b84648adaf0c4f0da9a4559fd750b960c710799ab3e3121302fa60"
+    }
+  },
+  {
+    "name": "02-initiation",
+    "captured_at": "2026-10-22T19:54:05.692Z",
+    "engine_tick": 1,
+    "simulation_step": 1,
+    "state": {
+      "step": 1,
+      "sim_time_seconds": 0.0166666666666667,
+      "player_position": [
+        0.150000005960464,
+        0.000546873547136784,
+        4.40000009536743
+      ],
+      "player_health": 4,
+      "player_attack_phase": "idle",
+      "hitbox_active": false,
+      "last_hitbox_query_step": -1,
+      "parry_ticks": 0,
+      "parry_result": "none",
+      "dodge_phase": "active",
+      "dodge_tick": 0,
+      "dodge_cooldown": 45,
+      "dodge_invulnerable": false,
+      "dodge_direction": [
+        1,
+        0,
+        0
+      ],
+      "dodge_available": false,
+      "enemy_position": [
+        0,
+        0.000546873547136784,
+        0.800000011920929
+      ],
+      "enemy_health": 5,
+      "enemy_posture": 0,
+      "enemy_phase": "idle",
+      "enemy_phase_tick": 0,
+      "enemy_staggered": false,
+      "enemy_stagger_ticks": 0,
+      "enemy_defeated": false,
+      "outcome": "playing",
+      "camera_position": [
+        1.1525000333786,
+        2.71319150924683,
+        9.10000038146973
+      ],
+      "camera_distance": 5.05340147018433,
+      "grounded": true,
+      "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   dodging\nDODGE   ACTIVE\nJ attack    K deflect    SPACE dodge    R restart",
+      "last_event_type": "dodge_started",
+      "hash": "7393d48f3d9dfbd95a5b259a7c4b75275e31c69b3d34fa110beb82187bf629a8"
+    }
+  },
+  {
+    "name": "03-mid-dodge",
+    "captured_at": "2026-10-22T19:54:06.085Z",
+    "engine_tick": 5,
+    "simulation_step": 5,
+    "state": {
+      "step": 5,
+      "sim_time_seconds": 0.0833333333333333,
+      "player_position": [
+        0.75,
+        0.000837114173918962,
+        4.40000009536743
+      ],
+      "player_health": 4,
+      "player_attack_phase": "idle",
+      "hitbox_active": false,
+      "last_hitbox_query_step": -1,
+      "parry_ticks": 0,
+      "parry_result": "none",
+      "dodge_phase": "active",
+      "dodge_tick": 4,
+      "dodge_cooldown": 41,
+      "dodge_invulnerable": true,
+      "dodge_direction": [
+        1,
+        0,
+        0
+      ],
+      "dodge_available": false,
+      "enemy_position": [
+        0,
+        0.000546873547136784,
+        0.800000011920929
+      ],
+      "enemy_health": 5,
+      "enemy_posture": 0,
+      "enemy_phase": "idle",
+      "enemy_phase_tick": 0,
+      "enemy_staggered": false,
+      "enemy_stagger_ticks": 0,
+      "enemy_defeated": false,
+      "outcome": "playing",
+      "camera_position": [
+        1.60375094413757,
+        2.70304274559021,
+        9.10000038146973
+      ],
+      "camera_distance": 5.02277183532715,
+      "grounded": true,
+      "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   dodging\nDODGE   ACTIVE\nJ attack    K deflect    SPACE dodge    R restart",
+      "last_event_type": "dodge_started",
+      "hash": "b16bbf5f1ba7827a2025d8bba238ee2b2665b0a0347beb87484766468b483b91"
+    }
+  },
+  {
+    "name": "04-recovery",
+    "captured_at": "2026-10-22T19:54:06.869Z",
+    "engine_tick": 19,
+    "simulation_step": 19,
+    "state": {
+      "step": 19,
+      "sim_time_seconds": 0.316666666666667,
+      "player_position": [
+        2.70000028610229,
+        0.000837172789033502,
+        4.40000009536743
+      ],
+      "player_health": 4,
+      "player_attack_phase": "idle",
+      "hitbox_active": false,
+      "last_hitbox_query_step": -1,
+      "parry_ticks": 0,
+      "parry_result": "none",
+      "dodge_phase": "recovery",
+      "dodge_tick": 0,
+      "dodge_cooldown": 27,
+      "dodge_invulnerable": false,
+      "dodge_direction": [
+        1,
+        0,
+        0
+      ],
+      "dodge_available": false,
+      "enemy_position": [
+        0,
+        0.000546873547136784,
+        0.800000011920929
+      ],
+      "enemy_health": 5,
+      "enemy_posture": 0,
+      "enemy_phase": "idle",
+      "enemy_phase_tick": 0,
+      "enemy_staggered": false,
+      "enemy_stagger_ticks": 0,
+      "enemy_defeated": false,
+      "outcome": "playing",
+      "camera_position": [
+        3.61900663375854,
+        2.70084285736084,
+        9.10000038146973
+      ],
+      "camera_distance": 5.03359651565552,
+      "grounded": true,
+      "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   dodging\nDODGE   RECOVERY\nJ attack    K deflect    SPACE dodge    R restart",
+      "last_event_type": "dodge_recovery",
+      "hash": "1f8271c0371f0dbfe163596694efae7d0acc244115a7bd616eff3fc80365f2f7"
+    }
+  },
+  {
+    "name": "05-cooldown",
+    "captured_at": "2026-10-22T19:54:07.589Z",
+    "engine_tick": 30,
+    "simulation_step": 30,
+    "state": {
+      "step": 30,
+      "sim_time_seconds": 0.5,
+      "player_position": [
+        2.70000028610229,
+        0.000837172789033502,
+        4.40000009536743
+      ],
+      "player_health": 4,
+      "player_attack_phase": "idle",
+      "hitbox_active": false,
+      "last_hitbox_query_step": -1,
+      "parry_ticks": 0,
+      "parry_result": "none",
+      "dodge_phase": "idle",
+      "dodge_tick": 0,
+      "dodge_cooldown": 16,
+      "dodge_invulnerable": false,
+      "dodge_direction": [
+        0,
+        0,
+        0
+      ],
+      "dodge_available": false,
+      "enemy_position": [
+        0,
+        0.000546873547136784,
+        0.800000011920929
+      ],
+      "enemy_health": 5,
+      "enemy_posture": 0,
+      "enemy_phase": "idle",
+      "enemy_phase_tick": 0,
+      "enemy_staggered": false,
+      "enemy_stagger_ticks": 0,
+      "enemy_defeated": false,
+      "outcome": "playing",
+      "camera_position": [
+        3.79841637611389,
+        2.70083737373352,
+        9.10000038146973
+      ],
+      "camera_distance": 5.069420337677,
+      "grounded": true,
+      "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   duel\nDODGE   COOLDOWN 0.27s\nJ attack    K deflect    SPACE dodge    R restart",
+      "last_event_type": "dodge_rejected",
+      "hash": "32c862007da26d1624282b1160b9c138a2cea968edae289aa2f5148e9590baff"
+    }
+  },
+  {
+    "name": "06-after-restart",
+    "captured_at": "2026-10-22T19:54:08.430Z",
+    "engine_tick": 0,
+    "simulation_step": 0,
+    "state": {
+      "step": 0,
+      "sim_time_seconds": 0,
+      "player_position": [
+        0,
+        0.0199999995529652,
+        4.40000009536743
+      ],
+      "player_health": 4,
+      "player_attack_phase": "idle",
+      "hitbox_active": false,
+      "last_hitbox_query_step": -1,
+      "parry_ticks": 0,
+      "parry_result": "none",
+      "dodge_phase": "idle",
+      "dodge_tick": 0,
+      "dodge_cooldown": 0,
+      "dodge_invulnerable": false,
+      "dodge_direction": [
+        0,
+        0,
+        0
+      ],
+      "dodge_available": true,
+      "enemy_position": [
+        0,
+        0.0199999995529652,
+        0.800000011920929
+      ],
+      "enemy_health": 5,
+      "enemy_posture": 0,
+      "enemy_phase": "idle",
+      "enemy_phase_tick": 0,
+      "enemy_staggered": false,
+      "enemy_stagger_ticks": 0,
+      "enemy_defeated": false,
+      "outcome": "playing",
+      "camera_position": [
+        1.09999990463257,
+        2.72000002861023,
+        9.10000038146973
+      ],
+      "camera_distance": 5.06976366043091,
+      "grounded": true,
+      "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   duel\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart",
+      "last_event_type": "reset",
+      "hash": "a45c5991b6b84648adaf0c4f0da9a4559fd750b960c710799ab3e3121302fa60"
+    }
+  }
+]

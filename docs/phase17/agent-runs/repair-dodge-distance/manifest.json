@@ -1,0 +1,161 @@
+{
+  "schema": "phase17.agent-task.manifest.v1",
+  "run_id": "repair-dodge-distance",
+  "created_at": "2026-10-22T19:53:41.733Z",
+  "status": "passed",
+  "failure_reason": null,
+  "mode": "repair",
+  "model_spec": "opencode/deepseek-v4.1-flash-free",
+  "source": "",
+  "task": {
+    "path": "phase17/agent-tasks/dodge-distance-repair.md",
+    "sha256": "e301252bf6663b0085ab7f88c3c1c4f38a9bfa7ec2292f3db71f3402cec6c86c",
+    "bytes": 1505
+  },
+  "hidden_test": {
+    "path": "tests/run_dodge_tests.gd",
+    "sha256": "78b9ae15a00c2d220dd916449243469cfd96640c511602d87786e33e56fb20e7",
+    "copied_into_agent_workspace": false
+  },
+  "agent": {
+    "bin": "C:\\Users\\hacke\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+    "version": "opencode v2.0.32",
+    "version_exit_code": 0,
+    "standalone": true,
+    "invocation": "opencode run --standalone --format json --auto",
+    "sandbox_config": {
+      "path": "experiments/godot-harness/controller/agent-sandbox/opencode.json",
+      "sha256": "3bbdf761bd665be0a857fa912c0e5b16a0fbcaa5266f97b5ddbb0ba7bf879690"
+    },
+    "denied": [
+      "shell",
+      "webfetch",
+      "websearch",
+      "execute",
+      "question",
+      "skill",
+      "subagent"
+    ],
+    "requested_model": "opencode/deepseek-v4.1-flash-free",
+    "events": {
+      "lines": 67,
+      "parse_errors": 0,
+      "by_type": {
+        "step_start": 22,
+        "text": 3,
+        "tool_use": 21,
+        "step_finish": 21
+      },
+      "tools": [
+        "edit",
+        "glob",
+        "grep",
+        "read",
+        "write"
+      ]
+    },
+    "exit_code": 0,
+    "timed_out": false,
+    "duration_ms": 106094
+  },
+  "before": {
+    "existing": {
+      "ok": true,
+      "passed": 18,
+      "total": 18,
+      "failing": [],
+      "duration_ms": 14214,
+      "timed_out": false,
+      "exit_code": 0,
+      "errors": [],
+      "reason": "tests passed"
+    },
+    "dodge_defect": {
+      "ok": false,
+      "passed": 11,
+      "total": 12,
+      "failing": [
+        "dodge-active-motion-and-phases"
+      ],
+      "duration_ms": 4017,
+      "timed_out": false,
+      "exit_code": 1,
+      "errors": [],
+      "reason": "test cases failed"
+    },
+    "expected_failing": [
+      "dodge-active-motion-and-phases"
+    ],
+    "reproduced": true
+  },
+  "defect": {
+    "spec_path": "phase17/agent-tasks/dodge-distance-defect.json",
+    "spec_sha256": "ea7bd301b21b4e05452230cd6bde079e3f0274271cfafe4087a35f6c8f14b12a",
+    "id": "dodge-distance-regression",
+    "description": "A single regression reduces the dodge burst speed and therefore its XZ travel distance.",
+    "file": "game/scripts/game_world.gd",
+    "pristine_sha256": "9d435ebd21013939c17cfa28fde37a791783ecf8b20d843916686bf8318cbf91",
+    "injected_sha256": "4fbd97a71feb86f45816634089a5e667e2dc1b5acfb7193e8652d01baa1b330f",
+    "expected_failing": [
+      "dodge-active-motion-and-phases"
+    ]
+  },
+  "attempts": [
+    {
+      "label": "repair-1",
+      "mode": "repair",
+      "status": "passed",
+      "started_at": "2026-10-22T19:54:03.985Z",
+      "duration_ms": 124370,
+      "changed_files": [
+        "assets/placeholder-character.glb.import",
+        "scripts/game_world.gd"
+      ],
+      "summary": "dodge 12/12, existing 18/18",
+      "failure": null
+    }
+  ],
+  "final": {
+    "attempt": 1,
+    "dodge": {
+      "ok": true,
+      "passed": 12,
+      "total": 12,
+      "failing": [],
+      "duration_ms": 4020,
+      "timed_out": false,
+      "exit_code": 0,
+      "errors": [],
+      "reason": "tests passed"
+    },
+    "existing": {
+      "ok": true,
+      "passed": 18,
+      "total": 18,
+      "failing": [],
+      "duration_ms": 14206,
+      "timed_out": false,
+      "exit_code": 0,
+      "errors": [],
+      "reason": "tests passed"
+    },
+    "status": "passed"
+  },
+  "changed_files": [
+    "assets/placeholder-character.glb.import",
+    "scripts/game_world.gd"
+  ],
+  "diff": null,
+  "import": {
+    "command": "C:\\Users\\hacke\\godot\\Godot_v4.7.2-stable_win64.exe --headless --path <sandbox>/game --import",
+    "status": 0,
+    "error": null,
+    "stdout": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\r\n\r\n[   0% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Started Project initialization (5 steps)\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Scanning file structure...\u001b[39m\u001b[0m\r\n[  16% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Loading global class names...\u001b[39m\u001b[0m\r\n[  33% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Verifying GDExtensions...\u001b[39m\u001b[0m\r\n[  50% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Creating autoload scripts...\u001b[39m\u001b[0m\r\n[  66% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Initializing plugins...\u001b[39m\u001b[0m\r\n[  83% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Starting file scan...\u001b[39m\u001b[0m\r\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mfirst_scan_filesystem\u001b[22m\r\n\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | Started Registering global classes... (5 steps)\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | \u001b[39m\u001b[0m\r\n[  16% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | \u001b[39m\u001b[0m\r\n[  33% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | \u001b[39m\u001b[0m\r\n[  50% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | \u001b[39m\u001b[0m\r\n[  66% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | \u001b[39m\u001b[0m\r\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mupdate_scripts_classes\u001b[22m\r\n\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Started (Re)Importing Assets (1 steps)\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Preparing files to reimport...\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Executing pre-reimport operations...\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mpreload_reimporting_scene\u001b[22m | Started Preparing scenes for reload (1 steps)\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mpreload_reimporting_scene\u001b[22m | Analyzing scene [empty]\u001b[39m\u001b[0m\r\n[  50% ] \u001b[90m\u001b[1mpreload_reimporting_scene\u001b[22m | Preparation done.\u001b[39m\u001b[0m\r\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mpreload_reimporting_scene\u001b[22m\r\n\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | placeholder-character.glb\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mimport\u001b[22m | Started Import Scene (104 steps)\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mimport\u001b[22m | Importing Scene...\u001b[39m\u001b[0m\r\n[   1% ] \u001b[90m\u001b[1mimport\u001b[22m | Running Custom Script...\u001b[39m\u001b[0m\r\n[  99% ] \u001b[90m\u001b[1mimport\u001b[22m | Saving...\u001b[39m\u001b[0m\r\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mimport\u001b[22m\r\n\u001b[0m\r\n[  50% ] \u001b[90m\u001b[1mreimport\u001b[22m | Finalizing Asset Import...\u001b[39m\u001b[0m\r\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mreimport\u001b[22m\r\n\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Started (Re)Importing Assets (1 steps)\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Executing post-reimport operations...\u001b[39m\u001b[0m\r\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mreimport\u001b[22m\r\n\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mloading_editor_layout\u001b[22m | Started Loading editor (5 steps)\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mloading_editor_layout\u001b[22m | Loading editor layout...\u001b[39m\u001b[0m\r\n[  16% ] \u001b[90m\u001b[1mloading_editor_layout\u001b[22m | Loading docks...\u001b[39m\u001b[0m\r\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mloading_editor_layout\u001b[22m\r\n\u001b[0m\r\n",
+    "stderr": ""
+  },
+  "cleanup": {
+    "sandbox_removed": true,
+    "orphans": [],
+    "orphan_check": "every opencode process spawned by this run was reaped"
+  }
+}

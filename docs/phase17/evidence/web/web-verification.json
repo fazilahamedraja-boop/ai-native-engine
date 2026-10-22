@@ -1,0 +1,67 @@
+{
+    "schema":  "phase17.web-verification.v1",
+    "verified_at":  "2026-10-22T20:14:36.7682369Z",
+    "direct_url":  "http://127.0.0.1:8788/play17/index.html",
+    "dashboard_url":  "http://127.0.0.1:8788/phase17.html",
+    "title":  "deflect-arena",
+    "canvas":  {
+                   "width":  1440,
+                   "height":  900,
+                   "present_after_navigation":  true
+               },
+    "console":  {
+                    "errors":  1,
+                    "warnings":  0,
+                    "only_error":  "GET /favicon.ico 404"
+                },
+    "dashboard":  {
+                      "captures_loaded":  6,
+                      "poster_loaded":  true,
+                      "report_links_loaded":  true,
+                      "play_link":  "play17/index.html",
+                      "iframe_canvas":  {
+                                            "width":  1146,
+                                            "height":  645
+                                        }
+                  },
+    "keyboard_input_verified":  false,
+    "keyboard_note":  "Automated browser key injection did not register an attack or dodge; the native Windows export probe is the gameplay proof.",
+    "screenshots":  [
+                        {
+                            "file":  "dashboard-captures.png",
+                            "bytes":  173892,
+                            "sha256":  "7a26bc3c390b0f6dc81cf88d3dd69423d97ded0395d6216fde5e1dc98cc0023e"
+                        },
+                        {
+                            "file":  "dashboard-final.png",
+                            "bytes":  105975,
+                            "sha256":  "387cc446db0eba7ad96cbea47aee6ddec51702a316ba789d1c0f9f5ad0ff6262"
+                        },
+                        {
+                            "file":  "dashboard-play17.png",
+                            "bytes":  113817,
+                            "sha256":  "78934baf8dd490451e9962c45c867086685affe24fc18ab93344a582a8183f81"
+                        },
+                        {
+                            "file":  "play17-after-j.png",
+                            "bytes":  118761,
+                            "sha256":  "f79a4156ace9b911263e4c1995158f1e28e5eea884a8a9c333896a497401e7d3"
+                        },
+                        {
+                            "file":  "play17-after-space.png",
+                            "bytes":  118683,
+                            "sha256":  "ddc46f02aeac0c7dec1686776732b94e14f4b7fd6d573ef321fb620dba3da930"
+                        },
+                        {
+                            "file":  "play17-loaded.png",
+                            "bytes":  116223,
+                            "sha256":  "c52890e587cf6c5e1a14a2d1d464abbd87cc24b14ead0758d35c498fe34c0f69"
+                        },
+                        {
+                            "file":  "play17-synthetic-space.png",
+                            "bytes":  115792,
+                            "sha256":  "29f485d1f0c866a5c47887544881f2f11643d64713d09282271e7cab3fe27ba1"
+                        }
+                    ],
+    "build_manifest":  "web-build-manifest.json"
+}

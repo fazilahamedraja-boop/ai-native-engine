@@ -1,0 +1,10 @@
+{
+  "id": "dodge-distance-regression",
+  "description": "A single regression reduces the dodge burst speed and therefore its XZ travel distance.",
+  "file": "game/scripts/game_world.gd",
+  "find": "const DODGE_SPEED := 9.0",
+  "replace": "const DODGE_SPEED := 1.0",
+  "expected_failing": [
+    "dodge-active-motion-and-phases"
+  ]
+}

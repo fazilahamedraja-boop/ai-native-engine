@@ -1,0 +1,433 @@
+{
+    "schema":  "phase17.evidence.manifest.v1",
+    "created_at":  "2026-10-22T20:15:58.0338600Z",
+    "base_commit":  "90fba1c",
+    "branch":  "experiment/phase17-dodge",
+    "files":  [
+                  {
+                      "path":  "agent-runs/feature-dodge/AGENT-NOTES.md",
+                      "bytes":  2915,
+                      "sha256":  "4afd5527f9332efaddb86a7793cffe2257fcc1d1a1b05900da81341d336de238"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge/attempt-1.diff",
+                      "bytes":  77979,
+                      "sha256":  "f389a2b66d9c76df13ba3bd3cb1a0f9e29a35c5ac95b4cce83b23e4cf2a9845f"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge/attempt-2.diff",
+                      "bytes":  78817,
+                      "sha256":  "0a4a856afd75fe4093d5251fb5ac814ea4834a9ea14b9325e4c46ba2f6c24ada"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge/FAILURE-1.md",
+                      "bytes":  723,
+                      "sha256":  "40ff15fbafb15df5e2f8ac45496e3e42ad16ecc72198d9daa161fbf18bee5f7a"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge/logs/attempt-1-dodge.txt",
+                      "bytes":  32861,
+                      "sha256":  "6bdba02a02be4ce6f4f101bba590538fbe0b4ce779a6872079089ff6c88f920d"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge/logs/attempt-1-dodge.txt.json",
+                      "bytes":  37620,
+                      "sha256":  "d5a0289bc36aa8c3429580f762ca1ca108acec0f6f672f16edb5bbb87d5f1393"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge/logs/attempt-1-existing.txt",
+                      "bytes":  26926,
+                      "sha256":  "5bbc5423cd4ebc5007e79fdb8d459f620783632bd7789a75b2850c03ad435f94"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge/logs/attempt-1-existing.txt.json",
+                      "bytes":  31812,
+                      "sha256":  "941fe6d48375c8f5f528018ddbb3a04f2fd79b54c8907fbd8c2f595180120e72"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge/logs/attempt-2-dodge.txt",
+                      "bytes":  33741,
+                      "sha256":  "3b36cbcfe8111e8fa7092f0e097bffd90e9bfc38c756162980a9fee35f1c921e"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge/logs/attempt-2-dodge.txt.json",
+                      "bytes":  38584,
+                      "sha256":  "4fba97e5c85f1921e81bade581cf67b170d511c79a72acb17bc695256c0bf9ff"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge/logs/baseline-dodge-red.txt",
+                      "bytes":  28612,
+                      "sha256":  "2a313bc771f10e00f1327d368f4edec94215951db9ce95c91abd4a283d3b747e"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge/logs/baseline-dodge-red.txt.json",
+                      "bytes":  33410,
+                      "sha256":  "d7a8b9489f3ac8af8d1081291ce55573f3b0282c8a15f1ea0903644fd841fe59"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge/logs/baseline-existing.txt",
+                      "bytes":  23635,
+                      "sha256":  "0f3aaf166cd5e28def85aa3ccbcf31ef53f72744b2724a69ce3c8799c4c02605"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge/logs/baseline-existing.txt.json",
+                      "bytes":  28214,
+                      "sha256":  "4d1ea9243af495f2efb6a1c21d8e51bc80ea219a4d82a22db9027c92fd48e323"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge/logs/import.txt",
+                      "bytes":  2855,
+                      "sha256":  "badac4f18690743fe681c7e1b2263602cbdcf1a1a1bb97d94237eaaa0d41e592"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge/logs/opencode-1.jsonl",
+                      "bytes":  643543,
+                      "sha256":  "136cbc3a895a0f28a26f447535bef3dc83e17d5dd65fe6bdb62e115944ccc07b"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge/logs/opencode-1.stderr.txt",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge/logs/opencode-2.jsonl",
+                      "bytes":  408764,
+                      "sha256":  "8e98c2d08e84eef5b347e77dd2228c0662f90e2ee031f6db9b3ab9eadc3e9deb"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge/logs/opencode-2.stderr.txt",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge/TASK.md",
+                      "bytes":  5962,
+                      "sha256":  "b04d5f1b453c9ec15b1b0a657f164cbb4b57c28598d3081ea7b920e038437ce8"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge-run2/AGENT-NOTES.md",
+                      "bytes":  3713,
+                      "sha256":  "eb07b9f651fe5380e597b1c435ca13153eb466e2d5a5a62e6fe1be09336c65dd"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge-run2/attempt-1.diff",
+                      "bytes":  75371,
+                      "sha256":  "f871ec2688db58517ade22a26b1bf847915e3f17028b80ab0730cfee511cfe2f"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge-run2/logs/attempt-1-dodge.txt",
+                      "bytes":  32866,
+                      "sha256":  "e63ede91e58071e5f2dfc6f4aafa7c336c649a7b6e9f3d64d8f6971fca344c01"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge-run2/logs/attempt-1-dodge.txt.json",
+                      "bytes":  37569,
+                      "sha256":  "672258a6e9cc24d4b12eeaf34c703abbb550f25f81c62f51cd2baab812e4a2b3"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge-run2/logs/attempt-1-existing.txt",
+                      "bytes":  26926,
+                      "sha256":  "70d32f06e5771bf57df64cd92e2f6be4dcdc10e2a70d8fa881b9979c18e9388c"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge-run2/logs/attempt-1-existing.txt.json",
+                      "bytes":  31812,
+                      "sha256":  "f937f2333e3bbd3fb5b4c59f61baa95be1b6b6d2dc1da652d3464fb931ff9b64"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge-run2/logs/baseline-dodge-red.txt",
+                      "bytes":  28602,
+                      "sha256":  "d33dcabff0300341517d7c08b3fbb895fc8db1ff75b01eb0dc2a1592999def20"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge-run2/logs/baseline-dodge-red.txt.json",
+                      "bytes":  33395,
+                      "sha256":  "9883cf4fdbbd63d6e39779efc9610bd7e00d23a548d0c02ff1c03ad5cd7abdf0"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge-run2/logs/baseline-existing.txt",
+                      "bytes":  23635,
+                      "sha256":  "6c113531ada851191ec1af366a447bad603416196434a85ef30b2ed58f8dbfaa"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge-run2/logs/baseline-existing.txt.json",
+                      "bytes":  28214,
+                      "sha256":  "b658994c289ab383c671c9619d618a26f6a04a701829d8d0a0581dbca8e9247a"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge-run2/logs/import.txt",
+                      "bytes":  2855,
+                      "sha256":  "badac4f18690743fe681c7e1b2263602cbdcf1a1a1bb97d94237eaaa0d41e592"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge-run2/logs/opencode-1.jsonl",
+                      "bytes":  507307,
+                      "sha256":  "55af0c7b74a64117a296f34552755fdfded1fe6eaae304210fd7a56a3f81a2d5"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge-run2/logs/opencode-1.stderr.txt",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge-run2/manifest.json",
+                      "bytes":  7802,
+                      "sha256":  "983f9ffb08394403842b4294c390c38485d547a87081e8ec401ae988a0b75f0b"
+                  },
+                  {
+                      "path":  "agent-runs/feature-dodge-run2/TASK.md",
+                      "bytes":  5962,
+                      "sha256":  "b04d5f1b453c9ec15b1b0a657f164cbb4b57c28598d3081ea7b920e038437ce8"
+                  },
+                  {
+                      "path":  "agent-runs/repair-dodge-distance/attempt-1.diff",
+                      "bytes":  159,
+                      "sha256":  "1755ec7b30d86458de0d8460b0a6c71b74408e5fc142d6dbecf66b232a4f25ca"
+                  },
+                  {
+                      "path":  "agent-runs/repair-dodge-distance/defect.json",
+                      "bytes":  333,
+                      "sha256":  "ea7bd301b21b4e05452230cd6bde079e3f0274271cfafe4087a35f6c8f14b12a"
+                  },
+                  {
+                      "path":  "agent-runs/repair-dodge-distance/logs/attempt-1-dodge.txt",
+                      "bytes":  32866,
+                      "sha256":  "204d8ffa1e0301d63199c0e2b0b087704fc0e1f5d85f264a8b1a20fb3cb9c3e5"
+                  },
+                  {
+                      "path":  "agent-runs/repair-dodge-distance/logs/attempt-1-dodge.txt.json",
+                      "bytes":  37569,
+                      "sha256":  "0a1d9e3a1031b0fd4ce254e6ca3a3e1236653d23eb2d0efe56d5b9fa8c0a832b"
+                  },
+                  {
+                      "path":  "agent-runs/repair-dodge-distance/logs/attempt-1-existing.txt",
+                      "bytes":  26926,
+                      "sha256":  "0fa3b00b4807b3d26098f148bab0e45dca20d1bb22ea85fe0dfebb23ba3180a9"
+                  },
+                  {
+                      "path":  "agent-runs/repair-dodge-distance/logs/attempt-1-existing.txt.json",
+                      "bytes":  31812,
+                      "sha256":  "a4fb7478fa87deb9bb20466bf12cd7bc794e7637579bbf311bb8e4a648934a7a"
+                  },
+                  {
+                      "path":  "agent-runs/repair-dodge-distance/logs/baseline-defect.txt",
+                      "bytes":  32903,
+                      "sha256":  "bada34e0e5a0e4595f9e9cc141c37113432f00171fe7154f76f6f072933c9d2a"
+                  },
+                  {
+                      "path":  "agent-runs/repair-dodge-distance/logs/baseline-defect.txt.json",
+                      "bytes":  37629,
+                      "sha256":  "8e7f6d445eb296f8f25e50e03be7c93ae286d4a83d64cc7e65211ec911195935"
+                  },
+                  {
+                      "path":  "agent-runs/repair-dodge-distance/logs/baseline-existing.txt",
+                      "bytes":  26926,
+                      "sha256":  "9db884e38d65e9ec35f4108e3e7c9326aa2708ea318a090da032f81253543efd"
+                  },
+                  {
+                      "path":  "agent-runs/repair-dodge-distance/logs/baseline-existing.txt.json",
+                      "bytes":  31812,
+                      "sha256":  "75f3f1c7ed0213a55301263df497c1ce9d533d1afaba517a4bf8b89655929cce"
+                  },
+                  {
+                      "path":  "agent-runs/repair-dodge-distance/logs/import.txt",
+                      "bytes":  2855,
+                      "sha256":  "badac4f18690743fe681c7e1b2263602cbdcf1a1a1bb97d94237eaaa0d41e592"
+                  },
+                  {
+                      "path":  "agent-runs/repair-dodge-distance/logs/opencode-1.jsonl",
+                      "bytes":  294095,
+                      "sha256":  "3b5090ff681bc335a574c78031c4ee80a529b195babcee8e1dfd68b43df9c230"
+                  },
+                  {
+                      "path":  "agent-runs/repair-dodge-distance/logs/opencode-1.stderr.txt",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+                  {
+                      "path":  "agent-runs/repair-dodge-distance/manifest.json",
+                      "bytes":  8044,
+                      "sha256":  "15dc420b02af951f29020b0f8b1c5046c0b77a2333d1caad284e7b28410107ba"
+                  },
+                  {
+                      "path":  "agent-runs/repair-dodge-distance/TASK.md",
+                      "bytes":  1505,
+                      "sha256":  "e301252bf6663b0085ab7f88c3c1c4f38a9bfa7ec2292f3db71f3402cec6c86c"
+                  },
+                  {
+                      "path":  "agent-tasks/dodge-distance-defect.json",
+                      "bytes":  333,
+                      "sha256":  "ea7bd301b21b4e05452230cd6bde079e3f0274271cfafe4087a35f6c8f14b12a"
+                  },
+                  {
+                      "path":  "agent-tasks/dodge-distance-repair.md",
+                      "bytes":  1505,
+                      "sha256":  "e301252bf6663b0085ab7f88c3c1c4f38a9bfa7ec2292f3db71f3402cec6c86c"
+                  },
+                  {
+                      "path":  "evidence/canonical/dodge-suite-after-apply.json",
+                      "bytes":  75682,
+                      "sha256":  "43aabe1079082ad0a4c98f8ec3c77801210cfee2295216cf9ac240997a551f93"
+                  },
+                  {
+                      "path":  "evidence/canonical/dodge-suite-run2-source.json",
+                      "bytes":  75714,
+                      "sha256":  "1170d42c55c564ab78040e55ffc1e0e9f59763b16951267222f6c99638566ffa"
+                  },
+                  {
+                      "path":  "evidence/canonical/game-suite-after-apply.json",
+                      "bytes":  64256,
+                      "sha256":  "6fb734dcfa1fd78568e40e35aca67371fba019bdf8194cd9a6e5f061d8233777"
+                  },
+                  {
+                      "path":  "evidence/canonical/game-suite-run2-source.json",
+                      "bytes":  64256,
+                      "sha256":  "8b9e4910d69271a9066367e78d9e930efdbeae570baa830f8d9bcb2d431211c0"
+                  },
+                  {
+                      "path":  "evidence/export/windows-deflect-arena/manifest.json",
+                      "bytes":  1779,
+                      "sha256":  "217449a4a1000ca1eeeba87556a7a450a98699881112701d5f39b183c29873c9"
+                  },
+                  {
+                      "path":  "evidence/export/windows-deflect-arena/stderr.log",
+                      "bytes":  0,
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                  },
+                  {
+                      "path":  "evidence/export/windows-deflect-arena/stdout.log",
+                      "bytes":  232,
+                      "sha256":  "fb3f6eadb2838bc53e0d52e619ab63ec0897b9c64709a7048cfaa824261a1232"
+                  },
+                  {
+                      "path":  "evidence/index.md",
+                      "bytes":  3497,
+                      "sha256":  "5403465414326f44b6f97b671a75cea9528c7be7b9c2fae6bd0edcc2e9e214ae"
+                  },
+                  {
+                      "path":  "evidence/live/windowed-dodge/01-before-dodge.png",
+                      "bytes":  68616,
+                      "sha256":  "b3cc7ba00dc829f179379012a4b6c61c26e94b2b4991a842a521b0ef92c5ad34"
+                  },
+                  {
+                      "path":  "evidence/live/windowed-dodge/02-initiation.png",
+                      "bytes":  73680,
+                      "sha256":  "6860f2c43aae4e280e92a5af4e7e09e9d52df746278eb42270ea1cbe9a0f4a63"
+                  },
+                  {
+                      "path":  "evidence/live/windowed-dodge/03-mid-dodge.png",
+                      "bytes":  73999,
+                      "sha256":  "a55537a38175768b40d75346d20ebcbf50a52104b6226baf74dae73b4072bb73"
+                  },
+                  {
+                      "path":  "evidence/live/windowed-dodge/04-recovery.png",
+                      "bytes":  73733,
+                      "sha256":  "d377241edd234756f751661c8d3ab49ed10d0a3fbb64668c069830c241760759"
+                  },
+                  {
+                      "path":  "evidence/live/windowed-dodge/05-cooldown.png",
+                      "bytes":  68791,
+                      "sha256":  "f1b921524a591dcaec156fdaeec999adb1629c1f9bcfeeaba9199523ff9740c5"
+                  },
+                  {
+                      "path":  "evidence/live/windowed-dodge/06-after-restart.png",
+                      "bytes":  68614,
+                      "sha256":  "f7f08e36850d490abe1e2752a5e2801707ee77e90bec217f1ba92284f5e95cd3"
+                  },
+                  {
+                      "path":  "evidence/live/windowed-dodge/engine-stderr.log",
+                      "bytes":  1,
+                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+                  },
+                  {
+                      "path":  "evidence/live/windowed-dodge/engine-stdout.log",
+                      "bytes":  228,
+                      "sha256":  "fb818019fed5ed732b5051c8b67109a7885170bcf1271f24c324752eabf0c0ff"
+                  },
+                  {
+                      "path":  "evidence/live/windowed-dodge/events.json",
+                      "bytes":  3145,
+                      "sha256":  "c73ae3392313cead47c4c448ecca45bf438836b0c8c68004667c955c662e98d8"
+                  },
+                  {
+                      "path":  "evidence/live/windowed-dodge/manifest.json",
+                      "bytes":  18480,
+                      "sha256":  "1fe857a2eddc1b4f4cd580f2b9bc4d870621edaa0197ef21daf665872def9e85"
+                  },
+                  {
+                      "path":  "evidence/live/windowed-dodge/states.json",
+                      "bytes":  9285,
+                      "sha256":  "b27fbd8e02ce7bf701e342d8f9372d70454bd15cf7c5298636c3fa913c267d5e"
+                  },
+                  {
+                      "path":  "evidence/regression/full-suite-after-phase17.log",
+                      "bytes":  12586,
+                      "sha256":  "1d76c916ceda106eaa32b77d29049f778542418cc98c33317a34d6042c82da40"
+                  },
+                  {
+                      "path":  "evidence/web/dashboard-captures.png",
+                      "bytes":  173892,
+                      "sha256":  "7a26bc3c390b0f6dc81cf88d3dd69423d97ded0395d6216fde5e1dc98cc0023e"
+                  },
+                  {
+                      "path":  "evidence/web/dashboard-final.png",
+                      "bytes":  105975,
+                      "sha256":  "387cc446db0eba7ad96cbea47aee6ddec51702a316ba789d1c0f9f5ad0ff6262"
+                  },
+                  {
+                      "path":  "evidence/web/dashboard-play17.png",
+                      "bytes":  113817,
+                      "sha256":  "78934baf8dd490451e9962c45c867086685affe24fc18ab93344a582a8183f81"
+                  },
+                  {
+                      "path":  "evidence/web/play17-after-j.png",
+                      "bytes":  118761,
+                      "sha256":  "f79a4156ace9b911263e4c1995158f1e28e5eea884a8a9c333896a497401e7d3"
+                  },
+                  {
+                      "path":  "evidence/web/play17-after-space.png",
+                      "bytes":  118683,
+                      "sha256":  "ddc46f02aeac0c7dec1686776732b94e14f4b7fd6d573ef321fb620dba3da930"
+                  },
+                  {
+                      "path":  "evidence/web/play17-loaded.png",
+                      "bytes":  116223,
+                      "sha256":  "c52890e587cf6c5e1a14a2d1d464abbd87cc24b14ead0758d35c498fe34c0f69"
+                  },
+                  {
+                      "path":  "evidence/web/play17-synthetic-space.png",
+                      "bytes":  115792,
+                      "sha256":  "29f485d1f0c866a5c47887544881f2f11643d64713d09282271e7cab3fe27ba1"
+                  },
+                  {
+                      "path":  "evidence/web/web-build-manifest.json",
+                      "bytes":  1363,
+                      "sha256":  "37512b842f4188e6e42511afecd89955812566b8e08b1e8a1301b78121e68817"
+                  },
+                  {
+                      "path":  "evidence/web/web-verification.json",
+                      "bytes":  3234,
+                      "sha256":  "316072c918a68e977a04a9539b06757211e91105b020278b4dd4106a490a4bc2"
+                  },
+                  {
+                      "path":  "feature-spec.md",
+                      "bytes":  5962,
+                      "sha256":  "b04d5f1b453c9ec15b1b0a657f164cbb4b57c28598d3081ea7b920e038437ce8"
+                  },
+                  {
+                      "path":  "oracle-corrections.md",
+                      "bytes":  1922,
+                      "sha256":  "56c2a079ce9d7ffece6c36651c83ebf24a8e4d67a27869d1cbef87144560751e"
+                  },
+                  {
+                      "path":  "report.md",
+                      "bytes":  10318,
+                      "sha256":  "323e370be647ba8856c0d236c8aa3226131b81a46b6e8621ae228d7acbf12a17"
+                  },
+                  {
+                      "path":  "verification-plan.md",
+                      "bytes":  4402,
+                      "sha256":  "adcbcef90b847cb807a6611689b24c1dc2382a6774cc7706aeca1429d95238f1"
+                  }
+              ]
+}

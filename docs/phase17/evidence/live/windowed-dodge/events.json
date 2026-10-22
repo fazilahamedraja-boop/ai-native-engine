@@ -1,0 +1,171 @@
+{
+  "01-before-dodge": {
+    "available": true,
+    "count": 1,
+    "items": [
+      {
+        "sequence": 1,
+        "sim_time_seconds": 0,
+        "tick": 0,
+        "type": "reset"
+      }
+    ]
+  },
+  "02-initiation": {
+    "available": true,
+    "count": 2,
+    "items": [
+      {
+        "sequence": 1,
+        "sim_time_seconds": 0,
+        "tick": 0,
+        "type": "reset"
+      },
+      {
+        "cooldown": 45,
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "dodge_cooldown": 45,
+        "dodge_direction": [
+          1,
+          0,
+          0
+        ],
+        "sequence": 2,
+        "sim_time_seconds": 0.0166666666666667,
+        "tick": 1,
+        "type": "dodge_started"
+      }
+    ]
+  },
+  "03-mid-dodge": {
+    "available": true,
+    "count": 2,
+    "items": [
+      {
+        "sequence": 1,
+        "sim_time_seconds": 0,
+        "tick": 0,
+        "type": "reset"
+      },
+      {
+        "cooldown": 45,
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "dodge_cooldown": 45,
+        "dodge_direction": [
+          1,
+          0,
+          0
+        ],
+        "sequence": 2,
+        "sim_time_seconds": 0.0166666666666667,
+        "tick": 1,
+        "type": "dodge_started"
+      }
+    ]
+  },
+  "04-recovery": {
+    "available": true,
+    "count": 3,
+    "items": [
+      {
+        "sequence": 1,
+        "sim_time_seconds": 0,
+        "tick": 0,
+        "type": "reset"
+      },
+      {
+        "cooldown": 45,
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "dodge_cooldown": 45,
+        "dodge_direction": [
+          1,
+          0,
+          0
+        ],
+        "sequence": 2,
+        "sim_time_seconds": 0.0166666666666667,
+        "tick": 1,
+        "type": "dodge_started"
+      },
+      {
+        "sequence": 3,
+        "sim_time_seconds": 0.316666666666667,
+        "tick": 19,
+        "type": "dodge_recovery"
+      }
+    ]
+  },
+  "05-cooldown": {
+    "available": true,
+    "count": 5,
+    "items": [
+      {
+        "sequence": 1,
+        "sim_time_seconds": 0,
+        "tick": 0,
+        "type": "reset"
+      },
+      {
+        "cooldown": 45,
+        "direction": [
+          1,
+          0,
+          0
+        ],
+        "dodge_cooldown": 45,
+        "dodge_direction": [
+          1,
+          0,
+          0
+        ],
+        "sequence": 2,
+        "sim_time_seconds": 0.0166666666666667,
+        "tick": 1,
+        "type": "dodge_started"
+      },
+      {
+        "sequence": 3,
+        "sim_time_seconds": 0.316666666666667,
+        "tick": 19,
+        "type": "dodge_recovery"
+      },
+      {
+        "sequence": 4,
+        "sim_time_seconds": 0.483333333333333,
+        "tick": 29,
+        "type": "dodge_finished"
+      },
+      {
+        "reason": "cooldown",
+        "sequence": 5,
+        "sim_time_seconds": 0.5,
+        "tick": 30,
+        "type": "dodge_rejected"
+      }
+    ]
+  },
+  "06-after-restart": {
+    "available": true,
+    "count": 1,
+    "items": [
+      {
+        "sequence": 1,
+        "sim_time_seconds": 0,
+        "tick": 0,
+        "type": "reset"
+      }
+    ]
+  }
+}

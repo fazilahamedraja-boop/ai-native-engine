@@ -1,0 +1,160 @@
+{
+  "schema": "phase17.agent-task.manifest.v1",
+  "run_id": "feature-dodge-run2",
+  "created_at": "2026-10-22T19:41:56.277Z",
+  "status": "passed",
+  "failure_reason": null,
+  "mode": "feature",
+  "model_spec": "opencode/deepseek-v4.1-flash-free",
+  "source": "",
+  "task": {
+    "path": "phase17/feature-spec.md",
+    "sha256": "b04d5f1b453c9ec15b1b0a657f164cbb4b57c28598d3081ea7b920e038437ce8",
+    "bytes": 5962
+  },
+  "hidden_test": {
+    "path": "tests/run_dodge_tests.gd",
+    "sha256": "78b9ae15a00c2d220dd916449243469cfd96640c511602d87786e33e56fb20e7",
+    "copied_into_agent_workspace": false
+  },
+  "agent": {
+    "bin": "C:\\Users\\hacke\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+    "version": "opencode v2.0.32",
+    "version_exit_code": 0,
+    "standalone": true,
+    "invocation": "opencode run --standalone --format json --auto",
+    "sandbox_config": {
+      "path": "experiments/godot-harness/controller/agent-sandbox/opencode.json",
+      "sha256": "3bbdf761bd665be0a857fa912c0e5b16a0fbcaa5266f97b5ddbb0ba7bf879690"
+    },
+    "denied": [
+      "shell",
+      "webfetch",
+      "websearch",
+      "execute",
+      "question",
+      "skill",
+      "subagent"
+    ],
+    "requested_model": "opencode/deepseek-v4.1-flash-free",
+    "events": {
+      "lines": 151,
+      "parse_errors": 0,
+      "by_type": {
+        "step_start": 47,
+        "text": 6,
+        "tool_use": 52,
+        "step_finish": 46
+      },
+      "tools": [
+        "edit",
+        "glob",
+        "grep",
+        "read",
+        "write"
+      ]
+    },
+    "exit_code": 0,
+    "timed_out": false,
+    "duration_ms": 458098
+  },
+  "before": {
+    "existing": {
+      "ok": true,
+      "passed": 18,
+      "total": 18,
+      "failing": [],
+      "duration_ms": 14229,
+      "timed_out": false,
+      "exit_code": 0,
+      "errors": [],
+      "reason": "tests passed"
+    },
+    "dodge_red": {
+      "ok": false,
+      "passed": 0,
+      "total": 12,
+      "failing": [
+        "dodge-startup-state",
+        "dodge-active-motion-and-phases",
+        "dodge-hud-and-controls",
+        "dodge-cooldown-blocks-and-expires",
+        "dodge-rejected-while-attacking",
+        "dodge-rejected-while-parrying",
+        "dodge-rejected-after-defeat",
+        "dodge-iframe-blocks-enemy-damage",
+        "dodge-startup-is-vulnerable",
+        "dodge-late-active-is-vulnerable",
+        "dodge-restart-clears-and-rearms",
+        "dodge-does-not-cancel-attack-input"
+      ],
+      "duration_ms": 4661,
+      "timed_out": false,
+      "exit_code": 1,
+      "errors": [],
+      "reason": "test cases failed"
+    },
+    "expected_red": true
+  },
+  "defect": null,
+  "attempts": [
+    {
+      "label": "feature-1",
+      "mode": "feature",
+      "status": "passed",
+      "started_at": "2026-10-22T19:42:19.426Z",
+      "duration_ms": 476362,
+      "changed_files": [
+        "README.md",
+        "scripts/fighter_rig.gd",
+        "scripts/game_world.gd"
+      ],
+      "summary": "dodge 12/12, existing 18/18",
+      "failure": null
+    }
+  ],
+  "final": {
+    "attempt": 1,
+    "dodge": {
+      "ok": true,
+      "passed": 12,
+      "total": 12,
+      "failing": [],
+      "duration_ms": 4017,
+      "timed_out": false,
+      "exit_code": 0,
+      "errors": [],
+      "reason": "tests passed"
+    },
+    "existing": {
+      "ok": true,
+      "passed": 18,
+      "total": 18,
+      "failing": [],
+      "duration_ms": 14204,
+      "timed_out": false,
+      "exit_code": 0,
+      "errors": [],
+      "reason": "tests passed"
+    },
+    "status": "passed"
+  },
+  "changed_files": [
+    "README.md",
+    "scripts/fighter_rig.gd",
+    "scripts/game_world.gd"
+  ],
+  "diff": null,
+  "import": {
+    "command": "C:\\Users\\hacke\\godot\\Godot_v4.7.2-stable_win64.exe --headless --path <sandbox>/game --import",
+    "status": 0,
+    "error": null,
+    "stdout": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\r\n\r\n[   0% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Started Project initialization (5 steps)\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Scanning file structure...\u001b[39m\u001b[0m\r\n[  16% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Loading global class names...\u001b[39m\u001b[0m\r\n[  33% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Verifying GDExtensions...\u001b[39m\u001b[0m\r\n[  50% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Creating autoload scripts...\u001b[39m\u001b[0m\r\n[  66% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Initializing plugins...\u001b[39m\u001b[0m\r\n[  83% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Starting file scan...\u001b[39m\u001b[0m\r\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mfirst_scan_filesystem\u001b[22m\r\n\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | Started Registering global classes... (5 steps)\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | \u001b[39m\u001b[0m\r\n[  16% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | \u001b[39m\u001b[0m\r\n[  33% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | \u001b[39m\u001b[0m\r\n[  50% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | \u001b[39m\u001b[0m\r\n[  66% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | \u001b[39m\u001b[0m\r\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mupdate_scripts_classes\u001b[22m\r\n\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Started (Re)Importing Assets (1 steps)\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Preparing files to reimport...\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Executing pre-reimport operations...\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mpreload_reimporting_scene\u001b[22m | Started Preparing scenes for reload (1 steps)\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mpreload_reimporting_scene\u001b[22m | Analyzing scene [empty]\u001b[39m\u001b[0m\r\n[  50% ] \u001b[90m\u001b[1mpreload_reimporting_scene\u001b[22m | Preparation done.\u001b[39m\u001b[0m\r\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mpreload_reimporting_scene\u001b[22m\r\n\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | placeholder-character.glb\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mimport\u001b[22m | Started Import Scene (104 steps)\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mimport\u001b[22m | Importing Scene...\u001b[39m\u001b[0m\r\n[   1% ] \u001b[90m\u001b[1mimport\u001b[22m | Running Custom Script...\u001b[39m\u001b[0m\r\n[  99% ] \u001b[90m\u001b[1mimport\u001b[22m | Saving...\u001b[39m\u001b[0m\r\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mimport\u001b[22m\r\n\u001b[0m\r\n[  50% ] \u001b[90m\u001b[1mreimport\u001b[22m | Finalizing Asset Import...\u001b[39m\u001b[0m\r\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mreimport\u001b[22m\r\n\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Started (Re)Importing Assets (1 steps)\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Executing post-reimport operations...\u001b[39m\u001b[0m\r\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mreimport\u001b[22m\r\n\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mloading_editor_layout\u001b[22m | Started Loading editor (5 steps)\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mloading_editor_layout\u001b[22m | Loading editor layout...\u001b[39m\u001b[0m\r\n[  16% ] \u001b[90m\u001b[1mloading_editor_layout\u001b[22m | Loading docks...\u001b[39m\u001b[0m\r\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mloading_editor_layout\u001b[22m\r\n\u001b[0m\r\n",
+    "stderr": ""
+  },
+  "cleanup": {
+    "sandbox_removed": true,
+    "orphans": [],
+    "orphan_check": "every opencode process spawned by this run was reaped"
+  }
+}

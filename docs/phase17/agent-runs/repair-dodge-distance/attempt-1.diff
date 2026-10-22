@@ -1,0 +1,7 @@
+=== assets/placeholder-character.glb.import ===
+@@ line 47 @@
+
+=== scripts/game_world.gd ===
+@@ line 50 @@
+-const DODGE_SPEED := 1.0
++const DODGE_SPEED := 9.0
