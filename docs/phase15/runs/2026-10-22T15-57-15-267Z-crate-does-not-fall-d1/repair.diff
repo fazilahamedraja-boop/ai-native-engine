@@ -1,0 +1,4 @@
+=== scripts/observation_world.gd ===
+@@ line 646 @@
+-	crate.gravity_scale = 0.0
++	crate.gravity_scale = 1.0

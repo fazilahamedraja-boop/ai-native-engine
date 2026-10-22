@@ -1,0 +1,171 @@
+{
+  "schema": "phase15.agent-adapter.manifest.v1",
+  "run_id": "2026-10-22T16-14-45-082Z-crate-does-not-fall-d4-final",
+  "case_id": "crate-does-not-fall",
+  "defect_class": "incorrect physics configuration that leaves one body inert",
+  "model_spec": "opencode/deepseek-v4.1-flash-free",
+  "opencode_bin": "C:\\Users\\hacke\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+  "ordering": [
+    "prepare",
+    "sandbox-evidence",
+    "diagnosis-run",
+    "source-grant",
+    "repair-run",
+    "change-validation",
+    "verification",
+    "cleanup"
+  ],
+  "timings": {
+    "prepare_ms": 30998,
+    "diagnosis_ms": 100148,
+    "repair_ms": 42105,
+    "verification_ms": 10704,
+    "total_ms": 184222
+  },
+  "status": "passed",
+  "failure_reason": null,
+  "diagnosis": {
+    "exit_code": 0,
+    "timed_out": false,
+    "events": {
+      "events": 28,
+      "tools": {
+        "read": {
+          "completed": 9
+        },
+        "grep": {
+          "completed": 2
+        },
+        "write": {
+          "completed": 1
+        }
+      },
+      "final_text_bytes": 1020
+    },
+    "path": "diagnosis.md",
+    "sha256": "e88572d67443008cd0ed625994d2a3cdd766ba0531f39e7813fea28623c7ff31",
+    "bytes": 6980,
+    "validation": {
+      "ok": true,
+      "problems": [],
+      "keyword_hits": [
+        "gravity",
+        "crate",
+        "fall",
+        "rigid",
+        "physics",
+        "spawn",
+        "scale"
+      ],
+      "grounded_values": [
+        "3.000",
+        "4.19999980926514",
+        "2.5",
+        "0.0",
+        "3.00",
+        "3.0",
+        "0.85"
+      ]
+    }
+  },
+  "repair": {
+    "exit_code": 0,
+    "timed_out": false,
+    "events": {
+      "events": 40,
+      "tools": {
+        "read": {
+          "completed": 13
+        },
+        "grep": {
+          "completed": 1
+        },
+        "edit": {
+          "completed": 1
+        },
+        "write": {
+          "completed": 1
+        }
+      },
+      "final_text_bytes": 1200
+    },
+    "changed_files": [
+      {
+        "file": "scripts/observation_world.gd",
+        "before_sha256": "1c4cad3e43dfb0f4e681f7486eab1b79c950c7b0ee2938e926a8b0336efd8f48",
+        "after_sha256": "c4390cf7c25608b636018b311d0eb948d4d093ae3e07e70eaeba6f68b6bb59d0",
+        "change": {
+          "first_changed_line": 646,
+          "removed": [
+            "\tcrate.gravity_scale = 0.0"
+          ],
+          "added": [],
+          "patch": "@@ line 646 @@\n-\tcrate.gravity_scale = 0.0"
+        },
+        "touches_injected_file": true
+      }
+    ],
+    "diff": "repair.diff",
+    "matches_intended_location": true,
+    "matches_pristine_file": false,
+    "repair_note": "repair.md"
+  },
+  "acceptance": {
+    "script": "res://tests/run_observation.gd",
+    "ok": true,
+    "exit_code": 0,
+    "summary": {
+      "passed": 8,
+      "failed": 0
+    },
+    "failing_after": [],
+    "failing_before": [
+      "observation-crate-falls"
+    ]
+  },
+  "verification": {
+    "status": "passed",
+    "duration_ms": 10703,
+    "acceptance_cases_expected": [
+      "observation-crate-falls"
+    ],
+    "acceptance_cases_now_passing": [
+      "observation-crate-falls"
+    ]
+  },
+  "logs": [
+    "logs/diagnosis.jsonl",
+    "logs/diagnosis.stderr.txt",
+    "logs/repair.jsonl",
+    "logs/repair.stderr.txt",
+    "verification-test-output.txt"
+  ],
+  "cleanup": {
+    "sandbox_removed": true,
+    "fixture_base_removed": true,
+    "orphans": [],
+    "orphan_check": "every opencode process spawned by this run was reaped"
+  },
+  "prepared": {
+    "fixture_dir": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-OMX2aD\\project",
+    "injected_file_relative": "scripts/observation_world.gd",
+    "injected_file_sha256": "1c4cad3e43dfb0f4e681f7486eab1b79c950c7b0ee2938e926a8b0336efd8f48",
+    "pristine_file_sha256": "669bb0b24c9a07914c951f971f575ae5ae46c2af992b82bd5bb5b52897abd7ab",
+    "failing_cases": [
+      "observation-crate-falls"
+    ],
+    "test_summary": {
+      "passed": 7,
+      "failed": 1
+    }
+  },
+  "tasks": [
+    "task-diagnosis.md",
+    "task-repair.md"
+  ],
+  "sandbox": {
+    "path": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase15-agent-C330fS\\sandbox",
+    "config_source": "experiments/godot-harness/controller/agent-sandbox/opencode.json",
+    "removed": true
+  }
+}

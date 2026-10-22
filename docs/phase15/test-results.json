@@ -1,0 +1,454 @@
+{
+  "schema": "phase15.test-results.v1",
+  "generated_from": [
+    "docs/phase15/runs/*/manifest.json",
+    "npm test (node --test, 9 suites)",
+    "controller/harness.mjs test per fixture"
+  ],
+  "environment": {
+    "opencode_version": "2.0.32",
+    "opencode_bin": "C:\\Users\\hacke\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+    "godot_version": "4.7.2-stable (official)",
+    "node": "see npm test output"
+  },
+  "unit_tests": {
+    "command": "npm test",
+    "tests": 65,
+    "pass": 65,
+    "fail": 0,
+    "skipped": 0,
+    "todo": 0,
+    "duration_ms": 97060.4524
+  },
+  "fixture_suites": [
+    {
+      "fixture": "character-audit",
+      "script": "res://tests/run_character_audit.gd",
+      "passed": 4,
+      "failed": 0,
+      "ok": true
+    },
+    {
+      "fixture": "combat",
+      "script": "res://tests/run_combat.gd",
+      "passed": 3,
+      "failed": 0,
+      "ok": true
+    },
+    {
+      "fixture": "door",
+      "script": "res://tests/run_door.gd",
+      "passed": 7,
+      "failed": 0,
+      "ok": true
+    },
+    {
+      "fixture": "observation",
+      "script": "res://tests/run_observation.gd",
+      "passed": 8,
+      "failed": 0,
+      "ok": true
+    },
+    {
+      "fixture": "phase13-defect",
+      "script": "res://tests/run_observation.gd",
+      "passed": 8,
+      "failed": 0,
+      "ok": true
+    },
+    {
+      "fixture": "physics",
+      "script": "res://tests/run_physics.gd",
+      "passed": 9,
+      "failed": 0,
+      "ok": true
+    },
+    {
+      "fixture": "sentry",
+      "script": "res://tests/run_tests.gd",
+      "passed": 7,
+      "failed": 0,
+      "ok": true
+    }
+  ],
+  "agent_runs": [
+    {
+      "run_id": "2026-10-22T15-57-15-267Z-crate-does-not-fall-d1",
+      "case_id": "crate-does-not-fall",
+      "model_spec": "opencode/deepseek-v4.1-flash-free",
+      "status": "passed",
+      "failure_reason": null,
+      "ordering": [
+        "prepare",
+        "sandbox-evidence",
+        "diagnosis-run",
+        "source-grant",
+        "repair-run",
+        "change-validation",
+        "verification",
+        "cleanup"
+      ],
+      "timings_ms": {
+        "prepare_ms": 31063,
+        "diagnosis_ms": 92190,
+        "repair_ms": 31199,
+        "verification_ms": 10711,
+        "total_ms": 165469
+      },
+      "diagnosis": {
+        "path": "diagnosis.md",
+        "sha256": "f249f1171d1da699f6caadaa0775004ef20d6d801754effcb651e52d7df47aeb",
+        "bytes": 6847,
+        "keyword_hits": [
+          "gravity",
+          "crate",
+          "fall",
+          "rigid",
+          "physics",
+          "spawn",
+          "scale"
+        ],
+        "grounded_values": [
+          "3.000",
+          "4.19999980926514",
+          "3.0",
+          "2.5",
+          "0.0",
+          "3.00",
+          "1.0"
+        ]
+      },
+      "repair": {
+        "changed_files": [
+          {
+            "file": "scripts/observation_world.gd",
+            "first_changed_line": 646,
+            "removed": [
+              "\tcrate.gravity_scale = 0.0"
+            ],
+            "added": [
+              "\tcrate.gravity_scale = 1.0"
+            ],
+            "touches_injected_file": true
+          }
+        ],
+        "matches_intended_location": true,
+        "matches_pristine_file": true
+      },
+      "acceptance": {
+        "script": "res://tests/run_observation.gd",
+        "ok": true,
+        "exit_code": 0,
+        "summary": {
+          "passed": 8,
+          "failed": 0
+        },
+        "failing_after": [],
+        "failing_before": [
+          "observation-crate-falls"
+        ]
+      },
+      "verification": {
+        "status": "passed",
+        "duration_ms": 10711,
+        "acceptance_cases_expected": [
+          "observation-crate-falls"
+        ],
+        "acceptance_cases_now_passing": [
+          "observation-crate-falls"
+        ]
+      },
+      "cleanup": {
+        "sandbox_removed": true,
+        "fixture_base_removed": true,
+        "orphans": [],
+        "orphan_check": "every opencode process spawned by this run was reaped"
+      }
+    },
+    {
+      "run_id": "2026-10-22T16-00-35-926Z-crate-does-not-fall-d2",
+      "case_id": "crate-does-not-fall",
+      "model_spec": "opencode/deepseek-v4.1-flash-free",
+      "status": "passed",
+      "failure_reason": null,
+      "ordering": [
+        "prepare",
+        "sandbox-evidence",
+        "diagnosis-run",
+        "source-grant",
+        "repair-run",
+        "change-validation",
+        "verification",
+        "cleanup"
+      ],
+      "timings_ms": {
+        "prepare_ms": 31168,
+        "diagnosis_ms": 94599,
+        "repair_ms": 39769,
+        "verification_ms": 10691,
+        "total_ms": 176490
+      },
+      "diagnosis": {
+        "path": "diagnosis.md",
+        "sha256": "6e32085a4dd2020f3749b914171d7c269e6dcf062a10ee1bcdd0b62bedd373bd",
+        "bytes": 7099,
+        "keyword_hits": [
+          "gravity",
+          "crate",
+          "fall",
+          "rigid",
+          "physics",
+          "spawn",
+          "scale"
+        ],
+        "grounded_values": [
+          "3.000",
+          "4.19999980926514",
+          "3.0",
+          "2.5",
+          "1.95",
+          "3.00",
+          "0.0",
+          "0.85000002384186",
+          "5.5",
+          "-7.112"
+        ]
+      },
+      "repair": {
+        "changed_files": [
+          {
+            "file": "scripts/observation_world.gd",
+            "first_changed_line": 646,
+            "removed": [
+              "\tcrate.gravity_scale = 0.0"
+            ],
+            "added": [
+              "\tcrate.gravity_scale = 1.0"
+            ],
+            "touches_injected_file": true
+          }
+        ],
+        "matches_intended_location": true,
+        "matches_pristine_file": true
+      },
+      "acceptance": {
+        "script": "res://tests/run_observation.gd",
+        "ok": true,
+        "exit_code": 0,
+        "summary": {
+          "passed": 8,
+          "failed": 0
+        },
+        "failing_after": [],
+        "failing_before": [
+          "observation-crate-falls"
+        ]
+      },
+      "verification": {
+        "status": "passed",
+        "duration_ms": 10691,
+        "acceptance_cases_expected": [
+          "observation-crate-falls"
+        ],
+        "acceptance_cases_now_passing": [
+          "observation-crate-falls"
+        ]
+      },
+      "cleanup": {
+        "sandbox_removed": true,
+        "fixture_base_removed": true,
+        "orphans": [],
+        "orphan_check": "every opencode process spawned by this run was reaped"
+      }
+    },
+    {
+      "run_id": "2026-10-22T16-03-32-610Z-crate-does-not-fall-d3",
+      "case_id": "crate-does-not-fall",
+      "model_spec": "opencode/deepseek-v4.1-flash-free",
+      "status": "passed",
+      "failure_reason": null,
+      "ordering": [
+        "prepare",
+        "sandbox-evidence",
+        "diagnosis-run",
+        "source-grant",
+        "repair-run",
+        "change-validation",
+        "verification",
+        "cleanup"
+      ],
+      "timings_ms": {
+        "prepare_ms": 31016,
+        "diagnosis_ms": 40205,
+        "repair_ms": 27456,
+        "verification_ms": 10693,
+        "total_ms": 109624
+      },
+      "diagnosis": {
+        "path": "diagnosis.md",
+        "sha256": "2a32bec1c8c9b51a421db11d0572013756bdcca4aca1114011d6ea35ebbaad99",
+        "bytes": 5340,
+        "keyword_hits": [
+          "gravity",
+          "crate",
+          "fall",
+          "rigid",
+          "physics",
+          "spawn",
+          "scale"
+        ],
+        "grounded_values": [
+          "3.000",
+          "4.19999980926514",
+          "3.0",
+          "2.5",
+          "0.0",
+          "3.00"
+        ]
+      },
+      "repair": {
+        "changed_files": [
+          {
+            "file": "scripts/observation_world.gd",
+            "first_changed_line": 646,
+            "removed": [
+              "\tcrate.gravity_scale = 0.0"
+            ],
+            "added": [
+              "\tcrate.gravity_scale = 1.0"
+            ],
+            "touches_injected_file": true
+          }
+        ],
+        "matches_intended_location": true,
+        "matches_pristine_file": true
+      },
+      "acceptance": {
+        "script": "res://tests/run_observation.gd",
+        "ok": true,
+        "exit_code": 0,
+        "summary": {
+          "passed": 8,
+          "failed": 0
+        },
+        "failing_after": [],
+        "failing_before": [
+          "observation-crate-falls"
+        ]
+      },
+      "verification": {
+        "status": "passed",
+        "duration_ms": 10693,
+        "acceptance_cases_expected": [
+          "observation-crate-falls"
+        ],
+        "acceptance_cases_now_passing": [
+          "observation-crate-falls"
+        ]
+      },
+      "cleanup": {
+        "sandbox_removed": true,
+        "fixture_base_removed": true,
+        "orphans": [],
+        "orphan_check": "every opencode process spawned by this run was reaped"
+      }
+    },
+    {
+      "run_id": "2026-10-22T16-14-45-082Z-crate-does-not-fall-d4-final",
+      "case_id": "crate-does-not-fall",
+      "model_spec": "opencode/deepseek-v4.1-flash-free",
+      "status": "passed",
+      "failure_reason": null,
+      "ordering": [
+        "prepare",
+        "sandbox-evidence",
+        "diagnosis-run",
+        "source-grant",
+        "repair-run",
+        "change-validation",
+        "verification",
+        "cleanup"
+      ],
+      "timings_ms": {
+        "prepare_ms": 30998,
+        "diagnosis_ms": 100148,
+        "repair_ms": 42105,
+        "verification_ms": 10704,
+        "total_ms": 184222
+      },
+      "diagnosis": {
+        "path": "diagnosis.md",
+        "sha256": "e88572d67443008cd0ed625994d2a3cdd766ba0531f39e7813fea28623c7ff31",
+        "bytes": 6980,
+        "keyword_hits": [
+          "gravity",
+          "crate",
+          "fall",
+          "rigid",
+          "physics",
+          "spawn",
+          "scale"
+        ],
+        "grounded_values": [
+          "3.000",
+          "4.19999980926514",
+          "2.5",
+          "0.0",
+          "3.00",
+          "3.0",
+          "0.85"
+        ]
+      },
+      "repair": {
+        "changed_files": [
+          {
+            "file": "scripts/observation_world.gd",
+            "first_changed_line": 646,
+            "removed": [
+              "\tcrate.gravity_scale = 0.0"
+            ],
+            "added": [],
+            "touches_injected_file": true
+          }
+        ],
+        "matches_intended_location": true,
+        "matches_pristine_file": false
+      },
+      "acceptance": {
+        "script": "res://tests/run_observation.gd",
+        "ok": true,
+        "exit_code": 0,
+        "summary": {
+          "passed": 8,
+          "failed": 0
+        },
+        "failing_after": [],
+        "failing_before": [
+          "observation-crate-falls"
+        ]
+      },
+      "verification": {
+        "status": "passed",
+        "duration_ms": 10703,
+        "acceptance_cases_expected": [
+          "observation-crate-falls"
+        ],
+        "acceptance_cases_now_passing": [
+          "observation-crate-falls"
+        ]
+      },
+      "cleanup": {
+        "sandbox_removed": true,
+        "fixture_base_removed": true,
+        "orphans": [],
+        "orphan_check": "every opencode process spawned by this run was reaped"
+      }
+    }
+  ],
+  "summary": {
+    "runs": 4,
+    "passed": 4,
+    "failed": 0,
+    "identical_repairs": 3
+  }
+}

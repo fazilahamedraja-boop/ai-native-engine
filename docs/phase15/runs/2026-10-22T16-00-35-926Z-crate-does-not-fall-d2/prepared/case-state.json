@@ -1,0 +1,27 @@
+{
+  "case_id": "crate-does-not-fall",
+  "defect_class": "incorrect physics configuration that leaves one body inert",
+  "source_fixture": "observation",
+  "test_script": "res://tests/run_observation.gd",
+  "bridge_replaced": null,
+  "fixture_dir": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-AIoVKY\\project",
+  "fixture_base": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-AIoVKY",
+  "injected_file_relative": "scripts/observation_world.gd",
+  "injected_file": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-AIoVKY\\project\\scripts\\observation_world.gd",
+  "injected_file_sha256": "1c4cad3e43dfb0f4e681f7486eab1b79c950c7b0ee2938e926a8b0336efd8f48",
+  "pristine_file_sha256": "669bb0b24c9a07914c951f971f575ae5ae46c2af992b82bd5bb5b52897abd7ab",
+  "source_modified_at_prepare": 1792684836195.7617,
+  "label": "before",
+  "test_summary": {
+    "passed": 7,
+    "failed": 1
+  },
+  "test_ok": false,
+  "failing_cases": [
+    "observation-crate-falls"
+  ],
+  "expected_failing_cases": [
+    "observation-crate-falls"
+  ],
+  "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase15\\docs\\phase15\\runs\\2026-10-22T16-00-35-926Z-crate-does-not-fall-d2\\prepared"
+}

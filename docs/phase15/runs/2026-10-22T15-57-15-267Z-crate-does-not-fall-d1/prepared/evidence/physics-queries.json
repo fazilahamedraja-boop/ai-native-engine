@@ -1,0 +1,30 @@
+[
+  {
+    "name": "crate_spawn_height",
+    "description": "box at the crate spawn height (4.2, 3.00, 2.5), to find out whether the crate is still up there",
+    "shape_type": "box",
+    "collision_mask": 1,
+    "results": [
+      {
+        "collider": "/root/Main/Crate",
+        "collider_type": "RigidBody3D",
+        "shape_index": 0,
+        "source": "derived"
+      }
+    ]
+  },
+  {
+    "name": "crate_resting_height",
+    "description": "box at the height where the crate would rest if it had fallen (4.2, 0.35, 2.5)",
+    "shape_type": "box",
+    "collision_mask": 1,
+    "results": [
+      {
+        "collider": "/root/Main/Ground",
+        "collider_type": "StaticBody3D",
+        "shape_index": 0,
+        "source": "derived"
+      }
+    ]
+  }
+]
