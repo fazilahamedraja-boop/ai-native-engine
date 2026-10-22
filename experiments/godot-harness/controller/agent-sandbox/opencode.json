@@ -1,0 +1,28 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permissions": [
+    { "action": "external_directory", "resource": "*", "effect": "deny" },
+    { "action": "shell", "resource": "*", "effect": "deny" },
+    { "action": "write", "resource": "*opencode.json*", "effect": "deny" },
+    { "action": "edit", "resource": "*opencode.json*", "effect": "deny" },
+    { "action": "write", "resource": "*.opencode/*", "effect": "deny" },
+    { "action": "edit", "resource": "*.opencode/*", "effect": "deny" }
+  ],
+  "policies": [
+    { "action": "tool.use", "resource": "*", "effect": "deny" },
+    { "action": "tool.use", "resource": "read*", "effect": "allow" },
+    { "action": "tool.use", "resource": "write*", "effect": "allow" },
+    { "action": "tool.use", "resource": "edit*", "effect": "allow" },
+    { "action": "tool.use", "resource": "glob*", "effect": "allow" },
+    { "action": "tool.use", "resource": "grep*", "effect": "allow" }
+  ],
+  "tools": {
+    "webfetch": false,
+    "websearch": false,
+    "execute": false,
+    "question": false,
+    "skill": false,
+    "subagent": false
+  },
+  "experimental": { "subagent_depth": 0 }
+}

@@ -15,6 +15,8 @@
     "test:blind-benchmark": "node --test tests/blind-benchmark.test.mjs",
     "evidence:blind": "node controller/blind-benchmark.mjs",
     "evidence:blind-results": "node controller/blind-results.mjs",
+    "agent:adapter": "node controller/agent-adapter.mjs",
+    "agent:adapter:list": "node controller/agent-adapter.mjs list",
     "evidence:live-observe": "node controller/live-observe.mjs",
     "evidence:diagnosis": "node controller/diagnosis-benchmark.mjs",
     "test:gameplay": "node --test tests/gameplay.test.mjs",
