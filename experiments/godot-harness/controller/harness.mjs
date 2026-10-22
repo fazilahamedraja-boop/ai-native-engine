@@ -4,6 +4,7 @@ import fs from 'node:fs'
 import net from 'node:net'
 import path from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
+import { startupError } from './startup-diagnostics.mjs'
 
 const HERE = path.dirname(fileURLToPath(import.meta.url))
 export const HARNESS_ROOT = path.resolve(HERE, '..')
@@ -303,6 +304,8 @@ export class HarnessSession {
     this.exited = null
     this.exitPromise = null
     this.stopRequested = false
+    this.childStdout = null
+    this.childStderr = null
   }
 
   async start() {
@@ -326,6 +329,9 @@ export class HarnessSession {
       stdio: ['ignore', 'pipe', 'pipe'],
     })
     this.pid = this.child.pid
+    this.childStdout = this.child.stdout
+    this.childStderr = this.child.stderr
+    activeSessions.add(this)
 
     let stdoutBuffer = ''
     let stderrBuffer = ''
@@ -379,7 +385,17 @@ export class HarnessSession {
       })
     })
     this.child.on('error', (error) => {
-      readyReject(error)
+      readyReject(
+        startupError({
+          phase: 'spawn',
+          project: this.project,
+          stdout: this.stdoutLines,
+          stderr: this.stderrLines,
+          spawnError: error,
+          elapsedMs: Date.now() - startedAt,
+          pid: this.pid,
+        }),
+      )
     })
 
     let ready
@@ -387,12 +403,28 @@ export class HarnessSession {
       ready = await Promise.race([
         readyPromise,
         sleep(this.timeoutMs).then(() => {
-          throw new Error(`Timed out waiting for HARNESS_READY after ${this.timeoutMs} ms`)
+          throw startupError({
+            phase: 'ready',
+            project: this.project,
+            stdout: this.stdoutLines,
+            stderr: this.stderrLines,
+            exited: this.exited,
+            timeoutMs: this.timeoutMs,
+            elapsedMs: Date.now() - startedAt,
+            pid: this.pid,
+          })
         }),
         this.exitPromise.then((exit) => {
-          throw new Error(
-            `Godot exited before HARNESS_READY (code=${exit.code}, signal=${exit.signal})`,
-          )
+          throw startupError({
+            phase: 'ready',
+            project: this.project,
+            stdout: this.stdoutLines,
+            stderr: this.stderrLines,
+            exited: exit,
+            timeoutMs: this.timeoutMs,
+            elapsedMs: Date.now() - startedAt,
+            pid: this.pid,
+          })
         }),
       ])
     } catch (error) {
@@ -401,8 +433,19 @@ export class HarnessSession {
     }
 
     if (ready.pid !== this.pid) {
+      const error = startupError({
+        phase: 'protocol',
+        project: this.project,
+        stdout: this.stdoutLines,
+        stderr: this.stderrLines,
+        underlyingError: new Error(
+          `Bridge PID ${ready.pid} does not match controller PID ${this.pid}`,
+        ),
+        elapsedMs: Date.now() - startedAt,
+        pid: this.pid,
+      })
       await this.stop()
-      throw new Error(`Bridge PID ${ready.pid} does not match controller PID ${this.pid}`)
+      throw error
     }
     this.port = ready.port
 
@@ -433,7 +476,19 @@ export class HarnessSession {
       const socket = net.createConnection({ host: '127.0.0.1', port })
       const timer = setTimeout(() => {
         socket.destroy()
-        reject(new Error(`Timed out connecting to bridge on 127.0.0.1:${port}`))
+        reject(
+          startupError({
+            phase: 'connect',
+            project: this.project,
+            stdout: this.stdoutLines,
+            stderr: this.stderrLines,
+            exited: this.exited,
+            underlyingError: new Error(
+              `Timed out connecting to the bridge on 127.0.0.1:${port}`,
+            ),
+            pid: this.pid,
+          }),
+        )
       }, 5000)
       socket.setEncoding('utf8')
       socket.once('connect', () => {
@@ -442,7 +497,17 @@ export class HarnessSession {
       })
       socket.once('error', (error) => {
         clearTimeout(timer)
-        reject(error)
+        reject(
+          startupError({
+            phase: 'connect',
+            project: this.project,
+            stdout: this.stdoutLines,
+            stderr: this.stderrLines,
+            exited: this.exited,
+            underlyingError: error,
+            pid: this.pid,
+          }),
+        )
       })
       socket.on('data', (chunk) => this._onSocketData(chunk))
       socket.on('error', (error) => {
@@ -501,7 +566,19 @@ export class HarnessSession {
       if (last.game_ready) return last
       await sleep(50)
     }
-    throw new Error(`Game scene did not become ready: ${JSON.stringify(last)}`)
+    throw startupError({
+      phase: 'game',
+      project: this.project,
+      stdout: this.stdoutLines,
+      stderr: this.stderrLines,
+      exited: this.exited,
+      underlyingError: new Error(
+        `The game scene did not become ready within ${timeoutMs} ms: ${JSON.stringify(last)}`,
+      ),
+      timeoutMs,
+      elapsedMs: timeoutMs,
+      pid: this.pid,
+    })
   }
 
   async send(cmd, args = {}, timeoutMs = 5000) {
@@ -1043,6 +1120,10 @@ export class HarnessSession {
       this.socket.destroy()
       this.socket = null
     }
+    // A windowed Godot that survived the kill would keep this process's
+    // stdout and stderr pipes open. A shell that reads them would then wait
+    // for an EOF that never arrives, so the pipes are closed explicitly.
+    this._closeChildStreams()
     const result = {
       operation: 'stop_project',
       ok: exit !== null,
@@ -1054,7 +1135,60 @@ export class HarnessSession {
       logs: this.logTail(40),
     }
     this.child = null
+    activeSessions.delete(this)
     return result
+  }
+
+  /**
+   * Close the child's stdout and stderr pipes.
+   *
+   * The child is the only writer to these streams, so they are destroyed
+   * rather than ended: a reader must still be able to consume whatever the
+   * engine already wrote.
+   */
+  _closeChildStreams() {
+    for (const stream of [this.childStdout, this.childStderr]) {
+      if (!stream || stream.destroyed) continue
+      try {
+        stream.destroy()
+      } catch {
+        // A stream that is already closed is not a problem.
+      }
+    }
+    this.childStdout = null
+    this.childStderr = null
+  }
+}
+
+/**
+ * Sessions that have been started and not yet stopped.
+ *
+ * A harness run that throws between `start()` and `stop()` would otherwise
+ * leave a Godot window running. `stopAllSessions()` is the safety net, and
+ * `withSession()` uses it automatically.
+ */
+const activeSessions = new Set()
+
+export async function stopAllSessions() {
+  const results = []
+  for (const session of [...activeSessions]) {
+    try {
+      results.push(await session.stop())
+    } catch {
+      // Best effort: one failed stop must not block the others.
+    }
+  }
+  return results
+}
+
+/**
+ * Run `body` with a session and always stop it, even if `body` throws.
+ */
+export async function withSession(session, body) {
+  try {
+    return await body(session)
+  } finally {
+    await session.stop()
   }
 }
 
