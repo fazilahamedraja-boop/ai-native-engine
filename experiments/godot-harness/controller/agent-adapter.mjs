@@ -31,7 +31,7 @@ import { HARNESS_ROOT, runTests } from './harness.mjs'
 import { REPO_ROOT, sha256, writeJsonFile } from './evidence-output.mjs'
 
 const PHASE15_RUNS = path.join(REPO_ROOT, 'docs', 'phase15', 'runs')
-const SANDBOX_CONFIG_SOURCE = path.join(HARNESS_ROOT, 'controller', 'agent-sandbox', 'opencode.json')
+export const SANDBOX_CONFIG_SOURCE = path.join(HARNESS_ROOT, 'controller', 'agent-sandbox', 'opencode.json')
 const SANDBOX_CONFIG_RELATIVE = path.join('opencode', 'opencode.json')
 const BLIND_BENCHMARK = path.join(HARNESS_ROOT, 'controller', 'blind-benchmark.mjs')
 const DEFAULT_TIMEOUT_MS = 300000
@@ -59,7 +59,7 @@ const REQUIRED_DIAGNOSIS_SECTIONS = [
   'Confidence',
 ]
 
-function nowStamp() {
+export function nowStamp() {
   return new Date().toISOString().replace(/[:.]/g, '-')
 }
 
@@ -119,7 +119,7 @@ function assertPhase15OutputDir(dir) {
   return resolved
 }
 
-function resolveOpencodeBin() {
+export function resolveOpencodeBin() {
   if (process.env.OPENCODE_BIN) return process.env.OPENCODE_BIN
   const candidates = [
     path.join(process.env.APPDATA || '', 'npm', 'node_modules', '@opencode', 'cli', 'bin', 'opencode.exe'),
@@ -153,7 +153,7 @@ function killTree(pid) {
  * Run one noninteractive OpenCode session with a hard wall-clock bound.
  * The whole process tree is killed on timeout, not just the shim.
  */
-function runOpencode({ bin, args, cwd, env, timeoutMs, pids }) {
+export function runOpencode({ bin, args, cwd, env, timeoutMs, pids }) {
   return new Promise((resolve) => {
     const startedAt = Date.now()
     const child = spawn(bin, args, {
@@ -227,7 +227,7 @@ function runBlindCleanup({ outDir }) {
   })
 }
 
-function copyDir(source, target, { skip = [] } = {}) {
+export function copyDir(source, target, { skip = [] } = {}) {
   fs.mkdirSync(target, { recursive: true })
   for (const entry of fs.readdirSync(source, { withFileTypes: true })) {
     if (skip.includes(entry.name)) continue
@@ -258,7 +258,7 @@ function copyFixtureForAgent(state, sandboxDir) {
   return target
 }
 
-function hashTreeOfTests(dir) {
+export function hashTreeOfTests(dir) {
   const testsRoot = path.join(dir, 'tests')
   if (!fs.existsSync(testsRoot)) return {}
   const hashes = {}
@@ -266,7 +266,7 @@ function hashTreeOfTests(dir) {
   return hashes
 }
 
-function diffAgainstGiven({ defectiveDir, agentDir }) {
+export function diffAgainstGiven({ defectiveDir, agentDir }) {
   const isGenerated = (rel) => rel.startsWith('artifacts/') || rel.startsWith('.godot/')
   const before = listFiles(defectiveDir).filter((rel) => !isGenerated(rel))
   const after = listFiles(agentDir).filter((rel) => !isGenerated(rel))
@@ -285,7 +285,7 @@ function diffAgainstGiven({ defectiveDir, agentDir }) {
 }
 
 /** Unified-ish diff of the first differing region; enough to audit a one-line repair. */
-function describeChange(beforeText, afterText) {
+export function describeChange(beforeText, afterText) {
   const a = beforeText.split(/\r?\n/)
   const b = afterText.split(/\r?\n/)
   let start = 0
@@ -436,7 +436,7 @@ function jsonLinesSummary(file) {
   return { events, tools, final_text_bytes: finalText.length }
 }
 
-function processExists(pid) {
+export function processExists(pid) {
   if (!pid) return false
   try {
     process.kill(pid, 0)

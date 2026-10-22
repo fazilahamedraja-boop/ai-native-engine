@@ -37,7 +37,7 @@ function resolveGodotBinary() {
   return 'godot'
 }
 
-const GODOT_BIN = resolveGodotBinary()
+export const GODOT_BIN = resolveGodotBinary()
 
 function stripAnsi(text) {
   return text.replace(/\u001b\[[0-9;]*m/g, '')
