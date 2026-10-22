@@ -172,9 +172,10 @@ func _set_blade_emission(on: bool) -> void:
 ## One animation update. The dictionary is intentionally small:
 ##   speed01          locomotion blend 0..1
 ##   time             seconds, for the walk cycle and idle breathing
-##   mode             locomotion | attack | parry | stagger | defeated
+##   mode             locomotion | attack | parry | dodge | stagger | defeated
 ##   attack_progress  0..1 across windup+active+recover
 ##   parry_progress   0..1 across the parry window
+##   dodge_progress   0..1 across active+recovery
 ##   stagger_progress 0..1 across the stagger
 func animate(state: Dictionary) -> void:
 	if model == null or arm_r == null:
@@ -207,6 +208,8 @@ func animate(state: Dictionary) -> void:
 			_pose_attack(float(state.get("attack_progress", 0.0)))
 		"parry":
 			_pose_parry(float(state.get("parry_progress", 0.0)))
+		"dodge":
+			_pose_dodge(float(state.get("dodge_progress", 0.0)))
 		"stagger":
 			_pose_stagger(float(state.get("stagger_progress", 0.0)))
 		"defeated":
@@ -239,6 +242,27 @@ func _pose_parry(progress: float) -> void:
 	arm_r.rotation.x = lerpf(0.0, PARRY_ARM, smoothstep(0.0, 1.0, t))
 	arm_r.rotation.z = lerpf(0.0, 0.95, smoothstep(0.0, 1.0, t))
 	model.rotation.x = -0.04 * t
+
+
+## A low forward shoulder roll. The whole model tucks, spins a full turn about
+## its X axis, and rises again, so it cannot be confused with the walk cycle,
+## the sword swing, the parry guard, or the flat defeat pose. The spin is taken
+## around the body centre (not the feet) so the character does not sink through
+## the floor mid-roll.
+func _pose_dodge(progress: float) -> void:
+	var p := clampf(progress, 0.0, 1.0)
+	var tuck := sin(p * PI)
+	var angle := -TAU * p
+	var pivot := Vector3(0.0, 0.85, 0.0)
+	var spin := Basis(Vector3.RIGHT, angle)
+	model.rotation.x = angle
+	model.position = pivot - spin * pivot
+	arm_l.rotation.x = 1.20 + 0.30 * tuck
+	arm_r.rotation.x = 1.20 + 0.30 * tuck
+	arm_l.rotation.z = -0.40 * tuck
+	arm_r.rotation.z = 0.40 * tuck
+	leg_l.rotation.x = -1.10
+	leg_r.rotation.x = -1.10
 
 
 func _pose_stagger(progress: float) -> void:

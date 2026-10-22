@@ -42,6 +42,15 @@ const ATTACK_COOLDOWN_TICKS := 6
 const PARRY_WINDOW_TICKS := 14
 const PARRY_RECOVER_TICKS := 8
 
+## Phase 17 dodge-roll. All values are fixed physics ticks so the burst is
+## reproducible under the harness.
+const DODGE_ACTIVE_TICKS := 18
+const DODGE_RECOVERY_TICKS := 10
+const DODGE_COOLDOWN_TICKS := 45
+const DODGE_SPEED := 9.0
+const DODGE_INVULN_START_TICK := 3
+const DODGE_INVULN_END_TICK := 14
+
 const PLAYER_HITBOX_SIZE := Vector3(1.5, 1.3, 2.0)
 const PLAYER_HITBOX_CENTER := Vector3(0.0, 1.0, -1.3)
 const ENEMY_HITBOX_SIZE := Vector3(1.3, 1.3, 2.2)
@@ -73,6 +82,12 @@ var last_hitbox_query_step := -1
 var parry_ticks := 0
 var parry_cooldown := 0
 var parry_result := "none"
+var dodge_phase := "idle"
+var dodge_tick := 0
+var dodge_cooldown := 0
+var dodge_direction := Vector3.ZERO
+var dodge_invulnerable := false
+var dodge_evaded_this_dodge := false
 var enemy_ai_enabled := true
 var outcome := "playing"
 var player_facing_yaw := 0.0
@@ -89,6 +104,7 @@ var harness_input := {
 	"strafe": 0.0,
 	"attack": false,
 	"parry": false,
+	"dodge": false,
 	"restart": false,
 }
 
@@ -124,13 +140,15 @@ func _read_live_input() -> Dictionary:
 		"strafe": Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		"attack": Input.is_action_just_pressed("attack"),
 		"parry": Input.is_action_just_pressed("parry"),
+		"dodge": Input.is_action_just_pressed("dodge"),
 		"restart": Input.is_action_just_pressed("restart"),
 	}
-
-
+	
+	
 func _consume_edges() -> void:
 	harness_input["attack"] = false
 	harness_input["parry"] = false
+	harness_input["dodge"] = false
 	harness_input["restart"] = false
 
 
@@ -151,6 +169,11 @@ func _step_simulation(delta: float, frame_input: Dictionary) -> void:
 		_step_enemy(delta)
 		_resolve_combat()
 		_step_player_timers(delta)
+	else:
+		# The encounter is over, but an attempted dodge is still an observable
+		# request. Record the rejection without touching any combat state.
+		if bool(frame_input.get("dodge", false)):
+			_record("dodge_rejected", {"reason": "not_playing"})
 
 	_update_visuals(delta)
 	_update_camera(CAMERA_BLEND)
@@ -168,24 +191,45 @@ func _step_player(delta: float, frame_input: Dictionary) -> void:
 	if move.length() > 1.0:
 		move = move.normalized()
 
-	if bool(frame_input.get("attack", false)):
-		_start_attack()
-	if bool(frame_input.get("parry", false)):
-		_start_parry()
+	# Advance dodge timers before reacting to this tick's input. A dodge that
+	# started on an earlier tick therefore exposes tick 0 on the start tick and
+	# tick 1 on the next one, which keeps the documented active ticks 0..17.
+	_advance_dodge_state()
 
-	var multiplier := 1.0
-	if attack_phase != "idle":
-		multiplier = 0.35
-	elif parry_ticks > 0:
-		multiplier = 0.55
+	if bool(frame_input.get("dodge", false)):
+		_start_dodge(move)
 
-	var target := move * PLAYER_SPEED * multiplier
-	player.velocity.x = move_toward(player.velocity.x, target.x, PLAYER_ACCEL * delta)
-	player.velocity.z = move_toward(player.velocity.z, target.z, PLAYER_ACCEL * delta)
+	# A committed dodge owns the player's body until recovery ends. Attack and
+	# deflect requests are ignored rather than cancelling the roll.
+	if dodge_phase == "idle":
+		if bool(frame_input.get("attack", false)):
+			_start_attack()
+		if bool(frame_input.get("parry", false)):
+			_start_parry()
+
+	if dodge_phase == "active":
+		player.velocity.x = dodge_direction.x * DODGE_SPEED
+		player.velocity.z = dodge_direction.z * DODGE_SPEED
+	elif dodge_phase == "recovery":
+		# Recovery carries no dodge movement; the player is vulnerable.
+		player.velocity.x = 0.0
+		player.velocity.z = 0.0
+	else:
+		var multiplier := 1.0
+		if attack_phase != "idle":
+			multiplier = 0.35
+		elif parry_ticks > 0:
+			multiplier = 0.55
+
+		var target := move * PLAYER_SPEED * multiplier
+		player.velocity.x = move_toward(player.velocity.x, target.x, PLAYER_ACCEL * delta)
+		player.velocity.z = move_toward(player.velocity.z, target.z, PLAYER_ACCEL * delta)
 	player.velocity.y -= GRAVITY * delta
 	player.move_and_slide()
 
-	if move.length() > 0.05:
+	# Movement input cannot steer an active/recovery dodge. The committed
+	# direction stays visible through the player's facing.
+	if dodge_phase == "idle" and move.length() > 0.05:
 		player_facing_yaw = atan2(-move.x, -move.z)
 	player.rotation.y = lerp_angle(
 		player.rotation.y,
@@ -214,8 +258,91 @@ func _step_player(delta: float, frame_input: Dictionary) -> void:
 			attack_cooldown = ATTACK_COOLDOWN_TICKS
 
 
+## Advance one tick of dodge bookkeeping. Called at the start of a playing tick
+## so the phase/tick values visible in that tick's snapshot are the values used
+## by combat resolution later in the same tick.
+func _advance_dodge_state() -> void:
+	if dodge_cooldown > 0:
+		dodge_cooldown -= 1
+	if dodge_phase == "active":
+		dodge_tick += 1
+		if dodge_tick >= DODGE_ACTIVE_TICKS:
+			dodge_phase = "recovery"
+			dodge_tick = 0
+			_record("dodge_recovery")
+	elif dodge_phase == "recovery":
+		dodge_tick += 1
+		if dodge_tick >= DODGE_RECOVERY_TICKS:
+			dodge_phase = "idle"
+			dodge_tick = 0
+			dodge_direction = Vector3.ZERO
+			_record("dodge_finished")
+	dodge_invulnerable = (
+		dodge_phase == "active"
+		and dodge_tick >= DODGE_INVULN_START_TICK
+		and dodge_tick < DODGE_INVULN_END_TICK
+	)
+
+
+func _start_dodge(move: Vector3) -> void:
+	var reason := ""
+	if outcome != "playing":
+		reason = "not_playing"
+	elif dodge_phase != "idle":
+		reason = "dodge_not_idle"
+	elif dodge_cooldown > 0:
+		reason = "cooldown"
+	elif attack_phase != "idle":
+		reason = "attacking"
+	elif parry_ticks > 0:
+		reason = "parrying"
+	if not reason.is_empty():
+		_record("dodge_rejected", {"reason": reason})
+		return
+
+	# Movement input defines the roll direction. With no input, roll backwards
+	# relative to the facing the player had when the dodge was requested.
+	var direction := move
+	if direction.length() <= 0.05:
+		direction = Vector3(sin(player_facing_yaw), 0.0, cos(player_facing_yaw))
+	direction.y = 0.0
+	if direction.length() <= 0.001:
+		direction = Vector3(0.0, 0.0, 1.0)
+	direction = direction.normalized()
+
+	dodge_phase = "active"
+	dodge_tick = 0
+	dodge_cooldown = DODGE_COOLDOWN_TICKS
+	dodge_direction = direction
+	dodge_invulnerable = false
+	dodge_evaded_this_dodge = false
+
+	# Turn the rig toward the chosen direction so the roll reads clearly.
+	player_facing_yaw = atan2(-direction.x, -direction.z)
+	player.rotation.y = player_facing_yaw
+
+	_record("dodge_started", {
+		"direction": _vec3(direction),
+		"dodge_direction": _vec3(direction),
+		"cooldown": dodge_cooldown,
+		"dodge_cooldown": dodge_cooldown,
+	})
+	_set_feedback("DODGE", 12)
+
+
+func _dodge_available() -> bool:
+	return (
+		outcome == "playing"
+		and dodge_phase == "idle"
+		and dodge_cooldown <= 0
+		and attack_phase == "idle"
+		and parry_ticks <= 0
+	)
+
+
+
 func _start_attack() -> void:
-	if attack_phase != "idle" or attack_cooldown > 0 or parry_ticks > 0:
+	if dodge_phase != "idle" or attack_phase != "idle" or attack_cooldown > 0 or parry_ticks > 0:
 		return
 	attack_phase = "windup"
 	attack_tick = 0
@@ -224,7 +351,7 @@ func _start_attack() -> void:
 
 
 func _start_parry() -> void:
-	if attack_phase != "idle" or parry_ticks > 0 or parry_cooldown > 0:
+	if dodge_phase != "idle" or attack_phase != "idle" or parry_ticks > 0 or parry_cooldown > 0:
 		return
 	parry_ticks = PARRY_WINDOW_TICKS
 	parry_result = "active"
@@ -309,7 +436,16 @@ func _resolve_combat() -> void:
 	if enemy_ai.damage_window and outcome == "playing":
 		var hits := _query_box(_enemy_hitbox_transform(), ENEMY_HITBOX_SIZE, PLAYER_LAYER)
 		if not hits.is_empty():
-			if parry_ticks > 0:
+			if dodge_invulnerable:
+				if not dodge_evaded_this_dodge:
+					dodge_evaded_this_dodge = true
+					player_rig.flash(Color("#9fe8ff"), 8)
+					_set_feedback("EVADE", 20)
+					_record("dodge_evaded", {
+						"player_health": player_health,
+						"direction": _vec3(dodge_direction),
+					})
+			elif parry_ticks > 0:
 				_resolve_parry()
 			else:
 				player_health -= 1
@@ -378,6 +514,12 @@ func reset_game() -> void:
 	parry_ticks = 0
 	parry_cooldown = 0
 	parry_result = "none"
+	dodge_phase = "idle"
+	dodge_tick = 0
+	dodge_cooldown = 0
+	dodge_direction = Vector3.ZERO
+	dodge_invulnerable = false
+	dodge_evaded_this_dodge = false
 	enemy_ai_enabled = true
 	outcome = "playing"
 	player_facing_yaw = 0.0
@@ -408,7 +550,7 @@ func set_harness_input(values: Dictionary) -> Dictionary:
 	for key in ["forward", "strafe"]:
 		if values.has(key):
 			harness_input[key] = clampf(float(values[key]), -1.0, 1.0)
-	for key in ["attack", "parry", "restart"]:
+	for key in ["attack", "parry", "dodge", "restart"]:
 		if values.has(key):
 			harness_input[key] = bool(values[key])
 	# The controller validates a fixed schema: movement at the top level and
@@ -416,7 +558,7 @@ func set_harness_input(values: Dictionary) -> Dictionary:
 	# the flat keys above, which keeps the in-engine suite simple.
 	var actions = values.get("actions", null)
 	if actions is Dictionary:
-		for key in ["attack", "parry"]:
+		for key in ["attack", "parry", "dodge"]:
 			if actions.has(key):
 				harness_input[key] = bool(actions[key])
 	return harness_input.duplicate(true)
@@ -429,6 +571,7 @@ func harness_reset() -> Dictionary:
 		"strafe": 0.0,
 		"attack": false,
 		"parry": false,
+		"dodge": false,
 		"restart": false,
 	}
 	reset_game()
@@ -472,6 +615,12 @@ func harness_setup(values: Dictionary) -> Dictionary:
 	parry_ticks = 0
 	parry_cooldown = 0
 	parry_result = "none"
+	dodge_phase = "idle"
+	dodge_tick = 0
+	dodge_cooldown = 0
+	dodge_direction = Vector3.ZERO
+	dodge_invulnerable = false
+	dodge_evaded_this_dodge = false
 	player_facing_yaw = player.rotation.y
 	_update_visuals(0.0)
 	_update_camera(1.0)
@@ -495,6 +644,12 @@ func snapshot() -> Dictionary:
 		"parry_ticks": parry_ticks,
 		"parry_result": parry_result,
 		"parry_cooldown": parry_cooldown,
+		"dodge_phase": dodge_phase,
+		"dodge_tick": dodge_tick,
+		"dodge_cooldown": dodge_cooldown,
+		"dodge_invulnerable": dodge_invulnerable,
+		"dodge_direction": _vec3(dodge_direction),
+		"dodge_available": _dodge_available(),
 		"enemy_position": _vec3(enemy.global_position),
 		"enemy_health": enemy_ai.health,
 		"enemy_posture": enemy_ai.posture,
@@ -535,6 +690,7 @@ func harness_hash() -> String:
 		"posture=%.6f" % enemy_ai.posture,
 		"attack=%s:%d" % [attack_phase, attack_tick],
 		"parry=%d:%s" % [parry_ticks, parry_result],
+		"dodge=%s:%d:%d:%s" % [dodge_phase, dodge_tick, dodge_cooldown, str(dodge_invulnerable)],
 		"enemy_phase=%s:%d" % [enemy_ai.phase, enemy_ai.phase_tick],
 		"outcome=%s" % outcome,
 	]
@@ -577,6 +733,9 @@ func _update_player_visual() -> void:
 	var pose := {"speed01": speed01, "time": sim_time}
 	if outcome == "defeat":
 		pose["mode"] = "defeated"
+	elif dodge_phase != "idle":
+		pose["mode"] = "dodge"
+		pose["dodge_progress"] = _dodge_visual_progress()
 	elif attack_phase != "idle":
 		pose["mode"] = "attack"
 		pose["attack_progress"] = _player_attack_progress()
@@ -626,6 +785,15 @@ func _player_attack_progress() -> float:
 			return 0.0
 
 
+func _dodge_visual_progress() -> float:
+	var total := float(DODGE_ACTIVE_TICKS + DODGE_RECOVERY_TICKS)
+	if dodge_phase == "active":
+		return clampf(float(dodge_tick) / total, 0.0, 1.0)
+	if dodge_phase == "recovery":
+		return clampf(float(DODGE_ACTIVE_TICKS + dodge_tick) / total, 0.0, 1.0)
+	return 0.0
+
+
 func _update_camera(blend: float) -> void:
 	if player == null or camera == null:
 		return
@@ -669,6 +837,16 @@ func _update_hud() -> void:
 		state_line = "attacking"
 	elif parry_ticks > 0:
 		state_line = "deflecting"
+	elif dodge_phase != "idle":
+		state_line = "dodging"
+
+	var dodge_status := "READY"
+	if dodge_phase == "active":
+		dodge_status = "ACTIVE"
+	elif dodge_phase == "recovery":
+		dodge_status = "RECOVERY"
+	elif dodge_cooldown > 0:
+		dodge_status = "COOLDOWN %.2fs" % (float(dodge_cooldown) / 60.0)
 
 	status_label.text = "\n".join([
 		"DEFLECT ARENA",
@@ -680,7 +858,8 @@ func _update_hud() -> void:
 			_bar(float(enemy_ai.posture) / EnemyAIScript.MAX_POSTURE, 14),
 		],
 		"STATE   %s" % state_line,
-		"J attack    K deflect    R restart",
+		"DODGE   %s" % dodge_status,
+		"J attack    K deflect    SPACE dodge    R restart",
 	])
 
 	if outcome == "victory":
@@ -956,6 +1135,7 @@ func _ensure_input_actions() -> void:
 	_add_key_action("move_back", KEY_S)
 	_add_key_action("attack", KEY_J)
 	_add_key_action("parry", KEY_K)
+	_add_key_action("dodge", KEY_SPACE)
 	_add_key_action("restart", KEY_R)
 	_add_mouse_action("attack", MOUSE_BUTTON_LEFT)
 

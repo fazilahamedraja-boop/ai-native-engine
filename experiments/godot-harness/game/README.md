@@ -25,6 +25,7 @@ Controls:
 | `W` `A` `S` `D` | move (world axes, aligned with the fixed camera) |
 | `J` or left mouse | attack |
 | `K` | deflect (parry) |
+| `Space` | dodge-roll |
 | `R` | restart |
 
 The window is 1280x720 at 60 physics Hz.
@@ -75,6 +76,8 @@ without depending on wall-clock timing.
 | --- | --- |
 | Player attack | 6 windup + 8 active + 14 recover + 6 cooldown |
 | Player deflect window | 14 ticks, 8-tick cooldown |
+| Player dodge | 18 active + 10 recovery + 45 cooldown, 9.0 m/s |
+| Player i-frames | dodge active ticks 3..13 |
 | Player health | 4 |
 | Enemy attack | 30 windup + 9 active + 18 recover + 22 cooldown |
 | Enemy health | 5 |
@@ -94,8 +97,8 @@ expires and the enemy blow lands normally.
 - `harness_setup(dict)` — controlled positions/health/posture/AI toggle for
   tests. Damage still flows through the real combat code.
 - `set_harness_input(dict)` — accepts the controller schema
-  (`{forward, strafe, jump, restart, actions:{attack, parry}}`) and flat
-  `attack`/`parry` keys for direct in-engine calls.
+  (`{forward, strafe, jump, restart, actions:{attack, parry, dodge}}`) and flat
+  `attack`/`parry`/`dodge` keys for direct in-engine calls.
 - `snapshot()` — player/enemy/camera/combat/outcome state.
 - `harness_events(since_tick)` — structured event log.
 - `_physics_process` — consumes `harness_input` when `harness_mode` is on;
