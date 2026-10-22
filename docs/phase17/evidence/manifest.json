@@ -1,6 +1,6 @@
 {
     "schema":  "phase17.evidence.manifest.v1",
-    "created_at":  "2026-10-22T20:15:58.0338600Z",
+    "created_at":  "2026-10-22T20:18:02.4275608Z",
     "base_commit":  "90fba1c",
     "branch":  "experiment/phase17-dodge",
     "files":  [
@@ -290,6 +290,11 @@
                       "sha256":  "217449a4a1000ca1eeeba87556a7a450a98699881112701d5f39b183c29873c9"
                   },
                   {
+                      "path":  "evidence/export/windows-deflect-arena/package-scan.json",
+                      "bytes":  1172,
+                      "sha256":  "0f25d80d84a067aa1a7744f7508056949ff53341aeca8adb4f1205580bad705a"
+                  },
+                  {
                       "path":  "evidence/export/windows-deflect-arena/stderr.log",
                       "bytes":  0,
                       "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -301,8 +306,8 @@
                   },
                   {
                       "path":  "evidence/index.md",
-                      "bytes":  3497,
-                      "sha256":  "5403465414326f44b6f97b671a75cea9528c7be7b9c2fae6bd0edcc2e9e214ae"
+                      "bytes":  3619,
+                      "sha256":  "9d462ba01d00aef00fbbd3f8f159c60b7020bbed72be83529500c7817e9c4948"
                   },
                   {
                       "path":  "evidence/live/windowed-dodge/01-before-dodge.png",
@@ -421,8 +426,8 @@
                   },
                   {
                       "path":  "report.md",
-                      "bytes":  10318,
-                      "sha256":  "323e370be647ba8856c0d236c8aa3226131b81a46b6e8621ae228d7acbf12a17"
+                      "bytes":  10642,
+                      "sha256":  "a404b06b514fe91c47beb26fe34e4574852bf1749f2bed214051bfb7b790a573"
                   },
                   {
                       "path":  "verification-plan.md",

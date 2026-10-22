@@ -83,6 +83,11 @@ a `1.20` m XZ displacement while moving, recovery without i-frames, cooldown
 rejection, a clean restart (`dodge=idle`, cooldown 0), and a sword hit that
 reduced enemy HP from 5 to 4. The process stayed alive.
 
+The packaged EXE and PCK were also scanned for `phase17` paths and capture PNG
+names; neither contains any (`evidence/export/windows-deflect-arena/package-scan.json`).
+The duplicate `game/artifacts/phase17-*.png` files are ignored runtime artifacts;
+the committed captures are the ones under `docs/phase17/evidence/live/`.
+
 ### Windowed captures
 
 The real window was started with `headless=false`; the engine was paused at each

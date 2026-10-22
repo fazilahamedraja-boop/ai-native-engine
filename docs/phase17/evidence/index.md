@@ -49,6 +49,8 @@ contains the SHA-256 and byte size of every Phase 17 doc and evidence file.
 
 - `evidence/export/windows-deflect-arena/manifest.json` - 9/9 checks, EXE path,
   109,127,680 bytes, SHA-256, probe details.
+- `evidence/export/windows-deflect-arena/package-scan.json` - EXE/PCK scan:
+  no `phase17` or capture-PNG paths packaged.
 - `stdout.log`, `stderr.log` - probe process output.
 
 ## Web build
