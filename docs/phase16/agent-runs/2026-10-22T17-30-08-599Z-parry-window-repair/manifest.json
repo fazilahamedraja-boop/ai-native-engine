@@ -1,0 +1,131 @@
+{
+  "schema": "phase16.agent-task.manifest.v1",
+  "run_id": "2026-10-22T17-30-08-599Z-parry-window-repair",
+  "created_at": "2026-10-22T17:30:08.870Z",
+  "status": "passed",
+  "failure_reason": null,
+  "model_spec": "opencode/deepseek-v4.1-flash-free",
+  "task": {
+    "path": "phase16/agent-tasks/parry-window-repair.md",
+    "sha256": "5ae0a0c2ade6f50896d6c476970f14d9b37206efac0e413385b3202a1bad2d10",
+    "bytes": 1932
+  },
+  "agent": {
+    "bin": "C:\\Users\\hacke\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+    "version": "opencode v2.0.32",
+    "version_exit_code": 0,
+    "standalone": true,
+    "invocation": "opencode run --standalone --format json --auto",
+    "sandbox_config": {
+      "path": "experiments/godot-harness/controller/agent-sandbox/opencode.json",
+      "sha256": "3bbdf761bd665be0a857fa912c0e5b16a0fbcaa5266f97b5ddbb0ba7bf879690"
+    },
+    "denied": [
+      "shell",
+      "webfetch",
+      "websearch",
+      "execute",
+      "question",
+      "skill",
+      "subagent"
+    ],
+    "events": {
+      "lines": 22,
+      "parse_errors": 0,
+      "by_type": {
+        "step_start": 7,
+        "tool_use": 8,
+        "step_finish": 6,
+        "text": 1
+      },
+      "tools": [
+        "edit",
+        "glob",
+        "grep",
+        "read"
+      ]
+    },
+    "exit_code": 0,
+    "timed_out": false,
+    "duration_ms": 36358
+  },
+  "defect": {
+    "spec_path": "phase16/agent-tasks/parry-window-repair.json",
+    "spec_sha256": "baa6470532813d05f504f3b04f14369f43418816cf554c1038f9cb879139a6fc",
+    "id": "parry-window-repair",
+    "description": "Injected regression: the deflect window is 44 ticks instead of 14, so a press at the start of the enemy windup survives until the blow lands and registers as a successful deflect. The intended failure is game-parry-mistimed-does-not-register.",
+    "file": "game/scripts/game_world.gd",
+    "pristine_sha256": "a3f808bcf2f5669e406d52d2c2aa7a44a4fcdbb288aca643525fcb0e561e0d2d",
+    "injected_sha256": "21f52b7013bacc93d3408c1475b2b091d87d4cbf04e5d58e8b94e87929d5dbf2",
+    "expected_failing": [
+      "game-parry-mistimed-does-not-register"
+    ]
+  },
+  "before": {
+    "ok": false,
+    "summary": {
+      "passed": 17,
+      "failed": 1
+    },
+    "failing_before": [
+      "game-parry-mistimed-does-not-register"
+    ],
+    "duration_ms": 14327,
+    "timed_out": false
+  },
+  "repair": {
+    "changed_files": [
+      {
+        "file": "scripts/game_world.gd",
+        "before_sha256": "21f52b7013bacc93d3408c1475b2b091d87d4cbf04e5d58e8b94e87929d5dbf2",
+        "after_sha256": "a3f808bcf2f5669e406d52d2c2aa7a44a4fcdbb288aca643525fcb0e561e0d2d",
+        "change": {
+          "first_changed_line": 42,
+          "removed": [
+            "const PARRY_WINDOW_TICKS := 44"
+          ],
+          "added": [
+            "const PARRY_WINDOW_TICKS := 14"
+          ],
+          "patch": "@@ line 42 @@\n-const PARRY_WINDOW_TICKS := 44\n+const PARRY_WINDOW_TICKS := 14"
+        },
+        "touches_injected_file": true
+      }
+    ],
+    "diff": "repair.diff",
+    "test_oracle_unchanged": true,
+    "oracle_changed": [],
+    "deletes_files": false,
+    "matches_intended_file": true
+  },
+  "after": {
+    "ok": true,
+    "summary": {
+      "passed": 18,
+      "failed": 0
+    },
+    "failing_after": [],
+    "duration_ms": 14366,
+    "timed_out": false
+  },
+  "verification": {
+    "script": "res://tests/run_game_tests.gd",
+    "status": "passed",
+    "expected_now_passing": [
+      "game-parry-mistimed-does-not-register"
+    ],
+    "still_failing": []
+  },
+  "import": {
+    "command": "C:\\Users\\hacke\\godot\\Godot_v4.7.2-stable_win64.exe --headless --path <sandbox>/game --import",
+    "status": 0,
+    "error": null,
+    "stdout": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\r\n\r\n[   0% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Started Project initialization (5 steps)\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Scanning file structure...\u001b[39m\u001b[0m\r\n[  16% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Loading global class names...\u001b[39m\u001b[0m\r\n[  33% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Verifying GDExtensions...\u001b[39m\u001b[0m\r\n[  50% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Creating autoload scripts...\u001b[39m\u001b[0m\r\n[  66% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Initializing plugins...\u001b[39m\u001b[0m\r\n[  83% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Starting file scan...\u001b[39m\u001b[0m\r\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mfirst_scan_filesystem\u001b[22m\r\n\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | Started Registering global classes... (5 steps)\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | \u001b[39m\u001b[0m\r\n[  16% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | \u001b[39m\u001b[0m\r\n[  33% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | \u001b[39m\u001b[0m\r\n[  50% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | \u001b[39m\u001b[0m\r\n[  66% ] \u001b[90m\u001b[1mupdate_scripts_classes\u001b[22m | \u001b[39m\u001b[0m\r\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mupdate_scripts_classes\u001b[22m\r\n\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Started (Re)Importing Assets (1 steps)\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Preparing files to reimport...\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Executing pre-reimport operations...\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mpreload_reimporting_scene\u001b[22m | Started Preparing scenes for reload (1 steps)\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mpreload_reimporting_scene\u001b[22m | Analyzing scene [empty]\u001b[39m\u001b[0m\r\n[  50% ] \u001b[90m\u001b[1mpreload_reimporting_scene\u001b[22m | Preparation done.\u001b[39m\u001b[0m\r\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mpreload_reimporting_scene\u001b[22m\r\n\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | placeholder-character.glb\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mimport\u001b[22m | Started Import Scene (104 steps)\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mimport\u001b[22m | Importing Scene...\u001b[39m\u001b[0m\r\n[   1% ] \u001b[90m\u001b[1mimport\u001b[22m | Running Custom Script...\u001b[39m\u001b[0m\r\n[  99% ] \u001b[90m\u001b[1mimport\u001b[22m | Saving...\u001b[39m\u001b[0m\r\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mimport\u001b[22m\r\n\u001b[0m\r\n[  50% ] \u001b[90m\u001b[1mreimport\u001b[22m | Finalizing Asset Import...\u001b[39m\u001b[0m\r\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mreimport\u001b[22m\r\n\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Started (Re)Importing Assets (1 steps)\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Executing post-reimport operations...\u001b[39m\u001b[0m\r\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mreimport\u001b[22m\r\n\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mloading_editor_layout\u001b[22m | Started Loading editor (5 steps)\u001b[39m\u001b[0m\r\n[   0% ] \u001b[90m\u001b[1mloading_editor_layout\u001b[22m | Loading editor layout...\u001b[39m\u001b[0m\r\n[  16% ] \u001b[90m\u001b[1mloading_editor_layout\u001b[22m | Loading docks...\u001b[39m\u001b[0m\r\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mloading_editor_layout\u001b[22m\r\n\u001b[0m\r\n",
+    "stderr": ""
+  },
+  "cleanup": {
+    "sandbox_removed": true,
+    "orphans": [],
+    "orphan_check": "every opencode process spawned by this run was reaped"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "parry-window-repair",
+  "description": "Injected regression: the deflect window is 44 ticks instead of 14, so a press at the start of the enemy windup survives until the blow lands and registers as a successful deflect. The intended failure is game-parry-mistimed-does-not-register.",
+  "file": "game/scripts/game_world.gd",
+  "find": "const PARRY_WINDOW_TICKS := 14",
+  "replace": "const PARRY_WINDOW_TICKS := 44",
+  "expected_failing": ["game-parry-mistimed-does-not-register"]
+}

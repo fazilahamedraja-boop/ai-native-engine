@@ -1,0 +1,4 @@
+=== scripts/game_world.gd ===
+@@ line 42 @@
+-const PARRY_WINDOW_TICKS := 44
++const PARRY_WINDOW_TICKS := 14

@@ -1,0 +1,467 @@
+{
+  "01-spawn": {
+    "available": true,
+    "count": 1,
+    "items": [
+      {
+        "sequence": 1,
+        "sim_time_seconds": 0,
+        "tick": 0,
+        "type": "reset"
+      }
+    ]
+  },
+  "02-approach": {
+    "available": true,
+    "count": 2,
+    "items": [
+      {
+        "sequence": 1,
+        "sim_time_seconds": 0,
+        "tick": 0,
+        "type": "reset"
+      },
+      {
+        "distance": 2.24944424629211,
+        "sequence": 2,
+        "sim_time_seconds": 0.383333333333333,
+        "tick": 23,
+        "type": "enemy_windup"
+      }
+    ]
+  },
+  "03-telegraph": {
+    "available": true,
+    "count": 2,
+    "items": [
+      {
+        "sequence": 1,
+        "sim_time_seconds": 0,
+        "tick": 0,
+        "type": "reset"
+      },
+      {
+        "distance": 2.24944424629211,
+        "sequence": 2,
+        "sim_time_seconds": 0.383333333333333,
+        "tick": 23,
+        "type": "enemy_windup"
+      }
+    ]
+  },
+  "04-parry-window": {
+    "available": true,
+    "count": 3,
+    "items": [
+      {
+        "sequence": 1,
+        "sim_time_seconds": 0,
+        "tick": 0,
+        "type": "reset"
+      },
+      {
+        "distance": 2.24944424629211,
+        "sequence": 2,
+        "sim_time_seconds": 0.383333333333333,
+        "tick": 23,
+        "type": "enemy_windup"
+      },
+      {
+        "sequence": 3,
+        "sim_time_seconds": 0.800000000000001,
+        "tick": 48,
+        "type": "parry_started"
+      }
+    ]
+  },
+  "05-deflect": {
+    "available": true,
+    "count": 5,
+    "items": [
+      {
+        "sequence": 1,
+        "sim_time_seconds": 0,
+        "tick": 0,
+        "type": "reset"
+      },
+      {
+        "distance": 2.24944424629211,
+        "sequence": 2,
+        "sim_time_seconds": 0.383333333333333,
+        "tick": 23,
+        "type": "enemy_windup"
+      },
+      {
+        "sequence": 3,
+        "sim_time_seconds": 0.800000000000001,
+        "tick": 48,
+        "type": "parry_started"
+      },
+      {
+        "sequence": 4,
+        "sim_time_seconds": 0.883333333333334,
+        "tick": 53,
+        "type": "enemy_active"
+      },
+      {
+        "enemy_phase": "active",
+        "enemy_posture": 55,
+        "sequence": 5,
+        "sim_time_seconds": 0.900000000000001,
+        "tick": 54,
+        "type": "parry_success"
+      }
+    ]
+  },
+  "06-victory": {
+    "available": true,
+    "count": 34,
+    "items": [
+      {
+        "sequence": 1,
+        "sim_time_seconds": 0,
+        "tick": 0,
+        "type": "reset"
+      },
+      {
+        "distance": 2.24944424629211,
+        "sequence": 2,
+        "sim_time_seconds": 0.383333333333333,
+        "tick": 23,
+        "type": "enemy_windup"
+      },
+      {
+        "sequence": 3,
+        "sim_time_seconds": 0.800000000000001,
+        "tick": 48,
+        "type": "parry_started"
+      },
+      {
+        "sequence": 4,
+        "sim_time_seconds": 0.883333333333334,
+        "tick": 53,
+        "type": "enemy_active"
+      },
+      {
+        "enemy_phase": "active",
+        "enemy_posture": 55,
+        "sequence": 5,
+        "sim_time_seconds": 0.900000000000001,
+        "tick": 54,
+        "type": "parry_success"
+      },
+      {
+        "sequence": 6,
+        "sim_time_seconds": 1.05,
+        "tick": 63,
+        "type": "attack_started"
+      },
+      {
+        "sequence": 7,
+        "sim_time_seconds": 1.13333333333333,
+        "tick": 68,
+        "type": "attack_active"
+      },
+      {
+        "enemy_health": 4,
+        "enemy_posture": 66.1,
+        "sequence": 8,
+        "sim_time_seconds": 1.15,
+        "tick": 69,
+        "type": "player_hit_enemy"
+      },
+      {
+        "sequence": 9,
+        "sim_time_seconds": 1.26666666666667,
+        "tick": 76,
+        "type": "attack_recover"
+      },
+      {
+        "distance": 1.72499990463257,
+        "sequence": 10,
+        "sim_time_seconds": 1.71666666666667,
+        "tick": 103,
+        "type": "enemy_windup"
+      },
+      {
+        "sequence": 11,
+        "sim_time_seconds": 2.13333333333333,
+        "tick": 128,
+        "type": "parry_started"
+      },
+      {
+        "sequence": 12,
+        "sim_time_seconds": 2.21666666666666,
+        "tick": 133,
+        "type": "enemy_active"
+      },
+      {
+        "enemy_phase": "active",
+        "enemy_posture": 97.9999999999999,
+        "sequence": 13,
+        "sim_time_seconds": 2.23333333333333,
+        "tick": 134,
+        "type": "parry_success"
+      },
+      {
+        "sequence": 14,
+        "sim_time_seconds": 2.38333333333333,
+        "tick": 143,
+        "type": "attack_started"
+      },
+      {
+        "sequence": 15,
+        "sim_time_seconds": 2.46666666666666,
+        "tick": 148,
+        "type": "attack_active"
+      },
+      {
+        "enemy_health": 3,
+        "enemy_posture": 0,
+        "sequence": 16,
+        "sim_time_seconds": 2.48333333333333,
+        "tick": 149,
+        "type": "player_hit_enemy"
+      },
+      {
+        "sequence": 17,
+        "sim_time_seconds": 2.6,
+        "tick": 156,
+        "type": "attack_recover"
+      },
+      {
+        "sequence": 18,
+        "sim_time_seconds": 2.93333333333333,
+        "tick": 176,
+        "type": "attack_started"
+      },
+      {
+        "sequence": 19,
+        "sim_time_seconds": 3.01666666666666,
+        "tick": 181,
+        "type": "attack_active"
+      },
+      {
+        "enemy_health": 2,
+        "enemy_posture": 16,
+        "sequence": 20,
+        "sim_time_seconds": 3.03333333333333,
+        "tick": 182,
+        "type": "player_hit_enemy"
+      },
+      {
+        "sequence": 21,
+        "sim_time_seconds": 3.14999999999999,
+        "tick": 189,
+        "type": "attack_recover"
+      },
+      {
+        "sequence": 22,
+        "sim_time_seconds": 3.48333333333333,
+        "tick": 209,
+        "type": "attack_started"
+      },
+      {
+        "sequence": 23,
+        "sim_time_seconds": 3.56666666666666,
+        "tick": 214,
+        "type": "attack_active"
+      },
+      {
+        "enemy_health": 1,
+        "enemy_posture": 32,
+        "sequence": 24,
+        "sim_time_seconds": 3.58333333333333,
+        "tick": 215,
+        "type": "player_hit_enemy"
+      },
+      {
+        "sequence": 25,
+        "sim_time_seconds": 3.69999999999999,
+        "tick": 222,
+        "type": "attack_recover"
+      },
+      {
+        "distance": 1.6100001335144,
+        "sequence": 26,
+        "sim_time_seconds": 4.01666666666666,
+        "tick": 241,
+        "type": "enemy_windup"
+      },
+      {
+        "sequence": 27,
+        "sim_time_seconds": 4.43333333333332,
+        "tick": 266,
+        "type": "parry_started"
+      },
+      {
+        "sequence": 28,
+        "sim_time_seconds": 4.51666666666666,
+        "tick": 271,
+        "type": "enemy_active"
+      },
+      {
+        "enemy_phase": "active",
+        "enemy_posture": 68.0999999999999,
+        "sequence": 29,
+        "sim_time_seconds": 4.53333333333332,
+        "tick": 272,
+        "type": "parry_success"
+      },
+      {
+        "sequence": 30,
+        "sim_time_seconds": 4.68333333333332,
+        "tick": 281,
+        "type": "attack_started"
+      },
+      {
+        "sequence": 31,
+        "sim_time_seconds": 4.76666666666666,
+        "tick": 286,
+        "type": "attack_active"
+      },
+      {
+        "enemy_health": 0,
+        "enemy_posture": 79.2,
+        "sequence": 32,
+        "sim_time_seconds": 4.78333333333332,
+        "tick": 287,
+        "type": "player_hit_enemy"
+      },
+      {
+        "sequence": 33,
+        "sim_time_seconds": 4.78333333333332,
+        "tick": 287,
+        "type": "enemy_defeated"
+      },
+      {
+        "sequence": 34,
+        "sim_time_seconds": 4.78333333333332,
+        "tick": 287,
+        "type": "victory"
+      }
+    ]
+  },
+  "07-restart": {
+    "available": true,
+    "count": 1,
+    "items": [
+      {
+        "sequence": 1,
+        "sim_time_seconds": 0,
+        "tick": 0,
+        "type": "reset"
+      }
+    ]
+  },
+  "08-defeat": {
+    "available": true,
+    "count": 14,
+    "items": [
+      {
+        "sequence": 1,
+        "sim_time_seconds": 0,
+        "tick": 0,
+        "type": "reset"
+      },
+      {
+        "distance": 2.24944424629211,
+        "sequence": 2,
+        "sim_time_seconds": 0.383333333333333,
+        "tick": 23,
+        "type": "enemy_windup"
+      },
+      {
+        "sequence": 3,
+        "sim_time_seconds": 0.883333333333334,
+        "tick": 53,
+        "type": "enemy_active"
+      },
+      {
+        "player_health": 3,
+        "sequence": 4,
+        "sim_time_seconds": 0.900000000000001,
+        "tick": 54,
+        "type": "enemy_hit_player"
+      },
+      {
+        "distance": 1.50499999523163,
+        "sequence": 5,
+        "sim_time_seconds": 1.71666666666667,
+        "tick": 103,
+        "type": "enemy_windup"
+      },
+      {
+        "sequence": 6,
+        "sim_time_seconds": 2.21666666666666,
+        "tick": 133,
+        "type": "enemy_active"
+      },
+      {
+        "player_health": 2,
+        "sequence": 7,
+        "sim_time_seconds": 2.23333333333333,
+        "tick": 134,
+        "type": "enemy_hit_player"
+      },
+      {
+        "distance": 1.38999998569489,
+        "sequence": 8,
+        "sim_time_seconds": 3.04999999999999,
+        "tick": 183,
+        "type": "enemy_windup"
+      },
+      {
+        "sequence": 9,
+        "sim_time_seconds": 3.54999999999999,
+        "tick": 213,
+        "type": "enemy_active"
+      },
+      {
+        "player_health": 1,
+        "sequence": 10,
+        "sim_time_seconds": 3.56666666666666,
+        "tick": 214,
+        "type": "enemy_hit_player"
+      },
+      {
+        "distance": 1.27499985694885,
+        "sequence": 11,
+        "sim_time_seconds": 4.38333333333332,
+        "tick": 263,
+        "type": "enemy_windup"
+      },
+      {
+        "sequence": 12,
+        "sim_time_seconds": 4.88333333333332,
+        "tick": 293,
+        "type": "enemy_active"
+      },
+      {
+        "player_health": 0,
+        "sequence": 13,
+        "sim_time_seconds": 4.89999999999999,
+        "tick": 294,
+        "type": "enemy_hit_player"
+      },
+      {
+        "sequence": 14,
+        "sim_time_seconds": 4.89999999999999,
+        "tick": 294,
+        "type": "player_defeated"
+      }
+    ]
+  },
+  "09-final-restart": {
+    "available": true,
+    "count": 1,
+    "items": [
+      {
+        "sequence": 1,
+        "sim_time_seconds": 0,
+        "tick": 0,
+        "type": "reset"
+      }
+    ]
+  }
+}

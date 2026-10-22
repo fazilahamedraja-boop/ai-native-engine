@@ -1,0 +1,561 @@
+{
+  "schema": "phase16.test-results.v1",
+  "generated_at": "2026-10-22T17:57:57.170Z",
+  "phase": 16,
+  "game": {
+    "name": "Deflect Arena",
+    "engine": "Godot 4.7.2-stable",
+    "project": "experiments/godot-harness/game"
+  },
+  "baseline": {
+    "commit": "47e9127",
+    "branch": "experiment/phase15-agent-adapter",
+    "command": "node --test (9 Phase 8-15 test files)",
+    "log": "docs/phase16/evidence/regression/baseline-node-test.log",
+    "passed": 65,
+    "failed": 0,
+    "duration_ms": 94412,
+    "exit_code": 0,
+    "exit_code_note": "derived from the zero-failure summary; the saved baseline log predates the exit-code append"
+  },
+  "in_engine": {
+    "command": "node controller/harness.mjs test --project game --script res://tests/run_game_tests.gd --json",
+    "log": "docs/phase16/evidence/in-engine/run_game_tests.json",
+    "ok": true,
+    "passed": 18,
+    "failed": 0,
+    "duration_ms": 14265,
+    "exit_code": 0,
+    "cases": [
+      {
+        "name": "game-startup",
+        "passed": true,
+        "detail": "grounded=true outcome=playing events=1"
+      },
+      {
+        "name": "game-player-moves-and-stays-grounded",
+        "passed": true,
+        "detail": "dz=2.880 y=0.001 grounded=true facing=0.0"
+      },
+      {
+        "name": "game-camera-follows",
+        "passed": true,
+        "detail": "distance=5.20 moved=1.73 player_moved=1.86 dot=1.0000"
+      },
+      {
+        "name": "game-camera-avoids-wall-clipping",
+        "passed": true,
+        "detail": "distance=1.58 cam_z=11.65 player_z=11.66"
+      },
+      {
+        "name": "game-attack-windup-cannot-damage",
+        "passed": true,
+        "detail": "phase=windup health=5 hitbox=false"
+      },
+      {
+        "name": "game-attack-hits-enemy-once",
+        "passed": true,
+        "detail": "health=4 hit_events=1"
+      },
+      {
+        "name": "game-attack-no-damage-outside-window",
+        "passed": true,
+        "detail": "health=4 hitbox=false"
+      },
+      {
+        "name": "game-attack-facing-away-misses",
+        "passed": true,
+        "detail": "health=5 hit_events=0"
+      },
+      {
+        "name": "game-enemy-damages-player",
+        "passed": true,
+        "detail": "player_health=3 hits=1 phase=active"
+      },
+      {
+        "name": "game-parry-success",
+        "passed": true,
+        "detail": "result=success player_health=4 posture=50.4 parry_events=1"
+      },
+      {
+        "name": "game-parry-mistimed-does-not-register",
+        "passed": true,
+        "detail": "player_health=3 result=expired parry_events=0"
+      },
+      {
+        "name": "game-enemy-stagger-transition",
+        "passed": true,
+        "detail": "staggered=true posture=0.00 ticks=63"
+      },
+      {
+        "name": "game-staggered-enemy-cannot-attack",
+        "passed": true,
+        "detail": "player_health=4"
+      },
+      {
+        "name": "game-enemy-defeat-victory",
+        "passed": true,
+        "detail": "health=0 defeated=true outcome=victory"
+      },
+      {
+        "name": "game-player-defeat",
+        "passed": true,
+        "detail": "health=0 outcome=defeat"
+      },
+      {
+        "name": "game-restart-restores-initial-state",
+        "passed": true,
+        "detail": "step=0 player_hp=4 enemy_hp=5 outcome=playing event=reset"
+      },
+      {
+        "name": "game-event-stream",
+        "passed": true,
+        "detail": "count=4 ordered=true types=[\"reset\", \"attack_started\", \"attack_active\", \"attack_recover\"]"
+      },
+      {
+        "name": "game-hud-reflects-state",
+        "passed": true,
+        "detail": "hud_lines=6"
+      }
+    ]
+  },
+  "windowed": {
+    "command": "node controller/game-verify.mjs",
+    "run_id": "phase16-live-2026-10-22T17-21-27-965Z",
+    "passed": 11,
+    "failed": 0,
+    "complete": true,
+    "engine_errors_check": "errors=0",
+    "checks": [
+      {
+        "name": "windowed-session",
+        "ok": true,
+        "detail": "headless=false"
+      },
+      {
+        "name": "spawn-state-clean",
+        "ok": true,
+        "detail": "step=0 player_hp=4 enemy_hp=5"
+      },
+      {
+        "name": "player-approaches-enemy",
+        "ok": true,
+        "detail": "frames=23 distance=2.18"
+      },
+      {
+        "name": "enemy-telegraphs",
+        "ok": true,
+        "detail": "phase=windup tick=1"
+      },
+      {
+        "name": "parry-window-open",
+        "ok": true,
+        "detail": "parry_ticks=11 result=active"
+      },
+      {
+        "name": "deflect-registered",
+        "ok": true,
+        "detail": "result=success player_hp=4 event=true"
+      },
+      {
+        "name": "sword-damages-enemy",
+        "ok": true,
+        "detail": "frames=228 enemy_hp=0"
+      },
+      {
+        "name": "victory-reached",
+        "ok": true,
+        "detail": "frames=228 outcome=victory enemy_hp=0"
+      },
+      {
+        "name": "restart-clean",
+        "ok": true,
+        "detail": "step=0 player_hp=4 enemy_hp=5 outcome=playing"
+      },
+      {
+        "name": "defeat-reached",
+        "ok": true,
+        "detail": "frames=267 outcome=defeat player_hp=0"
+      },
+      {
+        "name": "no-engine-errors",
+        "ok": true,
+        "detail": "errors=0"
+      }
+    ],
+    "captures": [
+      {
+        "name": "01-spawn",
+        "scenario": "spawn: player and enemy at start",
+        "captured_at": "2026-10-22T17:21:29.744Z",
+        "engine_tick": 0,
+        "simulation_step": 0,
+        "screenshot": {
+          "path": "docs/phase16/evidence/live/phase16-live-2026-10-22T17-21-27-965Z/01-spawn.png",
+          "bytes": 64913,
+          "sha256": "05c4207da00e60a2ed4e061f2dc086e5be16d7fc96693318b0feeb510ecdeb11",
+          "width": 1280,
+          "height": 720
+        },
+        "event_types": [
+          "reset"
+        ],
+        "state": {
+          "step": 0,
+          "player_health": 4,
+          "enemy_health": 5,
+          "enemy_posture": 0,
+          "enemy_phase": "idle",
+          "parry_result": "none",
+          "parry_ticks": 0,
+          "outcome": "playing"
+        }
+      },
+      {
+        "name": "02-approach",
+        "scenario": "approach: player closes distance",
+        "captured_at": "2026-10-22T17:21:30.952Z",
+        "engine_tick": 24,
+        "simulation_step": 24,
+        "screenshot": {
+          "path": "docs/phase16/evidence/live/phase16-live-2026-10-22T17-21-27-965Z/02-approach.png",
+          "bytes": 68843,
+          "sha256": "2b31e36429e4287dee7b4ca2bc3b907d965305202045d6527afb6532f70d0bb6",
+          "width": 1280,
+          "height": 720
+        },
+        "event_types": [
+          "reset",
+          "enemy_windup"
+        ],
+        "state": {
+          "step": 24,
+          "player_health": 4,
+          "enemy_health": 5,
+          "enemy_posture": 0,
+          "enemy_phase": "windup",
+          "parry_result": "none",
+          "parry_ticks": 0,
+          "outcome": "playing"
+        }
+      },
+      {
+        "name": "03-telegraph",
+        "scenario": "enemy windup: blade raised, HUD warning",
+        "captured_at": "2026-10-22T17:21:31.986Z",
+        "engine_tick": 47,
+        "simulation_step": 47,
+        "screenshot": {
+          "path": "docs/phase16/evidence/live/phase16-live-2026-10-22T17-21-27-965Z/03-telegraph.png",
+          "bytes": 68897,
+          "sha256": "ca0a419352083f9ff5ec3cd80ff203fb13d1fefb42f1ecbf3bf5c0083b4c6a7d",
+          "width": 1280,
+          "height": 720
+        },
+        "event_types": [
+          "reset",
+          "enemy_windup"
+        ],
+        "state": {
+          "step": 47,
+          "player_health": 4,
+          "enemy_health": 5,
+          "enemy_posture": 0,
+          "enemy_phase": "windup",
+          "parry_result": "none",
+          "parry_ticks": 0,
+          "outcome": "playing"
+        }
+      },
+      {
+        "name": "04-parry-window",
+        "scenario": "deflection window: blade raised",
+        "captured_at": "2026-10-22T17:21:32.389Z",
+        "engine_tick": 50,
+        "simulation_step": 50,
+        "screenshot": {
+          "path": "docs/phase16/evidence/live/phase16-live-2026-10-22T17-21-27-965Z/04-parry-window.png",
+          "bytes": 68664,
+          "sha256": "e1b765d1e42be3819eb6c497b35d79e6d129b00d5c6d9a1410074265bbf58c4e",
+          "width": 1280,
+          "height": 720
+        },
+        "event_types": [
+          "reset",
+          "enemy_windup",
+          "parry_started"
+        ],
+        "state": {
+          "step": 50,
+          "player_health": 4,
+          "enemy_health": 5,
+          "enemy_posture": 0,
+          "enemy_phase": "windup",
+          "parry_result": "active",
+          "parry_ticks": 11,
+          "outcome": "playing"
+        }
+      },
+      {
+        "name": "05-deflect",
+        "scenario": "successful deflection: posture damage",
+        "captured_at": "2026-10-22T17:21:32.876Z",
+        "engine_tick": 58,
+        "simulation_step": 58,
+        "screenshot": {
+          "path": "docs/phase16/evidence/live/phase16-live-2026-10-22T17-21-27-965Z/05-deflect.png",
+          "bytes": 69780,
+          "sha256": "a2d011f90df7cadb579a961e3892d23ccbd4ee89515d84f1e336eb77e8c2b1bf",
+          "width": 1280,
+          "height": 720
+        },
+        "event_types": [
+          "reset",
+          "enemy_windup",
+          "parry_started",
+          "enemy_active",
+          "parry_success"
+        ],
+        "state": {
+          "step": 58,
+          "player_health": 4,
+          "enemy_health": 5,
+          "enemy_posture": 53.6,
+          "enemy_phase": "active",
+          "parry_result": "success",
+          "parry_ticks": 0,
+          "outcome": "playing"
+        }
+      },
+      {
+        "name": "06-victory",
+        "scenario": "victory: enemy defeated",
+        "captured_at": "2026-10-22T17:21:40.850Z",
+        "engine_tick": 287,
+        "simulation_step": 287,
+        "screenshot": {
+          "path": "docs/phase16/evidence/live/phase16-live-2026-10-22T17-21-27-965Z/06-victory.png",
+          "bytes": 76890,
+          "sha256": "86729fa611a77ba0d3699c50459d76b0ca009ff819f58e1030475aab81807222",
+          "width": 1280,
+          "height": 720
+        },
+        "event_types": [
+          "reset",
+          "enemy_windup",
+          "parry_started",
+          "enemy_active",
+          "parry_success",
+          "attack_started",
+          "attack_active",
+          "player_hit_enemy",
+          "attack_recover",
+          "enemy_defeated",
+          "victory"
+        ],
+        "state": {
+          "step": 287,
+          "player_health": 4,
+          "enemy_health": 0,
+          "enemy_posture": 79.2,
+          "enemy_phase": "defeated",
+          "parry_result": "success",
+          "parry_ticks": 0,
+          "outcome": "victory"
+        }
+      },
+      {
+        "name": "07-restart",
+        "scenario": "restart: initial state restored",
+        "captured_at": "2026-10-22T17:21:41.238Z",
+        "engine_tick": 0,
+        "simulation_step": 0,
+        "screenshot": {
+          "path": "docs/phase16/evidence/live/phase16-live-2026-10-22T17-21-27-965Z/07-restart.png",
+          "bytes": 64913,
+          "sha256": "244b807cdd4f6e70a6bd208a640f9c07256686a35ccd9c75ea165cd610214a18",
+          "width": 1280,
+          "height": 720
+        },
+        "event_types": [
+          "reset"
+        ],
+        "state": {
+          "step": 0,
+          "player_health": 4,
+          "enemy_health": 5,
+          "enemy_posture": 0,
+          "enemy_phase": "idle",
+          "parry_result": "none",
+          "parry_ticks": 0,
+          "outcome": "playing"
+        }
+      },
+      {
+        "name": "08-defeat",
+        "scenario": "defeat: player health reaches zero",
+        "captured_at": "2026-10-22T17:21:51.508Z",
+        "engine_tick": 294,
+        "simulation_step": 294,
+        "screenshot": {
+          "path": "docs/phase16/evidence/live/phase16-live-2026-10-22T17-21-27-965Z/08-defeat.png",
+          "bytes": 75195,
+          "sha256": "6a03e28a33052b9732ab650cab85ad470fc602965f8096b67ed500fb711e30a5",
+          "width": 1280,
+          "height": 720
+        },
+        "event_types": [
+          "reset",
+          "enemy_windup",
+          "enemy_active",
+          "enemy_hit_player",
+          "player_defeated"
+        ],
+        "state": {
+          "step": 294,
+          "player_health": 0,
+          "enemy_health": 5,
+          "enemy_posture": 0,
+          "enemy_phase": "active",
+          "parry_result": "none",
+          "parry_ticks": 0,
+          "outcome": "defeat"
+        }
+      },
+      {
+        "name": "09-final-restart",
+        "scenario": "restart after defeat",
+        "captured_at": "2026-10-22T17:21:51.892Z",
+        "engine_tick": 0,
+        "simulation_step": 0,
+        "screenshot": {
+          "path": "docs/phase16/evidence/live/phase16-live-2026-10-22T17-21-27-965Z/09-final-restart.png",
+          "bytes": 64913,
+          "sha256": "244b807cdd4f6e70a6bd208a640f9c07256686a35ccd9c75ea165cd610214a18",
+          "width": 1280,
+          "height": 720
+        },
+        "event_types": [
+          "reset"
+        ],
+        "state": {
+          "step": 0,
+          "player_health": 4,
+          "enemy_health": 5,
+          "enemy_posture": 0,
+          "enemy_phase": "idle",
+          "parry_result": "none",
+          "parry_ticks": 0,
+          "outcome": "playing"
+        }
+      }
+    ]
+  },
+  "agent_repair": {
+    "run_id": "2026-10-22T17-30-08-599Z-parry-window-repair",
+    "status": "passed",
+    "model": "opencode/deepseek-v4.1-flash-free",
+    "opencode_version": "opencode v2.0.32",
+    "invocation": "opencode run --standalone --format json --auto",
+    "tool_events": 22,
+    "tools": [
+      "edit",
+      "glob",
+      "grep",
+      "read"
+    ],
+    "before_failing": [
+      "game-parry-mistimed-does-not-register"
+    ],
+    "changed_files": [
+      {
+        "file": "scripts/game_world.gd",
+        "patch": "@@ line 42 @@\n-const PARRY_WINDOW_TICKS := 44\n+const PARRY_WINDOW_TICKS := 14"
+      }
+    ],
+    "test_oracle_unchanged": true,
+    "after_ok": true,
+    "after_failing": [],
+    "sandbox_removed": true,
+    "orphans": [],
+    "failed_integration_attempt": {
+      "run_id": "2026-10-22T17-29-06-489Z-parry-window-repair",
+      "status": "failed",
+      "failure_reason": "Godot import failed: spawnSync godot ENOENT",
+      "note": "First attempt failed before any agent turn on the Godot PATH shim; fixed by using the harness GODOT_BIN resolver."
+    }
+  },
+  "export": {
+    "preset": "Windows Desktop",
+    "export_command": "godot --headless --path game --export-release \"Windows Desktop\" game/build/DeflectArena.exe",
+    "exe": {
+      "path": "../experiments/godot-harness/game/build/DeflectArena.exe",
+      "bytes": 109127680,
+      "sha256": "cd2526cc93bc164d9d8f011761c2348973dfe06654824498767096fa58568212"
+    },
+    "pck": {
+      "path": "../experiments/godot-harness/game/build/DeflectArena.pck",
+      "bytes": 70348,
+      "sha256": "0dd1696da157b0df82c72799e9559e2301782536cdab6f4c99d5770c25d10fb0"
+    },
+    "headless_quit": {
+      "command": "DeflectArena.exe --headless --quit",
+      "exit_code": 0
+    },
+    "visible_launch": {
+      "state": "alive",
+      "window_title": "deflect-arena",
+      "capture_method": "PrintWindow (PW_RENDERFULLCONTENT)",
+      "capture": "docs/phase16/evidence/export/2026-10-22T17-35-09Z/export-printwindow.png",
+      "capture_sha256": "0f4036e44aac26e42989920c0caa06c80510e8505172677c55c026f08dd62ff3",
+      "note": "A desktop CopyFromScreen capture was discarded because an unrelated full-screen application was in front."
+    },
+    "bridge_probe": {
+      "command": "node controller/export-verify.mjs --exe game/build/DeflectArena.exe",
+      "run_id": "2026-10-22T17-37-47-216Z-probe",
+      "bridge_port": 47732,
+      "passed": 6,
+      "failed": 0,
+      "checks": [
+        {
+          "name": "bridge-reachable",
+          "ok": true,
+          "detail": "port=47732"
+        },
+        {
+          "name": "packaged-initial-state",
+          "ok": true,
+          "detail": "step=0 player_hp=4 enemy_hp=5"
+        },
+        {
+          "name": "packaged-movement",
+          "ok": true,
+          "detail": "frames=24 distance=2.18"
+        },
+        {
+          "name": "packaged-sword-hit",
+          "ok": true,
+          "detail": "enemy_hp=4 events=reset,enemy_windup,attack_started,attack_active,player_hit_enemy,attack_recover"
+        },
+        {
+          "name": "packaged-restart",
+          "ok": true,
+          "detail": "step=0 player_hp=4 enemy_hp=5"
+        },
+        {
+          "name": "process-stayed-alive",
+          "ok": true,
+          "detail": "exit_code=null"
+        }
+      ]
+    }
+  },
+  "regression_after": {
+    "command": "npm test",
+    "log": "docs/phase16/evidence/regression/final-npm-test.log",
+    "passed": 65,
+    "failed": 0,
+    "duration_ms": 94616,
+    "exit_code": 0
+  }
+}

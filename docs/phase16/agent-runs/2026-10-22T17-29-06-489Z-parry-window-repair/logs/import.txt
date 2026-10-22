@@ -1,0 +1,3 @@
+godot --headless --path <sandbox>/game --import
+exit=null
+

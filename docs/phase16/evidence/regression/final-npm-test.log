@@ -1,0 +1,89 @@
+
+> godot-harness@0.1.0 test
+> node --test tests/controller.test.mjs tests/session.test.mjs tests/gameplay.test.mjs tests/capture.test.mjs tests/observation.test.mjs tests/physics-query.test.mjs tests/evidence-output.test.mjs tests/startup-diagnostics.test.mjs tests/blind-benchmark.test.mjs
+
+file:///C:/Users/hacke/ai-native-engine-phase16/experiments/godot-harness/controller/evidence-output.mjs:104
+    throw new Error(reason)
+          ^
+
+Error: output directory is inside protected evidence directory docs\phase11
+    at resolveOutputDir (file:///C:/Users/hacke/ai-native-engine-phase16/experiments/godot-harness/controller/evidence-output.mjs:104:11)
+    at prepare (file:///C:/Users/hacke/ai-native-engine-phase16/experiments/godot-harness/controller/blind-benchmark.mjs:290:18)
+    at main (file:///C:/Users/hacke/ai-native-engine-phase16/experiments/godot-harness/controller/blind-benchmark.mjs:594:29)
+    at file:///C:/Users/hacke/ai-native-engine-phase16/experiments/godot-harness/controller/blind-benchmark.mjs:623:7
+
+Node.js v24.22.0
+Γ£ö the case definitions are well formed and distinct (2.0138ms)
+Γ£ö a prepared bundle contains no source, no diff, and no answer key (31811.5662ms)
+Γ£ö an unrepaired fixture is reported as a failure, not a success (62402.3079ms)
+Γ£ö the benchmark refuses to write into a protected evidence directory (245.2132ms)
+Γ£ö capture validation rejects unsafe paths and identifiers before a bridge call (4.3455ms)
+Γ£ö capture requires an explicit windowed, connected, paused session (1.1879ms)
+Γ£ö sequence validation bounds frame count, interval, and filename prefix (1.7739ms)
+Γ£ö parses a passing suite (4.3116ms)
+Γ£ö a failing case makes the result fail (0.3921ms)
+Γ£ö a summary mismatch is not accepted (0.3898ms)
+Γ£ö a missing RESULT line is not accepted (0.3321ms)
+Γ£ö Godot ERROR lines fail an otherwise matching suite (0.3359ms)
+Γ£ö project selection rejects paths outside the harness root (1.6427ms)
+Γ£ö step and input validation rejects invalid values before a bridge call (1.807ms)
+Γ£ö screenshot paths stay inside the selected project (1.063ms)
+Γ£ö physics advance validation rejects invalid frames and input before a bridge call (1.4426ms)
+Γ£ö every declared protected evidence directory is covered (2.4476ms)
+Γ£ö protected evidence directories are reported when they exist (2.2109ms)
+Γ£ö a protected evidence directory is rejected as an output directory (6.0576ms)
+Γ£ö a nested path inside a protected evidence directory is also rejected (1.5089ms)
+Γ£ö traversal out of the phase 13 directory into a protected one is rejected (1.5344ms)
+Γ£ö the phase 13 directory is allowed (2.1289ms)
+Γ£ö an output directory outside the repository is rejected (0.4549ms)
+Γ£ö an output directory inside the harness source tree is rejected (1.5391ms)
+Γ£ö resolveOutputDir creates a unique default directory under phase 13 (3.072ms)
+Γ£ö resolveOutputDir honours an explicit directory and refuses a protected one (4.6517ms)
+Γ£ö writeJsonFile returns a verifiable manifest entry (9.3689ms)
+Γ£ö copyCaptureFile rejects a capture whose bytes do not match its hash (7.6093ms)
+Γ£ö movement advances the live scene with fixed input (539.2071ms)
+Γ£ö detection rises inside a cone and decays after leaving it (109.2154ms)
+Γ£ö leaving the cones and reaching the beacon wins (194.9075ms)
+Γ£ö standing in a cone reaches a terminal loss (52.0214ms)
+Γ£ö reset returns every selected simulation field to the baseline (80.6874ms)
+Γ£ö jump is edge-triggered and the player returns to the ground (56.6597ms)
+Γ£ö the same fixed sequence has the same hash after reset (152.0401ms)
+Γ£ö a fresh process reproduces the same scenario hash (612.4231ms)
+Γ£ö observation validates paths, properties, bounds, and scenarios before a bridge call (5.8827ms)
+Γ£ö observe reports measured runtime, character, collision, animation, and event data (2165.0448ms)
+Γ£ö observe inspects the humanoid model and skeleton with explicit transform spaces (413.3194ms)
+Γ£ö observeTimeline samples fixed physics advances and de-duplicates events (2085.5152ms)
+Γ£ö observe reuses an unmodified door scene through the generic observation bridge (410.9578ms)
+Γ£ö physics query validation rejects invalid input before a bridge call (5.0874ms)
+Γ£ö a box query finds the known gate collider and misses empty space (781.5324ms)
+Γ£ö a sphere query finds the known gate collider and misses empty space (548.0331ms)
+Γ£ö a capsule query finds the known gate collider and misses empty space (549.4491ms)
+Γ£ö a ray query reports the contact point and normal on the known gate (403.837ms)
+Γ£ö a physics query honours the collision mask (511.0451ms)
+Γ£ö a physics query does not mutate scene state (407.5207ms)
+Γ£ö observe publishes the collision layer and mask for collision objects (379.3548ms)
+Γ£ö start, inspect, property, pause/resume, and stop one project (649.1418ms)
+Γ£ö stopping one session does not terminate another session it did not start (1050.1074ms)
+Γ£ö a script error is classified from the engine output (1.7488ms)
+Γ£ö an autoload failure is classified separately from a plain script error (0.4089ms)
+Γ£ö a process that exited is classified as an exit, not as a script error (0.241ms)
+Γ£ö a live process with no engine error is a slow startup, not a failure (0.2855ms)
+Γ£ö connection and game phases are distinguishable from startup (0.316ms)
+Γ£ö the engine error collector keeps the "at:" continuation line (0.5882ms)
+Γ£ö the reported error carries the code and structured diagnostics (0.8961ms)
+Γ£ö a valid project starts normally (607.4919ms)
+Γ£ö an invalid GDScript bridge is reported as a script failure with the parse error (8066.1349ms)
+Γ£ö a project that exits before readiness is reported as a process exit (218.4973ms)
+Γ£ö a process that starts but never signals readiness is reported as a slow startup (7044.8044ms)
+Γ£ö a genuinely slow startup is distinguishable from a failed one (9548.7952ms)
+Γ£ö stopAllSessions cleans up a session that was left running (417.9326ms)
+Γ£ö withSession stops the session even when the body throws (2.64ms)
+Γä╣ tests 65
+Γä╣ suites 0
+Γä╣ pass 65
+Γä╣ fail 0
+Γä╣ cancelled 0
+Γä╣ skipped 0
+Γä╣ todo 0
+Γä╣ duration_ms 94616.1892
+exit=0

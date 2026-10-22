@@ -1,0 +1,1074 @@
+{
+  "phase": 16,
+  "run_id": "phase16-live-2026-10-22T17-21-27-965Z",
+  "created_at": "2026-10-22T17:21:52.286Z",
+  "project": "game",
+  "mode": "windowed",
+  "session": {
+    "headless": false,
+    "pid": 2640,
+    "project_path": "C:\\Users\\hacke\\ai-native-engine-phase16\\experiments\\godot-harness\\game"
+  },
+  "captures": [
+    {
+      "name": "01-spawn",
+      "scenario": "spawn: player and enemy at start",
+      "screenshot": {
+        "path": "01-spawn.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-21-27-965Z\\01-spawn.png",
+        "bytes": 64913,
+        "sha256": "05c4207da00e60a2ed4e061f2dc086e5be16d7fc96693318b0feeb510ecdeb11",
+        "width": 1280,
+        "height": 720
+      },
+      "captured_at": "2026-10-22T17:21:29.744Z",
+      "engine_tick": 0,
+      "simulation_step": 0,
+      "paused": true,
+      "state": {
+        "step": 0,
+        "sim_time_seconds": 0,
+        "player_position": [
+          0,
+          0.0199999995529652,
+          4.40000009536743
+        ],
+        "player_health": 4,
+        "player_attack_phase": "idle",
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "none",
+        "enemy_position": [
+          0,
+          0.0199999995529652,
+          0.800000011920929
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "idle",
+        "enemy_phase_tick": 0,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "outcome": "playing",
+        "camera_position": [
+          1.10000002384186,
+          2.72000002861023,
+          9.10000038146973
+        ],
+        "camera_distance": 5.06976366043091,
+        "grounded": true,
+        "last_event_type": "reset",
+        "hash": "b43170fd735f3fcd0d3820cfb41947665dce1026a335d393dda8f436304772a4"
+      },
+      "event_types": [
+        "reset"
+      ],
+      "events": {
+        "available": true,
+        "count": 1,
+        "items": [
+          {
+            "sequence": 1,
+            "sim_time_seconds": 0,
+            "tick": 0,
+            "type": "reset"
+          }
+        ]
+      }
+    },
+    {
+      "name": "02-approach",
+      "scenario": "approach: player closes distance",
+      "screenshot": {
+        "path": "02-approach.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-21-27-965Z\\02-approach.png",
+        "bytes": 68843,
+        "sha256": "2b31e36429e4287dee7b4ca2bc3b907d965305202045d6527afb6532f70d0bb6",
+        "width": 1280,
+        "height": 720
+      },
+      "captured_at": "2026-10-22T17:21:30.952Z",
+      "engine_tick": 24,
+      "simulation_step": 24,
+      "paused": true,
+      "state": {
+        "step": 24,
+        "sim_time_seconds": 0.4,
+        "player_position": [
+          0,
+          0.000837122148368508,
+          2.97611093521118
+        ],
+        "player_health": 4,
+        "player_attack_phase": "idle",
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "none",
+        "enemy_position": [
+          0,
+          0.000546873547136784,
+          0.800000011920929
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "windup",
+        "enemy_phase_tick": 1,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "outcome": "playing",
+        "camera_position": [
+          1.10000002384186,
+          2.70083785057068,
+          7.81223678588867
+        ],
+        "camera_distance": 5.19621181488037,
+        "grounded": true,
+        "last_event_type": "enemy_windup",
+        "hash": "79d36fe91d64a2b96152e9cd97ea26547b5804c654bff52b00e7793cdd595047"
+      },
+      "event_types": [
+        "reset",
+        "enemy_windup"
+      ],
+      "events": {
+        "available": true,
+        "count": 2,
+        "items": [
+          {
+            "sequence": 1,
+            "sim_time_seconds": 0,
+            "tick": 0,
+            "type": "reset"
+          },
+          {
+            "distance": 2.24944424629211,
+            "sequence": 2,
+            "sim_time_seconds": 0.383333333333333,
+            "tick": 23,
+            "type": "enemy_windup"
+          }
+        ]
+      }
+    },
+    {
+      "name": "03-telegraph",
+      "scenario": "enemy windup: blade raised, HUD warning",
+      "screenshot": {
+        "path": "03-telegraph.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-21-27-965Z\\03-telegraph.png",
+        "bytes": 68897,
+        "sha256": "ca0a419352083f9ff5ec3cd80ff203fb13d1fefb42f1ecbf3bf5c0083b4c6a7d",
+        "width": 1280,
+        "height": 720
+      },
+      "captured_at": "2026-10-22T17:21:31.986Z",
+      "engine_tick": 47,
+      "simulation_step": 47,
+      "paused": true,
+      "state": {
+        "step": 47,
+        "sim_time_seconds": 0.783333333333334,
+        "player_position": [
+          0,
+          0.000839800282847136,
+          2.6399998664856
+        ],
+        "player_health": 4,
+        "player_attack_phase": "idle",
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "none",
+        "enemy_position": [
+          0,
+          0.000546873547136784,
+          0.800000011920929
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "windup",
+        "enemy_phase_tick": 24,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "outcome": "playing",
+        "camera_position": [
+          1.10000002384186,
+          2.70083951950073,
+          7.34009838104248
+        ],
+        "camera_distance": 5.06985425949097,
+        "grounded": true,
+        "last_event_type": "enemy_windup",
+        "hash": "62dd1f443fd0a323d931a7a9b7a4d70b059b75b48c817db34d4ce0452212c9cd"
+      },
+      "event_types": [
+        "reset",
+        "enemy_windup"
+      ],
+      "events": {
+        "available": true,
+        "count": 2,
+        "items": [
+          {
+            "sequence": 1,
+            "sim_time_seconds": 0,
+            "tick": 0,
+            "type": "reset"
+          },
+          {
+            "distance": 2.24944424629211,
+            "sequence": 2,
+            "sim_time_seconds": 0.383333333333333,
+            "tick": 23,
+            "type": "enemy_windup"
+          }
+        ]
+      }
+    },
+    {
+      "name": "04-parry-window",
+      "scenario": "deflection window: blade raised",
+      "screenshot": {
+        "path": "04-parry-window.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-21-27-965Z\\04-parry-window.png",
+        "bytes": 68664,
+        "sha256": "e1b765d1e42be3819eb6c497b35d79e6d129b00d5c6d9a1410074265bbf58c4e",
+        "width": 1280,
+        "height": 720
+      },
+      "captured_at": "2026-10-22T17:21:32.389Z",
+      "engine_tick": 50,
+      "simulation_step": 50,
+      "paused": true,
+      "state": {
+        "step": 50,
+        "sim_time_seconds": 0.833333333333334,
+        "player_position": [
+          0,
+          0.000839800282847136,
+          2.6399998664856
+        ],
+        "player_health": 4,
+        "player_attack_phase": "idle",
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 11,
+        "parry_result": "active",
+        "enemy_position": [
+          0,
+          0.000546873547136784,
+          0.800000011920929
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "windup",
+        "enemy_phase_tick": 27,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "outcome": "playing",
+        "camera_position": [
+          1.10000002384186,
+          2.70083951950073,
+          7.34002685546875
+        ],
+        "camera_distance": 5.06978845596313,
+        "grounded": true,
+        "last_event_type": "parry_started",
+        "hash": "c62cf93f0a8a61c520228744847773834a5b24c37e4949014b36b6f53f4d2e87"
+      },
+      "event_types": [
+        "reset",
+        "enemy_windup",
+        "parry_started"
+      ],
+      "events": {
+        "available": true,
+        "count": 3,
+        "items": [
+          {
+            "sequence": 1,
+            "sim_time_seconds": 0,
+            "tick": 0,
+            "type": "reset"
+          },
+          {
+            "distance": 2.24944424629211,
+            "sequence": 2,
+            "sim_time_seconds": 0.383333333333333,
+            "tick": 23,
+            "type": "enemy_windup"
+          },
+          {
+            "sequence": 3,
+            "sim_time_seconds": 0.800000000000001,
+            "tick": 48,
+            "type": "parry_started"
+          }
+        ]
+      }
+    },
+    {
+      "name": "05-deflect",
+      "scenario": "successful deflection: posture damage",
+      "screenshot": {
+        "path": "05-deflect.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-21-27-965Z\\05-deflect.png",
+        "bytes": 69780,
+        "sha256": "a2d011f90df7cadb579a961e3892d23ccbd4ee89515d84f1e336eb77e8c2b1bf",
+        "width": 1280,
+        "height": 720
+      },
+      "captured_at": "2026-10-22T17:21:32.876Z",
+      "engine_tick": 58,
+      "simulation_step": 58,
+      "paused": true,
+      "state": {
+        "step": 58,
+        "sim_time_seconds": 0.966666666666668,
+        "player_position": [
+          0,
+          0.000839800282847136,
+          2.6399998664856
+        ],
+        "player_health": 4,
+        "player_attack_phase": "idle",
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "success",
+        "enemy_position": [
+          0,
+          0.000839808431919664,
+          0.911666572093964
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 53.6,
+        "enemy_phase": "active",
+        "enemy_phase_tick": 5,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "outcome": "playing",
+        "camera_position": [
+          1.10000002384186,
+          2.70083951950073,
+          7.34000062942505
+        ],
+        "camera_distance": 5.06976413726807,
+        "grounded": true,
+        "last_event_type": "parry_success",
+        "hash": "b46cec7336efda865eac082cd356e736aa91e851f5013806a5f51ed3b2d8cc9d"
+      },
+      "event_types": [
+        "reset",
+        "enemy_windup",
+        "parry_started",
+        "enemy_active",
+        "parry_success"
+      ],
+      "events": {
+        "available": true,
+        "count": 5,
+        "items": [
+          {
+            "sequence": 1,
+            "sim_time_seconds": 0,
+            "tick": 0,
+            "type": "reset"
+          },
+          {
+            "distance": 2.24944424629211,
+            "sequence": 2,
+            "sim_time_seconds": 0.383333333333333,
+            "tick": 23,
+            "type": "enemy_windup"
+          },
+          {
+            "sequence": 3,
+            "sim_time_seconds": 0.800000000000001,
+            "tick": 48,
+            "type": "parry_started"
+          },
+          {
+            "sequence": 4,
+            "sim_time_seconds": 0.883333333333334,
+            "tick": 53,
+            "type": "enemy_active"
+          },
+          {
+            "enemy_phase": "active",
+            "enemy_posture": 55,
+            "sequence": 5,
+            "sim_time_seconds": 0.900000000000001,
+            "tick": 54,
+            "type": "parry_success"
+          }
+        ]
+      }
+    },
+    {
+      "name": "06-victory",
+      "scenario": "victory: enemy defeated",
+      "screenshot": {
+        "path": "06-victory.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-21-27-965Z\\06-victory.png",
+        "bytes": 76890,
+        "sha256": "86729fa611a77ba0d3699c50459d76b0ca009ff819f58e1030475aab81807222",
+        "width": 1280,
+        "height": 720
+      },
+      "captured_at": "2026-10-22T17:21:40.850Z",
+      "engine_tick": 287,
+      "simulation_step": 287,
+      "paused": true,
+      "state": {
+        "step": 287,
+        "sim_time_seconds": 4.78333333333332,
+        "player_position": [
+          0,
+          0.000839800282847136,
+          2.6399998664856
+        ],
+        "player_health": 4,
+        "player_attack_phase": "active",
+        "hitbox_active": true,
+        "last_hitbox_query_step": 287,
+        "parry_ticks": 0,
+        "parry_result": "success",
+        "enemy_position": [
+          0,
+          0.000833272002637386,
+          1.14499974250793
+        ],
+        "enemy_health": 0,
+        "enemy_posture": 79.2,
+        "enemy_phase": "defeated",
+        "enemy_phase_tick": 0,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": true,
+        "outcome": "victory",
+        "camera_position": [
+          1.10000002384186,
+          2.70083951950073,
+          7.34000015258789
+        ],
+        "camera_distance": 5.06976366043091,
+        "grounded": true,
+        "last_event_type": "victory",
+        "hash": "0a71836ffe89d9dce7c5f0dc504ad7f3a8a48e87251d9b8ebf19ad6a1d293a03"
+      },
+      "event_types": [
+        "reset",
+        "enemy_windup",
+        "parry_started",
+        "enemy_active",
+        "parry_success",
+        "attack_started",
+        "attack_active",
+        "player_hit_enemy",
+        "attack_recover",
+        "enemy_defeated",
+        "victory"
+      ],
+      "events": {
+        "available": true,
+        "count": 34,
+        "items": [
+          {
+            "sequence": 1,
+            "sim_time_seconds": 0,
+            "tick": 0,
+            "type": "reset"
+          },
+          {
+            "distance": 2.24944424629211,
+            "sequence": 2,
+            "sim_time_seconds": 0.383333333333333,
+            "tick": 23,
+            "type": "enemy_windup"
+          },
+          {
+            "sequence": 3,
+            "sim_time_seconds": 0.800000000000001,
+            "tick": 48,
+            "type": "parry_started"
+          },
+          {
+            "sequence": 4,
+            "sim_time_seconds": 0.883333333333334,
+            "tick": 53,
+            "type": "enemy_active"
+          },
+          {
+            "enemy_phase": "active",
+            "enemy_posture": 55,
+            "sequence": 5,
+            "sim_time_seconds": 0.900000000000001,
+            "tick": 54,
+            "type": "parry_success"
+          },
+          {
+            "sequence": 6,
+            "sim_time_seconds": 1.05,
+            "tick": 63,
+            "type": "attack_started"
+          },
+          {
+            "sequence": 7,
+            "sim_time_seconds": 1.13333333333333,
+            "tick": 68,
+            "type": "attack_active"
+          },
+          {
+            "enemy_health": 4,
+            "enemy_posture": 66.1,
+            "sequence": 8,
+            "sim_time_seconds": 1.15,
+            "tick": 69,
+            "type": "player_hit_enemy"
+          },
+          {
+            "sequence": 9,
+            "sim_time_seconds": 1.26666666666667,
+            "tick": 76,
+            "type": "attack_recover"
+          },
+          {
+            "distance": 1.72499990463257,
+            "sequence": 10,
+            "sim_time_seconds": 1.71666666666667,
+            "tick": 103,
+            "type": "enemy_windup"
+          },
+          {
+            "sequence": 11,
+            "sim_time_seconds": 2.13333333333333,
+            "tick": 128,
+            "type": "parry_started"
+          },
+          {
+            "sequence": 12,
+            "sim_time_seconds": 2.21666666666666,
+            "tick": 133,
+            "type": "enemy_active"
+          },
+          {
+            "enemy_phase": "active",
+            "enemy_posture": 97.9999999999999,
+            "sequence": 13,
+            "sim_time_seconds": 2.23333333333333,
+            "tick": 134,
+            "type": "parry_success"
+          },
+          {
+            "sequence": 14,
+            "sim_time_seconds": 2.38333333333333,
+            "tick": 143,
+            "type": "attack_started"
+          },
+          {
+            "sequence": 15,
+            "sim_time_seconds": 2.46666666666666,
+            "tick": 148,
+            "type": "attack_active"
+          },
+          {
+            "enemy_health": 3,
+            "enemy_posture": 0,
+            "sequence": 16,
+            "sim_time_seconds": 2.48333333333333,
+            "tick": 149,
+            "type": "player_hit_enemy"
+          },
+          {
+            "sequence": 17,
+            "sim_time_seconds": 2.6,
+            "tick": 156,
+            "type": "attack_recover"
+          },
+          {
+            "sequence": 18,
+            "sim_time_seconds": 2.93333333333333,
+            "tick": 176,
+            "type": "attack_started"
+          },
+          {
+            "sequence": 19,
+            "sim_time_seconds": 3.01666666666666,
+            "tick": 181,
+            "type": "attack_active"
+          },
+          {
+            "enemy_health": 2,
+            "enemy_posture": 16,
+            "sequence": 20,
+            "sim_time_seconds": 3.03333333333333,
+            "tick": 182,
+            "type": "player_hit_enemy"
+          },
+          {
+            "sequence": 21,
+            "sim_time_seconds": 3.14999999999999,
+            "tick": 189,
+            "type": "attack_recover"
+          },
+          {
+            "sequence": 22,
+            "sim_time_seconds": 3.48333333333333,
+            "tick": 209,
+            "type": "attack_started"
+          },
+          {
+            "sequence": 23,
+            "sim_time_seconds": 3.56666666666666,
+            "tick": 214,
+            "type": "attack_active"
+          },
+          {
+            "enemy_health": 1,
+            "enemy_posture": 32,
+            "sequence": 24,
+            "sim_time_seconds": 3.58333333333333,
+            "tick": 215,
+            "type": "player_hit_enemy"
+          },
+          {
+            "sequence": 25,
+            "sim_time_seconds": 3.69999999999999,
+            "tick": 222,
+            "type": "attack_recover"
+          },
+          {
+            "distance": 1.6100001335144,
+            "sequence": 26,
+            "sim_time_seconds": 4.01666666666666,
+            "tick": 241,
+            "type": "enemy_windup"
+          },
+          {
+            "sequence": 27,
+            "sim_time_seconds": 4.43333333333332,
+            "tick": 266,
+            "type": "parry_started"
+          },
+          {
+            "sequence": 28,
+            "sim_time_seconds": 4.51666666666666,
+            "tick": 271,
+            "type": "enemy_active"
+          },
+          {
+            "enemy_phase": "active",
+            "enemy_posture": 68.0999999999999,
+            "sequence": 29,
+            "sim_time_seconds": 4.53333333333332,
+            "tick": 272,
+            "type": "parry_success"
+          },
+          {
+            "sequence": 30,
+            "sim_time_seconds": 4.68333333333332,
+            "tick": 281,
+            "type": "attack_started"
+          },
+          {
+            "sequence": 31,
+            "sim_time_seconds": 4.76666666666666,
+            "tick": 286,
+            "type": "attack_active"
+          },
+          {
+            "enemy_health": 0,
+            "enemy_posture": 79.2,
+            "sequence": 32,
+            "sim_time_seconds": 4.78333333333332,
+            "tick": 287,
+            "type": "player_hit_enemy"
+          },
+          {
+            "sequence": 33,
+            "sim_time_seconds": 4.78333333333332,
+            "tick": 287,
+            "type": "enemy_defeated"
+          },
+          {
+            "sequence": 34,
+            "sim_time_seconds": 4.78333333333332,
+            "tick": 287,
+            "type": "victory"
+          }
+        ]
+      }
+    },
+    {
+      "name": "07-restart",
+      "scenario": "restart: initial state restored",
+      "screenshot": {
+        "path": "07-restart.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-21-27-965Z\\07-restart.png",
+        "bytes": 64913,
+        "sha256": "244b807cdd4f6e70a6bd208a640f9c07256686a35ccd9c75ea165cd610214a18",
+        "width": 1280,
+        "height": 720
+      },
+      "captured_at": "2026-10-22T17:21:41.238Z",
+      "engine_tick": 0,
+      "simulation_step": 0,
+      "paused": true,
+      "state": {
+        "step": 0,
+        "sim_time_seconds": 0,
+        "player_position": [
+          0,
+          0.0199999995529652,
+          4.40000009536743
+        ],
+        "player_health": 4,
+        "player_attack_phase": "idle",
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "none",
+        "enemy_position": [
+          0,
+          0.0199999995529652,
+          0.800000011920929
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "idle",
+        "enemy_phase_tick": 0,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "outcome": "playing",
+        "camera_position": [
+          1.10000002384186,
+          2.72000002861023,
+          9.10000038146973
+        ],
+        "camera_distance": 5.06976366043091,
+        "grounded": true,
+        "last_event_type": "reset",
+        "hash": "b43170fd735f3fcd0d3820cfb41947665dce1026a335d393dda8f436304772a4"
+      },
+      "event_types": [
+        "reset"
+      ],
+      "events": {
+        "available": true,
+        "count": 1,
+        "items": [
+          {
+            "sequence": 1,
+            "sim_time_seconds": 0,
+            "tick": 0,
+            "type": "reset"
+          }
+        ]
+      }
+    },
+    {
+      "name": "08-defeat",
+      "scenario": "defeat: player health reaches zero",
+      "screenshot": {
+        "path": "08-defeat.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-21-27-965Z\\08-defeat.png",
+        "bytes": 75195,
+        "sha256": "6a03e28a33052b9732ab650cab85ad470fc602965f8096b67ed500fb711e30a5",
+        "width": 1280,
+        "height": 720
+      },
+      "captured_at": "2026-10-22T17:21:51.508Z",
+      "engine_tick": 294,
+      "simulation_step": 294,
+      "paused": true,
+      "state": {
+        "step": 294,
+        "sim_time_seconds": 4.89999999999999,
+        "player_position": [
+          0,
+          0.000839814252685755,
+          2.42000007629395
+        ],
+        "player_health": 0,
+        "player_attack_phase": "idle",
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "none",
+        "enemy_position": [
+          0,
+          0.000834916718304157,
+          1.18833351135254
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "active",
+        "enemy_phase_tick": 1,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "outcome": "defeat",
+        "camera_position": [
+          1.10000002384186,
+          2.70083951950073,
+          7.12000036239624
+        ],
+        "camera_distance": 5.06976366043091,
+        "grounded": true,
+        "last_event_type": "player_defeated",
+        "hash": "bf467440fd9790e50de887301c3f80c40d3a707c70fc99ebd30a61990ff312ab"
+      },
+      "event_types": [
+        "reset",
+        "enemy_windup",
+        "enemy_active",
+        "enemy_hit_player",
+        "player_defeated"
+      ],
+      "events": {
+        "available": true,
+        "count": 14,
+        "items": [
+          {
+            "sequence": 1,
+            "sim_time_seconds": 0,
+            "tick": 0,
+            "type": "reset"
+          },
+          {
+            "distance": 2.24944424629211,
+            "sequence": 2,
+            "sim_time_seconds": 0.383333333333333,
+            "tick": 23,
+            "type": "enemy_windup"
+          },
+          {
+            "sequence": 3,
+            "sim_time_seconds": 0.883333333333334,
+            "tick": 53,
+            "type": "enemy_active"
+          },
+          {
+            "player_health": 3,
+            "sequence": 4,
+            "sim_time_seconds": 0.900000000000001,
+            "tick": 54,
+            "type": "enemy_hit_player"
+          },
+          {
+            "distance": 1.50499999523163,
+            "sequence": 5,
+            "sim_time_seconds": 1.71666666666667,
+            "tick": 103,
+            "type": "enemy_windup"
+          },
+          {
+            "sequence": 6,
+            "sim_time_seconds": 2.21666666666666,
+            "tick": 133,
+            "type": "enemy_active"
+          },
+          {
+            "player_health": 2,
+            "sequence": 7,
+            "sim_time_seconds": 2.23333333333333,
+            "tick": 134,
+            "type": "enemy_hit_player"
+          },
+          {
+            "distance": 1.38999998569489,
+            "sequence": 8,
+            "sim_time_seconds": 3.04999999999999,
+            "tick": 183,
+            "type": "enemy_windup"
+          },
+          {
+            "sequence": 9,
+            "sim_time_seconds": 3.54999999999999,
+            "tick": 213,
+            "type": "enemy_active"
+          },
+          {
+            "player_health": 1,
+            "sequence": 10,
+            "sim_time_seconds": 3.56666666666666,
+            "tick": 214,
+            "type": "enemy_hit_player"
+          },
+          {
+            "distance": 1.27499985694885,
+            "sequence": 11,
+            "sim_time_seconds": 4.38333333333332,
+            "tick": 263,
+            "type": "enemy_windup"
+          },
+          {
+            "sequence": 12,
+            "sim_time_seconds": 4.88333333333332,
+            "tick": 293,
+            "type": "enemy_active"
+          },
+          {
+            "player_health": 0,
+            "sequence": 13,
+            "sim_time_seconds": 4.89999999999999,
+            "tick": 294,
+            "type": "enemy_hit_player"
+          },
+          {
+            "sequence": 14,
+            "sim_time_seconds": 4.89999999999999,
+            "tick": 294,
+            "type": "player_defeated"
+          }
+        ]
+      }
+    },
+    {
+      "name": "09-final-restart",
+      "scenario": "restart after defeat",
+      "screenshot": {
+        "path": "09-final-restart.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-21-27-965Z\\09-final-restart.png",
+        "bytes": 64913,
+        "sha256": "244b807cdd4f6e70a6bd208a640f9c07256686a35ccd9c75ea165cd610214a18",
+        "width": 1280,
+        "height": 720
+      },
+      "captured_at": "2026-10-22T17:21:51.892Z",
+      "engine_tick": 0,
+      "simulation_step": 0,
+      "paused": true,
+      "state": {
+        "step": 0,
+        "sim_time_seconds": 0,
+        "player_position": [
+          0,
+          0.0199999995529652,
+          4.40000009536743
+        ],
+        "player_health": 4,
+        "player_attack_phase": "idle",
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "none",
+        "enemy_position": [
+          0,
+          0.0199999995529652,
+          0.800000011920929
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "idle",
+        "enemy_phase_tick": 0,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "outcome": "playing",
+        "camera_position": [
+          1.10000002384186,
+          2.72000002861023,
+          9.10000038146973
+        ],
+        "camera_distance": 5.06976366043091,
+        "grounded": true,
+        "last_event_type": "reset",
+        "hash": "b43170fd735f3fcd0d3820cfb41947665dce1026a335d393dda8f436304772a4"
+      },
+      "event_types": [
+        "reset"
+      ],
+      "events": {
+        "available": true,
+        "count": 1,
+        "items": [
+          {
+            "sequence": 1,
+            "sim_time_seconds": 0,
+            "tick": 0,
+            "type": "reset"
+          }
+        ]
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "windowed-session",
+      "ok": true,
+      "detail": "headless=false"
+    },
+    {
+      "name": "spawn-state-clean",
+      "ok": true,
+      "detail": "step=0 player_hp=4 enemy_hp=5"
+    },
+    {
+      "name": "player-approaches-enemy",
+      "ok": true,
+      "detail": "frames=23 distance=2.18"
+    },
+    {
+      "name": "enemy-telegraphs",
+      "ok": true,
+      "detail": "phase=windup tick=1"
+    },
+    {
+      "name": "parry-window-open",
+      "ok": true,
+      "detail": "parry_ticks=11 result=active"
+    },
+    {
+      "name": "deflect-registered",
+      "ok": true,
+      "detail": "result=success player_hp=4 event=true"
+    },
+    {
+      "name": "sword-damages-enemy",
+      "ok": true,
+      "detail": "frames=228 enemy_hp=0"
+    },
+    {
+      "name": "victory-reached",
+      "ok": true,
+      "detail": "frames=228 outcome=victory enemy_hp=0"
+    },
+    {
+      "name": "restart-clean",
+      "ok": true,
+      "detail": "step=0 player_hp=4 enemy_hp=5 outcome=playing"
+    },
+    {
+      "name": "defeat-reached",
+      "ok": true,
+      "detail": "frames=267 outcome=defeat player_hp=0"
+    },
+    {
+      "name": "no-engine-errors",
+      "ok": true,
+      "detail": "errors=0"
+    }
+  ],
+  "summary": {
+    "passed": 11,
+    "failed": 0,
+    "complete": true
+  },
+  "failure": null,
+  "engine_output": {
+    "stdout_lines": 4,
+    "stderr_lines": 0,
+    "stdout_file": "engine-stdout.log",
+    "stderr_file": "engine-stderr.log"
+  }
+}

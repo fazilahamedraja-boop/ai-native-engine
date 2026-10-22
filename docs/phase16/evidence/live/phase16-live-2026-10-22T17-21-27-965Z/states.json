@@ -1,0 +1,389 @@
+[
+  {
+    "name": "01-spawn",
+    "captured_at": "2026-10-22T17:21:29.744Z",
+    "engine_tick": 0,
+    "simulation_step": 0,
+    "state": {
+      "step": 0,
+      "sim_time_seconds": 0,
+      "player_position": [
+        0,
+        0.0199999995529652,
+        4.40000009536743
+      ],
+      "player_health": 4,
+      "player_attack_phase": "idle",
+      "hitbox_active": false,
+      "last_hitbox_query_step": -1,
+      "parry_ticks": 0,
+      "parry_result": "none",
+      "enemy_position": [
+        0,
+        0.0199999995529652,
+        0.800000011920929
+      ],
+      "enemy_health": 5,
+      "enemy_posture": 0,
+      "enemy_phase": "idle",
+      "enemy_phase_tick": 0,
+      "enemy_staggered": false,
+      "enemy_stagger_ticks": 0,
+      "enemy_defeated": false,
+      "outcome": "playing",
+      "camera_position": [
+        1.10000002384186,
+        2.72000002861023,
+        9.10000038146973
+      ],
+      "camera_distance": 5.06976366043091,
+      "grounded": true,
+      "last_event_type": "reset",
+      "hash": "b43170fd735f3fcd0d3820cfb41947665dce1026a335d393dda8f436304772a4"
+    }
+  },
+  {
+    "name": "02-approach",
+    "captured_at": "2026-10-22T17:21:30.952Z",
+    "engine_tick": 24,
+    "simulation_step": 24,
+    "state": {
+      "step": 24,
+      "sim_time_seconds": 0.4,
+      "player_position": [
+        0,
+        0.000837122148368508,
+        2.97611093521118
+      ],
+      "player_health": 4,
+      "player_attack_phase": "idle",
+      "hitbox_active": false,
+      "last_hitbox_query_step": -1,
+      "parry_ticks": 0,
+      "parry_result": "none",
+      "enemy_position": [
+        0,
+        0.000546873547136784,
+        0.800000011920929
+      ],
+      "enemy_health": 5,
+      "enemy_posture": 0,
+      "enemy_phase": "windup",
+      "enemy_phase_tick": 1,
+      "enemy_staggered": false,
+      "enemy_stagger_ticks": 0,
+      "enemy_defeated": false,
+      "outcome": "playing",
+      "camera_position": [
+        1.10000002384186,
+        2.70083785057068,
+        7.81223678588867
+      ],
+      "camera_distance": 5.19621181488037,
+      "grounded": true,
+      "last_event_type": "enemy_windup",
+      "hash": "79d36fe91d64a2b96152e9cd97ea26547b5804c654bff52b00e7793cdd595047"
+    }
+  },
+  {
+    "name": "03-telegraph",
+    "captured_at": "2026-10-22T17:21:31.986Z",
+    "engine_tick": 47,
+    "simulation_step": 47,
+    "state": {
+      "step": 47,
+      "sim_time_seconds": 0.783333333333334,
+      "player_position": [
+        0,
+        0.000839800282847136,
+        2.6399998664856
+      ],
+      "player_health": 4,
+      "player_attack_phase": "idle",
+      "hitbox_active": false,
+      "last_hitbox_query_step": -1,
+      "parry_ticks": 0,
+      "parry_result": "none",
+      "enemy_position": [
+        0,
+        0.000546873547136784,
+        0.800000011920929
+      ],
+      "enemy_health": 5,
+      "enemy_posture": 0,
+      "enemy_phase": "windup",
+      "enemy_phase_tick": 24,
+      "enemy_staggered": false,
+      "enemy_stagger_ticks": 0,
+      "enemy_defeated": false,
+      "outcome": "playing",
+      "camera_position": [
+        1.10000002384186,
+        2.70083951950073,
+        7.34009838104248
+      ],
+      "camera_distance": 5.06985425949097,
+      "grounded": true,
+      "last_event_type": "enemy_windup",
+      "hash": "62dd1f443fd0a323d931a7a9b7a4d70b059b75b48c817db34d4ce0452212c9cd"
+    }
+  },
+  {
+    "name": "04-parry-window",
+    "captured_at": "2026-10-22T17:21:32.389Z",
+    "engine_tick": 50,
+    "simulation_step": 50,
+    "state": {
+      "step": 50,
+      "sim_time_seconds": 0.833333333333334,
+      "player_position": [
+        0,
+        0.000839800282847136,
+        2.6399998664856
+      ],
+      "player_health": 4,
+      "player_attack_phase": "idle",
+      "hitbox_active": false,
+      "last_hitbox_query_step": -1,
+      "parry_ticks": 11,
+      "parry_result": "active",
+      "enemy_position": [
+        0,
+        0.000546873547136784,
+        0.800000011920929
+      ],
+      "enemy_health": 5,
+      "enemy_posture": 0,
+      "enemy_phase": "windup",
+      "enemy_phase_tick": 27,
+      "enemy_staggered": false,
+      "enemy_stagger_ticks": 0,
+      "enemy_defeated": false,
+      "outcome": "playing",
+      "camera_position": [
+        1.10000002384186,
+        2.70083951950073,
+        7.34002685546875
+      ],
+      "camera_distance": 5.06978845596313,
+      "grounded": true,
+      "last_event_type": "parry_started",
+      "hash": "c62cf93f0a8a61c520228744847773834a5b24c37e4949014b36b6f53f4d2e87"
+    }
+  },
+  {
+    "name": "05-deflect",
+    "captured_at": "2026-10-22T17:21:32.876Z",
+    "engine_tick": 58,
+    "simulation_step": 58,
+    "state": {
+      "step": 58,
+      "sim_time_seconds": 0.966666666666668,
+      "player_position": [
+        0,
+        0.000839800282847136,
+        2.6399998664856
+      ],
+      "player_health": 4,
+      "player_attack_phase": "idle",
+      "hitbox_active": false,
+      "last_hitbox_query_step": -1,
+      "parry_ticks": 0,
+      "parry_result": "success",
+      "enemy_position": [
+        0,
+        0.000839808431919664,
+        0.911666572093964
+      ],
+      "enemy_health": 5,
+      "enemy_posture": 53.6,
+      "enemy_phase": "active",
+      "enemy_phase_tick": 5,
+      "enemy_staggered": false,
+      "enemy_stagger_ticks": 0,
+      "enemy_defeated": false,
+      "outcome": "playing",
+      "camera_position": [
+        1.10000002384186,
+        2.70083951950073,
+        7.34000062942505
+      ],
+      "camera_distance": 5.06976413726807,
+      "grounded": true,
+      "last_event_type": "parry_success",
+      "hash": "b46cec7336efda865eac082cd356e736aa91e851f5013806a5f51ed3b2d8cc9d"
+    }
+  },
+  {
+    "name": "06-victory",
+    "captured_at": "2026-10-22T17:21:40.850Z",
+    "engine_tick": 287,
+    "simulation_step": 287,
+    "state": {
+      "step": 287,
+      "sim_time_seconds": 4.78333333333332,
+      "player_position": [
+        0,
+        0.000839800282847136,
+        2.6399998664856
+      ],
+      "player_health": 4,
+      "player_attack_phase": "active",
+      "hitbox_active": true,
+      "last_hitbox_query_step": 287,
+      "parry_ticks": 0,
+      "parry_result": "success",
+      "enemy_position": [
+        0,
+        0.000833272002637386,
+        1.14499974250793
+      ],
+      "enemy_health": 0,
+      "enemy_posture": 79.2,
+      "enemy_phase": "defeated",
+      "enemy_phase_tick": 0,
+      "enemy_staggered": false,
+      "enemy_stagger_ticks": 0,
+      "enemy_defeated": true,
+      "outcome": "victory",
+      "camera_position": [
+        1.10000002384186,
+        2.70083951950073,
+        7.34000015258789
+      ],
+      "camera_distance": 5.06976366043091,
+      "grounded": true,
+      "last_event_type": "victory",
+      "hash": "0a71836ffe89d9dce7c5f0dc504ad7f3a8a48e87251d9b8ebf19ad6a1d293a03"
+    }
+  },
+  {
+    "name": "07-restart",
+    "captured_at": "2026-10-22T17:21:41.238Z",
+    "engine_tick": 0,
+    "simulation_step": 0,
+    "state": {
+      "step": 0,
+      "sim_time_seconds": 0,
+      "player_position": [
+        0,
+        0.0199999995529652,
+        4.40000009536743
+      ],
+      "player_health": 4,
+      "player_attack_phase": "idle",
+      "hitbox_active": false,
+      "last_hitbox_query_step": -1,
+      "parry_ticks": 0,
+      "parry_result": "none",
+      "enemy_position": [
+        0,
+        0.0199999995529652,
+        0.800000011920929
+      ],
+      "enemy_health": 5,
+      "enemy_posture": 0,
+      "enemy_phase": "idle",
+      "enemy_phase_tick": 0,
+      "enemy_staggered": false,
+      "enemy_stagger_ticks": 0,
+      "enemy_defeated": false,
+      "outcome": "playing",
+      "camera_position": [
+        1.10000002384186,
+        2.72000002861023,
+        9.10000038146973
+      ],
+      "camera_distance": 5.06976366043091,
+      "grounded": true,
+      "last_event_type": "reset",
+      "hash": "b43170fd735f3fcd0d3820cfb41947665dce1026a335d393dda8f436304772a4"
+    }
+  },
+  {
+    "name": "08-defeat",
+    "captured_at": "2026-10-22T17:21:51.508Z",
+    "engine_tick": 294,
+    "simulation_step": 294,
+    "state": {
+      "step": 294,
+      "sim_time_seconds": 4.89999999999999,
+      "player_position": [
+        0,
+        0.000839814252685755,
+        2.42000007629395
+      ],
+      "player_health": 0,
+      "player_attack_phase": "idle",
+      "hitbox_active": false,
+      "last_hitbox_query_step": -1,
+      "parry_ticks": 0,
+      "parry_result": "none",
+      "enemy_position": [
+        0,
+        0.000834916718304157,
+        1.18833351135254
+      ],
+      "enemy_health": 5,
+      "enemy_posture": 0,
+      "enemy_phase": "active",
+      "enemy_phase_tick": 1,
+      "enemy_staggered": false,
+      "enemy_stagger_ticks": 0,
+      "enemy_defeated": false,
+      "outcome": "defeat",
+      "camera_position": [
+        1.10000002384186,
+        2.70083951950073,
+        7.12000036239624
+      ],
+      "camera_distance": 5.06976366043091,
+      "grounded": true,
+      "last_event_type": "player_defeated",
+      "hash": "bf467440fd9790e50de887301c3f80c40d3a707c70fc99ebd30a61990ff312ab"
+    }
+  },
+  {
+    "name": "09-final-restart",
+    "captured_at": "2026-10-22T17:21:51.892Z",
+    "engine_tick": 0,
+    "simulation_step": 0,
+    "state": {
+      "step": 0,
+      "sim_time_seconds": 0,
+      "player_position": [
+        0,
+        0.0199999995529652,
+        4.40000009536743
+      ],
+      "player_health": 4,
+      "player_attack_phase": "idle",
+      "hitbox_active": false,
+      "last_hitbox_query_step": -1,
+      "parry_ticks": 0,
+      "parry_result": "none",
+      "enemy_position": [
+        0,
+        0.0199999995529652,
+        0.800000011920929
+      ],
+      "enemy_health": 5,
+      "enemy_posture": 0,
+      "enemy_phase": "idle",
+      "enemy_phase_tick": 0,
+      "enemy_staggered": false,
+      "enemy_stagger_ticks": 0,
+      "enemy_defeated": false,
+      "outcome": "playing",
+      "camera_position": [
+        1.10000002384186,
+        2.72000002861023,
+        9.10000038146973
+      ],
+      "camera_distance": 5.06976366043091,
+      "grounded": true,
+      "last_event_type": "reset",
+      "hash": "b43170fd735f3fcd0d3820cfb41947665dce1026a335d393dda8f436304772a4"
+    }
+  }
+]

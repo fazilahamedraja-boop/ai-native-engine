@@ -1,0 +1,841 @@
+{
+  "schema": "phase16.evidence-manifest.v1",
+  "created_at": "2026-10-22T17:57:57.250Z",
+  "phase": 16,
+  "normalization": {
+    "utf16_to_utf8": [
+      "docs/phase16/evidence/in-engine/run_game_tests.json",
+      "docs/phase16/evidence/regression/baseline-node-test.log",
+      "docs/phase16/evidence/regression/final-npm-test.log"
+    ],
+    "note": "PowerShell redirection wrote these logs as UTF-16LE; they were converted to UTF-8 without changing the text so they are reviewable and machine-readable. The content is otherwise the raw run output."
+  },
+  "authoritative_live_run": "evidence/live/phase16-live-2026-10-22T17-21-27-965Z",
+  "summary": {
+    "in_engine": {
+      "passed": 18,
+      "failed": 0
+    },
+    "windowed": {
+      "passed": 11,
+      "failed": 0
+    },
+    "agent_repair": "passed",
+    "export_probe": {
+      "passed": 6,
+      "failed": 0
+    },
+    "regression_after": {
+      "passed": 65,
+      "failed": 0
+    }
+  },
+  "in_engine": {
+    "log": {
+      "path": "docs/phase16/evidence/in-engine/run_game_tests.json",
+      "bytes": 28529,
+      "sha256": "afa50d0f90fb6af6af969e5c1dc6a54eaf6b90d8ff58811232e70853e5bbea31"
+    },
+    "command": "node controller/harness.mjs test --project game --script res://tests/run_game_tests.gd --json",
+    "passed": 18,
+    "failed": 0,
+    "duration_ms": 14265,
+    "cases": [
+      {
+        "name": "game-startup",
+        "passed": true,
+        "detail": "grounded=true outcome=playing events=1"
+      },
+      {
+        "name": "game-player-moves-and-stays-grounded",
+        "passed": true,
+        "detail": "dz=2.880 y=0.001 grounded=true facing=0.0"
+      },
+      {
+        "name": "game-camera-follows",
+        "passed": true,
+        "detail": "distance=5.20 moved=1.73 player_moved=1.86 dot=1.0000"
+      },
+      {
+        "name": "game-camera-avoids-wall-clipping",
+        "passed": true,
+        "detail": "distance=1.58 cam_z=11.65 player_z=11.66"
+      },
+      {
+        "name": "game-attack-windup-cannot-damage",
+        "passed": true,
+        "detail": "phase=windup health=5 hitbox=false"
+      },
+      {
+        "name": "game-attack-hits-enemy-once",
+        "passed": true,
+        "detail": "health=4 hit_events=1"
+      },
+      {
+        "name": "game-attack-no-damage-outside-window",
+        "passed": true,
+        "detail": "health=4 hitbox=false"
+      },
+      {
+        "name": "game-attack-facing-away-misses",
+        "passed": true,
+        "detail": "health=5 hit_events=0"
+      },
+      {
+        "name": "game-enemy-damages-player",
+        "passed": true,
+        "detail": "player_health=3 hits=1 phase=active"
+      },
+      {
+        "name": "game-parry-success",
+        "passed": true,
+        "detail": "result=success player_health=4 posture=50.4 parry_events=1"
+      },
+      {
+        "name": "game-parry-mistimed-does-not-register",
+        "passed": true,
+        "detail": "player_health=3 result=expired parry_events=0"
+      },
+      {
+        "name": "game-enemy-stagger-transition",
+        "passed": true,
+        "detail": "staggered=true posture=0.00 ticks=63"
+      },
+      {
+        "name": "game-staggered-enemy-cannot-attack",
+        "passed": true,
+        "detail": "player_health=4"
+      },
+      {
+        "name": "game-enemy-defeat-victory",
+        "passed": true,
+        "detail": "health=0 defeated=true outcome=victory"
+      },
+      {
+        "name": "game-player-defeat",
+        "passed": true,
+        "detail": "health=0 outcome=defeat"
+      },
+      {
+        "name": "game-restart-restores-initial-state",
+        "passed": true,
+        "detail": "step=0 player_hp=4 enemy_hp=5 outcome=playing event=reset"
+      },
+      {
+        "name": "game-event-stream",
+        "passed": true,
+        "detail": "count=4 ordered=true types=[\"reset\", \"attack_started\", \"attack_active\", \"attack_recover\"]"
+      },
+      {
+        "name": "game-hud-reflects-state",
+        "passed": true,
+        "detail": "hud_lines=6"
+      }
+    ]
+  },
+  "live": {
+    "run_manifest": {
+      "path": "docs/phase16/evidence/live/phase16-live-2026-10-22T17-21-27-965Z/manifest.json",
+      "bytes": 30029,
+      "sha256": "e06e658687059c76422897790aa3894ae7160b5f615e0b335ca3c8e390b41f47"
+    },
+    "states": {
+      "path": "docs/phase16/evidence/live/phase16-live-2026-10-22T17-21-27-965Z/states.json",
+      "bytes": 10172,
+      "sha256": "39c66836a0bbe217c0ffc15f03fab77409234afa9c6361191d1080aec38c4041"
+    },
+    "events": {
+      "path": "docs/phase16/evidence/live/phase16-live-2026-10-22T17-21-27-965Z/events.json",
+      "bytes": 10377,
+      "sha256": "e4a312ef4c88315a1f92532166bed1c59fade942a13af6c0de34245884cf3593"
+    },
+    "engine_stdout": {
+      "path": "docs/phase16/evidence/live/phase16-live-2026-10-22T17-21-27-965Z/engine-stdout.log",
+      "bytes": 227,
+      "sha256": "54d95f5d8a75a07b554d60104cf11e3504c38a651c678db5177fe8bd4e1ee4f8"
+    },
+    "engine_stderr": {
+      "path": "docs/phase16/evidence/live/phase16-live-2026-10-22T17-21-27-965Z/engine-stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    "checks": [
+      {
+        "name": "windowed-session",
+        "ok": true,
+        "detail": "headless=false"
+      },
+      {
+        "name": "spawn-state-clean",
+        "ok": true,
+        "detail": "step=0 player_hp=4 enemy_hp=5"
+      },
+      {
+        "name": "player-approaches-enemy",
+        "ok": true,
+        "detail": "frames=23 distance=2.18"
+      },
+      {
+        "name": "enemy-telegraphs",
+        "ok": true,
+        "detail": "phase=windup tick=1"
+      },
+      {
+        "name": "parry-window-open",
+        "ok": true,
+        "detail": "parry_ticks=11 result=active"
+      },
+      {
+        "name": "deflect-registered",
+        "ok": true,
+        "detail": "result=success player_hp=4 event=true"
+      },
+      {
+        "name": "sword-damages-enemy",
+        "ok": true,
+        "detail": "frames=228 enemy_hp=0"
+      },
+      {
+        "name": "victory-reached",
+        "ok": true,
+        "detail": "frames=228 outcome=victory enemy_hp=0"
+      },
+      {
+        "name": "restart-clean",
+        "ok": true,
+        "detail": "step=0 player_hp=4 enemy_hp=5 outcome=playing"
+      },
+      {
+        "name": "defeat-reached",
+        "ok": true,
+        "detail": "frames=267 outcome=defeat player_hp=0"
+      },
+      {
+        "name": "no-engine-errors",
+        "ok": true,
+        "detail": "errors=0"
+      }
+    ],
+    "captures": [
+      {
+        "file": "docs/phase16/evidence/live/phase16-live-2026-10-22T17-21-27-965Z/01-spawn.png",
+        "sha256": "05c4207da00e60a2ed4e061f2dc086e5be16d7fc96693318b0feeb510ecdeb11",
+        "bytes": 64913,
+        "width": 1280,
+        "height": 720,
+        "engine_tick": 0,
+        "simulation_step": 0,
+        "paused": true,
+        "captured_at": "2026-10-22T17:21:29.744Z",
+        "state": {
+          "step": 0,
+          "player_position": [
+            0,
+            0.0199999995529652,
+            4.40000009536743
+          ],
+          "enemy_position": [
+            0,
+            0.0199999995529652,
+            0.800000011920929
+          ],
+          "player_health": 4,
+          "enemy_health": 5,
+          "enemy_posture": 0,
+          "enemy_phase": "idle",
+          "parry_result": "none",
+          "parry_ticks": 0,
+          "outcome": "playing"
+        },
+        "event_types": [
+          "reset"
+        ],
+        "claim": "Clean spawn: player 4 HP, enemy 5 HP, step 0, outcome playing.",
+        "supports_checks": [
+          "windowed-session",
+          "spawn-state-clean"
+        ]
+      },
+      {
+        "file": "docs/phase16/evidence/live/phase16-live-2026-10-22T17-21-27-965Z/02-approach.png",
+        "sha256": "2b31e36429e4287dee7b4ca2bc3b907d965305202045d6527afb6532f70d0bb6",
+        "bytes": 68843,
+        "width": 1280,
+        "height": 720,
+        "engine_tick": 24,
+        "simulation_step": 24,
+        "paused": true,
+        "captured_at": "2026-10-22T17:21:30.952Z",
+        "state": {
+          "step": 24,
+          "player_position": [
+            0,
+            0.000837122148368508,
+            2.97611093521118
+          ],
+          "enemy_position": [
+            0,
+            0.000546873547136784,
+            0.800000011920929
+          ],
+          "player_health": 4,
+          "enemy_health": 5,
+          "enemy_posture": 0,
+          "enemy_phase": "windup",
+          "parry_result": "none",
+          "parry_ticks": 0,
+          "outcome": "playing"
+        },
+        "event_types": [
+          "reset",
+          "enemy_windup"
+        ],
+        "claim": "Player closes from 3.6 m to 2.18 m while the enemy enters windup.",
+        "supports_checks": [
+          "player-approaches-enemy",
+          "enemy-telegraphs"
+        ]
+      },
+      {
+        "file": "docs/phase16/evidence/live/phase16-live-2026-10-22T17-21-27-965Z/03-telegraph.png",
+        "sha256": "ca0a419352083f9ff5ec3cd80ff203fb13d1fefb42f1ecbf3bf5c0083b4c6a7d",
+        "bytes": 68897,
+        "width": 1280,
+        "height": 720,
+        "engine_tick": 47,
+        "simulation_step": 47,
+        "paused": true,
+        "captured_at": "2026-10-22T17:21:31.986Z",
+        "state": {
+          "step": 47,
+          "player_position": [
+            0,
+            0.000839800282847136,
+            2.6399998664856
+          ],
+          "enemy_position": [
+            0,
+            0.000546873547136784,
+            0.800000011920929
+          ],
+          "player_health": 4,
+          "enemy_health": 5,
+          "enemy_posture": 0,
+          "enemy_phase": "windup",
+          "parry_result": "none",
+          "parry_ticks": 0,
+          "outcome": "playing"
+        },
+        "event_types": [
+          "reset",
+          "enemy_windup"
+        ],
+        "claim": "Telegraphed windup is visible: emissive blade and HUD warning.",
+        "supports_checks": [
+          "enemy-telegraphs"
+        ]
+      },
+      {
+        "file": "docs/phase16/evidence/live/phase16-live-2026-10-22T17-21-27-965Z/04-parry-window.png",
+        "sha256": "e1b765d1e42be3819eb6c497b35d79e6d129b00d5c6d9a1410074265bbf58c4e",
+        "bytes": 68664,
+        "width": 1280,
+        "height": 720,
+        "engine_tick": 50,
+        "simulation_step": 50,
+        "paused": true,
+        "captured_at": "2026-10-22T17:21:32.389Z",
+        "state": {
+          "step": 50,
+          "player_position": [
+            0,
+            0.000839800282847136,
+            2.6399998664856
+          ],
+          "enemy_position": [
+            0,
+            0.000546873547136784,
+            0.800000011920929
+          ],
+          "player_health": 4,
+          "enemy_health": 5,
+          "enemy_posture": 0,
+          "enemy_phase": "windup",
+          "parry_result": "active",
+          "parry_ticks": 11,
+          "outcome": "playing"
+        },
+        "event_types": [
+          "reset",
+          "enemy_windup",
+          "parry_started"
+        ],
+        "claim": "Deflect window active with 11 of 14 ticks remaining.",
+        "supports_checks": [
+          "parry-window-open"
+        ]
+      },
+      {
+        "file": "docs/phase16/evidence/live/phase16-live-2026-10-22T17-21-27-965Z/05-deflect.png",
+        "sha256": "a2d011f90df7cadb579a961e3892d23ccbd4ee89515d84f1e336eb77e8c2b1bf",
+        "bytes": 69780,
+        "width": 1280,
+        "height": 720,
+        "engine_tick": 58,
+        "simulation_step": 58,
+        "paused": true,
+        "captured_at": "2026-10-22T17:21:32.876Z",
+        "state": {
+          "step": 58,
+          "player_position": [
+            0,
+            0.000839800282847136,
+            2.6399998664856
+          ],
+          "enemy_position": [
+            0,
+            0.000839808431919664,
+            0.911666572093964
+          ],
+          "player_health": 4,
+          "enemy_health": 5,
+          "enemy_posture": 53.6,
+          "enemy_phase": "active",
+          "parry_result": "success",
+          "parry_ticks": 0,
+          "outcome": "playing"
+        },
+        "event_types": [
+          "reset",
+          "enemy_windup",
+          "parry_started",
+          "enemy_active",
+          "parry_success"
+        ],
+        "claim": "Deflect resolved: success, player HP 4, enemy posture 53.6, no hit taken.",
+        "supports_checks": [
+          "deflect-registered"
+        ]
+      },
+      {
+        "file": "docs/phase16/evidence/live/phase16-live-2026-10-22T17-21-27-965Z/06-victory.png",
+        "sha256": "86729fa611a77ba0d3699c50459d76b0ca009ff819f58e1030475aab81807222",
+        "bytes": 76890,
+        "width": 1280,
+        "height": 720,
+        "engine_tick": 287,
+        "simulation_step": 287,
+        "paused": true,
+        "captured_at": "2026-10-22T17:21:40.850Z",
+        "state": {
+          "step": 287,
+          "player_position": [
+            0,
+            0.000839800282847136,
+            2.6399998664856
+          ],
+          "enemy_position": [
+            0,
+            0.000833272002637386,
+            1.14499974250793
+          ],
+          "player_health": 4,
+          "enemy_health": 0,
+          "enemy_posture": 79.2,
+          "enemy_phase": "defeated",
+          "parry_result": "success",
+          "parry_ticks": 0,
+          "outcome": "victory"
+        },
+        "event_types": [
+          "reset",
+          "enemy_windup",
+          "parry_started",
+          "enemy_active",
+          "parry_success",
+          "attack_started",
+          "attack_active",
+          "player_hit_enemy",
+          "attack_recover",
+          "enemy_defeated",
+          "victory"
+        ],
+        "claim": "Enemy defeated at 0 HP; victory outcome.",
+        "supports_checks": [
+          "sword-damages-enemy",
+          "victory-reached"
+        ]
+      },
+      {
+        "file": "docs/phase16/evidence/live/phase16-live-2026-10-22T17-21-27-965Z/07-restart.png",
+        "sha256": "244b807cdd4f6e70a6bd208a640f9c07256686a35ccd9c75ea165cd610214a18",
+        "bytes": 64913,
+        "width": 1280,
+        "height": 720,
+        "engine_tick": 0,
+        "simulation_step": 0,
+        "paused": true,
+        "captured_at": "2026-10-22T17:21:41.238Z",
+        "state": {
+          "step": 0,
+          "player_position": [
+            0,
+            0.0199999995529652,
+            4.40000009536743
+          ],
+          "enemy_position": [
+            0,
+            0.0199999995529652,
+            0.800000011920929
+          ],
+          "player_health": 4,
+          "enemy_health": 5,
+          "enemy_posture": 0,
+          "enemy_phase": "idle",
+          "parry_result": "none",
+          "parry_ticks": 0,
+          "outcome": "playing"
+        },
+        "event_types": [
+          "reset"
+        ],
+        "claim": "Restart restores step 0, 4/5 HP, playing.",
+        "supports_checks": [
+          "restart-clean"
+        ]
+      },
+      {
+        "file": "docs/phase16/evidence/live/phase16-live-2026-10-22T17-21-27-965Z/08-defeat.png",
+        "sha256": "6a03e28a33052b9732ab650cab85ad470fc602965f8096b67ed500fb711e30a5",
+        "bytes": 75195,
+        "width": 1280,
+        "height": 720,
+        "engine_tick": 294,
+        "simulation_step": 294,
+        "paused": true,
+        "captured_at": "2026-10-22T17:21:51.508Z",
+        "state": {
+          "step": 294,
+          "player_position": [
+            0,
+            0.000839814252685755,
+            2.42000007629395
+          ],
+          "enemy_position": [
+            0,
+            0.000834916718304157,
+            1.18833351135254
+          ],
+          "player_health": 0,
+          "enemy_health": 5,
+          "enemy_posture": 0,
+          "enemy_phase": "active",
+          "parry_result": "none",
+          "parry_ticks": 0,
+          "outcome": "defeat"
+        },
+        "event_types": [
+          "reset",
+          "enemy_windup",
+          "enemy_active",
+          "enemy_hit_player",
+          "player_defeated"
+        ],
+        "claim": "Player defeated at 0 HP after four enemy blows.",
+        "supports_checks": [
+          "defeat-reached"
+        ]
+      },
+      {
+        "file": "docs/phase16/evidence/live/phase16-live-2026-10-22T17-21-27-965Z/09-final-restart.png",
+        "sha256": "244b807cdd4f6e70a6bd208a640f9c07256686a35ccd9c75ea165cd610214a18",
+        "bytes": 64913,
+        "width": 1280,
+        "height": 720,
+        "engine_tick": 0,
+        "simulation_step": 0,
+        "paused": true,
+        "captured_at": "2026-10-22T17:21:51.892Z",
+        "state": {
+          "step": 0,
+          "player_position": [
+            0,
+            0.0199999995529652,
+            4.40000009536743
+          ],
+          "enemy_position": [
+            0,
+            0.0199999995529652,
+            0.800000011920929
+          ],
+          "player_health": 4,
+          "enemy_health": 5,
+          "enemy_posture": 0,
+          "enemy_phase": "idle",
+          "parry_result": "none",
+          "parry_ticks": 0,
+          "outcome": "playing"
+        },
+        "event_types": [
+          "reset"
+        ],
+        "claim": "Second restart returns to the same step-0 composition.",
+        "supports_checks": [
+          "restart-clean"
+        ]
+      }
+    ],
+    "tick_correlation": {
+      "all_equal": true,
+      "note": "Every capture has engine_tick == simulation_step == state.step; the PNG is taken while the tree is paused at that step."
+    },
+    "reset_identity": {
+      "restart_and_final_byte_identical": true,
+      "spawn_vs_restart": "Same 64,913 bytes and identical step-0 state; exactly one pixel differs by one channel level at (716,309). Measured with PIL; treated as renderer nondeterminism, not a state difference.",
+      "state_equality": {
+        "player_position": [
+          0,
+          0.0199999995529652,
+          4.40000009536743
+        ],
+        "enemy_position": [
+          0,
+          0.0199999995529652,
+          0.800000011920929
+        ],
+        "player_health": 4,
+        "enemy_health": 5,
+        "outcome": "playing",
+        "restart_matches": true
+      }
+    },
+    "engine_errors": "errors=0"
+  },
+  "agent_runs": {
+    "passed": {
+      "run_id": "2026-10-22T17-30-08-599Z-parry-window-repair",
+      "manifest": {
+        "path": "docs/phase16/agent-runs/2026-10-22T17-30-08-599Z-parry-window-repair/manifest.json",
+        "bytes": 7682,
+        "sha256": "28ef6e0f4674532ccb284a589909472025a6d0e0465bd9b3c107bbe6967e481b"
+      },
+      "task": {
+        "path": "docs/phase16/agent-runs/2026-10-22T17-30-08-599Z-parry-window-repair/TASK.md",
+        "bytes": 1932,
+        "sha256": "5ae0a0c2ade6f50896d6c476970f14d9b37206efac0e413385b3202a1bad2d10"
+      },
+      "defect": {
+        "path": "docs/phase16/agent-runs/2026-10-22T17-30-08-599Z-parry-window-repair/defect.json",
+        "bytes": 493,
+        "sha256": "baa6470532813d05f504f3b04f14369f43418816cf554c1038f9cb879139a6fc"
+      },
+      "diff": {
+        "path": "docs/phase16/agent-runs/2026-10-22T17-30-08-599Z-parry-window-repair/repair.diff",
+        "bytes": 108,
+        "sha256": "8eafa4cd86b7400fdb5c7f5eec57155cb2023572128783aff9a7fa344cb98e4f"
+      },
+      "opencode_jsonl": {
+        "path": "docs/phase16/agent-runs/2026-10-22T17-30-08-599Z-parry-window-repair/logs/opencode.jsonl",
+        "bytes": 157891,
+        "sha256": "07e972377d7ee9da1c94b3169683dadce7385e2bf5071ead981cbc2525f10906"
+      },
+      "before_tests": {
+        "path": "docs/phase16/agent-runs/2026-10-22T17-30-08-599Z-parry-window-repair/logs/before-tests.json",
+        "bytes": 28178,
+        "sha256": "6e98ea4185766b3a34b4ab79fe06ec409c78df71dd5fd394dae2d23a74b1795c"
+      },
+      "after_tests": {
+        "path": "docs/phase16/agent-runs/2026-10-22T17-30-08-599Z-parry-window-repair/logs/after-tests.json",
+        "bytes": 28128,
+        "sha256": "2471008ea30f644a586c3cd35600f3d80eedc339162fe47867f695410104b4bd"
+      },
+      "verification_output": {
+        "path": "docs/phase16/agent-runs/2026-10-22T17-30-08-599Z-parry-window-repair/verification-test-output.txt",
+        "bytes": 23532,
+        "sha256": "eadc9f55b5e7669b7c3d107128162e7ef286f25818b4245581cf89891c0f1d05"
+      },
+      "status": "passed",
+      "model": "opencode/deepseek-v4.1-flash-free",
+      "opencode_version": "opencode v2.0.32",
+      "tool_events": 22,
+      "tools": [
+        "edit",
+        "glob",
+        "grep",
+        "read"
+      ],
+      "before_failing": [
+        "game-parry-mistimed-does-not-register"
+      ],
+      "changed_files": [
+        "scripts/game_world.gd"
+      ],
+      "oracle_unchanged": true,
+      "after_ok": true,
+      "after_failing": [],
+      "sandbox_removed": true,
+      "orphans": []
+    },
+    "integration_failure": {
+      "run_id": "2026-10-22T17-29-06-489Z-parry-window-repair",
+      "manifest": {
+        "path": "docs/phase16/agent-runs/2026-10-22T17-29-06-489Z-parry-window-repair/manifest.json",
+        "bytes": 2346,
+        "sha256": "4e4bb31040c61541deac7281bd18493596be40a7c511dc4bd29d667466c8322f"
+      },
+      "status": "failed",
+      "reason": "Godot import failed: spawnSync godot ENOENT (PATH shim resolution). Fixed before any agent turn."
+    },
+    "task_sources": {
+      "prompt": {
+        "path": "docs/phase16/agent-tasks/parry-window-repair.md",
+        "bytes": 1932,
+        "sha256": "5ae0a0c2ade6f50896d6c476970f14d9b37206efac0e413385b3202a1bad2d10"
+      },
+      "defect_spec": {
+        "path": "docs/phase16/agent-tasks/parry-window-repair.json",
+        "bytes": 493,
+        "sha256": "baa6470532813d05f504f3b04f14369f43418816cf554c1038f9cb879139a6fc"
+      }
+    }
+  },
+  "export": {
+    "probe": {
+      "run_id": "2026-10-22T17-37-47-216Z-probe",
+      "manifest": {
+        "path": "docs/phase16/evidence/export/2026-10-22T17-37-47-216Z-probe/manifest.json",
+        "bytes": 1358,
+        "sha256": "f1c88c4d2ba761c06c59fc6b5a5bd7f9788e546a9963190ebcd6a0688cb637b2"
+      },
+      "checks": [
+        {
+          "name": "bridge-reachable",
+          "ok": true,
+          "detail": "port=47732"
+        },
+        {
+          "name": "packaged-initial-state",
+          "ok": true,
+          "detail": "step=0 player_hp=4 enemy_hp=5"
+        },
+        {
+          "name": "packaged-movement",
+          "ok": true,
+          "detail": "frames=24 distance=2.18"
+        },
+        {
+          "name": "packaged-sword-hit",
+          "ok": true,
+          "detail": "enemy_hp=4 events=reset,enemy_windup,attack_started,attack_active,player_hit_enemy,attack_recover"
+        },
+        {
+          "name": "packaged-restart",
+          "ok": true,
+          "detail": "step=0 player_hp=4 enemy_hp=5"
+        },
+        {
+          "name": "process-stayed-alive",
+          "ok": true,
+          "detail": "exit_code=null"
+        }
+      ],
+      "passed": 6,
+      "failed": 0,
+      "bridge_port": 47732,
+      "stdout": {
+        "path": "docs/phase16/evidence/export/2026-10-22T17-37-47-216Z-probe/stdout.log",
+        "bytes": 231,
+        "sha256": "f53278f45ee7849a98785d7cd0fb7841116f67672b71be0140b332918737edf1"
+      },
+      "stderr": {
+        "path": "docs/phase16/evidence/export/2026-10-22T17-37-47-216Z-probe/stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "window_capture": {
+      "file": {
+        "path": "docs/phase16/evidence/export/2026-10-22T17-35-09Z/export-printwindow.png",
+        "bytes": 54576,
+        "sha256": "0f4036e44aac26e42989920c0caa06c80510e8505172677c55c026f08dd62ff3"
+      },
+      "method": "PrintWindow with PW_RENDERFULLCONTENT",
+      "note": "Desktop CopyFromScreen captured an unrelated full-screen application; that frame was discarded."
+    },
+    "binary": {
+      "exe": {
+        "path": "experiments/godot-harness/game/build/DeflectArena.exe",
+        "bytes": 109127680,
+        "sha256": "cd2526cc93bc164d9d8f011761c2348973dfe06654824498767096fa58568212"
+      },
+      "pck": {
+        "path": "experiments/godot-harness/game/build/DeflectArena.pck",
+        "bytes": 70348,
+        "sha256": "0dd1696da157b0df82c72799e9559e2301782536cdab6f4c99d5770c25d10fb0"
+      },
+      "committed": false,
+      "reproduce": "godot --headless --path game --export-release \"Windows Desktop\" game/build/DeflectArena.exe"
+    },
+    "headless_quit": {
+      "command": "DeflectArena.exe --headless --quit",
+      "exit_code": 0
+    },
+    "visible_launch": {
+      "state": "alive",
+      "window_title": "deflect-arena"
+    }
+  },
+  "regression": {
+    "baseline": {
+      "path": "docs/phase16/evidence/regression/baseline-node-test.log",
+      "bytes": 6182,
+      "sha256": "5017bd599c25c7d9e1e5c6af9a8ae1d456bb3af626425a2b4c94953b0cca63c4"
+    },
+    "final": {
+      "path": "docs/phase16/evidence/regression/final-npm-test.log",
+      "bytes": 6484,
+      "sha256": "1746385fb957e5b4887660e499502f39464e6d3745918d1132f0433a5c5f4e31"
+    },
+    "baseline_summary": {
+      "commit": "47e9127",
+      "branch": "experiment/phase15-agent-adapter",
+      "command": "node --test (9 Phase 8-15 test files)",
+      "log": "docs/phase16/evidence/regression/baseline-node-test.log",
+      "passed": 65,
+      "failed": 0,
+      "duration_ms": 94412,
+      "exit_code": 0,
+      "exit_code_note": "derived from the zero-failure summary; the saved baseline log predates the exit-code append"
+    },
+    "final_summary": {
+      "command": "npm test",
+      "log": "docs/phase16/evidence/regression/final-npm-test.log",
+      "passed": 65,
+      "failed": 0,
+      "duration_ms": 94616,
+      "exit_code": 0
+    }
+  },
+  "superseded_live_runs": [
+    {
+      "run_id": "phase16-live-2026-10-22T17-13-11-095Z",
+      "reason": "First windowed run; camera offset (0, 3.4, 6.6), fighters too distant."
+    },
+    {
+      "run_id": "phase16-live-2026-10-22T17-18-57-609Z",
+      "reason": "Second windowed run; camera offset (0, 2.6, 4.9), player occluded the enemy at melee range."
+    }
+  ],
+  "cross_checks": {
+    "captures_count_matches_manifest": true,
+    "every_capture_has_screenshot_and_state": true,
+    "tick_correlation_all_equal": true,
+    "restart_state_matches_spawn": true,
+    "in_engine_all_green": true,
+    "windowed_all_green": true,
+    "agent_oracle_untouched": true,
+    "agent_verified_after": true,
+    "export_probe_all_green": true,
+    "regression_all_green": true
+  }
+}

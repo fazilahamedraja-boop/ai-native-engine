@@ -1,0 +1,65 @@
+{
+  "schema": "phase16.agent-task.manifest.v1",
+  "run_id": "2026-10-22T17-29-06-489Z-parry-window-repair",
+  "created_at": "2026-10-22T17:29:06.725Z",
+  "status": "failed",
+  "failure_reason": "Godot import failed: spawnSync godot ENOENT",
+  "model_spec": "opencode/deepseek-v4.1-flash-free",
+  "task": {
+    "path": "phase16/agent-tasks/parry-window-repair.md",
+    "sha256": "5ae0a0c2ade6f50896d6c476970f14d9b37206efac0e413385b3202a1bad2d10",
+    "bytes": 1932
+  },
+  "agent": {
+    "bin": "C:\\Users\\hacke\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+    "version": "opencode v2.0.32",
+    "version_exit_code": 0,
+    "standalone": true,
+    "invocation": "opencode run --standalone --format json --auto",
+    "sandbox_config": {
+      "path": "experiments/godot-harness/controller/agent-sandbox/opencode.json",
+      "sha256": "3bbdf761bd665be0a857fa912c0e5b16a0fbcaa5266f97b5ddbb0ba7bf879690"
+    },
+    "denied": [
+      "shell",
+      "webfetch",
+      "websearch",
+      "execute",
+      "question",
+      "skill",
+      "subagent"
+    ],
+    "events": null,
+    "exit_code": null,
+    "timed_out": false,
+    "duration_ms": null
+  },
+  "defect": {
+    "spec_path": "phase16/agent-tasks/parry-window-repair.json",
+    "spec_sha256": "baa6470532813d05f504f3b04f14369f43418816cf554c1038f9cb879139a6fc",
+    "id": "parry-window-repair",
+    "description": "Injected regression: the deflect window is 44 ticks instead of 14, so a press at the start of the enemy windup survives until the blow lands and registers as a successful deflect. The intended failure is game-parry-mistimed-does-not-register.",
+    "file": "game/scripts/game_world.gd",
+    "pristine_sha256": "a3f808bcf2f5669e406d52d2c2aa7a44a4fcdbb288aca643525fcb0e561e0d2d",
+    "injected_sha256": "21f52b7013bacc93d3408c1475b2b091d87d4cbf04e5d58e8b94e87929d5dbf2",
+    "expected_failing": [
+      "game-parry-mistimed-does-not-register"
+    ]
+  },
+  "before": null,
+  "repair": null,
+  "after": null,
+  "verification": null,
+  "import": {
+    "command": "godot --headless --path <sandbox>/game --import",
+    "status": null,
+    "error": "spawnSync godot ENOENT",
+    "stdout": "",
+    "stderr": ""
+  },
+  "cleanup": {
+    "sandbox_removed": true,
+    "orphans": [],
+    "orphan_check": "every opencode process spawned by this run was reaped"
+  }
+}
