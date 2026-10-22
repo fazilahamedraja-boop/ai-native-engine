@@ -1,0 +1,24 @@
+{
+  "step": 239,
+  "physics_frames": 260,
+  "player_position": [
+    -1.49011611938477e-8,
+    0.850000023841858,
+    -3.49998068809509
+  ],
+  "player_velocity": [
+    0,
+    0,
+    -4
+  ],
+  "feedback": "UNLOCKED - DOOR OPEN",
+  "prompt": "DOOR OPEN - GO THROUGH",
+  "hash": "41192ac9f058295a990d229b00dc7ed103d33c049950709e68efd6c82bb48189",
+  "outcome_hash": "6cdff7cf8e61adf41e058e9aaedb150e9295249272ee3122256400e265313459",
+  "door_locked": false,
+  "door_open": true,
+  "door_collision_enabled": false,
+  "door_rotation_degrees": 0,
+  "player_has_key": true,
+  "key_available": false
+}

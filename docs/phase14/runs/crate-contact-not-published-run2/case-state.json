@@ -1,0 +1,27 @@
+{
+  "case_id": "crate-contact-not-published",
+  "defect_class": "incorrect event and signal handling that suppresses a real contact",
+  "source_fixture": "observation",
+  "test_script": "res://tests/run_observation.gd",
+  "bridge_replaced": null,
+  "fixture_dir": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-r7O6Jl\\project",
+  "fixture_base": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-r7O6Jl",
+  "injected_file_relative": "scripts/observation_world.gd",
+  "injected_file": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-r7O6Jl\\project\\scripts\\observation_world.gd",
+  "injected_file_sha256": "a575402e8c0ac154e87d87ff242eed13f66ba0511a92c8fe782e6d1745322efe",
+  "pristine_file_sha256": "669bb0b24c9a07914c951f971f575ae5ae46c2af992b82bd5bb5b52897abd7ab",
+  "source_modified_at_prepare": 1792678388367.1597,
+  "label": "before",
+  "test_summary": {
+    "passed": 7,
+    "failed": 1
+  },
+  "test_ok": false,
+  "failing_cases": [
+    "observation-crate-falls"
+  ],
+  "expected_failing_cases": [
+    "observation-crate-falls"
+  ],
+  "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase14\\docs\\phase14\\runs\\crate-contact-not-published-run2"
+}

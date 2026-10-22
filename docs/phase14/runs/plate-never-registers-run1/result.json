@@ -1,0 +1,98 @@
+{
+  "case_id": "plate-never-registers",
+  "defect_class": "incorrect gameplay-state transition",
+  "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase14\\docs\\phase14\\runs\\plate-never-registers-run1",
+  "fixture_dir": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-e6DJQT\\project",
+  "before": {
+    "test_ok": false,
+    "test_summary": {
+      "passed": 6,
+      "failed": 2
+    },
+    "failing_cases": [
+      "observation-plate-opens-gate",
+      "observation-gate-passable-after-plate"
+    ]
+  },
+  "after": {
+    "test_ok": true,
+    "test_exit_code": 0,
+    "test_summary": {
+      "passed": 8,
+      "failed": 0
+    },
+    "failing_cases": []
+  },
+  "repair": {
+    "injected_file": "scripts/observation_world.gd",
+    "injected_file_modified": true,
+    "repaired_to_pristine": true,
+    "line_changes": [
+      {
+        "line": 288,
+        "before": "\tif not is_instance_valid(player) or body == player or plate_pressed:",
+        "after": "\tif not is_instance_valid(player) or body != player or plate_pressed:"
+      }
+    ],
+    "line_change_count": 1,
+    "unrelated_changes": [],
+    "setup_changed_files": [],
+    "oracle_intact": true
+  },
+  "diagnosis": {
+    "exists": true,
+    "mtime": 1792678699192.557,
+    "source_mtime": 1792678781646.0884,
+    "ordering_respected": true,
+    "matched_defect_class": true
+  },
+  "runtime_change": {
+    "before_state": {
+      "step": 89,
+      "physics_frames": 112,
+      "player_position": [
+        0,
+        0.850000023841858,
+        -0.166664153337479
+      ],
+      "player_velocity": [
+        0,
+        0,
+        -4
+      ],
+      "feedback": "PLATE CLEAR - GATE CLOSED",
+      "prompt": "WALK ONTO THE PLATE",
+      "hash": "c7db63be0c622209515ed8ec5b885a0911ee6babc62f97b91cb37ac3b8baf426",
+      "outcome_hash": "cb12cab94a078b6cffbb0698b4ebe89e86a6d35ee21a909526f4fa90e0209847",
+      "plate_pressed": false,
+      "gate_open": false,
+      "gate_collision_enabled": true,
+      "beacon_state": "red",
+      "goal_reached": false
+    },
+    "after_state": {
+      "step": 88,
+      "physics_frames": 109,
+      "player_position": [
+        0,
+        0.850000023841858,
+        -0.166664153337479
+      ],
+      "player_velocity": [
+        0,
+        0,
+        -4
+      ],
+      "feedback": "PLATE PRESSED",
+      "prompt": "GATE OPEN - GO THROUGH",
+      "hash": "4d9ba8e9f9b492e779ca0b0fb75bf7c35e2f6b029c4f8f5bcf9777232ee44ca2",
+      "outcome_hash": "3640413193083bbe8c6018bd52081f0188a35065edf08e5b1ef00c50d6b32462",
+      "plate_pressed": true,
+      "gate_open": true,
+      "gate_collision_enabled": false,
+      "beacon_state": "green",
+      "goal_reached": false
+    }
+  },
+  "ok": true
+}

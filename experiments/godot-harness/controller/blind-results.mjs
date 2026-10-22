@@ -87,7 +87,11 @@ for (const id of BLIND_CASE_IDS) {
     ordering_respected: caseRuns.filter((run) => run.diagnosis.ordering_respected === true).length,
     repair_passed_after: caseRuns.filter((run) => run.after.test_ok === true).length,
     oracle_intact: caseRuns.filter((run) => run.repair.oracle_intact === true).length,
-    minimal_repair: caseRuns.filter((run) => run.repair.agent_changed_files?.length === 1).length,
+    minimal_repair: caseRuns.filter(
+      (run) =>
+        run.repair.line_change_count <= 1 && (run.repair.unrelated_changes?.length ?? 0) === 0,
+    ).length,
+    repaired_to_pristine: caseRuns.filter((run) => run.repair.repaired_to_pristine === true).length,
     full_success: caseRuns.filter((run) => run.ok === true).length,
     baseline_failures_matched_expectation: caseRuns.filter((run) =>
       BLIND_CASES[id].expectedFailingCases.every((name) => run.before.failing_cases.includes(name)),
@@ -107,11 +111,15 @@ const summary = {
   acceptance_passed_after_repair: runs.filter((run) => run.after.test_ok === true).length,
   acceptance_failed_before_repair: runs.filter((run) => run.before.test_ok === false).length,
   oracle_intact: runs.filter((run) => run.repair.oracle_intact === true).length,
-  minimal_repair: runs.filter((run) => run.repair.agent_changed_files?.length === 1).length,
+  minimal_repair: runs.filter(
+    (run) =>
+      run.repair.line_change_count <= 1 && (run.repair.unrelated_changes?.length ?? 0) === 0,
+  ).length,
+  repaired_to_pristine: runs.filter((run) => run.repair.repaired_to_pristine === true).length,
   full_success: runs.filter((run) => run.ok === true).length,
   incorrect_diagnosis: runs.filter((run) => run.diagnosis.matched_defect_class === false).length,
   unnecessary_source_changes: runs.filter(
-    (run) => (run.repair.agent_changed_files?.length ?? 0) > 1,
+    (run) => (run.repair.unrelated_changes?.length ?? 0) > 0,
   ).length,
   startup_errors: 0,
   timeouts: 0,

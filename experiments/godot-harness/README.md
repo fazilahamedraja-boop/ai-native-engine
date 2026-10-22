@@ -59,6 +59,10 @@ npm run evidence:defect           # controlled gate defect -> failing suite -> r
 npm run evidence:live-observe     # phase 13: live frames + structured state while the game runs
 npm run evidence:diagnosis        # phase 13: evidence-driven diagnosis benchmark
 npm run test:evidence-output      # phase 13: evidence output-path safety
+npm run test:startup-diagnostics  # phase 14: startup failures explain themselves
+npm run test:blind-benchmark      # phase 14: blind benchmark contract
+npm run evidence:blind            # phase 14: prepare / verify / cleanup a blind diagnosis run
+npm run evidence:blind-results    # phase 14: aggregate the blind diagnosis runs
 npm run inspect          # start, inspect, stop one project, JSON result
 ```
 
@@ -379,6 +383,9 @@ only use this interface on projects you intend to control.
 | Evidence output-path safety | `npm run test:evidence-output` | 12/12, exit 0 |
 | Phase 13 live observation and action | `npm run evidence:live-observe` | 4 distinct frames, 0 stale, move verified at ratio 1.0 |
 | Phase 13 diagnosis benchmark | `npm run evidence:diagnosis` | failing 6/8 -> passing 8/8, evidence bundle with no source |
+| Startup failure diagnostics | `npm run test:startup-diagnostics` | 14/14, exit 0 |
+| Blind benchmark contract | `npm run test:blind-benchmark` | 4/4, exit 0 |
+| Phase 14 blind diagnosis runs | `node controller/blind-results.mjs` | 8 runs, 4 cases, 8/8 repaired |
 
 Phase 10 Stage C evidence is under `docs/phase10/stage-c/`. Stage D evidence is
 under `docs/phase10/stage-d/`: the manifest, four captures, full observations,
@@ -396,6 +403,32 @@ before/after test results, and the diagnosis are in
 - `stage-f-generalization.md`, `stage-f-suite.log`, `stage-f-control.log`,
   `stage-f-inspect.json`, `stage-f-repair.*`, `stage-f-locked.png`,
   `stage-f-key.png`, and `stage-f-open.png` for Stage F
+
+## Startup failure diagnostics
+
+A failed Godot startup is reported as a startup failure, not as a generic timeout. The
+`startupError` helper in `controller/startup-diagnostics.mjs` classifies the failure and attaches
+the engine's own error lines, the process state, and the tail of both output streams:
+
+| Code | Meaning |
+| --- | --- |
+| `spawn_failed` | the process could not be spawned |
+| `process_exited` | the process died before readiness (exit code and signal) |
+| `script_error` | the engine reported a script or parse error |
+| `autoload_error` | the engine reported an autoload failure |
+| `connection_failed` | the bridge published a port but the socket failed |
+| `protocol_error` | the readiness payload was not a valid handshake |
+| `game_not_ready` | the bridge answered but the scene never became ready |
+| `slow_startup` | the process was alive, reported no error, and never signalled readiness |
+
+A live process **with** an engine error is reported by that error. A live process with **no**
+engine error is a genuinely slow start, and stays distinguishable from a startup that has already
+failed. The readiness timeout is not increased and no error is suppressed.
+
+Cleanup is guaranteed. Sessions register themselves so `stopAllSessions()` can clean up a session
+whose caller threw; `withSession(session, body)` always stops in a `finally` block; and `stop()`
+destroys the child's stdout and stderr pipes, so a windowed Godot that survived the kill cannot
+hold the parent's pipes open.
 
 ## Evidence output directories
 

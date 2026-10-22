@@ -1,0 +1,286 @@
+{
+  "engine_tick": 115,
+  "node_count": 3,
+  "event_count": 2,
+  "event_types": [
+    "reset",
+    "player_collision_start"
+  ],
+  "event_items": [
+    {
+      "label": "harness_reset",
+      "sequence": 1,
+      "sim_time_seconds": 0.266666666666667,
+      "simulation_step": 0,
+      "simulation_time_seconds": 0,
+      "source": "fixture_recorded",
+      "tick": 16,
+      "tick_domain": "engine_physics_frames",
+      "type": "reset",
+      "wall_time_ms": 943
+    },
+    {
+      "collider": "/root/Main/Ground",
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "position": [
+        0,
+        0,
+        5.5
+      ],
+      "sequence": 2,
+      "sim_time_seconds": 0.316666666666667,
+      "simulation_step": 1,
+      "simulation_time_seconds": 0.0166666666666667,
+      "source": "fixture_recorded",
+      "tick": 19,
+      "tick_domain": "engine_physics_frames",
+      "type": "player_collision_start",
+      "wall_time_ms": 986
+    }
+  ],
+  "nodes": {
+    "/root/Main": {
+      "class": "Node3D",
+      "global_transform": {
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "rotation_degrees": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "source": "measured",
+        "space": "world"
+      },
+      "properties": {
+        "beacon_state": "red",
+        "feedback": "PLATE CLEAR - GATE CLOSED",
+        "gate_open": false,
+        "goal_reached": false,
+        "plate_pressed": false
+      },
+      "collision": null,
+      "collision_shapes": null
+    },
+    "/root/Main/Crate": {
+      "class": "RigidBody3D",
+      "global_transform": {
+        "origin": [
+          4.20000553131104,
+          0.347224950790405,
+          2.50000500679016
+        ],
+        "quaternion": [
+          5.52103983864072e-7,
+          -0.00000229544002650073,
+          -0.00000612804296906688,
+          1
+        ],
+        "rotation_degrees": [
+          0.0000632648473528715,
+          -0.000263038442114338,
+          -0.000702222153935325
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "source": "measured",
+        "space": "world"
+      },
+      "properties": {},
+      "collision": {
+        "collision_layer": 1,
+        "collision_mask": 1,
+        "source": "measured"
+      },
+      "collision_shapes": [
+        {
+          "class": "CollisionShape3D",
+          "disabled": false,
+          "global_transform": {
+            "origin": [
+              4.20000553131104,
+              0.347224950790405,
+              2.50000500679016
+            ],
+            "quaternion": [
+              5.52103983864072e-7,
+              -0.00000229544002650073,
+              -0.00000612804296906688,
+              1
+            ],
+            "rotation_degrees": [
+              0.0000632648473528715,
+              -0.000263038442114338,
+              -0.000702222153935325
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "name": "Collision",
+          "path": "/root/Main/Crate/Collision",
+          "shape": {
+            "size": [
+              0.699999988079071,
+              0.699999988079071,
+              0.699999988079071
+            ]
+          },
+          "shape_class": "BoxShape3D",
+          "source": "measured",
+          "transform": {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          }
+        }
+      ]
+    },
+    "/root/Main/Ground": {
+      "class": "StaticBody3D",
+      "global_transform": {
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "rotation_degrees": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "source": "measured",
+        "space": "world"
+      },
+      "properties": {},
+      "collision": {
+        "collision_layer": 1,
+        "collision_mask": 1,
+        "source": "measured"
+      },
+      "collision_shapes": [
+        {
+          "class": "CollisionShape3D",
+          "disabled": false,
+          "global_transform": {
+            "origin": [
+              0,
+              -0.25,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "name": "Collision",
+          "path": "/root/Main/Ground/Collision",
+          "shape": {
+            "size": [
+              24,
+              0.5,
+              24
+            ]
+          },
+          "shape_class": "BoxShape3D",
+          "source": "measured",
+          "transform": {
+            "origin": [
+              0,
+              -0.25,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          }
+        }
+      ]
+    }
+  }
+}

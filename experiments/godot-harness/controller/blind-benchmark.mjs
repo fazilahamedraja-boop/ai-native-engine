@@ -409,7 +409,13 @@ async function verify(options) {
     await session.stop()
   }
 
-  // The size of the source change, measured against the pristine fixture.
+  // The size of the source change.
+  //
+  // The agent is measured against the DEFECTIVE state it was given, not
+  // against the pristine fixture. A one-line repair that restores the original
+  // line makes the file byte-identical to the pristine fixture again, so
+  // measuring against pristine would report "no change" for the strongest
+  // possible repair.
   const changed = []
   const pristineRoot = path.join(FIXTURES, caseDef.sourceFixture)
   const walk = (relative) => {
@@ -435,12 +441,39 @@ async function verify(options) {
   }
   // The observation bridge copy is an expected part of the setup, not a change
   // the agent made.
-  const expectedSetupChanges = caseDef.bridgeSource
-    ? changed.filter((change) => change.file === 'harness/bridge.gd')
-    : []
-  const agentChanges = changed.filter(
-    (change) => !expectedSetupChanges.some((expected) => expected.file === change.file),
+  const setupFiles = caseDef.bridgeSource ? ['harness/bridge.gd'] : []
+  const unrelatedChanges = changed
+    .map((change) => change.file)
+    .filter((file) => !setupFiles.includes(file) && file !== state.injected_file_relative)
+
+  // The exact lines the agent changed, measured against the defective file it
+  // was given.
+  const pristineContent = fs.readFileSync(
+    path.join(pristineRoot, caseDef.injection.file),
+    'utf8',
   )
+  const defectiveContent = pristineContent.replace(
+    caseDef.injection.from,
+    caseDef.injection.to,
+  )
+  const currentContent = fs.readFileSync(state.injected_file, 'utf8')
+  const defectiveLines = defectiveContent.split(/\r?\n/)
+  const currentLines = currentContent.split(/\r?\n/)
+  const lineChanges = []
+  const max = Math.max(defectiveLines.length, currentLines.length)
+  for (let index = 0; index < max; index++) {
+    if (defectiveLines[index] !== currentLines[index]) {
+      lineChanges.push({
+        line: index + 1,
+        before: defectiveLines[index] ?? null,
+        after: currentLines[index] ?? null,
+      })
+    }
+  }
+
+  const injectedFileNow = sha256(state.injected_file)
+  const injectedFileModified = injectedFileNow !== state.injected_file_sha256
+  const repairedToPristine = injectedFileNow === state.pristine_file_sha256
 
   // The acceptance script must be untouched.
   const oraclePath = path.join(dir, 'tests', path.basename(caseDef.testScript))
@@ -479,10 +512,13 @@ async function verify(options) {
       failing_cases: test.results.filter((result) => !result.passed).map((result) => result.name),
     },
     repair: {
-      changed_files: changed,
-      agent_changed_files: agentChanges.map((change) => change.file),
-      changed_file_count: agentChanges.length,
-      setup_changed_files: expectedSetupChanges.map((change) => change.file),
+      injected_file: state.injected_file_relative,
+      injected_file_modified: injectedFileModified,
+      repaired_to_pristine: repairedToPristine,
+      line_changes: lineChanges,
+      line_change_count: lineChanges.length,
+      unrelated_changes: unrelatedChanges,
+      setup_changed_files: setupFiles,
       oracle_intact: oracleIntact,
     },
     diagnosis: {
@@ -499,8 +535,8 @@ async function verify(options) {
     ok:
       test.ok &&
       oracleIntact &&
-      agentChanges.length === 1 &&
-      agentChanges[0].file === state.injected_file_relative &&
+      injectedFileModified &&
+      unrelatedChanges.length === 0 &&
       diagnosisExists &&
       orderingRespected,
   }

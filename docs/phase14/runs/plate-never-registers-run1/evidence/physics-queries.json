@@ -1,0 +1,22 @@
+[
+  {
+    "name": "plate_volume",
+    "description": "box covering the pressure plate volume at (0, 0.10, -1.1), the place the player is expected to stand",
+    "shape_type": "box",
+    "collision_mask": 1,
+    "results": [
+      {
+        "collider": "/root/Main/Ground",
+        "collider_type": "StaticBody3D",
+        "shape_index": 0,
+        "source": "derived"
+      },
+      {
+        "collider": "/root/Main/Player",
+        "collider_type": "CharacterBody3D",
+        "shape_index": 0,
+        "source": "derived"
+      }
+    ]
+  }
+]

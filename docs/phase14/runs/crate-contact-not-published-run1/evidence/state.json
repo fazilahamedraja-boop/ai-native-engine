@@ -1,0 +1,22 @@
+{
+  "step": 93,
+  "physics_frames": 114,
+  "player_position": [
+    0,
+    0.850000023841858,
+    5.5
+  ],
+  "player_velocity": [
+    0,
+    0,
+    0
+  ],
+  "feedback": "PLATE CLEAR - GATE CLOSED",
+  "prompt": "WALK ONTO THE PLATE",
+  "hash": "78d74180685806f8178d6eeb72bd02a75bddf259dbc9a2ad4783d4e115f11dc7",
+  "outcome_hash": "7ba94c4aed146e6714fb2197d47fb73491dbead4b5834fd0ed44985be1a7d651",
+  "plate_pressed": false,
+  "gate_open": false,
+  "beacon_state": "red",
+  "goal_reached": false
+}

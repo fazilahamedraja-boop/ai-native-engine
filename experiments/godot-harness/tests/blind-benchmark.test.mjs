@@ -32,6 +32,16 @@ function scratchDir(label) {
   return dir
 }
 
+/**
+ * Remove the scratch output directory and the temporary fixture copy the
+ * benchmark created inside it. A run that leaves a Godot fixture behind in the
+ * system temp directory would be a cleanup failure, not a test artefact.
+ */
+function removeRun(outDir, caseId) {
+  runBenchmark(['cleanup', '--case', caseId, '--out-dir', outDir])
+  fs.rmSync(outDir, { recursive: true, force: true })
+}
+
 function runBenchmark(args, cwd = HARNESS) {
   try {
     const stdout = execFileSync('node', [RUNNER, ...args], {
@@ -98,7 +108,7 @@ test('a prepared bundle contains no source, no diff, and no answer key', () => {
     assert.equal(result.ok, false)
     assert.ok(result.results.some((entry) => !entry.passed))
   } finally {
-    fs.rmSync(outDir, { recursive: true, force: true })
+    removeRun(outDir, 'plate-never-registers')
   }
 })
 
@@ -129,7 +139,7 @@ test('an unrepaired fixture is reported as a failure, not a success', () => {
     assert.equal(result.diagnosis.ordering_respected, false)
     assert.equal(result.repair.oracle_intact, true, 'the oracle must be intact')
   } finally {
-    fs.rmSync(outDir, { recursive: true, force: true })
+    removeRun(outDir, 'plate-never-registers')
   }
 })
 

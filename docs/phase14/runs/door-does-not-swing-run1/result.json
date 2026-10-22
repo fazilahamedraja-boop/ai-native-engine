@@ -1,0 +1,101 @@
+{
+  "case_id": "door-does-not-swing",
+  "defect_class": "incorrect interaction response in a different scene: the state says the door opened but the door never moved",
+  "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase14\\docs\\phase14\\runs\\door-does-not-swing-run1",
+  "fixture_dir": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-door-5DvxJk\\project",
+  "before": {
+    "test_ok": false,
+    "test_summary": {
+      "passed": 6,
+      "failed": 1
+    },
+    "failing_cases": [
+      "door-unlock-open-pass"
+    ]
+  },
+  "after": {
+    "test_ok": true,
+    "test_exit_code": 0,
+    "test_summary": {
+      "passed": 7,
+      "failed": 0
+    },
+    "failing_cases": []
+  },
+  "repair": {
+    "injected_file": "scripts/door.gd",
+    "injected_file_modified": true,
+    "repaired_to_pristine": true,
+    "line_changes": [
+      {
+        "line": 93,
+        "before": "\trotation.y = deg_to_rad(0.0)",
+        "after": "\trotation.y = deg_to_rad(OPEN_ANGLE_DEGREES)"
+      }
+    ],
+    "line_change_count": 1,
+    "unrelated_changes": [],
+    "setup_changed_files": [
+      "harness/bridge.gd"
+    ],
+    "oracle_intact": true
+  },
+  "diagnosis": {
+    "exists": true,
+    "mtime": 1792678680498.3276,
+    "source_mtime": 1792678714192.203,
+    "ordering_respected": true,
+    "matched_defect_class": true
+  },
+  "runtime_change": {
+    "before_state": {
+      "step": 239,
+      "physics_frames": 260,
+      "player_position": [
+        -1.49011611938477e-8,
+        0.850000023841858,
+        -3.49998068809509
+      ],
+      "player_velocity": [
+        0,
+        0,
+        -4
+      ],
+      "feedback": "UNLOCKED - DOOR OPEN",
+      "prompt": "DOOR OPEN - GO THROUGH",
+      "hash": "41192ac9f058295a990d229b00dc7ed103d33c049950709e68efd6c82bb48189",
+      "outcome_hash": "6cdff7cf8e61adf41e058e9aaedb150e9295249272ee3122256400e265313459",
+      "door_locked": false,
+      "door_open": true,
+      "door_collision_enabled": false,
+      "door_rotation_degrees": 0,
+      "player_has_key": true,
+      "key_available": false
+    },
+    "after_state": {
+      "step": 239,
+      "physics_frames": 261,
+      "player_position": [
+        -1.49011611938477e-8,
+        0.850000023841858,
+        -3.49998068809509
+      ],
+      "player_velocity": [
+        0,
+        0,
+        -4
+      ],
+      "feedback": "UNLOCKED - DOOR OPEN",
+      "prompt": "DOOR OPEN - GO THROUGH",
+      "hash": "c8338aefacc9b0996954c2e2d443d12ea2feee320eb034159dd5a64053184937",
+      "outcome_hash": "6cdff7cf8e61adf41e058e9aaedb150e9295249272ee3122256400e265313459",
+      "door_locked": false,
+      "door_open": true,
+      "door_collision_enabled": false,
+      "door_rotation_degrees": 100.000000506024,
+      "player_has_key": true,
+      "key_available": false
+    }
+  },
+  "ok": true
+}

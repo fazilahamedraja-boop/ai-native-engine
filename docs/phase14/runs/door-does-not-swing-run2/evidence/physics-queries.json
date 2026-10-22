@@ -1,0 +1,22 @@
+[
+  {
+    "name": "doorway_volume",
+    "description": "box covering the doorway (0, 1.10, 0), to find out whether a door collider is still in the opening",
+    "shape_type": "box",
+    "collision_mask": 1,
+    "results": [
+      {
+        "collider": "/root/Main/Lintel",
+        "collider_type": "StaticBody3D",
+        "shape_index": 0,
+        "source": "derived"
+      },
+      {
+        "collider": "/root/Main/Ground",
+        "collider_type": "StaticBody3D",
+        "shape_index": 0,
+        "source": "derived"
+      }
+    ]
+  }
+]

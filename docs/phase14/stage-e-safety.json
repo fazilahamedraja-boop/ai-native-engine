@@ -1,0 +1,188 @@
+{
+  "operation": "phase14_stage_e_safety_and_regression",
+  "generated_at": "2026-10-22T20:15:42",
+  "godot": "4.7.2-stable (official)",
+  "regression": {
+    "fixture_suites": [
+      {
+        "name": "character-audit",
+        "command": "node controller/harness.mjs test --project fixtures/character-audit --script res://tests/run_character_audit.gd --json",
+        "exit_code": 0,
+        "ok": true,
+        "passed": 4,
+        "failed": 0,
+        "expected_total": 4,
+        "matches_expectation": true
+      },
+      {
+        "name": "combat",
+        "command": "node controller/harness.mjs test --project fixtures/combat --script res://tests/run_combat.gd --json",
+        "exit_code": 0,
+        "ok": true,
+        "passed": 3,
+        "failed": 0,
+        "expected_total": 3,
+        "matches_expectation": true
+      },
+      {
+        "name": "observation",
+        "command": "node controller/harness.mjs test --project fixtures/observation --script res://tests/run_observation.gd --json",
+        "exit_code": 0,
+        "ok": true,
+        "passed": 8,
+        "failed": 0,
+        "expected_total": 8,
+        "matches_expectation": true
+      },
+      {
+        "name": "door",
+        "command": "node controller/harness.mjs test --project fixtures/door --script res://tests/run_door.gd --json",
+        "exit_code": 0,
+        "ok": true,
+        "passed": 7,
+        "failed": 0,
+        "expected_total": 7,
+        "matches_expectation": true
+      },
+      {
+        "name": "physics",
+        "command": "node controller/harness.mjs test --project fixtures/physics --script res://tests/run_physics.gd --json",
+        "exit_code": 0,
+        "ok": true,
+        "passed": 9,
+        "failed": 0,
+        "expected_total": 9,
+        "matches_expectation": true
+      },
+      {
+        "name": "sentry",
+        "command": "node controller/harness.mjs test --project fixtures/sentry --script res://tests/run_tests.gd --json",
+        "exit_code": 0,
+        "ok": true,
+        "passed": 7,
+        "failed": 0,
+        "expected_total": 7,
+        "matches_expectation": true
+      },
+      {
+        "name": "phase13-defect",
+        "command": "node controller/harness.mjs test --project fixtures/phase13-defect --script res://tests/run_observation.gd --json",
+        "exit_code": 0,
+        "ok": true,
+        "passed": 8,
+        "failed": 0,
+        "expected_total": 8,
+        "matches_expectation": true
+      }
+    ],
+    "fixture_suites_all_pass": true,
+    "harness_node_tests": {
+      "command": "npm test",
+      "exit_code": 0,
+      "tests": 65,
+      "passed": 65,
+      "failed": 0
+    }
+  },
+  "protected_evidence": {
+    "git_clean": true,
+    "git_status": "",
+    "sha256": {
+      "docs/phase11/stage-c/repair.diff": "353ef041aff1b71c7ee33d0924448b048a54d281f3bab86946690dff6f193ec5",
+      "docs/phase11/stage-c/stage-c-report.json": "6dad3180c995cc933d1a7af05f23298051bbe6e7e5f985679b6a43fde60898dd",
+      "docs/phase11/stage-b/stage-b-manifest.json": "16eb614dbfd6fe0bc4b13c769e8a88f2f0a82a3101013f67de688c654fae07cf",
+      "docs/phase11/stage-a/stage-a-audit.json": "6a4b04fd78dee64fcb34d80311b43329b72627d7f76a93a3563c6e1d30e9e922",
+      "docs/phase12/CONTRACT.md": "6716bc67c26874abd577344fa63e808a5786173c3a41a70b9af252924878b177",
+      "docs/phase12/EVIDENCE.md": "1ecd252c005a15b6a1d5d8826fc68011d800d8a8b8288614cb0c36702bd16451",
+      "docs/phase12-verification/verification-report.md": "b298a2d921cefb357f08d9362485bdb92c487b471675abaf7912367fb31d420e",
+      "docs/phase13/final-report.md": "3f482599665ee0d0702c1a32405608b9aafd5c78000df9eb4c074a438541c103",
+      "docs/phase13/test-results.json": "a4c05ddb151030f461772d22e40f05b9584c9f018db3e15c35cca2a90f0ab37e"
+    },
+    "fixtures_modified": true
+  },
+  "isolation": {
+    "runs": 8,
+    "all_output_under_phase14": true,
+    "all_output_unique": true,
+    "all_fixtures_outside_repo": true,
+    "all_fixtures_distinct": true,
+    "detail": [
+      {
+        "run": "crate-contact-not-published-run1",
+        "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase14\\docs\\phase14\\runs\\crate-contact-not-published-run1",
+        "output_inside_repo": true,
+        "output_under_phase14": true,
+        "output_unique": true,
+        "fixture_isolated_outside_repo": true,
+        "fixture_base_unique": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-2pqKfw"
+      },
+      {
+        "run": "crate-contact-not-published-run2",
+        "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase14\\docs\\phase14\\runs\\crate-contact-not-published-run2",
+        "output_inside_repo": true,
+        "output_under_phase14": true,
+        "output_unique": true,
+        "fixture_isolated_outside_repo": true,
+        "fixture_base_unique": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-r7O6Jl"
+      },
+      {
+        "run": "crate-does-not-fall-run1",
+        "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase14\\docs\\phase14\\runs\\crate-does-not-fall-run1",
+        "output_inside_repo": true,
+        "output_under_phase14": true,
+        "output_unique": true,
+        "fixture_isolated_outside_repo": true,
+        "fixture_base_unique": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-hIfmfE"
+      },
+      {
+        "run": "crate-does-not-fall-run2",
+        "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase14\\docs\\phase14\\runs\\crate-does-not-fall-run2",
+        "output_inside_repo": true,
+        "output_under_phase14": true,
+        "output_unique": true,
+        "fixture_isolated_outside_repo": true,
+        "fixture_base_unique": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-CB8URR"
+      },
+      {
+        "run": "door-does-not-swing-run1",
+        "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase14\\docs\\phase14\\runs\\door-does-not-swing-run1",
+        "output_inside_repo": true,
+        "output_under_phase14": true,
+        "output_unique": true,
+        "fixture_isolated_outside_repo": true,
+        "fixture_base_unique": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-door-5DvxJk"
+      },
+      {
+        "run": "door-does-not-swing-run2",
+        "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase14\\docs\\phase14\\runs\\door-does-not-swing-run2",
+        "output_inside_repo": true,
+        "output_under_phase14": true,
+        "output_unique": true,
+        "fixture_isolated_outside_repo": true,
+        "fixture_base_unique": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-door-i8HfAl"
+      },
+      {
+        "run": "plate-never-registers-run1",
+        "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase14\\docs\\phase14\\runs\\plate-never-registers-run1",
+        "output_inside_repo": true,
+        "output_under_phase14": true,
+        "output_unique": true,
+        "fixture_isolated_outside_repo": true,
+        "fixture_base_unique": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-e6DJQT"
+      },
+      {
+        "run": "plate-never-registers-run2",
+        "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase14\\docs\\phase14\\runs\\plate-never-registers-run2",
+        "output_inside_repo": true,
+        "output_under_phase14": true,
+        "output_unique": true,
+        "fixture_isolated_outside_repo": true,
+        "fixture_base_unique": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-FITHxd"
+      }
+    ]
+  },
+  "cleanup": {
+    "temp_benchmark_dirs_remaining": 0,
+    "godot_processes_running": 0
+  }
+}

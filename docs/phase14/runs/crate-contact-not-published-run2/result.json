@@ -1,0 +1,95 @@
+{
+  "case_id": "crate-contact-not-published",
+  "defect_class": "incorrect event and signal handling that suppresses a real contact",
+  "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase14\\docs\\phase14\\runs\\crate-contact-not-published-run2",
+  "fixture_dir": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-r7O6Jl\\project",
+  "before": {
+    "test_ok": false,
+    "test_summary": {
+      "passed": 7,
+      "failed": 1
+    },
+    "failing_cases": [
+      "observation-crate-falls"
+    ]
+  },
+  "after": {
+    "test_ok": true,
+    "test_exit_code": 0,
+    "test_summary": {
+      "passed": 8,
+      "failed": 0
+    },
+    "failing_cases": []
+  },
+  "repair": {
+    "injected_file": "scripts/observation_world.gd",
+    "injected_file_modified": true,
+    "repaired_to_pristine": true,
+    "line_changes": [
+      {
+        "line": 650,
+        "before": "\tcrate.contact_monitor = false",
+        "after": "\tcrate.contact_monitor = true"
+      }
+    ],
+    "line_change_count": 1,
+    "unrelated_changes": [],
+    "setup_changed_files": [],
+    "oracle_intact": true
+  },
+  "diagnosis": {
+    "exists": true,
+    "mtime": 1792678649217.7898,
+    "source_mtime": 1792678676022.082,
+    "ordering_respected": true,
+    "matched_defect_class": true
+  },
+  "runtime_change": {
+    "before_state": {
+      "step": 93,
+      "physics_frames": 113,
+      "player_position": [
+        0,
+        0.850000023841858,
+        5.5
+      ],
+      "player_velocity": [
+        0,
+        0,
+        0
+      ],
+      "feedback": "PLATE CLEAR - GATE CLOSED",
+      "prompt": "WALK ONTO THE PLATE",
+      "hash": "78d74180685806f8178d6eeb72bd02a75bddf259dbc9a2ad4783d4e115f11dc7",
+      "outcome_hash": "7ba94c4aed146e6714fb2197d47fb73491dbead4b5834fd0ed44985be1a7d651",
+      "plate_pressed": false,
+      "gate_open": false,
+      "beacon_state": "red",
+      "goal_reached": false
+    },
+    "after_state": {
+      "step": 93,
+      "physics_frames": 114,
+      "player_position": [
+        0,
+        0.850000023841858,
+        5.5
+      ],
+      "player_velocity": [
+        0,
+        0,
+        0
+      ],
+      "feedback": "PLATE CLEAR - GATE CLOSED",
+      "prompt": "WALK ONTO THE PLATE",
+      "hash": "25d280d3e91121bde426394641fdbb7b81a36f317f31fc028ae420759d7a4d8d",
+      "outcome_hash": "30912476c371983f78e300edf214cc9f8209aa91d604f3b51c29dcddaec67f89",
+      "plate_pressed": false,
+      "gate_open": false,
+      "beacon_state": "red",
+      "goal_reached": false
+    }
+  },
+  "ok": true
+}

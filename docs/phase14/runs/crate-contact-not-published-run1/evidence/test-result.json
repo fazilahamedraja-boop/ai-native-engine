@@ -1,0 +1,51 @@
+{
+  "exit_code": 1,
+  "ok": false,
+  "summary": {
+    "passed": 7,
+    "failed": 1
+  },
+  "results": [
+    {
+      "name": "observation-initial-state",
+      "passed": true,
+      "detail": "plate=false gate=false collision=true beacon=red grounded=true position=[0.0, 0.85000002384186, 5.5]"
+    },
+    {
+      "name": "observation-plate-opens-gate",
+      "passed": true,
+      "detail": "plate=true gate=true collision=false beacon=green events=[\"reset\", \"player_collision_start\", \"plate_entered\", \"gate_open\"]"
+    },
+    {
+      "name": "observation-gate-passable-after-plate",
+      "passed": true,
+      "detail": "goal=true z=-7.112 events=[\"reset\", \"player_collision_start\", \"plate_entered\", \"gate_open\", \"plate_exited\", \"gate_close\", \"player_collision_start\", \"player_collision_end\", \"player_collision_start\", \"player_collision_end\", \"goal_reached\"]"
+    },
+    {
+      "name": "observation-closed-gate-blocks",
+      "passed": true,
+      "detail": "plate=false gate=false z=-1.950 gate_collision_seen=true"
+    },
+    {
+      "name": "observation-event-stream",
+      "passed": true,
+      "detail": "count=4 ordered=true fields_ok=true"
+    },
+    {
+      "name": "observation-reset",
+      "passed": true,
+      "detail": "step=0 plate=false gate=false beacon=red crate_y=2.992 last_event=reset"
+    },
+    {
+      "name": "observation-humanoid-probe",
+      "passed": true,
+      "detail": "mesh_count=22 bones=[\"root\", \"spine\", \"chest\", \"head\"]"
+    },
+    {
+      "name": "observation-crate-falls",
+      "passed": false,
+      "detail": "crate_y=0.347 ground_collision=false sleeping=true"
+    }
+  ],
+  "reason": "test cases failed"
+}

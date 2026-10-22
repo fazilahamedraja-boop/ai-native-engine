@@ -1,0 +1,276 @@
+{
+  "engine_tick": 259,
+  "node_count": 4,
+  "event_count": 0,
+  "event_types": [],
+  "event_items": [],
+  "nodes": {
+    "/root/Main": {
+      "class": "Node3D",
+      "global_transform": {
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "rotation_degrees": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "source": "measured",
+        "space": "world"
+      },
+      "properties": {
+        "feedback": "UNLOCKED - DOOR OPEN",
+        "key_available": false,
+        "player_has_key": true
+      },
+      "collision": null,
+      "collision_shapes": null
+    },
+    "/root/Main/Door": {
+      "class": "StaticBody3D",
+      "global_transform": {
+        "origin": [
+          -0.800000011920929,
+          0,
+          0
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "rotation_degrees": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "source": "measured",
+        "space": "world"
+      },
+      "properties": {
+        "feedback": "UNLOCKED - DOOR OPEN"
+      },
+      "collision": {
+        "collision_layer": 1,
+        "collision_mask": 1,
+        "source": "measured"
+      },
+      "collision_shapes": [
+        {
+          "class": "CollisionShape3D",
+          "disabled": true,
+          "global_transform": {
+            "origin": [
+              0,
+              1.10000002384186,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "name": "Collision",
+          "path": "/root/Main/Door/Collision",
+          "shape": {
+            "size": [
+              1.60000002384186,
+              2.20000004768372,
+              0.200000002980232
+            ]
+          },
+          "shape_class": "BoxShape3D",
+          "source": "measured",
+          "transform": {
+            "origin": [
+              0.800000011920929,
+              1.10000002384186,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          }
+        }
+      ]
+    },
+    "/root/Main/Player": {
+      "class": "CharacterBody3D",
+      "global_transform": {
+        "origin": [
+          -1.49011611938477e-8,
+          0.850000023841858,
+          -3.49998068809509
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "rotation_degrees": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "source": "measured",
+        "space": "world"
+      },
+      "properties": {},
+      "collision": {
+        "collision_layer": 1,
+        "collision_mask": 1,
+        "source": "measured"
+      },
+      "collision_shapes": [
+        {
+          "class": "CollisionShape3D",
+          "disabled": false,
+          "global_transform": {
+            "origin": [
+              -1.49011611938477e-8,
+              0.850000023841858,
+              -3.49998068809509
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "name": "Collision",
+          "path": "/root/Main/Player/Collision",
+          "shape": {
+            "height": 1.70000004768372,
+            "radius": 0.400000005960464
+          },
+          "shape_class": "CapsuleShape3D",
+          "source": "measured",
+          "transform": {
+            "origin": [
+              0,
+              0,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          }
+        }
+      ]
+    },
+    "/root/Main/Key": {
+      "class": "Node3D",
+      "global_transform": {
+        "origin": [
+          2,
+          0.899999976158142,
+          4.5
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "rotation_degrees": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "source": "measured",
+        "space": "world"
+      },
+      "properties": {},
+      "collision": null,
+      "collision_shapes": null
+    }
+  }
+}

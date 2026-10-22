@@ -1,0 +1,30 @@
+{
+  "case_id": "door-does-not-swing",
+  "defect_class": "incorrect interaction response in a different scene: the state says the door opened but the door never moved",
+  "source_fixture": "door",
+  "test_script": "res://tests/run_door.gd",
+  "bridge_replaced": {
+    "file": "harness/bridge.gd",
+    "sha256": "d9ec976fc577ddbad1f4731a9c5e1586fec3afb3f4f1fd64d0f59cfc95a96381"
+  },
+  "fixture_dir": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-door-5DvxJk\\project",
+  "fixture_base": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-door-5DvxJk",
+  "injected_file_relative": "scripts/door.gd",
+  "injected_file": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-door-5DvxJk\\project\\scripts\\door.gd",
+  "injected_file_sha256": "075500cffb3e8854eb0737965d7cd54c8e98921efe60c6125ddd7aa5ca872874",
+  "pristine_file_sha256": "fcd779c9305537c6c04e2a4d313d8d2d5e031c1faefec644cec8331e7fb907ec",
+  "source_modified_at_prepare": 1792678419307.4048,
+  "label": "before",
+  "test_summary": {
+    "passed": 6,
+    "failed": 1
+  },
+  "test_ok": false,
+  "failing_cases": [
+    "door-unlock-open-pass"
+  ],
+  "expected_failing_cases": [
+    "door-unlock-open-pass"
+  ],
+  "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase14\\docs\\phase14\\runs\\door-does-not-swing-run1"
+}
