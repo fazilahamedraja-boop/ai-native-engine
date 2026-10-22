@@ -5,3 +5,4 @@ fixtures/*/project.godot.bak-*
 artifacts/
 node_modules/
 *.tmp
+game/build/
