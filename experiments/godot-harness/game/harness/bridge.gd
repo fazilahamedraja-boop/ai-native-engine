@@ -142,6 +142,8 @@ func _handle_line(peer: StreamPeerTCP, line: String) -> void:
 			get_tree().paused = true
 			_event("reset")
 			_send(peer, _reset_reply(request_id))
+		"harness_setup":
+			_send(peer, _harness_setup_reply(request_id, args))
 		"screenshot":
 			_send(peer, _screenshot_reply(request_id, args))
 		"scene_tree":
@@ -321,6 +323,22 @@ func _reset_reply(request_id: String) -> Dictionary:
 	return _reply(request_id, true, {
 		"paused": true,
 		"snapshot": game.harness_reset(),
+	})
+
+
+## Test-only setup for reproducible visual captures. The game already exposes
+## harness_setup() to its acceptance tests; this bridge command makes the same
+## bounded setup available to the live capture runner without adding a second
+## state-mutation path.
+func _harness_setup_reply(request_id: String, args: Dictionary) -> Dictionary:
+	var game = _game()
+	if game == null:
+		return _fail(request_id, "GAME_NOT_READY", "The game scene is not ready.")
+	if not game.has_method("harness_setup"):
+		return _fail(request_id, "UNSUPPORTED", "This project does not expose harness_setup().")
+	return _reply(request_id, true, {
+		"paused": get_tree().paused,
+		"snapshot": game.harness_setup(args),
 	})
 
 

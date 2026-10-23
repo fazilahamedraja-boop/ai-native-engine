@@ -1,0 +1,362 @@
+{
+  "schema": "phase18.agent-run.v1",
+  "status": "passed",
+  "started_at": "2026-10-23T14:31:18.330Z",
+  "finished_at": "2026-10-23T14:52:41.905Z",
+  "model": "opencode/deepseek-v4.1-flash-free",
+  "baseline_dir": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\baseline\\2026-10-23T02-56-46",
+  "reference_dir": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\post\\2026-10-23T19-19-21",
+  "diagnosis_dir": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\defect\\diagnosis\\compare-healthy-mid-2026-10-23T19-50-07",
+  "diagnosis_sha256": "977b3d77147d613a5169e1e2794cb021bab33b9618b1d7650398251f77cda202",
+  "source": "C:\\Users\\hacke\\ai-native-engine-phase18\\experiments\\godot-harness\\game",
+  "worktree": "C:\\Users\\hacke\\ai-native-engine-phase18",
+  "model_access_order": {
+    "diagnosis_first": true,
+    "diagnosis_completed_at": "2026-10-23T14:28:26.406Z",
+    "source_copied_at": "2026-10-23T14:31:18.388Z",
+    "note": "Source was copied into the implementation sandbox only after the diagnosis run finished."
+  },
+  "policy": {
+    "config": "C:/Users/hacke/ai-native-engine-phase18/experiments/godot-harness/controller/agent-sandbox/opencode.json",
+    "config_sha256": "3bbdf761bd665be0a857fa912c0e5b16a0fbcaa5266f97b5ddbb0ba7bf879690",
+    "tests_copied": false,
+    "harness_changes_allowed": false,
+    "allowed_change_pattern": "scripts/*.gd",
+    "max_attempts": 2,
+    "hidden_test_sha256_before": "08018e3596e65cc60c1f7f228ccc74748a08f8b642c2cd9a134796b45ef04d1b",
+    "hidden_test_sha256_after": "08018e3596e65cc60c1f7f228ccc74748a08f8b642c2cd9a134796b45ef04d1b",
+    "hidden_test_unchanged": true
+  },
+  "sandbox": {
+    "source_copied": true,
+    "tests_copied": false,
+    "baseline_images": [
+      "idle.png",
+      "windup-early.png",
+      "windup-mid.png",
+      "windup-late.png",
+      "active.png",
+      "recovery.png",
+      "restart.png"
+    ],
+    "diagnosis": "diagnosis.md",
+    "task": "TASK.md"
+  },
+  "attempts": [
+    {
+      "label": "implementation-1",
+      "status": "failed",
+      "started_at": "2026-10-23T14:31:18.563Z",
+      "duration_ms": 332018,
+      "changed_files": [
+        "scripts/fighter_rig.gd"
+      ],
+      "implementation_notes_problems": [
+        "missing section: Chosen approach",
+        "missing section: Files changed",
+        "missing section: Visual behavior",
+        "missing section: Behavior preserved",
+        "missing section: Limits"
+      ],
+      "visual": null,
+      "existing": null,
+      "dodge": null,
+      "failure": "implementation notes invalid: missing section: Chosen approach; missing section: Files changed; missing section: Visual behavior; missing section: Behavior preserved; missing section: Limits"
+    },
+    {
+      "label": "implementation-2",
+      "status": "passed",
+      "started_at": "2026-10-23T14:36:50.584Z",
+      "duration_ms": 951306,
+      "changed_files": [
+        "scripts/fighter_rig.gd"
+      ],
+      "implementation_notes_problems": [],
+      "visual": {
+        "exit_code": 0,
+        "signal": null,
+        "stdout": "{\"run_id\":\"phase18-agent-2-2026-10-23T14-51-38-434Z\",\"out_dir\":\"C:\\\\Users\\\\hacke\\\\ai-native-engine-phase18\\\\docs\\\\phase18\\\\evidence\\\\agent-runs\\\\controlled-defect-repair-2026-10-23T20-01-18\\\\attempt-2\\\\post\",\"status\":\"passed\",\"capture_count\":7,\"visual_acceptance\":{\"passed\":true,\"checks\":39,\"failed_checks\":[],\"exit_code\":0,\"path\":\"visual-acceptance.json\",\"sha256\":\"76978577a2cb4b9195eb7e6d14b35cc7979c326bbfaa51b5b7506d56da29dea1\"},\"failure\":null}\n",
+        "stderr": "",
+        "ok": true,
+        "run_status": "passed",
+        "acceptance_passed": true,
+        "failed_checks": [],
+        "metrics": {
+          "idle": {
+            "warm_pixels": 59,
+            "changed_pixels_vs_idle": null,
+            "enemy_phase": "idle",
+            "enemy_phase_tick": 0
+          },
+          "windup-early": {
+            "warm_pixels": 1705,
+            "changed_pixels_vs_idle": null,
+            "enemy_phase": "windup",
+            "enemy_phase_tick": 18
+          },
+          "windup-mid": {
+            "warm_pixels": 2101,
+            "changed_pixels_vs_idle": null,
+            "enemy_phase": "windup",
+            "enemy_phase_tick": 22
+          },
+          "windup-late": {
+            "warm_pixels": 2609,
+            "changed_pixels_vs_idle": 2662,
+            "enemy_phase": "windup",
+            "enemy_phase_tick": 26
+          },
+          "active": {
+            "warm_pixels": 2052,
+            "changed_pixels_vs_idle": null,
+            "enemy_phase": "active",
+            "enemy_phase_tick": 1
+          },
+          "recovery": {
+            "warm_pixels": 73,
+            "changed_pixels_vs_idle": null,
+            "enemy_phase": "recover",
+            "enemy_phase_tick": 1
+          },
+          "restart": {
+            "warm_pixels": 131,
+            "changed_pixels_vs_idle": null,
+            "enemy_phase": "idle",
+            "enemy_phase_tick": 0
+          }
+        },
+        "capture_count": 7,
+        "project": "game",
+        "failure": null
+      },
+      "existing": {
+        "ok": true,
+        "passed": 18,
+        "total": 18,
+        "failing": [],
+        "exit_code": 0,
+        "duration_ms": 14199,
+        "timed_out": false
+      },
+      "dodge": {
+        "ok": true,
+        "passed": 12,
+        "total": 12,
+        "failing": [],
+        "exit_code": 0,
+        "duration_ms": 4007,
+        "timed_out": false
+      },
+      "failure": null
+    }
+  ],
+  "final": {
+    "attempt": 2,
+    "status": "passed",
+    "summary": "visual=pass existing=18/18 dodge=12/12",
+    "visual": {
+      "exit_code": 0,
+      "signal": null,
+      "stdout": "{\"run_id\":\"phase18-agent-2-2026-10-23T14-51-38-434Z\",\"out_dir\":\"C:\\\\Users\\\\hacke\\\\ai-native-engine-phase18\\\\docs\\\\phase18\\\\evidence\\\\agent-runs\\\\controlled-defect-repair-2026-10-23T20-01-18\\\\attempt-2\\\\post\",\"status\":\"passed\",\"capture_count\":7,\"visual_acceptance\":{\"passed\":true,\"checks\":39,\"failed_checks\":[],\"exit_code\":0,\"path\":\"visual-acceptance.json\",\"sha256\":\"76978577a2cb4b9195eb7e6d14b35cc7979c326bbfaa51b5b7506d56da29dea1\"},\"failure\":null}\n",
+      "stderr": "",
+      "ok": true,
+      "run_status": "passed",
+      "acceptance_passed": true,
+      "failed_checks": [],
+      "metrics": {
+        "idle": {
+          "warm_pixels": 59,
+          "changed_pixels_vs_idle": null,
+          "enemy_phase": "idle",
+          "enemy_phase_tick": 0
+        },
+        "windup-early": {
+          "warm_pixels": 1705,
+          "changed_pixels_vs_idle": null,
+          "enemy_phase": "windup",
+          "enemy_phase_tick": 18
+        },
+        "windup-mid": {
+          "warm_pixels": 2101,
+          "changed_pixels_vs_idle": null,
+          "enemy_phase": "windup",
+          "enemy_phase_tick": 22
+        },
+        "windup-late": {
+          "warm_pixels": 2609,
+          "changed_pixels_vs_idle": 2662,
+          "enemy_phase": "windup",
+          "enemy_phase_tick": 26
+        },
+        "active": {
+          "warm_pixels": 2052,
+          "changed_pixels_vs_idle": null,
+          "enemy_phase": "active",
+          "enemy_phase_tick": 1
+        },
+        "recovery": {
+          "warm_pixels": 73,
+          "changed_pixels_vs_idle": null,
+          "enemy_phase": "recover",
+          "enemy_phase_tick": 1
+        },
+        "restart": {
+          "warm_pixels": 131,
+          "changed_pixels_vs_idle": null,
+          "enemy_phase": "idle",
+          "enemy_phase_tick": 0
+        }
+      },
+      "capture_count": 7,
+      "project": "game",
+      "failure": null
+    },
+    "existing": {
+      "ok": true,
+      "passed": 18,
+      "total": 18,
+      "failing": [],
+      "exit_code": 0,
+      "duration_ms": 14199,
+      "timed_out": false
+    },
+    "dodge": {
+      "ok": true,
+      "passed": 12,
+      "total": 12,
+      "failing": [],
+      "exit_code": 0,
+      "duration_ms": 4007,
+      "timed_out": false
+    }
+  },
+  "source_files_before": {
+    ".godot/.gdignore": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    ".godot/editor/filesystem_cache10": "f199ffc67da39a3ef9bf7f9297e2bc1fdc72aaa616cd6ebbd6e2bb23a7a0688c",
+    ".godot/editor/main.tscn-folding-3070c538c03ee49b7677ff960a3f5195.cfg": "9b34a7fc95b0f9cd640941851bbb0ebc8777e0666f5560e828143047b26c7c93",
+    ".godot/editor/placeholder-character.glb-abeeea084ea0970d5fb625b8aac6f767.scn-folding-c0ebe78ad6dcdcc5480a60502c28b6a3.cfg": "fa44dfbae9b3b64980c44d9922acdad9b34ea46c85cce8a917708577229c27f6",
+    ".godot/editor/project_metadata.cfg": "5d9013c809df72a37a32d225d808f7c429735c1736d41c19191fe43e2a271775",
+    ".godot/global_script_class_cache.cfg": "f61aa7ad3097022d6a9d110ca3f73fa7bb348ec2cf9a6e7c9523574dc75f5a16",
+    ".godot/imported/phase18-active.png-f1be311bcbdf3bb3778b6152549337ed.ctex": "57fc65abbbdda157d46b1605d942b428e3c488718d3ee3106fb7d55bee09fcc0",
+    ".godot/imported/phase18-active.png-f1be311bcbdf3bb3778b6152549337ed.md5": "915a79f35cf35ee4091a4186ef219c9e00d647e81e244c79735bb6f69738e75c",
+    ".godot/imported/phase18-idle.png-a975bb6a865fbf6f54e81d82e169a4c1.ctex": "0aa2d37faf8874631086b7d1baa059ff0bce8339483cdd374c3f57e6733a0c14",
+    ".godot/imported/phase18-idle.png-a975bb6a865fbf6f54e81d82e169a4c1.md5": "bb44f371745445d5bc7642f0289ee07550f9198e29895e1fb6f71290e01bf4ff",
+    ".godot/imported/phase18-recovery.png-b2d3784a003408bf8a217fb61dc3c9a2.ctex": "d970f7eafee8a06d24f231123927f6edfa5005d4e63a064667141c033e41c81c",
+    ".godot/imported/phase18-recovery.png-b2d3784a003408bf8a217fb61dc3c9a2.md5": "eced9544e996687644b203afcd325239ad1b29744382f71522a00152e1333e50",
+    ".godot/imported/phase18-restart.png-4a51ca44d1b356cab568f41d46787c6b.ctex": "7a3d3abef19f2e8b3323358e94176f55e309c71e8cbfcba11139f98ccdf73b2a",
+    ".godot/imported/phase18-restart.png-4a51ca44d1b356cab568f41d46787c6b.md5": "9cb51df7e5830878f2a1f99242f6809b19478caed6bf2a82a237d966595f21b2",
+    ".godot/imported/phase18-windup-early.png-9d1fbc5c703d4c5816b0a4959a67c93e.ctex": "56d5a25dcb73628392cdef885d5873fa21361b1249f9f4e957b8a04d764428bf",
+    ".godot/imported/phase18-windup-early.png-9d1fbc5c703d4c5816b0a4959a67c93e.md5": "c9e6a952d1ee70929d3ddfd74299b240cfb3f7d5a0c1c58f5b4c49ef8e1a9efb",
+    ".godot/imported/phase18-windup-late.png-f067690059745e36450a5d7cc78817c8.ctex": "64e8776f7e38310908b73e895770547682b24a4246150a49405bba6736b0cb46",
+    ".godot/imported/phase18-windup-late.png-f067690059745e36450a5d7cc78817c8.md5": "fcba98e6a4622922bcf0d504c84ca686348a41ac1ac0d36213b709a37a412653",
+    ".godot/imported/placeholder-character.glb-abeeea084ea0970d5fb625b8aac6f767.md5": "3bfc1de7263f3a5a9e90a27d3a88e4aa4f55cb38767e8e0bd1813ed946ed049b",
+    ".godot/imported/placeholder-character.glb-abeeea084ea0970d5fb625b8aac6f767.scn": "086950aa038f94dbcd50288c709ed6f345ccc81049f7d32945939b2c52deef89",
+    ".godot/uid_cache.bin": "0dd57a01bec514ba4bda51510419becfc488909fdca3c81f5fe3c2ca246bdbb5",
+    "artifacts/phase18-active.png": "26229885567acfaa46e36b38a1e301add2b188a764f0d72d9169eab1e662aed5",
+    "artifacts/phase18-active.png.import": "0df4557c976248c56f7c4000bb75c53f18d512fd26c91c3ce05e951d6828d77c",
+    "artifacts/phase18-idle.png": "9feaf1dd3b12556d5f8886a57e0e471abac73d5fd923a2871fbe9d9ef190390f",
+    "artifacts/phase18-idle.png.import": "a2875a4a6637003b2655329a6eb2dad0d2e649dfeaf9e6506c5044fe7afeeaa0",
+    "artifacts/phase18-recovery.png": "54bedd51e8b9a3778ad2c4828c55e97fcfc1ff36a04bcc294a5a1d5e331bf32c",
+    "artifacts/phase18-recovery.png.import": "c3c7d804e861fb5ac36bd1e70774a4f20668491f125ffd2a5f2e7bee0e06bb8e",
+    "artifacts/phase18-restart.png": "59b289cebc3ab9d01382b42e0d49de1de68d751feae97763bff0238f2f9f36dd",
+    "artifacts/phase18-restart.png.import": "5e50e8653d7b7a6b9674ba57dd2080dfeb25a825a5d7b8c138c9006c66da23cb",
+    "artifacts/phase18-windup-early.png": "7aab6b42f106c7765544baf1415e3b1f6fcded45b8a34527823c4d75f13126da",
+    "artifacts/phase18-windup-early.png.import": "8d91cbd3e3d58bd934d0ee2ea274a0be31cf17bfa9cf4d18ff7a35d360fc0e35",
+    "artifacts/phase18-windup-late.png": "209bfea5b981e8dcbb53e513e5a3e61aa4b492289eadf24e25ff31970eb4c114",
+    "artifacts/phase18-windup-late.png.import": "961f82a796f321f8eead35f8e470972b2ff20c31ceee92a3c3d67dbfab1a8311",
+    "artifacts/phase18-windup-mid.png": "5454189bf7c7bec755909fefefb2117dadc07f5c5ca7cc3a4297d797498d28b1",
+    "assets/placeholder-character.glb": "1af652d739cd18abbde248437a245b5b89521365865ca327cd88d3f6f63c577b",
+    "assets/placeholder-character.glb.import": "3e2c1b81fb2258e7e01e1ce029b84f5771e4dc8f2ec5e38abb4181950e790442",
+    "export_presets.cfg": "820ab76c00dd61ff843367004ffc63de6257f9423b1923140ff896b2fde8eab3",
+    "harness/bridge.gd": "08b1cae562ee841d61f33f67bae117e1aad6dd9736235fa5ae1280ab7e314b5b",
+    "harness/bridge.gd.uid": "c8d0bf623e7b0f097be7f6b53aa9cde92308986659ac8224f35dc74c55a7964b",
+    "main.tscn": "3af09fa4a03cdd468e90c5ad0867d30688efcbd837a9bef2e207a99f708a8d6e",
+    "project.godot": "396602499b6f9621ceacad6a9803adefdf24aad62324323c075e3d0013f815ec",
+    "README.md": "b290a1c7869f100f4f3c5d4bb08f7bcce9fae218b4fc6a5bae302cadfb3bc8e4",
+    "scripts/enemy_ai.gd": "fda22478cb8691042abf1ac44f44fc04ced8375b87445baa56bd073c3614c3ad",
+    "scripts/enemy_ai.gd.uid": "fc5ad27596809ceb468112e4cf937f58236a816de8866364b4aadbe717cc051d",
+    "scripts/fighter_rig.gd": "0369c3831f5bd3dce19b7e9d63df187ac4491bcd33544c8d23d820e6b0f4942a",
+    "scripts/fighter_rig.gd.uid": "e2d2c8e96d8fde82ba2e72d026f9b658b534218fe38735c038fd51394c1df18a",
+    "scripts/game_world.gd": "b47e5ecbda9db96a95018ea218a722b6fa40ca8932bb34794238269aa5b175bc",
+    "scripts/game_world.gd.uid": "ca1ca54ce995be31e12f9e0ba1b73f11858b393337e5e3f959dd53582507675a",
+    "tests/run_dodge_tests.gd": "08018e3596e65cc60c1f7f228ccc74748a08f8b642c2cd9a134796b45ef04d1b",
+    "tests/run_dodge_tests.gd.uid": "59125276300f1a9c8d0021920a87265b6f75355d54820e7a1b684a4bbc8aa4c7",
+    "tests/run_game_tests.gd": "8ac663c24e1052b67f8d2480cc59aaa3bbb2adeb900e4c2313e74eff251ea699",
+    "tests/run_game_tests.gd.uid": "fe68b88e7ff9437c5798bb9b2762b8590616e694445bc99f16248b29a276c713"
+  },
+  "failure_reason": null,
+  "seed": {
+    "failure": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\defect\\seed-failure.md"
+  },
+  "observed": {
+    "dir": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\defect\\before\\2026-10-23T19-25-41",
+    "images": 7,
+    "sandbox_path": "observed"
+  },
+  "task": {
+    "source": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\defect\\task.md",
+    "sha256": "32ca161b9eb0514033e10e648a1c90cf55bc4ebf8eebee83cbaac9e99e01b971"
+  },
+  "opencode": {
+    "bin": "C:\\Users\\hacke\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+    "version": "opencode v2.0.32"
+  },
+  "source_files_after": {
+    ".godot/.gdignore": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    ".godot/editor/filesystem_cache10": "f199ffc67da39a3ef9bf7f9297e2bc1fdc72aaa616cd6ebbd6e2bb23a7a0688c",
+    ".godot/editor/main.tscn-folding-3070c538c03ee49b7677ff960a3f5195.cfg": "9b34a7fc95b0f9cd640941851bbb0ebc8777e0666f5560e828143047b26c7c93",
+    ".godot/editor/placeholder-character.glb-abeeea084ea0970d5fb625b8aac6f767.scn-folding-c0ebe78ad6dcdcc5480a60502c28b6a3.cfg": "fa44dfbae9b3b64980c44d9922acdad9b34ea46c85cce8a917708577229c27f6",
+    ".godot/editor/project_metadata.cfg": "5d9013c809df72a37a32d225d808f7c429735c1736d41c19191fe43e2a271775",
+    ".godot/global_script_class_cache.cfg": "f61aa7ad3097022d6a9d110ca3f73fa7bb348ec2cf9a6e7c9523574dc75f5a16",
+    ".godot/imported/phase18-active.png-f1be311bcbdf3bb3778b6152549337ed.ctex": "57fc65abbbdda157d46b1605d942b428e3c488718d3ee3106fb7d55bee09fcc0",
+    ".godot/imported/phase18-active.png-f1be311bcbdf3bb3778b6152549337ed.md5": "915a79f35cf35ee4091a4186ef219c9e00d647e81e244c79735bb6f69738e75c",
+    ".godot/imported/phase18-idle.png-a975bb6a865fbf6f54e81d82e169a4c1.ctex": "0aa2d37faf8874631086b7d1baa059ff0bce8339483cdd374c3f57e6733a0c14",
+    ".godot/imported/phase18-idle.png-a975bb6a865fbf6f54e81d82e169a4c1.md5": "bb44f371745445d5bc7642f0289ee07550f9198e29895e1fb6f71290e01bf4ff",
+    ".godot/imported/phase18-recovery.png-b2d3784a003408bf8a217fb61dc3c9a2.ctex": "d970f7eafee8a06d24f231123927f6edfa5005d4e63a064667141c033e41c81c",
+    ".godot/imported/phase18-recovery.png-b2d3784a003408bf8a217fb61dc3c9a2.md5": "eced9544e996687644b203afcd325239ad1b29744382f71522a00152e1333e50",
+    ".godot/imported/phase18-restart.png-4a51ca44d1b356cab568f41d46787c6b.ctex": "7a3d3abef19f2e8b3323358e94176f55e309c71e8cbfcba11139f98ccdf73b2a",
+    ".godot/imported/phase18-restart.png-4a51ca44d1b356cab568f41d46787c6b.md5": "9cb51df7e5830878f2a1f99242f6809b19478caed6bf2a82a237d966595f21b2",
+    ".godot/imported/phase18-windup-early.png-9d1fbc5c703d4c5816b0a4959a67c93e.ctex": "56d5a25dcb73628392cdef885d5873fa21361b1249f9f4e957b8a04d764428bf",
+    ".godot/imported/phase18-windup-early.png-9d1fbc5c703d4c5816b0a4959a67c93e.md5": "c9e6a952d1ee70929d3ddfd74299b240cfb3f7d5a0c1c58f5b4c49ef8e1a9efb",
+    ".godot/imported/phase18-windup-late.png-f067690059745e36450a5d7cc78817c8.ctex": "64e8776f7e38310908b73e895770547682b24a4246150a49405bba6736b0cb46",
+    ".godot/imported/phase18-windup-late.png-f067690059745e36450a5d7cc78817c8.md5": "fcba98e6a4622922bcf0d504c84ca686348a41ac1ac0d36213b709a37a412653",
+    ".godot/imported/placeholder-character.glb-abeeea084ea0970d5fb625b8aac6f767.md5": "3bfc1de7263f3a5a9e90a27d3a88e4aa4f55cb38767e8e0bd1813ed946ed049b",
+    ".godot/imported/placeholder-character.glb-abeeea084ea0970d5fb625b8aac6f767.scn": "086950aa038f94dbcd50288c709ed6f345ccc81049f7d32945939b2c52deef89",
+    ".godot/uid_cache.bin": "0dd57a01bec514ba4bda51510419becfc488909fdca3c81f5fe3c2ca246bdbb5",
+    "artifacts/phase18-active.png": "26229885567acfaa46e36b38a1e301add2b188a764f0d72d9169eab1e662aed5",
+    "artifacts/phase18-active.png.import": "0df4557c976248c56f7c4000bb75c53f18d512fd26c91c3ce05e951d6828d77c",
+    "artifacts/phase18-idle.png": "9feaf1dd3b12556d5f8886a57e0e471abac73d5fd923a2871fbe9d9ef190390f",
+    "artifacts/phase18-idle.png.import": "a2875a4a6637003b2655329a6eb2dad0d2e649dfeaf9e6506c5044fe7afeeaa0",
+    "artifacts/phase18-recovery.png": "945015cd548ec09d58e8a8ede42c8662f84d17527269701f0a214861328b305e",
+    "artifacts/phase18-recovery.png.import": "c3c7d804e861fb5ac36bd1e70774a4f20668491f125ffd2a5f2e7bee0e06bb8e",
+    "artifacts/phase18-restart.png": "59b289cebc3ab9d01382b42e0d49de1de68d751feae97763bff0238f2f9f36dd",
+    "artifacts/phase18-restart.png.import": "5e50e8653d7b7a6b9674ba57dd2080dfeb25a825a5d7b8c138c9006c66da23cb",
+    "artifacts/phase18-windup-early.png": "b0d3d5d47c3e8e1d28435b49514f0821e22a3473e2b24f9d80894f4e7358170d",
+    "artifacts/phase18-windup-early.png.import": "8d91cbd3e3d58bd934d0ee2ea274a0be31cf17bfa9cf4d18ff7a35d360fc0e35",
+    "artifacts/phase18-windup-late.png": "9225385a848f01c105e1f4c8601fd466795fc164c3d1c87e7dead8ef6dfb4213",
+    "artifacts/phase18-windup-late.png.import": "961f82a796f321f8eead35f8e470972b2ff20c31ceee92a3c3d67dbfab1a8311",
+    "artifacts/phase18-windup-mid.png": "8d0d905131e2133d7f2776d860998e236b173cacdc9c567f86aa6291386e4a07",
+    "assets/placeholder-character.glb": "1af652d739cd18abbde248437a245b5b89521365865ca327cd88d3f6f63c577b",
+    "assets/placeholder-character.glb.import": "3e2c1b81fb2258e7e01e1ce029b84f5771e4dc8f2ec5e38abb4181950e790442",
+    "export_presets.cfg": "820ab76c00dd61ff843367004ffc63de6257f9423b1923140ff896b2fde8eab3",
+    "harness/bridge.gd": "08b1cae562ee841d61f33f67bae117e1aad6dd9736235fa5ae1280ab7e314b5b",
+    "harness/bridge.gd.uid": "c8d0bf623e7b0f097be7f6b53aa9cde92308986659ac8224f35dc74c55a7964b",
+    "main.tscn": "3af09fa4a03cdd468e90c5ad0867d30688efcbd837a9bef2e207a99f708a8d6e",
+    "project.godot": "396602499b6f9621ceacad6a9803adefdf24aad62324323c075e3d0013f815ec",
+    "README.md": "b290a1c7869f100f4f3c5d4bb08f7bcce9fae218b4fc6a5bae302cadfb3bc8e4",
+    "scripts/enemy_ai.gd": "fda22478cb8691042abf1ac44f44fc04ced8375b87445baa56bd073c3614c3ad",
+    "scripts/enemy_ai.gd.uid": "fc5ad27596809ceb468112e4cf937f58236a816de8866364b4aadbe717cc051d",
+    "scripts/fighter_rig.gd": "0369c3831f5bd3dce19b7e9d63df187ac4491bcd33544c8d23d820e6b0f4942a",
+    "scripts/fighter_rig.gd.uid": "e2d2c8e96d8fde82ba2e72d026f9b658b534218fe38735c038fd51394c1df18a",
+    "scripts/game_world.gd": "b47e5ecbda9db96a95018ea218a722b6fa40ca8932bb34794238269aa5b175bc",
+    "scripts/game_world.gd.uid": "ca1ca54ce995be31e12f9e0ba1b73f11858b393337e5e3f959dd53582507675a",
+    "tests/run_dodge_tests.gd": "08018e3596e65cc60c1f7f228ccc74748a08f8b642c2cd9a134796b45ef04d1b",
+    "tests/run_dodge_tests.gd.uid": "59125276300f1a9c8d0021920a87265b6f75355d54820e7a1b684a4bbc8aa4c7",
+    "tests/run_game_tests.gd": "8ac663c24e1052b67f8d2480cc59aaa3bbb2adeb900e4c2313e74eff251ea699",
+    "tests/run_game_tests.gd.uid": "fe68b88e7ff9437c5798bb9b2762b8590616e694445bc99f16248b29a276c713"
+  },
+  "final_status": "passed",
+  "cleanup": {
+    "keep_sandbox": false
+  }
+}

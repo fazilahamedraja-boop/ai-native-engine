@@ -1,0 +1,15 @@
+{
+  "lines": 72,
+  "parse_errors": 0,
+  "by_type": {
+    "step_start": 20,
+    "tool_use": 35,
+    "step_finish": 9,
+    "text": 7,
+    "error": 1
+  },
+  "tools": [
+    "glob",
+    "read"
+  ]
+}

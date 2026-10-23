@@ -712,6 +712,18 @@ export class HarnessSession {
     return this.send('reset')
   }
 
+  /**
+   * Apply the game's test-only `harness_setup(values)` scenario settings.
+   * This is a bounded positioning/state helper, not a second combat path; all
+   * damage and phase transitions still run through the normal tick loop.
+   */
+  async setup(values = {}) {
+    if (values === null || typeof values !== 'object' || Array.isArray(values)) {
+      throw new Error('setup values must be an object')
+    }
+    return this.send('harness_setup', values)
+  }
+
   async screenshot(path = 'res://artifacts/harness.png') {
     if (!isProjectResPath(path, '.png')) {
       throw new Error('screenshot path must be a res:// .png path without .. segments')

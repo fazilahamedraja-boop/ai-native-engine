@@ -1,0 +1,6 @@
+--- scripts/fighter_rig.gd
++++ scripts/fighter_rig.gd
+-	# Controlled reversible defect: ignore windup progress so the warning ring
+-	# is static and never escalates. It remains a real world-space cue.
+-	_warning_progress = clampf(progress * 0.0 + 0.35, 0.0, 1.0)
++	_warning_progress = clampf(progress, 0.0, 1.0)

@@ -1,0 +1,70 @@
+{
+  "schema": "phase18.export-gameplay-probe.v1",
+  "created_at": "2026-10-23T15:08:01.620Z",
+  "exe": {
+    "path": "../experiments/godot-harness/game/build/DeflectArena.exe",
+    "bytes": 109127680,
+    "sha256": "cd2526cc93bc164d9d8f011761c2348973dfe06654824498767096fa58568212"
+  },
+  "pck": {
+    "path": "../experiments/godot-harness/game/build/DeflectArena.pck",
+    "bytes": 76140,
+    "sha256": "f2fc27551493b652cd5dff78735682ccab1ce3a1b8dfb3432973af8c43bea6eb"
+  },
+  "bridge_port": 50087,
+  "pid": 26420,
+  "checks": [
+    {
+      "name": "bridge-reachable",
+      "ok": true,
+      "detail": "port=50087"
+    },
+    {
+      "name": "packaged-initial-state",
+      "ok": true,
+      "detail": "step=0 hp=4/5 dodge=idle"
+    },
+    {
+      "name": "packaged-dodge-starts",
+      "ok": true,
+      "detail": "phase=active tick=0 cooldown=45"
+    },
+    {
+      "name": "packaged-dodge-moves-and-iframes",
+      "ok": true,
+      "detail": "phase=active tick=9 invuln=true dx=1.35"
+    },
+    {
+      "name": "packaged-dodge-recovery",
+      "ok": true,
+      "detail": "phase=recovery tick=0 invuln=false"
+    },
+    {
+      "name": "packaged-dodge-cooldown",
+      "ok": true,
+      "detail": "phase=idle cooldown=16 before=17 rejected=true"
+    },
+    {
+      "name": "packaged-restart-clears-dodge",
+      "ok": true,
+      "detail": "step=0 dodge=idle cooldown=0"
+    },
+    {
+      "name": "packaged-sword-hit",
+      "ok": true,
+      "detail": "enemy_hp=4 events=reset,enemy_windup,attack_started,attack_active,player_hit_enemy,attack_recover"
+    },
+    {
+      "name": "process-stayed-alive",
+      "ok": true,
+      "detail": "exit_code=null"
+    }
+  ],
+  "summary": {
+    "passed": 9,
+    "failed": 0
+  },
+  "failure": null,
+  "stdout_lines": 3,
+  "stderr_lines": 0
+}

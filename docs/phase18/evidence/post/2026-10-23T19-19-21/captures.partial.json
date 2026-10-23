@@ -1,0 +1,1174 @@
+{
+  "schema": "phase18.captures.v1",
+  "run_id": "phase18-visual-2026-10-23T13-49-21-600Z",
+  "label": "visual",
+  "project": "game",
+  "git": {
+    "commit": "0ce8d6f16e9e3df8590a6463e720166753b65e75",
+    "branch": "experiment/phase18-visual",
+    "status": "M experiments/godot-harness/controller/harness.mjs\n M experiments/godot-harness/game/assets/placeholder-character.glb.import\n M experiments/godot-harness/game/harness/bridge.gd\n M experiments/godot-harness/game/scripts/fighter_rig.gd\n M experiments/godot-harness/game/scripts/game_world.gd\n?? docs/phase18/\n?? experiments/godot-harness/controller/__pycache__/\n?? experiments/godot-harness/controller/phase18-agent.mjs\n?? experiments/godot-harness/controller/phase18-diagnosis.mjs\n?? experiments/godot-harness/controller/phase18-visual-check.mjs\n?? experiments/godot-harness/controller/phase18_visual_acceptance.py"
+  },
+  "captured_at": "2026-10-23T13:49:28.881Z",
+  "captures": [
+    {
+      "name": "idle",
+      "scenario": "control: enemy idle at attack distance; AI frozen",
+      "image": {
+        "path": "idle.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\post\\2026-10-23T19-19-21\\idle.png",
+        "bytes": 67886,
+        "sha256": "9feaf1dd3b12556d5f8886a57e0e471abac73d5fd923a2871fbe9d9ef190390f",
+        "width": 1280,
+        "height": 720
+      },
+      "screenshot": {
+        "path": "idle.png",
+        "sha256": "9feaf1dd3b12556d5f8886a57e0e471abac73d5fd923a2871fbe9d9ef190390f",
+        "width": 1280,
+        "height": 720
+      },
+      "captured_at": "2026-10-23T13:49:23.617Z",
+      "engine_tick": 1,
+      "simulation_step": 1,
+      "paused": true,
+      "state": {
+        "step": 1,
+        "sim_time_seconds": 0.0166666666666667,
+        "player_position": [
+          0,
+          0.000546873547136784,
+          2.59999990463257
+        ],
+        "player_velocity": [
+          0,
+          0,
+          0
+        ],
+        "player_health": 4,
+        "player_attack_phase": "idle",
+        "player_attack_tick": 0,
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "none",
+        "dodge_phase": "idle",
+        "dodge_tick": 0,
+        "dodge_cooldown": 0,
+        "dodge_invulnerable": false,
+        "dodge_available": true,
+        "enemy_position": [
+          0,
+          0.000546873547136784,
+          0.800000011920929
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "idle",
+        "enemy_phase_tick": 0,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "enemy_ai_enabled": false,
+        "outcome": "playing",
+        "camera_position": [
+          1.10000002384186,
+          2.71319150924683,
+          7.29999971389771
+        ],
+        "camera_distance": 5.07364320755005,
+        "grounded": true,
+        "input": {
+          "attack": false,
+          "dodge": false,
+          "forward": 0,
+          "parry": false,
+          "restart": false,
+          "strafe": 0
+        },
+        "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   duel\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart",
+        "last_event_type": "reset",
+        "hash": "f2da05d00f6769d02ea0c70d5e77fe4961668d0cbd4a44d9244c72bec197110a"
+      },
+      "state_after": {
+        "step": 1,
+        "sim_time_seconds": 0.0166666666666667,
+        "player_position": [
+          0,
+          0.000546873547136784,
+          2.59999990463257
+        ],
+        "player_velocity": [
+          0,
+          0,
+          0
+        ],
+        "player_health": 4,
+        "player_attack_phase": "idle",
+        "player_attack_tick": 0,
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "none",
+        "dodge_phase": "idle",
+        "dodge_tick": 0,
+        "dodge_cooldown": 0,
+        "dodge_invulnerable": false,
+        "dodge_available": true,
+        "enemy_position": [
+          0,
+          0.000546873547136784,
+          0.800000011920929
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "idle",
+        "enemy_phase_tick": 0,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "enemy_ai_enabled": false,
+        "outcome": "playing",
+        "camera_position": [
+          1.10000002384186,
+          2.71319150924683,
+          7.29999971389771
+        ],
+        "camera_distance": 5.07364320755005,
+        "grounded": true,
+        "input": {
+          "attack": false,
+          "dodge": false,
+          "forward": 0,
+          "parry": false,
+          "restart": false,
+          "strafe": 0
+        },
+        "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   duel\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart",
+        "last_event_type": "reset",
+        "hash": "f2da05d00f6769d02ea0c70d5e77fe4961668d0cbd4a44d9244c72bec197110a"
+      },
+      "enemy_feet_screen": [
+        674.68,
+        404.45
+      ],
+      "events": {
+        "available": true,
+        "count": 1,
+        "items": [
+          {
+            "sequence": 1,
+            "sim_time_seconds": 0,
+            "tick": 0,
+            "type": "reset"
+          }
+        ]
+      },
+      "capture_metadata": {
+        "scenario_role": "idle-control"
+      }
+    },
+    {
+      "name": "windup-early",
+      "scenario": "enemy windup: early warning window",
+      "image": {
+        "path": "windup-early.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\post\\2026-10-23T19-19-21\\windup-early.png",
+        "bytes": 71546,
+        "sha256": "b0d3d5d47c3e8e1d28435b49514f0821e22a3473e2b24f9d80894f4e7358170d",
+        "width": 1280,
+        "height": 720
+      },
+      "screenshot": {
+        "path": "windup-early.png",
+        "sha256": "b0d3d5d47c3e8e1d28435b49514f0821e22a3473e2b24f9d80894f4e7358170d",
+        "width": 1280,
+        "height": 720
+      },
+      "captured_at": "2026-10-23T13:49:24.594Z",
+      "engine_tick": 19,
+      "simulation_step": 19,
+      "paused": true,
+      "state": {
+        "step": 19,
+        "sim_time_seconds": 0.316666666666667,
+        "player_position": [
+          0,
+          0.000546873547136784,
+          2.59999990463257
+        ],
+        "player_velocity": [
+          0,
+          0,
+          0
+        ],
+        "player_health": 4,
+        "player_attack_phase": "idle",
+        "player_attack_tick": 0,
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "none",
+        "dodge_phase": "idle",
+        "dodge_tick": 0,
+        "dodge_cooldown": 0,
+        "dodge_invulnerable": false,
+        "dodge_available": true,
+        "enemy_position": [
+          0,
+          0.000546873547136784,
+          0.800000011920929
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "windup",
+        "enemy_phase_tick": 18,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "enemy_ai_enabled": true,
+        "outcome": "playing",
+        "camera_position": [
+          1.10000002384186,
+          2.70055246353149,
+          7.29999971389771
+        ],
+        "camera_distance": 5.06976461410522,
+        "grounded": true,
+        "input": {
+          "attack": false,
+          "dodge": false,
+          "forward": 0,
+          "parry": false,
+          "restart": false,
+          "strafe": 0
+        },
+        "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   INCOMING ATTACK - press K to deflect\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart",
+        "last_event_type": "enemy_windup",
+        "hash": "c44c5b1cdc5a9d946c9233a62a943f0be6369d2eec62f9d91ce2f889f4776d28"
+      },
+      "state_after": {
+        "step": 19,
+        "sim_time_seconds": 0.316666666666667,
+        "player_position": [
+          0,
+          0.000546873547136784,
+          2.59999990463257
+        ],
+        "player_velocity": [
+          0,
+          0,
+          0
+        ],
+        "player_health": 4,
+        "player_attack_phase": "idle",
+        "player_attack_tick": 0,
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "none",
+        "dodge_phase": "idle",
+        "dodge_tick": 0,
+        "dodge_cooldown": 0,
+        "dodge_invulnerable": false,
+        "dodge_available": true,
+        "enemy_position": [
+          0,
+          0.000546873547136784,
+          0.800000011920929
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "windup",
+        "enemy_phase_tick": 18,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "enemy_ai_enabled": true,
+        "outcome": "playing",
+        "camera_position": [
+          1.10000002384186,
+          2.70055246353149,
+          7.29999971389771
+        ],
+        "camera_distance": 5.06976461410522,
+        "grounded": true,
+        "input": {
+          "attack": false,
+          "dodge": false,
+          "forward": 0,
+          "parry": false,
+          "restart": false,
+          "strafe": 0
+        },
+        "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   INCOMING ATTACK - press K to deflect\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart",
+        "last_event_type": "enemy_windup",
+        "hash": "c44c5b1cdc5a9d946c9233a62a943f0be6369d2eec62f9d91ce2f889f4776d28"
+      },
+      "enemy_feet_screen": [
+        674.71,
+        404.89
+      ],
+      "events": {
+        "available": true,
+        "count": 2,
+        "items": [
+          {
+            "sequence": 1,
+            "sim_time_seconds": 0,
+            "tick": 0,
+            "type": "reset"
+          },
+          {
+            "distance": 1.79999995231628,
+            "sequence": 2,
+            "sim_time_seconds": 0.0166666666666667,
+            "tick": 1,
+            "type": "enemy_windup"
+          }
+        ]
+      },
+      "capture_metadata": {
+        "scenario_role": "windup-early"
+      }
+    },
+    {
+      "name": "windup-mid",
+      "scenario": "enemy windup: middle warning window",
+      "image": {
+        "path": "windup-mid.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\post\\2026-10-23T19-19-21\\windup-mid.png",
+        "bytes": 71730,
+        "sha256": "8d0d905131e2133d7f2776d860998e236b173cacdc9c567f86aa6291386e4a07",
+        "width": 1280,
+        "height": 720
+      },
+      "screenshot": {
+        "path": "windup-mid.png",
+        "sha256": "8d0d905131e2133d7f2776d860998e236b173cacdc9c567f86aa6291386e4a07",
+        "width": 1280,
+        "height": 720
+      },
+      "captured_at": "2026-10-23T13:49:25.019Z",
+      "engine_tick": 23,
+      "simulation_step": 23,
+      "paused": true,
+      "state": {
+        "step": 23,
+        "sim_time_seconds": 0.383333333333333,
+        "player_position": [
+          0,
+          0.000546873547136784,
+          2.59999990463257
+        ],
+        "player_velocity": [
+          0,
+          0,
+          0
+        ],
+        "player_health": 4,
+        "player_attack_phase": "idle",
+        "player_attack_tick": 0,
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "none",
+        "dodge_phase": "idle",
+        "dodge_tick": 0,
+        "dodge_cooldown": 0,
+        "dodge_invulnerable": false,
+        "dodge_available": true,
+        "enemy_position": [
+          0,
+          0.000546873547136784,
+          0.800000011920929
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "windup",
+        "enemy_phase_tick": 22,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "enemy_ai_enabled": true,
+        "outcome": "playing",
+        "camera_position": [
+          1.10000002384186,
+          2.70054817199707,
+          7.29999971389771
+        ],
+        "camera_distance": 5.06976366043091,
+        "grounded": true,
+        "input": {
+          "attack": false,
+          "dodge": false,
+          "forward": 0,
+          "parry": false,
+          "restart": false,
+          "strafe": 0
+        },
+        "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   INCOMING ATTACK - press K to deflect\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart",
+        "last_event_type": "enemy_windup",
+        "hash": "3b1b68d17a5dbf2f58ae7ef844663c33adb73df7b207d9801ce9dfc906fc8a59"
+      },
+      "state_after": {
+        "step": 23,
+        "sim_time_seconds": 0.383333333333333,
+        "player_position": [
+          0,
+          0.000546873547136784,
+          2.59999990463257
+        ],
+        "player_velocity": [
+          0,
+          0,
+          0
+        ],
+        "player_health": 4,
+        "player_attack_phase": "idle",
+        "player_attack_tick": 0,
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "none",
+        "dodge_phase": "idle",
+        "dodge_tick": 0,
+        "dodge_cooldown": 0,
+        "dodge_invulnerable": false,
+        "dodge_available": true,
+        "enemy_position": [
+          0,
+          0.000546873547136784,
+          0.800000011920929
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "windup",
+        "enemy_phase_tick": 22,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "enemy_ai_enabled": true,
+        "outcome": "playing",
+        "camera_position": [
+          1.10000002384186,
+          2.70054817199707,
+          7.29999971389771
+        ],
+        "camera_distance": 5.06976366043091,
+        "grounded": true,
+        "input": {
+          "attack": false,
+          "dodge": false,
+          "forward": 0,
+          "parry": false,
+          "restart": false,
+          "strafe": 0
+        },
+        "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   INCOMING ATTACK - press K to deflect\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart",
+        "last_event_type": "enemy_windup",
+        "hash": "3b1b68d17a5dbf2f58ae7ef844663c33adb73df7b207d9801ce9dfc906fc8a59"
+      },
+      "enemy_feet_screen": [
+        674.71,
+        404.89
+      ],
+      "events": {
+        "available": true,
+        "count": 2,
+        "items": [
+          {
+            "sequence": 1,
+            "sim_time_seconds": 0,
+            "tick": 0,
+            "type": "reset"
+          },
+          {
+            "distance": 1.79999995231628,
+            "sequence": 2,
+            "sim_time_seconds": 0.0166666666666667,
+            "tick": 1,
+            "type": "enemy_windup"
+          }
+        ]
+      },
+      "capture_metadata": {
+        "scenario_role": "windup-mid"
+      }
+    },
+    {
+      "name": "windup-late",
+      "scenario": "enemy windup: late warning window",
+      "image": {
+        "path": "windup-late.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\post\\2026-10-23T19-19-21\\windup-late.png",
+        "bytes": 71975,
+        "sha256": "9225385a848f01c105e1f4c8601fd466795fc164c3d1c87e7dead8ef6dfb4213",
+        "width": 1280,
+        "height": 720
+      },
+      "screenshot": {
+        "path": "windup-late.png",
+        "sha256": "9225385a848f01c105e1f4c8601fd466795fc164c3d1c87e7dead8ef6dfb4213",
+        "width": 1280,
+        "height": 720
+      },
+      "captured_at": "2026-10-23T13:49:25.440Z",
+      "engine_tick": 27,
+      "simulation_step": 27,
+      "paused": true,
+      "state": {
+        "step": 27,
+        "sim_time_seconds": 0.45,
+        "player_position": [
+          0,
+          0.000546873547136784,
+          2.59999990463257
+        ],
+        "player_velocity": [
+          0,
+          0,
+          0
+        ],
+        "player_health": 4,
+        "player_attack_phase": "idle",
+        "player_attack_tick": 0,
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "none",
+        "dodge_phase": "idle",
+        "dodge_tick": 0,
+        "dodge_cooldown": 0,
+        "dodge_invulnerable": false,
+        "dodge_available": true,
+        "enemy_position": [
+          0,
+          0.000546873547136784,
+          0.800000011920929
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "windup",
+        "enemy_phase_tick": 26,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "enemy_ai_enabled": true,
+        "outcome": "playing",
+        "camera_position": [
+          1.10000002384186,
+          2.70054721832275,
+          7.29999971389771
+        ],
+        "camera_distance": 5.06976318359375,
+        "grounded": true,
+        "input": {
+          "attack": false,
+          "dodge": false,
+          "forward": 0,
+          "parry": false,
+          "restart": false,
+          "strafe": 0
+        },
+        "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   INCOMING ATTACK - press K to deflect\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart",
+        "last_event_type": "enemy_windup",
+        "hash": "8292bf8445d9a7b9704ed5b2c68dba63dee1c34779ad2e5f4222530fb01e21cb"
+      },
+      "state_after": {
+        "step": 27,
+        "sim_time_seconds": 0.45,
+        "player_position": [
+          0,
+          0.000546873547136784,
+          2.59999990463257
+        ],
+        "player_velocity": [
+          0,
+          0,
+          0
+        ],
+        "player_health": 4,
+        "player_attack_phase": "idle",
+        "player_attack_tick": 0,
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "none",
+        "dodge_phase": "idle",
+        "dodge_tick": 0,
+        "dodge_cooldown": 0,
+        "dodge_invulnerable": false,
+        "dodge_available": true,
+        "enemy_position": [
+          0,
+          0.000546873547136784,
+          0.800000011920929
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "windup",
+        "enemy_phase_tick": 26,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "enemy_ai_enabled": true,
+        "outcome": "playing",
+        "camera_position": [
+          1.10000002384186,
+          2.70054721832275,
+          7.29999971389771
+        ],
+        "camera_distance": 5.06976318359375,
+        "grounded": true,
+        "input": {
+          "attack": false,
+          "dodge": false,
+          "forward": 0,
+          "parry": false,
+          "restart": false,
+          "strafe": 0
+        },
+        "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   INCOMING ATTACK - press K to deflect\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart",
+        "last_event_type": "enemy_windup",
+        "hash": "8292bf8445d9a7b9704ed5b2c68dba63dee1c34779ad2e5f4222530fb01e21cb"
+      },
+      "enemy_feet_screen": [
+        674.71,
+        404.89
+      ],
+      "events": {
+        "available": true,
+        "count": 2,
+        "items": [
+          {
+            "sequence": 1,
+            "sim_time_seconds": 0,
+            "tick": 0,
+            "type": "reset"
+          },
+          {
+            "distance": 1.79999995231628,
+            "sequence": 2,
+            "sim_time_seconds": 0.0166666666666667,
+            "tick": 1,
+            "type": "enemy_windup"
+          }
+        ]
+      },
+      "capture_metadata": {
+        "scenario_role": "windup-late"
+      }
+    },
+    {
+      "name": "active",
+      "scenario": "enemy attack active window",
+      "image": {
+        "path": "active.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\post\\2026-10-23T19-19-21\\active.png",
+        "bytes": 74113,
+        "sha256": "26229885567acfaa46e36b38a1e301add2b188a764f0d72d9169eab1e662aed5",
+        "width": 1280,
+        "height": 720
+      },
+      "screenshot": {
+        "path": "active.png",
+        "sha256": "26229885567acfaa46e36b38a1e301add2b188a764f0d72d9169eab1e662aed5",
+        "width": 1280,
+        "height": 720
+      },
+      "captured_at": "2026-10-23T13:49:25.882Z",
+      "engine_tick": 32,
+      "simulation_step": 32,
+      "paused": true,
+      "state": {
+        "step": 32,
+        "sim_time_seconds": 0.533333333333333,
+        "player_position": [
+          0,
+          0.000546873547136784,
+          2.59999990463257
+        ],
+        "player_velocity": [
+          0,
+          0,
+          0
+        ],
+        "player_health": 3,
+        "player_attack_phase": "idle",
+        "player_attack_tick": 0,
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "none",
+        "dodge_phase": "idle",
+        "dodge_tick": 0,
+        "dodge_cooldown": 0,
+        "dodge_invulnerable": false,
+        "dodge_available": true,
+        "enemy_position": [
+          0,
+          0.00083652522880584,
+          0.84333336353302
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "active",
+        "enemy_phase_tick": 1,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "enemy_ai_enabled": true,
+        "outcome": "playing",
+        "camera_position": [
+          1.10000002384186,
+          2.70054721832275,
+          7.29999971389771
+        ],
+        "camera_distance": 5.06976318359375,
+        "grounded": true,
+        "input": {
+          "attack": false,
+          "dodge": false,
+          "forward": 0,
+          "parry": false,
+          "restart": false,
+          "strafe": 0
+        },
+        "hud": "DEFLECT ARENA\nPLAYER  HP 3/4  [###-]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   INCOMING ATTACK - press K to deflect\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart",
+        "last_event_type": "enemy_hit_player",
+        "hash": "a56b03b7692a7ca11102e3426fcdc8f20faaf641ca5a1ed6c179227a11a05d6d"
+      },
+      "state_after": {
+        "step": 32,
+        "sim_time_seconds": 0.533333333333333,
+        "player_position": [
+          0,
+          0.000546873547136784,
+          2.59999990463257
+        ],
+        "player_velocity": [
+          0,
+          0,
+          0
+        ],
+        "player_health": 3,
+        "player_attack_phase": "idle",
+        "player_attack_tick": 0,
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "none",
+        "dodge_phase": "idle",
+        "dodge_tick": 0,
+        "dodge_cooldown": 0,
+        "dodge_invulnerable": false,
+        "dodge_available": true,
+        "enemy_position": [
+          0,
+          0.00083652522880584,
+          0.84333336353302
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "active",
+        "enemy_phase_tick": 1,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "enemy_ai_enabled": true,
+        "outcome": "playing",
+        "camera_position": [
+          1.10000002384186,
+          2.70054721832275,
+          7.29999971389771
+        ],
+        "camera_distance": 5.06976318359375,
+        "grounded": true,
+        "input": {
+          "attack": false,
+          "dodge": false,
+          "forward": 0,
+          "parry": false,
+          "restart": false,
+          "strafe": 0
+        },
+        "hud": "DEFLECT ARENA\nPLAYER  HP 3/4  [###-]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   INCOMING ATTACK - press K to deflect\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart",
+        "last_event_type": "enemy_hit_player",
+        "hash": "a56b03b7692a7ca11102e3426fcdc8f20faaf641ca5a1ed6c179227a11a05d6d"
+      },
+      "enemy_feet_screen": [
+        674.07,
+        406.22
+      ],
+      "events": {
+        "available": true,
+        "count": 4,
+        "items": [
+          {
+            "sequence": 1,
+            "sim_time_seconds": 0,
+            "tick": 0,
+            "type": "reset"
+          },
+          {
+            "distance": 1.79999995231628,
+            "sequence": 2,
+            "sim_time_seconds": 0.0166666666666667,
+            "tick": 1,
+            "type": "enemy_windup"
+          },
+          {
+            "sequence": 3,
+            "sim_time_seconds": 0.516666666666667,
+            "tick": 31,
+            "type": "enemy_active"
+          },
+          {
+            "player_health": 3,
+            "sequence": 4,
+            "sim_time_seconds": 0.533333333333333,
+            "tick": 32,
+            "type": "enemy_hit_player"
+          }
+        ]
+      },
+      "capture_metadata": {
+        "scenario_role": "active"
+      }
+    },
+    {
+      "name": "recovery",
+      "scenario": "enemy recovery: warning should be gone",
+      "image": {
+        "path": "recovery.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\post\\2026-10-23T19-19-21\\recovery.png",
+        "bytes": 70280,
+        "sha256": "945015cd548ec09d58e8a8ede42c8662f84d17527269701f0a214861328b305e",
+        "width": 1280,
+        "height": 720
+      },
+      "screenshot": {
+        "path": "recovery.png",
+        "sha256": "945015cd548ec09d58e8a8ede42c8662f84d17527269701f0a214861328b305e",
+        "width": 1280,
+        "height": 720
+      },
+      "captured_at": "2026-10-23T13:49:26.459Z",
+      "engine_tick": 41,
+      "simulation_step": 41,
+      "paused": true,
+      "state": {
+        "step": 41,
+        "sim_time_seconds": 0.683333333333334,
+        "player_position": [
+          0,
+          0.000546873547136784,
+          2.59999990463257
+        ],
+        "player_velocity": [
+          0,
+          0,
+          0
+        ],
+        "player_health": 3,
+        "player_attack_phase": "idle",
+        "player_attack_tick": 0,
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "none",
+        "dodge_phase": "idle",
+        "dodge_tick": 0,
+        "dodge_cooldown": 0,
+        "dodge_invulnerable": false,
+        "dodge_available": true,
+        "enemy_position": [
+          0,
+          0.00083666667342186,
+          0.915000081062317
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "recover",
+        "enemy_phase_tick": 1,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "enemy_ai_enabled": true,
+        "outcome": "playing",
+        "camera_position": [
+          1.10000002384186,
+          2.70054721832275,
+          7.29999971389771
+        ],
+        "camera_distance": 5.06976318359375,
+        "grounded": true,
+        "input": {
+          "attack": false,
+          "dodge": false,
+          "forward": 0,
+          "parry": false,
+          "restart": false,
+          "strafe": 0
+        },
+        "hud": "DEFLECT ARENA\nPLAYER  HP 3/4  [###-]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   duel\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart",
+        "last_event_type": "enemy_hit_player",
+        "hash": "a54969dbd2253cb8b27c719a6f3815ded9e5e8a5fd7356f31503e234e3be810b"
+      },
+      "state_after": {
+        "step": 41,
+        "sim_time_seconds": 0.683333333333334,
+        "player_position": [
+          0,
+          0.000546873547136784,
+          2.59999990463257
+        ],
+        "player_velocity": [
+          0,
+          0,
+          0
+        ],
+        "player_health": 3,
+        "player_attack_phase": "idle",
+        "player_attack_tick": 0,
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "none",
+        "dodge_phase": "idle",
+        "dodge_tick": 0,
+        "dodge_cooldown": 0,
+        "dodge_invulnerable": false,
+        "dodge_available": true,
+        "enemy_position": [
+          0,
+          0.00083666667342186,
+          0.915000081062317
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "recover",
+        "enemy_phase_tick": 1,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "enemy_ai_enabled": true,
+        "outcome": "playing",
+        "camera_position": [
+          1.10000002384186,
+          2.70054721832275,
+          7.29999971389771
+        ],
+        "camera_distance": 5.06976318359375,
+        "grounded": true,
+        "input": {
+          "attack": false,
+          "dodge": false,
+          "forward": 0,
+          "parry": false,
+          "restart": false,
+          "strafe": 0
+        },
+        "hud": "DEFLECT ARENA\nPLAYER  HP 3/4  [###-]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   duel\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart",
+        "last_event_type": "enemy_hit_player",
+        "hash": "a54969dbd2253cb8b27c719a6f3815ded9e5e8a5fd7356f31503e234e3be810b"
+      },
+      "enemy_feet_screen": [
+        672.99,
+        408.49
+      ],
+      "events": {
+        "available": true,
+        "count": 4,
+        "items": [
+          {
+            "sequence": 1,
+            "sim_time_seconds": 0,
+            "tick": 0,
+            "type": "reset"
+          },
+          {
+            "distance": 1.79999995231628,
+            "sequence": 2,
+            "sim_time_seconds": 0.0166666666666667,
+            "tick": 1,
+            "type": "enemy_windup"
+          },
+          {
+            "sequence": 3,
+            "sim_time_seconds": 0.516666666666667,
+            "tick": 31,
+            "type": "enemy_active"
+          },
+          {
+            "player_health": 3,
+            "sequence": 4,
+            "sim_time_seconds": 0.533333333333333,
+            "tick": 32,
+            "type": "enemy_hit_player"
+          }
+        ]
+      },
+      "capture_metadata": {
+        "scenario_role": "recovery"
+      }
+    },
+    {
+      "name": "restart",
+      "scenario": "restart: clean playable state",
+      "image": {
+        "path": "restart.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\post\\2026-10-23T19-19-21\\restart.png",
+        "bytes": 68616,
+        "sha256": "59b289cebc3ab9d01382b42e0d49de1de68d751feae97763bff0238f2f9f36dd",
+        "width": 1280,
+        "height": 720
+      },
+      "screenshot": {
+        "path": "restart.png",
+        "sha256": "59b289cebc3ab9d01382b42e0d49de1de68d751feae97763bff0238f2f9f36dd",
+        "width": 1280,
+        "height": 720
+      },
+      "captured_at": "2026-10-23T13:49:26.762Z",
+      "engine_tick": 0,
+      "simulation_step": 0,
+      "paused": true,
+      "state": {
+        "step": 0,
+        "sim_time_seconds": 0,
+        "player_position": [
+          0,
+          0.0199999995529652,
+          4.40000009536743
+        ],
+        "player_velocity": [
+          0,
+          0,
+          0
+        ],
+        "player_health": 4,
+        "player_attack_phase": "idle",
+        "player_attack_tick": 0,
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "none",
+        "dodge_phase": "idle",
+        "dodge_tick": 0,
+        "dodge_cooldown": 0,
+        "dodge_invulnerable": false,
+        "dodge_available": true,
+        "enemy_position": [
+          0,
+          0.0199999995529652,
+          0.800000011920929
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "idle",
+        "enemy_phase_tick": 0,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "enemy_ai_enabled": true,
+        "outcome": "playing",
+        "camera_position": [
+          1.10000002384186,
+          2.72000002861023,
+          9.10000038146973
+        ],
+        "camera_distance": 5.06976366043091,
+        "grounded": true,
+        "input": {
+          "attack": false,
+          "dodge": false,
+          "forward": 0,
+          "parry": false,
+          "restart": false,
+          "strafe": 0
+        },
+        "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   duel\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart",
+        "last_event_type": "reset",
+        "hash": "a45c5991b6b84648adaf0c4f0da9a4559fd750b960c710799ab3e3121302fa60"
+      },
+      "state_after": {
+        "step": 0,
+        "sim_time_seconds": 0,
+        "player_position": [
+          0,
+          0.0199999995529652,
+          4.40000009536743
+        ],
+        "player_velocity": [
+          0,
+          0,
+          0
+        ],
+        "player_health": 4,
+        "player_attack_phase": "idle",
+        "player_attack_tick": 0,
+        "hitbox_active": false,
+        "last_hitbox_query_step": -1,
+        "parry_ticks": 0,
+        "parry_result": "none",
+        "dodge_phase": "idle",
+        "dodge_tick": 0,
+        "dodge_cooldown": 0,
+        "dodge_invulnerable": false,
+        "dodge_available": true,
+        "enemy_position": [
+          0,
+          0.0199999995529652,
+          0.800000011920929
+        ],
+        "enemy_health": 5,
+        "enemy_posture": 0,
+        "enemy_phase": "idle",
+        "enemy_phase_tick": 0,
+        "enemy_staggered": false,
+        "enemy_stagger_ticks": 0,
+        "enemy_defeated": false,
+        "enemy_ai_enabled": true,
+        "outcome": "playing",
+        "camera_position": [
+          1.10000002384186,
+          2.72000002861023,
+          9.10000038146973
+        ],
+        "camera_distance": 5.06976366043091,
+        "grounded": true,
+        "input": {
+          "attack": false,
+          "dodge": false,
+          "forward": 0,
+          "parry": false,
+          "restart": false,
+          "strafe": 0
+        },
+        "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   duel\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart",
+        "last_event_type": "reset",
+        "hash": "a45c5991b6b84648adaf0c4f0da9a4559fd750b960c710799ab3e3121302fa60"
+      },
+      "enemy_feet_screen": [
+        696.18,
+        359.64
+      ],
+      "events": {
+        "available": true,
+        "count": 1,
+        "items": [
+          {
+            "sequence": 1,
+            "sim_time_seconds": 0,
+            "tick": 0,
+            "type": "reset"
+          }
+        ]
+      },
+      "capture_metadata": {
+        "scenario_role": "restart"
+      }
+    }
+  ]
+}

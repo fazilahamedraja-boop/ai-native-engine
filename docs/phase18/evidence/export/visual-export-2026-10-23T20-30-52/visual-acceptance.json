@@ -1,0 +1,744 @@
+{
+  "schema": "phase18.visual-acceptance.v1",
+  "run_dir": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\export\\visual-export-2026-10-23T20-30-52",
+  "criteria": {
+    "ground_band": {
+      "half_width": 170,
+      "above_feet": 10,
+      "below_feet": 85,
+      "warm_min_red": 100,
+      "warm_min_delta": 35
+    },
+    "thresholds": {
+      "windup_late_warm": 300,
+      "idle_warm_max": 80,
+      "recovery_warm_max": 100,
+      "changed_pixels": 300
+    }
+  },
+  "passed": false,
+  "checks": [
+    {
+      "name": "capture-present:idle",
+      "ok": true,
+      "detail": "idle"
+    },
+    {
+      "name": "capture-present:windup-early",
+      "ok": true,
+      "detail": "windup-early"
+    },
+    {
+      "name": "capture-present:windup-mid",
+      "ok": true,
+      "detail": "windup-mid"
+    },
+    {
+      "name": "capture-present:windup-late",
+      "ok": true,
+      "detail": "windup-late"
+    },
+    {
+      "name": "capture-present:active",
+      "ok": true,
+      "detail": "active"
+    },
+    {
+      "name": "capture-present:recovery",
+      "ok": true,
+      "detail": "recovery"
+    },
+    {
+      "name": "capture-present:restart",
+      "ok": true,
+      "detail": "restart"
+    },
+    {
+      "name": "idle-phase",
+      "ok": true,
+      "detail": "idle"
+    },
+    {
+      "name": "idle-ai-disabled",
+      "ok": true,
+      "detail": false
+    },
+    {
+      "name": "idle-hud-no-warning",
+      "ok": true,
+      "detail": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   duel\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart"
+    },
+    {
+      "name": "windup-early-phase",
+      "ok": true,
+      "detail": "windup:18"
+    },
+    {
+      "name": "windup-mid-phase",
+      "ok": true,
+      "detail": "windup:22"
+    },
+    {
+      "name": "windup-late-phase",
+      "ok": true,
+      "detail": "windup:26"
+    },
+    {
+      "name": "windup-late-hud-warning",
+      "ok": true,
+      "detail": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   INCOMING ATTACK - press K to deflect\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart"
+    },
+    {
+      "name": "active-phase",
+      "ok": true,
+      "detail": "active"
+    },
+    {
+      "name": "recovery-phase",
+      "ok": true,
+      "detail": "recover"
+    },
+    {
+      "name": "restart-clean",
+      "ok": true,
+      "detail": "step=0 player_hp=4 enemy_hp=5 outcome=playing"
+    },
+    {
+      "name": "image-readable:idle",
+      "ok": true,
+      "detail": {
+        "shape": [
+          576,
+          1024,
+          3
+        ]
+      }
+    },
+    {
+      "name": "image-size:idle",
+      "ok": false,
+      "detail": [
+        576,
+        1024,
+        3
+      ]
+    },
+    {
+      "name": "enemy-projection:idle",
+      "ok": true,
+      "detail": [
+        539.75,
+        323.69
+      ]
+    },
+    {
+      "name": "image-readable:windup-early",
+      "ok": true,
+      "detail": {
+        "shape": [
+          576,
+          1024,
+          3
+        ]
+      }
+    },
+    {
+      "name": "image-size:windup-early",
+      "ok": false,
+      "detail": [
+        576,
+        1024,
+        3
+      ]
+    },
+    {
+      "name": "enemy-projection:windup-early",
+      "ok": true,
+      "detail": [
+        539.77,
+        323.91
+      ]
+    },
+    {
+      "name": "image-readable:windup-mid",
+      "ok": true,
+      "detail": {
+        "shape": [
+          576,
+          1024,
+          3
+        ]
+      }
+    },
+    {
+      "name": "image-size:windup-mid",
+      "ok": false,
+      "detail": [
+        576,
+        1024,
+        3
+      ]
+    },
+    {
+      "name": "enemy-projection:windup-mid",
+      "ok": true,
+      "detail": [
+        539.77,
+        323.91
+      ]
+    },
+    {
+      "name": "image-readable:windup-late",
+      "ok": true,
+      "detail": {
+        "shape": [
+          576,
+          1024,
+          3
+        ]
+      }
+    },
+    {
+      "name": "image-size:windup-late",
+      "ok": false,
+      "detail": [
+        576,
+        1024,
+        3
+      ]
+    },
+    {
+      "name": "enemy-projection:windup-late",
+      "ok": true,
+      "detail": [
+        539.77,
+        323.91
+      ]
+    },
+    {
+      "name": "image-readable:active",
+      "ok": true,
+      "detail": {
+        "shape": [
+          576,
+          1024,
+          3
+        ]
+      }
+    },
+    {
+      "name": "image-size:active",
+      "ok": false,
+      "detail": [
+        576,
+        1024,
+        3
+      ]
+    },
+    {
+      "name": "enemy-projection:active",
+      "ok": true,
+      "detail": [
+        539.25,
+        324.98
+      ]
+    },
+    {
+      "name": "image-readable:recovery",
+      "ok": true,
+      "detail": {
+        "shape": [
+          576,
+          1024,
+          3
+        ]
+      }
+    },
+    {
+      "name": "image-size:recovery",
+      "ok": false,
+      "detail": [
+        576,
+        1024,
+        3
+      ]
+    },
+    {
+      "name": "enemy-projection:recovery",
+      "ok": true,
+      "detail": [
+        538.39,
+        326.8
+      ]
+    },
+    {
+      "name": "image-readable:restart",
+      "ok": true,
+      "detail": {
+        "shape": [
+          576,
+          1024,
+          3
+        ]
+      }
+    },
+    {
+      "name": "image-size:restart",
+      "ok": false,
+      "detail": [
+        576,
+        1024,
+        3
+      ]
+    },
+    {
+      "name": "enemy-projection:restart",
+      "ok": true,
+      "detail": [
+        556.94,
+        287.71
+      ]
+    },
+    {
+      "name": "telegraph-cue-visible-late",
+      "ok": true,
+      "detail": {
+        "warm_pixels": 1863,
+        "minimum": 300
+      }
+    },
+    {
+      "name": "telegraph-cue-absent-idle",
+      "ok": false,
+      "detail": {
+        "warm_pixels": 1337,
+        "maximum": 80
+      }
+    },
+    {
+      "name": "telegraph-cue-change-over-idle",
+      "ok": true,
+      "detail": {
+        "delta": 526,
+        "minimum": 250
+      }
+    },
+    {
+      "name": "telegraph-cue-changes-pixels-vs-idle",
+      "ok": true,
+      "detail": {
+        "changed_pixels": 2651,
+        "minimum": 300
+      }
+    },
+    {
+      "name": "telegraph-cue-absent-recovery",
+      "ok": false,
+      "detail": {
+        "warm_pixels": 993,
+        "maximum": 100
+      }
+    },
+    {
+      "name": "telegraph-cue-escalates",
+      "ok": false,
+      "detail": {
+        "early": 1635,
+        "late": 1863,
+        "minimum_ratio": 1.2
+      }
+    },
+    {
+      "name": "telegraph-cue-present-early",
+      "ok": true,
+      "detail": {
+        "warm_pixels": 1635,
+        "minimum": 120,
+        "delta_vs_idle": 298
+      }
+    },
+    {
+      "name": "framed-states-match-baseline",
+      "ok": true,
+      "detail": [
+        {
+          "name": "idle",
+          "ok": true,
+          "differences": {
+            "player_position": 0.0,
+            "enemy_position": 0.0,
+            "camera_position": 0.004426
+          }
+        },
+        {
+          "name": "windup-early",
+          "ok": true,
+          "differences": {
+            "player_position": 0.0,
+            "enemy_position": 0.0,
+            "camera_position": 0.0
+          }
+        },
+        {
+          "name": "windup-mid",
+          "ok": true,
+          "differences": {
+            "player_position": 0.0,
+            "enemy_position": 0.0,
+            "camera_position": 0.0
+          }
+        },
+        {
+          "name": "windup-late",
+          "ok": true,
+          "differences": {
+            "player_position": 0.0,
+            "enemy_position": 0.0,
+            "camera_position": 0.0
+          }
+        },
+        {
+          "name": "active",
+          "ok": true,
+          "differences": {
+            "player_position": 0.0,
+            "enemy_position": 0.0,
+            "camera_position": 0.0
+          }
+        },
+        {
+          "name": "recovery",
+          "ok": true,
+          "differences": {
+            "player_position": 0.0,
+            "enemy_position": 0.0,
+            "camera_position": 0.0
+          }
+        },
+        {
+          "name": "restart",
+          "ok": true,
+          "differences": {
+            "player_position": 0.0,
+            "enemy_position": 0.0,
+            "camera_position": 0.0
+          }
+        }
+      ]
+    }
+  ],
+  "metrics": {
+    "idle": {
+      "feet_screen": [
+        539.75,
+        323.69
+      ],
+      "state": {
+        "enemy_phase": "idle",
+        "enemy_phase_tick": 0,
+        "enemy_position": [
+          0,
+          0.000546873547136784,
+          0.800000011920929
+        ],
+        "player_position": [
+          0,
+          0.000546873547136784,
+          2.59999990463257
+        ],
+        "camera_position": [
+          1.10000002384186,
+          2.70876598358154,
+          7.29999971389771
+        ],
+        "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   duel\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart"
+      },
+      "band": [
+        370,
+        314,
+        710,
+        409
+      ],
+      "warm_pixels": 1337,
+      "crop_pixels": 32300,
+      "warm_fraction": 0.041393188854489164
+    },
+    "windup-early": {
+      "feet_screen": [
+        539.77,
+        323.91
+      ],
+      "state": {
+        "enemy_phase": "windup",
+        "enemy_phase_tick": 18,
+        "enemy_position": [
+          0,
+          0.000546873547136784,
+          0.800000011920929
+        ],
+        "player_position": [
+          0,
+          0.000546873547136784,
+          2.59999990463257
+        ],
+        "camera_position": [
+          1.10000002384186,
+          2.70055246353149,
+          7.29999971389771
+        ],
+        "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   INCOMING ATTACK - press K to deflect\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart"
+      },
+      "band": [
+        370,
+        314,
+        710,
+        409
+      ],
+      "warm_pixels": 1635,
+      "crop_pixels": 32300,
+      "warm_fraction": 0.05061919504643963,
+      "warm_delta_vs_idle": 298
+    },
+    "windup-mid": {
+      "feet_screen": [
+        539.77,
+        323.91
+      ],
+      "state": {
+        "enemy_phase": "windup",
+        "enemy_phase_tick": 22,
+        "enemy_position": [
+          0,
+          0.000546873547136784,
+          0.800000011920929
+        ],
+        "player_position": [
+          0,
+          0.000546873547136784,
+          2.59999990463257
+        ],
+        "camera_position": [
+          1.10000002384186,
+          2.70054817199707,
+          7.29999971389771
+        ],
+        "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   INCOMING ATTACK - press K to deflect\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart"
+      },
+      "band": [
+        370,
+        314,
+        710,
+        409
+      ],
+      "warm_pixels": 1756,
+      "crop_pixels": 32300,
+      "warm_fraction": 0.05436532507739938
+    },
+    "windup-late": {
+      "feet_screen": [
+        539.77,
+        323.91
+      ],
+      "state": {
+        "enemy_phase": "windup",
+        "enemy_phase_tick": 26,
+        "enemy_position": [
+          0,
+          0.000546873547136784,
+          0.800000011920929
+        ],
+        "player_position": [
+          0,
+          0.000546873547136784,
+          2.59999990463257
+        ],
+        "camera_position": [
+          1.10000002384186,
+          2.70054721832275,
+          7.29999971389771
+        ],
+        "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   INCOMING ATTACK - press K to deflect\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart"
+      },
+      "band": [
+        370,
+        314,
+        710,
+        409
+      ],
+      "warm_pixels": 1863,
+      "crop_pixels": 32300,
+      "warm_fraction": 0.05767801857585139,
+      "changed_pixels_vs_idle": 2651
+    },
+    "active": {
+      "feet_screen": [
+        539.25,
+        324.98
+      ],
+      "state": {
+        "enemy_phase": "active",
+        "enemy_phase_tick": 1,
+        "enemy_position": [
+          0,
+          0.00083652522880584,
+          0.84333336353302
+        ],
+        "player_position": [
+          0,
+          0.000546873547136784,
+          2.59999990463257
+        ],
+        "camera_position": [
+          1.10000002384186,
+          2.70054721832275,
+          7.29999971389771
+        ],
+        "hud": "DEFLECT ARENA\nPLAYER  HP 3/4  [###-]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   INCOMING ATTACK - press K to deflect\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart"
+      },
+      "band": [
+        369,
+        315,
+        709,
+        410
+      ],
+      "warm_pixels": 5794,
+      "crop_pixels": 32300,
+      "warm_fraction": 0.17938080495356037
+    },
+    "recovery": {
+      "feet_screen": [
+        538.39,
+        326.8
+      ],
+      "state": {
+        "enemy_phase": "recover",
+        "enemy_phase_tick": 1,
+        "enemy_position": [
+          0,
+          0.00083666667342186,
+          0.915000081062317
+        ],
+        "player_position": [
+          0,
+          0.000546873547136784,
+          2.59999990463257
+        ],
+        "camera_position": [
+          1.10000002384186,
+          2.70054721832275,
+          7.29999971389771
+        ],
+        "hud": "DEFLECT ARENA\nPLAYER  HP 3/4  [###-]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   duel\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart"
+      },
+      "band": [
+        368,
+        317,
+        708,
+        412
+      ],
+      "warm_pixels": 993,
+      "crop_pixels": 32300,
+      "warm_fraction": 0.030743034055727553
+    },
+    "restart": {
+      "feet_screen": [
+        556.94,
+        287.71
+      ],
+      "state": {
+        "enemy_phase": "idle",
+        "enemy_phase_tick": 0,
+        "enemy_position": [
+          0,
+          0.0199999995529652,
+          0.800000011920929
+        ],
+        "player_position": [
+          0,
+          0.0199999995529652,
+          4.40000009536743
+        ],
+        "camera_position": [
+          1.10000002384186,
+          2.72000002861023,
+          9.10000038146973
+        ],
+        "hud": "DEFLECT ARENA\nPLAYER  HP 4/4  [####]\nENEMY   HP 5/5  [#####]\nPOSTURE 0/100  [..............]\nSTATE   duel\nDODGE   READY\nJ attack    K deflect    SPACE dodge    R restart"
+      },
+      "band": [
+        387,
+        278,
+        727,
+        373
+      ],
+      "warm_pixels": 1750,
+      "crop_pixels": 32300,
+      "warm_fraction": 0.05417956656346749
+    },
+    "baseline_comparison": [
+      {
+        "name": "idle",
+        "ok": true,
+        "differences": {
+          "player_position": 0.0,
+          "enemy_position": 0.0,
+          "camera_position": 0.004426
+        }
+      },
+      {
+        "name": "windup-early",
+        "ok": true,
+        "differences": {
+          "player_position": 0.0,
+          "enemy_position": 0.0,
+          "camera_position": 0.0
+        }
+      },
+      {
+        "name": "windup-mid",
+        "ok": true,
+        "differences": {
+          "player_position": 0.0,
+          "enemy_position": 0.0,
+          "camera_position": 0.0
+        }
+      },
+      {
+        "name": "windup-late",
+        "ok": true,
+        "differences": {
+          "player_position": 0.0,
+          "enemy_position": 0.0,
+          "camera_position": 0.0
+        }
+      },
+      {
+        "name": "active",
+        "ok": true,
+        "differences": {
+          "player_position": 0.0,
+          "enemy_position": 0.0,
+          "camera_position": 0.0
+        }
+      },
+      {
+        "name": "recovery",
+        "ok": true,
+        "differences": {
+          "player_position": 0.0,
+          "enemy_position": 0.0,
+          "camera_position": 0.0
+        }
+      },
+      {
+        "name": "restart",
+        "ok": true,
+        "differences": {
+          "player_position": 0.0,
+          "enemy_position": 0.0,
+          "camera_position": 0.0
+        }
+      }
+    ]
+  }
+}

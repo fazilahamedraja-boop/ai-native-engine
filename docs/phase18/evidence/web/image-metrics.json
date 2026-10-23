@@ -1,0 +1,169 @@
+{
+  "schema": "phase18.web-image-metrics.v1",
+  "method": "Pillow RGB channel difference, threshold > 8 on any channel; screenshots are device-pixel viewport captures (1920x843) except the quick-press probe (1536x674), not the 1280x720 acceptance captures.",
+  "images": {
+    "load-initial.png": {
+      "bytes": 120694,
+      "sha256": "aaea60a3cdaf3cfec9433095f1f48d21232f79097b9ed28b9bd0ed0d415594db",
+      "width": 1920,
+      "height": 843
+    },
+    "baseline.png": {
+      "bytes": 120802,
+      "sha256": "1f8d5e37c0c09a43e7daa5e580125938ad78d5aa8896488a12d44d3d488a5c1e",
+      "width": 1920,
+      "height": 843
+    },
+    "move-w.png": {
+      "bytes": 130269,
+      "sha256": "ebfa712eed1cd3d274079929c1c1c3abe0f5d9a37497eac0485e6f9e184fc48f",
+      "width": 1920,
+      "height": 843
+    },
+    "attack.png": {
+      "bytes": 123165,
+      "sha256": "c57d97a32f66a365c637f8a9db9b3e30b7350ddd7ce41586f5eb00c70b767df1",
+      "width": 1920,
+      "height": 843
+    },
+    "attack-after.png": {
+      "bytes": 120583,
+      "sha256": "b12fed8567fbdbc82a88e0ae9c9ab7a649d510e1420478d1dfa0ed3e7f97d95d",
+      "width": 1920,
+      "height": 843
+    },
+    "deflect.png": {
+      "bytes": 123361,
+      "sha256": "c7ac829f85019e24a527e6f54fa3a7c81221a22c845cf69c7721fe6943516d20",
+      "width": 1920,
+      "height": 843
+    },
+    "dodge.png": {
+      "bytes": 130402,
+      "sha256": "fe73f1b255e1007a5a297d3e5df30ad8f1f6401c9e6fa9f3409be6e55e73e76d",
+      "width": 1920,
+      "height": 843
+    },
+    "dodge-after.png": {
+      "bytes": 123931,
+      "sha256": "e0b9317c717de21761168616f601855c8d0206f7e62c8388f7a26a96e40d3530",
+      "width": 1920,
+      "height": 843
+    },
+    "restart.png": {
+      "bytes": 120817,
+      "sha256": "02950251d08dbd3c2864891c77cf9a2309e97e5140e8fec1a9911055b7ae9f50",
+      "width": 1920,
+      "height": 843
+    },
+    "final-state.png": {
+      "bytes": 122346,
+      "sha256": "dbf4f3f38893345216856831b252492370e9db409ddda8aab5665653a833e588",
+      "width": 1920,
+      "height": 843
+    },
+    "probes/quick-press-space.png": {
+      "bytes": 100980,
+      "sha256": "272ecdfaa9071599d8371c95d55b04bab0484032a87c1ed4472c219e94823699",
+      "width": 1536,
+      "height": 674
+    },
+    "probes/held-j-350ms.png": {
+      "bytes": 125962,
+      "sha256": "5173a5c043dc2ba0dbe8925c8009f2528d029cb2797b68560ae513da0c909db1",
+      "width": 1920,
+      "height": 843
+    },
+    "probes/held-j-after.png": {
+      "bytes": 124091,
+      "sha256": "328f0c5d653f7081647966bf1fddc08bf1440721c806ca636db7401015c6d9f2",
+      "width": 1920,
+      "height": 843
+    }
+  },
+  "comparisons": {
+    "baseline_vs_load_initial": {
+      "same_size": true,
+      "width": 1920,
+      "height": 843,
+      "changed_pixels": 721,
+      "changed_ratio": 0.000445,
+      "threshold": 8
+    },
+    "baseline_vs_move_w": {
+      "same_size": true,
+      "width": 1920,
+      "height": 843,
+      "changed_pixels": 356252,
+      "changed_ratio": 0.220104,
+      "threshold": 8
+    },
+    "baseline_vs_attack": {
+      "same_size": true,
+      "width": 1920,
+      "height": 843,
+      "changed_pixels": 5429,
+      "changed_ratio": 0.003354,
+      "threshold": 8
+    },
+    "attack_vs_attack_after": {
+      "same_size": true,
+      "width": 1920,
+      "height": 843,
+      "changed_pixels": 5073,
+      "changed_ratio": 0.003134,
+      "threshold": 8
+    },
+    "baseline_vs_deflect": {
+      "same_size": true,
+      "width": 1920,
+      "height": 843,
+      "changed_pixels": 12628,
+      "changed_ratio": 0.007802,
+      "threshold": 8
+    },
+    "baseline_vs_dodge": {
+      "same_size": true,
+      "width": 1920,
+      "height": 843,
+      "changed_pixels": 228993,
+      "changed_ratio": 0.141479,
+      "threshold": 8
+    },
+    "dodge_vs_dodge_after": {
+      "same_size": true,
+      "width": 1920,
+      "height": 843,
+      "changed_pixels": 153858,
+      "changed_ratio": 0.095059,
+      "threshold": 8
+    },
+    "baseline_vs_restart": {
+      "same_size": true,
+      "width": 1920,
+      "height": 843,
+      "changed_pixels": 4767,
+      "changed_ratio": 0.002945,
+      "threshold": 8
+    },
+    "quick_press_space_vs_baseline": {
+      "same_size": false,
+      "a": [
+        1536,
+        674
+      ],
+      "b": [
+        1920,
+        843
+      ]
+    },
+    "held_j_probe_vs_baseline": {
+      "same_size": true,
+      "width": 1920,
+      "height": 843,
+      "changed_pixels": 259856,
+      "changed_ratio": 0.160548,
+      "threshold": 8
+    }
+  }
+}

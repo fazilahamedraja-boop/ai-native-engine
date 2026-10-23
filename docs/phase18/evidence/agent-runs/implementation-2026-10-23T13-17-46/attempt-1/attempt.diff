@@ -1,0 +1,325 @@
+--- scripts/fighter_rig.gd
++++ scripts/fighter_rig.gd
+-
+-func build(tint: Color, accent: Color, sword_color: Color) -> void:
+-	var scene := load(GLB_PATH) as PackedScene
+-	model = scene.instantiate()
+-	model.name = "Model"
+-	add_child(model)
+-
+-	body = _find("body")
+-	head = _find("head")
+-	arm_l = _find("arm_l")
+-	arm_r = _find("arm_r")
+-	leg_l = _find("leg_l")
+-	leg_r = _find("leg_r")
+-
+-	material = StandardMaterial3D.new()
+-	material.albedo_color = tint
+-	material.roughness = 0.62
+-	material.metallic = 0.05
+-	_apply_material(model, material)
+-
+-	var accent_material := StandardMaterial3D.new()
+-	accent_material.albedo_color = accent
+-	accent_material.roughness = 0.4
+-	accent_material.emission_enabled = true
+-	accent_material.emission = accent
+-	accent_material.emission_energy_multiplier = 0.25
+-
+-	# A visor gives the box character a readable forward direction. The rig
+-	# faces -Z, matching the project's spawn orientation.
+-	var visor := MeshInstance3D.new()
+-	visor.name = "Visor"
+-	var visor_mesh := BoxMesh.new()
+-	visor_mesh.size = Vector3(0.17, 0.055, 0.05)
+-	visor.mesh = visor_mesh
+-	visor.position = Vector3(0.0, 0.01, -0.105)
+-	visor.material_override = accent_material
+-	if head != null:
+-		head.add_child(visor)
+-
+-	_build_sword(sword_color, accent_material)
+-
+-
+-func _build_sword(sword_color: Color, grip_material: Material) -> void:
+-	weapon = Node3D.new()
+-	weapon.name = "Weapon"
+-	# The arm mesh runs from +0.275 (shoulder) to -0.275 (hand), so the hand
+-	# sits at local y=-0.275. Rotating the pivot -90 degrees about X turns the
+-	# blade's local +Y into the rig's forward (-Z).
+-	weapon.position = Vector3(0.0, -0.275, 0.0)
+-	weapon.rotation_degrees = Vector3(-90.0, 0.0, 0.0)
+-	arm_r.add_child(weapon)
+-
+-	blade_material = StandardMaterial3D.new()
+-	blade_material.albedo_color = sword_color
+-	blade_material.metallic = 0.75
+-	blade_material.roughness = 0.28
+-
+-	var blade := MeshInstance3D.new()
+-	blade.name = "Blade"
+-	var blade_mesh := BoxMesh.new()
+-	blade_mesh.size = Vector3(0.07, 1.00, 0.15)
+-	blade.mesh = blade_mesh
+-	blade.position = Vector3(0.0, 0.55, 0.0)
+-	blade.material_override = blade_material
+-	weapon.add_child(blade)
+-
+-	var guard := MeshInstance3D.new()
+-	guard.name = "Guard"
+-	var guard_mesh := BoxMesh.new()
+-	guard_mesh.size = Vector3(0.30, 0.05, 0.17)
+-	guard.mesh = guard_mesh
+-	guard.position = Vector3(0.0, 0.03, 0.0)
+-	guard.material_override = grip_material
+-	weapon.add_child(guard)
+-
+-	var grip := MeshInstance3D.new()
+-	grip.name = "Grip"
+-	var grip_mesh := BoxMesh.new()
+-	grip_mesh.size = Vector3(0.05, 0.20, 0.05)
+-	grip.mesh = grip_mesh
+-	grip.position = Vector3(0.0, -0.08, 0.0)
+-	grip.material_override = grip_material
+-	weapon.add_child(grip)
+-
+-
+-func _find(node_name: String) -> Node3D:
+-	var found := model.find_child(node_name, true, false)
+-	if found is Node3D:
+-		return found
+-	return null
+-
+-
+-func _apply_material(node: Node, target: Material) -> void:
+-	for child in node.get_children():
+-		if child is MeshInstance3D:
+-			(child as MeshInstance3D).material_override = target
+-		_apply_material(child, target)
+-
+-
+-func reset_pose() -> void:
+-	_flash_ticks = 0
+-	_telegraph = false
+-	model.position = Vector3.ZERO
+-	model.rotation = Vector3.ZERO
+-	for limb in [arm_l, arm_r, leg_l, leg_r]:
+-		if limb != null:
+-			limb.rotation = Vector3.ZERO
+-	_set_blade_emission(false)
+-
+-
+-func flash(color: Color, ticks: int = 6) -> void:
+-	_flash_color = color
+-	_flash_ticks = ticks
+-
+-
+-func set_telegraph(on: bool) -> void:
+-	_telegraph = on
+-
+-
+-func tick_visual() -> void:
+-	if _flash_ticks > 0:
+-		_flash_ticks -= 1
+-		material.emission_enabled = true
+-		material.emission = _flash_color
+-		material.emission_energy_multiplier = 0.9
+-	else:
+-		material.emission_enabled = false
+-	_set_blade_emission(_telegraph)
++# Ground-level warning ring around the fighter's feet. Only the enemy uses it,
++# and only during its windup: it appears early in the windup and grows brighter
++# and wider as the attack approaches. It is purely visual (no collision) and
++# stays on the ground so it remains readable around the enemy even when the
++# player partly occludes the body.
++var warning_ring: MeshInstance3D
++var _warning_enabled := false
++var _warning_progress := 0.0
++
++
++func build(tint: Color, accent: Color, sword_color: Color) -> void:
++	var scene := load(GLB_PATH) as PackedScene
++	model = scene.instantiate()
++	model.name = "Model"
++	add_child(model)
++
++	body = _find("body")
++	head = _find("head")
++	arm_l = _find("arm_l")
++	arm_r = _find("arm_r")
++	leg_l = _find("leg_l")
++	leg_r = _find("leg_r")
++
++	material = StandardMaterial3D.new()
++	material.albedo_color = tint
++	material.roughness = 0.62
++	material.metallic = 0.05
++	_apply_material(model, material)
++
++	var accent_material := StandardMaterial3D.new()
++	accent_material.albedo_color = accent
++	accent_material.roughness = 0.4
++	accent_material.emission_enabled = true
++	accent_material.emission = accent
++	accent_material.emission_energy_multiplier = 0.25
++
++	# A visor gives the box character a readable forward direction. The rig
++	# faces -Z, matching the project's spawn orientation.
++	var visor := MeshInstance3D.new()
++	visor.name = "Visor"
++	var visor_mesh := BoxMesh.new()
++	visor_mesh.size = Vector3(0.17, 0.055, 0.05)
++	visor.mesh = visor_mesh
++	visor.position = Vector3(0.0, 0.01, -0.105)
++	visor.material_override = accent_material
++	if head != null:
++		head.add_child(visor)
++
++	_build_sword(sword_color, accent_material)
++	_build_warning_ring()
++
++
++func _build_sword(sword_color: Color, grip_material: Material) -> void:
++	weapon = Node3D.new()
++	weapon.name = "Weapon"
++	# The arm mesh runs from +0.275 (shoulder) to -0.275 (hand), so the hand
++	# sits at local y=-0.275. Rotating the pivot -90 degrees about X turns the
++	# blade's local +Y into the rig's forward (-Z).
++	weapon.position = Vector3(0.0, -0.275, 0.0)
++	weapon.rotation_degrees = Vector3(-90.0, 0.0, 0.0)
++	arm_r.add_child(weapon)
++
++	blade_material = StandardMaterial3D.new()
++	blade_material.albedo_color = sword_color
++	blade_material.metallic = 0.75
++	blade_material.roughness = 0.28
++
++	var blade := MeshInstance3D.new()
++	blade.name = "Blade"
++	var blade_mesh := BoxMesh.new()
++	blade_mesh.size = Vector3(0.07, 1.00, 0.15)
++	blade.mesh = blade_mesh
++	blade.position = Vector3(0.0, 0.55, 0.0)
++	blade.material_override = blade_material
++	weapon.add_child(blade)
++
++	var guard := MeshInstance3D.new()
++	guard.name = "Guard"
++	var guard_mesh := BoxMesh.new()
++	guard_mesh.size = Vector3(0.30, 0.05, 0.17)
++	guard.mesh = guard_mesh
++	guard.position = Vector3(0.0, 0.03, 0.0)
++	guard.material_override = grip_material
++	weapon.add_child(guard)
++
++	var grip := MeshInstance3D.new()
++	grip.name = "Grip"
++	var grip_mesh := BoxMesh.new()
++	grip_mesh.size = Vector3(0.05, 0.20, 0.05)
++	grip.mesh = grip_mesh
++	grip.position = Vector3(0.0, -0.08, 0.0)
++	grip.material_override = grip_material
++	weapon.add_child(grip)
++
++
++func _build_warning_ring() -> void:
++	warning_ring = MeshInstance3D.new()
++	warning_ring.name = "WarningRing"
++	warning_ring.visible = false
++	var ring_mesh := CylinderMesh.new()
++	ring_mesh.height = 0.02
++	ring_mesh.top_radius = 0.62
++	ring_mesh.bottom_radius = 0.62
++	ring_mesh.radial_segments = 32
++	ring_mesh.rings = 1
++	warning_ring.mesh = ring_mesh
++	# Sit just above the floor at the fighter's feet, flat on the ground.
++	warning_ring.position = Vector3(0.0, 0.012, 0.0)
++	warning_ring.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
++	var ring_material := StandardMaterial3D.new()
++	ring_material.albedo_color = Color("#ff4b34")
++	ring_material.emission_enabled = true
++	ring_material.emission = Color("#ff4b34")
++	ring_material.emission_energy_multiplier = 0.0
++	ring_material.roughness = 1.0
++	warning_ring.material_override = ring_material
++	add_child(warning_ring)
++
++
++func _find(node_name: String) -> Node3D:
++	var found := model.find_child(node_name, true, false)
++	if found is Node3D:
++		return found
++	return null
++
++
++func _apply_material(node: Node, target: Material) -> void:
++	for child in node.get_children():
++		if child is MeshInstance3D:
++			(child as MeshInstance3D).material_override = target
++		_apply_material(child, target)
++
++
++func reset_pose() -> void:
++	_flash_ticks = 0
++	_telegraph = false
++	_warning_enabled = false
++	_warning_progress = 0.0
++	_update_warning_ring()
++	model.position = Vector3.ZERO
++	model.rotation = Vector3.ZERO
++	for limb in [arm_l, arm_r, leg_l, leg_r]:
++		if limb != null:
++			limb.rotation = Vector3.ZERO
++	_set_blade_emission(false)
++
++
++func flash(color: Color, ticks: int = 6) -> void:
++	_flash_color = color
++	_flash_ticks = ticks
++
++
++func set_telegraph(on: bool) -> void:
++	_telegraph = on
++
++
++func set_warning(enabled: bool, progress: float) -> void:
++	_warning_enabled = enabled
++	_warning_progress = clampf(progress, 0.0, 1.0)
++
++
++func tick_visual() -> void:
++	if _flash_ticks > 0:
++		_flash_ticks -= 1
++		material.emission_enabled = true
++		material.emission = _flash_color
++		material.emission_energy_multiplier = 0.9
++	else:
++		material.emission_enabled = false
++	_set_blade_emission(_telegraph)
++	_update_warning_ring()
++
++
++func _update_warning_ring() -> void:
++	if warning_ring == null:
++		return
++	var visible := _warning_enabled and _warning_progress > 0.0
++	warning_ring.visible = visible
++	if not visible:
++		return
++	# Grow and brighten as the windup approaches the attack, so the threat is
++	# readable early and unmistakable late in the windup.
++	var scale := lerpf(0.45, 1.25, _warning_progress)
++	warning_ring.scale = Vector3(scale, 1.0, scale)
++	var energy := lerpf(0.5, 2.0, _warning_progress)
++	if warning_ring.material_override != null:
++		warning_ring.material_override.emission_energy_multiplier = energy
+
+--- scripts/game_world.gd
++++ scripts/game_world.gd
++	# Ground-level windup telegraph around the enemy's feet. Driven only by the
++	# existing windup phase/tick: present during windup, growing as the attack
++	# approaches, and absent in idle, active, and recovery.
++	var windup := enemy_ai.phase == "windup"
++	enemy_rig.set_warning(windup, enemy_ai.phase_progress())

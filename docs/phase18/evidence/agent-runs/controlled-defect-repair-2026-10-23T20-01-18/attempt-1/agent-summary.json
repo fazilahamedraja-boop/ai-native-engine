@@ -1,0 +1,17 @@
+{
+  "lines": 46,
+  "parse_errors": 0,
+  "by_type": {
+    "step_start": 11,
+    "tool_use": 24,
+    "step_finish": 10,
+    "text": 1
+  },
+  "tools": [
+    "edit",
+    "glob",
+    "grep",
+    "read",
+    "write"
+  ]
+}

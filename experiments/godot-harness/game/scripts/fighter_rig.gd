@@ -31,6 +31,15 @@ var _flash_color := Color.WHITE
 var _telegraph := false
 var _telegraph_color := Color("#ff4b34")
 
+# Ground-level warning ring around the fighter's feet. Only the enemy uses it,
+# and only during its windup: it appears early in the windup and grows brighter
+# and wider as the attack approaches. It is purely visual (no collision) and
+# stays on the ground so it remains readable around the enemy even when the
+# player partly occludes the body.
+var warning_ring: MeshInstance3D
+var _warning_enabled := false
+var _warning_progress := 0.0
+
 
 func build(tint: Color, accent: Color, sword_color: Color) -> void:
 	var scene := load(GLB_PATH) as PackedScene
@@ -71,6 +80,7 @@ func build(tint: Color, accent: Color, sword_color: Color) -> void:
 		head.add_child(visor)
 
 	_build_sword(sword_color, accent_material)
+	_build_warning_ring()
 
 
 func _build_sword(sword_color: Color, grip_material: Material) -> void:
@@ -116,6 +126,30 @@ func _build_sword(sword_color: Color, grip_material: Material) -> void:
 	weapon.add_child(grip)
 
 
+func _build_warning_ring() -> void:
+	warning_ring = MeshInstance3D.new()
+	warning_ring.name = "WarningRing"
+	warning_ring.visible = false
+	var ring_mesh := CylinderMesh.new()
+	ring_mesh.height = 0.02
+	ring_mesh.top_radius = 0.62
+	ring_mesh.bottom_radius = 0.62
+	ring_mesh.radial_segments = 32
+	ring_mesh.rings = 1
+	warning_ring.mesh = ring_mesh
+	# Sit just above the floor at the fighter's feet, flat on the ground.
+	warning_ring.position = Vector3(0.0, 0.012, 0.0)
+	warning_ring.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	var ring_material := StandardMaterial3D.new()
+	ring_material.albedo_color = Color("#ff4b34")
+	ring_material.emission_enabled = true
+	ring_material.emission = Color("#ff4b34")
+	ring_material.emission_energy_multiplier = 0.0
+	ring_material.roughness = 1.0
+	warning_ring.material_override = ring_material
+	add_child(warning_ring)
+
+
 func _find(node_name: String) -> Node3D:
 	var found := model.find_child(node_name, true, false)
 	if found is Node3D:
@@ -133,6 +167,9 @@ func _apply_material(node: Node, target: Material) -> void:
 func reset_pose() -> void:
 	_flash_ticks = 0
 	_telegraph = false
+	_warning_enabled = false
+	_warning_progress = 0.0
+	_update_warning_ring()
 	model.position = Vector3.ZERO
 	model.rotation = Vector3.ZERO
 	for limb in [arm_l, arm_r, leg_l, leg_r]:
@@ -150,6 +187,11 @@ func set_telegraph(on: bool) -> void:
 	_telegraph = on
 
 
+func set_warning(enabled: bool, progress: float) -> void:
+	_warning_enabled = enabled
+	_warning_progress = clampf(progress, 0.0, 1.0)
+
+
 func tick_visual() -> void:
 	if _flash_ticks > 0:
 		_flash_ticks -= 1
@@ -159,6 +201,23 @@ func tick_visual() -> void:
 	else:
 		material.emission_enabled = false
 	_set_blade_emission(_telegraph)
+	_update_warning_ring()
+
+
+func _update_warning_ring() -> void:
+	if warning_ring == null:
+		return
+	var visible := _warning_enabled and _warning_progress > 0.0
+	warning_ring.visible = visible
+	if not visible:
+		return
+	# Grow and brighten as the windup approaches the attack, so the threat is
+	# readable early and unmistakable late in the windup.
+	var scale := lerpf(0.45, 1.25, _warning_progress)
+	warning_ring.scale = Vector3(scale, 1.0, scale)
+	var energy := lerpf(0.5, 2.0, _warning_progress)
+	if warning_ring.material_override != null:
+		warning_ring.material_override.emission_energy_multiplier = energy
 
 
 func _set_blade_emission(on: bool) -> void:

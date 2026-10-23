@@ -1,0 +1,13 @@
+{
+  "lines": 21,
+  "parse_errors": 0,
+  "by_type": {
+    "step_start": 4,
+    "tool_use": 12,
+    "step_finish": 4,
+    "error": 1
+  },
+  "tools": [
+    "read"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "phase18.export-visual.v1",
+  "run_id": "phase18-export-2026-10-23T14-57-02-606Z",
+  "created_at": "2026-10-23T14:57:04.205Z",
+  "exe": {
+    "path": "../experiments/godot-harness/game/build/DeflectArena.exe",
+    "bytes": 109127680,
+    "sha256": "cd2526cc93bc164d9d8f011761c2348973dfe06654824498767096fa58568212"
+  },
+  "pck": {
+    "path": "../experiments/godot-harness/game/build/DeflectArena.pck",
+    "bytes": 76140,
+    "sha256": "f2fc27551493b652cd5dff78735682ccab1ce3a1b8dfb3432973af8c43bea6eb"
+  },
+  "baseline_dir": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\baseline\\2026-10-23T02-56-46",
+  "bridge_port": 49904,
+  "pid": 18580,
+  "windowed": true,
+  "captures": 0,
+  "checks": [
+    {
+      "name": "exported-bridge-reachable",
+      "ok": true,
+      "detail": "port=49904"
+    },
+    {
+      "name": "exported-spawn-clean",
+      "ok": true,
+      "detail": "step=0 hp=4/5"
+    },
+    {
+      "name": "exported-idle-scenario",
+      "ok": true,
+      "detail": "phase=idle ai=false"
+    },
+    {
+      "name": "exported-visual-probe-completed",
+      "ok": false,
+      "detail": "Error: path escapes the selected project.\n    at Socket.<anonymous> (file:///C:/Users/hacke/ai-native-engine-phase18/experiments/godot-harness/controller/phase18-export-visual.mjs:110:26)\n    at Socket.emit (node:events:514:28)\n    at addChunk (node:internal/streams/readable:569:12)\n    at readableAddChunkPushByteMode (node:internal/streams/readable:520:3)\n    at Readable.push (node:internal/streams/readable:400:5)\n    at TCP.onStreamRead (node:internal/stream_base_commons:194:23)"
+    }
+  ],
+  "visual_acceptance": {
+    "exit_code": null,
+    "stdout": "",
+    "stderr": "",
+    "path": null,
+    "passed": false,
+    "checks": 0,
+    "failed_checks": []
+  },
+  "failure": "Error: path escapes the selected project.\n    at Socket.<anonymous> (file:///C:/Users/hacke/ai-native-engine-phase18/experiments/godot-harness/controller/phase18-export-visual.mjs:110:26)\n    at Socket.emit (node:events:514:28)\n    at addChunk (node:internal/streams/readable:569:12)\n    at readableAddChunkPushByteMode (node:internal/streams/readable:520:3)\n    at Readable.push (node:internal/streams/readable:400:5)\n    at TCP.onStreamRead (node:internal/stream_base_commons:194:23)",
+  "stdout_lines": 3,
+  "stderr_lines": 0
+}

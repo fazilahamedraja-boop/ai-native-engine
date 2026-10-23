@@ -1,0 +1,702 @@
+hidden-dodge-12
+script=res://tests/run_dodge_tests.gd
+exit=1
+duration_ms=436
+stdout:
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+FAIL dodge-startup-state phase=missing tick=missing cooldown=missing available=missing
+FAIL dodge-cooldown-blocks-and-expires blocked=false cooldown=0 ready=false restarted=false starts=0
+FAIL dodge-iframe-blocks-enemy-damage phase=missing tick=-1 invuln=missing health=-1 evaded=0 hits=0
+FAIL dodge-startup-is-vulnerable phase=missing tick=-1 invuln=missing health=-1 hits=0 evaded=0
+FAIL dodge-late-active-is-vulnerable phase=missing tick=-1 invuln=missing health=-1 hits=0 evaded=0
+RESULT passed=0 failed=5
+PHASE17_DODGE_RESULT 0 passed, 5 failed, 5 total
+PHASE17_DODGE_CASES [{"detail":"phase=missing tick=missing cooldown=missing available=missing","name":"dodge-startup-state","ok":false},{"detail":"blocked=false cooldown=0 ready=false restarted=false starts=0","name":"dodge-cooldown-blocks-and-expires","ok":false},{"detail":"phase=missing tick=-1 invuln=missing health=-1 evaded=0 hits=0","name":"dodge-iframe-blocks-enemy-damage","ok":false},{"detail":"phase=missing tick=-1 invuln=missing health=-1 hits=0 evaded=0","name":"dodge-startup-is-vulnerable","ok":false},{"detail":"phase=missing tick=-1 invuln=missing health=-1 hits=0 evaded=0","name":"dodge-late-active-is-vulnerable","ok":false}]
+PHASE17_DODGE_TRACE {"cooldown":{"blocked":{},"cooldown_before":0,"ready":{},"restarted":{}},"iframe_block":{"after":{},"started":{},"windup":{}},"late_vulnerable":{"after":{},"started":{},"windup":{}},"startup":{},"startup_vulnerable":{"after":{},"started":{},"windup":{}}}
+
+stderr:
+SCRIPT ERROR: Parse Error: Cannot infer the type of "windup" variable because the value doesn't have a set type.
+   at: GDScript::reload (res://scripts/game_world.gd:775)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://tests/run_dodge_tests.gd:30)
+       [1] _initialize (res://tests/run_dodge_tests.gd:26)
+ERROR: Failed to load script "res://scripts/game_world.gd" with error "Parse error".
+   at: load (modules/gdscript/gdscript_resource_format.cpp:46)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://tests/run_dodge_tests.gd:30)
+       [1] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _run (res://tests/run_dodge_tests.gd:32)
+       [2] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'harness_reset' in base 'Node3D'.
+   at: _test_dodge_motion_and_phases (res://tests/run_dodge_tests.gd:73)
+   GDScript backtrace (most recent call first):
+       [0] _test_dodge_motion_and_phases (res://tests/run_dodge_tests.gd:73)
+       [1] _run (res://tests/run_dodge_tests.gd:48)
+       [2] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'harness_events' in base 'Node3D'.
+   at: _count (res://tests/run_dodge_tests.gd:479)
+   GDScript backtrace (most recent call first):
+       [0] _count (res://tests/run_dodge_tests.gd:479)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:161)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'harness_events' in base 'Node3D'.
+   at: _count (res://tests/run_dodge_tests.gd:479)
+   GDScript backtrace (most recent call first):
+       [0] _count (res://tests/run_dodge_tests.gd:479)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:162)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:163)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'harness_events' in base 'Node3D'.
+   at: _first_event (res://tests/run_dodge_tests.gd:471)
+   GDScript backtrace (most recent call first):
+       [0] _first_event (res://tests/run_dodge_tests.gd:471)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:164)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:176)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:181)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'harness_events' in base 'Node3D'.
+   at: _count (res://tests/run_dodge_tests.gd:479)
+   GDScript backtrace (most recent call first):
+       [0] _count (res://tests/run_dodge_tests.gd:479)
+       [1] _test_cooldown (res://tests/run_dodge_tests.gd:192)
+       [2] _run (res://tests/run_dodge_tests.gd:49)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'harness_reset' in base 'Node3D'.
+   at: _test_rejected_while_attacking_or_parrying (res://tests/run_dodge_tests.gd:204)
+   GDScript backtrace (most recent call first):
+       [0] _test_rejected_while_attacking_or_parrying (res://tests/run_dodge_tests.gd:204)
+       [1] _run (res://tests/run_dodge_tests.gd:50)
+       [2] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'harness_reset' in base 'Node3D'.
+   at: _test_rejected_after_defeat (res://tests/run_dodge_tests.gd:260)
+   GDScript backtrace (most recent call first):
+       [0] _test_rejected_after_defeat (res://tests/run_dodge_tests.gd:260)
+       [1] _run (res://tests/run_dodge_tests.gd:51)
+       [2] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'harness_reset' in base 'Node3D'.
+   at: _prepare_windup (res://tests/run_dodge_tests.gd:432)
+   GDScript backtrace (most recent call first):
+       [0] _prepare_windup (res://tests/run_dodge_tests.gd:432)
+       [1] _test_iframes_block_damage (res://tests/run_dodge_tests.gd:290)
+       [2] _run (res://tests/run_dodge_tests.gd:52)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_iframes_block_damage (res://tests/run_dodge_tests.gd:291)
+       [2] _run (res://tests/run_dodge_tests.gd:52)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_iframes_block_damage (res://tests/run_dodge_tests.gd:292)
+       [2] _run (res://tests/run_dodge_tests.gd:52)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'harness_events' in base 'Node3D'.
+   at: _count (res://tests/run_dodge_tests.gd:479)
+   GDScript backtrace (most recent call first):
+       [0] _count (res://tests/run_dodge_tests.gd:479)
+       [1] _test_iframes_block_damage (res://tests/run_dodge_tests.gd:302)
+       [2] _run (res://tests/run_dodge_tests.gd:52)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'harness_events' in base 'Node3D'.
+   at: _count (res://tests/run_dodge_tests.gd:479)
+   GDScript backtrace (most recent call first):
+       [0] _count (res://tests/run_dodge_tests.gd:479)
+       [1] _test_iframes_block_damage (res://tests/run_dodge_tests.gd:302)
+       [2] _run (res://tests/run_dodge_tests.gd:52)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'harness_reset' in base 'Node3D'.
+   at: _prepare_windup (res://tests/run_dodge_tests.gd:432)
+   GDScript backtrace (most recent call first):
+       [0] _prepare_windup (res://tests/run_dodge_tests.gd:432)
+       [1] _test_startup_is_vulnerable (res://tests/run_dodge_tests.gd:313)
+       [2] _run (res://tests/run_dodge_tests.gd:53)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_startup_is_vulnerable (res://tests/run_dodge_tests.gd:314)
+       [2] _run (res://tests/run_dodge_tests.gd:53)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_startup_is_vulnerable (res://tests/run_dodge_tests.gd:315)
+       [2] _run (res://tests/run_dodge_tests.gd:53)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'harness_events' in base 'Node3D'.
+   at: _count (res://tests/run_dodge_tests.gd:479)
+   GDScript backtrace (most recent call first):
+       [0] _count (res://tests/run_dodge_tests.gd:479)
+       [1] _test_startup_is_vulnerable (res://tests/run_dodge_tests.gd:325)
+       [2] _run (res://tests/run_dodge_tests.gd:53)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'harness_events' in base 'Node3D'.
+   at: _count (res://tests/run_dodge_tests.gd:479)
+   GDScript backtrace (most recent call first):
+       [0] _count (res://tests/run_dodge_tests.gd:479)
+       [1] _test_startup_is_vulnerable (res://tests/run_dodge_tests.gd:325)
+       [2] _run (res://tests/run_dodge_tests.gd:53)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'harness_reset' in base 'Node3D'.
+   at: _prepare_windup (res://tests/run_dodge_tests.gd:432)
+   GDScript backtrace (most recent call first):
+       [0] _prepare_windup (res://tests/run_dodge_tests.gd:432)
+       [1] _test_late_active_is_vulnerable (res://tests/run_dodge_tests.gd:336)
+       [2] _run (res://tests/run_dodge_tests.gd:54)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_late_active_is_vulnerable (res://tests/run_dodge_tests.gd:337)
+       [2] _run (res://tests/run_dodge_tests.gd:54)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.
+   at: _advance (res://tests/run_dodge_tests.gd:463)
+   GDScript backtrace (most recent call first):
+       [0] _advance (res://tests/run_dodge_tests.gd:463)
+       [1] _test_late_active_is_vulnerable (res://tests/run_dodge_tests.gd:338)
+       [2] _run (res://tests/run_dodge_tests.gd:54)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'harness_events' in base 'Node3D'.
+   at: _count (res://tests/run_dodge_tests.gd:479)
+   GDScript backtrace (most recent call first):
+       [0] _count (res://tests/run_dodge_tests.gd:479)
+       [1] _test_late_active_is_vulnerable (res://tests/run_dodge_tests.gd:348)
+       [2] _run (res://tests/run_dodge_tests.gd:54)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'harness_events' in base 'Node3D'.
+   at: _count (res://tests/run_dodge_tests.gd:479)
+   GDScript backtrace (most recent call first):
+       [0] _count (res://tests/run_dodge_tests.gd:479)
+       [1] _test_late_active_is_vulnerable (res://tests/run_dodge_tests.gd:348)
+       [2] _run (res://tests/run_dodge_tests.gd:54)
+       [3] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'harness_reset' in base 'Node3D'.
+   at: _test_restart_clears_dodge (res://tests/run_dodge_tests.gd:359)
+   GDScript backtrace (most recent call first):
+       [0] _test_restart_clears_dodge (res://tests/run_dodge_tests.gd:359)
+       [1] _run (res://tests/run_dodge_tests.gd:55)
+       [2] _initialize (res://tests/run_dodge_tests.gd:26)
+SCRIPT ERROR: Invalid call. Nonexistent function 'harness_reset' in base 'Node3D'.
+   at: _test_dodge_does_not_cancel_attack_input (res://tests/run_dodge_tests.gd:393)
+   GDScript backtrace (most recent call first):
+       [0] _test_dodge_does_not_cancel_attack_input (res://tests/run_dodge_tests.gd:393)
+       [1] _run (res://tests/run_dodge_tests.gd:56)
+       [2] _initialize (res://tests/run_dodge_tests.gd:26)
+

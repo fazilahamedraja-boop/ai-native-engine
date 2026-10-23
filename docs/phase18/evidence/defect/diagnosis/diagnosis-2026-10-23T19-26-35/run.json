@@ -1,0 +1,174 @@
+{
+  "schema": "phase18.diagnosis.v1",
+  "baseline_run": "phase18-visual-2026-10-23T13-55-41-752Z",
+  "baseline_dir": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\defect\\before\\2026-10-23T19-25-41",
+  "status": "passed",
+  "started_at": "2026-10-23T13:57:29.157Z",
+  "finished_at": "2026-10-23T13:57:29.158Z",
+  "model": "opencode/nemotron-3.5-super-vl-free",
+  "opencode": {
+    "bin": "C:\\Users\\hacke\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+    "version": "opencode v2.0.32",
+    "exit_code": 0,
+    "timed_out": false,
+    "duration_ms": 53185,
+    "invocation": "opencode run --standalone --format json --auto --model <model> <prompt>"
+  },
+  "sandbox": {
+    "source_copied": false,
+    "tests_copied": false,
+    "images": [
+      {
+        "name": "idle.png",
+        "sha256": "9feaf1dd3b12556d5f8886a57e0e471abac73d5fd923a2871fbe9d9ef190390f",
+        "bytes": 67886,
+        "source": "docs/phase18/evidence/defect/before/2026-10-23T19-25-41/idle.png"
+      },
+      {
+        "name": "windup-early.png",
+        "sha256": "7aab6b42f106c7765544baf1415e3b1f6fcded45b8a34527823c4d75f13126da",
+        "bytes": 71629,
+        "source": "docs/phase18/evidence/defect/before/2026-10-23T19-25-41/windup-early.png"
+      },
+      {
+        "name": "windup-late.png",
+        "sha256": "209bfea5b981e8dcbb53e513e5a3e61aa4b492289eadf24e25ff31970eb4c114",
+        "bytes": 72044,
+        "source": "docs/phase18/evidence/defect/before/2026-10-23T19-25-41/windup-late.png"
+      },
+      {
+        "name": "active.png",
+        "sha256": "26229885567acfaa46e36b38a1e301add2b188a764f0d72d9169eab1e662aed5",
+        "bytes": 74113,
+        "source": "docs/phase18/evidence/defect/before/2026-10-23T19-25-41/active.png"
+      },
+      {
+        "name": "recovery.png",
+        "sha256": "54bedd51e8b9a3778ad2c4828c55e97fcfc1ff36a04bcc294a5a1d5e331bf32c",
+        "bytes": 70248,
+        "source": "docs/phase18/evidence/defect/before/2026-10-23T19-25-41/recovery.png"
+      },
+      {
+        "name": "restart.png",
+        "sha256": "59b289cebc3ab9d01382b42e0d49de1de68d751feae97763bff0238f2f9f36dd",
+        "bytes": 68616,
+        "source": "docs/phase18/evidence/defect/before/2026-10-23T19-25-41/restart.png"
+      }
+    ],
+    "observations": "observations.json",
+    "task": "TASK.md",
+    "config": {
+      "path": "C:/Users/hacke/ai-native-engine-phase18/experiments/godot-harness/controller/agent-sandbox/opencode.json",
+      "sha256": "3bbdf761bd665be0a857fa912c0e5b16a0fbcaa5266f97b5ddbb0ba7bf879690",
+      "denies": [
+        "shell",
+        "webfetch",
+        "websearch",
+        "execute",
+        "question",
+        "skill",
+        "subagent"
+      ]
+    }
+  },
+  "evidence": {
+    "diagnosis_sha256": "6c3131c8ecaaf99161bf849ed6c58cce1d544d3dd1142113c26d0c07b796b3ce",
+    "diagnosis_bytes": 4323,
+    "sections": [
+      {
+        "section": "evidence",
+        "ok": true
+      },
+      {
+        "section": "hypotheses",
+        "ok": true
+      },
+      {
+        "section": "chosen visual problem",
+        "ok": true
+      },
+      {
+        "section": "proposed acceptance evidence",
+        "ok": true
+      },
+      {
+        "section": "limitations",
+        "ok": true
+      }
+    ],
+    "cited_images": [
+      "idle.png",
+      "windup-early.png",
+      "windup-late.png",
+      "active.png",
+      "recovery.png",
+      "restart.png"
+    ],
+    "image_read_evidence": true,
+    "raw_jsonl": "logs/opencode.jsonl",
+    "stderr": "logs/opencode.stderr.txt"
+  },
+  "checks": [
+    {
+      "name": "opencode-ended",
+      "ok": true,
+      "detail": {
+        "code": 0,
+        "timed_out": false
+      }
+    },
+    {
+      "name": "diagnosis-written",
+      "ok": true,
+      "detail": 4323
+    },
+    {
+      "name": "required-sections",
+      "ok": true,
+      "detail": [
+        {
+          "section": "evidence",
+          "ok": true
+        },
+        {
+          "section": "hypotheses",
+          "ok": true
+        },
+        {
+          "section": "chosen visual problem",
+          "ok": true
+        },
+        {
+          "section": "proposed acceptance evidence",
+          "ok": true
+        },
+        {
+          "section": "limitations",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "name": "cites-images",
+      "ok": true,
+      "detail": [
+        "idle.png",
+        "windup-early.png",
+        "windup-late.png",
+        "active.png",
+        "recovery.png",
+        "restart.png"
+      ]
+    },
+    {
+      "name": "image-read-tool-used",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "name": "diagnosis-substantive",
+      "ok": true,
+      "detail": 4323
+    }
+  ]
+}

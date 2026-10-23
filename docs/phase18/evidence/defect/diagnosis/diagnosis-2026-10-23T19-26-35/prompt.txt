@@ -1,0 +1,1 @@
+Read ./TASK.md, then read every listed PNG and observations.json. Write ./diagnosis.md exactly as TASK.md requires. Do not edit any other file.

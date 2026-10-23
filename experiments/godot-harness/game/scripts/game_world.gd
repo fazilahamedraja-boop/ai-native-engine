@@ -769,6 +769,13 @@ func _update_enemy_visual() -> void:
 	else:
 		pose["mode"] = "locomotion"
 	enemy_rig.animate(pose)
+	# Ground-level windup telegraph around the enemy's feet. Driven only by the
+	# existing windup phase/tick: present during windup, growing as the attack
+	# approaches, and absent in idle, active, and recovery.
+	# enemy_ai is untyped, so the comparison must be assigned to an explicitly
+	# typed variable; `:=` cannot infer the type of a Variant comparison.
+	var windup: bool = enemy_ai.phase == "windup"
+	enemy_rig.set_warning(windup, enemy_ai.phase_progress())
 	enemy_rig.set_telegraph(enemy_ai.telegraphing())
 	enemy_rig.tick_visual()
 

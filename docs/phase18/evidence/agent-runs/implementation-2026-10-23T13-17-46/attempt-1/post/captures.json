@@ -1,0 +1,13 @@
+{
+  "schema": "phase18.captures.v1",
+  "run_id": "phase18-agent-1-2026-10-23T07-58-21-453Z",
+  "label": "agent-1",
+  "project": "game",
+  "git": {
+    "commit": "0ce8d6f16e9e3df8590a6463e720166753b65e75",
+    "branch": "experiment/phase18-visual",
+    "status": "M experiments/godot-harness/controller/harness.mjs\n M experiments/godot-harness/game/assets/placeholder-character.glb.import\n M experiments/godot-harness/game/harness/bridge.gd\n M experiments/godot-harness/game/scripts/fighter_rig.gd\n M experiments/godot-harness/game/scripts/game_world.gd\n?? docs/phase18/\n?? experiments/godot-harness/controller/__pycache__/\n?? experiments/godot-harness/controller/phase18-agent.mjs\n?? experiments/godot-harness/controller/phase18-diagnosis.mjs\n?? experiments/godot-harness/controller/phase18-visual-check.mjs\n?? experiments/godot-harness/controller/phase18_visual_acceptance.py"
+  },
+  "captured_at": "2026-10-23T07:58:28.930Z",
+  "captures": []
+}

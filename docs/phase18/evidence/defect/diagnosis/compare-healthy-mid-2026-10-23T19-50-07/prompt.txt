@@ -1,0 +1,1 @@
+Read ./TASK.md, then read every healthy/*.png and defect/*.png and both observations.json files. Write ./diagnosis.md exactly as TASK.md requires. Do not edit any other file.

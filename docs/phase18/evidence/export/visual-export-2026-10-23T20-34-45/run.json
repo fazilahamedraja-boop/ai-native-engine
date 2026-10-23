@@ -1,0 +1,85 @@
+{
+  "schema": "phase18.export-visual.v1",
+  "run_id": "phase18-export-2026-10-23T15-04-45-495Z",
+  "created_at": "2026-10-23T15:05:05.691Z",
+  "exe": {
+    "path": "../experiments/godot-harness/game/build/DeflectArena.exe",
+    "bytes": 109127680,
+    "sha256": "cd2526cc93bc164d9d8f011761c2348973dfe06654824498767096fa58568212"
+  },
+  "pck": {
+    "path": "../experiments/godot-harness/game/build/DeflectArena.pck",
+    "bytes": 76140,
+    "sha256": "f2fc27551493b652cd5dff78735682ccab1ce3a1b8dfb3432973af8c43bea6eb"
+  },
+  "baseline_dir": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\baseline\\2026-10-23T02-56-46",
+  "bridge_port": 49426,
+  "pid": 17940,
+  "windowed": true,
+  "captures": 7,
+  "checks": [
+    {
+      "name": "exported-bridge-reachable",
+      "ok": true,
+      "detail": "port=49426"
+    },
+    {
+      "name": "exported-spawn-clean",
+      "ok": true,
+      "detail": "step=0 hp=4/5"
+    },
+    {
+      "name": "exported-idle-scenario",
+      "ok": true,
+      "detail": "phase=idle ai=false"
+    },
+    {
+      "name": "exported-windup-early-reached",
+      "ok": true,
+      "detail": "phase=windup tick=18 guard=17"
+    },
+    {
+      "name": "exported-windup-mid-reached",
+      "ok": true,
+      "detail": "phase=windup tick=22 guard=4"
+    },
+    {
+      "name": "exported-windup-late-reached",
+      "ok": true,
+      "detail": "phase=windup tick=26 guard=4"
+    },
+    {
+      "name": "exported-active-reached",
+      "ok": true,
+      "detail": "phase=active tick=1"
+    },
+    {
+      "name": "exported-recovery-reached",
+      "ok": true,
+      "detail": "phase=recover tick=1"
+    },
+    {
+      "name": "exported-restart-clean",
+      "ok": true,
+      "detail": "step=0 hp=4/5"
+    },
+    {
+      "name": "exported-process-stayed-alive",
+      "ok": true,
+      "detail": "exit_code=null"
+    }
+  ],
+  "visual_acceptance": {
+    "exit_code": 0,
+    "stdout": "{\"passed\": true, \"checks\": 39, \"out\": \"C:\\\\Users\\\\hacke\\\\ai-native-engine-phase18\\\\docs\\\\phase18\\\\evidence\\\\export\\\\visual-export-2026-10-23T20-34-45\\\\visual-acceptance.json\"}\r\n",
+    "stderr": "",
+    "path": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\export\\visual-export-2026-10-23T20-34-45\\visual-acceptance.json",
+    "passed": true,
+    "checks": 39,
+    "failed_checks": [],
+    "sha256": "9b988d2ff0db62ffb4e7c4461eab88f02ea1efaddc88fa257def6567237b45db"
+  },
+  "failure": null,
+  "stdout_lines": 3,
+  "stderr_lines": 0
+}

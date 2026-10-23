@@ -1,0 +1,15 @@
+{
+  "lines": 84,
+  "parse_errors": 0,
+  "by_type": {
+    "step_start": 23,
+    "tool_use": 31,
+    "step_finish": 21,
+    "text": 9
+  },
+  "tools": [
+    "edit",
+    "read",
+    "write"
+  ]
+}

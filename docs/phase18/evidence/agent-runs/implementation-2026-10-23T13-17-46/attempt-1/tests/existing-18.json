@@ -1,0 +1,12 @@
+{
+  "ok": false,
+  "passed": 0,
+  "total": 0,
+  "failing": [],
+  "duration_ms": 120043,
+  "exit_code": null,
+  "timed_out": true,
+  "results": [],
+  "stdout": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\r\n\r\n",
+  "stderr": "SCRIPT ERROR: Parse Error: Cannot infer the type of \"windup\" variable because the value doesn't have a set type.\r\n   at: GDScript::reload (res://scripts/game_world.gd:775)\r\n   GDScript backtrace (most recent call first):\r\n       [0] _run (res://tests/run_game_tests.gd:30)\r\n       [1] _initialize (res://tests/run_game_tests.gd:26)\r\nERROR: Failed to load script \"res://scripts/game_world.gd\" with error \"Parse error\".\r\n   at: load (modules/gdscript/gdscript_resource_format.cpp:46)\r\n   GDScript backtrace (most recent call first):\r\n       [0] _run (res://tests/run_game_tests.gd:30)\r\n       [1] _initialize (res://tests/run_game_tests.gd:26)\r\nSCRIPT ERROR: Invalid call. Nonexistent function 'set_harness_input' in base 'Node3D'.\r\n   at: _advance (res://tests/run_game_tests.gd:443)\r\n   GDScript backtrace (most recent call first):\r\n       [0] _advance (res://tests/run_game_tests.gd:443)\r\n       [1] _run (res://tests/run_game_tests.gd:32)\r\n       [2] _initialize (res://tests/run_game_tests.gd:26)\r\nSCRIPT ERROR: Invalid access to property or key 'grounded' on a base object of type 'Dictionary'.\r\n   at: _run (res://tests/run_game_tests.gd:33)\r\n   GDScript backtrace (most recent call first):\r\n       [0] _run (res://tests/run_game_tests.gd:33)\r\n       [1] _initialize (res://tests/run_game_tests.gd:26)\r\n"
+}
