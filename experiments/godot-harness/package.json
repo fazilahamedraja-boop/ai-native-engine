@@ -44,6 +44,10 @@
     "evidence:visual": "node controller/visual-suite.mjs",
     "evidence:observation": "node controller/observation-suite.mjs",
     "evidence:defect": "node controller/defect-suite.mjs",
+    "play:voxel": "node controller/voxel-web.mjs",
+    "play:voxel:serve": "node controller/voxel-web.mjs --no-export",
+    "lint:gd": "gdlint voxel/scripts voxel/tests voxel/harness",
+    "format:gd:check": "gdformat --check voxel/scripts voxel/tests voxel/harness",
     "inspect": "node controller/harness.mjs inspect --project fixtures/sentry --json"
   }
 }

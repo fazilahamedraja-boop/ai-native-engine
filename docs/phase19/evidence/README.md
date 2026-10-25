@@ -5,7 +5,9 @@ run. Accepted runs are named in `docs/phase19/REPORT.md`; failed runs are kept
 deliberately so the failures that shaped the fixes are still reviewable.
 
 Nothing in this tree is generated after the fact. Each `run.json` was written by
-the runner that performed the work.
+the runner that performed the work. The one exception is `web/`, which is a
+browser session recorded by hand (Playwright MCP plus `ffmpeg`) rather than by a
+runner; `web/web-verification.json` is the record of what was observed.
 
 ## Layout
 
@@ -15,6 +17,7 @@ evidence/
   repair/         controlled-defect repair experiment (disposable copies)
   measurements/   CPU timings, world counts, windowed performance monitors
   export/         native Windows build verification + window capture
+  web/            browser session on http://127.0.0.1:8790/ (frames + clip)
   agent-runs/     preserved external implementation-agent attempts
   agent-run-console.txt
 ```
@@ -27,6 +30,7 @@ evidence/
 | `repair/2026-10-25T06-02-23-740Z` | defect 14/15, agent repair 15/15, canonical unchanged |
 | `measurements/2026-10-25T06-05-56-931Z` | world 32x16x32, 6181 solid, 16 chunks |
 | `export/2026-10-25T06-11-40-680Z` | 12/12 packaged checks, real window capture |
+| `web/` | 6/6 browser interactions, 6 frames + 7.25 s clip |
 
 ## Accepted artifact hashes
 
@@ -52,6 +56,14 @@ evidence/
 | `measurements/2026-10-25T06-05-56-931Z/runtime.json` | 1585 | `a63100f4e3534ea14e2d1da74621a02f69de6d0f080db0504c983d8ea5a8399b` |
 | `export/2026-10-25T06-11-40-680Z/run.json` | 4229 | `d542b88e6768934d841760a6c03006b0e9ff3cbcc7067044801ab81c275e3a04` |
 | `export/2026-10-25T06-11-40-680Z/packaged-window.png` | 322349 | `35cf3d6eb639359a7b289f8d062ec794ce94ebe03c67bd0ebd1e5b264be32e7b` |
+| `web/web-verification.json` | see file | recorded in the file itself |
+| `web/page-load.png` | 278566 | `dfe708b8a15904813eef8fb9cd0e11b42901c649f75bff190345d85f642b2599` |
+| `web/mined.png` | 290453 | `34e275120163226a0b63ceb5c5995778084f241f01f0ad6397b6e0c978408a6b` |
+| `web/moved.png` | 238613 | `2bf37e3287a96059e8f71a207cc44b8b1db7cd570ee161ec6900c16c963babaf` |
+| `web/jumped.png` | 294112 | `f91f41cd3b5f842604478cc5e0b13550de71d495ebb4f144e2f801634f5fca1d` |
+| `web/saved.png` | 253603 | `bdac85296203e66bdbdea813916971c3bfb40c80382a62d8fdc03e9fb76ae933` |
+| `web/loaded.png` | 254452 | `4e43af697a92ea2b507fd56d0d94f7135083b03a27bd2a2324bac9d7b084a853` |
+| `web/playthrough.mp4` | 583648 | `a1557021e90930fe8d7bc1929c6453bdcc12489d57a82f13ccb93ff7412cd33a` |
 
 The exported binary itself is **not** stored here:
 
@@ -90,6 +102,7 @@ node controller/voxel-measure.mjs
 node controller/voxel-defect.mjs --timeout-ms 600000
 godot --headless --path voxel --export-release "Windows Desktop" voxel/build/voxel-sandbox.exe
 node controller/voxel-export-verify.mjs --exe voxel/build/voxel-sandbox.exe
+npm run play:voxel   # Web export + loopback server on http://127.0.0.1:8790/
 ```
 
 Runners write to a new timestamped directory and refuse output paths outside

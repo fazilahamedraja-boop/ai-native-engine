@@ -1,0 +1,303 @@
+{
+  "schema": "phase19.web-verification.v1",
+  "created_at": "2026-10-25T07:58:00Z",
+  "url": "http://127.0.0.1:8790/",
+  "server": {
+    "command": "node controller/voxel-web.mjs --no-export --port 8790",
+    "cwd": "C:\\Users\\hacke\\ai-native-engine-phase19\\experiments\\godot-harness",
+    "root": "C:\\Users\\hacke\\ai-native-engine-phase19\\experiments\\godot-harness\\voxel\\build\\web",
+    "pid": 17336,
+    "bind": "127.0.0.1",
+    "note": "voxel-web.mjs also performs the export when run without --no-export, so the URL is reproducible with one command."
+  },
+  "environment": {
+    "godot": "4.7.2.stable.official.ed1daf0bf",
+    "node": "v24.22.0",
+    "browser": "Chromium via Playwright MCP (devicePixelRatio 1.0000000149011612)",
+    "webgl_renderer": "ANGLE (Intel, Intel(R) UHD Graphics (0x00009B41) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "engine_build": "Emscripten 4.0.20, single-threaded, no GDExtension support",
+    "host": "Windows, 1920x1080 desktop"
+  },
+  "build": {
+    "preset": "Web (preset.1 in voxel/export_presets.cfg, variant/thread_support=false, html/canvas_resize_policy=2)",
+    "export_command": "godot --headless --path experiments/godot-harness/voxel --export-release \"Web\" experiments/godot-harness/voxel/build/web/index.html",
+    "export_exit_code": 0,
+    "files": {
+      "index.html": {
+        "bytes": 5442,
+        "sha256": "6b09098cb8435653d29521b5295296ce5437e789354b0649f87044e2e7dd8c81"
+      },
+      "index.js": {
+        "bytes": 279815,
+        "sha256": "33c94cb3175f3333b82e2a3be5e8e86f77986f0aa2042b1631f6367a4e5bb6ba"
+      },
+      "index.pck": {
+        "bytes": 87632,
+        "sha256": "921771a0ad2c23a203e73f271f9790fd75c82af49d014f2ac7fa810e8891dcfb"
+      },
+      "index.wasm": {
+        "bytes": 39514754,
+        "sha256": "fc74679e3b97f76878947fcd4fbe1268cbfa6188182a2e33bbc3f5dc9bfa57d0"
+      }
+    },
+    "source_unchanged": "No tracked .gd source was modified for the web export; index.pck differs from the Phase 18 game build only because it packs this project's own resources.",
+    "windows_exe_unchanged": {
+      "path": "experiments/godot-harness/voxel/build/voxel-sandbox.exe",
+      "sha256": "1ade5406fb14049b6c077f751cf4eba1bf8237014030fcbc05c7d7f77ba652bb",
+      "note": "Adding the Web preset did not rebuild or alter the native Windows export."
+    }
+  },
+  "page": {
+    "title": "voxel-sandbox",
+    "viewport_css": {
+      "width": 1290,
+      "height": 800
+    },
+    "canvas_backing": {
+      "width": 1290,
+      "height": 800
+    },
+    "canvas_css": {
+      "x": 0,
+      "y": 0,
+      "width": 1289,
+      "height": 799
+    },
+    "canvas_focused_after_capture": true,
+    "note": "The canvas is one CSS pixel smaller than its backing store because this host reports devicePixelRatio 1.0000000149; the page screenshot is taken at scale 'device', so the PNGs are 1290x800."
+  },
+  "console": {
+    "errors": 1,
+    "warnings": 0,
+    "messages": 3,
+    "only_error": "The root document of this element is not valid for pointer lock.",
+    "explanation": "The scene requests MOUSE_MODE_CAPTURED in _ready(); browsers refuse pointer lock without a user gesture, so the request fails once per page load. Clicking the canvas recaptures the mouse and play continues. No game code error occurred."
+  },
+  "network": {
+    "checked_with": "curl.exe against the running server",
+    "requests": [
+      {
+        "path": "/",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "bytes": 5442
+      },
+      {
+        "path": "/index.js",
+        "status": 200,
+        "content_type": "text/javascript; charset=utf-8",
+        "bytes": 279815
+      },
+      {
+        "path": "/index.pck",
+        "status": 200,
+        "content_type": "application/octet-stream",
+        "bytes": 87632
+      },
+      {
+        "path": "/index.wasm",
+        "status": 200,
+        "content_type": "application/wasm",
+        "bytes": 39514754
+      }
+    ],
+    "path_traversal": {
+      "path": "/../voxel/project.godot",
+      "status": 404
+    },
+    "missing_file": {
+      "path": "/nope.js",
+      "status": 404
+    },
+    "cache_control": "no-store",
+    "wasm_sniffing_note": "application/wasm is required for WebAssembly.instantiateStreaming; the helper sets it explicitly."
+  },
+  "input": {
+    "method": "Playwright Chromium through the browser MCP. The canvas was clicked once to focus and acquire pointer lock; that click is not counted as a game action. Keys were held across many rendered frames. Each observation below was read from the HUD text inside the named screenshot, and the screenshots were pixel-diffed against each other.",
+    "observations": [
+      {
+        "step": "page-load",
+        "action": "open the URL and wait for the first rendered frame",
+        "screenshot": "page-load.png",
+        "hud": {
+          "position": "16.5, 4.0, 16.5",
+          "grounded": "yes",
+          "selected": "GRASS",
+          "inventory_grass": 16,
+          "changed_blocks": 0,
+          "save_path": "user://voxel_save.json"
+        },
+        "observed": "Terrain, sky, crosshair, hotbar and the full HUD render; the player stands on the spawn column."
+      },
+      {
+        "step": "mined",
+        "action": "one left click on the canvas",
+        "screenshot": "mined.png",
+        "hud": {
+          "position": "16.5, 4.0, 16.5",
+          "selected": "GRASS",
+          "inventory_grass": 17,
+          "changed_blocks": 1
+        },
+        "feedback": "Mined Grass at (14, 4, 13). +1 inventory.",
+        "observed": "Exactly one block was removed and exactly one inventory unit was added; the feedback line names the removed cell.",
+        "pixel_change_vs_page_load": {
+          "same_size": true,
+          "width": 1290,
+          "height": 800,
+          "changed_pixels": 25308,
+          "changed_ratio": 0.024523,
+          "threshold": 8
+        }
+      },
+      {
+        "step": "moved",
+        "action": "hold W for 800 ms",
+        "screenshot": "moved.png",
+        "hud": {
+          "position": "15.2, 4.0, 13.3",
+          "grounded": "yes",
+          "inventory_grass": 17,
+          "changed_blocks": 1
+        },
+        "observed": "The player advanced 3.5 m along the view direction and stayed grounded.",
+        "pixel_change_vs_page_load": {
+          "same_size": true,
+          "width": 1290,
+          "height": 800,
+          "changed_pixels": 689075,
+          "changed_ratio": 0.667708,
+          "threshold": 8
+        }
+      },
+      {
+        "step": "jumped",
+        "action": "press Space and capture 170 ms later",
+        "screenshot": "jumped.png",
+        "hud": {
+          "position": "15.2, 5.2, 13.3",
+          "grounded": "no",
+          "inventory_grass": 17,
+          "changed_blocks": 1
+        },
+        "observed": "Y rose from 4.0 to 5.2 and the grounded flag flipped to no while airborne.",
+        "pixel_change_vs_moved": {
+          "same_size": true,
+          "width": 1290,
+          "height": 800,
+          "changed_pixels": 784140,
+          "changed_ratio": 0.759826,
+          "threshold": 8
+        }
+      },
+      {
+        "step": "saved",
+        "action": "press F5",
+        "screenshot": "saved.png",
+        "hud": {
+          "position": "15.2, 4.0, 13.3",
+          "grounded": "yes",
+          "inventory_grass": 17,
+          "changed_blocks": 1
+        },
+        "feedback": "Saved 1 changed blocks to user://voxel_save.json.",
+        "observed": "The game handled F5 itself and wrote the save; the browser did not reload the page.",
+        "pixel_change_vs_moved": {
+          "same_size": true,
+          "width": 1290,
+          "height": 800,
+          "changed_pixels": 6488,
+          "changed_ratio": 0.006287,
+          "threshold": 8
+        }
+      },
+      {
+        "step": "loaded",
+        "action": "click the canvas, then press F9",
+        "screenshot": "loaded.png",
+        "hud": {
+          "changed_blocks": 1
+        },
+        "feedback": "Loaded 1 changed blocks from user://voxel_save.json.",
+        "observed": "The saved world and player state were read back through browser IndexedDB; the changed-block count matched the saved state.",
+        "pixel_change_vs_saved": {
+          "same_size": true,
+          "width": 1290,
+          "height": 800,
+          "changed_pixels": 6428,
+          "changed_ratio": 0.006229,
+          "threshold": 8
+        }
+      }
+    ]
+  },
+  "clip": {
+    "file": "playthrough.mp4",
+    "method": "Captured as a PNG sequence through the browser page-screenshot API at roughly 8 frames per second while scripted input ran (walk, strafe, jump, mine, F5), then encoded with ffmpeg -framerate 8. It is not a desktop screen recording.",
+    "duration_seconds": 7.25,
+    "frames": 58,
+    "width": 1290,
+    "height": 800,
+    "codec": "h264",
+    "motion": {
+      "consecutive_pairs": 57,
+      "pairs_changed_gt_1_percent": 32,
+      "median_changed_ratio": 0.182,
+      "max_changed_ratio": 0.8493
+    },
+    "fidelity_check": "All 58 decoded frames were compared against the source PNGs: mean absolute channel error 1.73, p99 15, which is h264 quantisation only.",
+    "not_a_benchmark": "Frame pacing is limited by screenshot round-trips, so the clip is not evidence of frame rate or smoothness."
+  },
+  "screenshots": {
+    "page-load.png": {
+      "bytes": 278566,
+      "sha256": "dfe708b8a15904813eef8fb9cd0e11b42901c649f75bff190345d85f642b2599",
+      "width": 1290,
+      "height": 800
+    },
+    "mined.png": {
+      "bytes": 290453,
+      "sha256": "34e275120163226a0b63ceb5c5995778084f241f01f0ad6397b6e0c978408a6b",
+      "width": 1290,
+      "height": 800
+    },
+    "moved.png": {
+      "bytes": 238613,
+      "sha256": "2bf37e3287a96059e8f71a207cc44b8b1db7cd570ee161ec6900c16c963babaf",
+      "width": 1290,
+      "height": 800
+    },
+    "jumped.png": {
+      "bytes": 294112,
+      "sha256": "f91f41cd3b5f842604478cc5e0b13550de71d495ebb4f144e2f801634f5fca1d",
+      "width": 1290,
+      "height": 800
+    },
+    "saved.png": {
+      "bytes": 253603,
+      "sha256": "bdac85296203e66bdbdea813916971c3bfb40c80382a62d8fdc03e9fb76ae933",
+      "width": 1290,
+      "height": 800
+    },
+    "loaded.png": {
+      "bytes": 254452,
+      "sha256": "4e43af697a92ea2b507fd56d0d94f7135083b03a27bd2a2324bac9d7b084a853",
+      "width": 1290,
+      "height": 800
+    },
+    "playthrough.mp4": {
+      "bytes": 583648,
+      "sha256": "a1557021e90930fe8d7bc1929c6453bdcc12489d57a82f13ccb93ff7412cd33a",
+      "width": 1290,
+      "height": 800
+    }
+  },
+  "limits": [
+    "Real browser chrome shortcuts cannot be exercised from an automation harness. F5/F9 were delivered as page key events and the game consumed them (the save and load feedback lines prove it), but 'does F5 reload a real user's tab?' is unverified; the exported index.js contains no F5/F12 special-casing, so a reload is expected to behave like any page reload.",
+    "The pointer-lock request in _ready() fails on every load until the user clicks; that console error is expected, not a defect.",
+    "Saves live in browser IndexedDB (user:// maps to the web filesystem), so they are per-origin and are cleared by site-data removal.",
+    "Verified on one Windows host with Intel UHD graphics only; not tested on another GPU, another browser engine, or a clean VM.",
+    "Scripted input is not human input. The clip and screenshots show the game reacting to synthetic key and mouse events.",
+    "While collecting this evidence, several capture paths on this host produced torn or tiled frames: Playwright's page screenshots above roughly 1280 px, ffmpeg gdigrab/ddagrab desktop capture, and the conversation image viewer all did so at different times. Each shipped PNG was therefore checked numerically at 1:1, and the shipped clip was checked frame-by-frame against its source PNGs. Earlier discarded attempts are described in docs/phase19/REPORT.md rather than kept as evidence."
+  ]
+}

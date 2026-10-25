@@ -15,7 +15,7 @@ placement, a four-slot block hotbar, and JSON persistence stored under
 workflow: the same `HarnessSession`, bridge protocol, sandbox adapter, evidence
 writer, and window-capture approach, plus the Phase 18 agent-runner pattern.
 
-Three independent things were verified, and they are deliberately reported
+Four independent things were verified, and they are deliberately reported
 separately:
 
 1. **Gameplay and persistence** - acceptance suites plus a windowed observation
@@ -25,6 +25,9 @@ separately:
    agent repair (see the honest limits below).
 3. **Packaging** - a native Windows export was driven through its own bridge and
    captured as a real window.
+4. **Browser playability** - the same project exported to Web and played in a
+   real Chromium tab at **http://127.0.0.1:8790/**, with every interaction shown
+   in a captured frame.
 
 The result is **not** reported as one uninterrupted autonomous implementation
 pass. The external implementation agent that was asked to author the data module
@@ -120,6 +123,8 @@ meant a save taken at tick 21 could never match a reload that restarts at tick
 | Windowed observation | `node controller/voxel-observe.mjs` | **12/12**, 9 captures |
 | Measurements | `node controller/voxel-measure.mjs` | world/timing/FPS recorded |
 | Packaged build | `node controller/voxel-export-verify.mjs --exe voxel/build/voxel-sandbox.exe` | **12/12**, window captured |
+| Browser build | `npm run play:voxel`, then real Chromium at `http://127.0.0.1:8790/` | **6/6** interactions, 6 frames + clip |
+| GDScript lint | `npm run lint:gd` | **52 problems** (documented baseline, not zero) |
 
 The gameplay suite asserts behaviour, not file existence. Covered checks include
 `startup-spawn-safe`, `startup-block-types`, `startup-hotbar-and-inventory`,
@@ -270,6 +275,78 @@ Earlier export runs are preserved: `06-08-43-608Z` (wrong bridge command name,
 capture only, first for the `deflect` title filter and then for the hidden
 window).
 
+## Browser-playable build
+
+The sandbox also runs in a browser, which is the form most players can actually
+open. `voxel/export_presets.cfg` now carries a second preset, `[preset.1]`
+`Web`, with `variant/thread_support=false` (so no COOP/COEP headers are needed)
+and `html/canvas_resize_policy=2` (the canvas follows the window instead of
+sitting in a fixed corner box).
+
+Serve it with one command from `experiments/godot-harness`:
+
+```powershell
+npm run play:voxel          # export, then serve on http://127.0.0.1:8790/
+npm run play:voxel:serve    # serve the existing build without re-exporting
+```
+
+`controller/voxel-web.mjs` does the export and the serving. It binds loopback
+only, sends `application/wasm` for `index.wasm` (required for
+`WebAssembly.instantiateStreaming`), `application/octet-stream` for the PCK,
+`cache-control: no-store`, and returns 404 for path traversal and unknown files.
+
+| File | Bytes | SHA256 |
+| --- | --- | --- |
+| `build/web/index.html` | 5,442 | `6b09098c...` |
+| `build/web/index.js` | 279,815 | `33c94cb3...` |
+| `build/web/index.pck` | 87,632 | `921771a0...` |
+| `build/web/index.wasm` | 39,514,754 | `fc74679e...` |
+
+`docs/phase19/evidence/web/web-verification.json` records the full browser
+session: build hashes, HTTP statuses and MIME types, HUD readings for each
+interaction, per-image pixel diffs, and the limits. Six frames at 1290x800 and a
+7.25 s clip are stored beside it.
+
+What the browser run proves, read from the HUD inside each frame:
+
+| Step | Input | HUD before -> after |
+| --- | --- | --- |
+| load | open the URL | position 16.5, 4.0, 16.5; GRASS x16; changed 0 |
+| mine | one click | GRASS x17; changed 1; "Mined Grass at (14, 4, 13). +1 inventory." |
+| move | hold `W` | position 15.2, 4.0, 13.3; still grounded |
+| jump | press `Space` | y 4.0 -> 5.2; grounded yes -> no |
+| save | press `F5` | "Saved 1 changed blocks to user://voxel_save.json." |
+| load | press `F9` | "Loaded 1 changed blocks from user://voxel_save.json." |
+
+In the browser, `user://` maps to IndexedDB for this origin rather than to
+`%APPDATA%`, and the save round trip works there too. The only console error is
+`The root document of this element is not valid for pointer lock.`, which is
+expected: the scene asks for `MOUSE_MODE_CAPTURED` in `_ready()` and browsers
+refuse pointer lock without a user gesture. Clicking the canvas captures the
+mouse, `Esc` releases it.
+
+## Tooling gap review
+
+The question for this phase was what was actually missing, not what would be
+nice. Findings, and what was done about each:
+
+| Gap | Finding | Action |
+| --- | --- | --- |
+| GDScript lint and format | No linter was installed, so style was never machine-checked | Installed `gdtoolkit` 4.5.0 (`gdlint`, `gdformat`) and added `C:\Users\hacke\AppData\Roaming\Python\Python312\Scripts` to the user PATH |
+| Lint baseline | First real run: **52 problems** with default rules | Documented as the baseline; not "fixed" (see below) |
+| Playable artifact | The 109 MB Windows exe cannot be opened in a browser | Added the Web preset plus `controller/voxel-web.mjs`; URL verified |
+| Video capture | `ffmpeg` 9.0.2 was already installed but unused by the phase | Used it for the clip; `gdigrab` and `ddagrab` both work |
+| CI | The repository has no CI directory or workflow files | Reported, not invented here: wiring CI is a separate decision |
+| Acceptance criteria | No pre-registered acceptance document existed for this phase | Criteria live in the suites (`run_voxel_data_tests.gd`, `run_voxel_tests.gd`) and in this report |
+
+`npm run lint:gd` and `npm run format:gd:check` now exist and both fail on the
+current tree: 52 lint problems (mostly `max-line-length` over 100 columns, plus
+`max-returns` and `max-file-lines`) and 8 files `gdformat` would rewrite.
+Reformatting `voxel_data.gd` would change the canonical module hash
+`338d3ee0...` and break the defect-repair evidence chain, so the debt is
+reported rather than silently applied. Paying it down is a follow-up commit that
+must re-record those hashes.
+
 ## Safety and isolation
 
 - All Phase 19 work is in `C:\Users\hacke\ai-native-engine-phase19` on
@@ -314,6 +391,23 @@ window).
   this Windows host, not on a clean VM or another GPU.
 - **No CI wiring.** The suites and runners are reproducible commands, but they
   are not wired into a CI pipeline.
+- **Browser shortcuts are harness-limited.** `F5` and `F9` were delivered as page
+  key events and the game consumed them (the save and load feedback lines prove
+  it), but whether `F5` also reloads a real user's tab was not exercised. The
+  exported `index.js` contains no `F5`/`F12` special-casing, so a reload should
+  behave like any page.
+- **Browser saves are origin-scoped.** They live in IndexedDB, so clearing site
+  data clears progress.
+- **Lint debt is reported, not paid.** `npm run lint:gd` exits 1 with 52
+  problems. Reformatting `voxel_data.gd` would invalidate the canonical hash used
+  by the repair evidence, so the clean-up is deliberately left as its own change.
+- **Capture artifacts on this host.** Playwright page screenshots above roughly
+  1280 px, `gdigrab`/`ddagrab` desktop capture, and the image viewer used while
+  reviewing all produced torn or tiled frames at different moments; a 1920x1080
+  desktop recording of an idle window also encoded as a still frame. Every PNG
+  shipped here was therefore checked numerically at 1:1, and the clip was checked
+  frame-by-frame against its source PNGs (mean absolute channel error 1.73). The
+  discarded captures are not kept as evidence.
 
 ## Reproduction
 
@@ -341,6 +435,13 @@ node controller/voxel-defect.mjs --timeout-ms 600000
 # Export and verify the native Windows build
 godot --headless --path voxel --export-release "Windows Desktop" voxel/build/voxel-sandbox.exe
 node controller/voxel-export-verify.mjs --exe voxel/build/voxel-sandbox.exe
+
+# Export the Web build and serve it on loopback (Ctrl-C to stop)
+npm run play:voxel
+
+# Style checks (currently fail: 52 lint problems, 8 files would be reformatted)
+npm run lint:gd
+npm run format:gd:check
 ```
 
 The project can also be run interactively:
@@ -362,6 +463,7 @@ In-game controls: WASD move, Space jump, mouse look, LMB mine, RMB place,
 | `evidence/repair/2026-10-25T05-59-48-987Z/` | Preserved design failure (masked defect) |
 | `evidence/measurements/2026-10-25T06-05-56-931Z/` | Accepted measurements |
 | `evidence/export/2026-10-25T06-11-40-680Z/` | Accepted 12/12 packaged verification plus window |
+| `evidence/web/` | Accepted browser run: 6 frames, `web-verification.json`, `playthrough.mp4` |
 | `evidence/runtime/2026-10-25T05-50-50-624Z/`, `05-51-52-107Z/`, `05-52-29-297Z/` | Preserved observation failures |
 | `evidence/export/2026-10-25T06-08-43-608Z/`, `06-09-03-921Z/`, `06-10-38-770Z/` | Preserved export-run failures |
 | `evidence/agent-runs/implementation-2026-10-23T17-06-43-470Z/` | Preserved failed implementation agent run (quota) |
