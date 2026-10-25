@@ -18,6 +18,7 @@ evidence/
   measurements/   CPU timings, world counts, windowed performance monitors
   export/         native Windows build verification + window capture
   web/            browser session on http://127.0.0.1:8790/ (frames + clip)
+  tooling/        verification of the four follow-up tools (native window run)
   agent-runs/     preserved external implementation-agent attempts
   agent-run-console.txt
 ```
@@ -31,6 +32,7 @@ evidence/
 | `measurements/2026-10-25T06-05-56-931Z` | world 32x16x32, 6181 solid, 16 chunks |
 | `export/2026-10-25T06-11-40-680Z` | 12/12 packaged checks, real window capture |
 | `web/` | 6/6 browser interactions, 6 frames + 7.25 s clip |
+| `tooling/` | 4/4 follow-up tools exercised on the real build; see `tooling-verification.json` |
 
 ## Accepted artifact hashes
 
@@ -64,6 +66,8 @@ evidence/
 | `web/saved.png` | 253603 | `bdac85296203e66bdbdea813916971c3bfb40c80382a62d8fdc03e9fb76ae933` |
 | `web/loaded.png` | 254452 | `4e43af697a92ea2b507fd56d0d94f7135083b03a27bd2a2324bac9d7b084a853` |
 | `web/playthrough.mp4` | 583648 | `a1557021e90930fe8d7bc1929c6453bdcc12489d57a82f13ccb93ff7412cd33a` |
+| `tooling/tooling-verification.json` | 8923 | `73212140416b042cfd38162b08c497d9bb1e94cca42021888f775c9b5f6f8332` |
+| `tooling/hud-jump-compare.png` | 175697 | `a97614d54ab7d1fbdfc998121771b8a31dfce1490c4ed15192e46de8bcd0ab7f` |
 
 The exported binary itself is **not** stored here:
 
@@ -103,6 +107,9 @@ node controller/voxel-defect.mjs --timeout-ms 600000
 godot --headless --path voxel --export-release "Windows Desktop" voxel/build/voxel-sandbox.exe
 node controller/voxel-export-verify.mjs --exe voxel/build/voxel-sandbox.exe
 npm run play:voxel   # Web export + loopback server on http://127.0.0.1:8790/
+npm run check:gd     # GDScript parse/type check through Godot's language server
+npm test             # node suites, including gd-check and supervise
+python -m pytest tests/test_win_game.py -q
 ```
 
 Runners write to a new timestamped directory and refuse output paths outside

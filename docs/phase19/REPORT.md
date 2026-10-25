@@ -347,6 +347,40 @@ Reformatting `voxel_data.gd` would change the canonical module hash
 reported rather than silently applied. Paying it down is a follow-up commit that
 must re-record those hashes.
 
+### Follow-up: the four tools that were still missing
+
+Four capabilities were named after the browser build. Each is now installed and
+exercised against the real voxel build; the record with exact values is
+`evidence/tooling/tooling-verification.json`.
+
+| Gap | What exists now | Verified by |
+| --- | --- | --- |
+| GDScript parse/type check | `controller/gd-check.mjs` (`npm run check:gd`) drives Godot's own language server on a private port | 9 files, 0 errors, 11 warnings in 5.5 s; an injected `String`-into-`int` assignment is reported at the exact line with exit code 1 |
+| Native-window automation | `controller/win-game.py`: launch, focus, scan-code input, `PrintWindow` capture | Held `W` moved the player `16.5,4.0,16.5` to `15.8,4.0,12.9`; `R` restored the spawn; two left clicks raised Changed blocks to 2 |
+| Programmatic image analysis | The same script: `analyze`, `diff`, `bands`, `ocr` | HUD rows located at y=17/40/63/86/109; jump showed `4.0 -> 5.0, Grounded yes -> no` |
+| Process/log supervisor | `controller/supervise.mjs` (`npm run supervise`) streams NDJSON lifecycle events and detects silence | Clean, crashing, hanging and unspawnable commands; a real `voxel-web` server and a real Godot boot |
+
+Three decisions worth recording, because the obvious version of each is wrong:
+
+- **No second LSP server.** The Godot MCP `scripts` toolset wraps the same
+  language server but needs the editor addon bridge, which is offline unless the
+  project runs the addon. Talking to the built-in server directly is the same
+  diagnostics with one less process.
+- **No `--check-only` fallback.** `godot --check-only --script` reports a bogus
+  `Class "X" hides a global script class` error for every script that declares
+  `class_name` - 4 of the 9 voxel scripts. It was implemented, measured, and
+  removed rather than shipped as a gate that fails clean code.
+- **Hang detection is opt-in.** A server that is idle is silent and healthy, so
+  silence alone is only a hang signal for batch runs; `--hang-after` defaults to
+  off and the real server run documents the trade-off.
+
+OCR is the one part that did not fully deliver. It reads labels and line
+structure correctly but confuses single glyphs on this HUD: the player's Y
+coordinate read `5.0` as `3.0` at every scale and PSM tried, and both thresholding
+and a digit whitelist made it worse. `evidence/tooling/hud-jump-compare.png`
+shows the value Tesseract got wrong. Anything numeric should be confirmed against
+the crop or with `analyze`/`diff`, not from one OCR pass.
+
 ## Safety and isolation
 
 - All Phase 19 work is in `C:\Users\hacke\ai-native-engine-phase19` on
@@ -442,6 +476,14 @@ npm run play:voxel
 # Style checks (currently fail: 52 lint problems, 8 files would be reformatted)
 npm run lint:gd
 npm run format:gd:check
+
+# Follow-up tooling added after the browser build
+npm run check:gd                       # GDScript parse/type check (Godot language server)
+npm run check:gd -- --json             # machine-readable diagnostics
+node controller/supervise.mjs -- npm run play:voxel:serve
+python controller/win-game.py launch voxel/build/voxel-sandbox.exe --title voxel-sandbox
+python controller/win-game.py ocr hud.png --box 1100,12,175,24 --scale 4 --psm 7
+python -m pytest tests/test_win_game.py -q
 ```
 
 The project can also be run interactively:
@@ -464,6 +506,7 @@ In-game controls: WASD move, Space jump, mouse look, LMB mine, RMB place,
 | `evidence/measurements/2026-10-25T06-05-56-931Z/` | Accepted measurements |
 | `evidence/export/2026-10-25T06-11-40-680Z/` | Accepted 12/12 packaged verification plus window |
 | `evidence/web/` | Accepted browser run: 6 frames, `web-verification.json`, `playthrough.mp4` |
+| `evidence/tooling/` | Follow-up tools exercised on the native build: `tooling-verification.json`, `hud-jump-compare.png` |
 | `evidence/runtime/2026-10-25T05-50-50-624Z/`, `05-51-52-107Z/`, `05-52-29-297Z/` | Preserved observation failures |
 | `evidence/export/2026-10-25T06-08-43-608Z/`, `06-09-03-921Z/`, `06-10-38-770Z/` | Preserved export-run failures |
 | `evidence/agent-runs/implementation-2026-10-23T17-06-43-470Z/` | Preserved failed implementation agent run (quota) |

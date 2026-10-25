@@ -1,0 +1,162 @@
+{
+  "record": "phase19.tooling-verification.v1",
+  "generatedAt": "2026-10-25T09:06:07.645Z",
+  "scope": "The four tooling gaps raised after the browser build. Each entry states the gap, the verdict, and the command output that justifies it.",
+  "environment": {
+    "node": "v24.22.0",
+    "python": "3.12.10",
+    "godot": "4.7.2.stable.official.ed1daf0bf",
+    "tesseract": "5.4.0.20240606",
+    "ruff": "0.17.2",
+    "pytest": "9.1.1",
+    "platform": "Windows, win32"
+  },
+  "gaps": [
+    {
+      "gap": "Godot LSP / parse-check",
+      "verdict": "installed",
+      "artifact": "experiments/godot-harness/controller/gd-check.mjs",
+      "commands": {
+        "check": "npm run check:gd",
+        "attach": "node controller/gd-check.mjs --attach --port 6011 voxel/scripts",
+        "single": "node controller/gd-check.mjs voxel/scripts/voxel_world.gd --json"
+      },
+      "cleanRun": {
+        "files": 9,
+        "errors": 0,
+        "warnings": 11,
+        "durationMs": 5505,
+        "exitCode": 0,
+        "complete": true
+      },
+      "attachRun": {
+        "files": 5,
+        "durationMs": 1856,
+        "note": "Reuses a live headless editor instead of paying the engine startup twice."
+      },
+      "warningsFound": [
+        "voxel/harness/bridge.gd:562,563,694,752 INCOMPATIBLE_TERNARY",
+        "voxel/scripts/voxel_data.gd:101,139,140 INTEGER_DIVISION",
+        "voxel/scripts/voxel_world.gd:255 SHADOWED_VARIABLE_BASE_CLASS",
+        "voxel/tests/measure_voxel.gd:97 INTEGER_DIVISION",
+        "voxel/tests/run_voxel_tests.gd:148 UNUSED_VARIABLE"
+      ],
+      "negativeControl": {
+        "method": "Copy voxel_data.gd, inject `var _injected_type_error: int = \"not an int\"`, check only that file.",
+        "diagnostics": [
+          "_gdcheck_probe.gd:4:33 error Cannot assign a value of type \"String\" as \"int\".",
+          "_gdcheck_probe.gd:4:33 error Cannot assign a value of type String to variable \"_injected_type_error\" with specified type int."
+        ],
+        "exitCode": 1,
+        "probeRemoved": true
+      },
+      "notUsed": "The Godot MCP `scripts` toolset would wrap the same language server but needs the editor addon bridge (ws://127.0.0.1:9080), which is offline unless the project runs the addon. The built-in LSP is the same data with one less moving part.",
+      "rejected": "A `--no-lsp` fallback using `godot --check-only --script` was implemented, measured, and removed: it reports a bogus `Class \"X\" hides a global script class` error for every script that declares `class_name` (4 of the 9 voxel scripts)."
+    },
+    {
+      "gap": "Native-window automation",
+      "verdict": "installed",
+      "artifact": "experiments/godot-harness/controller/win-game.py",
+      "commands": {
+        "launch": "python controller/win-game.py launch voxel/build/voxel-sandbox.exe --title voxel-sandbox --timeout 60",
+        "focus": "python controller/win-game.py focus --pid <pid>",
+        "input": "python controller/win-game.py key --pid <pid> w --hold 800 --capture out.png --client",
+        "capture": "python controller/win-game.py capture --pid <pid> --out out.png --client",
+        "ocr": "python controller/win-game.py ocr out.png --box x,y,w,h --scale 4 --psm 7",
+        "bands": "python controller/win-game.py bands out.png --box 940,0,340,150 --mode edges",
+        "analysis": "python controller/win-game.py analyze out.png --box x,y,w,h"
+      },
+      "run": {
+        "launchedPid": 20508,
+        "windowHwnd": 657152,
+        "windowTitle": "voxel-sandbox",
+        "captureSize": "1280x720 (client area)",
+        "hudBands": [
+          { "y": 17, "height": 15, "x": 1108, "width": 154 },
+          { "y": 40, "height": 15, "x": 1162, "width": 101 },
+          { "y": 63, "height": 13, "x": 1120, "width": 142 },
+          { "y": 86, "height": 16, "x": 1138, "width": 124 },
+          { "y": 109, "height": 15, "x": 1072, "width": 190 }
+        ],
+        "baseline": { "position": "16.5, 4.0, 16.5", "grounded": "yes" },
+        "afterHoldingW800ms": { "position": "15.8, 4.0, 12.9", "grounded": "yes" },
+        "afterReset": { "position": "16.5, 4.0, 16.5", "grounded": "yes" },
+        "jumpCaptured130msLater": {
+          "ocr": "16.5, 3.0, 16.5 / Grounded no",
+          "visual": "16.5, 5.0, 16.5 / Grounded no",
+          "discrepancy": "Tesseract read the 5 as a 3; the crop in hud-jump-compare.png shows 5.0."
+        },
+        "afterTwoLeftClicks": { "changedBlocks": 2 },
+        "close": { "stillVisible": false }
+      },
+      "frameDiffs": {
+        "baselineVsHeldW": { "changedFraction": 0.760651, "meanAbsDiff": 41.633 },
+        "resetVsJump": { "changedFraction": 0.791972, "meanAbsDiff": 51.066 },
+        "resetVsMined": { "changedFraction": 0.030503, "meanAbsDiff": 2.115 }
+      },
+      "designNotes": [
+        "PrintWindow with PW_RENDERFULLCONTENT is required for a swap-chain window; a plain BitBlt returns black.",
+        "The process is made per-monitor DPI aware before any coordinate is read.",
+        "Focus uses AttachThreadInput because Windows blocks SetForegroundWindow from a background process.",
+        "Window lookup accepts --pid, because a Chrome tab titled after the game matched the same title substring and was larger than the game window."
+      ]
+    },
+    {
+      "gap": "Programmatic image analysis",
+      "verdict": "installed as part of win-game.py",
+      "artifact": "experiments/godot-harness/controller/win-game.py",
+      "subcommands": [
+        "analyze: mean/std RGB, 4-bit distinct colours, non-black fraction, dominant colours by share",
+        "diff: changed pixel count and fraction, mean and max absolute difference, bounding box of change",
+        "bands: locate horizontal text rows by luminance or edge energy, so a HUD line can be cropped exactly",
+        "ocr: Tesseract over a region with optional scale, PSM and character whitelist"
+      ],
+      "limits": [
+        "OCR is reliable for labels and line structure, not for single glyphs: the player Y coordinate read 5.0 as 3.0 at scales 4, 6 and 8, and at PSM 6, 7 and 8.",
+        "Thresholding the crop and restricting the whitelist to digits made the digits worse, not better; both were tested and not shipped as defaults.",
+        "A value that matters should be confirmed against the crop, `analyze` or `diff`, not a single OCR pass."
+      ]
+    },
+    {
+      "gap": "Process / log supervisor",
+      "verdict": "installed",
+      "artifact": "experiments/godot-harness/controller/supervise.mjs",
+      "boundary": "controller/startup-diagnostics.mjs classifies a startup failure after the fact from collected output. supervise.mjs streams a running process and reports hangs; it reuses collectEngineErrors for the final classification.",
+      "commands": {
+        "cli": "node controller/supervise.mjs [--json] [--hang-after ms] [--timeout ms] -- <command>",
+        "npm": "npm run supervise -- -- node controller/voxel-web.mjs --no-export"
+      },
+      "verified": [
+        { "case": "clean run", "observed": "code 0, class clean, 513 ms" },
+        { "case": "failing run", "observed": "code 3, stderr line captured, class failed" },
+        { "case": "Godot-style script error", "observed": "engineErrors populated from `SCRIPT ERROR: Parse Error: boom`" },
+        { "case": "silent process", "observed": "hang event at 625 ms, timeout at 2500 ms, code 124" },
+        { "case": "missing executable", "observed": "class spawn_failed, code 125" },
+        { "case": "real voxel-web server", "observed": "4 startup lines streamed, timeout kill at 3000 ms, code 124" },
+        { "case": "real Godot boot", "observed": "engine banner streamed, code 0 in 1376 ms" }
+      ],
+      "designNotes": [
+        "Hang detection is silence-based and off by default, because an idle server is silent and healthy.",
+        "Exit codes mirror the child, plus 124 for a timeout and 125 for a spawn failure."
+      ]
+    }
+  ],
+  "tests": {
+    "node": { "command": "npm test", "tests": 84, "pass": 84, "fail": 0, "durationMs": 94283 },
+    "python": { "command": "python -m pytest tests/test_win_game.py -q", "tests": 12, "pass": 12 },
+    "ruff": { "check": "All checks passed", "format": "files already formatted" },
+    "newSuites": [
+      "tests/gd-check.test.mjs (12 cases: LSP framing, URI folding, script discovery)",
+      "tests/supervise.test.mjs (7 cases: clean, failing, engine error, hang, clock reset, spawn failure, empty command)",
+      "tests/test_win_game.py (12 cases: region parsing, band detection, colour statistics, diffing)"
+    ]
+  },
+  "artifacts": [
+    {
+      "path": "docs/phase19/evidence/tooling/hud-jump-compare.png",
+      "bytes": 175697,
+      "sha256": "a97614d54ab7d1fbdfc998121771b8a31dfce1490c4ed15192e46de8bcd0ab7f",
+      "description": "3x crop of the HUD status panel before and 130 ms after a jump: 4.0 / Grounded yes then 5.0 / Grounded no."
+    }
+  ]
+}
