@@ -1,0 +1,68 @@
+{
+  "samples": [
+    {
+      "fps": 60,
+      "process_frames": 149,
+      "static_memory_bytes": 41897978,
+      "render_draw_calls": 91,
+      "render_primitives": 21152,
+      "uptime_ms": 2726
+    },
+    {
+      "fps": 60,
+      "process_frames": 210,
+      "static_memory_bytes": 41886614,
+      "render_draw_calls": 89,
+      "render_primitives": 20936,
+      "uptime_ms": 3742
+    },
+    {
+      "fps": 59,
+      "process_frames": 270,
+      "static_memory_bytes": 41886614,
+      "render_draw_calls": 89,
+      "render_primitives": 20936,
+      "uptime_ms": 4759
+    }
+  ],
+  "launch": {
+    "duration_ms": 794,
+    "boot_uptime_ms": 197,
+    "godot": "4.7.2-stable (official)",
+    "headless": false
+  },
+  "start": {
+    "pid": 16100,
+    "port": 53777,
+    "scene": null,
+    "logs": {
+      "stdout": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "OpenGL API 3.3.0 - Build 31.0.101.2140 - Compatibility - Using Device: Intel - Intel(R) UHD Graphics",
+        "",
+        "HARNESS_READY {\"pid\":16100,\"port\":53777,\"project\":\"voxel-sandbox\",\"protocol\":1}"
+      ],
+      "stderr": []
+    }
+  },
+  "error": null,
+  "summary": {
+    "launch_duration_ms": 794,
+    "fps_samples": [
+      60,
+      60,
+      59
+    ],
+    "draw_call_samples": [
+      91,
+      89,
+      89
+    ],
+    "primitive_samples": [
+      21152,
+      20936,
+      20936
+    ],
+    "note": "Windowed GL compatibility samples on the machine listed in run.json. FPS and draw calls are engine monitors for the sampled frames, not a benchmark."
+  }
+}

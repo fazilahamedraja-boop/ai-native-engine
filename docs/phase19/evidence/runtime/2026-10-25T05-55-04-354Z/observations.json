@@ -1,0 +1,373 @@
+{
+  "events": {
+    "available": true,
+    "count": 2,
+    "items": [
+      {
+        "seed": 20261023,
+        "sequence": 1,
+        "sim_time_seconds": 0,
+        "spawn": [
+          16.5,
+          4.01999998092651,
+          16.5
+        ],
+        "tick": 0,
+        "type": "world_reset"
+      },
+      {
+        "modified_blocks": 2,
+        "path": "user://phase19-observation.json",
+        "player_position": [
+          16.5,
+          4.00028657913208,
+          16.5
+        ],
+        "sequence": 2,
+        "sim_time_seconds": 0.0166666666666667,
+        "tick": 1,
+        "type": "world_loaded"
+      }
+    ],
+    "since_tick": 0,
+    "source": "fixture_recorded",
+    "truncated": false
+  },
+  "nodes": [
+    {
+      "class": "Node3D",
+      "global_transform": {
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "rotation_degrees": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "source": "measured",
+        "space": "world"
+      },
+      "is_inside_tree": true,
+      "local_transform": {
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "rotation_degrees": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "source": "measured",
+        "space": "parent"
+      },
+      "name": "VoxelWorld",
+      "path": "/root/VoxelWorld",
+      "process_mode": 1,
+      "properties": {
+        "missing": [],
+        "source": "measured",
+        "values": {
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "script": null,
+          "visible": true
+        }
+      },
+      "source": "measured",
+      "visible": true
+    },
+    {
+      "character": {
+        "derived": {
+          "horizontal_speed": 0,
+          "speed": 0
+        },
+        "floor_normal": [
+          0,
+          1,
+          0
+        ],
+        "is_on_ceiling": false,
+        "is_on_floor": true,
+        "is_on_wall": false,
+        "slide_collision_count": 0,
+        "slide_collisions": [],
+        "source": "measured",
+        "velocity": [
+          0,
+          0,
+          0
+        ],
+        "wall_normal": [
+          0,
+          0,
+          0
+        ]
+      },
+      "class": "CharacterBody3D",
+      "collision": {
+        "collision_layer": 2,
+        "collision_mask": 1,
+        "source": "measured"
+      },
+      "collision_shapes": [
+        {
+          "class": "CollisionShape3D",
+          "disabled": false,
+          "global_transform": {
+            "origin": [
+              16.5,
+              4.87528657913208,
+              16.5
+            ],
+            "quaternion": [
+              0,
+              0.300705790519714,
+              0,
+              0.953716993331909
+            ],
+            "rotation_degrees": [
+              0,
+              34.9999998355989,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "world"
+          },
+          "name": "PlayerCapsule",
+          "path": "/root/VoxelWorld/Player/PlayerCapsule",
+          "shape": {
+            "height": 1.75,
+            "radius": 0.319999992847443
+          },
+          "shape_class": "CapsuleShape3D",
+          "source": "measured",
+          "transform": {
+            "origin": [
+              0,
+              0.875,
+              0
+            ],
+            "quaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "rotation_degrees": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "source": "measured",
+            "space": "parent"
+          }
+        }
+      ],
+      "global_transform": {
+        "origin": [
+          16.5,
+          4.00028657913208,
+          16.5
+        ],
+        "quaternion": [
+          0,
+          0.300705790519714,
+          0,
+          0.953716993331909
+        ],
+        "rotation_degrees": [
+          0,
+          34.9999998355989,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "source": "measured",
+        "space": "world"
+      },
+      "is_inside_tree": true,
+      "local_transform": {
+        "origin": [
+          16.5,
+          4.00028657913208,
+          16.5
+        ],
+        "quaternion": [
+          0,
+          0.300705790519714,
+          0,
+          0.953716993331909
+        ],
+        "rotation_degrees": [
+          0,
+          34.9999998355989,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "source": "measured",
+        "space": "parent"
+      },
+      "name": "Player",
+      "path": "/root/VoxelWorld/Player",
+      "process_mode": 0,
+      "properties": {
+        "missing": [],
+        "source": "measured",
+        "values": {
+          "position": [
+            16.5,
+            4.00028657913208,
+            16.5
+          ],
+          "script": null,
+          "visible": true
+        }
+      },
+      "source": "measured",
+      "visible": true
+    },
+    {
+      "class": "Node3D",
+      "global_transform": {
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "rotation_degrees": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "source": "measured",
+        "space": "world"
+      },
+      "is_inside_tree": true,
+      "local_transform": {
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "rotation_degrees": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "source": "measured",
+        "space": "parent"
+      },
+      "name": "ChunkRoot",
+      "path": "/root/VoxelWorld/ChunkRoot",
+      "process_mode": 0,
+      "properties": {
+        "missing": [],
+        "source": "measured",
+        "values": {
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "script": null,
+          "visible": true
+        }
+      },
+      "source": "measured",
+      "visible": true
+    }
+  ],
+  "runtime": {
+    "captured_at": "2026-10-25T05:55:12Z",
+    "godot": "4.7.2-stable (official)",
+    "paused": true,
+    "physics_frames": 424,
+    "physics_ticks_per_second": 60,
+    "sim_time_seconds": 7.06666666666667,
+    "sim_time_seconds_source": "derived",
+    "source": "measured",
+    "spaces": {
+      "global": "world",
+      "local": "parent"
+    },
+    "tick": 424,
+    "units": {
+      "position": "m",
+      "rotation": "deg",
+      "time": "s",
+      "velocity": "m/s"
+    },
+    "unix_time": 1792907712.215,
+    "uptime_ms": 7065
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "ok": true,
+  "exit_code": 0,
+  "blocks": {
+    "air_total": 10203,
+    "counts": {
+      "air": 10203,
+      "dirt": 2048,
+      "grass": 1024,
+      "leaves": 64,
+      "log": 12,
+      "stone": 3033
+    },
+    "solid_total": 6181
+  },
+  "dimensions": {
+    "cells": 16384,
+    "chunk_count": 16,
+    "chunk_size": 8,
+    "depth": 32,
+    "height": 16,
+    "width": 32
+  },
+  "engine": "4.7.2-stable (official)",
+  "geometry": {
+    "triangles": 7216,
+    "vertices": 21648,
+    "visible_faces": 3608
+  },
+  "physics_ticks_per_second": 60,
+  "seed": 20261023,
+  "spawn": [
+    16.5,
+    4.02,
+    16.5
+  ],
+  "timing": {
+    "chunk_build": {
+      "note": "all 16 chunks meshed from data, excluding physics bodies and rendering",
+      "sample": {
+        "max_ms": 71.428,
+        "mean_ms": 66.49,
+        "median_ms": 65.533,
+        "min_ms": 64.652,
+        "runs": 5
+      }
+    },
+    "generation": {
+      "note": "generate(seed) including tree placement, per fresh instance",
+      "sample": {
+        "max_ms": 3.304,
+        "mean_ms": 2.531,
+        "median_ms": 2.503,
+        "min_ms": 2.229,
+        "runs": 10
+      }
+    }
+  }
+}

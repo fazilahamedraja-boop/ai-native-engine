@@ -1,0 +1,45 @@
+{
+  "schema": "phase19.voxel-export-verify.v1",
+  "phase": 19,
+  "exported_at": "2026-10-25T06:08:44.515Z",
+  "exe": "C:\\Users\\hacke\\ai-native-engine-phase19\\experiments\\godot-harness\\voxel\\build\\voxel-sandbox.exe",
+  "exe_name": "voxel-sandbox.exe",
+  "exe_bytes": 109235296,
+  "exe_sha256": "1ade5406fb14049b6c077f751cf4eba1bf8237014030fcbc05c7d7f77ba652bb",
+  "pe": {
+    "magic": "MZ",
+    "pe_offset": 128,
+    "bytes": 109235296,
+    "valid": true
+  },
+  "ping": {
+    "game_ready": true,
+    "godot": "4.7.2-stable (official)",
+    "headless": false,
+    "paused": false,
+    "pid": 16512,
+    "project": "voxel-sandbox",
+    "protocol": 1,
+    "uptime_ms": 178
+  },
+  "checks": [
+    {
+      "name": "bridge-reachable",
+      "ok": true,
+      "detail": "port=60595 godot=4.7.2-stable (official)"
+    },
+    {
+      "name": "packaged-not-headless",
+      "ok": true,
+      "detail": "headless=false"
+    }
+  ],
+  "passed": 2,
+  "failed": 0,
+  "capture": null,
+  "gameplay": null,
+  "failure": "Error: Unknown command 'setup'.\n    at Socket.<anonymous> (file:///C:/Users/hacke/ai-native-engine-phase19/experiments/godot-harness/controller/voxel-export-verify.mjs:106:26)\n    at Socket.emit (node:events:514:28)\n    at addChunk (node:internal/streams/readable:569:12)\n    at readableAddChunkPushByteMode (node:internal/streams/readable:520:3)\n    at Readable.push (node:internal/streams/readable:400:5)\n    at TCP.onStreamRead (node:internal/stream_base_commons:194:23)",
+  "stdout": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\r\nOpenGL API 3.3.0 - Build 31.0.101.2140 - Compatibility - Using Device: Intel - Intel(R) UHD Graphics\r\n\r\nHARNESS_READY {\"pid\":16512,\"port\":60595,\"project\":\"voxel-sandbox\",\"protocol\":1}\r\n",
+  "stderr": "",
+  "note": "The packaged binary was driven through its opt-in harness bridge. The window capture is a real PrintWindow grab of the running build."
+}

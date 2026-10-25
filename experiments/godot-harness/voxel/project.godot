@@ -1,0 +1,39 @@
+; Phase 19 - Voxel Sandbox
+; A small first-person block world built on the Phase 8-18 harness.
+; The harness bridge is opt-in: it only listens when --harness-port= is passed.
+
+config_version=5
+
+[application]
+
+config/name="voxel-sandbox"
+config/description="Small first-person voxel sandbox for the Phase 19 workflow test."
+run/main_scene="res://main.tscn"
+config/features=PackedStringArray("4.7")
+config/icon="res://assets/icon.svg"
+
+[autoload]
+
+HarnessBridge="*res://harness/bridge.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+
+[physics]
+
+common/physics_ticks_per_second=60
+common/max_physics_steps_per_frame=8
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+anti_aliasing/quality/msaa_3d=1
+
+[layer_names]
+
+3d_physics/layer_1="world"
+3d_physics/layer_2="player"

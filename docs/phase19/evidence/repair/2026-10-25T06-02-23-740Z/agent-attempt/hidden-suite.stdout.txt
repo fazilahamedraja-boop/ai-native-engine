@@ -1,0 +1,18 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS data-generation-deterministic hashes=e1a7de2d1c8a/e1a7de2d1c8a/6230f001072f
+PASS data-save-version version=1
+PASS data-required-block-types counts={"air":9815,"dirt":2048,"grass":1024,"leaves":64,"log":12,"stone":3421}
+PASS data-height-variation height spread=7
+PASS data-spawn-safe spawn=(16.5, 4.02, 16.5) below=3 feet=4 head=5
+PASS data-boundaries width=32 height=16 depth=32
+PASS data-set-get cell=16,5,16 before=0 middle=3
+PASS data-changed-starts-empty changes=0
+PASS data-changed-relative after_remove=[{"id":0,"x":4,"y":4,"z":4}] after_restore=0
+PASS data-save-roundtrip applied=true changes=2 removed=1
+PASS data-invalid-save-atomic version=true dimensions=true changes=true hash_stable=true
+PASS data-raycast-down result={"block":[16,3,16],"block_id":1,"distance":2.5,"hit":true,"normal":[0,1,0],"previous":[16,4,16]}
+PASS data-raycast-miss result={"block":[],"block_id":0,"distance":5.0,"hit":false,"normal":[],"previous":[]}
+PASS data-raycast-nearest result={"block":[16,7,16],"block_id":3,"distance":0.5,"hit":true,"normal":[0,1,0],"previous":[16,8,16]}
+PASS data-hash-tracks-changes before=7114a2115dbb changed=e6579d7e8c64
+RESULT passed=15 failed=0

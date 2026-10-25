@@ -1,0 +1,91 @@
+{
+  "ok": true,
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "durationMs": 488,
+  "summary": {
+    "passed": 15,
+    "failed": 0
+  },
+  "reason": "tests passed",
+  "results": [
+    {
+      "name": "data-generation-deterministic",
+      "passed": true,
+      "detail": "hashes=e1a7de2d1c8a/e1a7de2d1c8a/6230f001072f"
+    },
+    {
+      "name": "data-save-version",
+      "passed": true,
+      "detail": "version=1"
+    },
+    {
+      "name": "data-required-block-types",
+      "passed": true,
+      "detail": "counts={\"air\":9815,\"dirt\":2048,\"grass\":1024,\"leaves\":64,\"log\":12,\"stone\":3421}"
+    },
+    {
+      "name": "data-height-variation",
+      "passed": true,
+      "detail": "height spread=7"
+    },
+    {
+      "name": "data-spawn-safe",
+      "passed": true,
+      "detail": "spawn=(16.5, 4.02, 16.5) below=3 feet=4 head=5"
+    },
+    {
+      "name": "data-boundaries",
+      "passed": true,
+      "detail": "width=32 height=16 depth=32"
+    },
+    {
+      "name": "data-set-get",
+      "passed": true,
+      "detail": "cell=16,5,16 before=0 middle=3"
+    },
+    {
+      "name": "data-changed-starts-empty",
+      "passed": true,
+      "detail": "changes=0"
+    },
+    {
+      "name": "data-changed-relative",
+      "passed": true,
+      "detail": "after_remove=[{\"id\":0,\"x\":4,\"y\":4,\"z\":4}] after_restore=0"
+    },
+    {
+      "name": "data-save-roundtrip",
+      "passed": true,
+      "detail": "applied=true changes=2 removed=1"
+    },
+    {
+      "name": "data-invalid-save-atomic",
+      "passed": true,
+      "detail": "version=true dimensions=true changes=true hash_stable=true"
+    },
+    {
+      "name": "data-raycast-down",
+      "passed": true,
+      "detail": "result={\"block\":[16,3,16],\"block_id\":1,\"distance\":2.5,\"hit\":true,\"normal\":[0,1,0],\"previous\":[16,4,16]}"
+    },
+    {
+      "name": "data-raycast-miss",
+      "passed": true,
+      "detail": "result={\"block\":[],\"block_id\":0,\"distance\":5.0,\"hit\":false,\"normal\":[],\"previous\":[]}"
+    },
+    {
+      "name": "data-raycast-nearest",
+      "passed": true,
+      "detail": "result={\"block\":[16,7,16],\"block_id\":3,\"distance\":0.5,\"hit\":true,\"normal\":[0,1,0],\"previous\":[16,8,16]}"
+    },
+    {
+      "name": "data-hash-tracks-changes",
+      "passed": true,
+      "detail": "before=7114a2115dbb changed=e6579d7e8c64"
+    }
+  ],
+  "errors": [],
+  "warnings": []
+}

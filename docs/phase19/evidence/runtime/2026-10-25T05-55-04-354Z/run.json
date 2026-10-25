@@ -1,0 +1,1202 @@
+{
+  "phase": 19,
+  "runner": "voxel-observe",
+  "project": "voxel",
+  "headless": false,
+  "started_at": "2026-10-25T05:55:04.545Z",
+  "finished_at": "2026-10-25T05:55:12.452Z",
+  "out_dir": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-55-04-354Z",
+  "start": {
+    "operation": "start_project",
+    "ok": true,
+    "pid": 26632,
+    "port": 60034,
+    "project": "C:\\Users\\hacke\\ai-native-engine-phase19\\experiments\\godot-harness\\voxel",
+    "scene": null,
+    "headless": false,
+    "durationMs": 808,
+    "ready": {
+      "pid": 26632,
+      "port": 60034,
+      "project": "voxel-sandbox",
+      "protocol": 1
+    },
+    "ping": {
+      "game_ready": true,
+      "godot": "4.7.2-stable (official)",
+      "headless": false,
+      "paused": false,
+      "pid": 26632,
+      "project": "voxel-sandbox",
+      "protocol": 1,
+      "uptime_ms": 204
+    },
+    "logs": {
+      "stdout": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        "OpenGL API 3.3.0 - Build 31.0.101.2140 - Compatibility - Using Device: Intel - Intel(R) UHD Graphics",
+        "",
+        "HARNESS_READY {\"pid\":26632,\"port\":60034,\"project\":\"voxel-sandbox\",\"protocol\":1}"
+      ],
+      "stderr": []
+    }
+  },
+  "checks": [
+    {
+      "name": "spawn-grounded",
+      "pass": true,
+      "detail": "position=[16.5,4.0003,16.5]"
+    },
+    {
+      "name": "spawn-world-shape",
+      "pass": true,
+      "detail": "{\"block_counts\":{\"air\":10203,\"dirt\":2048,\"grass\":1024,\"leaves\":64,\"log\":12,\"stone\":3033},\"chunk_count\":16,\"depth\":32,\"height\":16,\"modified_blocks\":0,\"seed\":20261023,\"width\":32}"
+    },
+    {
+      "name": "spawn-block-types",
+      "pass": true,
+      "detail": "{\"air\":10203,\"dirt\":2048,\"grass\":1024,\"leaves\":64,\"log\":12,\"stone\":3033}"
+    },
+    {
+      "name": "movement-forward",
+      "pass": true,
+      "detail": "from=[16.5,4.0003,16.5] to=[15.7552289962769,4.00044202804565,14.5192823410034]"
+    },
+    {
+      "name": "jump-airborne",
+      "pass": true,
+      "detail": "start=[16.5,4.00028657913208,16.5] jumped=[16.5,4.9604,16.5]"
+    },
+    {
+      "name": "targeting-hit",
+      "pass": true,
+      "detail": "{\"block\":[16,5,14],\"block_id\":3,\"block_name\":\"Stone\",\"distance\":1.50269961357117,\"hit\":true,\"normal\":[0,0,1],\"previous\":[16,5,15]}"
+    },
+    {
+      "name": "targeting-hud",
+      "pass": true,
+      "detail": "selected=GRASS count=16 target=Stone @ 16,5,14 grounded=true modified=1 save=user://phase19-observation.json feedback=World regenerated (seed 20261023)."
+    },
+    {
+      "name": "mining-event",
+      "pass": true,
+      "detail": "{\"block\":[16,5,14],\"block_id\":3,\"block_name\":\"Stone\",\"inventory_count\":17,\"modified_blocks\":0,\"sequence\":2,\"sim_time_seconds\":0.35,\"tick\":21,\"type\":\"block_mined\"}"
+    },
+    {
+      "name": "placement-event",
+      "pass": true,
+      "detail": "{\"block\":[16,5,15],\"block_id\":1,\"block_name\":\"Grass\",\"inventory_count\":15,\"modified_blocks\":2,\"selected_slot\":1,\"sequence\":2,\"sim_time_seconds\":0.35,\"tick\":21,\"type\":\"block_placed\"}"
+    },
+    {
+      "name": "hotbar-selected",
+      "pass": true,
+      "detail": "{\"slot\":3,\"block\":\"STONE\",\"hud\":\"selected=STONE count=16 target=Grass @ 14,4,13 grounded=true modified=0 save=user://phase19-observation.json feedback=Selected STONE (16/4).\"}"
+    },
+    {
+      "name": "save-event",
+      "pass": true,
+      "detail": "{\"bytes\":535,\"modified_blocks\":2,\"path\":\"user://phase19-observation.json\",\"sequence\":2,\"sha256\":\"63b066458928589c7a78efd09ca9507183bd15660ba697458f687be2e80b0859\",\"sim_time_seconds\":0.35,\"tick\":21,\"type\":\"world_saved\"}"
+    },
+    {
+      "name": "reload-event",
+      "pass": true,
+      "detail": "{\"reset_hash\":\"99c98d9039a77717dcfbda8b1acfc279745386fb5a3866ce78438cf952ba01b2\",\"saved_hash\":\"82c8c004af33bc63e0f70bb15e06acdc3d2bc94df8f4f9b779759caf098361b2\",\"loaded_hash\":\"82c8c004af33bc63e0f70bb15e06acdc3d2bc94df8f4f9b779759caf098361b2\",\"event\":{\"modified_blocks\":2,\"path\":\"user://phase19-observation.json\",\"player_position\":[16.5,4.00028657913208,16.5],\"sequence\":2,\"sim_time_seconds\":0.0166666666666667,\"tick\":1,\"type\":\"world_loaded\"}}"
+    }
+  ],
+  "passed": 12,
+  "failed": 0,
+  "captures": [
+    {
+      "name": "spawn",
+      "scenario": "spawn",
+      "captured_at": "2026-10-25T05:55:06.278Z",
+      "tick": 54,
+      "duration_ms": 225,
+      "image": {
+        "path": "spawn.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-55-04-354Z\\spawn.png",
+        "bytes": 267099,
+        "sha256": "c9900db02d256b025ae07844196c03987ffa05e92d721b5bdcf2c3d04b2e525e",
+        "width": 1280,
+        "height": 720
+      },
+      "state_file": {
+        "path": "state-spawn.json",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-55-04-354Z\\state-spawn.json",
+        "bytes": 2849,
+        "sha256": "275cd5737e3893e8835edd19cace9030ded6cb18176a640c229d539ee1873f65"
+      },
+      "metadata": {
+        "phase": 19
+      }
+    },
+    {
+      "name": "movement",
+      "scenario": "movement",
+      "captured_at": "2026-10-25T05:55:07.052Z",
+      "tick": 100,
+      "duration_ms": 228,
+      "image": {
+        "path": "movement.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-55-04-354Z\\movement.png",
+        "bytes": 247071,
+        "sha256": "31f9f82d5f8e1dd074b2e6a40cd9bf76fadf6dfc20fbcf9512a96fb87caecdbc",
+        "width": 1280,
+        "height": 720
+      },
+      "state_file": {
+        "path": "state-movement.json",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-55-04-354Z\\state-movement.json",
+        "bytes": 2929,
+        "sha256": "db19fe816042701a62f9ea24276a18877874067c7132345d82ead362398ef28a"
+      },
+      "metadata": {
+        "phase": 19,
+        "expected": "forward displacement with grounded terrain contact"
+      }
+    },
+    {
+      "name": "jump",
+      "scenario": "jump",
+      "captured_at": "2026-10-25T05:55:07.946Z",
+      "tick": 151,
+      "duration_ms": 272,
+      "image": {
+        "path": "jump.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-55-04-354Z\\jump.png",
+        "bytes": 310721,
+        "sha256": "5424acc3899932325219c56a3403058a25e2507f04346e3330d9bb12dd242226",
+        "width": 1280,
+        "height": 720
+      },
+      "state_file": {
+        "path": "state-jump.json",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-55-04-354Z\\state-jump.json",
+        "bytes": 2884,
+        "sha256": "349b698bbd9616cf682d2ae7ce502dd59ebc0261001dd76d1cd70f8d79df9df3"
+      },
+      "metadata": {
+        "phase": 19,
+        "expected": "player above spawn while gravity is active"
+      }
+    },
+    {
+      "name": "targeting",
+      "scenario": "targeting",
+      "captured_at": "2026-10-25T05:55:08.825Z",
+      "tick": 203,
+      "duration_ms": 278,
+      "image": {
+        "path": "targeting.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-55-04-354Z\\targeting.png",
+        "bytes": 320914,
+        "sha256": "7719094ba1cb48d96a4e2047f58a858603222f6463f2b6cc53b41199cce2efbb",
+        "width": 1280,
+        "height": 720
+      },
+      "state_file": {
+        "path": "state-targeting.json",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-55-04-354Z\\state-targeting.json",
+        "bytes": 2864,
+        "sha256": "b768c9cb35da120baf568201ae35125462db52b403e59cd30fe91faa1f09d6ee"
+      },
+      "metadata": {
+        "phase": 19,
+        "expected": "crosshair ray hits the placed stone before the origin"
+      }
+    },
+    {
+      "name": "mining",
+      "scenario": "mining",
+      "captured_at": "2026-10-25T05:55:09.226Z",
+      "tick": 228,
+      "duration_ms": 274,
+      "image": {
+        "path": "mining.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-55-04-354Z\\mining.png",
+        "bytes": 348061,
+        "sha256": "eee586739b83b1c24d30f8dbda4243c395a7d6bba7ff62957c750e8535fef8c1",
+        "width": 1280,
+        "height": 720
+      },
+      "state_file": {
+        "path": "state-mining.json",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-55-04-354Z\\state-mining.json",
+        "bytes": 2931,
+        "sha256": "b9fbd867f044e48becb9d2a237e9f069f78cbffb9beab6d55ffedb36f4636d61"
+      },
+      "metadata": {
+        "phase": 19,
+        "expected": "targeted stone removed, inventory incremented"
+      }
+    },
+    {
+      "name": "placement",
+      "scenario": "placement",
+      "captured_at": "2026-10-25T05:55:10.122Z",
+      "tick": 285,
+      "duration_ms": 219,
+      "image": {
+        "path": "placement.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-55-04-354Z\\placement.png",
+        "bytes": 156864,
+        "sha256": "4c83439976ec1bb4504519ad4fea874951ad5637cce260e42e26c8c4e81c1810",
+        "width": 1280,
+        "height": 720
+      },
+      "state_file": {
+        "path": "state-placement.json",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-55-04-354Z\\state-placement.json",
+        "bytes": 3176,
+        "sha256": "37f2b2e42f34f9aa444991f2f2c26c8213df70b120af2a059d36974688aaabac"
+      },
+      "metadata": {
+        "phase": 19,
+        "expected": "grass placed in the adjacent air cell"
+      }
+    },
+    {
+      "name": "hotbar",
+      "scenario": "hotbar",
+      "captured_at": "2026-10-25T05:55:10.860Z",
+      "tick": 328,
+      "duration_ms": 242,
+      "image": {
+        "path": "hotbar.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-55-04-354Z\\hotbar.png",
+        "bytes": 263626,
+        "sha256": "19a0841a9c5731dc2c47094c6b7d6961d286d670c34b9ead8a55bc760e2bd77c",
+        "width": 1280,
+        "height": 720
+      },
+      "state_file": {
+        "path": "state-hotbar.json",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-55-04-354Z\\state-hotbar.json",
+        "bytes": 3039,
+        "sha256": "f8d558923f88a27b3b403af63c25db80d632a9d33a5c96d37ca673eeb981d843"
+      },
+      "metadata": {
+        "phase": 19,
+        "expected": "number-key selection changes the active block and HUD"
+      }
+    },
+    {
+      "name": "save",
+      "scenario": "save",
+      "captured_at": "2026-10-25T05:55:11.705Z",
+      "tick": 379,
+      "duration_ms": 227,
+      "image": {
+        "path": "save.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-55-04-354Z\\save.png",
+        "bytes": 250803,
+        "sha256": "0a2cf834d87726318908cc0210b1b2bd88f2ae2efe604c4d877b2a86f6aa5870",
+        "width": 1280,
+        "height": 720
+      },
+      "state_file": {
+        "path": "state-save.json",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-55-04-354Z\\state-save.json",
+        "bytes": 3532,
+        "sha256": "0479172f5ae57d8b34b48330eefcf0ee6dc777c6634daf81f1e44e66ba289cc4"
+      },
+      "metadata": {
+        "phase": 19,
+        "expected": "save writes changed blocks and player state outside the repository"
+      }
+    },
+    {
+      "name": "reload",
+      "scenario": "reload",
+      "captured_at": "2026-10-25T05:55:12.200Z",
+      "tick": 408,
+      "duration_ms": 225,
+      "image": {
+        "path": "reload.png",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-55-04-354Z\\reload.png",
+        "bytes": 250494,
+        "sha256": "d06d5de1e456c64e51a3ed27b37b4283903b4ad598215d492f907e27567b8077",
+        "width": 1280,
+        "height": 720
+      },
+      "state_file": {
+        "path": "state-reload.json",
+        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-55-04-354Z\\state-reload.json",
+        "bytes": 3347,
+        "sha256": "528c011eece3475cbe7e934925f6d4e33cb2be6ba04dc81d6264e082528d9e2c"
+      },
+      "metadata": {
+        "phase": 19,
+        "expected": "reload restores the saved world hash and player selection"
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "spawn",
+      "state": {
+        "step": 30,
+        "sim_time_seconds": 0.5,
+        "physics_frames": 54,
+        "paused": true,
+        "player_position": [
+          16.5,
+          4.0003,
+          16.5
+        ],
+        "player_velocity": [
+          0,
+          0,
+          0
+        ],
+        "grounded": true,
+        "player_facing_deg": 24,
+        "camera_position": [
+          16.5,
+          5.6203,
+          16.5
+        ],
+        "camera_forward": [
+          -0.3868,
+          -0.309,
+          -0.8688
+        ],
+        "camera_pitch_deg": -18,
+        "target": {
+          "block": [
+            14,
+            4,
+            13
+          ],
+          "block_id": 1,
+          "block_name": "Grass",
+          "distance": 3.87767672538757,
+          "hit": true,
+          "normal": [
+            1,
+            0,
+            0
+          ],
+          "previous": [
+            15,
+            4,
+            13
+          ]
+        },
+        "selected_slot": 1,
+        "selected_block": "GRASS",
+        "inventory": {
+          "1": 16,
+          "2": 16,
+          "3": 16,
+          "4": 16
+        },
+        "world": {
+          "block_counts": {
+            "air": 10203,
+            "dirt": 2048,
+            "grass": 1024,
+            "leaves": 64,
+            "log": 12,
+            "stone": 3033
+          },
+          "chunk_count": 16,
+          "depth": 32,
+          "height": 16,
+          "modified_blocks": 0,
+          "seed": 20261023,
+          "width": 32
+        },
+        "mouse_captured": true,
+        "feedback": "World regenerated (seed 20261023).",
+        "last_event_type": "world_reset",
+        "events_count": 1,
+        "save": {
+          "absolute_path": "C:/Users/hacke/AppData/Roaming/Godot/app_userdata/voxel-sandbox/phase19-observation.json",
+          "exists": false,
+          "last_status": {},
+          "path": "user://phase19-observation.json"
+        },
+        "performance": {
+          "fps": 7,
+          "process_frames": 34,
+          "render_draw_calls": 91,
+          "render_primitives": 21096,
+          "static_memory_bytes": 41906030
+        },
+        "hash": "e7d4ca6f1100e0fa48064cf0d9c59075e8c009f113715b1d88fd403e5056a56b",
+        "hud": "selected=GRASS count=16 target=Grass @ 14,4,13 grounded=true modified=0 save=user://phase19-observation.json feedback=World regenerated (seed 20261023)."
+      }
+    },
+    {
+      "name": "movement",
+      "state": {
+        "step": 60,
+        "sim_time_seconds": 1,
+        "physics_frames": 100,
+        "paused": true,
+        "player_position": [
+          15.7552,
+          4.0004,
+          14.5193
+        ],
+        "player_velocity": [
+          -2.115,
+          0,
+          -4.7504
+        ],
+        "grounded": true,
+        "player_facing_deg": 24,
+        "camera_position": [
+          15.7552,
+          5.6204,
+          14.5193
+        ],
+        "camera_forward": [
+          -0.3868,
+          -0.309,
+          -0.8688
+        ],
+        "camera_pitch_deg": -18,
+        "target": {
+          "block": [
+            14,
+            4,
+            12
+          ],
+          "block_id": 1,
+          "block_name": "Grass",
+          "distance": 2.00779223442078,
+          "hit": true,
+          "normal": [
+            0,
+            1,
+            0
+          ],
+          "previous": [
+            14,
+            5,
+            12
+          ]
+        },
+        "selected_slot": 1,
+        "selected_block": "GRASS",
+        "inventory": {
+          "1": 16,
+          "2": 16,
+          "3": 16,
+          "4": 16
+        },
+        "world": {
+          "block_counts": {
+            "air": 10203,
+            "dirt": 2048,
+            "grass": 1024,
+            "leaves": 64,
+            "log": 12,
+            "stone": 3033
+          },
+          "chunk_count": 16,
+          "depth": 32,
+          "height": 16,
+          "modified_blocks": 0,
+          "seed": 20261023,
+          "width": 32
+        },
+        "mouse_captured": true,
+        "feedback": "World regenerated (seed 20261023).",
+        "last_event_type": "world_reset",
+        "events_count": 1,
+        "save": {
+          "absolute_path": "C:/Users/hacke/AppData/Roaming/Godot/app_userdata/voxel-sandbox/phase19-observation.json",
+          "exists": false,
+          "last_status": {},
+          "path": "user://phase19-observation.json"
+        },
+        "performance": {
+          "fps": 55,
+          "process_frames": 75,
+          "render_draw_calls": 86,
+          "render_primitives": 19348,
+          "static_memory_bytes": 41912530
+        },
+        "hash": "7387d144938de2da60ed8dd18d3aecba5b95b0f19bfe14db53dca6d3498c3076",
+        "hud": "selected=GRASS count=16 target=Grass @ 14,4,12 grounded=true modified=0 save=user://phase19-observation.json feedback=World regenerated (seed 20261023)."
+      }
+    },
+    {
+      "name": "jump",
+      "state": {
+        "step": 23,
+        "sim_time_seconds": 0.3833,
+        "physics_frames": 151,
+        "paused": true,
+        "player_position": [
+          16.5,
+          4.9604,
+          16.5
+        ],
+        "player_velocity": [
+          0,
+          3.5667,
+          0
+        ],
+        "grounded": false,
+        "player_facing_deg": 24,
+        "camera_position": [
+          16.5,
+          6.5804,
+          16.5
+        ],
+        "camera_forward": [
+          -0.3868,
+          -0.309,
+          -0.8688
+        ],
+        "camera_pitch_deg": -18,
+        "target": {
+          "block": [
+            14,
+            4,
+            12
+          ],
+          "block_id": 1,
+          "block_name": "Grass",
+          "distance": 5.11422920227051,
+          "hit": true,
+          "normal": [
+            0,
+            1,
+            0
+          ],
+          "previous": [
+            14,
+            5,
+            12
+          ]
+        },
+        "selected_slot": 1,
+        "selected_block": "GRASS",
+        "inventory": {
+          "1": 16,
+          "2": 16,
+          "3": 16,
+          "4": 16
+        },
+        "world": {
+          "block_counts": {
+            "air": 10203,
+            "dirt": 2048,
+            "grass": 1024,
+            "leaves": 64,
+            "log": 12,
+            "stone": 3033
+          },
+          "chunk_count": 16,
+          "depth": 32,
+          "height": 16,
+          "modified_blocks": 0,
+          "seed": 20261023,
+          "width": 32
+        },
+        "mouse_captured": true,
+        "feedback": "World regenerated (seed 20261023).",
+        "last_event_type": "world_reset",
+        "events_count": 1,
+        "save": {
+          "absolute_path": "C:/Users/hacke/AppData/Roaming/Godot/app_userdata/voxel-sandbox/phase19-observation.json",
+          "exists": false,
+          "last_status": {},
+          "path": "user://phase19-observation.json"
+        },
+        "performance": {
+          "fps": 49,
+          "process_frames": 115,
+          "render_draw_calls": 91,
+          "render_primitives": 21092,
+          "static_memory_bytes": 41910063
+        },
+        "hash": "aadf41d6248c9645fdf7e08284fdd160892677d7c6f93d48ee76a9dc36e5772a",
+        "hud": "selected=GRASS count=16 target=Grass @ 14,4,12 grounded=false modified=0 save=user://phase19-observation.json feedback=World regenerated (seed 20261023)."
+      }
+    },
+    {
+      "name": "targeting",
+      "state": {
+        "step": 20,
+        "sim_time_seconds": 0.3333,
+        "physics_frames": 203,
+        "paused": true,
+        "player_position": [
+          16.5,
+          4,
+          16.5
+        ],
+        "player_velocity": [
+          0,
+          0,
+          0
+        ],
+        "grounded": true,
+        "player_facing_deg": 0,
+        "camera_position": [
+          16.5,
+          5.62,
+          16.5
+        ],
+        "camera_forward": [
+          0,
+          -0.0599,
+          -0.9982
+        ],
+        "camera_pitch_deg": -3.43,
+        "target": {
+          "block": [
+            16,
+            5,
+            14
+          ],
+          "block_id": 3,
+          "block_name": "Stone",
+          "distance": 1.50269961357117,
+          "hit": true,
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "previous": [
+            16,
+            5,
+            15
+          ]
+        },
+        "selected_slot": 1,
+        "selected_block": "GRASS",
+        "inventory": {
+          "1": 16,
+          "2": 16,
+          "3": 16,
+          "4": 16
+        },
+        "world": {
+          "block_counts": {
+            "air": 10202,
+            "dirt": 2048,
+            "grass": 1024,
+            "leaves": 64,
+            "log": 12,
+            "stone": 3034
+          },
+          "chunk_count": 16,
+          "depth": 32,
+          "height": 16,
+          "modified_blocks": 1,
+          "seed": 20261023,
+          "width": 32
+        },
+        "mouse_captured": true,
+        "feedback": "World regenerated (seed 20261023).",
+        "last_event_type": "world_reset",
+        "events_count": 1,
+        "save": {
+          "absolute_path": "C:/Users/hacke/AppData/Roaming/Godot/app_userdata/voxel-sandbox/phase19-observation.json",
+          "exists": false,
+          "last_status": {},
+          "path": "user://phase19-observation.json"
+        },
+        "performance": {
+          "fps": 49,
+          "process_frames": 149,
+          "render_draw_calls": 85,
+          "render_primitives": 18728,
+          "static_memory_bytes": 41935479
+        },
+        "hash": "d9ce6b5d0a886c0b38fe427b24047fd41f0634f1ebaab25be6e7f8b7fe7a860e",
+        "hud": "selected=GRASS count=16 target=Stone @ 16,5,14 grounded=true modified=1 save=user://phase19-observation.json feedback=World regenerated (seed 20261023)."
+      }
+    },
+    {
+      "name": "mining",
+      "state": {
+        "step": 24,
+        "sim_time_seconds": 0.4,
+        "physics_frames": 228,
+        "paused": true,
+        "player_position": [
+          16.5,
+          4,
+          16.5
+        ],
+        "player_velocity": [
+          0,
+          0,
+          0
+        ],
+        "grounded": true,
+        "player_facing_deg": 0,
+        "camera_position": [
+          16.5,
+          5.62,
+          16.5
+        ],
+        "camera_forward": [
+          0,
+          -0.0599,
+          -0.9982
+        ],
+        "camera_pitch_deg": -3.43,
+        "target": {
+          "block": [],
+          "block_id": 0,
+          "distance": 6,
+          "hit": false,
+          "normal": [],
+          "previous": []
+        },
+        "selected_slot": 1,
+        "selected_block": "GRASS",
+        "inventory": {
+          "1": 16,
+          "2": 16,
+          "3": 17,
+          "4": 16
+        },
+        "world": {
+          "block_counts": {
+            "air": 10203,
+            "dirt": 2048,
+            "grass": 1024,
+            "leaves": 64,
+            "log": 12,
+            "stone": 3033
+          },
+          "chunk_count": 16,
+          "depth": 32,
+          "height": 16,
+          "modified_blocks": 0,
+          "seed": 20261023,
+          "width": 32
+        },
+        "mouse_captured": true,
+        "feedback": "Mined Stone at (16, 5, 14). +1 inventory.",
+        "last_event_type": "block_mined",
+        "events_count": 2,
+        "save": {
+          "absolute_path": "C:/Users/hacke/AppData/Roaming/Godot/app_userdata/voxel-sandbox/phase19-observation.json",
+          "exists": false,
+          "last_status": {},
+          "path": "user://phase19-observation.json"
+        },
+        "performance": {
+          "fps": 41,
+          "process_frames": 166,
+          "render_draw_calls": 84,
+          "render_primitives": 18660,
+          "static_memory_bytes": 41939791
+        },
+        "hash": "bf2b85d7ec8c6024c9c44736f210bfb5d66df2136c1fc2db9ab57a05510a4a83",
+        "hud": "selected=GRASS count=16 target=none grounded=true modified=0 save=user://phase19-observation.json feedback=Mined Stone at (16, 5, 14). +1 inventory."
+      }
+    },
+    {
+      "name": "placement",
+      "state": {
+        "step": 24,
+        "sim_time_seconds": 0.4,
+        "physics_frames": 285,
+        "paused": true,
+        "player_position": [
+          16.5,
+          4.0003,
+          16.5
+        ],
+        "player_velocity": [
+          0,
+          0,
+          0
+        ],
+        "grounded": true,
+        "player_facing_deg": 0,
+        "camera_position": [
+          16.5,
+          5.6203,
+          16.5
+        ],
+        "camera_forward": [
+          0,
+          -0.06,
+          -0.9982
+        ],
+        "camera_pitch_deg": -3.44,
+        "target": {
+          "block": [
+            16,
+            5,
+            15
+          ],
+          "block_id": 1,
+          "block_name": "Grass",
+          "distance": 0.500903487205505,
+          "hit": true,
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "previous": [
+            16,
+            5,
+            16
+          ]
+        },
+        "selected_slot": 1,
+        "selected_block": "GRASS",
+        "inventory": {
+          "1": 15,
+          "2": 16,
+          "3": 16,
+          "4": 16
+        },
+        "world": {
+          "block_counts": {
+            "air": 10201,
+            "dirt": 2048,
+            "grass": 1025,
+            "leaves": 64,
+            "log": 12,
+            "stone": 3034
+          },
+          "chunk_count": 16,
+          "depth": 32,
+          "height": 16,
+          "modified_blocks": 2,
+          "seed": 20261023,
+          "width": 32
+        },
+        "mouse_captured": true,
+        "feedback": "Placed Grass at (16, 5, 15). -1 inventory.",
+        "last_event_type": "block_placed",
+        "events_count": 2,
+        "save": {
+          "absolute_path": "C:/Users/hacke/AppData/Roaming/Godot/app_userdata/voxel-sandbox/phase19-observation.json",
+          "exists": false,
+          "last_status": {},
+          "path": "user://phase19-observation.json"
+        },
+        "performance": {
+          "fps": 42,
+          "process_frames": 207,
+          "render_draw_calls": 85,
+          "render_primitives": 18776,
+          "static_memory_bytes": 41949159
+        },
+        "hash": "74e3c01a18abfde5fdba6eb362f28e124cb55d31e8a5801cd489312bb53a55fd",
+        "hud": "selected=GRASS count=15 target=Grass @ 16,5,15 grounded=true modified=2 save=user://phase19-observation.json feedback=Placed Grass at (16, 5, 15). -1 inventory."
+      }
+    },
+    {
+      "name": "hotbar",
+      "state": {
+        "step": 21,
+        "sim_time_seconds": 0.35,
+        "physics_frames": 328,
+        "paused": true,
+        "player_position": [
+          16.5,
+          4.0003,
+          16.5
+        ],
+        "player_velocity": [
+          0,
+          0,
+          0
+        ],
+        "grounded": true,
+        "player_facing_deg": 24,
+        "camera_position": [
+          16.5,
+          5.6203,
+          16.5
+        ],
+        "camera_forward": [
+          -0.3868,
+          -0.309,
+          -0.8688
+        ],
+        "camera_pitch_deg": -18,
+        "target": {
+          "block": [
+            14,
+            4,
+            13
+          ],
+          "block_id": 1,
+          "block_name": "Grass",
+          "distance": 3.87767672538757,
+          "hit": true,
+          "normal": [
+            1,
+            0,
+            0
+          ],
+          "previous": [
+            15,
+            4,
+            13
+          ]
+        },
+        "selected_slot": 3,
+        "selected_block": "STONE",
+        "inventory": {
+          "1": 16,
+          "2": 16,
+          "3": 16,
+          "4": 16
+        },
+        "world": {
+          "block_counts": {
+            "air": 10203,
+            "dirt": 2048,
+            "grass": 1024,
+            "leaves": 64,
+            "log": 12,
+            "stone": 3033
+          },
+          "chunk_count": 16,
+          "depth": 32,
+          "height": 16,
+          "modified_blocks": 0,
+          "seed": 20261023,
+          "width": 32
+        },
+        "mouse_captured": true,
+        "feedback": "Selected STONE (16/4).",
+        "last_event_type": "hotbar_selected",
+        "events_count": 2,
+        "save": {
+          "absolute_path": "C:/Users/hacke/AppData/Roaming/Godot/app_userdata/voxel-sandbox/phase19-observation.json",
+          "exists": false,
+          "last_status": {},
+          "path": "user://phase19-observation.json"
+        },
+        "performance": {
+          "fps": 48,
+          "process_frames": 243,
+          "render_draw_calls": 91,
+          "render_primitives": 21052,
+          "static_memory_bytes": 41931243
+        },
+        "hash": "75034e404d6422c0732449dd037d4f523510a24e8afe64eecae2514c8495c772",
+        "hud": "selected=STONE count=16 target=Grass @ 14,4,13 grounded=true modified=0 save=user://phase19-observation.json feedback=Selected STONE (16/4)."
+      }
+    },
+    {
+      "name": "save",
+      "state": {
+        "step": 21,
+        "sim_time_seconds": 0.35,
+        "physics_frames": 379,
+        "paused": true,
+        "player_position": [
+          16.5,
+          4.0003,
+          16.5
+        ],
+        "player_velocity": [
+          0,
+          0,
+          0
+        ],
+        "grounded": true,
+        "player_facing_deg": 35,
+        "camera_position": [
+          16.5,
+          5.6203,
+          16.5
+        ],
+        "camera_forward": [
+          -0.563,
+          -0.1908,
+          -0.8041
+        ],
+        "camera_pitch_deg": -11,
+        "target": {
+          "block": [
+            14,
+            4,
+            13
+          ],
+          "block_id": 1,
+          "block_name": "Grass",
+          "distance": 3.2508237361908,
+          "hit": true,
+          "normal": [
+            0,
+            1,
+            0
+          ],
+          "previous": [
+            14,
+            5,
+            13
+          ]
+        },
+        "selected_slot": 2,
+        "selected_block": "DIRT",
+        "inventory": {
+          "1": 7,
+          "2": 3,
+          "3": 5,
+          "4": 2
+        },
+        "world": {
+          "block_counts": {
+            "air": 10203,
+            "dirt": 2047,
+            "grass": 1024,
+            "leaves": 64,
+            "log": 12,
+            "stone": 3034
+          },
+          "chunk_count": 16,
+          "depth": 32,
+          "height": 16,
+          "modified_blocks": 2,
+          "seed": 20261023,
+          "width": 32
+        },
+        "mouse_captured": true,
+        "feedback": "Saved 2 changed blocks to user://phase19-observation.json.",
+        "last_event_type": "world_saved",
+        "events_count": 2,
+        "save": {
+          "absolute_path": "C:/Users/hacke/AppData/Roaming/Godot/app_userdata/voxel-sandbox/phase19-observation.json",
+          "exists": true,
+          "last_status": {
+            "absolute_path": "C:/Users/hacke/AppData/Roaming/Godot/app_userdata/voxel-sandbox/phase19-observation.json",
+            "bytes": 535,
+            "code": "SAVED",
+            "message": "Saved 535 bytes.",
+            "ok": true,
+            "path": "user://phase19-observation.json",
+            "sha256": "63b066458928589c7a78efd09ca9507183bd15660ba697458f687be2e80b0859"
+          },
+          "path": "user://phase19-observation.json"
+        },
+        "performance": {
+          "fps": 48,
+          "process_frames": 281,
+          "render_draw_calls": 84,
+          "render_primitives": 18048,
+          "static_memory_bytes": 41962907
+        },
+        "hash": "82c8c004af33bc63e0f70bb15e06acdc3d2bc94df8f4f9b779759caf098361b2",
+        "hud": "selected=DIRT count=3 target=Grass @ 14,4,13 grounded=true modified=2 save=user://phase19-observation.json feedback=Saved 2 changed blocks to user://phase19-observation.json."
+      }
+    },
+    {
+      "name": "reload",
+      "state": {
+        "step": 1,
+        "sim_time_seconds": 0.0167,
+        "physics_frames": 408,
+        "paused": true,
+        "player_position": [
+          16.5,
+          4.0003,
+          16.5
+        ],
+        "player_velocity": [
+          0,
+          0,
+          0
+        ],
+        "grounded": true,
+        "player_facing_deg": 35,
+        "camera_position": [
+          16.5,
+          5.6203,
+          16.5
+        ],
+        "camera_forward": [
+          -0.563,
+          -0.1908,
+          -0.8041
+        ],
+        "camera_pitch_deg": -11,
+        "target": {
+          "block": [
+            14,
+            4,
+            13
+          ],
+          "block_id": 1,
+          "block_name": "Grass",
+          "distance": 3.2508237361908,
+          "hit": true,
+          "normal": [
+            0,
+            1,
+            0
+          ],
+          "previous": [
+            14,
+            5,
+            13
+          ]
+        },
+        "selected_slot": 2,
+        "selected_block": "DIRT",
+        "inventory": {
+          "1": 7,
+          "2": 3,
+          "3": 5,
+          "4": 2
+        },
+        "world": {
+          "block_counts": {
+            "air": 10203,
+            "dirt": 2047,
+            "grass": 1024,
+            "leaves": 64,
+            "log": 12,
+            "stone": 3034
+          },
+          "chunk_count": 16,
+          "depth": 32,
+          "height": 16,
+          "modified_blocks": 2,
+          "seed": 20261023,
+          "width": 32
+        },
+        "mouse_captured": true,
+        "feedback": "Loaded 2 changed blocks from user://phase19-observation.json.",
+        "last_event_type": "world_loaded",
+        "events_count": 2,
+        "save": {
+          "absolute_path": "C:/Users/hacke/AppData/Roaming/Godot/app_userdata/voxel-sandbox/phase19-observation.json",
+          "exists": true,
+          "last_status": {
+            "code": "LOADED",
+            "message": "Loaded world and player state.",
+            "ok": true,
+            "path": "user://phase19-observation.json"
+          },
+          "path": "user://phase19-observation.json"
+        },
+        "performance": {
+          "fps": 47,
+          "process_frames": 296,
+          "render_draw_calls": 84,
+          "render_primitives": 18060,
+          "static_memory_bytes": 41958755
+        },
+        "hash": "82c8c004af33bc63e0f70bb15e06acdc3d2bc94df8f4f9b779759caf098361b2",
+        "hud": "selected=DIRT count=3 target=Grass @ 14,4,13 grounded=true modified=2 save=user://phase19-observation.json feedback=Loaded 2 changed blocks from user://phase19-observation.json."
+      }
+    }
+  ],
+  "failure": null,
+  "note": "Captures are real windowed frames paused at the listed physics tick. They are sampled evidence, not a real-time video claim."
+}

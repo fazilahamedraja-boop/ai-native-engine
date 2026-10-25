@@ -1,0 +1,125 @@
+{
+  "schema": "phase19.voxel-export-verify.v1",
+  "phase": 19,
+  "exported_at": "2026-10-25T06:09:14.890Z",
+  "exe": "C:\\Users\\hacke\\ai-native-engine-phase19\\experiments\\godot-harness\\voxel\\build\\voxel-sandbox.exe",
+  "exe_name": "voxel-sandbox.exe",
+  "exe_bytes": 109235296,
+  "exe_sha256": "1ade5406fb14049b6c077f751cf4eba1bf8237014030fcbc05c7d7f77ba652bb",
+  "pe": {
+    "magic": "MZ",
+    "pe_offset": 128,
+    "bytes": 109235296,
+    "valid": true
+  },
+  "ping": {
+    "game_ready": true,
+    "godot": "4.7.2-stable (official)",
+    "headless": false,
+    "paused": false,
+    "pid": 25400,
+    "project": "voxel-sandbox",
+    "protocol": 1,
+    "uptime_ms": 211
+  },
+  "checks": [
+    {
+      "name": "bridge-reachable",
+      "ok": true,
+      "detail": "port=60604 godot=4.7.2-stable (official)"
+    },
+    {
+      "name": "packaged-not-headless",
+      "ok": true,
+      "detail": "headless=false"
+    },
+    {
+      "name": "packaged-world-shape",
+      "ok": true,
+      "detail": "{\"air\":10203,\"dirt\":2048,\"grass\":1024,\"leaves\":64,\"log\":12,\"stone\":3033}"
+    },
+    {
+      "name": "packaged-spawn-grounded",
+      "ok": true,
+      "detail": "pos=[16.5,4.00028657913208,16.5]"
+    },
+    {
+      "name": "packaged-move-forward",
+      "ok": true,
+      "detail": "moved=2.116"
+    },
+    {
+      "name": "packaged-jump",
+      "ok": true,
+      "detail": "from=4.000 to=4.836"
+    },
+    {
+      "name": "packaged-targeting",
+      "ok": true,
+      "detail": "{\"block\":[16,3,16],\"block_id\":1,\"block_name\":\"Grass\",\"distance\":1.62623345851898,\"hit\":true,\"normal\":[0,1,0],\"previous\":[16,4,16]}"
+    },
+    {
+      "name": "packaged-mining",
+      "ok": true,
+      "detail": "{\"block\":[16,3,16],\"block_id\":1,\"block_name\":\"Grass\",\"inventory_count\":17,\"modified_blocks\":1,\"sequence\":2,\"sim_time_seconds\":0.35,\"tick\":21,\"type\":\"block_mined\"}"
+    },
+    {
+      "name": "packaged-placement-adjacent",
+      "ok": true,
+      "detail": "previous=[16,5,15] event={\"block\":[16,5,15],\"block_id\":1,\"block_name\":\"Grass\",\"inventory_count\":15,\"modified_blocks\":2,\"selected_slot\":1,\"sequence\":2,\"sim_time_seconds\":0.35,\"tick\":21,\"type\":\"block_placed\"}"
+    },
+    {
+      "name": "packaged-hotbar",
+      "ok": true,
+      "detail": "slot=3 block=STONE"
+    },
+    {
+      "name": "packaged-save-reload",
+      "ok": true,
+      "detail": "{\"reset\":\"99c98d9039a7\",\"saved\":\"a7c0249e7bad\",\"loaded\":\"a7c0249e7bad\"}"
+    },
+    {
+      "name": "packaged-window-capture",
+      "ok": false,
+      "detail": "process 25400 has no visible deflect game window\r\nAt C:\\Users\\hacke\\ai-native-engine-phase19\\experiments\\godot-harness\\controller\\capture-window.ps1:100 char:9\r\n+         throw \"process $ProcessId has no visible deflect game window\"\r\n+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : OperationStopped: (process 25400 h...ect game window:String) [], RuntimeException\r\n    + FullyQualifiedErrorId : process 25400 has no visible deflect game window"
+    }
+  ],
+  "passed": 11,
+  "failed": 1,
+  "capture": {
+    "ok": false,
+    "status": 1,
+    "stdout": "",
+    "stderr": "process 25400 has no visible deflect game window\r\nAt C:\\Users\\hacke\\ai-native-engine-phase19\\experiments\\godot-harness\\controller\\capture-window.ps1:100 char:9\r\n+         throw \"process $ProcessId has no visible deflect game window\"\r\n+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : OperationStopped: (process 25400 h...ect game window:String) [], RuntimeException\r\n    + FullyQualifiedErrorId : process 25400 has no visible deflect game window",
+    "file": null
+  },
+  "gameplay": {
+    "spawn": [
+      16.5,
+      4.00028657913208,
+      16.5
+    ],
+    "world": {
+      "block_counts": {
+        "air": 10203,
+        "dirt": 2048,
+        "grass": 1024,
+        "leaves": 64,
+        "log": 12,
+        "stone": 3033
+      },
+      "chunk_count": 16,
+      "depth": 32,
+      "height": 16,
+      "modified_blocks": 0,
+      "seed": 20261023,
+      "width": 32
+    },
+    "final_hash": "a7c0249e7badc9ea4a56ef47a0e0c314843deac67f405e3ab26ffe5c9f7d5d89",
+    "selected_slot": 2
+  },
+  "failure": null,
+  "stdout": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\r\nOpenGL API 3.3.0 - Build 31.0.101.2140 - Compatibility - Using Device: Intel - Intel(R) UHD Graphics\r\n\r\nHARNESS_READY {\"pid\":25400,\"port\":60604,\"project\":\"voxel-sandbox\",\"protocol\":1}\r\n",
+  "stderr": "",
+  "note": "The packaged binary was driven through its opt-in harness bridge. The window capture is a real PrintWindow grab of the running build."
+}

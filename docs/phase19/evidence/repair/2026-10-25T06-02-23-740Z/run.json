@@ -1,0 +1,75 @@
+{
+  "schema": "phase19.voxel-defect-repair.v1",
+  "run_id": "2026-10-25T06-02-23-740Z",
+  "exported_at": "2026-10-25T06:02:23.757Z",
+  "model": "opencode/deepseek-v4.1-flash-free",
+  "opencode_bin": "C:\\Users\\hacke\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+  "source_project": "C:\\Users\\hacke\\ai-native-engine-phase19\\experiments\\godot-harness\\voxel",
+  "hidden_test": "tests/run_voxel_data_tests.gd",
+  "hidden_test_sha256": "22b636a6965eb0894cf9e91a34b223672fef36471aa3981b3962fca32a7d4348",
+  "healthy_data_sha256": "338d3ee055fc605333271c1ed725237812cd2c8f5bffa56ad915583479ea0b27",
+  "defect_data_sha256": "a7518b230a0092ac4f93db9f6a6b3bff683153f467bfa2764a576271f1b28f36",
+  "ordering": [
+    "healthy-copy",
+    "defect-injection",
+    "hidden-suite-fails",
+    "external-agent-attempt",
+    "hidden-suite-on-candidate",
+    "trusted-repair",
+    "hidden-suite-passes"
+  ],
+  "actors": {
+    "agent": [
+      "read ./TASK.md",
+      "edit ./project/scripts/voxel_data.gd",
+      "write ./project/IMPLEMENTATION.md"
+    ],
+    "trusted_runner": [
+      "copy+inject the defect",
+      "run the hidden suite",
+      "launch and time-box OpenCode",
+      "verify the candidate in a separate copy",
+      "apply the trusted repair and re-verify",
+      "write all evidence"
+    ]
+  },
+  "stages": {
+    "defect": {
+      "suite_ok": false,
+      "summary": {
+        "passed": 14,
+        "failed": 1
+      },
+      "failing_checks": [
+        "data-raycast-down"
+      ],
+      "duration_ms": 497
+    },
+    "agent": {
+      "skipped": false,
+      "started_at": "2026-10-25T06:03:24.758Z",
+      "duration_ms": 60435,
+      "opencode_exit_code": 0,
+      "timed_out": false,
+      "changed": true,
+      "candidate_sha256": "338d3ee055fc605333271c1ed725237812cd2c8f5bffa56ad915583479ea0b27",
+      "verification_ok": true,
+      "failing_checks": [],
+      "summary": {
+        "passed": 15,
+        "failed": 0
+      }
+    },
+    "trusted": {
+      "applied": false,
+      "suite_ok": true
+    },
+    "canonical": {
+      "healthy_sha256_before": "338d3ee055fc605333271c1ed725237812cd2c8f5bffa56ad915583479ea0b27",
+      "healthy_sha256_after": "338d3ee055fc605333271c1ed725237812cd2c8f5bffa56ad915583479ea0b27",
+      "unchanged": true
+    }
+  },
+  "status": "repaired-by-agent",
+  "failure_reason": null
+}

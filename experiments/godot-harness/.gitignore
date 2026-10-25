@@ -6,3 +6,4 @@ artifacts/
 node_modules/
 *.tmp
 game/build/
+voxel/build/
