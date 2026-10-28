@@ -1,0 +1,23 @@
+{
+  "name": "ai-game-studio-s0",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "AI Game Studio: local project registry, AI job pipeline, verification and a Windows desktop client",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server/index.mjs",
+    "desktop": "electron desktop/main.mjs",
+    "desktop:dev": "set STUDIO_DEV=1&& electron desktop/main.mjs",
+    "desktop:attach": "set STUDIO_URL=http://127.0.0.1:8787&& electron desktop/main.mjs",
+    "desktop:icon": "node desktop/make-icon.mjs",
+    "package:win": "node desktop/package-win.mjs",
+    "test": "node --test test/arena-template.test.mjs test/desktop.test.mjs test/evidence.test.mjs test/jobs.test.mjs test/operations.test.mjs test/project-create.test.mjs test/projects.test.mjs test/provider-errors.test.mjs test/runner.test.mjs test/server.test.mjs test/studio-paths.test.mjs test/studio-server.test.mjs test/verification.test.mjs test/workspace.test.mjs"
+  },
+  "devDependencies": {
+    "@electron/packager": "^18.4.4",
+    "electron": "^45.0.0"
+  }
+}

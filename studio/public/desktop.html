@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>AI Game Studio</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/desktop.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="titlebar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="26" height="26">
+            <path d="M16 2.8 28 9.6v12.8L16 29.2 4 22.4V9.6z" fill="none" stroke="currentColor" stroke-width="1.7" />
+            <path d="M16 9.4 22 12.7v6.6L16 22.6l-6-3.3v-6.6z" fill="currentColor" opacity=".18" />
+            <path d="M16 9.4v13.2M10 12.7l12 6.6M22 12.7l-12 6.6" stroke="currentColor" stroke-width="1" opacity=".75" />
+          </svg>
+        </span>
+        <div class="brand-copy">
+          <strong>AI Game Studio</strong>
+          <span id="brand-sub" class="brand-sub">local · isolated agents · real verification</span>
+        </div>
+      </div>
+
+      <nav class="titlebar-nav" aria-label="Primary">
+        <button id="nav-home" class="nav-button" type="button">Project home</button>
+        <button id="nav-workspace" class="nav-button" type="button" disabled>Workspace</button>
+      </nav>
+
+      <div class="titlebar-status">
+        <span id="connection" class="pill pill-idle" role="status" aria-live="polite">Connecting…</span>
+        <span id="runtime-mode" class="pill pill-quiet" title="How this interface is running">Browser</span>
+        <button id="open-evidence" class="ghost-button" type="button" title="Open the read-only evidence dashboard for the reference runs">
+          Evidence dashboard
+        </button>
+      </div>
+    </header>
+
+    <main id="main" class="main">
+      <!-- Project home ------------------------------------------------- -->
+      <section id="view-home" class="view view-home" aria-labelledby="home-title">
+        <div class="home-inner">
+          <section class="hero">
+            <div class="hero-copy">
+              <p class="eyebrow">Windows desktop studio</p>
+              <h1 id="home-title">Describe a game. Watch it get built and verified.</h1>
+              <p class="hero-text">
+                Every request runs in an isolated copy of a real Godot project. The AI edits files,
+                the Studio imports, tests and probes the result, and nothing reaches your project
+                until you approve a verified candidate.
+              </p>
+              <div class="hero-actions">
+                <button id="hero-new" class="primary-button" type="button">Create new project</button>
+                <button id="hero-continue" class="secondary-button" type="button" hidden>
+                  Continue <span id="hero-continue-name"></span>
+                </button>
+                <button id="hero-refresh" class="ghost-button" type="button">Refresh</button>
+              </div>
+              <p id="hero-hint" class="hero-hint" role="status" aria-live="polite"></p>
+            </div>
+            <div class="hero-stats" aria-label="Studio summary">
+              <div class="stat">
+                <span class="stat-value" id="stat-projects">–</span>
+                <span class="stat-label">created projects</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value" id="stat-jobs">–</span>
+                <span class="stat-label">generation runs</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value" id="stat-verified">–</span>
+                <span class="stat-label">verified candidates</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value" id="stat-running">–</span>
+                <span class="stat-label">jobs in progress</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="home-section" aria-labelledby="recent-title">
+            <div class="section-head">
+              <h2 id="recent-title">Recent</h2>
+              <span class="muted small">Stored locally in this app</span>
+            </div>
+            <div id="recent-list" class="recent-list"></div>
+          </section>
+
+          <section class="home-section" aria-labelledby="yours-title">
+            <div class="section-head">
+              <h2 id="yours-title">Your projects</h2>
+              <span id="yours-count" class="muted small"></span>
+            </div>
+            <div id="project-grid" class="project-grid"></div>
+            <div id="projects-empty" class="empty-state" hidden>
+              <h3>No projects yet</h3>
+              <p>
+                Start from the 3D Arena Action template. The AI implements the arena, the acceptance
+                suite verifies it, and you decide whether to apply it.
+              </p>
+              <button id="empty-create" class="primary-button" type="button">Create your first project</button>
+            </div>
+          </section>
+
+          <section class="home-section" aria-labelledby="reference-title">
+            <div class="section-head">
+              <h2 id="reference-title">Reference projects</h2>
+              <span class="muted small">Read-only canonical work from earlier phases</span>
+            </div>
+            <div id="reference-grid" class="project-grid"></div>
+          </section>
+
+          <footer class="home-footer">
+            <p>
+              Godot runs as a native window. The Studio captures real frames through the harness bridge;
+              it never substitutes a screenshot for live gameplay.
+            </p>
+          </footer>
+        </div>
+      </section>
+
+      <!-- Workspace ----------------------------------------------------- -->
+      <section id="view-workspace" class="view view-workspace" aria-labelledby="workspace-title" hidden>
+        <aside class="rail" aria-label="Projects">
+          <button id="rail-home" class="rail-home" type="button">
+            <span aria-hidden="true">←</span> All projects
+          </button>
+          <div id="rail-list" class="rail-list"></div>
+          <div class="rail-foot">
+            <span class="muted small">Created projects live in</span>
+            <code class="rail-path">studio/.data/projects</code>
+          </div>
+        </aside>
+
+        <div class="canvas">
+          <header class="project-header">
+            <div class="project-heading">
+              <h1 id="workspace-title">Project</h1>
+              <p id="project-sub" class="project-sub"></p>
+            </div>
+            <div class="project-badges" id="project-badges"></div>
+          </header>
+
+          <section class="panel composer" aria-labelledby="composer-title">
+            <div class="panel-head">
+              <h2 id="composer-title">Build with AI</h2>
+              <span id="composer-model" class="muted small"></span>
+            </div>
+            <label class="sr-only" for="prompt">Describe the game or change you want</label>
+            <textarea
+              id="prompt"
+              class="prompt"
+              rows="6"
+              maxlength="4000"
+              placeholder="Describe the game or the change you want. For example: build a 3D arena where a blue player fights a red enemy with melee attacks, health bars and a win condition."
+            ></textarea>
+            <div class="composer-foot">
+              <div class="composer-meta">
+                <span id="prompt-count" class="muted small">0 / 4000</span>
+                <span id="agent-note" class="muted small"></span>
+              </div>
+              <div class="composer-actions">
+                <button id="cancel-job" class="danger-button" type="button" hidden>Cancel run</button>
+                <button id="build-game" class="primary-button" type="button">Build with AI</button>
+              </div>
+            </div>
+            <p id="composer-error" class="inline-error" role="alert" hidden></p>
+          </section>
+
+          <section class="panel job-panel" aria-labelledby="job-title">
+            <div class="panel-head">
+              <h2 id="job-title">Generation run</h2>
+              <span id="job-id" class="muted small"></span>
+            </div>
+            <div id="job-empty" class="empty-inline">
+              <p>No run selected. Describe a change above and start a build — or open a previous run below.</p>
+            </div>
+            <div id="job-body" hidden>
+              <div class="job-status-row">
+                <span id="job-status" class="pill pill-idle">queued</span>
+                <span id="job-step" class="muted small"></span>
+                <span id="job-updated" class="muted small push-right"></span>
+              </div>
+              <ol id="stage-list" class="stages" aria-label="Run stages"></ol>
+              <p id="job-task" class="job-task"></p>
+              <p id="job-error" class="inline-error" role="alert" hidden></p>
+              <div class="job-actions" id="job-actions"></div>
+              <div class="log-head">
+                <h3>Live log</h3>
+                <button id="log-jump" class="ghost-button small-button" type="button" hidden>Jump to latest</button>
+              </div>
+              <div id="log" class="log" role="log" aria-live="polite" aria-relevant="additions"></div>
+            </div>
+          </section>
+
+          <section class="panel history-panel" aria-labelledby="history-title">
+            <div class="panel-head">
+              <h2 id="history-title">Run history</h2>
+              <span id="history-count" class="muted small"></span>
+            </div>
+            <div id="history-list" class="history-list"></div>
+          </section>
+
+          <section class="panel viewport-panel" aria-labelledby="viewport-title">
+            <div class="panel-head">
+              <h2 id="viewport-title">Game viewport</h2>
+              <div class="viewport-tabs" role="tablist" aria-label="Viewport source">
+                <button id="tab-native" class="tab is-active" type="button" role="tab" aria-selected="true">
+                  Native window
+                </button>
+                <button id="tab-browser" class="tab" type="button" role="tab" aria-selected="false">
+                  Browser build
+                </button>
+              </div>
+            </div>
+            <div id="viewport-native" class="viewport" role="tabpanel" aria-labelledby="tab-native">
+              <div class="viewport-note">
+                <span id="native-mode" class="pill pill-warn">external native window</span>
+                <span id="native-state" class="muted small">not running</span>
+              </div>
+              <div id="native-frame" class="frame">
+                <div class="frame-placeholder">
+                  <p><strong>No live video is possible for a native Godot window.</strong></p>
+                  <p>
+                    Launch the game to open its real window on your desktop, then capture a frame.
+                    A capture is always labelled as captured — never as live gameplay.
+                  </p>
+                </div>
+              </div>
+              <div class="viewport-controls">
+                <button id="native-launch" class="primary-button" type="button">Launch</button>
+                <button id="native-stop" class="secondary-button" type="button" disabled>Stop</button>
+                <button id="native-relaunch" class="secondary-button" type="button">Relaunch</button>
+                <button id="native-capture" class="secondary-button" type="button" disabled>Capture frame</button>
+                <button id="native-check" class="ghost-button" type="button">Check scripts</button>
+                <button id="native-test" class="ghost-button" type="button">Run test suite</button>
+                <button id="native-logs" class="ghost-button" type="button">Runtime logs</button>
+              </div>
+              <p id="native-hint" class="muted small" role="status" aria-live="polite"></p>
+            </div>
+            <div id="viewport-browser" class="viewport" role="tabpanel" aria-labelledby="tab-browser" hidden>
+              <div class="viewport-note">
+                <span id="browser-mode" class="pill pill-idle">browser build</span>
+                <span id="browser-state" class="muted small"></span>
+              </div>
+              <div id="browser-frame" class="frame"></div>
+              <div class="viewport-controls">
+                <button id="browser-recheck" class="secondary-button" type="button">Recheck availability</button>
+                <button id="browser-open" class="ghost-button" type="button">Open in browser</button>
+              </div>
+              <p id="browser-note" class="muted small"></p>
+            </div>
+            <div id="op-result" class="op-result" aria-live="polite"></div>
+          </section>
+        </div>
+
+        <aside class="inspector" aria-label="Verification and evidence">
+          <div class="inspector-head">
+            <h2>Evidence</h2>
+            <button id="inspector-refresh" class="ghost-button small-button" type="button">Refresh</button>
+          </div>
+          <div class="inspector-tabs" role="tablist" aria-label="Evidence sections">
+            <button class="tab is-active" type="button" role="tab" aria-selected="true" data-pane="review">Review</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-pane="files">Files</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-pane="shots">Shots</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-pane="attempts">Attempts</button>
+          </div>
+
+          <div class="inspector-body">
+            <section id="pane-review" class="pane" role="tabpanel" aria-labelledby="pane-review-tab">
+              <div id="review-summary" class="summary-card"></div>
+              <div id="approval-box" class="approval-box"></div>
+              <h3>Verification steps</h3>
+              <div id="verify-steps" class="stack"></div>
+              <p id="verify-note" class="muted small"></p>
+            </section>
+
+            <section id="pane-files" class="pane" role="tabpanel" hidden>
+              <div class="section-head tight">
+                <h3>Changed files</h3>
+                <span id="changed-count" class="muted small"></span>
+              </div>
+              <div id="changed-files"></div>
+              <div class="section-head tight">
+                <h3>Candidate diff</h3>
+                <button id="load-diff" class="ghost-button small-button" type="button">Show diff</button>
+              </div>
+              <pre id="diff-view" class="diff" hidden></pre>
+            </section>
+
+            <section id="pane-shots" class="pane" role="tabpanel" hidden>
+              <h3>Job evidence</h3>
+              <div id="job-gallery" class="gallery"></div>
+              <div class="section-head tight">
+                <h3>Native captures</h3>
+                <span id="capture-count" class="muted small"></span>
+              </div>
+              <div id="capture-gallery" class="gallery"></div>
+              <h3>Operations</h3>
+              <div id="op-history" class="op-history"></div>
+            </section>
+
+            <section id="pane-attempts" class="pane" role="tabpanel" hidden>
+              <h3>AI attempts</h3>
+              <div id="attempts-list" class="stack"></div>
+            </section>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <!-- Create project dialog ------------------------------------------ -->
+    <dialog id="create-dialog" class="dialog" aria-labelledby="create-title">
+      <form id="create-form" method="dialog" novalidate>
+        <div class="dialog-head">
+          <h2 id="create-title">Create a project</h2>
+          <button id="create-close" class="icon-button" type="button" aria-label="Close">×</button>
+        </div>
+        <p class="muted small">
+          Creation copies a real Godot project and prepares its import cache. This takes a few seconds.
+        </p>
+        <label class="field">
+          <span>Project name</span>
+          <input id="create-name" name="name" type="text" maxlength="48" required autocomplete="off"
+            placeholder="Neon Arena" />
+        </label>
+        <label class="field">
+          <span>Template</span>
+          <select id="create-template" name="templateId" required></select>
+        </label>
+        <p id="template-description" class="template-description muted small"></p>
+        <label class="field">
+          <span>Describe the game <span class="muted">(optional — starts a build immediately)</span></span>
+          <textarea id="create-prompt" name="prompt" rows="4" maxlength="4000"
+            placeholder="Build a 3D arena with a controllable player, a chasing enemy, melee attacks, health and a win condition."></textarea>
+        </label>
+        <p id="create-prompt-count" class="muted small">0 / 4000 · leave empty to create the project without starting a run</p>
+        <p id="create-error" class="inline-error" role="alert" hidden></p>
+        <div class="dialog-actions">
+          <button id="create-cancel" class="ghost-button" type="button">Cancel</button>
+          <button id="create-submit" class="primary-button" type="submit">Create project</button>
+        </div>
+      </form>
+    </dialog>
+
+    <!-- Approval confirmation ------------------------------------------ -->
+    <dialog id="approve-dialog" class="dialog" aria-labelledby="approve-title">
+      <div class="dialog-head">
+        <h2 id="approve-title">Apply verified candidate?</h2>
+        <button id="approve-close" class="icon-button" type="button" aria-label="Close">×</button>
+      </div>
+      <p>
+        This applies the verified candidate to the project. The server re-checks that the candidate
+        hash still matches what verification measured before writing anything.
+      </p>
+      <div id="approve-files" class="approve-files"></div>
+      <p id="approve-error" class="inline-error" role="alert" hidden></p>
+      <div class="dialog-actions">
+        <button id="approve-cancel" class="ghost-button" type="button">Keep reviewing</button>
+        <button id="approve-confirm" class="primary-button" type="button">Approve and apply</button>
+      </div>
+    </dialog>
+
+    <div id="toasts" class="toasts" aria-live="polite" aria-atomic="false"></div>
+
+    <script src="/desktop.js"></script>
+  </body>
+</html>

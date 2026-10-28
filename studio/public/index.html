@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Game Studio — Phase 19 evidence (S0)</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#run-detail">Skip to run detail</a>
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">S0</span>
+        <div>
+          <h1>AI Game Studio <span class="muted">/ evidence</span></h1>
+          <p class="tagline">Read-only view of Phase 19 runs, checks, captures and logs.</p>
+          <p class="tagline"><a href="/studio">Open the Studio workspace →</a></p>
+        </div>
+      </div>
+      <ul class="guarantees" aria-label="Guarantees">
+        <li><strong>Read-only</strong> no writes to evidence</li>
+        <li><strong>No model calls</strong> zero API quota</li>
+        <li><strong>No browser commands</strong> no shell execution</li>
+      </ul>
+    </header>
+
+    <div class="legend" role="note">
+      <p>
+        <strong>Reading the labels:</strong>
+        <span class="badge verdict verified-pass">Verified pass</span> and
+        <span class="badge verdict verified-fail">Verified fail</span> come from a trusted runner that
+        produced the evidence.
+        <span class="badge provenance human-recorded">Human-recorded</span> means a person captured it by
+        hand, not a runner gate.
+        <span class="badge provenance model-generated">Model-generated</span> is an agent's own output and
+        is never treated as proof.
+        <span class="badge verdict model-claim-rejected">Model claim rejected</span> means a runner
+        explicitly refused the model's output.
+      </p>
+    </div>
+
+    <main class="layout">
+      <aside class="sidebar" aria-label="Evidence runs">
+        <div class="sidebar-head">
+          <h2>Runs</h2>
+          <p id="run-count" class="muted">loading…</p>
+        </div>
+
+        <form id="filters" class="filters">
+          <label>
+            <span>Search</span>
+            <input id="filter-text" type="search" placeholder="run id or headline" autocomplete="off" />
+          </label>
+          <label>
+            <span>Group</span>
+            <select id="filter-group">
+              <option value="">All groups</option>
+            </select>
+          </label>
+          <label>
+            <span>Verdict</span>
+            <select id="filter-verdict">
+              <option value="">All verdicts</option>
+            </select>
+          </label>
+          <label>
+            <span>Provenance</span>
+            <select id="filter-provenance">
+              <option value="">All provenance</option>
+            </select>
+          </label>
+        </form>
+
+        <noscript><p class="error">This dashboard needs JavaScript to read the evidence API.</p></noscript>
+        <ul id="run-list" class="run-list" aria-live="polite"></ul>
+        <p id="empty-state" class="empty" hidden>No run matches those filters.</p>
+      </aside>
+
+      <section id="run-detail" class="detail" aria-live="polite" tabindex="-1">
+        <div class="placeholder">
+          <h2>Select a run</h2>
+          <p>Pick a run on the left to inspect its manifest summary, checks, comparisons and logs.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p id="foot-meta" class="muted">Loading server metadata…</p>
+      <p class="muted">
+        S0 shows recorded evidence only. A green check is a claim about this host at capture time, not a
+        general guarantee.
+      </p>
+    </footer>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

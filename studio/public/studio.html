@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Game Studio — Studio</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/studio.css" />
+  </head>
+  <body class="studio-body">
+    <a class="skip-link" href="#main">Skip to workspace</a>
+
+    <header class="appbar">
+      <div class="appbar-brand">
+        <span class="brand-mark" aria-hidden="true">AI</span>
+        <div>
+          <strong>AI Game Studio</strong>
+          <span class="appbar-sub">isolated agents · real verification</span>
+        </div>
+      </div>
+      <nav class="appbar-nav" aria-label="Sections">
+        <a class="appbar-link" href="/">Evidence dashboard</a>
+        <a class="appbar-link is-active" href="/studio" aria-current="page">Studio</a>
+      </nav>
+      <div class="appbar-status">
+        <span id="connection" class="conn conn-idle" role="status">Connecting…</span>
+      </div>
+    </header>
+
+    <div class="shell">
+      <aside class="sidebar" aria-label="Projects">
+        <div class="sidebar-head">
+          <h2>Projects</h2>
+          <button id="refresh-projects" class="icon-button" type="button" title="Refresh project status">Refresh</button>
+        </div>
+        <button id="new-project" class="button button-primary new-project" type="button">
+          <span aria-hidden="true">+</span> New project
+        </button>
+        <ul id="project-list" class="project-list"></ul>
+        <div class="sidebar-foot">
+          <p id="server-info" class="muted small">Loading server info…</p>
+          <p class="muted small">Loopback only · fixed operations · no shell</p>
+        </div>
+      </aside>
+
+      <main id="main" class="main">
+        <section class="project-head" aria-labelledby="project-name">
+          <div class="project-title">
+            <h1 id="project-name">Loading…</h1>
+            <p id="project-tagline" class="muted"></p>
+          </div>
+          <div class="project-facts">
+            <div class="fact"><span class="fact-label">Path</span><code id="project-path">—</code></div>
+            <div class="fact"><span class="fact-label">Modes</span><span id="project-modes">—</span></div>
+            <div class="fact"><span class="fact-label">Agent</span><span id="project-agent">—</span></div>
+            <div class="fact"><span class="fact-label">Tests</span><span id="project-tests">—</span></div>
+            <div class="fact"><span class="fact-label">Origin</span><span id="project-origin">—</span></div>
+          </div>
+        </section>
+
+        <div id="notice" class="notice" role="alert" hidden></div>
+
+        <nav class="tabs" role="tablist" aria-label="Workspace sections">
+          <button class="tab is-active" type="button" role="tab" data-tab="task" aria-selected="true">Task</button>
+          <button class="tab" type="button" role="tab" data-tab="operations" aria-selected="false">Operations</button>
+          <button class="tab" type="button" role="tab" data-tab="jobs" aria-selected="false">Jobs</button>
+          <button class="tab" type="button" role="tab" data-tab="preview" aria-selected="false">Preview</button>
+        </nav>
+
+        <section class="panel is-active" id="panel-task" role="tabpanel" aria-label="Task">
+          <div class="composer card" id="build-card">
+            <div class="card-head">
+              <h2>Build Game with AI</h2>
+              <span class="badge badge-ok">new project</span>
+            </div>
+            <p class="muted small">
+              Describe a game in plain language. The Studio copies the arena template into a new
+              isolated project, then a real agent implements it. Nothing is applied to the project
+              until the candidate passes independent verification and you approve it.
+            </p>
+            <form id="build-form" class="composer-form" autocomplete="off">
+              <label class="field">
+                <span>Project name</span>
+                <input id="build-name" name="name" maxlength="48" required>
+              </label>
+              <label class="field">
+                <span>Game description</span>
+                <textarea id="build-prompt" name="prompt" rows="5" maxlength="4000" required></textarea>
+              </label>
+              <div class="composer-row">
+                <label class="field field-inline">
+                  <span>Model</span>
+                  <select id="build-model" name="model"></select>
+                </label>
+                <button id="build-submit" class="button button-primary" type="submit">Build game</button>
+              </div>
+              <p id="build-limit" class="muted small">
+                This demo prompt is prefilled. The agent may edit the new project only; tests, the
+                harness and project settings stay read-only.
+              </p>
+            </form>
+            <div id="build-error" class="notice notice-error" role="alert" hidden></div>
+          </div>
+
+          <div class="composer card">
+            <div class="card-head">
+              <h2>Describe a change</h2>
+              <span id="agent-badge" class="badge">agent</span>
+            </div>
+            <p id="agent-note" class="muted small"></p>
+            <form id="task-form" class="composer-form" autocomplete="off">
+              <label class="field">
+                <span>Task</span>
+                <textarea id="task-input" name="task" rows="5" maxlength="4000" placeholder="Example: make the voxel boundary check safely reject a chunk id outside the world, without changing the public API." required></textarea>
+              </label>
+              <div class="composer-row">
+                <label class="field field-inline">
+                  <span>Model</span>
+                  <select id="model-select" name="model"></select>
+                </label>
+                <label class="field field-inline">
+                  <span>Editable files</span>
+                  <span id="allowed-files" class="code-list">—</span>
+                </label>
+                <button id="submit-task" class="button button-primary" type="submit">Start isolated run</button>
+              </div>
+              <p id="composer-limit" class="muted small"></p>
+            </form>
+          </div>
+
+          <div id="job-empty" class="empty card">
+            <h2>No job selected</h2>
+            <p class="muted">Start a task above, or pick a job from the Jobs tab. Every run copies the project, verifies the candidate independently, and waits for your approval.</p>
+          </div>
+
+          <div id="job-detail" class="job-detail" hidden>
+            <div class="card job-head">
+              <div class="job-head-top">
+                <div>
+                  <span id="job-status" class="pill">—</span>
+                  <h2 id="job-title">Job</h2>
+                  <p id="job-task" class="job-task"></p>
+                </div>
+                <div class="job-actions" id="job-actions"></div>
+              </div>
+              <dl class="job-meta" id="job-meta"></dl>
+            </div>
+
+            <div id="job-error" class="notice notice-error" role="alert" hidden></div>
+
+            <div class="grid-2">
+              <div class="card">
+                <div class="card-head"><h3>Timeline</h3><span id="job-step" class="muted small"></span></div>
+                <ol id="job-events" class="event-list" aria-live="polite"></ol>
+              </div>
+              <div class="card">
+                <div class="card-head"><h3>Verification</h3><span id="verify-summary" class="muted small"></span></div>
+                <div id="verify-steps" class="verify-steps"></div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-head"><h3>Changed files</h3><span id="changed-summary" class="muted small"></span></div>
+              <div id="changed-files" class="table-wrap"></div>
+            </div>
+
+            <div class="card">
+              <div class="card-head">
+                <h3>Diff</h3>
+                <button id="load-diff" class="button button-quiet" type="button">Load diff</button>
+              </div>
+              <pre id="diff-view" class="diff-view" hidden></pre>
+            </div>
+
+            <div class="card">
+              <div class="card-head"><h3>Evidence frames</h3></div>
+              <div id="job-gallery" class="gallery"></div>
+            </div>
+
+            <div class="card">
+              <div class="card-head"><h3>Attempts</h3></div>
+              <div id="attempts" class="attempts"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="panel-operations" role="tabpanel" aria-label="Operations" hidden>
+          <div class="card">
+            <div class="card-head">
+              <h2>Trusted operations</h2>
+              <span class="badge badge-quiet">fixed commands only</span>
+            </div>
+            <p class="muted small">These buttons run named routines on the registered project. The browser cannot send a shell command, an executable or a filesystem path.</p>
+            <div class="op-grid">
+              <button class="button" type="button" data-op="check">Check scripts</button>
+              <div class="op-test">
+                <select id="test-select" aria-label="Test suite"></select>
+                <button class="button" type="button" data-op="test">Run tests</button>
+              </div>
+              <button class="button" type="button" data-op="launch">Launch native</button>
+              <button class="button" type="button" data-op="capture">Capture frame</button>
+              <button class="button" type="button" data-op="advance">Advance 30 steps</button>
+              <button class="button" type="button" data-op="reset">Reset game</button>
+              <button class="button" type="button" data-op="logs">Read logs</button>
+              <button class="button" type="button" data-op="export">Export build</button>
+              <button class="button button-danger" type="button" data-op="stop">Stop native</button>
+            </div>
+            <p id="op-busy" class="muted small" hidden>Running…</p>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-head"><h3>Last operation</h3><span id="op-status" class="muted small"></span></div>
+              <div id="op-result" class="op-result"><p class="muted">Run an operation to see its real result.</p></div>
+              <h4 class="subhead">Logs</h4>
+              <pre id="op-logs" class="log-view">No output yet.</pre>
+            </div>
+            <div class="card">
+              <div class="card-head"><h3>Screenshot gallery</h3><span id="gallery-count" class="muted small"></span></div>
+              <div id="op-gallery" class="gallery"></div>
+              <h4 class="subhead">Recent operations</h4>
+              <ul id="op-history" class="op-history"></ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="panel-jobs" role="tabpanel" aria-label="Jobs" hidden>
+          <div class="card">
+            <div class="card-head">
+              <h2>Runs for this project</h2>
+              <button id="refresh-jobs" class="button button-quiet" type="button">Refresh</button>
+            </div>
+            <div id="jobs-list" class="jobs-list"></div>
+          </div>
+        </section>
+
+        <section class="panel" id="panel-preview" role="tabpanel" aria-label="Preview" hidden>
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-head"><h3>Native window</h3><span id="native-state" class="muted small"></span></div>
+              <p class="muted small">A real Godot window is launched on this machine. The screenshot comes from the live renderer, not a mock-up.</p>
+              <div class="op-grid op-grid-tight">
+                <button class="button" type="button" data-op="launch">Launch</button>
+                <button class="button" type="button" data-op="capture">Capture</button>
+                <button class="button button-danger" type="button" data-op="stop">Stop</button>
+              </div>
+              <div id="native-frame" class="preview-frame"><p class="muted">No capture yet.</p></div>
+              <p id="native-note" class="muted small"></p>
+            </div>
+            <div class="card">
+              <div class="card-head"><h3>Browser build</h3><span id="browser-state" class="muted small"></span></div>
+              <div id="browser-frame" class="preview-frame preview-browser">
+                <p class="muted">Checking the registered browser build…</p>
+              </div>
+              <p id="browser-note" class="muted small"></p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Controls</h3><span class="muted small">input requires an observed state change</span></div>
+            <div id="controls-list" class="controls-list"></div>
+            <div class="op-grid op-grid-tight">
+              <button class="button" type="button" data-op="advance">Advance 30 steps</button>
+              <button class="button" type="button" data-op="reset">Reset</button>
+            </div>
+            <p id="preview-note" class="muted small">Advance and reset use the Godot harness bridge, and only report what the snapshot returns.</p>
+          </div>
+        </section>
+
+        <footer class="footer muted small">
+          <span id="footer-server">—</span>
+          <span>Evidence dashboard is unchanged at <a href="/">/</a>.</span>
+        </footer>
+      </main>
+    </div>
+
+    <dialog id="create-dialog" class="dialog" aria-labelledby="create-title">
+      <form id="create-form" class="dialog-form" autocomplete="off">
+        <div class="dialog-head">
+          <h2 id="create-title">Create a new project</h2>
+          <p class="muted small">
+            The Studio copies one of its implemented templates into a new, isolated directory.
+            Nothing in the existing reference projects is modified.
+          </p>
+        </div>
+
+        <label class="field">
+          <span>Project name</span>
+          <input
+            id="create-name"
+            name="name"
+            type="text"
+            required
+            minlength="2"
+            maxlength="48"
+            placeholder="My Block World"
+            aria-describedby="create-name-help"
+          />
+          <span id="create-name-help" class="muted small">
+            Letters, numbers, spaces, dots, dashes and underscores. Used for the project id and directory.
+          </span>
+        </label>
+
+        <label class="field">
+          <span>Starting template</span>
+          <select id="create-template" name="templateId" required aria-describedby="create-template-help">
+            <option value="">Loading templates…</option>
+          </select>
+          <span id="create-template-help" class="muted small"></span>
+        </label>
+
+        <label class="field">
+          <span>What should the game be?</span>
+          <textarea
+            id="create-description"
+            name="description"
+            rows="4"
+            maxlength="600"
+            placeholder="Example: a survival sandbox where the player mines stone and builds a small shelter."
+          ></textarea>
+          <span class="muted small">Stored in the project manifest and shown on the project card.</span>
+        </label>
+
+        <div id="create-error" class="notice notice-error" role="alert" hidden></div>
+
+        <div class="dialog-actions">
+          <button id="create-cancel" class="button button-quiet" type="button">Cancel</button>
+          <button id="create-submit" class="button button-primary" type="submit">Create project</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="/studio.js" defer></script>
+  </body>
+</html>
