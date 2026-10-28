@@ -1,571 +1,298 @@
-# ai-native-engine
+# AI Game Studio
 
-A lightweight, AI-authorable game runtime. The agent writes text, renders, reads
-the pixels back, inspects state numerically, and self-corrects.
+A local Windows desktop app that turns a plain-language game description into a
+real, verified Godot project — and refuses to touch your project until you
+approve the result.
 
-**Phase 0 complete:** deterministic render + capture.
-**Phase 1 complete:** versioned scene document, world/physics layer, orbit and
-third-person cameras, hot reload that preserves simulation state.
-**Phase 2 complete:** asset contract, three procedural assets, imported humanoid,
-contact sheets and a predicted parameter change. Evidence:
-[`docs/phase2-exit.md`](docs/phase2-exit.md).
-**Phase 3 benchmarked:** five prompt-driven loop cycles, including a caught
-visual failure and a deliberate socket break. Content-token (estimated) and
-failure-detection targets pass; the 60 s end-to-end target does not, though the
-mechanical path is 1-2 s. Evidence: [`docs/phase3-review.md`](docs/phase3-review.md).
-**Phase 4 complete:** a playable island collect-and-return scene authored
-through the same `__engine` surface: three asset-backed swords, a humanoid
-avatar, a HUD, `R` restart, the original five browser game tests, and
-start/collected/won captures. Evidence:
-[`docs/phase4-review.md`](docs/phase4-review.md).
-**Phase 5 complete:** one data-driven granite sentinel, edge-triggered `F`
-attacks, player/enemy health, spawn-safe contact damage, a terminal `lost`
-phase, hit/defeat feedback, and 12 browser game tests. Evidence:
-[`docs/phase5-review.md`](docs/phase5-review.md).
+Type a description, an AI agent edits an **isolated copy** of a game project, the
+Studio independently re-imports, parses, tests and plays the candidate in a real
+Godot window, and the diff, screenshots and test output are shown side by side.
+Approval re-checks the workspace and canonical file hashes before writing
+anything.
 
-**Phase 8 experiment (separate branch, not merged):** an isolated Godot
-controller with headless tests, process lifecycle, requested fixed steps,
-structured snapshots and hashes, live sentry gameplay checks, windowed
-screenshots, and a reproducible defect-repair experiment. The engine and Phase
-7 branch are unchanged. Usage:
-[`experiments/godot-harness/README.md`](experiments/godot-harness/README.md).
-Acceptance review: [`docs/phase8-report.md`](docs/phase8-report.md).
+![AI Game Studio desktop home](docs/studio/home.png)
 
-**Fresh-session handoff:** [`docs/project-state.md`](docs/project-state.md) has
-the architecture map, current checkpoint, verification commands, known issues,
-next steps, and backup/restore procedure.
+| Workspace + evidence | The game the agent built |
+| --- | --- |
+| ![Workspace with verified evidence](docs/studio/workspace.png) | ![Arena game running in Godot](docs/studio/game.png) |
 
-## Run
+The screenshots are real captures from this repository's verification runs: the
+desktop home with created projects and runs, the workspace showing a verified
+candidate, and the 1280×720 frame captured from the Godot game the agent
+produced.
 
-```bash
-npm install
-npm run dev      # http://localhost:5173
-npm run typecheck
-npm run build
+## Why
+
+AI can write game code faster than a person can review it, but "the model said it
+works" is not evidence. This project explores the other half of the problem: an
+agent loop with **independent verification** and a **human gate**, where every
+claim in the UI is backed by a file that was actually run.
+
+The repository also contains the engine and Godot harness the Studio drives —
+both were built and verified phase by phase before the desktop app existed.
+
+## What is actually implemented
+
+Verified by the test suites and by real runs recorded in
+[`studio/VERIFICATION-REPORT.md`](studio/VERIFICATION-REPORT.md):
+
+**Studio backend** (`studio/server/`)
+
+- Loopback-only HTTP server (`127.0.0.1`) with a restrictive CSP, 64 KiB body
+  cap and path containment on every filesystem access.
+- Project registry with two implemented templates (**Voxel Sandbox**, **3D Arena
+  Action**), validated creation, staged rename, and a real
+  `godot --headless --import` step. Failed imports are reported as
+  `needs_import`, never faked.
+- Job pipeline: baseline → AI edit → scope policy → verification → bounded
+  repair → human decision. Job state, attempts, transcripts, diffs and artifacts
+  are append-only on disk.
+- Independent verification: GDScript parse, the project's visible suite, a
+  **pristine** copy of the same suite from outside the project, and a native
+  windowed smoke run that asserts an observed `player_position` change.
+- Approval applies only allowed modified/added files, after re-hashing the
+  workspace and the canonical files. Discard leaves the project untouched and
+  keeps the evidence.
+
+**Desktop app** (`studio/desktop/`, `studio/public/desktop.*`)
+
+- Electron 45 shell that starts the existing server **in-process** on an
+  OS-assigned port, with a single-instance lock (a second launch focuses the
+  first window instead of starting a second backend).
+- Project home, AI workspace, viewport (launch / capture / run suite / logs),
+  and an evidence panel that keeps *verified* and *not verified* claims apart.
+- Sandboxed preload bridge; loopback-only navigation guard; clean shutdown.
+
+**Packaging**
+
+- `npm run package:win` produces a portable, unsigned
+  `desktop-dist\AI Game Studio-win32-x64\AI Game Studio.exe` (~409 MB) that runs
+  without Node.js installed.
+
+**Engine and harness** (documented in [`ENGINE.md`](ENGINE.md))
+
+- A text-first THREE.js engine with a deterministic render/capture loop, a
+  versioned scene document, physics, cameras and hot reload.
+- A Godot 4.7 control/verification harness: headless test runs, state
+  inspection, screenshot capture, native window input, physics queries, GDScript
+  LSP checks and a supervisor.
+
+## Architecture
+
+```mermaid
+flowchart LR
+  UI["Desktop client<br/>Electron / browser"] -->|HTTP + SSE| SRV["Studio server<br/>127.0.0.1 only"]
+  SRV --> REG["Project registry"]
+  SRV --> OPS["Named operations<br/>launch · capture · test · logs"]
+  SRV --> JOB["Job pipeline"]
+  JOB --> WS["Isolated workspace copy"]
+  JOB --> AGENT["OpenCode agent<br/>sandboxed config"]
+  JOB --> VER["Verification<br/>parse · suites · window smoke"]
+  VER --> GATE{"Human approval"}
+  GATE -->|approve| CANON["Canonical project files"]
+  GATE -->|discard| EVID["Evidence kept, project untouched"]
+  OPS --> GODOT["Godot 4.7"]
+  VER --> GODOT
 ```
 
-## The agent surface
+| Component | Responsibility |
+| --- | --- |
+| `studio/server/index.mjs` | HTTP routes, SSE, security headers, `/app` desktop routes |
+| `studio/server/lib/projects.mjs` | Registry, templates, creation, disk discovery |
+| `studio/server/lib/agent-runner.mjs` | Job state machine, agent invocation, repair, approval |
+| `studio/server/lib/workspace.mjs` | Isolated copy, tree diff, scope policy, unified diff |
+| `studio/server/lib/verification.mjs` | Independent verification steps |
+| `studio/server/lib/operations.mjs` | Fixed op set (`launch`, `capture`, `test`, …) |
+| `studio/server/lib/process.mjs` | Timeouts, output caps, child-process supervision |
+| `studio/desktop/main.mjs` | Electron host, in-process server, single instance, shutdown |
+| `studio/public/desktop.*` | Desktop UI (plain HTML/CSS/JS, no framework) |
+| `experiments/godot-harness/` | Godot control + verification harness used by the Studio |
+| `src/`, `index.html` | THREE.js engine (Phases 0–5) — see `ENGINE.md` |
 
-Everything the agent needs is on `window.__engine`. The engine source is not part
-of the agent's working set.
+## Tech stack
 
-```js
-__engine.version                       // "0.1.0-phase5"
-__engine.scene()                       // the live, defaulted SceneDoc
+| Layer | Technology |
+| --- | --- |
+| Desktop shell | Electron 45, `@electron/packager` 18 |
+| Studio backend | Node.js ≥ 20, ESM, `node:http`, no runtime dependencies |
+| Studio UI | Plain HTML/CSS/JS, server-sent events |
+| AI agent | [OpenCode CLI](https://opencode.ai), sandboxed per run (read/write/edit/glob/grep only) |
+| Game engine | Godot 4.7 (GDScript), driven headless and in a native window |
+| Engine (Phases 0–5) | TypeScript, Vite, three.js, Zod |
+| Tests | `node:test`, Python `pytest` + `pywin32` for native-window automation |
 
-__engine.applyScene(rawObject)         // atomic: {ok, errors[], reload}
-__engine.inspect()                     // {step, t, hash, player, camera, nodes[], colliders[], reload, game?}
-__engine.stats()                       // renderer counters only: {drawCalls, triangles, objects}
+## Requirements
 
-__engine.pause() / resume()
-__engine.reset()                       // step 0, spawn, initial camera, game reset
-__engine.step(n?)                       // advance n fixed steps, implies pause
-__engine.setInput({moveX, moveZ, jump, attack}) // movement; edge-triggered jump/attack
-__engine.setOrbit({yaw, pitch, distance})
+- **Windows 10/11 x64** for the desktop app, native-window automation and
+  packaging. The Studio server and browser UI are cross-platform; the Godot
+  harness falls back to `godot` on `PATH` elsewhere.
+- **Node.js 20+**.
+- **Godot 4.7** — put the `godot` shim on `PATH`, or set `GODOT_BIN` to the
+  executable. Without it, projects can be created but not imported, launched or
+  verified, and the UI says so.
+- **OpenCode CLI** for AI generation runs. The harness resolves it from
+  `OPENCODE_BIN` or its default install location. Tests, launch and capture work
+  without it.
 
-__engine.capture(name)                 // render, POST PNG, return {path, bytes, step, hash}
-__engine.runTests()                    // Phase 1 suite at /, game suite at ?scene=island
+No `.env` file is used or needed: the server reads environment variables
+directly (see [Configuration](#configuration)).
+
+## Quick start
+
+```powershell
+# 1. Studio (browser UI + backend)
+Set-Location studio
+npm install          # first run only: Electron + packager dev dependencies
+npm start
+# -> http://127.0.0.1:8787/        read-only Phase 19 evidence dashboard
+# -> http://127.0.0.1:8787/studio  full Studio UI
+# -> http://127.0.0.1:8787/app     desktop UI in a browser
+
+# 2. Desktop app (starts its own backend in-process)
+npm run desktop
+
+# 3. Portable Windows build
+npm run package:win
+# -> desktop-dist\AI Game Studio-win32-x64\AI Game Studio.exe
 ```
 
-Scene selection: `/` loads `content/scenes/phase1.scene.json`; a scene name in
-the allowlist loads `content/scenes/<name>.scene.json`, e.g.
-`http://localhost:5173/?scene=island`.
+`npm run desktop:attach` attaches Electron to an already running `npm start`
+(`STUDIO_URL`), and `npm run desktop:dev` enables DevTools.
 
-`capture` writes to `.cache/captures/<name>.png` via the dev-server sink in
-`vite.config.ts`, so the agent gets a real file it can open.
+The engine (Phases 0–5) runs separately:
 
-`inspect()` reads World only and never touches THREE objects. Renderer counters
-are a separate `stats()` call on purpose: draw calls must not be able to change
-what "state" means.
-
-## Determinism contract
-
-- Fixed timestep `FIXED_DT = 1/60`. Nothing in the simulation reads the clock.
-- `pause()` + `step()` is the deterministic path. The rAF loop only advances the
-  world while unpaused.
-- Renderer uses `pixelRatio = 1` and a fixed 800x500 buffer.
-- State hash covers `step + player pos/vel/grounded + camera yaw/pitch/distance`
-  (or third-person yaw/distance/height), plus game phase, collected flags, health,
-  attack edges/cooldowns, damage counters, and enemy state when the scene has a
-  game block. Node transforms are configuration and are excluded — a material
-  edit must not invalidate a state hash.
-- `capture()` pauses first, so a frame cannot be overwritten between render and
-  `toBlob`.
-
-Verified: `reset(); step(120); capture(...)` twice in one session produced
-byte-identical PNGs, SHA256 `A097AC68…`, 41098 bytes, hash `4bc0682a`.
-
-## Scene document
-
-`content/scenes/phase1.scene.json`, validated by `src/schema/scene.ts`.
-
-```jsonc
-{
-  "version": 1,                 // anything else is rejected with the expected value
-  "id": "phase1",
-  "units": "m", "up": "+Y", "forward": "+Z",   // literals, not free text
-  "environment": { "background": "#0e1428" },
-  "player": {
-    "spawn": [0, 3, 0],         // FEET position
-    "radius": 0.35, "height": 1.7,
-    "speed": 4.5, "jumpSpeed": 6, "gravity": -20
-  },
-  "nodes": [ /* group | mesh | light | camera */ ]
-}
+```powershell
+npm ci
+npm run dev          # http://localhost:5173/
 ```
 
-Node fields: `id` (lowercase slug), `parent`, `visible`, `transform`
-(`pos`, `rot` in **degrees**, `scale`), plus type-specific fields.
+## Tests and checks
 
-- `group` — transform only.
-- `mesh` — `geometry` (`box{size}` | `plane{size:[w,h]}` | `sphere{radius,segments}` |
-  `capsule{radius,height}`), `material` (`color`, `roughness`, `metalness`),
-  `collider` (`{shape:"none"}` default, or `{shape:"aabb", size?}`).
-- `light` — `kind: "ambient" | "directional"`, `color`, `intensity`, `dir`
-  (directional only; setting `dir` on ambient is an error), `castShadow`.
-- `camera` — `rig: "orbit" | "third-person"`, `fov`, `near`, `far`, `orbit{...}`,
-  `thirdPerson{...}`. **Exactly one camera node is required.**
+```powershell
+# Studio backend + desktop (140 tests)
+Set-Location studio
+npm test
 
-Graph rules: ids unique, parents must exist, cycles rejected, depth ≤ 16,
-capsule `height > 2 * radius`, and a `plane` mesh cannot derive a collider
-(zero thickness) — it must declare `collider.size`.
+# Godot harness (84 tests)
+Set-Location ..\experiments\godot-harness
+npm test
 
-Transform composition is `world = parentWorld · T · R · S` with
-`R = Rx · Ry · Rz` (degrees), matching THREE's `XYZ` Euler. Matrices are computed
-in `src/core/math.ts`; World does not import THREE.
+# Native-window automation (Windows only, 12 tests)
+python -m pytest tests/test_win_game.py -q
 
-### Errors
-
-Every rejection carries `{path, code, message}` and nothing is partially applied:
-
-```
-nodes[3].material.color: expected a #rrggbb hex colour [invalid_format]
-nodes[7].type: unsupported node type "sprite"; supported: group, mesh, light, camera
-nodes[3].transform.scale[0]: Too small: expected number to be >0 [too_small]
-nodes[2].parent: parent chain contains a cycle at 'ground'
-nodes: scene must contain exactly one 'camera' node, found 2
+# GDScript parse/type diagnostics via the Godot LSP
+npm run check:gd
 ```
 
-## Game layer (Phase 5)
+Last recorded results on this machine: **140/140** Studio tests, **84/84**
+harness tests, **12** pytest tests, `check:gd` **0 errors / 11 pre-existing
+warnings**. The full evidence trail, including the exact commands and every real
+job, is in [`studio/VERIFICATION-REPORT.md`](studio/VERIFICATION-REPORT.md).
 
-`content/scenes/island.scene.json` adds one optional top-level `game` block. A
-scene without it is still a scene; `?scene=island` boots the playable loop.
+## Configuration
 
-```jsonc
-"game": {
-  "mode": "collect-return",
-  "avatar": { "asset": "humanoid-01", "scale": 0.934 },
-  "collectibles": [
-    { "id": "sword-bronze", "asset": "sword-bronze-01",
-      "pos": [1.2, 0.15, 4], "radius": 1.6, "rotY": 0, "scale": 1.6 }
-  ],
-  "returnZone": { "pos": [0, 0, 0], "radius": 1.7 },
-  "props": [
-    { "id": "pine-a", "asset": "pine-nordic-01",
-      "pos": [-7, 0, 3], "rotY": 20, "scale": 0.55 }
-  ],
-  "combat": {
-    "playerHealth": 3, "attackRange": 2.0, "attackDamage": 1,
-    "attackCooldownSteps": 12, "contactCooldownSteps": 60,
-    "hitFlashSteps": 8
-  },
-  "enemies": [
-    { "id": "sentinel", "asset": "rock-granite-01", "pos": [5, 0, 10],
-      "radius": 0.9, "health": 3, "damage": 1, "rotY": 25, "scale": 1.2 }
-  ]
-}
-```
-
-- `CollectGame` is pure: horizontal distance checks and the phase
-  `collecting -> return -> won | lost`, with no World or THREE access. It
-  composes the pure `Combat` module and is stepped immediately after physics.
-- `Combat` owns reusable mechanics: player/enemy health, the rising-edge attack,
-  per-enemy contact cooldowns, nearest-target hit checks, counters, and
-  export/restore. `F` attacks are edge-triggered, so holding the key cannot
-  repeat; a press during the 12-step cooldown is ignored, not queued. Hits and
-  misses both consume the cooldown.
-- Contact damage uses the same 60-step window as the spawn/reset grace. A reset
-  that happens to overlap the sentinel cannot damage on step one; after the grace,
-  contact hits are one per 60 steps. `lost` outranks `won`; both are terminal
-  until `R` resets.
-- Assets are render-only. They never join World, contribute no collider, and
-  are skipped (with an error string) when the catalog is missing the id. The
-  sentinel reuses `rock-granite-01`; it does not block movement. Collision stays
-  on the scene's `collider` boxes, including four invisible edge boxes that keep
-  the player on the island.
-- The humanoid replaces the capsule avatar only while a game is active; the
-  renderer still derives the transform from `world.player.pos`, so the
-  `player-avatar` test path is unchanged.
-- HUD: `SWORDS n / 3`, `HP 3/3 · SENTINEL 3/3` (plus `HIT`), `SENTINEL
-  DEFEATED`, `ESCAPED`, `DEFEATED`, or the asset error list. `R` restores the
-  swords, health, counters, cooldowns, and sentinel visibility.
-- Tests: `__engine.runTests()` at `?scene=island` returns
-  `game-assets`, `collect-all`, `return-wins`, `restart`, `determinism`,
-  `attack-hit`, `attack-miss-edge`, `enemy-defeat`, `contact`,
-  `combat-determinism`, `state-roundtrip`, `invalid-config` (12/12, ~26 ms), and
-  restores the live world/game (`statePreserved`).
-- Controls: `WASD` move (camera-relative in third-person), `Space` jump,
-  `F` attack, `R` restart; `__engine.step(n)` is the deterministic path.
-
-Evidence and limits: [`docs/phase4-review.md`](docs/phase4-review.md) and
-[`docs/phase5-review.md`](docs/phase5-review.md).
-
-## Asset contract
-
-Phase 2. An asset is a text manifest plus a pure build function; the artifact is
-never checked in. `src/assets/schema.ts` validates the manifest, `kinds.ts` owns
-the ontology, `validate.ts` judges what was built. Phase 2 exit evidence,
-including four-view contact sheets and the predicted pine change, is in
-[`docs/phase2-exit.md`](docs/phase2-exit.md).
-
-Six concepts, and no more:
-
-| concept | meaning | mutable by |
-|---|---|---|
-| `kind` | closed vocabulary | schema only |
-| `provenance` | generator + pinned version + seed, or file + sha256 | author |
-| `params` | semantic knobs, enums or bounded numbers | author |
-| `contract` | origin, declared bounds, declared sockets | author, then verified |
-| `tests` | extra promises the asset makes | author |
-| `override` | colour / roughness / metalness | instance |
-
-Four kinds, each with contract defaults and required sockets:
-
-| kind | origin | scaleClass | required sockets | params |
-|---|---|---|---|---|
-| `sword` | `grip` | handheld | `grip`, `tip` | length, bladeWidth, guard, material |
-| `rock` | `base-center` | prop | — | size, family, detail, moss |
-| `pine` | `base-center` | prop | `base` | height, tiers, spread, snow |
-| `character` | `feet-center` | character | `head`, `hand_l`, `hand_r` | none (imported) |
-
-Adding a kind is a params schema plus a row in `KIND_SPECS`. If it also needs a
-change in `validate.ts`, the ontology is wrong.
-
-**Bounds and sockets are declared, not derived.** A generator change that
-silently grows an asset must fail validation rather than quietly move every
-placement built on it. `artifactHash` covers geometry, sockets, material and any
-vertex colours, so the same `(params, seed, generatorVersion)` must reproduce the
-same hash.
-
-**Colour can be per-vertex.** `MeshData.colors` is optional sRGB RGB, one triple
-per vertex, and the material colour multiplies it. That is how one rock carries
-stone and moss, and one pine carries bark, foliage and snow, without three
-materials. Colours fold into the hash only when present, so assets that never had
-them keep the hashes they were published with.
-
-Three checks always run and cannot be declared away: the artifact is non-empty,
-every coordinate is finite, and measured bounds match the contract within
-`1e-4 m`. Every declared socket must also exist and match within `1e-4 m`; a
-socket outside the mesh is a warning, not an error — it is legal, and usually a
-stale coordinate. `tests[]` adds `origin-at`, `sockets-present`, `max-extent`,
-`triangles-max`, `watertight`, `area-positive`.
-
-Errors use the same `{path, code, message}` shape as scene errors, plus
-`expected`/`measured` where a number is involved.
-
-```bash
-npm run test:assets    # 123 tests: contract, sword, rock, pine, framing, GLB index, decode, import
-```
-
-### Inspection
-
-```bash
-npm run assets -- list
-npm run assets -- validate [--json] [id...]
-npm run assets -- inspect sword-iron-01
-npm run assets -- preview sword-iron-01 --view front
-npm run assets -- regen sword-iron-01 [--accept]
-```
-
-`inspect` prints one JSON object: provenance, params, declared contract, the
-measured artifact (hash, bounds, sockets, material, triangles, generation ms),
-override, tests, errors, warnings. The CLI and the preview page return the same
-shape, so the agent does not have to learn two.
-
-`regen` compares the artifact against the declared contract. Without `--accept`
-it reports drift and exits 1. With `--accept` it rewrites bounds and sockets —
-but refuses if any check other than contract drift is failing, so a broken
-generator or importer cannot be papered over.
-
-### Preview page
-
-`http://localhost:5173/?asset=<id>&view=<view>`, where view is `three-quarter`
-(default), `front`, `side` or `top`. `window.__preview` is the agent surface:
-
-```js
-__preview.inspect()          // CLI JSON + view + camera
-__preview.setView('side')    // re-render, URL updated in place
-__preview.capture('name')    // PNG through the same sink, returns {path, bytes}
-```
-
-All views share one camera distance, derived from the asset's bounding sphere.
-That makes two captures directly comparable and makes a size change visible. The
-cost is that `top` on a tall asset is small — it exists to read the
-cross-section. Captures are byte-identical across repeats: `5CBCB50C…` for a
-procedural asset, `5C5DB509…` for the placeholder character, and `6719C524…`
-for `humanoid-01`. Metals are lit by a baked `RoomEnvironment`, without which
-`metalness 0.7` renders as flat grey.
-
-### Character import
-
-A character is the one kind that is imported rather than generated. The manifest
-pins the GLB by SHA-256, and the build path is:
-
-```
-GLB bytes -> container/JSON index -> accessor decode -> MeshData -> validate
-```
-
-`src/assets/import/glb.ts` indexes the JSON chunk first: node names, transforms,
-skins, animations, and declared bounds. That keeps malformed files and
-unsupported structures cheap to reject, and it is the evidence the manifest
-contract is checked against. Non-triangle primitives, accessors without min/max,
-parent cycles and dangling indices are rejected at this stage, because the index
-is the evidence the manifest will have. `src/assets/import/decode.ts` then reads
-the BIN chunk into the same `MeshData` every procedural asset produces.
-
-Supported: float32 VEC3 positions and normals, indexed (uint8/16/32) and
-non-indexed `TRIANGLES`, accessor and bufferView offsets, interleaved
-`byteStride`, node TRS or matrix transforms, and one material covering base
-colour, roughness, metalness and double-sided. Normals use the inverse-transpose;
-a mirroring node reverses winding. If `NORMAL` is absent the primitive is
-de-indexed and flat normals are generated, as glTF requires.
-
-Rejected explicitly, never silently dropped: skins, morph targets, textures,
-non-opaque or emissive materials, extensions, sparse accessors, external or
-data-URI buffers, multiple buffers, unsupported attributes (`COLOR_0`,
-`JOINTS_0`, `WEIGHTS_0`), mixed materials, singular transforms, out-of-range
-indices and degenerate triangles. Animation clips are indexed but warn
-(`animations_ignored`): the manifest describes the static mesh, and nothing is
-played.
-
-```bash
-npm run assets -- index content/assets/character/placeholder-character.glb
-npm run assets -- decode content/assets/character/placeholder-character.glb
-npm run assets -- character content/assets/character/placeholder-character.glb
-```
-
-`decode` prints decoded bounds, sockets, material, triangle count and artifact
-hash beside the declared index. `character` applies the kind contract: bounds
-must exist, triangles must be non-zero, and `head`, `hand_l` and `hand_r` must
-each resolve to exactly one node. Names are normalised (`Hand.L` -> `hand_l`),
-and two nodes claiming one slug is an `ambiguous_socket`.
-
-`buildImportedAsset` refuses a source whose SHA-256 differs from the manifest,
-and reports an importer-version mismatch instead of guessing. The browser
-catalog fetches the bundled GLB and computes the digest with WebCrypto, so the
-preview and the CLI build the same bytes; the placeholder's artifact hash is
-`4aace1dd1ecb9259` in both.
-
-`humanoid-01` is the first character asset: a static, unrigged humanoid assembled
-from 22 boxes, 1.82 m tall, feet at the origin, facing +Z. The GLB is 33,728
-bytes, sha256 `1e5628f8…`; `scripts/make-humanoid.py` produced identical bytes on
-three consecutive headless runs. It decodes to 264 triangles / 528 vertices,
-bounds `[-0.34, 0, -0.12] .. [0.34, 1.82, 0.175]`, sockets `head (0, 1.7, 0)`,
-`hand_l (-0.295, 0.88, 0)`, `hand_r (0.295, 0.88, 0)`, and a single-sided clay
-material `#a2816c` (roughness 0.62). Artifact hash `24a10e9da432a551`;
-`assets validate` is 6/6. The Phase 3 manifest override renders it slate
-`#6f7f95` at roughness 0.5 without changing the artifact hash.
-
-The export -> import -> preview sequence ran end to end: `character` accepted the
-GLB, `regen --accept` wrote the measured contract, `validate` passed every
-declared test including `watertight`, and the browser preview produced the same
-artifact hash as the CLI. Two three-quarter captures are byte-identical
-(SHA256 `6719C5247EC0E321…`). **Milestone 5 is complete** with this generated
-character; it is deliberately blocky and has no rig, animation or textures.
-
-`placeholder-character.glb` remains the minimal fixture: six boxes, 72
-triangles, no armature, no animation, feet at the origin, sha256 `1af652d7…`.
-`scripts/make-character.py` regenerates it headlessly and produced identical
-bytes on three consecutive runs. It is genuinely Blender-exported and remains
-useful as the smallest real container/index/decode case; it is not the milestone
-asset.
-
-## Hot reload
-
-Saving `content/scenes/*.json` pushes the text to the page over the Vite
-websocket (`scene-watch` plugin). No module reload, no page reload — the running
-`World` is only rebuilt from the new document.
-
-**Compatibility is decided from the effective collision world**, not from a
-config diff: the fingerprint is every collider's world-space AABB (sorted by node
-id) plus player radius/height.
-
-| fingerprint | player capsule vs new colliders | result |
+| Variable | Default | Purpose |
 | --- | --- | --- |
-| unchanged | — | state fully preserved, `stateReset: null` |
-| changed | no overlap | position + velocity preserved, grounded re-probed, `stateReset: "colliders-changed"` |
-| changed | overlap | reset to spawn, `stateReset: "player-inside-collider"` |
+| `STUDIO_PORT` | `8787` | Loopback port. The host is fixed to `127.0.0.1`. |
+| `STUDIO_AGENT_MODEL` | `opencode/deepseek-v4.1-flash-free` | Default model in the composer. |
+| `STUDIO_AGENT_MODELS` | built-in list | Comma-separated allowlist of accepted models. |
+| `STUDIO_URL` | — | Attach the desktop shell to an existing server instead of starting one. |
+| `STUDIO_DEV` | — | `1` enables Electron DevTools and the dev menu. |
+| `GODOT_BIN` | `godot` on `PATH` | Godot 4.7 executable used for import, tests and the windowed run. |
+| `OPENCODE_BIN` | harness default | OpenCode CLI binary used for AI runs. |
 
-Camera state is preserved unless the camera node's id or rig changes. Material,
-colour, geometry and light edits never reset the player — they do not alter the
-collision world.
+## How a run works
 
-## Physics
+1. **Describe** a change (or a whole arena game) in the workspace.
+2. The Studio copies the project into a **disposable workspace** and records a
+   baseline: import, parse, tests, and a real `before.png`.
+3. The **agent** edits only the allowed patterns (`scripts/**`, `scenes/**`,
+   `assets/**` for the arena template) inside a sandbox that denies shell, web,
+   subagents and paths outside the workspace.
+4. **Verification** runs independently of the agent's claims: candidate parse,
+   the visible acceptance suite, a pristine copy of that suite from outside the
+   project, and a native windowed run with real input.
+5. A failed candidate gets a **bounded repair** attempt; a repair that changes
+   nothing fails honestly instead of looping.
+6. **You decide.** *Approve and apply* re-hashes the workspace and the canonical
+   files, then writes only allowed modified/added files. *Discard* keeps the
+   evidence and changes nothing.
 
-`src/physics/capsule-aabb.ts` + `src/physics/step.ts`. Vertical capsule
-(feet + height, radius) against world-space AABBs. One step is:
+### Security posture
 
-```
-input → horizontal velocity (instant, no acceleration) → jump edge → gravity
-      → move → push out of penetrating boxes (4 iterations, deepest first)
-      → support probe → velocity cleanup
-```
+- Binds to `127.0.0.1` only; no authentication, so never expose the port.
+- Named operations only — no shell strings or arbitrary executables over HTTP.
+- Path containment rejects `..`, absolute paths, null bytes and unknown
+  extensions before disk access.
+- Append-only evidence; a corrupt job manifest is reported and never overwritten.
+- No credentials in code, prompts, logs or evidence.
 
-Gravity is applied *before* the position update (semi-implicit Euler), so the
-jump is lower than the continuous solution:
+## Repository layout
 
-- apex `0.850 m` at **step 17**, held through step 18 (velocity hits 0 and the
-  step displaces by 0 — the apex is a two-step plateau)
-- landing at **step 35**, airtime 583 ms
-- continuous physics would give `v²/2g = 0.900 m`
-
-Grounded is a **support probe**, never a resolution flag: the capsule's bottom
-sphere must be within `radius + 0.02 m` of a surface whose outward normal has
-`·up ≥ cos 45°`. Standing beside a wall therefore stays grounded; touching a wall
-alone never does.
-
-Measured, not asserted:
-
-```
-scene-settle           grounded=true feetY=0.000000 supportTop=0.000000 vy=0
-player-avatar          maxTrackingError=0.00e+0 lift=0.8500m landedAt=34
-                       restingError=0.00e+0 notASceneNode=true
-jump-apex-and-landing  apex=0.8500m (model 0.8500) at step 17; landing=35
-wall-adjacency         x 0.000 -> 1.400; drift 0.00e+0; grounded=true; penetrating=[]
-determinism            identical hash 5f154676
-reload-compatibility   away=colliders-changed preserved=true;
-                       onto=player-inside-collider resetToSpawn=true
-```
-
-`x → 1.400` is the wall face at `1.75` minus radius `0.35`; the residual drift is
-exactly zero, so the player is blocked rather than sliding.
-
-### Limits (deliberate, Phase 1)
-
-AABBs only. No slopes, stairs, step-up, moving platforms, rotated colliders
-(enveloped by their axis-aligned bounds), CCD, friction, bounciness, or pushing
-dynamic bodies. Corner cases can pop. Horizontal velocity is reported from actual
-displacement, so a blocked player reads `0` rather than the commanded speed.
-
-## Player avatar
-
-By default a single cream capsule; when the scene has a game block, the
-renderer swaps in the configured character asset (feet-center origin, scaled).
-Either way it is drawn from `world.player.pos` every frame and is
-**render-only**:
-
-- not a `SceneDoc` node, so `inspect().nodes` never lists it
-- contributes no collider, so physics cannot see it
-- has no skeleton, no animation, no state of its own
-
-`syncPlayer(world)` is the whole link: group origin = `feet + height/2` for the
-capsule and `feet` for an asset, with geometry rebuilt only when the avatar or
-`player.radius`/`player.height` change. `avatarFeet()` reads the position back
-out of the scene graph, which is why the `player-avatar` test can prove the
-derivation instead of re-asserting the input.
-
-Verified: tracking error `0` at rest, at the jump apex (`0.850 m`), at landing,
-and after settling; screen position `(400, 293.3)` unchanged before and after a
-4.5 m walk under the third-person rig, i.e. the camera follows rather than drifts.
-
-## Build budget
-
-The budget is **400 kB of gzipped JavaScript** — every `.js` file the browser
-must download to run the engine, summed, gzip level 9, kB = 1000 bytes. HTML and
-source maps are not counted. `npm run size` runs the build and measures it
-directly with `node:zlib` so the number does not move when Vite changes how it
-reports sizes.
-
-```
-index-DkVBMypY.js   raw 745259   gzip 193607
-gzip total 193607 B (193.6 kB) of 400 kB budget — 48.4%
+```text
+.
+├─ studio/                    AI Game Studio (server, desktop app, UI, templates, tests)
+│  ├─ server/                 HTTP API, job pipeline, verification, operations
+│  ├─ desktop/                Electron main/preload, icon, Windows packaging
+│  ├─ public/                 Studio UI, desktop UI, evidence dashboard
+│  ├─ templates/arena/        Read-only 3D Arena Action template + acceptance suite
+│  ├─ test/                   140 node:test cases
+│  └─ VERIFICATION-REPORT.md  Full evidence trail
+├─ experiments/godot-harness/ Godot control + verification harness (84 tests)
+├─ src/, index.html           THREE.js engine (Phases 0–5)
+├─ docs/                      Phase evidence, project state, Studio screenshots
+└─ ENGINE.md                  Engine reference (formerly the root README)
 ```
 
-That includes THREE, Zod, the GLB decoder and the whole devtools surface. Vite's
-own log reports 195.58 kB for the same file because it uses a different gzip
-setting; the script above is authoritative.
+## Verified vs not verified
 
-## Cameras
+**Verified end to end** (see report §3, §10, §11):
 
-Exactly one camera node is the active camera; there is no switching.
+- One arena description produced a playable game: 20/20 visible suite, 20/20
+  pristine suite, and a real windowed run with an observed position change —
+  before approval. After approval, a native probe passed **11/11** gameplay
+  rules (out-of-range attack does nothing, damage, win, restart, loss).
+- The desktop journey — create project, run AI job, verify, approve, launch,
+  capture, run suite, stop — was performed in the real window.
+- The packaged executable launches with a clean data directory, refuses a second
+  instance, and releases its port on close.
+- 12 real jobs (successes, deliberate failures, scope violations, cancellations)
+  are preserved as evidence.
 
-- `orbit` — yaw/pitch/distance around `target`; pitch clamped ±89°, distance
-  1.5–40. Pointer drag and wheel drive the same `setOrbit` the tests use.
-- `third-person` — position = player `- forward(yaw)·distance + height`, looking
-  at player `+ lookHeight`. Follows position every frame, no smoothing, yaw
-  user-controlled. Movement input is rotated into camera space for this rig only.
+**Not verified / current limits:**
 
-## Layout
+- **One model, one prompt.** `opencode/deepseek-v4.1-flash-free` succeeded once
+  on the arena task; that is not evidence that arbitrary descriptions work.
+  Genres outside the arena contract (multi-level, physics-heavy, multiplayer)
+  have no template and no suite.
+- **No AI run from the packaged binary.** The portable build shares the same code
+  path, but that specific executable's job execution is unproven.
+- **No embedded native gameplay.** The desktop viewport launches the real Godot
+  process and shows labelled captures; "live" is reserved for a registered
+  browser build. The arena template has no browser build.
+- **Windows-only** native automation and packaging; the executable is unsigned
+  (SmartScreen may warn) and is a portable folder, not an installer.
+- **Single operator, loopback only.** Anyone who can reach the port can approve.
+- Reference projects are read-only in the desktop client; only the arena
+  template is wired to AI editing.
+- The acceptance suite proves the arena contract, not fun, balance or visual
+  quality.
 
-```
-src/schema/scene.ts       Zod grammar + graph validation (no THREE)
-src/core/math.ts          vec3 / mat4, degrees, column-major
-src/world/world.ts        SceneDoc -> World nodes, colliders, player, camera
-src/physics/              capsule-vs-AABB primitives, fixed step
-src/camera/rigs.ts        camera state + poses (no THREE)
-src/render/renderer.ts    World -> THREE draw list, flat, rebuilt per revision
-src/render/geometry.ts    MeshData -> BufferGeometry (the only asset/renderer seam)
-src/assets/schema.ts      manifest grammar, per-kind params, ontology checks
-src/assets/kinds.ts       4 kinds: contract defaults, required sockets, params
-src/assets/generators/    pure build(params, rng) -> MeshData + sockets
-src/assets/import/glb.ts  GLB container + JSON index (no geometry decode)
-src/assets/import/decode.ts accessors -> MeshData, sockets and material
-src/assets/catalog.ts     bundled manifests; fetch + hash imported GLBs
-src/assets/validate.ts    declared bounds/sockets + assertion runner
-src/assets/cli.ts         list | validate | inspect | preview | regen | index | character | decode
-src/preview/              standalone asset viewport + window.__preview
-src/devtools/state.ts     snapshot + state hash
-src/devtools/tests.ts     runTests()
-src/devtools/node-tests.ts Node suite runner (same report shape)
-src/game/schema.ts       optional game block grammar (Zod)
-src/game/combat.ts       pure health/attack/contact state, hash/export/restore
-src/game/collect.ts      pure collect/return/lost state machine + combat composition
-src/game/visuals.ts      game block -> render-only asset instances
-src/game/tests.ts        runGameTests() for ?scene=island
-src/engine.ts             the agent surface
-src/main.ts               boot, input, rAF loop, hot-reload listener
-vite.config.ts            /__capture sink + scene-watch
-scripts/make-character.py reproducible placeholder GLB fixture
-scripts/make-humanoid.py  reproducible humanoid GLB character
-```
+## Documentation
 
-Renderer note: nodes are drawn as a **flat list** using precomputed world
-matrices. The hierarchy lives in World, so THREE never becomes a second source of
-truth.
+- [`studio/README.md`](studio/README.md) — Studio, desktop app, packaging, API.
+- [`studio/VERIFICATION-REPORT.md`](studio/VERIFICATION-REPORT.md) — commands,
+  results and every real job.
+- [`ENGINE.md`](ENGINE.md) — the THREE.js engine and its scene/asset contracts.
+- [`docs/project-state.md`](docs/project-state.md) — architecture handoff and
+  phase history.
 
-## Conventions (never renegotiate)
+## License
 
-meters · +Y up · +Z forward · floor-center origin for props · feet-center for characters
+MIT — see [`LICENSE`](LICENSE). That covers the source, the documentation, and
+the assets this repository generates, including `humanoid-01.glb`, which is
+reproducible from `scripts/make-humanoid.py`.
 
-## Known gaps
-
-- `inspect()` reports node world position and scale, not world rotation.
-- `regen --accept` rewrites the entire manifest in expanded JSON; a two-value
-  edit produces a large diff until a canonical formatter exists.
-- The pine `snow` parameter adds the predicted geometry, but stacked tiers hide
-  the snow bands. The shipped pine stays `snow: false` until the generator
-  places the band visibly.
-- The Phase 3 60 s full-cycle target is not met end-to-end (core cycles
-  152-385 s); the mechanical path is 1-2 s. Agent/review latency is the
-  bottleneck.
-- The avatar and sentinel have no facing direction, animation, attack
-  telegraph, chase, or pathfinding. The sentinel is stationary and attacks are
-  radial within 2 m; a frontal arc needs facing state that does not exist yet.
-- Phase 4-5 game visuals are primitive: flat-shaded assets, a flat water plane,
-  an invisible island boundary, and no fall-in-water or terrain behavior. The
-  sentinel is an untinted `rock-granite-01` instance with an emissive hit flash.
-- The game suite is browser-only (`runTests()` at `?scene=island`); there is no
-  CLI or CI wrapper for it.
-- Phase 5 acceptance uses fixed steps and real keyboard events; no real-time
-  frame-rate claim is made. Headless Chromium throttles rAF, so the evidence
-  uses `__engine.step(n)` and `__engine.capture()`.
-- `collect-return` is the only game mode; the `game` block is scene
-  configuration, not a general gameplay authoring system.
-- Imported characters are static meshes: no skinning, animation playback, morph
-  targets, textures or advanced material graphs. One material per asset; multiple
-  primitives with different materials are rejected.
-- The preview's GLB digest uses WebCrypto, so imported assets load only from
-  localhost or HTTPS.
-- `humanoid-01` is deliberately blocky, unrigged and untextured; it proves the
-  import path, not production character art.
-- No shadow-quality tuning, no mesh instancing, no LOD.
+One bundled test fixture is third-party: `CesiumMan.glb` is CC BY 4.0 and is
+used only to exercise Godot's skinning path. Dependencies and their terms are
+listed in [`THIRD-PARTY-NOTICES.md`](THIRD-PARTY-NOTICES.md).
