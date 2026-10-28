@@ -3,3 +3,7 @@ dist/
 .cache/
 *.local
 .DS_Store
+
+# Python caches from the native-window tests
+__pycache__/
+.pytest_cache/

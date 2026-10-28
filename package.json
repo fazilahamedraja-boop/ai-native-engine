@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "description": "AI-native game engine â€” lightweight, text-first, agent-verifiable",
+  "description": "AI-native game engine — lightweight, text-first, agent-verifiable",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
