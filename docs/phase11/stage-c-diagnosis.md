@@ -1,6 +1,6 @@
 # Stage C — one controlled combat defect, diagnosed from evidence and repaired
 
-**Worktree:** `C:\Users\hacke\ai-native-engine-phase11`
+**Worktree:** `C:\Users\<user>\ai-native-engine-phase11`
 **Branch:** `experiment/phase11-audit` (baseline `e72ba64`)
 **Fixture:** `experiments/godot-harness/fixtures/combat`
 **Runner:** `experiments/godot-harness/controller/combat-defect.mjs`

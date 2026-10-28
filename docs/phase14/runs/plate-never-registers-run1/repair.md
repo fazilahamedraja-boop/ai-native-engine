@@ -1,6 +1,6 @@
 # Phase 14 blind repair record
 
-Fixture: `C:\Users\hacke\AppData\Local\Temp\phase14-blind-observation-e6DJQT\project`
+Fixture: `C:\Users\<user>\AppData\Local\Temp\phase14-blind-observation-e6DJQT\project`
 File changed: `scripts/observation_world.gd` (the only file in the fixture that
 differed from the pristine observation fixture).
 
@@ -79,8 +79,8 @@ Why no other change is needed or acceptable:
 Same command, same oracle (`res://tests/run_observation.gd`):
 
 ```powershell
-cd C:\Users\hacke\ai-native-engine-phase14\experiments\godot-harness
-node controller/harness.mjs test --project "C:\Users\hacke\AppData\Local\Temp\phase14-blind-observation-e6DJQT\project" --script res://tests/run_observation.gd --json --allow-outside-root
+cd C:\Users\<user>\ai-native-engine-phase14\experiments\godot-harness
+node controller/harness.mjs test --project "C:\Users\<user>\AppData\Local\Temp\phase14-blind-observation-e6DJQT\project" --script res://tests/run_observation.gd --json --allow-outside-root
 ```
 
 | | Before | After |

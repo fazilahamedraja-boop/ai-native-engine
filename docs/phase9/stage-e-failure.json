@@ -1,6 +1,6 @@
 {
   "operation": "run_tests",
-  "project": "C:\\Users\\hacke\\ai-native-engine-phase9\\experiments\\godot-harness\\artifacts\\physics-no-wall",
+  "project": "C:\\Users\\<user>\\ai-native-engine-phase9\\experiments\\godot-harness\\artifacts\\physics-no-wall",
   "script": "res://tests/run_physics.gd",
   "exitCode": 1,
   "signal": null,

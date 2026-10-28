@@ -4,7 +4,7 @@
   "run_id": "phase13-b81a1830-d8cd-4f01-a811-0becdefdccc9",
   "project": "fixtures/observation",
   "windowed": true,
-  "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase13\\docs\\phase13\\stage-a-live-observation",
+  "output_dir": "C:\\Users\\<user>\\ai-native-engine-phase13\\docs\\phase13\\stage-a-live-observation",
   "started_at": "2026-10-21T20:27:45.478Z",
   "finished_at": "2026-10-21T20:27:52.182Z",
   "options": {
@@ -118,7 +118,7 @@
         },
         "screenshot": {
           "path": "action-before.png",
-          "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase13\\docs\\phase13\\stage-a-live-observation\\action-before.png",
+          "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase13\\docs\\phase13\\stage-a-live-observation\\action-before.png",
           "bytes": 55408,
           "sha256": "fa4ca704e26a4ddd2d43ec3f2d73420ffb45a60aaadc59532c6789468db1f583",
           "width": 1280,
@@ -155,7 +155,7 @@
         },
         "screenshot": {
           "path": "action-after.png",
-          "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase13\\docs\\phase13\\stage-a-live-observation\\action-after.png",
+          "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase13\\docs\\phase13\\stage-a-live-observation\\action-after.png",
           "bytes": 57968,
           "sha256": "e74ee404d686841d6621b3c9815d45cf45956b04a1293e88164b7901c50241bb",
           "width": 1280,

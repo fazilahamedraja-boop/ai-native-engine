@@ -1,6 +1,6 @@
 # Phase 14 repair record — crate-contact-not-published-run1
 
-Fixture: `C:\Users\hacke\AppData\Local\Temp\phase14-blind-observation-2pqKfw\project`
+Fixture: `C:\Users\<user>\AppData\Local\Temp\phase14-blind-observation-2pqKfw\project`
 File changed: `scripts/observation_world.gd` (the only file that differs from the pristine
 observation fixture). No other file in the fixture was modified; the oracle
 `res://tests/run_observation.gd` is byte-identical to the pristine one (its file
@@ -64,8 +64,8 @@ Why this is minimal and safe:
 Same command both times:
 
 ```powershell
-cd C:\Users\hacke\ai-native-engine-phase14\experiments\godot-harness
-node controller/harness.mjs test --project "C:\Users\hacke\AppData\Local\Temp\phase14-blind-observation-2pqKfw\project" --script res://tests/run_observation.gd --json --allow-outside-root
+cd C:\Users\<user>\ai-native-engine-phase14\experiments\godot-harness
+node controller/harness.mjs test --project "C:\Users\<user>\AppData\Local\Temp\phase14-blind-observation-2pqKfw\project" --script res://tests/run_observation.gd --json --allow-outside-root
 ```
 
 ### Before (from `evidence/test-output.txt`)

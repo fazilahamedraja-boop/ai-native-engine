@@ -4,7 +4,7 @@
 
 {
   "operation": "run_tests",
-  "project": "C:\\Users\\hacke\\AppData\\Local\\Temp\\opencode\\phase8-clean-copy\\fixtures\\sentry",
+  "project": "C:\\Users\\<user>\\AppData\\Local\\Temp\\opencode\\phase8-clean-copy\\fixtures\\sentry",
   "script": "res://tests/run_tests.gd",
   "exitCode": 0,
   "signal": null,

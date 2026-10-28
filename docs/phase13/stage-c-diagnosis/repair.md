@@ -55,7 +55,7 @@ acceptance script `res://tests/run_observation.gd` is byte-identical to the orig
 Command (identical in both runs):
 
 ```powershell
-cd C:\Users\hacke\ai-native-engine-phase13\experiments\godot-harness
+cd C:\Users\<user>\ai-native-engine-phase13\experiments\godot-harness
 node controller/harness.mjs test --project fixtures/phase13-defect --script res://tests/run_observation.gd --json
 ```
 

@@ -2,7 +2,7 @@
 
 **Status:** complete. Stage E and Stage F both pass. Work stops here.
 
-- Worktree: `C:\Users\hacke\ai-native-engine-phase9`
+- Worktree: `C:\Users\<user>\ai-native-engine-phase9`
 - Branch: `experiment/phase9-generalization`
 - Base: Phase 8 `6667ecc8b0247a63c3b2ac7e2dcfd348343d35cd`
 - Stage E commit: `e2f8ff4b72434c6dfe6d7a566ddf143383ef7178`
@@ -29,10 +29,10 @@ The existing `checkpoint-2026-10-20` tag remains
 `d30f19c98afd647f425b03ecd6be17a37d6e3ac4`. The verified backup remains at:
 
 ```text
-C:\Users\hacke\Backups\ai-native-engine\2026-10-20_155955\ai-native-engine.bundle
+C:\Users\<user>\Backups\ai-native-engine\2026-10-20_155955\ai-native-engine.bundle
 ```
 
-The main worktree `C:\Users\hacke\ai-native-engine` remains on
+The main worktree `C:\Users\<user>\ai-native-engine` remains on
 `fix/camera-relative-strafe` at `583ec00` and was not modified.
 
 ## 2. What Phase 9 added

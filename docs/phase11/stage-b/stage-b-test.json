@@ -1,6 +1,6 @@
 ﻿{
   "operation": "run_tests",
-  "project": "C:\\Users\\hacke\\ai-native-engine-phase11\\experiments\\godot-harness\\fixtures\\character-audit",
+  "project": "C:\\Users\\<user>\\ai-native-engine-phase11\\experiments\\godot-harness\\fixtures\\character-audit",
   "script": "res://tests/run_character_audit.gd",
   "exitCode": 0,
   "signal": null,

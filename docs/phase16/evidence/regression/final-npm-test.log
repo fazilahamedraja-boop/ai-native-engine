@@ -2,15 +2,15 @@
 > godot-harness@0.1.0 test
 > node --test tests/controller.test.mjs tests/session.test.mjs tests/gameplay.test.mjs tests/capture.test.mjs tests/observation.test.mjs tests/physics-query.test.mjs tests/evidence-output.test.mjs tests/startup-diagnostics.test.mjs tests/blind-benchmark.test.mjs
 
-file:///C:/Users/hacke/ai-native-engine-phase16/experiments/godot-harness/controller/evidence-output.mjs:104
+file:///C:/Users/<user>/ai-native-engine-phase16/experiments/godot-harness/controller/evidence-output.mjs:104
     throw new Error(reason)
           ^
 
 Error: output directory is inside protected evidence directory docs\phase11
-    at resolveOutputDir (file:///C:/Users/hacke/ai-native-engine-phase16/experiments/godot-harness/controller/evidence-output.mjs:104:11)
-    at prepare (file:///C:/Users/hacke/ai-native-engine-phase16/experiments/godot-harness/controller/blind-benchmark.mjs:290:18)
-    at main (file:///C:/Users/hacke/ai-native-engine-phase16/experiments/godot-harness/controller/blind-benchmark.mjs:594:29)
-    at file:///C:/Users/hacke/ai-native-engine-phase16/experiments/godot-harness/controller/blind-benchmark.mjs:623:7
+    at resolveOutputDir (file:///C:/Users/<user>/ai-native-engine-phase16/experiments/godot-harness/controller/evidence-output.mjs:104:11)
+    at prepare (file:///C:/Users/<user>/ai-native-engine-phase16/experiments/godot-harness/controller/blind-benchmark.mjs:290:18)
+    at main (file:///C:/Users/<user>/ai-native-engine-phase16/experiments/godot-harness/controller/blind-benchmark.mjs:594:29)
+    at file:///C:/Users/<user>/ai-native-engine-phase16/experiments/godot-harness/controller/blind-benchmark.mjs:623:7
 
 Node.js v24.22.0
 Γ£ö the case definitions are well formed and distinct (2.0138ms)

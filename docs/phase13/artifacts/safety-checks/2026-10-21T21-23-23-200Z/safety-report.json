@@ -1,7 +1,7 @@
 {
   "operation": "phase13_safety_checks",
   "ok": true,
-  "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase13\\docs\\phase13\\artifacts\\safety-checks\\2026-10-21T21-23-23-200Z",
+  "output_dir": "C:\\Users\\<user>\\ai-native-engine-phase13\\docs\\phase13\\artifacts\\safety-checks\\2026-10-21T21-23-23-200Z",
   "generated_at": "2026-10-21T21:24:59.677Z",
   "godot": "4.7.2-stable (official)",
   "checks": [

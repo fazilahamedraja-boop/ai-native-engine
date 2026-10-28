@@ -4,8 +4,8 @@
   "url": "http://127.0.0.1:8790/",
   "server": {
     "command": "node controller/voxel-web.mjs --no-export --port 8790",
-    "cwd": "C:\\Users\\hacke\\ai-native-engine-phase19\\experiments\\godot-harness",
-    "root": "C:\\Users\\hacke\\ai-native-engine-phase19\\experiments\\godot-harness\\voxel\\build\\web",
+    "cwd": "C:\\Users\\<user>\\ai-native-engine-phase19\\experiments\\godot-harness",
+    "root": "C:\\Users\\<user>\\ai-native-engine-phase19\\experiments\\godot-harness\\voxel\\build\\web",
     "pid": 17336,
     "bind": "127.0.0.1",
     "note": "voxel-web.mjs also performs the export when run without --no-export, so the URL is reproducible with one command."

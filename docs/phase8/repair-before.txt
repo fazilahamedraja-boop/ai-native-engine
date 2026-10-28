@@ -13,7 +13,7 @@
 test at tests\repair.test.mjs:7:1
 ✖ repair fixture: forward movement and the escape route (1523.9988ms)
   AssertionError [ERR_ASSERTION]: forward input moved z to 5.99999666213989, expected approximately -6
-      at TestContext.<anonymous> (file:///C:/Users/hacke/ai-native-engine-phase8/experiments/godot-harness/tests/repair.test.mjs:16:12)
+      at TestContext.<anonymous> (file:///C:/Users/<user>/ai-native-engine-phase8/experiments/godot-harness/tests/repair.test.mjs:16:12)
       at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
       at async Test.run (node:internal/test_runner/test:1409:7)
       at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {

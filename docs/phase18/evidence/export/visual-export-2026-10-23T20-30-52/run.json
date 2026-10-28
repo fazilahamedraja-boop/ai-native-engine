@@ -12,7 +12,7 @@
     "bytes": 76140,
     "sha256": "f2fc27551493b652cd5dff78735682ccab1ce3a1b8dfb3432973af8c43bea6eb"
   },
-  "baseline_dir": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\baseline\\2026-10-23T02-56-46",
+  "baseline_dir": "C:\\Users\\<user>\\ai-native-engine-phase18\\docs\\phase18\\evidence\\baseline\\2026-10-23T02-56-46",
   "bridge_port": 50135,
   "pid": 2792,
   "windowed": true,
@@ -71,9 +71,9 @@
   ],
   "visual_acceptance": {
     "exit_code": 1,
-    "stdout": "{\"passed\": false, \"checks\": 46, \"out\": \"C:\\\\Users\\\\hacke\\\\ai-native-engine-phase18\\\\docs\\\\phase18\\\\evidence\\\\export\\\\visual-export-2026-10-23T20-30-52\\\\visual-acceptance.json\"}\r\n",
+    "stdout": "{\"passed\": false, \"checks\": 46, \"out\": \"C:\\\\Users\\\\<user>\\\\ai-native-engine-phase18\\\\docs\\\\phase18\\\\evidence\\\\export\\\\visual-export-2026-10-23T20-30-52\\\\visual-acceptance.json\"}\r\n",
     "stderr": "",
-    "path": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\export\\visual-export-2026-10-23T20-30-52\\visual-acceptance.json",
+    "path": "C:\\Users\\<user>\\ai-native-engine-phase18\\docs\\phase18\\evidence\\export\\visual-export-2026-10-23T20-30-52\\visual-acceptance.json",
     "passed": false,
     "checks": 46,
     "failed_checks": [

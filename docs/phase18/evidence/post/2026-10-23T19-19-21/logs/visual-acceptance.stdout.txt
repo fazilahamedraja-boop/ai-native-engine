@@ -1,1 +1,1 @@
-{"passed": true, "checks": 39, "out": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\post\\2026-10-23T19-19-21\\visual-acceptance.json"}
+{"passed": true, "checks": 39, "out": "C:\\Users\\<user>\\ai-native-engine-phase18\\docs\\phase18\\evidence\\post\\2026-10-23T19-19-21\\visual-acceptance.json"}

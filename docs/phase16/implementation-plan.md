@@ -26,7 +26,7 @@ reader can reproduce it and see where reality differed from the plan.
 | Phase 7–15 worktrees | all present |
 | Regression before changes | 65/65 pass, 94.5 s |
 
-Phase 16 worktree: `C:\Users\hacke\ai-native-engine-phase16` on
+Phase 16 worktree: `C:\Users\<user>\ai-native-engine-phase16` on
 `experiment/phase16-game`, created from `47e9127`.
 
 ## 2. Asset and project inspection (Stage A)

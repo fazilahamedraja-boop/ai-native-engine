@@ -1,6 +1,6 @@
 # Phase 12B — Verification Report
 
-**Worktree:** `C:\Users\hacke\ai-native-engine-phase12-verify`
+**Worktree:** `C:\Users\<user>\ai-native-engine-phase12-verify`
 **Branch:** `experiment/phase12-verify` (baseline `9f35683`, the Phase 12 commit)
 **Godot:** `4.7.2-stable (official)`
 **Date:** 2026-10-22

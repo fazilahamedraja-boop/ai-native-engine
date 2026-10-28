@@ -1,7 +1,7 @@
 # Phase 14 blind diagnosis
 
 Evidence-only analysis. No file under
-`C:\Users\hacke\AppData\Local\Temp\phase14-blind-observation-e6DJQT\project`
+`C:\Users\<user>\AppData\Local\Temp\phase14-blind-observation-e6DJQT\project`
 was opened before this file was written.
 
 ## Failure
@@ -117,7 +117,7 @@ footprint z ∈ [-2.2, 0.0] and still ended with `plate=false`.
 ## Proposed correction
 
 Change **one line** in
-`C:\Users\hacke\AppData\Local\Temp\phase14-blind-observation-e6DJQT\project\scripts\observation_world.gd`
+`C:\Users\<user>\AppData\Local\Temp\phase14-blind-observation-e6DJQT\project\scripts\observation_world.gd`
 so the already-correctly-configured Plate `Area3D` actually latches
 `plate_pressed = true` when the Player's body enters it.
 

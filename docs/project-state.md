@@ -252,7 +252,7 @@ Create and verify a full-history bundle outside the repository:
 
 ```powershell
 $stamp = Get-Date -Format 'yyyy-MM-dd_HHmmss'
-$dir = "C:\Users\hacke\Backups\ai-native-engine\$stamp"
+$dir = "C:\Users\<user>\Backups\ai-native-engine\$stamp"
 New-Item -ItemType Directory -Force -Path $dir | Out-Null
 git bundle create "$dir\ai-native-engine.bundle" --all
 git bundle verify "$dir\ai-native-engine.bundle"

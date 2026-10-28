@@ -3,7 +3,7 @@
 ## Outcome
 
 Phase 18 is complete in the isolated worktree
-`C:\Users\hacke\ai-native-engine-phase18` on `experiment/phase18-visual`,
+`C:\Users\<user>\ai-native-engine-phase18` on `experiment/phase18-visual`,
 based on Phase 17 commit `0ce8d6f`. No merge, push, reset, or history rewrite
 was performed. Phase 19 was not started.
 
@@ -274,7 +274,7 @@ game and export checks cover those.
 
 ## Safety and isolation
 
-- Worktree: `C:\Users\hacke\ai-native-engine-phase18`; branch
+- Worktree: `C:\Users\<user>\ai-native-engine-phase18`; branch
   `experiment/phase18-visual`; base `0ce8d6f`.
 - The main checkout remains separate; no merge, push, reset, or Phase 8-17
   evidence rewrite was performed.
@@ -323,7 +323,7 @@ game and export checks cover those.
 
 ## Reproduction
 
-From `C:\Users\hacke\ai-native-engine-phase18\experiments\godot-harness`:
+From `C:\Users\<user>\ai-native-engine-phase18\experiments\godot-harness`:
 
 ```powershell
 npm run test:game

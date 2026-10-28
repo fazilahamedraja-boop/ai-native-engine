@@ -3,7 +3,7 @@
   "ok": true,
   "run_id": "stage-c-80ab61ff-55d4-4c55-92c0-008b39819b28-timeline",
   "scenario": "approach the pressure plate for ninety fixed physics ticks",
-  "project": "C:\\Users\\hacke\\ai-native-engine-phase10\\experiments\\godot-harness\\fixtures\\observation",
+  "project": "C:\\Users\\<user>\\ai-native-engine-phase10\\experiments\\godot-harness\\fixtures\\observation",
   "headless": false,
   "started_at": "2026-10-21T14:44:34.219Z",
   "finished_at": "2026-10-21T14:44:35.877Z",

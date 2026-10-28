@@ -12,7 +12,7 @@
     "bytes": 76140,
     "sha256": "f2fc27551493b652cd5dff78735682ccab1ce3a1b8dfb3432973af8c43bea6eb"
   },
-  "baseline_dir": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\baseline\\2026-10-23T02-56-46",
+  "baseline_dir": "C:\\Users\\<user>\\ai-native-engine-phase18\\docs\\phase18\\evidence\\baseline\\2026-10-23T02-56-46",
   "bridge_port": 50086,
   "pid": 22624,
   "windowed": true,
@@ -36,7 +36,7 @@
     {
       "name": "exported-visual-probe-completed",
       "ok": false,
-      "detail": "Error: window capture failed: process 22624 has no visible deflect game window\r\nAt C:\\Users\\hacke\\ai-native-engine-phase18\\experiments\\godot-harness\\controller\\capture-window.ps1:87 char:9\r\n+         throw \"process $ProcessId has no visible deflect game window\"\r\n+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : OperationStopped: (process 22624 h...ect game window:String) [], RuntimeException\r\n    + FullyQualifiedErrorId : process 22624 has no visible deflect game window\r\n \r\n\n    at captureWindow (file:///C:/Users/hacke/ai-native-engine-phase18/experiments/godot-harness/controller/phase18-export-visual.mjs:146:11)\n    at capture (file:///C:/Users/hacke/ai-native-engine-phase18/experiments/godot-harness/controller/phase18-export-visual.mjs:159:16)\n    at async main (file:///C:/Users/hacke/ai-native-engine-phase18/experiments/godot-harness/controller/phase18-export-visual.mjs:254:19)"
+      "detail": "Error: window capture failed: process 22624 has no visible deflect game window\r\nAt C:\\Users\\<user>\\ai-native-engine-phase18\\experiments\\godot-harness\\controller\\capture-window.ps1:87 char:9\r\n+         throw \"process $ProcessId has no visible deflect game window\"\r\n+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : OperationStopped: (process 22624 h...ect game window:String) [], RuntimeException\r\n    + FullyQualifiedErrorId : process 22624 has no visible deflect game window\r\n \r\n\n    at captureWindow (file:///C:/Users/<user>/ai-native-engine-phase18/experiments/godot-harness/controller/phase18-export-visual.mjs:146:11)\n    at capture (file:///C:/Users/<user>/ai-native-engine-phase18/experiments/godot-harness/controller/phase18-export-visual.mjs:159:16)\n    at async main (file:///C:/Users/<user>/ai-native-engine-phase18/experiments/godot-harness/controller/phase18-export-visual.mjs:254:19)"
     }
   ],
   "visual_acceptance": {
@@ -48,7 +48,7 @@
     "checks": 0,
     "failed_checks": []
   },
-  "failure": "Error: window capture failed: process 22624 has no visible deflect game window\r\nAt C:\\Users\\hacke\\ai-native-engine-phase18\\experiments\\godot-harness\\controller\\capture-window.ps1:87 char:9\r\n+         throw \"process $ProcessId has no visible deflect game window\"\r\n+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : OperationStopped: (process 22624 h...ect game window:String) [], RuntimeException\r\n    + FullyQualifiedErrorId : process 22624 has no visible deflect game window\r\n \r\n\n    at captureWindow (file:///C:/Users/hacke/ai-native-engine-phase18/experiments/godot-harness/controller/phase18-export-visual.mjs:146:11)\n    at capture (file:///C:/Users/hacke/ai-native-engine-phase18/experiments/godot-harness/controller/phase18-export-visual.mjs:159:16)\n    at async main (file:///C:/Users/hacke/ai-native-engine-phase18/experiments/godot-harness/controller/phase18-export-visual.mjs:254:19)",
+  "failure": "Error: window capture failed: process 22624 has no visible deflect game window\r\nAt C:\\Users\\<user>\\ai-native-engine-phase18\\experiments\\godot-harness\\controller\\capture-window.ps1:87 char:9\r\n+         throw \"process $ProcessId has no visible deflect game window\"\r\n+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : OperationStopped: (process 22624 h...ect game window:String) [], RuntimeException\r\n    + FullyQualifiedErrorId : process 22624 has no visible deflect game window\r\n \r\n\n    at captureWindow (file:///C:/Users/<user>/ai-native-engine-phase18/experiments/godot-harness/controller/phase18-export-visual.mjs:146:11)\n    at capture (file:///C:/Users/<user>/ai-native-engine-phase18/experiments/godot-harness/controller/phase18-export-visual.mjs:159:16)\n    at async main (file:///C:/Users/<user>/ai-native-engine-phase18/experiments/godot-harness/controller/phase18-export-visual.mjs:254:19)",
   "stdout_lines": 3,
   "stderr_lines": 0
 }

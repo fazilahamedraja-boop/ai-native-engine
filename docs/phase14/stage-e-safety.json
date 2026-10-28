@@ -109,75 +109,75 @@
     "detail": [
       {
         "run": "crate-contact-not-published-run1",
-        "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase14\\docs\\phase14\\runs\\crate-contact-not-published-run1",
+        "output_dir": "C:\\Users\\<user>\\ai-native-engine-phase14\\docs\\phase14\\runs\\crate-contact-not-published-run1",
         "output_inside_repo": true,
         "output_under_phase14": true,
         "output_unique": true,
         "fixture_isolated_outside_repo": true,
-        "fixture_base_unique": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-2pqKfw"
+        "fixture_base_unique": "C:\\Users\\<user>\\AppData\\Local\\Temp\\phase14-blind-observation-2pqKfw"
       },
       {
         "run": "crate-contact-not-published-run2",
-        "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase14\\docs\\phase14\\runs\\crate-contact-not-published-run2",
+        "output_dir": "C:\\Users\\<user>\\ai-native-engine-phase14\\docs\\phase14\\runs\\crate-contact-not-published-run2",
         "output_inside_repo": true,
         "output_under_phase14": true,
         "output_unique": true,
         "fixture_isolated_outside_repo": true,
-        "fixture_base_unique": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-r7O6Jl"
+        "fixture_base_unique": "C:\\Users\\<user>\\AppData\\Local\\Temp\\phase14-blind-observation-r7O6Jl"
       },
       {
         "run": "crate-does-not-fall-run1",
-        "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase14\\docs\\phase14\\runs\\crate-does-not-fall-run1",
+        "output_dir": "C:\\Users\\<user>\\ai-native-engine-phase14\\docs\\phase14\\runs\\crate-does-not-fall-run1",
         "output_inside_repo": true,
         "output_under_phase14": true,
         "output_unique": true,
         "fixture_isolated_outside_repo": true,
-        "fixture_base_unique": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-hIfmfE"
+        "fixture_base_unique": "C:\\Users\\<user>\\AppData\\Local\\Temp\\phase14-blind-observation-hIfmfE"
       },
       {
         "run": "crate-does-not-fall-run2",
-        "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase14\\docs\\phase14\\runs\\crate-does-not-fall-run2",
+        "output_dir": "C:\\Users\\<user>\\ai-native-engine-phase14\\docs\\phase14\\runs\\crate-does-not-fall-run2",
         "output_inside_repo": true,
         "output_under_phase14": true,
         "output_unique": true,
         "fixture_isolated_outside_repo": true,
-        "fixture_base_unique": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-CB8URR"
+        "fixture_base_unique": "C:\\Users\\<user>\\AppData\\Local\\Temp\\phase14-blind-observation-CB8URR"
       },
       {
         "run": "door-does-not-swing-run1",
-        "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase14\\docs\\phase14\\runs\\door-does-not-swing-run1",
+        "output_dir": "C:\\Users\\<user>\\ai-native-engine-phase14\\docs\\phase14\\runs\\door-does-not-swing-run1",
         "output_inside_repo": true,
         "output_under_phase14": true,
         "output_unique": true,
         "fixture_isolated_outside_repo": true,
-        "fixture_base_unique": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-door-5DvxJk"
+        "fixture_base_unique": "C:\\Users\\<user>\\AppData\\Local\\Temp\\phase14-blind-door-5DvxJk"
       },
       {
         "run": "door-does-not-swing-run2",
-        "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase14\\docs\\phase14\\runs\\door-does-not-swing-run2",
+        "output_dir": "C:\\Users\\<user>\\ai-native-engine-phase14\\docs\\phase14\\runs\\door-does-not-swing-run2",
         "output_inside_repo": true,
         "output_under_phase14": true,
         "output_unique": true,
         "fixture_isolated_outside_repo": true,
-        "fixture_base_unique": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-door-i8HfAl"
+        "fixture_base_unique": "C:\\Users\\<user>\\AppData\\Local\\Temp\\phase14-blind-door-i8HfAl"
       },
       {
         "run": "plate-never-registers-run1",
-        "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase14\\docs\\phase14\\runs\\plate-never-registers-run1",
+        "output_dir": "C:\\Users\\<user>\\ai-native-engine-phase14\\docs\\phase14\\runs\\plate-never-registers-run1",
         "output_inside_repo": true,
         "output_under_phase14": true,
         "output_unique": true,
         "fixture_isolated_outside_repo": true,
-        "fixture_base_unique": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-e6DJQT"
+        "fixture_base_unique": "C:\\Users\\<user>\\AppData\\Local\\Temp\\phase14-blind-observation-e6DJQT"
       },
       {
         "run": "plate-never-registers-run2",
-        "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase14\\docs\\phase14\\runs\\plate-never-registers-run2",
+        "output_dir": "C:\\Users\\<user>\\ai-native-engine-phase14\\docs\\phase14\\runs\\plate-never-registers-run2",
         "output_inside_repo": true,
         "output_under_phase14": true,
         "output_unique": true,
         "fixture_isolated_outside_repo": true,
-        "fixture_base_unique": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-FITHxd"
+        "fixture_base_unique": "C:\\Users\\<user>\\AppData\\Local\\Temp\\phase14-blind-observation-FITHxd"
       }
     ]
   },

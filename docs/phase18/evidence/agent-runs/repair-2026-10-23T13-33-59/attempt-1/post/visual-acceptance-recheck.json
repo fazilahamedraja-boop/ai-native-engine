@@ -1,6 +1,6 @@
 {
   "schema": "phase18.visual-acceptance.v1",
-  "run_dir": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\agent-runs\\repair-2026-10-23T13-33-59\\attempt-1\\post",
+  "run_dir": "C:\\Users\\<user>\\ai-native-engine-phase18\\docs\\phase18\\evidence\\agent-runs\\repair-2026-10-23T13-33-59\\attempt-1\\post",
   "criteria": {
     "ground_band": {
       "half_width": 170,

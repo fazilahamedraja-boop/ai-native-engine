@@ -4,10 +4,10 @@
   "source_fixture": "observation",
   "test_script": "res://tests/run_observation.gd",
   "bridge_replaced": null,
-  "fixture_dir": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-FITHxd\\project",
-  "fixture_base": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-FITHxd",
+  "fixture_dir": "C:\\Users\\<user>\\AppData\\Local\\Temp\\phase14-blind-observation-FITHxd\\project",
+  "fixture_base": "C:\\Users\\<user>\\AppData\\Local\\Temp\\phase14-blind-observation-FITHxd",
   "injected_file_relative": "scripts/observation_world.gd",
-  "injected_file": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-FITHxd\\project\\scripts\\observation_world.gd",
+  "injected_file": "C:\\Users\\<user>\\AppData\\Local\\Temp\\phase14-blind-observation-FITHxd\\project\\scripts\\observation_world.gd",
   "injected_file_sha256": "a99a7f45eeffd7c47c7cd4edcfa2886ffef51bec01f8d4f2ba2857e18084dc60",
   "pristine_file_sha256": "669bb0b24c9a07914c951f971f575ae5ae46c2af992b82bd5bb5b52897abd7ab",
   "source_modified_at_prepare": 1792678264320.4539,
@@ -25,5 +25,5 @@
     "observation-plate-opens-gate",
     "observation-gate-passable-after-plate"
   ],
-  "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase14\\docs\\phase14\\runs\\plate-never-registers-run2"
+  "output_dir": "C:\\Users\\<user>\\ai-native-engine-phase14\\docs\\phase14\\runs\\plate-never-registers-run2"
 }

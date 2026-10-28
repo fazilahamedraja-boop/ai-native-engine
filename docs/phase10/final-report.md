@@ -21,7 +21,7 @@ repair, or character intelligence.
 
 ## Baseline and branch
 
-- Worktree: `C:\Users\hacke\ai-native-engine-phase10`
+- Worktree: `C:\Users\<user>\ai-native-engine-phase10`
 - Branch: `experiment/phase10-observation`
 - Baseline: `edff0ef` (`docs: correct phase 9 report timing table`)
 - Godot: `4.7.2.stable.official.ed1daf0bf`

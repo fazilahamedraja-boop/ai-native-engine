@@ -15,7 +15,7 @@
       "scenario": "control: enemy idle at attack distance; AI frozen",
       "image": {
         "path": "idle.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\agent-runs\\repair-2026-10-23T13-33-59\\attempt-1\\post\\idle.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase18\\docs\\phase18\\evidence\\agent-runs\\repair-2026-10-23T13-33-59\\attempt-1\\post\\idle.png",
         "bytes": 67886,
         "sha256": "9feaf1dd3b12556d5f8886a57e0e471abac73d5fd923a2871fbe9d9ef190390f",
         "width": 1280,
@@ -172,7 +172,7 @@
       "scenario": "enemy windup: early warning window",
       "image": {
         "path": "windup-early.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\agent-runs\\repair-2026-10-23T13-33-59\\attempt-1\\post\\windup-early.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase18\\docs\\phase18\\evidence\\agent-runs\\repair-2026-10-23T13-33-59\\attempt-1\\post\\windup-early.png",
         "bytes": 71546,
         "sha256": "b0d3d5d47c3e8e1d28435b49514f0821e22a3473e2b24f9d80894f4e7358170d",
         "width": 1280,
@@ -336,7 +336,7 @@
       "scenario": "enemy windup: middle warning window",
       "image": {
         "path": "windup-mid.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\agent-runs\\repair-2026-10-23T13-33-59\\attempt-1\\post\\windup-mid.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase18\\docs\\phase18\\evidence\\agent-runs\\repair-2026-10-23T13-33-59\\attempt-1\\post\\windup-mid.png",
         "bytes": 71707,
         "sha256": "b82fec573bc1f1796764b0a1d7ee18a91004ef2db1cc241f78c5433d6752e017",
         "width": 1280,
@@ -500,7 +500,7 @@
       "scenario": "enemy windup: late warning window",
       "image": {
         "path": "windup-late.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\agent-runs\\repair-2026-10-23T13-33-59\\attempt-1\\post\\windup-late.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase18\\docs\\phase18\\evidence\\agent-runs\\repair-2026-10-23T13-33-59\\attempt-1\\post\\windup-late.png",
         "bytes": 71975,
         "sha256": "9225385a848f01c105e1f4c8601fd466795fc164c3d1c87e7dead8ef6dfb4213",
         "width": 1280,
@@ -664,7 +664,7 @@
       "scenario": "enemy attack active window",
       "image": {
         "path": "active.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\agent-runs\\repair-2026-10-23T13-33-59\\attempt-1\\post\\active.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase18\\docs\\phase18\\evidence\\agent-runs\\repair-2026-10-23T13-33-59\\attempt-1\\post\\active.png",
         "bytes": 74051,
         "sha256": "49722f11b01a0ff722ad8e161af67b8780f7f001c5d0f116cc7a39552e99116c",
         "width": 1280,
@@ -841,7 +841,7 @@
       "scenario": "enemy recovery: warning should be gone",
       "image": {
         "path": "recovery.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\agent-runs\\repair-2026-10-23T13-33-59\\attempt-1\\post\\recovery.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase18\\docs\\phase18\\evidence\\agent-runs\\repair-2026-10-23T13-33-59\\attempt-1\\post\\recovery.png",
         "bytes": 70280,
         "sha256": "945015cd548ec09d58e8a8ede42c8662f84d17527269701f0a214861328b305e",
         "width": 1280,
@@ -1018,7 +1018,7 @@
       "scenario": "restart: clean playable state",
       "image": {
         "path": "restart.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\agent-runs\\repair-2026-10-23T13-33-59\\attempt-1\\post\\restart.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase18\\docs\\phase18\\evidence\\agent-runs\\repair-2026-10-23T13-33-59\\attempt-1\\post\\restart.png",
         "bytes": 68616,
         "sha256": "59b289cebc3ab9d01382b42e0d49de1de68d751feae97763bff0238f2f9f36dd",
         "width": 1280,

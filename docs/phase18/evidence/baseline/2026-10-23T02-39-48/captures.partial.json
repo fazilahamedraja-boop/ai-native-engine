@@ -15,7 +15,7 @@
       "scenario": "control: enemy idle at attack distance; AI frozen",
       "image": {
         "path": "idle.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\baseline\\2026-10-23T02-39-48\\idle.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase18\\docs\\phase18\\evidence\\baseline\\2026-10-23T02-39-48\\idle.png",
         "bytes": 67886,
         "sha256": "9feaf1dd3b12556d5f8886a57e0e471abac73d5fd923a2871fbe9d9ef190390f",
         "width": 1280,
@@ -172,7 +172,7 @@
       "scenario": "enemy windup: early warning window",
       "image": {
         "path": "windup-early.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\baseline\\2026-10-23T02-39-48\\windup-early.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase18\\docs\\phase18\\evidence\\baseline\\2026-10-23T02-39-48\\windup-early.png",
         "bytes": 71461,
         "sha256": "761a6fc6cf3bac0122c4ddbafa5bac8a8cbd6c57ce422718f49f0e40fe5f2a7b",
         "width": 1280,
@@ -336,7 +336,7 @@
       "scenario": "enemy windup: late warning window",
       "image": {
         "path": "windup-late.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\baseline\\2026-10-23T02-39-48\\windup-late.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase18\\docs\\phase18\\evidence\\baseline\\2026-10-23T02-39-48\\windup-late.png",
         "bytes": 71702,
         "sha256": "7c8fb7e8fd25a6542d683b5e6ef032536ef17806f1790bea602bb9a839a1137e",
         "width": 1280,
@@ -500,7 +500,7 @@
       "scenario": "enemy attack active window",
       "image": {
         "path": "active.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\baseline\\2026-10-23T02-39-48\\active.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase18\\docs\\phase18\\evidence\\baseline\\2026-10-23T02-39-48\\active.png",
         "bytes": 74113,
         "sha256": "26229885567acfaa46e36b38a1e301add2b188a764f0d72d9169eab1e662aed5",
         "width": 1280,
@@ -677,7 +677,7 @@
       "scenario": "enemy recovery: warning should be gone",
       "image": {
         "path": "recovery.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\baseline\\2026-10-23T02-39-48\\recovery.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase18\\docs\\phase18\\evidence\\baseline\\2026-10-23T02-39-48\\recovery.png",
         "bytes": 70280,
         "sha256": "945015cd548ec09d58e8a8ede42c8662f84d17527269701f0a214861328b305e",
         "width": 1280,
@@ -854,7 +854,7 @@
       "scenario": "restart: clean playable state",
       "image": {
         "path": "restart.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\baseline\\2026-10-23T02-39-48\\restart.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase18\\docs\\phase18\\evidence\\baseline\\2026-10-23T02-39-48\\restart.png",
         "bytes": 68616,
         "sha256": "59b289cebc3ab9d01382b42e0d49de1de68d751feae97763bff0238f2f9f36dd",
         "width": 1280,

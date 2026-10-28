@@ -1,6 +1,6 @@
 # Phase 14 repair record — door-does-not-swing-run2
 
-Fixture: `C:\Users\hacke\AppData\Local\Temp\phase14-blind-door-i8HfAl\project`
+Fixture: `C:\Users\<user>\AppData\Local\Temp\phase14-blind-door-i8HfAl\project`
 Diagnosis: `docs/phase14/runs/door-does-not-swing-run2/diagnosis.md` (written
 before any fixture source was opened — see "Ordering" below).
 
@@ -64,8 +64,8 @@ retains its original 7:08:31 PM mtime, including the oracle
 Same command in both runs (from the task file):
 
 ```powershell
-cd C:\Users\hacke\ai-native-engine-phase14\experiments\godot-harness
-node controller/harness.mjs test --project "C:\Users\hacke\AppData\Local\Temp\phase14-blind-door-i8HfAl\project" --script res://tests/run_door.gd --json --allow-outside-root
+cd C:\Users\<user>\ai-native-engine-phase14\experiments\godot-harness
+node controller/harness.mjs test --project "C:\Users\<user>\AppData\Local\Temp\phase14-blind-door-i8HfAl\project" --script res://tests/run_door.gd --json --allow-outside-root
 ```
 
 **Before the repair** (`evidence/test-output.txt`):

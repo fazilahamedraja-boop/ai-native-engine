@@ -23,7 +23,7 @@ branch has not been merged or pushed.
 
 ## Where it is
 
-- Worktree: `C:\Users\hacke\ai-native-engine-phase16`
+- Worktree: `C:\Users\<user>\ai-native-engine-phase16`
 - Branch: `experiment/phase16-game`, based on Phase 15 `47e9127`
 - Game: `experiments/godot-harness/game/`
 - Acceptance suite: `game/tests/run_game_tests.gd`

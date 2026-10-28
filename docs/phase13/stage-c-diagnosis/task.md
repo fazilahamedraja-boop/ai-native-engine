@@ -18,11 +18,11 @@ Your job:
 
 Only the evidence files in this directory:
 
-- `C:\Users\hacke\ai-native-engine-phase13\docs\phase13\stage-c-diagnosis/evidence/test-output.txt` - the failing acceptance test output
-- `C:\Users\hacke\ai-native-engine-phase13\docs\phase13\stage-c-diagnosis/evidence/observation.json` - structured runtime state and events
-- `C:\Users\hacke\ai-native-engine-phase13\docs\phase13\stage-c-diagnosis/evidence/physics-queries.json` - physics-space query results
-- `C:\Users\hacke\ai-native-engine-phase13\docs\phase13\stage-c-diagnosis/evidence/frame-on-plate.png` - a fresh screenshot of the running game
-- `C:\Users\hacke\ai-native-engine-phase13\docs\phase13\stage-c-diagnosis/evidence/state.json` - the fixture snapshot at that moment
+- `C:\Users\<user>\ai-native-engine-phase13\docs\phase13\stage-c-diagnosis/evidence/test-output.txt` - the failing acceptance test output
+- `C:\Users\<user>\ai-native-engine-phase13\docs\phase13\stage-c-diagnosis/evidence/observation.json` - structured runtime state and events
+- `C:\Users\<user>\ai-native-engine-phase13\docs\phase13\stage-c-diagnosis/evidence/physics-queries.json` - physics-space query results
+- `C:\Users\<user>\ai-native-engine-phase13\docs\phase13\stage-c-diagnosis/evidence/frame-on-plate.png` - a fresh screenshot of the running game
+- `C:\Users\<user>\ai-native-engine-phase13\docs\phase13\stage-c-diagnosis/evidence/state.json` - the fixture snapshot at that moment
 
 ## What you must not read before diagnosing
 
@@ -31,7 +31,7 @@ contains the defect. **Do not open it until you have written your diagnosis.**
 
 Write your evidence-only diagnosis to:
 
-- `C:\Users\hacke\ai-native-engine-phase13\docs\phase13\stage-c-diagnosis/diagnosis.md`
+- `C:\Users\<user>\ai-native-engine-phase13\docs\phase13\stage-c-diagnosis/diagnosis.md`
 
 That file must start with the H1 title "# Phase 13 diagnosis" and must contain:
 
@@ -47,7 +47,7 @@ defect, apply the fix, and re-run the test.
 ## Commands
 
 ```powershell
-cd C:\Users\hacke\ai-native-engine-phase13\experiments\godot-harness
+cd C:\Users\<user>\ai-native-engine-phase13\experiments\godot-harness
 node controller/harness.mjs test --project fixtures/phase13-defect --script res://tests/run_observation.gd --json
 ```
 

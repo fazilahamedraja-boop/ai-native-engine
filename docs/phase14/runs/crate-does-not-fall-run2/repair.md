@@ -1,6 +1,6 @@
 # Phase 14 repair record — `crate-does-not-fall-run2`
 
-Fixture: `C:\Users\hacke\AppData\Local\Temp\phase14-blind-observation-CB8URR\project`
+Fixture: `C:\Users\<user>\AppData\Local\Temp\phase14-blind-observation-CB8URR\project`
 File changed: `scripts/observation_world.gd` (the only file that differs from the
 pristine observation fixture, per the task file).
 Oracle `res://tests/run_observation.gd`: **not modified** (mtime unchanged at
@@ -60,8 +60,8 @@ the other seven files under the fixture still carry their original mtimes
 Same command both times (the one given in the task file):
 
 ```powershell
-cd C:\Users\hacke\ai-native-engine-phase14\experiments\godot-harness
-node controller/harness.mjs test --project "C:\Users\hacke\AppData\Local\Temp\phase14-blind-observation-CB8URR\project" --script res://tests/run_observation.gd --json --allow-outside-root
+cd C:\Users\<user>\ai-native-engine-phase14\experiments\godot-harness
+node controller/harness.mjs test --project "C:\Users\<user>\AppData\Local\Temp\phase14-blind-observation-CB8URR\project" --script res://tests/run_observation.gd --json --allow-outside-root
 ```
 
 ### Before the repair (baseline re-run by me, identical to `evidence/test-output.txt`)

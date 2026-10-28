@@ -185,7 +185,7 @@ file — and it is handled by instruction, not by sandboxing.
 ## 9. Reproduction
 
 ```powershell
-cd C:\Users\hacke\ai-native-engine-phase14\experiments\godot-harness
+cd C:\Users\<user>\ai-native-engine-phase14\experiments\godot-harness
 
 node controller/blind-benchmark.mjs list
 node controller/blind-benchmark.mjs prepare --case <case> --out-dir <dir>

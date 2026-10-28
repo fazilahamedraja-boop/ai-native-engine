@@ -7,7 +7,7 @@
   ],
   "environment": {
     "opencode_version": "2.0.32",
-    "opencode_bin": "C:\\Users\\hacke\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+    "opencode_bin": "C:\\Users\\<user>\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
     "godot_version": "4.7.2-stable (official)",
     "node": "see npm test output"
   },

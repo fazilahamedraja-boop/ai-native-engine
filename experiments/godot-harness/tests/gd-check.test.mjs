@@ -58,22 +58,22 @@ test('a frame without Content-Length is rejected instead of desynchronising the 
 
 test('uriKey folds percent-encoded and plain drive letters to the same key', () => {
   assert.equal(
-    uriKey('file:///C%3A/Users/hacke/project/voxel/scripts/voxel_data.gd'),
-    uriKey('file:///C:/Users/hacke/project/voxel/scripts/voxel_data.gd'),
+    uriKey('file:///C%3A/Users/<user>/project/voxel/scripts/voxel_data.gd'),
+    uriKey('file:///C:/Users/<user>/project/voxel/scripts/voxel_data.gd'),
   )
 })
 
 test('uriKey ignores case and separators', () => {
   assert.equal(
-    uriKey('file:///c%3a/Users/HACKE/Project/A.gd'),
-    uriKey('C:\\users\\hacke\\project\\a.gd'),
+    uriKey('file:///c%3a/Users/<USER>/Project/A.gd'),
+    uriKey('C:\\users\\<user>\\project\\a.gd'),
   )
 })
 
 test('decodeUriPath keeps the original case and normalises separators', () => {
   assert.equal(
-    decodeUriPath('file:///C%3A/Users/Hacke/Voxel/Scripts/A.gd'),
-    'C:/Users/Hacke/Voxel/Scripts/A.gd',
+    decodeUriPath('file:///C%3A/Users/<User>/Voxel/Scripts/A.gd'),
+    'C:/Users/<User>/Voxel/Scripts/A.gd',
   )
 })
 

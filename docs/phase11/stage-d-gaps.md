@@ -3,7 +3,7 @@
 Status: **complete**. This document closes Phase 11. It states what is now proven, what is still
 missing, and it recommends exactly one next engineering task — it does not implement it.
 
-- Worktree: `C:\Users\hacke\ai-native-engine-phase11` (branch `experiment/phase11-audit`, base `e72ba64`)
+- Worktree: `C:\Users\<user>\ai-native-engine-phase11` (branch `experiment/phase11-audit`, base `e72ba64`)
 - Dashboard: <http://127.0.0.1:8111/phase11/> (static, served from `docs/`)
 - Stage documents: [`stage-a-capabilities.md`](stage-a-capabilities.md) ·
   [`stage-b-character.md`](stage-b-character.md) ·
@@ -183,7 +183,7 @@ anything that writes to the scene.
 ## 7. Reproduce Phase 11
 
 ```powershell
-cd C:\Users\hacke\ai-native-engine-phase11\experiments\godot-harness
+cd C:\Users\<user>\ai-native-engine-phase11\experiments\godot-harness
 
 node controller/capability-audit.mjs                       # Stage A
 node controller/character-inspection.mjs                    # Stage B (windowed captures)

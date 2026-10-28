@@ -4,11 +4,11 @@
   "started_at": "2026-10-23T08:03:59.549Z",
   "finished_at": "2026-10-23T08:26:21.099Z",
   "model": "opencode/nemotron-3.5-super-vl-free",
-  "baseline_dir": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\baseline\\2026-10-23T02-56-46",
-  "diagnosis_dir": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\diagnosis\\diagnosis-2026-10-23T02-50-41",
+  "baseline_dir": "C:\\Users\\<user>\\ai-native-engine-phase18\\docs\\phase18\\evidence\\baseline\\2026-10-23T02-56-46",
+  "diagnosis_dir": "C:\\Users\\<user>\\ai-native-engine-phase18\\docs\\phase18\\evidence\\diagnosis\\diagnosis-2026-10-23T02-50-41",
   "diagnosis_sha256": "7232b50fd0584fece70e5909e89a3f131700313fae4a09885f07c2450a2bf2c5",
-  "source": "C:\\Users\\hacke\\ai-native-engine-phase18\\experiments\\godot-harness\\game",
-  "worktree": "C:\\Users\\hacke\\ai-native-engine-phase18",
+  "source": "C:\\Users\\<user>\\ai-native-engine-phase18\\experiments\\godot-harness\\game",
+  "worktree": "C:\\Users\\<user>\\ai-native-engine-phase18",
   "model_access_order": {
     "diagnosis_first": true,
     "diagnosis_completed_at": "2026-10-22T21:23:21.328Z",
@@ -16,7 +16,7 @@
     "note": "Source was copied into the implementation sandbox only after the diagnosis run finished."
   },
   "policy": {
-    "config": "C:/Users/hacke/ai-native-engine-phase18/experiments/godot-harness/controller/agent-sandbox/opencode.json",
+    "config": "C:/Users/<user>/ai-native-engine-phase18/experiments/godot-harness/controller/agent-sandbox/opencode.json",
     "config_sha256": "3bbdf761bd665be0a857fa912c0e5b16a0fbcaa5266f97b5ddbb0ba7bf879690",
     "tests_copied": false,
     "harness_changes_allowed": false,
@@ -54,7 +54,7 @@
       "visual": {
         "exit_code": 1,
         "signal": null,
-        "stdout": "{\"run_id\":\"phase18-agent-1-2026-10-23T08-09-34-183Z\",\"out_dir\":\"C:\\\\Users\\\\hacke\\\\ai-native-engine-phase18\\\\docs\\\\phase18\\\\evidence\\\\agent-runs\\\\repair-2026-10-23T13-33-59\\\\attempt-1\\\\post\",\"status\":\"failed\",\"capture_count\":7,\"visual_acceptance\":{\"passed\":false,\"checks\":39,\"failed_checks\":[\"framed-states-match-baseline\"],\"exit_code\":1,\"path\":\"visual-acceptance.json\",\"sha256\":\"af7cc6c011ddff2ae0087d1a9c749209c7f0b42d3462bbe3d80e223b00b9ba05\"},\"failure\":null}\n",
+        "stdout": "{\"run_id\":\"phase18-agent-1-2026-10-23T08-09-34-183Z\",\"out_dir\":\"C:\\\\Users\\\\<user>\\\\ai-native-engine-phase18\\\\docs\\\\phase18\\\\evidence\\\\agent-runs\\\\repair-2026-10-23T13-33-59\\\\attempt-1\\\\post\",\"status\":\"failed\",\"capture_count\":7,\"visual_acceptance\":{\"passed\":false,\"checks\":39,\"failed_checks\":[\"framed-states-match-baseline\"],\"exit_code\":1,\"path\":\"visual-acceptance.json\",\"sha256\":\"af7cc6c011ddff2ae0087d1a9c749209c7f0b42d3462bbe3d80e223b00b9ba05\"},\"failure\":null}\n",
         "stderr": "",
         "ok": false,
         "run_status": "failed",
@@ -166,7 +166,7 @@
     "visual": {
       "exit_code": 1,
       "signal": null,
-      "stdout": "{\"run_id\":\"phase18-agent-1-2026-10-23T08-09-34-183Z\",\"out_dir\":\"C:\\\\Users\\\\hacke\\\\ai-native-engine-phase18\\\\docs\\\\phase18\\\\evidence\\\\agent-runs\\\\repair-2026-10-23T13-33-59\\\\attempt-1\\\\post\",\"status\":\"failed\",\"capture_count\":7,\"visual_acceptance\":{\"passed\":false,\"checks\":39,\"failed_checks\":[\"framed-states-match-baseline\"],\"exit_code\":1,\"path\":\"visual-acceptance.json\",\"sha256\":\"af7cc6c011ddff2ae0087d1a9c749209c7f0b42d3462bbe3d80e223b00b9ba05\"},\"failure\":null}\n",
+      "stdout": "{\"run_id\":\"phase18-agent-1-2026-10-23T08-09-34-183Z\",\"out_dir\":\"C:\\\\Users\\\\<user>\\\\ai-native-engine-phase18\\\\docs\\\\phase18\\\\evidence\\\\agent-runs\\\\repair-2026-10-23T13-33-59\\\\attempt-1\\\\post\",\"status\":\"failed\",\"capture_count\":7,\"visual_acceptance\":{\"passed\":false,\"checks\":39,\"failed_checks\":[\"framed-states-match-baseline\"],\"exit_code\":1,\"path\":\"visual-acceptance.json\",\"sha256\":\"af7cc6c011ddff2ae0087d1a9c749209c7f0b42d3462bbe3d80e223b00b9ba05\"},\"failure\":null}\n",
       "stderr": "",
       "ok": false,
       "run_status": "failed",
@@ -297,12 +297,12 @@
   },
   "failure_reason": "agent exited with code 1",
   "seed": {
-    "scripts": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\agent-runs\\implementation-2026-10-23T13-17-46\\attempt-1\\source\\scripts",
+    "scripts": "C:\\Users\\<user>\\ai-native-engine-phase18\\docs\\phase18\\evidence\\agent-runs\\implementation-2026-10-23T13-17-46\\attempt-1\\source\\scripts",
     "scripts_mode": "overlaid on canonical source",
-    "failure": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\agent-runs\\implementation-2026-10-23T13-17-46\\seed-failure.md"
+    "failure": "C:\\Users\\<user>\\ai-native-engine-phase18\\docs\\phase18\\evidence\\agent-runs\\implementation-2026-10-23T13-17-46\\seed-failure.md"
   },
   "opencode": {
-    "bin": "C:\\Users\\hacke\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe"
+    "bin": "C:\\Users\\<user>\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe"
   },
   "cleanup": {
     "keep_sandbox": false

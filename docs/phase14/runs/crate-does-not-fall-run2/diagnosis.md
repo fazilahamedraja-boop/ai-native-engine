@@ -1,6 +1,6 @@
 # Phase 14 blind diagnosis
 
-Fixture: `C:\Users\hacke\AppData\Local\Temp\phase14-blind-observation-CB8URR\project`
+Fixture: `C:\Users\<user>\AppData\Local\Temp\phase14-blind-observation-CB8URR\project`
 Case under investigation: `observation-crate-falls` (acceptance suite, oracle
 `res://tests/run_observation.gd`, unmodified).
 

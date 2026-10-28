@@ -1,6 +1,6 @@
 {
   "operation": "run_tests",
-  "project": "C:\\Users\\hacke\\ai-native-engine-phase11\\experiments\\godot-harness\\fixtures\\.stage-c-41SXWJ\\project",
+  "project": "C:\\Users\\<user>\\ai-native-engine-phase11\\experiments\\godot-harness\\fixtures\\.stage-c-41SXWJ\\project",
   "script": "res://tests/run_combat.gd",
   "exitCode": 0,
   "signal": null,

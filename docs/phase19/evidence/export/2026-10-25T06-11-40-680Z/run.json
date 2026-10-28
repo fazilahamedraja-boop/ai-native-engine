@@ -2,7 +2,7 @@
   "schema": "phase19.voxel-export-verify.v1",
   "phase": 19,
   "exported_at": "2026-10-25T06:11:47.350Z",
-  "exe": "C:\\Users\\hacke\\ai-native-engine-phase19\\experiments\\godot-harness\\voxel\\build\\voxel-sandbox.exe",
+  "exe": "C:\\Users\\<user>\\ai-native-engine-phase19\\experiments\\godot-harness\\voxel\\build\\voxel-sandbox.exe",
   "exe_name": "voxel-sandbox.exe",
   "exe_bytes": 109235296,
   "exe_sha256": "1ade5406fb14049b6c077f751cf4eba1bf8237014030fcbc05c7d7f77ba652bb",
@@ -81,7 +81,7 @@
     {
       "name": "packaged-window-capture",
       "ok": true,
-      "detail": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\export\\2026-10-25T06-11-40-680Z\\packaged-window.png"
+      "detail": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\export\\2026-10-25T06-11-40-680Z\\packaged-window.png"
     }
   ],
   "passed": 12,
@@ -90,9 +90,9 @@
     "ok": true,
     "status": 0,
     "attempts": 3,
-    "stdout": "CAPTURED 1280x720 322349 C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\export\\2026-10-25T06-11-40-680Z\\packaged-window.png",
+    "stdout": "CAPTURED 1280x720 322349 C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\export\\2026-10-25T06-11-40-680Z\\packaged-window.png",
     "stderr": "",
-    "file": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\export\\2026-10-25T06-11-40-680Z\\packaged-window.png",
+    "file": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\export\\2026-10-25T06-11-40-680Z\\packaged-window.png",
     "sha256": "35cf3d6eb639359a7b289f8d062ec794ce94ebe03c67bd0ebd1e5b264be32e7b"
   },
   "gameplay": {

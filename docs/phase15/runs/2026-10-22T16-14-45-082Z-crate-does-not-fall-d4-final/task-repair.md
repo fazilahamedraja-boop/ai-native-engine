@@ -20,4 +20,4 @@ You cannot run Godot yourself, so reason carefully from the source and the
 evidence you already have.
 
 Acceptance script that must pass afterwards: `res://tests/run_observation.gd`
-Sandbox directory: C:\Users\hacke\AppData\Local\Temp\phase15-agent-C330fS\sandbox
+Sandbox directory: C:\Users\<user>\AppData\Local\Temp\phase15-agent-C330fS\sandbox

@@ -1,7 +1,7 @@
 # Phase 15 - final report: connecting a real coding agent to the harness
 
 Date: 2026-10-22
-Worktree: `C:\Users\hacke\ai-native-engine-phase15`
+Worktree: `C:\Users\<user>\ai-native-engine-phase15`
 Branch: `experiment/phase15-agent-adapter`
 Baseline: `c867288` (Phase 14 complete)
 

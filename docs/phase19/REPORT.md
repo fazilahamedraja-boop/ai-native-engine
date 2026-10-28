@@ -3,7 +3,7 @@
 ## Outcome
 
 Phase 19 is complete in the isolated worktree
-`C:\Users\hacke\ai-native-engine-phase19` on `experiment/phase19-voxel`, based
+`C:\Users\<user>\ai-native-engine-phase19` on `experiment/phase19-voxel`, based
 exactly on Phase 18 commit `1095fc43`. Nothing was merged, pushed, reset,
 cleaned, or force-pushed. Phase 20 was not started.
 
@@ -332,7 +332,7 @@ nice. Findings, and what was done about each:
 
 | Gap | Finding | Action |
 | --- | --- | --- |
-| GDScript lint and format | No linter was installed, so style was never machine-checked | Installed `gdtoolkit` 4.5.0 (`gdlint`, `gdformat`) and added `C:\Users\hacke\AppData\Roaming\Python\Python312\Scripts` to the user PATH |
+| GDScript lint and format | No linter was installed, so style was never machine-checked | Installed `gdtoolkit` 4.5.0 (`gdlint`, `gdformat`) and added `C:\Users\<user>\AppData\Roaming\Python\Python312\Scripts` to the user PATH |
 | Lint baseline | First real run: **52 problems** with default rules | Documented as the baseline; not "fixed" (see below) |
 | Playable artifact | The 109 MB Windows exe cannot be opened in a browser | Added the Web preset plus `controller/voxel-web.mjs`; URL verified |
 | Video capture | `ffmpeg` 9.0.2 was already installed but unused by the phase | Used it for the clip; `gdigrab` and `ddagrab` both work |
@@ -383,7 +383,7 @@ the crop or with `analyze`/`diff`, not from one OCR pass.
 
 ## Safety and isolation
 
-- All Phase 19 work is in `C:\Users\hacke\ai-native-engine-phase19` on
+- All Phase 19 work is in `C:\Users\<user>\ai-native-engine-phase19` on
   `experiment/phase19-voxel`; working branch HEAD is based on `1095fc43`.
 - `docs/phase8` through `docs/phase18` are byte-unchanged (`git diff` and
   `git status` show no modifications or additions).
@@ -445,7 +445,7 @@ the crop or with `analyze`/`diff`, not from one OCR pass.
 
 ## Reproduction
 
-From `C:\Users\hacke\ai-native-engine-phase19\experiments\godot-harness`:
+From `C:\Users\<user>\ai-native-engine-phase19\experiments\godot-harness`:
 
 ```powershell
 # Refresh the global class cache after adding class_name scripts.

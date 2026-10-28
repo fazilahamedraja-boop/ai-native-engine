@@ -15,7 +15,7 @@
     },
     "screenshot": {
       "path": "frames/frame-000.png",
-      "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase13\\docs\\phase13\\stage-a-live-observation\\frames\\frame-000.png",
+      "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase13\\docs\\phase13\\stage-a-live-observation\\frames\\frame-000.png",
       "bytes": 54926,
       "sha256": "7d2ec22c9dc008dc041faf9cd9cc99c28aaeedc98bd42207c36056864a13ce57",
       "width": 1280,
@@ -85,7 +85,7 @@
     },
     "screenshot": {
       "path": "frames/frame-001.png",
-      "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase13\\docs\\phase13\\stage-a-live-observation\\frames\\frame-001.png",
+      "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase13\\docs\\phase13\\stage-a-live-observation\\frames\\frame-001.png",
       "bytes": 57998,
       "sha256": "0dd312e939d248b6c07506847d099db2315cdd5733e6ffb9549a35212ff1b608",
       "width": 1280,
@@ -156,7 +156,7 @@
     },
     "screenshot": {
       "path": "frames/frame-002.png",
-      "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase13\\docs\\phase13\\stage-a-live-observation\\frames\\frame-002.png",
+      "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase13\\docs\\phase13\\stage-a-live-observation\\frames\\frame-002.png",
       "bytes": 64007,
       "sha256": "cc1bb5542dd3530d98b3884b78dbbcb81856e51705b4065f3f97b18d22f58f60",
       "width": 1280,
@@ -229,7 +229,7 @@
     },
     "screenshot": {
       "path": "frames/frame-003.png",
-      "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase13\\docs\\phase13\\stage-a-live-observation\\frames\\frame-003.png",
+      "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase13\\docs\\phase13\\stage-a-live-observation\\frames\\frame-003.png",
       "bytes": 71301,
       "sha256": "e6d9911108dc343428189c76412ec902ed64b79fb4aa81d5d2b251827fb9209a",
       "width": 1280,

@@ -24,7 +24,7 @@
         "sim_time_seconds": 2,
         "paused": true,
         "screenshot": {
-          "absolute_path": "C:/Users/hacke/ai-native-engine-phase10/experiments/godot-harness/fixtures/door/artifacts/stage-b-locked.png",
+          "absolute_path": "C:/Users/<user>/ai-native-engine-phase10/experiments/godot-harness/fixtures/door/artifacts/stage-b-locked.png",
           "bytes": 49708,
           "headless": false,
           "height": 720,
@@ -93,7 +93,7 @@
         "sim_time_seconds": 3.0166666666666666,
         "paused": true,
         "screenshot": {
-          "absolute_path": "C:/Users/hacke/ai-native-engine-phase10/experiments/godot-harness/fixtures/door/artifacts/stage-b-key.png",
+          "absolute_path": "C:/Users/<user>/ai-native-engine-phase10/experiments/godot-harness/fixtures/door/artifacts/stage-b-key.png",
           "bytes": 43404,
           "headless": false,
           "height": 720,
@@ -162,7 +162,7 @@
         "sim_time_seconds": 5.5,
         "paused": true,
         "screenshot": {
-          "absolute_path": "C:/Users/hacke/ai-native-engine-phase10/experiments/godot-harness/fixtures/door/artifacts/stage-b-open.png",
+          "absolute_path": "C:/Users/<user>/ai-native-engine-phase10/experiments/godot-harness/fixtures/door/artifacts/stage-b-open.png",
           "bytes": 45370,
           "headless": false,
           "height": 720,
@@ -719,7 +719,7 @@
     "path": "stage-b-approach.mp4",
     "bytes": 34008,
     "sha256": "bc3db4b4f2b301c3fd887f38f0dfa52462feaca7e6bf01c67858e0bf64482324",
-    "command": "ffmpeg -y -loglevel error -framerate 5 -start_number 0 -i C:\\Users\\hacke\\ai-native-engine-phase10\\docs\\phase10\\stage-b-frames\\stage-b-approach-%03d.png -c:v libx264 -pix_fmt yuv420p -movflags +faststart C:\\Users\\hacke\\ai-native-engine-phase10\\docs\\phase10\\stage-b-approach.mp4",
+    "command": "ffmpeg -y -loglevel error -framerate 5 -start_number 0 -i C:\\Users\\<user>\\ai-native-engine-phase10\\docs\\phase10\\stage-b-frames\\stage-b-approach-%03d.png -c:v libx264 -pix_fmt yuv420p -movflags +faststart C:\\Users\\<user>\\ai-native-engine-phase10\\docs\\phase10\\stage-b-approach.mp4",
     "note": "Offline encoding of sampled PNG frames at 5 fps; not a real-time capture and not used as live video understanding."
   },
   "stop": {

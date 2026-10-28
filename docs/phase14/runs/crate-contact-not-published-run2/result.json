@@ -1,8 +1,8 @@
 {
   "case_id": "crate-contact-not-published",
   "defect_class": "incorrect event and signal handling that suppresses a real contact",
-  "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase14\\docs\\phase14\\runs\\crate-contact-not-published-run2",
-  "fixture_dir": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-r7O6Jl\\project",
+  "output_dir": "C:\\Users\\<user>\\ai-native-engine-phase14\\docs\\phase14\\runs\\crate-contact-not-published-run2",
+  "fixture_dir": "C:\\Users\\<user>\\AppData\\Local\\Temp\\phase14-blind-observation-r7O6Jl\\project",
   "before": {
     "test_ok": false,
     "test_summary": {

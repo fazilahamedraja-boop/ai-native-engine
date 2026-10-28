@@ -46,7 +46,7 @@ edited, and no merge, reset, rebase, tag, or push was performed.
 - The Phase 7 worktree is clean; the sentry fixture was copied from Phase 7
   commit `ebbb21d`.
 - The verified bundle still exists at
-  `C:\Users\hacke\Backups\ai-native-engine\2026-10-20_155955\ai-native-engine.bundle`
+  `C:\Users\<user>\Backups\ai-native-engine\2026-10-20_155955\ai-native-engine.bundle`
   (1,242,757 bytes, timestamp unchanged).
 - No engine source, addon, or new third-party dependency was introduced.
 
@@ -198,7 +198,7 @@ Run from `experiments/godot-harness` unless noted.
 | clean-copy `npm run test:logic` | **7/7 passed**, exit 0 |
 
 The clean copy was created under
-`C:\Users\hacke\AppData\Local\Temp\opencode\phase8-clean-copy`, excluding Git
+`C:\Users\<user>\AppData\Local\Temp\opencode\phase8-clean-copy`, excluding Git
 metadata, `.godot`, `node_modules`, and generated artifacts. This verifies the
 harness does not depend on the Phase 8 worktree's generated state.
 

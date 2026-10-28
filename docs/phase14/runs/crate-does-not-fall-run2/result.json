@@ -1,8 +1,8 @@
 {
   "case_id": "crate-does-not-fall",
   "defect_class": "incorrect physics configuration that leaves one body inert",
-  "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase14\\docs\\phase14\\runs\\crate-does-not-fall-run2",
-  "fixture_dir": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-CB8URR\\project",
+  "output_dir": "C:\\Users\\<user>\\ai-native-engine-phase14\\docs\\phase14\\runs\\crate-does-not-fall-run2",
+  "fixture_dir": "C:\\Users\\<user>\\AppData\\Local\\Temp\\phase14-blind-observation-CB8URR\\project",
   "before": {
     "test_ok": false,
     "test_summary": {

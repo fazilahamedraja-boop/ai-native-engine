@@ -2,14 +2,14 @@
   "schema": "phase18.defect-diagnosis.v1",
   "healthy_run": "phase18-baseline-2026-10-22T21-26-46-923Z",
   "defect_run": "phase18-visual-2026-10-23T13-55-41-752Z",
-  "healthy_dir": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\baseline\\2026-10-23T02-56-46",
-  "defect_dir": "C:\\Users\\hacke\\ai-native-engine-phase18\\docs\\phase18\\evidence\\defect\\before\\2026-10-23T19-25-41",
+  "healthy_dir": "C:\\Users\\<user>\\ai-native-engine-phase18\\docs\\phase18\\evidence\\baseline\\2026-10-23T02-56-46",
+  "defect_dir": "C:\\Users\\<user>\\ai-native-engine-phase18\\docs\\phase18\\evidence\\defect\\before\\2026-10-23T19-25-41",
   "status": "passed",
   "started_at": "2026-10-23T14:15:04.214Z",
   "finished_at": "2026-10-23T14:15:04.217Z",
   "model": "opencode/deepseek-v4.1-flash-free",
   "opencode": {
-    "bin": "C:\\Users\\hacke\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+    "bin": "C:\\Users\\<user>\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
     "version": "opencode v2.0.32",
     "exit_code": 0,
     "timed_out": false,
@@ -87,7 +87,7 @@
       ]
     },
     "config": {
-      "path": "C:/Users/hacke/ai-native-engine-phase18/experiments/godot-harness/controller/agent-sandbox/opencode.json",
+      "path": "C:/Users/<user>/ai-native-engine-phase18/experiments/godot-harness/controller/agent-sandbox/opencode.json",
       "sha256": "3bbdf761bd665be0a857fa912c0e5b16a0fbcaa5266f97b5ddbb0ba7bf879690",
       "denies": [
         "shell",

@@ -103,7 +103,7 @@
     0
   ],
   "save": {
-    "absolute_path": "C:/Users/hacke/AppData/Roaming/Godot/app_userdata/voxel-sandbox/phase19-observation.json",
+    "absolute_path": "C:/Users/<user>/AppData/Roaming/Godot/app_userdata/voxel-sandbox/phase19-observation.json",
     "exists": true,
     "last_status": {
       "code": "LOADED",

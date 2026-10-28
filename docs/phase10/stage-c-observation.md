@@ -108,7 +108,7 @@ provide one.
 ## Evidence
 
 Evidence directory:
-`C:\Users\hacke\ai-native-engine-phase10\docs\phase10\stage-c\`
+`C:\Users\<user>\ai-native-engine-phase10\docs\phase10\stage-c\`
 
 Final run:
 

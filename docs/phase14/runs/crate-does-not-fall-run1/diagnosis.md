@@ -1,6 +1,6 @@
 # Phase 14 blind diagnosis
 
-Fixture: `C:\Users\hacke\AppData\Local\Temp\phase14-blind-observation-hIfmfE\project`
+Fixture: `C:\Users\<user>\AppData\Local\Temp\phase14-blind-observation-hIfmfE\project`
 Evidence only: `evidence/test-output.txt`, `evidence/observation.json`,
 `evidence/physics-queries.json`, `evidence/state.json`, `evidence/before.png`.
 No file under the fixture directory has been opened while writing this.

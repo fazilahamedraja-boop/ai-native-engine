@@ -11,7 +11,7 @@
     "bytes": 1932
   },
   "agent": {
-    "bin": "C:\\Users\\hacke\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+    "bin": "C:\\Users\\<user>\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
     "version": "opencode v2.0.32",
     "version_exit_code": 0,
     "standalone": true,

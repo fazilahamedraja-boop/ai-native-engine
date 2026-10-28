@@ -7,7 +7,7 @@
   "session": {
     "headless": false,
     "pid": 17012,
-    "project_path": "C:\\Users\\hacke\\ai-native-engine-phase16\\experiments\\godot-harness\\game"
+    "project_path": "C:\\Users\\<user>\\ai-native-engine-phase16\\experiments\\godot-harness\\game"
   },
   "captures": [
     {
@@ -15,7 +15,7 @@
       "scenario": "spawn: player and enemy at start",
       "screenshot": {
         "path": "01-spawn.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-18-57-609Z\\01-spawn.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-18-57-609Z\\01-spawn.png",
         "bytes": 59164,
         "sha256": "bd26b4088529c9def27e4c53ef12dd3eb241675ff0b4918ee06cd707fafc18a0",
         "width": 1280,
@@ -83,7 +83,7 @@
       "scenario": "approach: player closes distance",
       "screenshot": {
         "path": "02-approach.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-18-57-609Z\\02-approach.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-18-57-609Z\\02-approach.png",
         "bytes": 63938,
         "sha256": "bcf33126d76eafb8e36bdb15598cfb1014e5cf8e54962bd3eb93ca8bdd4a1ef5",
         "width": 1280,
@@ -159,7 +159,7 @@
       "scenario": "enemy windup: blade raised, HUD warning",
       "screenshot": {
         "path": "03-telegraph.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-18-57-609Z\\03-telegraph.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-18-57-609Z\\03-telegraph.png",
         "bytes": 64268,
         "sha256": "4eda21af3b42bc358dd36953a2cb52bf58e2c31e59d83a0947e72f77eefb8a8c",
         "width": 1280,
@@ -235,7 +235,7 @@
       "scenario": "deflection window: blade raised",
       "screenshot": {
         "path": "04-parry-window.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-18-57-609Z\\04-parry-window.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-18-57-609Z\\04-parry-window.png",
         "bytes": 64554,
         "sha256": "5b09914cefb736e3a1377ed53e50ee79a0475f2dcf4b80faa8e0581e71734ffe",
         "width": 1280,
@@ -318,7 +318,7 @@
       "scenario": "successful deflection: posture damage",
       "screenshot": {
         "path": "05-deflect.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-18-57-609Z\\05-deflect.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-18-57-609Z\\05-deflect.png",
         "bytes": 66183,
         "sha256": "3a3373359b90e2367e081aa69e9f58218bb9100c62613cbda9c97b4dcecc20bc",
         "width": 1280,
@@ -417,7 +417,7 @@
       "scenario": "victory: enemy defeated",
       "screenshot": {
         "path": "06-victory.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-18-57-609Z\\06-victory.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-18-57-609Z\\06-victory.png",
         "bytes": 71883,
         "sha256": "57fd31de7f42f0b6102c37b7a6517cdf04cde1e58ea7e84427f0ddddd26b99f9",
         "width": 1280,
@@ -712,7 +712,7 @@
       "scenario": "restart: initial state restored",
       "screenshot": {
         "path": "07-restart.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-18-57-609Z\\07-restart.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-18-57-609Z\\07-restart.png",
         "bytes": 59164,
         "sha256": "bd26b4088529c9def27e4c53ef12dd3eb241675ff0b4918ee06cd707fafc18a0",
         "width": 1280,
@@ -780,7 +780,7 @@
       "scenario": "defeat: player health reaches zero",
       "screenshot": {
         "path": "08-defeat.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-18-57-609Z\\08-defeat.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-18-57-609Z\\08-defeat.png",
         "bytes": 74464,
         "sha256": "e63065d66a7a67f8926a2af96eb71104d04f4629cc6d575f7b7a07dc55fe3a45",
         "width": 1280,
@@ -938,7 +938,7 @@
       "scenario": "restart after defeat",
       "screenshot": {
         "path": "09-final-restart.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-18-57-609Z\\09-final-restart.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase16\\docs\\phase16\\evidence\\live\\phase16-live-2026-10-22T17-18-57-609Z\\09-final-restart.png",
         "bytes": 59164,
         "sha256": "bd26b4088529c9def27e4c53ef12dd3eb241675ff0b4918ee06cd707fafc18a0",
         "width": 1280,

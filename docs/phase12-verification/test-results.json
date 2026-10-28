@@ -2,7 +2,7 @@
   "operation": "phase12b_verification",
   "generated_at": "2026-10-22T01:22:33",
   "godot": "4.7.2-stable (official)",
-  "worktree": "C:\\Users\\hacke\\ai-native-engine-phase12-verify",
+  "worktree": "C:\\Users\\<user>\\ai-native-engine-phase12-verify",
   "branch": "experiment/phase12-verify",
   "baseline_commit": "9f35683",
   "stages": {

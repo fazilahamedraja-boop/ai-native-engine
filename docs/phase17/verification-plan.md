@@ -8,7 +8,7 @@ agent only edits the disposable game copy.
 
 | Item | Value |
 | --- | --- |
-| Worktree | `C:\Users\hacke\ai-native-engine-phase17` |
+| Worktree | `C:\Users\<user>\ai-native-engine-phase17` |
 | Branch | `experiment/phase17-dodge` |
 | Base | Phase 16 `90fba1c` on `experiment/phase16-game` |
 | Historical evidence | Phase 8-16 files are not edited |

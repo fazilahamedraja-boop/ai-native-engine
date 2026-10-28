@@ -9,7 +9,7 @@ the panel. The `_open()` path set the hinge rotation to zero, so
 
 ## The exact line changed
 
-File: `C:\Users\hacke\AppData\Local\Temp\phase14-blind-door-5DvxJk\project\scripts\door.gd`
+File: `C:\Users\<user>\AppData\Local\Temp\phase14-blind-door-5DvxJk\project\scripts\door.gd`
 Function: `_open()` - line 93.
 
 Before:
@@ -78,8 +78,8 @@ func _open() -> void:
 Same command both times, exactly as specified in `task.md`:
 
 ```powershell
-cd C:\Users\hacke\ai-native-engine-phase14\experiments\godot-harness
-node controller/harness.mjs test --project "C:\Users\hacke\AppData\Local\Temp\phase14-blind-door-5DvxJk\project" --script res://tests/run_door.gd --json --allow-outside-root
+cd C:\Users\<user>\ai-native-engine-phase14\experiments\godot-harness
+node controller/harness.mjs test --project "C:\Users\<user>\AppData\Local\Temp\phase14-blind-door-5DvxJk\project" --script res://tests/run_door.gd --json --allow-outside-root
 ```
 
 Before the repair (recorded evidence, `evidence/test-output.txt`):

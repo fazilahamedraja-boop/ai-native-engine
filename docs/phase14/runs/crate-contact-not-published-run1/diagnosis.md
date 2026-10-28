@@ -1,6 +1,6 @@
 # Phase 14 blind diagnosis
 
-Fixture: `C:\Users\hacke\AppData\Local\Temp\phase14-blind-observation-2pqKfw\project`
+Fixture: `C:\Users\<user>\AppData\Local\Temp\phase14-blind-observation-2pqKfw\project`
 Engine: `Godot Engine v4.7.2.stable.official.ed1daf0bf`
 Run: `crate-contact-not-published-run1`
 Derived from evidence only: `evidence/test-output.txt`, `evidence/observation.json`,

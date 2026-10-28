@@ -2,7 +2,7 @@
   "schema": "phase19.voxel-export-verify.v1",
   "phase": 19,
   "exported_at": "2026-10-25T06:09:14.890Z",
-  "exe": "C:\\Users\\hacke\\ai-native-engine-phase19\\experiments\\godot-harness\\voxel\\build\\voxel-sandbox.exe",
+  "exe": "C:\\Users\\<user>\\ai-native-engine-phase19\\experiments\\godot-harness\\voxel\\build\\voxel-sandbox.exe",
   "exe_name": "voxel-sandbox.exe",
   "exe_bytes": 109235296,
   "exe_sha256": "1ade5406fb14049b6c077f751cf4eba1bf8237014030fcbc05c7d7f77ba652bb",
@@ -81,7 +81,7 @@
     {
       "name": "packaged-window-capture",
       "ok": false,
-      "detail": "process 25400 has no visible deflect game window\r\nAt C:\\Users\\hacke\\ai-native-engine-phase19\\experiments\\godot-harness\\controller\\capture-window.ps1:100 char:9\r\n+         throw \"process $ProcessId has no visible deflect game window\"\r\n+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : OperationStopped: (process 25400 h...ect game window:String) [], RuntimeException\r\n    + FullyQualifiedErrorId : process 25400 has no visible deflect game window"
+      "detail": "process 25400 has no visible deflect game window\r\nAt C:\\Users\\<user>\\ai-native-engine-phase19\\experiments\\godot-harness\\controller\\capture-window.ps1:100 char:9\r\n+         throw \"process $ProcessId has no visible deflect game window\"\r\n+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : OperationStopped: (process 25400 h...ect game window:String) [], RuntimeException\r\n    + FullyQualifiedErrorId : process 25400 has no visible deflect game window"
     }
   ],
   "passed": 11,
@@ -90,7 +90,7 @@
     "ok": false,
     "status": 1,
     "stdout": "",
-    "stderr": "process 25400 has no visible deflect game window\r\nAt C:\\Users\\hacke\\ai-native-engine-phase19\\experiments\\godot-harness\\controller\\capture-window.ps1:100 char:9\r\n+         throw \"process $ProcessId has no visible deflect game window\"\r\n+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : OperationStopped: (process 25400 h...ect game window:String) [], RuntimeException\r\n    + FullyQualifiedErrorId : process 25400 has no visible deflect game window",
+    "stderr": "process 25400 has no visible deflect game window\r\nAt C:\\Users\\<user>\\ai-native-engine-phase19\\experiments\\godot-harness\\controller\\capture-window.ps1:100 char:9\r\n+         throw \"process $ProcessId has no visible deflect game window\"\r\n+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : OperationStopped: (process 25400 h...ect game window:String) [], RuntimeException\r\n    + FullyQualifiedErrorId : process 25400 has no visible deflect game window",
     "file": null
   },
   "gameplay": {

@@ -4,7 +4,7 @@
 correlate visual frames with structured runtime evidence, issue controlled gameplay actions,
 inspect the results, and use that evidence to diagnose a reproducible defect.
 
-- Worktree: `C:\Users\hacke\ai-native-engine-phase13`
+- Worktree: `C:\Users\<user>\ai-native-engine-phase13`
 - Branch: `experiment/phase13-live-observation`
 - Baseline: `experiment/phase12-verify` at `5da4987` (Phase 12B verified) — **verified against the repository before starting**
 - Godot: `4.7.2-stable (official)`, Vulkan 1.3.215

@@ -5,13 +5,13 @@
   "headless": false,
   "started_at": "2026-10-25T05:51:52.310Z",
   "finished_at": "2026-10-25T05:51:59.496Z",
-  "out_dir": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z",
+  "out_dir": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z",
   "start": {
     "operation": "start_project",
     "ok": true,
     "pid": 15420,
     "port": 53341,
-    "project": "C:\\Users\\hacke\\ai-native-engine-phase19\\experiments\\godot-harness\\voxel",
+    "project": "C:\\Users\\<user>\\ai-native-engine-phase19\\experiments\\godot-harness\\voxel",
     "scene": null,
     "headless": false,
     "durationMs": 798,
@@ -104,7 +104,7 @@
       "duration_ms": 224,
       "image": {
         "path": "spawn.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\spawn.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\spawn.png",
         "bytes": 267099,
         "sha256": "c9900db02d256b025ae07844196c03987ffa05e92d721b5bdcf2c3d04b2e525e",
         "width": 1280,
@@ -112,7 +112,7 @@
       },
       "state_file": {
         "path": "state-spawn.json",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-spawn.json",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-spawn.json",
         "bytes": 2849,
         "sha256": "22a5706680ec9839ff678c50593a10fd20ee17eae194ff91431b41c578ea2ad5"
       },
@@ -128,7 +128,7 @@
       "duration_ms": 211,
       "image": {
         "path": "movement.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\movement.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\movement.png",
         "bytes": 247071,
         "sha256": "31f9f82d5f8e1dd074b2e6a40cd9bf76fadf6dfc20fbcf9512a96fb87caecdbc",
         "width": 1280,
@@ -136,7 +136,7 @@
       },
       "state_file": {
         "path": "state-movement.json",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-movement.json",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-movement.json",
         "bytes": 2929,
         "sha256": "bffc703774f09a1f12b72fdc85871e2af02c0265699880b464674b26d09185eb"
       },
@@ -153,7 +153,7 @@
       "duration_ms": 249,
       "image": {
         "path": "jump.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\jump.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\jump.png",
         "bytes": 310721,
         "sha256": "5424acc3899932325219c56a3403058a25e2507f04346e3330d9bb12dd242226",
         "width": 1280,
@@ -161,7 +161,7 @@
       },
       "state_file": {
         "path": "state-jump.json",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-jump.json",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-jump.json",
         "bytes": 2884,
         "sha256": "9ee25039cfc9d88e48faa2a086b28e9f1a5701a654168a8db0f113d95107a747"
       },
@@ -178,7 +178,7 @@
       "duration_ms": 264,
       "image": {
         "path": "targeting.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\targeting.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\targeting.png",
         "bytes": 320914,
         "sha256": "7719094ba1cb48d96a4e2047f58a858603222f6463f2b6cc53b41199cce2efbb",
         "width": 1280,
@@ -186,7 +186,7 @@
       },
       "state_file": {
         "path": "state-targeting.json",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-targeting.json",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-targeting.json",
         "bytes": 2864,
         "sha256": "8ca2c0355c5293505e2ddb3260eb73d9f9cf37b4e7d4720b1c745592265871c8"
       },
@@ -203,7 +203,7 @@
       "duration_ms": 278,
       "image": {
         "path": "mining.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\mining.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\mining.png",
         "bytes": 348061,
         "sha256": "eee586739b83b1c24d30f8dbda4243c395a7d6bba7ff62957c750e8535fef8c1",
         "width": 1280,
@@ -211,7 +211,7 @@
       },
       "state_file": {
         "path": "state-mining.json",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-mining.json",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-mining.json",
         "bytes": 2931,
         "sha256": "895598b583ecee252ddc9a029a0d2950de84aa22911d84765eb6252e806db37c"
       },
@@ -228,7 +228,7 @@
       "duration_ms": 199,
       "image": {
         "path": "placement.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\placement.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\placement.png",
         "bytes": 156864,
         "sha256": "4c83439976ec1bb4504519ad4fea874951ad5637cce260e42e26c8c4e81c1810",
         "width": 1280,
@@ -236,7 +236,7 @@
       },
       "state_file": {
         "path": "state-placement.json",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-placement.json",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-placement.json",
         "bytes": 3176,
         "sha256": "855ae7f8ea1f07653bcbefafda3d5c94ee38aa9fb8ef60b1d7ab0ad52b7eb397"
       },
@@ -253,7 +253,7 @@
       "duration_ms": 237,
       "image": {
         "path": "hotbar.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\hotbar.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\hotbar.png",
         "bytes": 263626,
         "sha256": "19a0841a9c5731dc2c47094c6b7d6961d286d670c34b9ead8a55bc760e2bd77c",
         "width": 1280,
@@ -261,7 +261,7 @@
       },
       "state_file": {
         "path": "state-hotbar.json",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-hotbar.json",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-hotbar.json",
         "bytes": 3039,
         "sha256": "72d75cb2551cda04a2e7579644830793bc8ea3ae0220d8c306fb36fb6e40cdc5"
       },
@@ -278,7 +278,7 @@
       "duration_ms": 224,
       "image": {
         "path": "save.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\save.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\save.png",
         "bytes": 250803,
         "sha256": "0a2cf834d87726318908cc0210b1b2bd88f2ae2efe604c4d877b2a86f6aa5870",
         "width": 1280,
@@ -286,7 +286,7 @@
       },
       "state_file": {
         "path": "state-save.json",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-save.json",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-save.json",
         "bytes": 3532,
         "sha256": "e61f3a6c8e6fd40cb1e34dff163fac6bd69b6986e4a33bea1c1b6467bf451c7c"
       },
@@ -916,7 +916,7 @@
     }
   ],
   "failure": {
-    "message": "TypeError: Cannot read properties of undefined (reading 'exists')\n    at main (file:///C:/Users/hacke/ai-native-engine-phase19/experiments/godot-harness/controller/voxel-observe.mjs:359:32)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)",
+    "message": "TypeError: Cannot read properties of undefined (reading 'exists')\n    at main (file:///C:/Users/<user>/ai-native-engine-phase19/experiments/godot-harness/controller/voxel-observe.mjs:359:32)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)",
     "checks": [
       {
         "name": "spawn-grounded",
@@ -978,7 +978,7 @@
         "duration_ms": 224,
         "image": {
           "path": "spawn.png",
-          "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\spawn.png",
+          "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\spawn.png",
           "bytes": 267099,
           "sha256": "c9900db02d256b025ae07844196c03987ffa05e92d721b5bdcf2c3d04b2e525e",
           "width": 1280,
@@ -986,7 +986,7 @@
         },
         "state_file": {
           "path": "state-spawn.json",
-          "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-spawn.json",
+          "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-spawn.json",
           "bytes": 2849,
           "sha256": "22a5706680ec9839ff678c50593a10fd20ee17eae194ff91431b41c578ea2ad5"
         },
@@ -1002,7 +1002,7 @@
         "duration_ms": 211,
         "image": {
           "path": "movement.png",
-          "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\movement.png",
+          "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\movement.png",
           "bytes": 247071,
           "sha256": "31f9f82d5f8e1dd074b2e6a40cd9bf76fadf6dfc20fbcf9512a96fb87caecdbc",
           "width": 1280,
@@ -1010,7 +1010,7 @@
         },
         "state_file": {
           "path": "state-movement.json",
-          "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-movement.json",
+          "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-movement.json",
           "bytes": 2929,
           "sha256": "bffc703774f09a1f12b72fdc85871e2af02c0265699880b464674b26d09185eb"
         },
@@ -1027,7 +1027,7 @@
         "duration_ms": 249,
         "image": {
           "path": "jump.png",
-          "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\jump.png",
+          "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\jump.png",
           "bytes": 310721,
           "sha256": "5424acc3899932325219c56a3403058a25e2507f04346e3330d9bb12dd242226",
           "width": 1280,
@@ -1035,7 +1035,7 @@
         },
         "state_file": {
           "path": "state-jump.json",
-          "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-jump.json",
+          "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-jump.json",
           "bytes": 2884,
           "sha256": "9ee25039cfc9d88e48faa2a086b28e9f1a5701a654168a8db0f113d95107a747"
         },
@@ -1052,7 +1052,7 @@
         "duration_ms": 264,
         "image": {
           "path": "targeting.png",
-          "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\targeting.png",
+          "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\targeting.png",
           "bytes": 320914,
           "sha256": "7719094ba1cb48d96a4e2047f58a858603222f6463f2b6cc53b41199cce2efbb",
           "width": 1280,
@@ -1060,7 +1060,7 @@
         },
         "state_file": {
           "path": "state-targeting.json",
-          "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-targeting.json",
+          "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-targeting.json",
           "bytes": 2864,
           "sha256": "8ca2c0355c5293505e2ddb3260eb73d9f9cf37b4e7d4720b1c745592265871c8"
         },
@@ -1077,7 +1077,7 @@
         "duration_ms": 278,
         "image": {
           "path": "mining.png",
-          "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\mining.png",
+          "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\mining.png",
           "bytes": 348061,
           "sha256": "eee586739b83b1c24d30f8dbda4243c395a7d6bba7ff62957c750e8535fef8c1",
           "width": 1280,
@@ -1085,7 +1085,7 @@
         },
         "state_file": {
           "path": "state-mining.json",
-          "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-mining.json",
+          "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-mining.json",
           "bytes": 2931,
           "sha256": "895598b583ecee252ddc9a029a0d2950de84aa22911d84765eb6252e806db37c"
         },
@@ -1102,7 +1102,7 @@
         "duration_ms": 199,
         "image": {
           "path": "placement.png",
-          "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\placement.png",
+          "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\placement.png",
           "bytes": 156864,
           "sha256": "4c83439976ec1bb4504519ad4fea874951ad5637cce260e42e26c8c4e81c1810",
           "width": 1280,
@@ -1110,7 +1110,7 @@
         },
         "state_file": {
           "path": "state-placement.json",
-          "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-placement.json",
+          "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-placement.json",
           "bytes": 3176,
           "sha256": "855ae7f8ea1f07653bcbefafda3d5c94ee38aa9fb8ef60b1d7ab0ad52b7eb397"
         },
@@ -1127,7 +1127,7 @@
         "duration_ms": 237,
         "image": {
           "path": "hotbar.png",
-          "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\hotbar.png",
+          "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\hotbar.png",
           "bytes": 263626,
           "sha256": "19a0841a9c5731dc2c47094c6b7d6961d286d670c34b9ead8a55bc760e2bd77c",
           "width": 1280,
@@ -1135,7 +1135,7 @@
         },
         "state_file": {
           "path": "state-hotbar.json",
-          "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-hotbar.json",
+          "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-hotbar.json",
           "bytes": 3039,
           "sha256": "72d75cb2551cda04a2e7579644830793bc8ea3ae0220d8c306fb36fb6e40cdc5"
         },
@@ -1152,7 +1152,7 @@
         "duration_ms": 224,
         "image": {
           "path": "save.png",
-          "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\save.png",
+          "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\save.png",
           "bytes": 250803,
           "sha256": "0a2cf834d87726318908cc0210b1b2bd88f2ae2efe604c4d877b2a86f6aa5870",
           "width": 1280,
@@ -1160,7 +1160,7 @@
         },
         "state_file": {
           "path": "state-save.json",
-          "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-save.json",
+          "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase19\\docs\\phase19\\evidence\\runtime\\2026-10-25T05-51-52-107Z\\state-save.json",
           "bytes": 3532,
           "sha256": "e61f3a6c8e6fd40cb1e34dff163fac6bd69b6986e4a33bea1c1b6467bf451c7c"
         },

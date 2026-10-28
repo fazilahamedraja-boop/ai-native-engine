@@ -24,7 +24,7 @@ agent was given healthy code. It was not.
 | Agent output, attempt 1 | `attempt-1/source/scripts/fighter_rig.gd` | `0369c3831f5bd3dce19b7e9d63df187ac4491bcd33544c8d23d820e6b0f4942a` |
 | Agent output, attempt 2 | `attempt-2/source/scripts/fighter_rig.gd` | `0369c3831f5bd3dce19b7e9d63df187ac4491bcd33544c8d23d820e6b0f4942a` |
 | Canonical worktree after run | `experiments/godot-harness/game/scripts/fighter_rig.gd` | `0369c3831f5bd3dce19b7e9d63df187ac4491bcd33544c8d23d820e6b0f4942a` |
-| Healthy code backup | `C:\Users\hacke\AppData\Local\Temp\opencode\phase18-defect\healthy-scripts\fighter_rig.gd` | `0369c3831f5bd3dce19b7e9d63df187ac4491bcd33544c8d23d820e6b0f4942a` |
+| Healthy code backup | `C:\Users\<user>\AppData\Local\Temp\opencode\phase18-defect\healthy-scripts\fighter_rig.gd` | `0369c3831f5bd3dce19b7e9d63df187ac4491bcd33544c8d23d820e6b0f4942a` |
 
 The other two scripts were identical in the defect input and healthy source:
 

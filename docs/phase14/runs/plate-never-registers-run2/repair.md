@@ -1,6 +1,6 @@
 # Phase 14 repair record — plate-never-registers-run2
 
-Fixture: `C:\Users\hacke\AppData\Local\Temp\phase14-blind-observation-FITHxd\project`
+Fixture: `C:\Users\<user>\AppData\Local\Temp\phase14-blind-observation-FITHxd\project`
 File changed: `scripts/observation_world.gd` (only file touched; nothing outside
 the fixture was modified).
 Diagnosis filed first: `docs/phase14/runs/plate-never-registers-run2/diagnosis.md`
@@ -71,10 +71,10 @@ Two independent confirmations that this is the intended one-line defect:
 ## Before / after test results
 
 Same command both times, from
-`C:\Users\hacke\ai-native-engine-phase14\experiments\godot-harness`:
+`C:\Users\<user>\ai-native-engine-phase14\experiments\godot-harness`:
 
 ```powershell
-node controller/harness.mjs test --project "C:\Users\hacke\AppData\Local\Temp\phase14-blind-observation-FITHxd\project" --script res://tests/run_observation.gd --json --allow-outside-root
+node controller/harness.mjs test --project "C:\Users\<user>\AppData\Local\Temp\phase14-blind-observation-FITHxd\project" --script res://tests/run_observation.gd --json --allow-outside-root
 ```
 
 ### Before — `RESULT passed=6 failed=2`

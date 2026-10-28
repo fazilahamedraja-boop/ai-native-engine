@@ -3,7 +3,7 @@
 **Mission:** make harness failures diagnosable, then measure whether an AI can repeatedly identify
 and repair controlled defects using evidence rather than guessing.
 
-- Worktree: `C:\Users\hacke\ai-native-engine-phase14`
+- Worktree: `C:\Users\<user>\ai-native-engine-phase14`
 - Branch: `experiment/phase14-reliable-diagnosis`
 - Baseline: `experiment/phase13-live-observation` at `c78619b` — **verified against the repository
   before starting** (all four reported Phase 13 commits present and in order)

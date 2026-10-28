@@ -18,22 +18,22 @@ Your job:
 
 Only the evidence files in this directory:
 
-- `C:\Users\hacke\ai-native-engine-phase14\docs\phase14\runs\door-does-not-swing-run2/evidence/test-output.txt` - the failing acceptance test output
-- `C:\Users\hacke\ai-native-engine-phase14\docs\phase14\runs\door-does-not-swing-run2/evidence/observation.json` - structured runtime state and events
-- `C:\Users\hacke\ai-native-engine-phase14\docs\phase14\runs\door-does-not-swing-run2/evidence/physics-queries.json` - physics-space query results
-- `C:\Users\hacke\ai-native-engine-phase14\docs\phase14\runs\door-does-not-swing-run2/evidence/state.json` - the fixture snapshot at that moment
-- `C:\Users\hacke\ai-native-engine-phase14\docs\phase14\runs\door-does-not-swing-run2/evidence/before.png` - a fresh screenshot of the running game
+- `C:\Users\<user>\ai-native-engine-phase14\docs\phase14\runs\door-does-not-swing-run2/evidence/test-output.txt` - the failing acceptance test output
+- `C:\Users\<user>\ai-native-engine-phase14\docs\phase14\runs\door-does-not-swing-run2/evidence/observation.json` - structured runtime state and events
+- `C:\Users\<user>\ai-native-engine-phase14\docs\phase14\runs\door-does-not-swing-run2/evidence/physics-queries.json` - physics-space query results
+- `C:\Users\<user>\ai-native-engine-phase14\docs\phase14\runs\door-does-not-swing-run2/evidence/state.json` - the fixture snapshot at that moment
+- `C:\Users\<user>\ai-native-engine-phase14\docs\phase14\runs\door-does-not-swing-run2/evidence/before.png` - a fresh screenshot of the running game
 
 ## What you must not read before diagnosing
 
-- The fixture source under `C:\Users\hacke\AppData\Local\Temp\phase14-blind-door-i8HfAl\project` contains the defect.
+- The fixture source under `C:\Users\<user>\AppData\Local\Temp\phase14-blind-door-i8HfAl\project` contains the defect.
   **Do not open it until you have written your diagnosis.**
 - `experiments/godot-harness/controller/blind-cases.mjs` is the answer key.
   **Do not open it at all.**
 
 Write your evidence-only diagnosis to:
 
-- `C:\Users\hacke\ai-native-engine-phase14\docs\phase14\runs\door-does-not-swing-run2/diagnosis.md`
+- `C:\Users\<user>\ai-native-engine-phase14\docs\phase14\runs\door-does-not-swing-run2/diagnosis.md`
 
 That file must start with the H1 title "# Phase 14 blind diagnosis" and must contain:
 
@@ -48,7 +48,7 @@ defect, apply the fix, and re-run the test.
 
 ## The isolated fixture
 
-- fixture directory: `C:\Users\hacke\AppData\Local\Temp\phase14-blind-door-i8HfAl\project`
+- fixture directory: `C:\Users\<user>\AppData\Local\Temp\phase14-blind-door-i8HfAl\project`
 - the one file that differs from the pristine observation fixture:
   `scripts/door.gd`
 - the acceptance script `res://tests/run_door.gd` is the oracle and **must not be
@@ -57,13 +57,13 @@ defect, apply the fix, and re-run the test.
 ## Commands
 
 ```powershell
-cd C:\Users\hacke\ai-native-engine-phase14\experiments\godot-harness
-node controller/harness.mjs test --project "C:\Users\hacke\AppData\Local\Temp\phase14-blind-door-i8HfAl\project" --script res://tests/run_door.gd --json --allow-outside-root
+cd C:\Users\<user>\ai-native-engine-phase14\experiments\godot-harness
+node controller/harness.mjs test --project "C:\Users\<user>\AppData\Local\Temp\phase14-blind-door-i8HfAl\project" --script res://tests/run_door.gd --json --allow-outside-root
 ```
 
 ## Recording your work
 
-- Diagnosis: `C:\Users\hacke\ai-native-engine-phase14\docs\phase14\runs\door-does-not-swing-run2/diagnosis.md`
-- Repair record: `C:\Users\hacke\ai-native-engine-phase14\docs\phase14\runs\door-does-not-swing-run2/repair.md` - the exact line changed before and
+- Diagnosis: `C:\Users\<user>\ai-native-engine-phase14\docs\phase14\runs\door-does-not-swing-run2/diagnosis.md`
+- Repair record: `C:\Users\<user>\ai-native-engine-phase14\docs\phase14\runs\door-does-not-swing-run2/repair.md` - the exact line changed before and
   after, why it is the smallest correct correction, and the before/after test
   results.

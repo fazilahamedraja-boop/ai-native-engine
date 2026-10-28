@@ -4,7 +4,7 @@
   "case_id": "crate-does-not-fall",
   "defect_class": "incorrect physics configuration that leaves one body inert",
   "model_spec": "opencode/deepseek-v4.1-flash-free",
-  "opencode_bin": "C:\\Users\\hacke\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+  "opencode_bin": "C:\\Users\\<user>\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
   "ordering": [
     "prepare",
     "sandbox-evidence",
@@ -148,7 +148,7 @@
     "orphan_check": "every opencode process spawned by this run was reaped"
   },
   "prepared": {
-    "fixture_dir": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-S26omG\\project",
+    "fixture_dir": "C:\\Users\\<user>\\AppData\\Local\\Temp\\phase14-blind-observation-S26omG\\project",
     "injected_file_relative": "scripts/observation_world.gd",
     "injected_file_sha256": "1c4cad3e43dfb0f4e681f7486eab1b79c950c7b0ee2938e926a8b0336efd8f48",
     "pristine_file_sha256": "669bb0b24c9a07914c951f971f575ae5ae46c2af992b82bd5bb5b52897abd7ab",
@@ -161,7 +161,7 @@
     }
   },
   "sandbox": {
-    "path": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase15-agent-qZFkO5\\sandbox",
+    "path": "C:\\Users\\<user>\\AppData\\Local\\Temp\\phase15-agent-qZFkO5\\sandbox",
     "config_source": "experiments/godot-harness/controller/agent-sandbox/opencode.json",
     "removed": true
   }

@@ -2,7 +2,7 @@
   "schema": "phase19.voxel-export-verify.v1",
   "phase": 19,
   "exported_at": "2026-10-25T06:10:50.327Z",
-  "exe": "C:\\Users\\hacke\\ai-native-engine-phase19\\experiments\\godot-harness\\voxel\\build\\voxel-sandbox.exe",
+  "exe": "C:\\Users\\<user>\\ai-native-engine-phase19\\experiments\\godot-harness\\voxel\\build\\voxel-sandbox.exe",
   "exe_name": "voxel-sandbox.exe",
   "exe_bytes": 109235296,
   "exe_sha256": "1ade5406fb14049b6c077f751cf4eba1bf8237014030fcbc05c7d7f77ba652bb",
@@ -81,7 +81,7 @@
     {
       "name": "packaged-window-capture",
       "ok": false,
-      "detail": "process 21788 has no visible game window matching 'voxel'\r\nAt C:\\Users\\hacke\\ai-native-engine-phase19\\experiments\\godot-harness\\controller\\capture-window-phase19.ps1:101 char:9\r\n+         throw \"process $ProcessId has no visible game window matching ...\r\n+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : OperationStopped: (process 21788 h...atching 'voxel':String) [], RuntimeException\r\n    + FullyQualifiedErrorId : process 21788 has no visible game window matching 'voxel'"
+      "detail": "process 21788 has no visible game window matching 'voxel'\r\nAt C:\\Users\\<user>\\ai-native-engine-phase19\\experiments\\godot-harness\\controller\\capture-window-phase19.ps1:101 char:9\r\n+         throw \"process $ProcessId has no visible game window matching ...\r\n+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : OperationStopped: (process 21788 h...atching 'voxel':String) [], RuntimeException\r\n    + FullyQualifiedErrorId : process 21788 has no visible game window matching 'voxel'"
     }
   ],
   "passed": 11,
@@ -90,7 +90,7 @@
     "ok": false,
     "status": 1,
     "stdout": "",
-    "stderr": "process 21788 has no visible game window matching 'voxel'\r\nAt C:\\Users\\hacke\\ai-native-engine-phase19\\experiments\\godot-harness\\controller\\capture-window-phase19.ps1:101 char:9\r\n+         throw \"process $ProcessId has no visible game window matching ...\r\n+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : OperationStopped: (process 21788 h...atching 'voxel':String) [], RuntimeException\r\n    + FullyQualifiedErrorId : process 21788 has no visible game window matching 'voxel'",
+    "stderr": "process 21788 has no visible game window matching 'voxel'\r\nAt C:\\Users\\<user>\\ai-native-engine-phase19\\experiments\\godot-harness\\controller\\capture-window-phase19.ps1:101 char:9\r\n+         throw \"process $ProcessId has no visible game window matching ...\r\n+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : OperationStopped: (process 21788 h...atching 'voxel':String) [], RuntimeException\r\n    + FullyQualifiedErrorId : process 21788 has no visible game window matching 'voxel'",
     "file": null
   },
   "gameplay": {

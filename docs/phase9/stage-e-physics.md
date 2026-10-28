@@ -3,7 +3,7 @@
 **Status:** pass with documented limits. Stage F may proceed.
 
 - Starting state: Phase 8 commit `6667ecc8b0247a63c3b2ac7e2dcfd348343d35cd`.
-- Worktree: `C:\Users\hacke\ai-native-engine-phase9`.
+- Worktree: `C:\Users\<user>\ai-native-engine-phase9`.
 - Branch: `experiment/phase9-generalization`.
 - New fixture: `experiments/godot-harness/fixtures/physics/`.
 - The Phase 8 sentry fixture, its bridge, tests, and evidence were not changed.
@@ -200,7 +200,7 @@ same.
 Command:
 
 ```powershell
-node controller/harness.mjs test --project artifacts/physics-no-wall --script res://tests/run_physics.gd --json --out C:\Users\hacke\ai-native-engine-phase9\docs\phase9\stage-e-failure.json
+node controller/harness.mjs test --project artifacts/physics-no-wall --script res://tests/run_physics.gd --json --out C:\Users\<user>\ai-native-engine-phase9\docs\phase9\stage-e-failure.json
 ```
 
 Result: exit `1`, 6 passed, 3 failed, `reason: "test cases failed"`, no Godot

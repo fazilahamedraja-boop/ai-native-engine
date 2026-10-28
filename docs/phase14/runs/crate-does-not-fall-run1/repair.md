@@ -1,6 +1,6 @@
 # Phase 14 repair record
 
-Fixture: `C:\Users\hacke\AppData\Local\Temp\phase14-blind-observation-hIfmfE\project`
+Fixture: `C:\Users\<user>\AppData\Local\Temp\phase14-blind-observation-hIfmfE\project`
 File changed: `scripts/observation_world.gd` (the only file that differed from the
 pristine observation fixture).
 Diagnosis: `docs/phase14/runs/crate-does-not-fall-run1/diagnosis.md` (written before
@@ -66,8 +66,8 @@ for both `fixtures/observation/tests/run_observation.gd` and the fixture's
 Command (unchanged, from the task file):
 
 ```powershell
-cd C:\Users\hacke\ai-native-engine-phase14\experiments\godot-harness
-node controller/harness.mjs test --project "C:\Users\hacke\AppData\Local\Temp\phase14-blind-observation-hIfmfE\project" --script res://tests/run_observation.gd --json --allow-outside-root
+cd C:\Users\<user>\ai-native-engine-phase14\experiments\godot-harness
+node controller/harness.mjs test --project "C:\Users\<user>\AppData\Local\Temp\phase14-blind-observation-hIfmfE\project" --script res://tests/run_observation.gd --json --allow-outside-root
 ```
 
 ### Before the fix (baseline reproduced locally, matches `evidence/test-output.txt`)
@@ -116,7 +116,7 @@ case advances 90 frames, long enough for the crate to fall 2.65 m and land.
 ## Scope discipline
 
 - Changed: exactly one line in the isolated fixture
-  (`C:\Users\hacke\AppData\Local\Temp\phase14-blind-observation-hIfmfE\project\scripts\observation_world.gd`).
+  (`C:\Users\<user>\AppData\Local\Temp\phase14-blind-observation-hIfmfE\project\scripts\observation_world.gd`).
 - Not changed: the oracle `res://tests/run_observation.gd` (byte-identical hash
   verified), every other file in the fixture, and everything outside the fixture
   directory. `experiments/godot-harness/controller/blind-cases.mjs` was never opened.

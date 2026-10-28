@@ -3,7 +3,7 @@
 Scope: derived only from the five evidence files in
 `docs/phase14/runs/plate-never-registers-run2/evidence/` plus the rendered
 `before.png`. No file under the isolated fixture
-(`C:\Users\hacke\AppData\Local\Temp\phase14-blind-observation-FITHxd\project`)
+(`C:\Users\<user>\AppData\Local\Temp\phase14-blind-observation-FITHxd\project`)
 was opened before this file was written.
 
 ## Failure
@@ -108,7 +108,7 @@ player's transform, and not in the gate.
 ## Proposed correction
 
 Repair the **single wiring line in
-`C:\Users\hacke\AppData\Local\Temp\phase14-blind-observation-FITHxd\project\scripts\observation_world.gd`**
+`C:\Users\<user>\AppData\Local\Temp\phase14-blind-observation-FITHxd\project\scripts\observation_world.gd`**
 that connects the `Plate` `Area3D`'s overlap notification to the handler that
 sets `plate_pressed = true` and records the plate event.
 

@@ -4,10 +4,10 @@ Status: design complete. No observation implementation has been started yet.
 
 ## 1. Preflight
 
-- Worktree: `C:\Users\hacke\ai-native-engine-phase10`
+- Worktree: `C:\Users\<user>\ai-native-engine-phase10`
 - Branch: `experiment/phase10-observation`
 - Base: Phase 9 `edff0effec5fe8c082c88e853a43dfe9bcbc96ee`
-- Main worktree: `C:\Users\hacke\ai-native-engine`
+- Main worktree: `C:\Users\<user>\ai-native-engine`
   - branch `fix/camera-relative-strafe`
   - HEAD `583ec00533909ecb1dddddfbb57211fb7b175f0c`
   - not modified

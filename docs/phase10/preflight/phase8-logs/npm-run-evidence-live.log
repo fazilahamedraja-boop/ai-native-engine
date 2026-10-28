@@ -4,7 +4,7 @@
 
 {
   "ok": true,
-  "evidence": "C:\\Users\\hacke\\AppData\\Local\\Temp\\opencode\\phase10-phase8-baseline\\docs\\phase8\\stage-c-live.json",
+  "evidence": "C:\\Users\\<user>\\AppData\\Local\\Temp\\opencode\\phase10-phase8-baseline\\docs\\phase8\\stage-c-live.json",
   "checks": [
     {
       "name": "movement-forward",

@@ -7,7 +7,7 @@
   "session": {
     "headless": false,
     "pid": 20504,
-    "project_path": "C:\\Users\\hacke\\ai-native-engine-phase17\\experiments\\godot-harness\\game"
+    "project_path": "C:\\Users\\<user>\\ai-native-engine-phase17\\experiments\\godot-harness\\game"
   },
   "captures": [
     {
@@ -15,7 +15,7 @@
       "scenario": "before dodge: ready at spawn",
       "screenshot": {
         "path": "01-before-dodge.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase17\\docs\\phase17\\evidence\\live\\windowed-dodge\\01-before-dodge.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase17\\docs\\phase17\\evidence\\live\\windowed-dodge\\01-before-dodge.png",
         "bytes": 68616,
         "sha256": "b3cc7ba00dc829f179379012a4b6c61c26e94b2b4991a842a521b0ef92c5ad34",
         "width": 1280,
@@ -94,7 +94,7 @@
       "scenario": "dodge start: directional burst",
       "screenshot": {
         "path": "02-initiation.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase17\\docs\\phase17\\evidence\\live\\windowed-dodge\\02-initiation.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase17\\docs\\phase17\\evidence\\live\\windowed-dodge\\02-initiation.png",
         "bytes": 73680,
         "sha256": "6860f2c43aae4e280e92a5af4e7e09e9d52df746278eb42270ea1cbe9a0f4a63",
         "width": 1280,
@@ -192,7 +192,7 @@
       "scenario": "mid-dodge: active i-frame window",
       "screenshot": {
         "path": "03-mid-dodge.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase17\\docs\\phase17\\evidence\\live\\windowed-dodge\\03-mid-dodge.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase17\\docs\\phase17\\evidence\\live\\windowed-dodge\\03-mid-dodge.png",
         "bytes": 73999,
         "sha256": "a55537a38175768b40d75346d20ebcbf50a52104b6226baf74dae73b4072bb73",
         "width": 1280,
@@ -290,7 +290,7 @@
       "scenario": "recovery: vulnerable, control returning",
       "screenshot": {
         "path": "04-recovery.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase17\\docs\\phase17\\evidence\\live\\windowed-dodge\\04-recovery.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase17\\docs\\phase17\\evidence\\live\\windowed-dodge\\04-recovery.png",
         "bytes": 73733,
         "sha256": "d377241edd234756f751661c8d3ab49ed10d0a3fbb64668c069830c241760759",
         "width": 1280,
@@ -395,7 +395,7 @@
       "scenario": "cooldown: second dodge rejected",
       "screenshot": {
         "path": "05-cooldown.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase17\\docs\\phase17\\evidence\\live\\windowed-dodge\\05-cooldown.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase17\\docs\\phase17\\evidence\\live\\windowed-dodge\\05-cooldown.png",
         "bytes": 68791,
         "sha256": "f1b921524a591dcaec156fdaeec999adb1629c1f9bcfeeaba9199523ff9740c5",
         "width": 1280,
@@ -515,7 +515,7 @@
       "scenario": "restart: dodge state cleared and rearmed",
       "screenshot": {
         "path": "06-after-restart.png",
-        "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase17\\docs\\phase17\\evidence\\live\\windowed-dodge\\06-after-restart.png",
+        "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase17\\docs\\phase17\\evidence\\live\\windowed-dodge\\06-after-restart.png",
         "bytes": 68614,
         "sha256": "f7f08e36850d490abe1e2752a5e2801707ee77e90bec217f1ba92284f5e95cd3",
         "width": 1280,

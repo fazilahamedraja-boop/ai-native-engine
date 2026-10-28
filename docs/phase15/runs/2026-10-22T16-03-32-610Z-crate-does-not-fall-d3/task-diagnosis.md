@@ -33,4 +33,4 @@ Rules:
 - `evidence/state.json` - the fixture snapshot at the end of the scenario
 - `evidence/before.png` - a screenshot of the running game
 
-Sandbox directory: C:\Users\hacke\AppData\Local\Temp\phase15-agent-qZFkO5\sandbox
+Sandbox directory: C:\Users\<user>\AppData\Local\Temp\phase15-agent-qZFkO5\sandbox

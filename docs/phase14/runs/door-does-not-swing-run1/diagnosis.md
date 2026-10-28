@@ -1,7 +1,7 @@
 # Phase 14 blind diagnosis
 
 Evidence-only diagnosis. No file under the isolated fixture
-(`C:\Users\hacke\AppData\Local\Temp\phase14-blind-door-5DvxJk\project`) and no
+(`C:\Users\<user>\AppData\Local\Temp\phase14-blind-door-5DvxJk\project`) and no
 `blind-cases.mjs` were opened before this file was written.
 
 ## Failure

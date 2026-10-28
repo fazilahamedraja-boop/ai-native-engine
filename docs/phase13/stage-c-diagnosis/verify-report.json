@@ -5,7 +5,7 @@
   "run_id": "phase13-f2b29c92-3761-486d-9744-ace84846f892",
   "project": "fixtures/phase13-defect",
   "test_script": "res://tests/run_observation.gd",
-  "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase13\\docs\\phase13\\stage-c-diagnosis",
+  "output_dir": "C:\\Users\\<user>\\ai-native-engine-phase13\\docs\\phase13\\stage-c-diagnosis",
   "started_at": "2026-10-21T20:47:41.270Z",
   "finished_at": "2026-10-21T20:47:55.176Z",
   "test": {
@@ -66,7 +66,7 @@
     "simulation_step": 88,
     "screenshot": {
       "path": "frame-after-repair.png",
-      "absolute_path": "C:\\Users\\hacke\\ai-native-engine-phase13\\docs\\phase13\\stage-c-diagnosis\\evidence\\frame-after-repair.png",
+      "absolute_path": "C:\\Users\\<user>\\ai-native-engine-phase13\\docs\\phase13\\stage-c-diagnosis\\evidence\\frame-after-repair.png",
       "bytes": 63760,
       "sha256": "406008741ecb6cf2f9f33abf1beb74c43cce1dbdff23c0b195bab71876a20b1e",
       "width": 1280,

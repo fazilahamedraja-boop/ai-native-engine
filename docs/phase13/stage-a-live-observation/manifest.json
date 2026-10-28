@@ -2,7 +2,7 @@
   "run_id": "phase13-b81a1830-d8cd-4f01-a811-0becdefdccc9",
   "project": "fixtures/observation",
   "windowed": true,
-  "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase13\\docs\\phase13\\stage-a-live-observation",
+  "output_dir": "C:\\Users\\<user>\\ai-native-engine-phase13\\docs\\phase13\\stage-a-live-observation",
   "started_at": "2026-10-21T20:27:45.478Z",
   "finished_at": "2026-10-21T20:27:52.160Z",
   "frames": [

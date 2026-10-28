@@ -12,11 +12,11 @@ Godot harness - not to build an observation framework.
 
 | Item | Value |
 | --- | --- |
-| PowerShell shim | `C:\Users\hacke\AppData\Roaming\npm\opencode.ps1` |
+| PowerShell shim | `C:\Users\<user>\AppData\Roaming\npm\opencode.ps1` |
 | Real binary | `...\npm\node_modules\@opencode\cli\bin\opencode.exe` (213 MB, self-contained) |
 | Version | `opencode 2.0.32` |
-| Config root (default) | `C:\Users\hacke\.config\opencode` |
-| Data root (default) | `C:\Users\hacke\.local\share\opencode` (sessions in `opencode.db`) |
+| Config root (default) | `C:\Users\<user>\.config\opencode` |
+| Data root (default) | `C:\Users\<user>\.local\share\opencode` (sessions in `opencode.db`) |
 | Config schema | `https://opencode.ai/config.json` |
 
 `opencode debug paths` prints every resolved path (home, data, cache, config,
@@ -110,18 +110,18 @@ Two details matter for isolation:
 
 The first isolation experiment **failed**:
 
-- Sandbox: `C:\Users\hacke\ph15-sandbox`, containing only `evidence/state.json`
+- Sandbox: `C:\Users\<user>\ph15-sandbox`, containing only `evidence/state.json`
   and an `opencode.json` that denied `external_directory` and `shell`.
 - Command: `opencode run --format json --model ... --auto "read the secret"`.
-- Result: the agent read `C:\Users\hacke\ph15-secret\secret.txt` successfully.
+- Result: the agent read `C:\Users\<user>\ph15-secret\secret.txt` successfully.
 
 Root cause: a default `opencode run` attaches to the **shared background
-service**, which was started earlier, from `C:\Users\hacke`, with the global
+service**, which was started earlier, from `C:\Users\<user>`, with the global
 config. A session created there does not adopt the invoking process's working
 directory or its project `opencode.json`. Confirmed with:
 
 - `opencode debug config` executed from the sandbox still listed only
-  `C:\Users\hacke\.config\opencode\opencode.json` as a configuration source;
+  `C:\Users\<user>\.config\opencode\opencode.json` as a configuration source;
 - `opencode mcp list` still reported 11 connected MCP servers even after
   `XDG_CONFIG_HOME` pointed at an otherwise empty config directory.
 

@@ -28,7 +28,7 @@ missing — exactly the contradiction recorded in `diagnosis.md`.
 
 ## The exact line changed
 
-File: `C:\Users\hacke\AppData\Local\Temp\phase14-blind-observation-r7O6Jl\project\scripts\observation_world.gd`
+File: `C:\Users\<user>\AppData\Local\Temp\phase14-blind-observation-r7O6Jl\project\scripts\observation_world.gd`
 
 Line 650, in `_build_crate()`:
 
@@ -81,8 +81,8 @@ every other field byte-identical.
 Same command both times:
 
 ```powershell
-cd C:\Users\hacke\ai-native-engine-phase14\experiments\godot-harness
-node controller/harness.mjs test --project "C:\Users\hacke\AppData\Local\Temp\phase14-blind-observation-r7O6Jl\project" --script res://tests/run_observation.gd --json --allow-outside-root
+cd C:\Users\<user>\ai-native-engine-phase14\experiments\godot-harness
+node controller/harness.mjs test --project "C:\Users\<user>\AppData\Local\Temp\phase14-blind-observation-r7O6Jl\project" --script res://tests/run_observation.gd --json --allow-outside-root
 ```
 
 **Before**

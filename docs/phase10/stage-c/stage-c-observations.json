@@ -22,7 +22,7 @@
         "tick": 21,
         "sim_time_seconds": 0.35,
         "screenshot": {
-          "absolute_path": "C:/Users/hacke/ai-native-engine-phase10/experiments/godot-harness/fixtures/observation/artifacts/stage-c-initial.png",
+          "absolute_path": "C:/Users/<user>/ai-native-engine-phase10/experiments/godot-harness/fixtures/observation/artifacts/stage-c-initial.png",
           "bytes": 54597,
           "captured_at": "2026-10-21T14:44:34Z",
           "headless": false,
@@ -84,7 +84,7 @@
         "tick": 137,
         "sim_time_seconds": 2.283333333333333,
         "screenshot": {
-          "absolute_path": "C:/Users/hacke/ai-native-engine-phase10/experiments/godot-harness/fixtures/observation/artifacts/stage-c-open.png",
+          "absolute_path": "C:/Users/<user>/ai-native-engine-phase10/experiments/godot-harness/fixtures/observation/artifacts/stage-c-open.png",
           "bytes": 64299,
           "captured_at": "2026-10-21T14:44:36Z",
           "headless": false,

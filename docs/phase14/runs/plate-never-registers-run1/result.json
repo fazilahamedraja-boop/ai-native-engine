@@ -1,8 +1,8 @@
 {
   "case_id": "plate-never-registers",
   "defect_class": "incorrect gameplay-state transition",
-  "output_dir": "C:\\Users\\hacke\\ai-native-engine-phase14\\docs\\phase14\\runs\\plate-never-registers-run1",
-  "fixture_dir": "C:\\Users\\hacke\\AppData\\Local\\Temp\\phase14-blind-observation-e6DJQT\\project",
+  "output_dir": "C:\\Users\\<user>\\ai-native-engine-phase14\\docs\\phase14\\runs\\plate-never-registers-run1",
+  "fixture_dir": "C:\\Users\\<user>\\AppData\\Local\\Temp\\phase14-blind-observation-e6DJQT\\project",
   "before": {
     "test_ok": false,
     "test_summary": {

@@ -137,4 +137,4 @@ No test is weakened, no timeout is increased, no behaviour is mocked, and the qu
 unchanged.
 
 The fix is applied and verified in the isolated worktree
-`C:\Users\hacke\ai-native-engine-phase12-verify` (branch `experiment/phase12-verify`).
+`C:\Users\<user>\ai-native-engine-phase12-verify` (branch `experiment/phase12-verify`).

@@ -1,7 +1,7 @@
 {
   "operation": "phase10_preflight_phase8_acceptance",
   "ok": true,
-  "source_worktree": "C:\\Users\\hacke\\ai-native-engine-phase8",
+  "source_worktree": "C:\\Users\\<user>\\ai-native-engine-phase8",
   "source_head": "6667ecc8b0247a63c3b2ac7e2dcfd348343d35cd",
   "source_status": "clean",
   "execution": "clean copy; source fixtures and evidence were not modified",

@@ -1,7 +1,7 @@
 # Phase 13 — Capability inventory
 
 Baseline: `experiment/phase12-verify` at `5da4987` (Phase 12B verified).
-Worktree: `C:\Users\hacke\ai-native-engine-phase13`, branch `experiment/phase13-live-observation`.
+Worktree: `C:\Users\<user>\ai-native-engine-phase13`, branch `experiment/phase13-live-observation`.
 Godot: `4.7.2-stable (official)`, Vulkan 1.3.215 renderer on this machine.
 
 This document records which capabilities Phase 13 **reused**, which it **added**, and which

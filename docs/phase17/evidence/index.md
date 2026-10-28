@@ -72,7 +72,7 @@ contains the SHA-256 and byte size of every Phase 17 doc and evidence file.
 
 ## Live dashboard
 
-- Temporary live root: `C:\Users\hacke\AppData\Local\Temp\opencode\phase16-progress`.
+- Temporary live root: `C:\Users\<user>\AppData\Local\Temp\opencode\phase16-progress`.
   `phase17.html` polls `phase17/status.json` and serves the mirrored evidence.
 - The repository evidence remains the source of truth. The dashboard is a
   convenience view and is not part of the commit.

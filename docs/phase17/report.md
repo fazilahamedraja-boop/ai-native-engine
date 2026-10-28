@@ -2,9 +2,9 @@
 
 Status: **complete, runner-verified, not merged or pushed**
 
-Branch: `experiment/phase17-dodge`  
-Base commit: `90fba1c` (`docs: add phase 16 design, evidence, and final report`)  
-Worktree: `C:\Users\hacke\ai-native-engine-phase17`  
+Branch: `experiment/phase17-dodge`\
+Base commit: `90fba1c` (`docs: add phase 16 design, evidence, and final report`)\
+Worktree: `C:\Users\<user>\ai-native-engine-phase17`\
 Agent model: `opencode/deepseek-v4.1-flash-free`
 
 ## Outcome
